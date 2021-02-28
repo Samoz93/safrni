@@ -1,0 +1,33 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+
+  @include res(tab-land) {
+    font-size: 57.25%;
+  }
+  @include res(tab) {
+    font-size: 50%;
+  }
+
+  @include res(phone) {
+    font-size: 40%;
+  }
+  @include res(desktop) {
+    font-size: 62.25%;
+  }
+  overflow-x: hidden;
+}
+
+body {
+  box-sizing: border-box;
+  background-color: $white;
+  // padding: 0 10% 0 10%;
+}

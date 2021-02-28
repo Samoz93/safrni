@@ -1,0 +1,23 @@
+$border: 5rem;
+$page-padding: 10rem;
+section {
+  min-height: 150vh;
+}
+
+.section-design {
+  background-color: $primary;
+  border-radius: 0 0 $border $border;
+  width: 100%;
+  box-shadow: 1rem 1rem 2.4rem #00000013;
+}
+.inverted {
+  border-radius: $border $border 0 0;
+}
+
+.page-padding {
+  padding: 0 $page-padding;
+}
+
+.page-padding-small {
+  padding: 0 10vw;
+}

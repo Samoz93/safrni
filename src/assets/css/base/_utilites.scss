@@ -1,0 +1,31 @@
+.m2 {
+  margin: paddingMultiplayer(2);
+}
+.m4 {
+  margin: paddingMultiplayer(4);
+}
+.m6 {
+  margin: paddingMultiplayer(6);
+}
+.m8 {
+  margin: paddingMultiplayer(8);
+}
+
+.p2 {
+  padding: paddingMultiplayer(2);
+}
+.p4 {
+  padding: paddingMultiplayer(4);
+}
+.p6 {
+  padding: paddingMultiplayer(6);
+}
+.p8 {
+  padding: paddingMultiplayer(8);
+}
+
+$blur: 0.15rem;
+.blur {
+  -webkit-filter: blur($blur);
+  filter: blur($blur);
+}

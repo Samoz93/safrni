@@ -1,0 +1,55 @@
+@mixin yellowTextMixin($size) {
+  background-color: $accent;
+  color: $black;
+  font-size: $size;
+  display: inline-block;
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 1rem 0;
+  padding: 0 1rem;
+}
+
+@mixin shadow($color: rgb(0, 0, 0)) {
+  box-shadow: 1px 2px 1rem 0.5rem rgba($color, 0.2);
+}
+
+///
+@mixin res($break) {
+  @if $break == phone {
+    @media (max-width: 37.5em) {
+      //600px
+      @content;
+    }
+  }
+
+  @if $break == tab {
+    @media (max-width: 56.25em) {
+      //900px
+      @content;
+    }
+  }
+
+  @if $break == med {
+    @media (max-width: 70.2em) {
+      //1120px
+      @content;
+    }
+  }
+  @if $break == tab-land {
+    @media (max-width: 75em) {
+      //1200px
+      @content;
+    }
+  }
+  @if $break == desktop {
+    @media (min-width: 112.5em) {
+      @content;
+    }
+  }
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
