@@ -24,6 +24,7 @@ import { OfferBookingComponent } from './pages/Offer/offer-booking/offer-booking
 import { SingleTripCardComponent } from './common/widgets/single-trip-card/single-trip-card.component';
 import { TripExtraComponent } from './common/widgets/trip-extra/trip-extra.component';
 import { HeaderIconComponent } from './common/widgets/header-icon/header-icon.component';
+import { OursocialmediaComponent } from './common/widgets/oursocialmedia/oursocialmedia.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { HeaderIconComponent } from './common/widgets/header-icon/header-icon.co
     SingleTripCardComponent,
     TripExtraComponent,
     HeaderIconComponent,
+    OursocialmediaComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
   providers: [],

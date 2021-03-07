@@ -10,18 +10,7 @@
     flex: 8;
     display: flex;
   }
-  &_social {
-    flex: 1;
-    display: flex;
-    justify-content: space-evenly;
-    filter: invert(85%) sepia(95%) saturate(0%) hue-rotate(109deg)
-      brightness(105%) contrast(104%);
-    img {
-      padding: 0.5rem;
-      height: 3rem;
-      width: 3rem;
-    }
-  }
+
   &_login {
     display: flex;
     justify-content: center;

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StaticInfo } from 'src/app/data/static/main-info';
 
 @Component({
   selector: 'app-header-info',
@@ -8,15 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderInfoComponent implements OnInit {
   isSigned = true;
   quickReach = [
-    { icon: 'email.svg', info: 'Saferni@emali.com' },
-    { icon: 'phone.svg', info: '90 537 695 8305' },
+    { icon: 'email.svg', info: StaticInfo.projectName },
+    { icon: 'phone.svg', info: StaticInfo.phoneNumber },
     { icon: 'location.svg', info: 'Istanbul, Turkey' },
   ];
-  socialMedia = [
-    { icon: 'instagram.svg', link: 'Saferni@emali.com' },
-    { icon: 'facebook.svg', link: '90 537 695 8305' },
-    { icon: 'twitter.svg', link: 'Istanbul, Turkey' },
-  ];
+
   constructor() {}
 
   ngOnInit(): void {}

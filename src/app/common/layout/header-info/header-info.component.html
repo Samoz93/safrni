@@ -2,13 +2,7 @@
     <div class="main_quickreach">
         <app-header-icon *ngFor="let q of quickReach" [txt]="q.info" [icon]="q.icon"></app-header-icon>
     </div>
-    <div class="main_social">
-        <div *ngFor="let sm of socialMedia" class="main_social-info">
-            <a [href]="sm.link">
-                <img [src]="'assets/images/svgs/'+sm.icon" alt="">
-            </a>
-        </div>
-    </div>
+    <app-oursocialmedia></app-oursocialmedia>
     <div *ngIf="!isSigned" class="main_login">
         <div class="main_social-login">Login</div>
         <div class="main-btn">Sign Up</div>

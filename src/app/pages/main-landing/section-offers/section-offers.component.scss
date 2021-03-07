@@ -1,6 +1,8 @@
 .data {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(45rem, 1fr));
+  align-items: center;
+  justify-items: center;
   gap: 5rem;
 }
 .main {

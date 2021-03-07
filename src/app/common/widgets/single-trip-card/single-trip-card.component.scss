@@ -1,8 +1,9 @@
 @import "/src/assets/css/abstract/variables";
-
+$h: 50rem;
+$w: 30rem;
 .main {
-  height: 30rem;
-  width: 20rem;
+  height: $h;
+  width: $w;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(10, 1fr);
@@ -55,6 +56,6 @@
 }
 
 .normal-trip {
-  height: 20rem;
-  width: 35rem;
+  height: $w;
+  width: $h;
 }

@@ -1,0 +1,15 @@
+.main_social {
+  display: flex;
+  justify-content: center;
+  filter: invert(85%) sepia(95%) saturate(0%) hue-rotate(109deg)
+    brightness(105%) contrast(104%);
+
+  *:not(:last-child) {
+    margin-right: 1.5rem;
+  }
+  img {
+    padding: 0.5rem;
+    height: 3rem;
+    width: 3rem;
+  }
+}
