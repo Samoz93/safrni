@@ -10,3 +10,35 @@
     color: $primary;
   }
 }
+
+.navlink {
+  &:active,
+  &:visited {
+    border: none;
+  }
+  border: none;
+
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: $primary;
+  position: relative;
+  &::after {
+    position: absolute;
+    background-color: $primary;
+    content: "";
+    width: 0;
+    height: 0.2rem;
+    bottom: -20%;
+    left: 0;
+    transition: all 0.2s;
+    position: absolute;
+  }
+
+  &:hover {
+    &::after {
+      background-color: $accent;
+      width: 100%;
+    }
+  }
+}

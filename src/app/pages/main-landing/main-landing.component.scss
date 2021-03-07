@@ -4,4 +4,23 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  position: relative;
+  .img {
+    position: absolute;
+    top: 30%;
+    width: 40vw;
+  }
+
+  .left {
+    left: 0;
+    padding: 0;
+    transform: translateX(-20%);
+  }
+  .right {
+    top: 25%;
+    width: 20vw;
+    transform: translateX(20%);
+    right: 0;
+  }
 }

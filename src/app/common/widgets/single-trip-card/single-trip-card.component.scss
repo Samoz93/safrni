@@ -1,0 +1,60 @@
+@import "/src/assets/css/abstract/variables";
+
+.main {
+  height: 30rem;
+  width: 20rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  color: $white;
+  * {
+    margin: 0.8rem;
+  }
+  &_info {
+    grid-column: 1/1;
+    grid-row: 1/1;
+    z-index: 5;
+  }
+  &_price {
+    justify-self: flex-end;
+    grid-column: 2/2;
+    grid-row: 2/2;
+    z-index: 5;
+  }
+  &_duration {
+    justify-self: flex-end;
+    grid-column: 2/2;
+    grid-row: 1/1;
+    z-index: 5;
+  }
+  .extra {
+    grid-column: 1/1;
+    grid-row: 10/10;
+    z-index: 5;
+
+    img {
+      width: 50%;
+      z-index: 0;
+    }
+  }
+  .bk {
+    margin: 0;
+    height: 100%;
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+    img {
+      margin: 0;
+
+      border-radius: $border-radius;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
+
+.normal-trip {
+  height: 20rem;
+  width: 35rem;
+}

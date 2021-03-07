@@ -25,7 +25,13 @@
 }
 
 $blur: 0.15rem;
+$blur2: 0.08rem;
 .blur {
   -webkit-filter: blur($blur);
   filter: blur($blur);
+}
+
+.blur2 {
+  -webkit-filter: blur($blur2);
+  filter: blur($blur2);
 }

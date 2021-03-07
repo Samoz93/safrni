@@ -1,0 +1,17 @@
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  &_logo {
+    flex: 3;
+  }
+
+  &_tool-bar {
+    flex: 3;
+    display: flex;
+    justify-content: start;
+    *:not(:last-child) {
+      margin-right: 5rem;
+    }
+  }
+}

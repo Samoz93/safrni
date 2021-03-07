@@ -1,0 +1,38 @@
+@import "/src/assets/css/abstract/mixins";
+
+.main {
+  display: flex;
+  background-color: black;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  &_quickreach {
+    flex: 8;
+    display: flex;
+  }
+  &_social {
+    flex: 1;
+    display: flex;
+    justify-content: space-evenly;
+    filter: invert(85%) sepia(95%) saturate(0%) hue-rotate(109deg)
+      brightness(105%) contrast(104%);
+    img {
+      padding: 0.5rem;
+      height: 3rem;
+      width: 3rem;
+    }
+  }
+  &_login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 2;
+    * {
+      margin: 0 0.5rem;
+    }
+  }
+  &_user {
+    flex: 2;
+    @include center;
+  }
+}

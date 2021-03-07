@@ -1,0 +1,11 @@
+.main {
+  display: flex;
+  flex-direction: row;
+  .extra {
+    height: 3rem;
+    width: 3rem;
+    img {
+      width: 100%;
+    }
+  }
+}

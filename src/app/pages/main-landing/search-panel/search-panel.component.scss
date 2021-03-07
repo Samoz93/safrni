@@ -4,7 +4,9 @@ $rd: 5rem;
 $border: 0 0 $rd $rd;
 $select-h: 3rem;
 .main {
-  height: 80vh;
+  height: 100%;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
   color: white;
   border-radius: $border;
   @include shadow;

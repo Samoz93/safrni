@@ -21,6 +21,9 @@ import { OfferLocationComponent } from './pages/Offer/offer-info-landing/offer-l
 import { LoginComponent } from './pages/user/login/login.component';
 import { SignupComponent } from './pages/user/signup/signup.component';
 import { OfferBookingComponent } from './pages/Offer/offer-booking/offer-booking.component';
+import { SingleTripCardComponent } from './common/widgets/single-trip-card/single-trip-card.component';
+import { TripExtraComponent } from './common/widgets/trip-extra/trip-extra.component';
+import { HeaderIconComponent } from './common/widgets/header-icon/header-icon.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,9 @@ import { OfferBookingComponent } from './pages/Offer/offer-booking/offer-booking
     LoginComponent,
     SignupComponent,
     OfferBookingComponent,
+    SingleTripCardComponent,
+    TripExtraComponent,
+    HeaderIconComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
   providers: [],

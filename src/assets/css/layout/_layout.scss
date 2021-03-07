@@ -17,7 +17,21 @@ section {
 .page-padding {
   padding: 0 $page-padding;
 }
+.page-margin {
+  margin: 0 $page-padding;
+}
 
 .page-padding-small {
   padding: 0 10vw;
+}
+
+.trip-section {
+  height: 100%;
+  display: flex;
+  margin-top: 5rem;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.data {
+  margin: 5rem 0 10rem 0;
 }
