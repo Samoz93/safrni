@@ -26,6 +26,7 @@ import { TripExtraComponent } from './common/widgets/trip-extra/trip-extra.compo
 import { HeaderIconComponent } from './common/widgets/header-icon/header-icon.component';
 import { OursocialmediaComponent } from './common/widgets/oursocialmedia/oursocialmedia.component';
 import { TourInformationComponent } from './pages/tour-information/tour-information.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,7 @@ import { TourInformationComponent } from './pages/tour-information/tour-informat
     OursocialmediaComponent,
     TourInformationComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, NgbModule],
   providers: [],
   bootstrap: [AppComponent],
 })
