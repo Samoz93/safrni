@@ -8,12 +8,14 @@
 $primary: #252629;
 $accent: #20aed5;
 $grey: #7e7e7e;
+$grey-light: #707070;
 $light-blue: #ebf3fa;
 $white: white;
+$err: red;
 
 $light-black: #252629;
 $light-blue: #ebf3fa;
-
+$login-bk: #20aed5;
 // $card-1: #025e73;
 // $card-2: #768591;
 // $card-3: #f2c879;
@@ -32,3 +34,9 @@ $main-font: "Source Sans Pro", sans-serif;
 $segoe: "Segoe Script Regular";
 
 $border-radius: 2.4rem;
+$border: 5rem;
+$page-padding: 10rem;
+
+.grey {
+  color: $grey;
+}

@@ -1,0 +1,25 @@
+<form [formGroup]="form">
+  <div class="main">
+    <div class="img">
+      <img src="assets/images/bk/profile.png" alt="" />
+    </div>
+    <div class="controls">
+      <app-profileinput
+        label="Old Password"
+        formControlName="oldPass"
+      ></app-profileinput>
+      <app-profileinput
+        formControlName="newPass"
+        label="New Password"
+      ></app-profileinput>
+      <app-profileinput
+        formControlName="confirmNewPass"
+        label="New Password Again"
+      ></app-profileinput>
+
+      <button class="main-btn_round btn" (click)="onSubmit()">
+        Update Information
+      </button>
+    </div>
+  </div>
+</form>

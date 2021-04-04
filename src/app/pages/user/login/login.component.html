@@ -1,1 +1,148 @@
-<p>login works!</p>
+<div class="main">
+  <img src="assets/images/bk/login.png" alt="" />
+  <ng-container *ngIf="type == enum.signup; then signup"></ng-container>
+  <ng-container *ngIf="type == enum.login; then login"></ng-container>
+  <ng-container *ngIf="type == enum.privacy; then privacy"></ng-container>
+</div>
+<ng-template #privacy>
+  <div class="side privacy">
+    <h1 class="term-header">Terms of service and privacy policy</h1>
+    <h6>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore vero
+      maiores suscipit debitis error. Quam quidem repellendus, sequi quasi
+      dignissimos quia vero veritatis aut! Iusto repudiandae explicabo
+      asperiores modi necessitatibus. Lorem ipsum dolor sit amet, consectetur
+      adipisicing elit. Nesciunt perspiciatis laboriosam cumque qui numquam
+      consequatur labore, iure explicabo quibusdam natus in quas expedita illum
+      unde ipsa sunt quis nihil aut. Lorem ipsum dolor sit, amet consectetur
+      adipisicing elit. At voluptatibus, dolores omnis debitis quae sint dolor
+      accusantium adipisci quam impedit neque laudantium excepturi tempora et
+      culpa minima enim ratione nostrum! Lorem ipsum dolor sit amet consectetur
+      adipisicing elit. Natus non distinctio facilis autem rem fuga officiis
+      alias? Eius ratione itaque corporis deserunt esse doloribus quo, nulla
+      illum quaerat voluptatibus ab!
+    </h6>
+    <button class="main-btn" (click)="switchToSignUp()">&#8678;</button>
+  </div>
+</ng-template>
+
+<!-- login -->
+<ng-template #login>
+  <form class="form login side" [formGroup]="form">
+    <h2 class="title grey">Sign In</h2>
+    <mat-form-field class="ctrl" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        formControlName="email"
+        placeholder="Ex. pat@example.com"
+      />
+      <mat-error *ngIf="hasError('email')">
+        <div class="errs" *ngFor="let err of getError('email')">
+          {{ err }}
+        </div>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="ctrl" appearance="outline">
+      <mat-label>Create Password</mat-label>
+      <input
+        type="password"
+        matInput
+        formControlName="password"
+        placeholder="ANYTHING BUT 123456789"
+      />
+      <mat-error *ngIf="hasError('password')">
+        <div class="errs" *ngFor="let err of getError('password')">
+          {{ err }}
+        </div>
+      </mat-error>
+    </mat-form-field>
+    <button class="main-btn" (click)="submitForm()">Sign In</button>
+    <h6>
+      New User ?
+      <a class="hyper-link" (click)="switchToSignUp()">Create an account</a>
+    </h6>
+  </form>
+</ng-template>
+<!-- sing Up -->
+<ng-template #signup>
+  <form class="form signup side" [formGroup]="form">
+    <h2 class="title grey">Get Started</h2>
+    <mat-form-field class="ctrl name" appearance="outline">
+      <mat-label>First Name</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="firstName"
+        placeholder="Ex. John"
+      />
+      <mat-error *ngIf="hasError('firstName')">
+        <div class="errs" *ngFor="let err of getError('firstName')">
+          {{ err }}
+        </div>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="ctrl name" appearance="outline">
+      <mat-label>Last Name</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="lastName"
+        placeholder="Ex. Marry"
+      />
+      <mat-error *ngIf="hasError('lastName')">
+        <div class="errs" *ngFor="let err of getError('lastName')">
+          {{ err }}
+        </div>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="ctrl" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        formControlName="email"
+        placeholder="Ex. pat@example.com"
+      />
+      <mat-error *ngIf="hasError('email')">
+        <div class="errs" *ngFor="let err of getError('email')">
+          {{ err }}
+        </div>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="ctrl" appearance="outline">
+      <mat-label>Create Password</mat-label>
+      <input
+        type="password"
+        matInput
+        formControlName="password"
+        placeholder="ANYTHING BUT 123456789"
+      />
+      <mat-error *ngIf="hasError('password')">
+        <div class="errs" *ngFor="let err of getError('password')">
+          {{ err }}
+        </div>
+      </mat-error>
+    </mat-form-field>
+    <h6 class="align-start">Password must be at least 8 characters long.</h6>
+    <mat-checkbox class="align-start" formControlName="accept">
+      <p>
+        I accept the
+        <a class="hyper-link" (click)="switchToTerm()">Terms of service</a> and
+        privacy policy
+      </p>
+    </mat-checkbox>
+    <mat-error *ngIf="hasError('accept')">
+      <div class="errs" *ngFor="let err of getError('accept')">
+        {{ err }}
+      </div>
+    </mat-error>
+
+    <button class="main-btn" (click)="submitForm()">Sign Up</button>
+    <h6>
+      Already a member?
+      <a class="hyper-link" (click)="switchToLogin()">Sign in</a>
+    </h6>
+  </form>
+</ng-template>

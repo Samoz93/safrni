@@ -1,4 +1,4 @@
-.main-btn {
+@mixin _mainBtnMixin {
   background-color: $accent;
   border-radius: 0.9rem;
   padding: 0.5rem 3rem;
@@ -10,14 +10,32 @@
     color: $primary;
   }
 }
+.main-btn {
+  @include _mainBtnMixin();
+}
 
+.main-btn_round {
+  @include _mainBtnMixin();
+  border-radius: 10rem;
+}
+.btn-inverse {
+  color: $accent;
+  border-radius: 0.9rem;
+  padding: 0.5rem 3rem;
+  background-color: $white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover {
+    color: $primary;
+  }
+}
 .navlink {
   &:active,
   &:visited {
     border: none;
   }
   border: none;
-
   text-decoration: none;
   font-size: 1.3rem;
   font-weight: 700;
@@ -41,4 +59,11 @@
       width: 100%;
     }
   }
+}
+
+.hyper-link {
+  border: none;
+  text-decoration: none;
+  color: $accent;
+  cursor: pointer;
 }

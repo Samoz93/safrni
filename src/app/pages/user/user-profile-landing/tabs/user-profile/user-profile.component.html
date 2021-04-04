@@ -1,0 +1,74 @@
+<form [formGroup]="form">
+  <div class="main">
+    <div class="img">
+      <img src="assets/images/bk/profile.png" alt="" />
+    </div>
+    <div class="controls">
+      <div class="controls_basicInfo">
+        <app-profileinput
+          label="Full Name"
+          formControlName="fullName"
+        ></app-profileinput>
+        <app-profileinput
+          formControlName="title"
+          label="Title"
+        ></app-profileinput>
+        <app-profileinput
+          formControlName="email"
+          label="Email"
+        ></app-profileinput>
+      </div>
+      <div class="controls_birthday" (click)="test()">
+        <h4>Birthday</h4>
+        <div class="flex">
+          <app-profileinput
+            class="flex_1"
+            formControlName="email"
+            label="Day"
+            [showLabel]="false"
+          ></app-profileinput>
+          <app-profileinput
+            class="flex_3"
+            [showLabel]="false"
+            formControlName="email"
+            label="Month"
+          ></app-profileinput>
+          <app-profileinput
+            class="flex_2"
+            formControlName="email"
+            label="Year"
+            [showLabel]="false"
+          ></app-profileinput>
+        </div>
+      </div>
+      <div class="controls_country">
+        <app-profileinput
+          class="flex_2"
+          formControlName="email"
+          label="country"
+          [isColumn]="true"
+        ></app-profileinput>
+        <app-profileinput
+          class="flex_2"
+          formControlName="email"
+          label="Province"
+          [isColumn]="true"
+        ></app-profileinput>
+        <app-profileinput
+          class="flex_2"
+          formControlName="email"
+          label="Phone Number"
+          [isColumn]="true"
+        ></app-profileinput>
+        <app-profileinput
+          class="flex_2"
+          formControlName="email"
+          label="Postal Code"
+          [isColumn]="true"
+        ></app-profileinput>
+      </div>
+
+      <button class="main-btn_round btn">Update Information</button>
+    </div>
+  </div>
+</form>

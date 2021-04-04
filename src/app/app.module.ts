@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatInputModule } from '@angular/material/input';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,12 +21,17 @@ import { OfferInformationComponent } from './pages/Offer/offer-info-landing/offe
 import { OfferPlanComponent } from './pages/Offer/offer-info-landing/offer-plan/offer-plan.component';
 import { OfferLocationComponent } from './pages/Offer/offer-info-landing/offer-location/offer-location.component';
 import { LoginComponent } from './pages/user/login/login.component';
-import { SignupComponent } from './pages/user/signup/signup.component';
 import { OfferBookingComponent } from './pages/Offer/offer-booking/offer-booking.component';
 import { SingleTripCardComponent } from './common/widgets/single-trip-card/single-trip-card.component';
 import { TripExtraComponent } from './common/widgets/trip-extra/trip-extra.component';
 import { HeaderIconComponent } from './common/widgets/header-icon/header-icon.component';
 import { OursocialmediaComponent } from './common/widgets/oursocialmedia/oursocialmedia.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { UserProfileLandingComponent } from './pages/user/user-profile-landing/user-profile-landing.component';
+import { UserProfileComponent } from './pages/user/user-profile-landing/tabs/user-profile/user-profile.component';
+import { UserTripsComponent } from './pages/user/user-profile-landing/tabs/user-trips/user-trips.component';
+import { UserSecurityComponent } from './pages/user/user-profile-landing/tabs/user-security/user-security.component';
+import { ProfileinputComponent } from './common/widgets/profileinput/profileinput.component';
 
 @NgModule({
   declarations: [
@@ -44,14 +51,26 @@ import { OursocialmediaComponent } from './common/widgets/oursocialmedia/oursoci
     OfferPlanComponent,
     OfferLocationComponent,
     LoginComponent,
-    SignupComponent,
     OfferBookingComponent,
     SingleTripCardComponent,
     TripExtraComponent,
     HeaderIconComponent,
     OursocialmediaComponent,
+    UserProfileLandingComponent,
+    UserProfileComponent,
+    UserTripsComponent,
+    UserSecurityComponent,
+    ProfileinputComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatCheckboxModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

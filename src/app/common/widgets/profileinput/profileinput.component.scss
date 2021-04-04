@@ -1,0 +1,40 @@
+@import "/src/assets/css/abstract/variables";
+.main {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  margin: 1rem;
+  height: 4rem;
+  .ctrl {
+    font-size: 60%;
+    text-align: start;
+    display: grid;
+    align-items: center;
+    text-align: start;
+    height: 4rem;
+  }
+  .input {
+    width: 100%;
+    border-radius: 5rem;
+    border: $grey-light solid 1px;
+    padding: 1rem;
+    transition: all 1s;
+    height: 4rem;
+  }
+  .input.invalid {
+    border: $err solid 1px;
+  }
+}
+.err {
+  color: $err;
+  font-size: 1rem;
+  padding: 1rem;
+  grid-column: 2/2;
+}
+.main.col,
+.hide_lable {
+  grid-template-columns: 100%;
+  .ctrl {
+    padding-left: 5%;
+  }
+}

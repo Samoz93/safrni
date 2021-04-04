@@ -1,4 +1,5 @@
 @import "/src/assets/css/abstract/mixins";
+@import "/src/assets/css/abstract/variables";
 
 $rd: 5rem;
 $border: 0 0 $rd $rd;
@@ -35,6 +36,7 @@ $select-h: 3rem;
     grid-template-columns: repeat(auto-fit, minmax(50rem, 1fr));
     &_desc {
       z-index: 2;
+      font-family: $montserrat-font;
       & *:not(:last-child) {
         margin-bottom: 5rem;
       }

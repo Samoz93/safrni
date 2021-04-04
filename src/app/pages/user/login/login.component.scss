@@ -1,0 +1,61 @@
+@import "/src/assets/css/abstract/variables";
+@import "/src/assets/css/abstract/mixins";
+
+$bd: $border-radius * 3;
+.main {
+  height: 100vh;
+  background: $login-bk;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  .side {
+    text-align: center;
+    grid-column: 2/ 2;
+    height: 100%;
+    border-radius: $bd 0 0 $bd;
+    background-color: white;
+    z-index: 1;
+    @include shadow;
+    padding: 15%;
+  }
+  .privacy {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    .main-btn {
+      align-self: center;
+      border-radius: 5rem;
+      padding: 2rem;
+    }
+  }
+  mat-form-field {
+    font-size: 1.4rem;
+  }
+  .form {
+    display: grid;
+    align-content: center;
+    gap: 0.8rem;
+    grid-template-columns: repeat(2, 1fr);
+    :not(.name) {
+      grid-column: span 2;
+    }
+    .title {
+      margin-bottom: 2rem;
+    }
+    .main-btn {
+      padding: 1rem;
+      font-size: 3rem;
+    }
+    .check {
+      display: flex;
+    }
+  }
+  .form.login {
+    gap: 4rem;
+  }
+  img {
+    position: absolute;
+    align-self: center;
+    height: 80%;
+    object-fit: cover;
+  }
+}

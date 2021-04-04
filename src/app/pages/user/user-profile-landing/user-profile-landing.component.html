@@ -1,0 +1,47 @@
+<div class="main">
+  <div class="wrapper">
+    <div class="nav-bar">
+      <div class="nav-bar_col col1">
+        <div class="nav-bar_image">
+          <img
+            src="https://cultivatedculture.com/wp-content/uploads/2019/12/LinkedIn-Profile-Picture-Example-Madeline-Mann.jpeg"
+            alt=""
+          />
+        </div>
+        <div class="nav-bar_name">Sameh Zoaa</div>
+        <div class="nav-bar_title">Doctor</div>
+        <div class="nav-bar_btn-ulpoad btn-inverse">Upload New Avatar</div>
+        <div class="nav-bar_btn-delete btn-inverse">Delete</div>
+      </div>
+      <div class="nav-bar_col">
+        <div
+          class="nav-bar_nav-item"
+          [ngClass]="{ active: enum.profile == type }"
+          (click)="changeType(enum.profile)"
+        >
+          Profile
+        </div>
+        <div
+          class="nav-bar_nav-item"
+          [ngClass]="{ active: enum.trips == type }"
+          (click)="changeType(enum.trips)"
+        >
+          Trips
+        </div>
+        <div
+          class="nav-bar_nav-item"
+          [ngClass]="{ active: enum.security == type }"
+          (click)="changeType(enum.security)"
+        >
+          Security
+        </div>
+      </div>
+    </div>
+    <div class="header">{{ type }}</div>
+    <div class="center">
+      <app-user-profile *ngIf="type == enum.profile"></app-user-profile>
+      <app-user-security *ngIf="type == enum.security"></app-user-security>
+      <app-user-trips *ngIf="type == enum.trips"> </app-user-trips>
+    </div>
+  </div>
+</div>

@@ -1,10 +1,10 @@
-<div class="main card " [ngClass]="{'normal-trip':!isSingleTrip}">
-    <div class="bk">
-        <img class="blur2" [src]="img" alt="">
-    </div>
-    <app-trip-extra class="extra"> </app-trip-extra>
+<div class="main card" [ngClass]="{ 'normal-trip': !isSingleTrip }">
+  <div class="bk">
+    <img class="blur2" [src]="img" alt="" />
+  </div>
+  <app-trip-extra [hasairport]="true" class="extra"> </app-trip-extra>
 
-    <h6 class="main_info ">{{txt}}</h6>
-    <h6 class="main_price ">{{price }}</h6>
-    <h6 class="main_duration ">{{duration}} day trip</h6>
+  <h6 class="main_info">{{ txt }}</h6>
+  <h6 class="main_price">{{ price }}</h6>
+  <h6 class="main_duration">{{ duration }} day trip</h6>
 </div>
