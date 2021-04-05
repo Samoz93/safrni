@@ -25,26 +25,18 @@
             </ul>
         </div>
         <div class="tour-info__card__body">
-            <div class="tour-info__card__body__content" [ngStyle]="styleObject(1)">
-                <div class="tour-information">
-                    <div class="tour-information__heading">
-                        <div class="tour-information__heading__destination">istanbul</div>
-                        <div class="tour-information__heading__price">5 Days - 4 Nights / 400$ Per Person</div>
-                    </div>
-                    <div class="tour-information__rating">
-
-                    </div>
-                    <div class="tour-information__description">
-                        
-                    </div>
-                </div>
+            <div class="" [ngStyle]="styleObject(1)">
+               <app-info-information-tab></app-info-information-tab>
             </div>
-            <div class="tour-info__card__body__content" [ngStyle]="styleObject(2)">body
-                2</div>
-            <div class="tour-info__card__body__content" [ngStyle]="styleObject(3)">body
-                3</div>
-            <div class="tour-info__card__body__content" [ngStyle]="styleObject(4)">body
-                4</div>
+            <div class="" [ngStyle]="styleObject(2)">
+                <app-info-plan-tab></app-info-plan-tab>
+            </div>
+            <div class="" [ngStyle]="styleObject(3)">
+                <app-info-location-tab></app-info-location-tab>
+            </div>
+            <div class="" [ngStyle]="styleObject(4)">
+                <app-info-reviews-tab></app-info-reviews-tab>
+            </div>
         </div>
     </div>
 </div>

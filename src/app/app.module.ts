@@ -27,6 +27,10 @@ import { HeaderIconComponent } from './common/widgets/header-icon/header-icon.co
 import { OursocialmediaComponent } from './common/widgets/oursocialmedia/oursocialmedia.component';
 import { TourInformationComponent } from './pages/tour-information/tour-information.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { InfoInformationTabComponent } from './pages/tour-information/info-information-tab/info-information-tab.component';
+import { InfoPlanTabComponent } from './pages/tour-information/info-plan-tab/info-plan-tab.component';
+import { InfoLocationTabComponent } from './pages/tour-information/info-location-tab/info-location-tab.component';
+import { InfoReviewsTabComponent } from './pages/tour-information/info-reviews-tab/info-reviews-tab.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +57,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HeaderIconComponent,
     OursocialmediaComponent,
     TourInformationComponent,
+    InfoInformationTabComponent,
+    InfoPlanTabComponent,
+    InfoLocationTabComponent,
+    InfoReviewsTabComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, NgbModule],
   providers: [],
