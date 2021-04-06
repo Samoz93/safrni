@@ -31,6 +31,7 @@ import { InfoInformationTabComponent } from './pages/tour-information/info-infor
 import { InfoPlanTabComponent } from './pages/tour-information/info-plan-tab/info-plan-tab.component';
 import { InfoLocationTabComponent } from './pages/tour-information/info-location-tab/info-location-tab.component';
 import { InfoReviewsTabComponent } from './pages/tour-information/info-reviews-tab/info-reviews-tab.component';
+import { ReadOnlyStarsComponent } from './common/widgets/read-only-stars/read-only-stars.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { InfoReviewsTabComponent } from './pages/tour-information/info-reviews-t
     InfoPlanTabComponent,
     InfoLocationTabComponent,
     InfoReviewsTabComponent,
+    ReadOnlyStarsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, NgbModule],
   providers: [],
