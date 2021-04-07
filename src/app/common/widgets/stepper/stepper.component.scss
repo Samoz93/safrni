@@ -1,7 +1,10 @@
 @import "/src/assets/css/abstract/variables";
 .stepper {
   width: 100%;
-
+  min-height: 100%;
+  max-height: 100%;
+  overflow-x: scroll;
+  overflow-y: visible;
   .step {
     padding: 10px;
 
@@ -47,22 +50,32 @@
     .content {
       width: 100%;
       margin-left: 20px;
-      display: grid;
-      gap: 1rem;
-      grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-      align-items: end;
-      &__main {
-        p {
-          font-size: 2rem;
-        }
-        img {
-          width: 20rem;
-        }
-      }
+      display: flex;
+      flex-direction: column;
 
-      &__description {
-        p {
-          font-size: 1.5rem;
+      &__item {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+        align-items: end;
+        margin-bottom: 2rem;
+        &__main {
+          h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+          }
+          p {
+            font-size: 2rem;
+          }
+          img {
+            width: 20rem;
+          }
+        }
+
+        &__description {
+          p {
+            font-size: 1.5rem;
+          }
         }
       }
     }

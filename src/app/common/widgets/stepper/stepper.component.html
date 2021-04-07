@@ -1,8 +1,8 @@
 <div class="stepper">
   <!-- completed -->
-  <div class="step">
+  <div class="step" *ngFor="let step of stepperData">
     <div class="step__day">
-      <p>Day 1</p>
+      <p>Day {{ step.day }}</p>
     </div>
     <div class="v-stepper">
       <div class="circle"></div>
@@ -10,143 +10,17 @@
     </div>
 
     <div class="content">
-      <div class="content__main">
-        <h2>7:00 AM</h2>
-        <p>Free Touring Day in Istanbul</p>
-        <img src="https://picsum.photos/id/119/1080/720" alt="" />
-      </div>
-      <div class="content__description">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ipsam
-          perferendis facere odit possimus voluptatum quod dicta commodi velit
-          repellendus adipisci excepturi modi voluptatibus, laboriosam aut culpa
-          pariatur dolores. Molestias!
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="step">
-    <div class="step__day">
-      <p>Day 1</p>
-    </div>
-    <div class="v-stepper">
-      <div class="circle"></div>
-      <div class="line"></div>
-    </div>
-
-    <div class="content">
-      <div class="content__main">
-        <h2>7:00 AM</h2>
-        <p>Free Touring Day in Istanbul</p>
-        <img src="https://picsum.photos/id/119/1080/720" alt="" />
-      </div>
-      <div class="content__description">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ipsam
-          perferendis facere odit possimus voluptatum quod dicta commodi velit
-          repellendus adipisci excepturi modi voluptatibus, laboriosam aut culpa
-          pariatur dolores. Molestias!
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="step">
-    <div class="step__day">
-      <p>Day 1</p>
-    </div>
-    <div class="v-stepper">
-      <div class="circle"></div>
-      <div class="line"></div>
-    </div>
-
-    <div class="content">
-      <div class="content__main">
-        <h2>7:00 AM</h2>
-        <p>Free Touring Day in Istanbul</p>
-        <img src="https://picsum.photos/id/119/1080/720" alt="" />
-      </div>
-      <div class="content__description">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ipsam
-          perferendis facere odit possimus voluptatum quod dicta commodi velit
-          repellendus adipisci excepturi modi voluptatibus, laboriosam aut culpa
-          pariatur dolores. Molestias!
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="step">
-    <div class="step__day">
-      <p>Day 1</p>
-    </div>
-    <div class="v-stepper">
-      <div class="circle"></div>
-      <div class="line"></div>
-    </div>
-
-    <div class="content">
-      <div class="content__main">
-        <h2>7:00 AM</h2>
-        <p>Free Touring Day in Istanbul</p>
-        <img src="https://picsum.photos/id/119/1080/720" alt="" />
-      </div>
-      <div class="content__description">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ipsam
-          perferendis facere odit possimus voluptatum quod dicta commodi velit
-          repellendus adipisci excepturi modi voluptatibus, laboriosam aut culpa
-          pariatur dolores. Molestias!
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="step">
-    <div class="step__day">
-      <p>Day 1</p>
-    </div>
-    <div class="v-stepper">
-      <div class="circle"></div>
-      <div class="line"></div>
-    </div>
-
-    <div class="content">
-      <div class="content__main">
-        <h2>7:00 AM</h2>
-        <p>Free Touring Day in Istanbul</p>
-        <img src="https://picsum.photos/id/119/1080/720" alt="" />
-      </div>
-      <div class="content__description">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ipsam
-          perferendis facere odit possimus voluptatum quod dicta commodi velit
-          repellendus adipisci excepturi modi voluptatibus, laboriosam aut culpa
-          pariatur dolores. Molestias!
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="step">
-    <div class="step__day">
-      <p>Day 1</p>
-    </div>
-    <div class="v-stepper">
-      <div class="circle"></div>
-      <div class="line"></div>
-    </div>
-
-    <div class="content">
-      <div class="content__main">
-        <h2>7:00 AM</h2>
-        <p>Free Touring Day in Istanbul</p>
-        <img src="https://picsum.photos/id/119/1080/720" alt="" />
-      </div>
-      <div class="content__description">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ipsam
-          perferendis facere odit possimus voluptatum quod dicta commodi velit
-          repellendus adipisci excepturi modi voluptatibus, laboriosam aut culpa
-          pariatur dolores. Molestias!
-        </p>
+      <div class="content__item" *ngFor="let stepItem of step.steps">
+        <div class="content__item__main">
+          <h2>{{ stepItem.time }}</h2>
+          <p>{{ stepItem.title }}</p>
+          <img src="{{ stepItem.image }}" alt="" />
+        </div>
+        <div class="content__item__description">
+          <p>
+            {{ stepItem.description }}
+          </p>
+        </div>
       </div>
     </div>
   </div>
