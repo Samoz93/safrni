@@ -1,0 +1,70 @@
+@import "/src/assets/css/abstract/variables";
+.stepper {
+  width: 100%;
+
+  .step {
+    padding: 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-bottom: 2rem;
+    background-color: cream;
+    &:last-child .v-stepper .line {
+      border-left: 3px solid white;
+      z-index: -1; /* behind the circle to completely hide */
+    }
+    &__day {
+      width: 10rem;
+      p {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+      }
+    }
+    .v-stepper {
+      position: relative;
+      .circle {
+        background-color: $accent;
+
+        border-radius: 100%;
+        width: 2rem; /* +6 for border */
+        height: 2rem;
+        display: inline-block;
+      }
+      .line {
+        top: 2rem;
+        left: 0.9rem;
+        /*   height: 120px; */
+        height: 120%;
+        width: 0.1rem;
+        background-color: black;
+        color: black;
+        position: absolute;
+      }
+    }
+
+    .content {
+      width: 100%;
+      margin-left: 20px;
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+      align-items: end;
+      &__main {
+        p {
+          font-size: 2rem;
+        }
+        img {
+          width: 20rem;
+        }
+      }
+
+      &__description {
+        p {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}
