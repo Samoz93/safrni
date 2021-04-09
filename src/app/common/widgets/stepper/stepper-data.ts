@@ -7,15 +7,10 @@ export class StepperData {
   }
 }
 export class StepItem {
-  time: string;
-  title: string;
-  image: string;
-  description: string;
-
-  constructor(time: string, title: string, image: string, description: string) {
-    this.title = title;
-    this.time = time;
-    this.image = image;
-    this.description = description;
-  }
+  constructor(
+    public time: string,
+    public title: string,
+    public image: string,
+    public description: string
+  ) {}
 }
