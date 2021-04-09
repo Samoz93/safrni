@@ -1,11 +1,6 @@
 <div [ngClass]="{ col: isColumn, main: true, hide_lable: !showLabel }">
   <label *ngIf="showLabel" class="ctrl" for="ctrl">{{ label }}</label>
-  <input
-    [ngClass]="{ invalid: showError, input: true }"
-    [placeholder]="label"
-    [(ngModel)]="value"
-    type="text"
-    name="ctrl"
-  />
+  <input [ngClass]="{ invalid: showError, input: true }" [placeholder]="label" [(ngModel)]="value" type="text"
+    name="ctrl" />
   <h6 class="err" *ngIf="showError">{{ getError() }}</h6>
 </div>
