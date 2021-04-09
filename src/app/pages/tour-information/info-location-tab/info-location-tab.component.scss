@@ -1,0 +1,20 @@
+.info-location
+{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    
+}
+.book-btn
+{
+    width: 20rem;
+    height: 5rem;
+    align-self: center; 
+    justify-self: flex-end;
+    
+    p{
+        font-size: 2rem;
+        
+       
+    }
+}

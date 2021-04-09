@@ -25,6 +25,14 @@ import { SingleTripCardComponent } from './common/widgets/single-trip-card/singl
 import { TripExtraComponent } from './common/widgets/trip-extra/trip-extra.component';
 import { HeaderIconComponent } from './common/widgets/header-icon/header-icon.component';
 import { OursocialmediaComponent } from './common/widgets/oursocialmedia/oursocialmedia.component';
+import { TourInformationComponent } from './pages/tour-information/tour-information.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { InfoInformationTabComponent } from './pages/tour-information/info-information-tab/info-information-tab.component';
+import { InfoPlanTabComponent } from './pages/tour-information/info-plan-tab/info-plan-tab.component';
+import { InfoLocationTabComponent } from './pages/tour-information/info-location-tab/info-location-tab.component';
+import { InfoReviewsTabComponent } from './pages/tour-information/info-reviews-tab/info-reviews-tab.component';
+import { ReadOnlyStarsComponent } from './common/widgets/read-only-stars/read-only-stars.component';
+import { StepperComponent } from './common/widgets/stepper/stepper.component';
 
 @NgModule({
   declarations: [
@@ -50,8 +58,15 @@ import { OursocialmediaComponent } from './common/widgets/oursocialmedia/oursoci
     TripExtraComponent,
     HeaderIconComponent,
     OursocialmediaComponent,
+    TourInformationComponent,
+    InfoInformationTabComponent,
+    InfoPlanTabComponent,
+    InfoLocationTabComponent,
+    InfoReviewsTabComponent,
+    ReadOnlyStarsComponent,
+    StepperComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, NgbModule],
   providers: [],
   bootstrap: [AppComponent],
 })

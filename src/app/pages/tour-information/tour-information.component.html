@@ -1,0 +1,57 @@
+<div class="tour-info">
+  <div class="tour-info__banner">
+    <img src="https://picsum.photos/id/1019/1080/720" />
+  </div>
+  <div class="tour-info__card">
+    <div class="tour-info__card__tabs">
+      <ul>
+        <li
+          class="tab-button"
+          [ngClass]="{ active: 1 == selectedTab }"
+          (click)="setTabIndex(1)"
+        >
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          <a>Information</a>
+        </li>
+        <li
+          class="tab-button"
+          [ngClass]="{ active: 2 == selectedTab }"
+          (click)="setTabIndex(2)"
+        >
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+          <a>Tour Plan</a>
+        </li>
+        <li
+          class="tab-button"
+          [ngClass]="{ active: 3 == selectedTab }"
+          (click)="setTabIndex(3)"
+        >
+          <i class="fa fa-map-marker" aria-hidden="true"></i>
+          <a>Location</a>
+        </li>
+        <li
+          class="tab-button"
+          [ngClass]="{ active: 4 == selectedTab }"
+          (click)="setTabIndex(4)"
+        >
+          <i class="fa fa-star-o" aria-hidden="true"></i>
+          <a>Reviews</a>
+        </li>
+      </ul>
+    </div>
+    <div class="tour-info__card__body">
+      <div class="" [ngStyle]="styleObject(1)">
+        <app-info-information-tab></app-info-information-tab>
+      </div>
+      <div class="" [ngStyle]="styleObject(2)">
+        <app-info-plan-tab></app-info-plan-tab>
+      </div>
+      <div class="" [ngStyle]="styleObject(3)">
+        <app-info-location-tab></app-info-location-tab>
+      </div>
+      <div class="" [ngStyle]="styleObject(4)">
+        <app-info-reviews-tab></app-info-reviews-tab>
+      </div>
+    </div>
+  </div>
+</div>
