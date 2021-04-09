@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tour-information.component.scss'],
 })
 export class TourInformationComponent implements OnInit {
-  selectedTab = 3;
+  selectedTab =4;
   constructor() {}
 
   ngOnInit(): void {}

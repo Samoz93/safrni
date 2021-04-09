@@ -1,0 +1,81 @@
+@import "/src/assets/css/abstract/variables";
+.info-reviews {
+  width: 100%;
+  .review-table {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &__header {
+      align-self: flex-start;
+      h1 {
+        line-height: 1.5rem;
+      }
+      p {
+        font-size: 2rem;
+        color: #c5c5c5;
+        text-transform: capitalize;
+      }
+    }
+    &__content {
+      align-self: center;
+      width: 90%;
+      display: grid;
+      grid-template-columns: 1fr 15fr 1fr;
+      gap: 3rem;
+
+      //   .flex-spacer {
+      //     flex: 1;
+      //   }
+      .table-rows {
+        grid-column: 2/3;
+        .table-row {
+          width: 100%;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          margin: 2rem 0rem;
+          &__title {
+          }
+          &__score {
+            justify-self: end;
+          }
+          &__bar {
+            width: 100%;
+            grid-column: 1/-1;
+            height: 2rem;
+            background-color: #f2f2f2;
+            .animated-progress {
+              animation: animatedProgressBar 0.5s normal forwards ease-out;
+            }
+          }
+        }
+      }
+      .overall-score {
+        grid-column: 3/4;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        p {
+          font-size: 4rem;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
+@keyframes animatedProgressBar {
+  0% {
+    width: 0%;
+    height: 100%;
+    background-color: rgba($color: $accent, $alpha: 0.3);
+  }
+
+  100% {
+    width: 60%;
+    height: 100%;
+    background-color: $accent;
+  }
+}
