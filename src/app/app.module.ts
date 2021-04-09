@@ -40,6 +40,7 @@ import { InfoLocationTabComponent } from './pages/tour-information/info-location
 import { InfoReviewsTabComponent } from './pages/tour-information/info-reviews-tab/info-reviews-tab.component';
 import { ReadOnlyStarsComponent } from './common/widgets/read-only-stars/read-only-stars.component';
 import { StepperComponent } from './common/widgets/stepper/stepper.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,13 @@ import { StepperComponent } from './common/widgets/stepper/stepper.component';
     UserTripsComponent,
     UserSecurityComponent,
     ProfileinputComponent,
+    TourInformationComponent,
+    InfoInformationTabComponent,
+    InfoPlanTabComponent,
+    InfoLocationTabComponent,
+    InfoReviewsTabComponent,
+    ReadOnlyStarsComponent,
+    StepperComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,16 +86,10 @@ import { StepperComponent } from './common/widgets/stepper/stepper.component';
     FormsModule,
     ReactiveFormsModule,
     MatCheckboxModule,
-    TourInformationComponent,
-    InfoInformationTabComponent,
-    InfoPlanTabComponent,
-    InfoLocationTabComponent,
-    InfoReviewsTabComponent,
-    ReadOnlyStarsComponent,
-    StepperComponent,
-    BrowserAnimationsModule, NgbModule,AppRoutingModule
+    BrowserAnimationsModule,
+    NgbModule,
+    MatIconModule,
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, NgbModule],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -5,21 +5,22 @@
     </div>
     <div class="controls">
       <app-profileinput
-        label="Old Password"
+        placeholder="Old Password"
         formControlName="oldPass"
+        [icon]="icons.pass"
       ></app-profileinput>
       <app-profileinput
         formControlName="newPass"
-        label="New Password"
+        placeholder="New Password"
+        [icon]="icons.pass"
       ></app-profileinput>
       <app-profileinput
         formControlName="confirmNewPass"
-        label="New Password Again"
+        placeholder="New Password Again"
+        [icon]="icons.pass"
       ></app-profileinput>
 
-      <button class="main-btn_round btn" (click)="onSubmit()">
-        Update Information
-      </button>
+      <button class="main-btn" (click)="onSubmit()">Change password</button>
     </div>
   </div>
 </form>

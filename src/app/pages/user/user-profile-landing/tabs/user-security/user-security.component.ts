@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ICONS } from 'src/app/data/uitls/enums';
 
 @Component({
   selector: 'app-user-security',
@@ -13,6 +14,7 @@ export class UserSecurityComponent implements OnInit {
     confirmNewPass: new FormControl('', [Validators.required]),
   });
   constructor() {}
+  icons = ICONS;
 
   ngOnInit(): void {}
 

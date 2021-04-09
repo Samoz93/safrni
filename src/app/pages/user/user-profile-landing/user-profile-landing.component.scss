@@ -1,12 +1,25 @@
 @import "/src/assets/css/abstract/variables";
 @import "/src/assets/css/abstract/mixins";
-
+$transition :0.5s all;
 @mixin active {
-  background-color: white;
-  width: 100%;
-  align-self: flex-start;
+  // width: 100%;
+  // border-bottom: grey 1px solid;
+  // align-self: flex-start;
   color: $accent;
-  transition: 1s all;
+  transition: $transition;
+
+  &::after{
+    position: absolute;
+    transition: $transition;
+    content: "";
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    background: $accent;
+  }
+
+
 }
 
 @mixin center {
@@ -19,14 +32,12 @@ $header-padding: 0 5%;
   //TODO tets
   height: 100vh;
   width: 100vw;
-  background-color: green;
   display: grid;
   place-items: center;
   padding: $page-padding;
 }
 .header {
-  color: black;
-  @include shadow();
+  color: $accent;
   display: flex;
   align-items: center;
   padding: $header-padding;
@@ -40,7 +51,6 @@ $header-padding: 0 5%;
 .wrapper {
   width: 100%;
   height: 100%;
-  background-color: white;
   display: grid;
   grid-template-columns: 20% 80%;
   grid-template-rows: 20% 80%;
@@ -48,17 +58,18 @@ $header-padding: 0 5%;
   overflow: hidden;
   font-size: 2.5rem;
   font-weight: 700;
-  color: white;
   .nav-bar {
     grid-row: span 2;
-    background-color: $accent;
+    // background-color: $accent;
     text-align: center;
     display: flex;
+    row-gap: 5rem;
     flex-direction: column;
     justify-content: space-evenly;
-    .col1 {
-      flex: 2;
+    &_title{
+      margin-bottom: 3rem;
     }
+
     &_col {
       display: flex;
       flex-direction: column;
@@ -66,21 +77,28 @@ $header-padding: 0 5%;
       align-items: center;
       flex: 1;
     }
-    .btn-inverse {
-      font-size: 2rem;
-      @include center();
-      border-radius: 50rem;
+    .col1{
+      flex: 3
+    }   
+    .col2{
+      flex:2;
+      justify-content: space-between;
+
     }
     &_image {
-      height: 10vw;
-      width: 10vw;
       @include center();
       overflow: hidden;
       border-radius: 50rem;
-      border: white 1rem solid;
+      padding: 0.1rem;
+      border: $grey-light 0.2rem solid;
+      height: 10vw;
+      width: 10vw;
 
       img {
         width: 100%;
+        scale: 1.2;
+        border-radius: 50rem;
+
       }
     }
     &_btn-delete {
@@ -92,8 +110,19 @@ $header-padding: 0 5%;
     &_nav-item {
       height: 7vh;
       @include center();
+      position: relative;
+
       padding: 0;
       cursor: pointer;
+      &::after{
+        position: absolute;
+        content: "";
+        width: 0%;
+        bottom: 0;
+        left: 0;
+        height: 1px;
+        background: $accent;
+      }
       &:hover {
         @include active();
       }

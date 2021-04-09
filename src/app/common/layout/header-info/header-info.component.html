@@ -1,13 +1,34 @@
 <div class="main page-padding">
-    <div class="main_quickreach">
-        <app-header-icon *ngFor="let q of quickReach" [txt]="q.info" [icon]="q.icon"></app-header-icon>
+  <div class="main_quickreach">
+    <app-header-icon
+      *ngFor="let q of quickReach"
+      [txt]="q.info"
+      [icon]="q.icon"
+    ></app-header-icon>
+  </div>
+  <app-oursocialmedia></app-oursocialmedia>
+  <div *ngIf="!isSigned" class="main_login">
+    <div
+      class="main_social-login"
+      [routerLink]="['/login', { isLogin: false }]"
+      routerLinkActive="router-link-active"
+    >
+      Login
     </div>
-    <app-oursocialmedia></app-oursocialmedia>
-    <div *ngIf="!isSigned" class="main_login">
-        <div class="main_social-login">Login</div>
-        <div class="main-btn">Sign Up</div>
+    <div class="main-btn" [routerLink]="['/login', { isLogin: true }]">
+      Sign Up
     </div>
-    <div *ngIf="isSigned" class="main_user">
-        <app-header-icon txt="Hey, Sameh" icon="user.svg" [nopadding]="true"></app-header-icon>
-    </div>
+  </div>
+  <div
+    *ngIf="isSigned"
+    [routerLink]="['/profile']"
+    routerLinkActive="router-link-active"
+    class="main_user"
+  >
+    <app-header-icon
+      txt="Hey, Sameh"
+      icon="user.svg"
+      [nopadding]="true"
+    ></app-header-icon>
+  </div>
 </div>

@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoginEnum } from 'src/app/data/uitls/enums';
 @Component({
   selector: 'app-login',
@@ -17,13 +18,20 @@ export class LoginComponent implements OnInit {
   type = LoginEnum.login;
   enum = LoginEnum;
   form: FormGroup = new FormGroup({});
-  constructor() {
-    console.log('constructor');
-
-    this._initForm();
+  constructor(public route: ActivatedRoute) {
+    // this._initForm();
   }
   ngOnInit(): void {
     console.log('init');
+    this.route.paramMap.subscribe((f) => {
+      const x = f.get('isLogin') == 'true' ? true : false;
+
+      if (x) {
+        this.switchToLogin();
+      } else {
+        this.switchToSignUp();
+      }
+    });
   }
 
   _initForm() {
@@ -97,10 +105,14 @@ export class LoginComponent implements OnInit {
     this.type = LoginEnum.privacy;
   }
   switchToLogin() {
+    console.log('switching to login');
+
     this.type = LoginEnum.login;
     this._initForm();
   }
   switchToSignUp() {
+    console.log('switching to signup');
+
     this.type = LoginEnum.signup;
     this._initForm();
   }

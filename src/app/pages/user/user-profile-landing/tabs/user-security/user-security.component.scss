@@ -8,28 +8,26 @@ form {
 }
 .main {
   display: grid;
-  grid-template-columns: 60% 35%;
-
+  grid-template-columns: 50% 40%;
+  gap: 10%;
+  height: 100%;
   .img {
     order: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    place-items: center;
+    height: 70%;
     img {
-      width: 80%;
+      width: 100%;
     }
   }
 
   .controls {
     display: flex;
     flex-direction: column;
+    align-self: flex-start;
     justify-content: center;
-    align-items: stretch;
-    .btn {
-      justify-self: center;
-      height: 5rem;
-      align-self: center;
-      margin-top: 4rem;
+    .main-btn {
+      align-self: flex-start;
     }
   }
 }

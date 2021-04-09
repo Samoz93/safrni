@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ICONS } from 'src/app/data/uitls/enums';
 
 @Component({
   selector: 'app-user-profile',
@@ -8,10 +9,15 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class UserProfileComponent implements OnInit {
   form = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
+    email: new FormControl('', [Validators.required]),
     fullName: new FormControl('', [Validators.required]),
     title: new FormControl(''),
+    phone: new FormControl(''),
+    birthDate: new FormControl(''),
+    country: new FormControl(''),
   });
+  icons = ICONS;
+
   constructor() {}
 
   ngOnInit(): void {}

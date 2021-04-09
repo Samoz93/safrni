@@ -4,71 +4,37 @@
       <img src="assets/images/bk/profile.png" alt="" />
     </div>
     <div class="controls">
-      <div class="controls_basicInfo">
-        <app-profileinput
-          label="Full Name"
-          formControlName="fullName"
-        ></app-profileinput>
-        <app-profileinput
-          formControlName="title"
-          label="Title"
-        ></app-profileinput>
-        <app-profileinput
-          formControlName="email"
-          label="Email"
-        ></app-profileinput>
-      </div>
-      <div class="controls_birthday" (click)="test()">
-        <h4>Birthday</h4>
-        <div class="flex">
-          <app-profileinput
-            class="flex_1"
-            formControlName="email"
-            label="Day"
-            [showLabel]="false"
-          ></app-profileinput>
-          <app-profileinput
-            class="flex_3"
-            [showLabel]="false"
-            formControlName="email"
-            label="Month"
-          ></app-profileinput>
-          <app-profileinput
-            class="flex_2"
-            formControlName="email"
-            label="Year"
-            [showLabel]="false"
-          ></app-profileinput>
-        </div>
-      </div>
-      <div class="controls_country">
-        <app-profileinput
-          class="flex_2"
-          formControlName="email"
-          label="country"
-          [isColumn]="true"
-        ></app-profileinput>
-        <app-profileinput
-          class="flex_2"
-          formControlName="email"
-          label="Province"
-          [isColumn]="true"
-        ></app-profileinput>
-        <app-profileinput
-          class="flex_2"
-          formControlName="email"
-          label="Phone Number"
-          [isColumn]="true"
-        ></app-profileinput>
-        <app-profileinput
-          class="flex_2"
-          formControlName="email"
-          label="Postal Code"
-          [isColumn]="true"
-        ></app-profileinput>
-      </div>
+      <app-profileinput
+        placeholder="Full Name"
+        [icon]="icons.profile"
+        [required]="true"
+        formControlName="fullName"
+      >
+        <mat-error>this field is required</mat-error>
+      </app-profileinput>
 
-      <button class="main-btn_round btn">Update Information</button>
+      <app-profileinput
+        formControlName="phone"
+        placeholder="Phone Number"
+      ></app-profileinput>
+      <app-profileinput
+        formControlName="email"
+        placeholder="Email Address"
+      ></app-profileinput>
+      <app-profileinput
+        formControlName="birthDate"
+        placeholder="DD-MM-YYYY"
+      ></app-profileinput>
+      <app-profileinput
+        formControlName="country"
+        placeholder="Country"
+      ></app-profileinput>
+      <app-profileinput
+        formControlName="title"
+        placeholder="Title"
+      ></app-profileinput>
+      <!-- {{ form.valid }} -->
+      <button class="main-btn">Update Information</button>
     </div>
   </div>
 </form>

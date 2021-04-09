@@ -10,54 +10,17 @@ form {
 
 .main {
   display: grid;
-  grid-template-columns: 60% 35%;
+  grid-template-columns: 50% 40%;
+  gap: 10%;
   height: 100%;
+
   .img {
     order: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    place-items: center;
+    height: 70%;
     img {
-      width: 80%;
-    }
-  }
-
-  .controls {
-    .btn {
-      justify-self: center;
-      flex: 1;
-      align-self: center;
-      margin: 4rem 0 2rem 0;
-    }
-    @include column();
-    * {
-      flex: 5;
-    }
-    &_basicInfo {
-      @include column();
-    }
-    &_birthday {
-      text-align: center;
-      .flex {
-        padding: 2rem;
-        display: grid;
-        grid-template-columns: 30% 40% 30%;
-        gap: 1rem;
-        justify-items: stretch;
-        align-items: stretch;
-        // * {
-        //   background-color: red;
-        //   align-self: stretch;
-        //   justify-content: stretch;
-        //   justify-self: stretch;
-        // }
-      }
-    }
-    &_country {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      column-gap: 5rem;
-      row-gap: 1rem;
+      width: 100%;
     }
   }
 }
