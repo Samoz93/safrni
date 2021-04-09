@@ -1,0 +1,108 @@
+@import "/src/assets/css/abstract/variables";
+.info-tab
+{   
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    .main-info
+    {       
+
+      
+        min-height: min-content;
+        display: grid;
+  
+        grid-auto-rows: min-content;
+        column-gap: 1rem;
+        grid-template-areas: "des des rev"
+                            "stay stay rev";
+        justify-content: space-between;
+        align-content: start;
+
+        align-items: center;
+        &__destination
+        {
+            grid-area: des;
+            color: $accent;
+
+
+            p {
+                font-size: 5rem;
+                font-weight: 900;
+            }
+        }
+
+        &__stay
+        {
+            grid-area: stay;
+            font-size: 2rem;
+            color: black;
+        }
+
+        &__rating
+        {   grid-area: rev;
+            p{font-size: 1.5rem;}
+        }
+    }
+
+    .trip-features
+    {   
+        margin: 5rem 0rem;
+        display: flex;
+        min-height: min-content;
+        flex-direction: column;
+
+        &__row
+        {   
+            margin: .5rem 0rem;
+            display: flex;
+            
+            h2
+            {
+                // flex-grow: 1;
+                flex: 30%;
+                font-size: 2rem;
+            }
+
+            p 
+            {flex: 70%;
+                font-size: 2rem;
+                font-weight: 200;
+                // flex-grow: 2;
+            }
+        }
+
+        .feature-grid
+        {   
+            flex: 70%;
+            display: grid;
+            grid-template-columns: repeat(2,20rem);
+            justify-content: start;
+            gap: 1rem;
+
+            &__item
+            {   display: flex;
+                font-size: 2rem;
+                font-weight: 200;
+                align-items: center;
+                i 
+                {   margin-right: .5rem;
+                    color: $accent;
+                    font-size: 2rem;
+                }
+            }
+        }
+    }
+}
+.book-btn
+{
+    width: 20rem;
+    height: 5rem;
+    align-self: center; 
+    
+   
+    p{
+        font-size: 2rem;
+        
+       
+    }
+}

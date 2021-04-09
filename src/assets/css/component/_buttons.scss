@@ -1,13 +1,13 @@
 @mixin _mainBtnMixin {
   background-color: $accent;
-  // border-radius: 0.9rem;
+  border-radius: 1.5rem;
   padding: 0.5rem 3rem;
   color: $white;
   border: none;
   cursor: pointer;
   transition: all 0.2s;
   &:hover {
-    color: $primary;
+    transform: scale(.975);
   }
 }
 .main-btn {

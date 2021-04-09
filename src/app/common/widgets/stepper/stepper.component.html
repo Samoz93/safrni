@@ -1,0 +1,27 @@
+<div class="stepper">
+  <!-- completed -->
+  <div class="step" *ngFor="let step of stepperData">
+    <div class="step__day">
+      <p>Day {{ step.day }}</p>
+    </div>
+    <div class="v-stepper">
+      <div class="circle"></div>
+      <div class="line"></div>
+    </div>
+
+    <div class="content">
+      <div class="content__item" *ngFor="let stepItem of step.steps">
+        <div class="content__item__main">
+          <h2>{{ stepItem.time }}</h2>
+          <p>{{ stepItem.title }}</p>
+          <img src="{{ stepItem.image }}" alt="" />
+        </div>
+        <div class="content__item__description">
+          <p>
+            {{ stepItem.description }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

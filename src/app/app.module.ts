@@ -32,6 +32,14 @@ import { UserProfileComponent } from './pages/user/user-profile-landing/tabs/use
 import { UserTripsComponent } from './pages/user/user-profile-landing/tabs/user-trips/user-trips.component';
 import { UserSecurityComponent } from './pages/user/user-profile-landing/tabs/user-security/user-security.component';
 import { ProfileinputComponent } from './common/widgets/profileinput/profileinput.component';
+import { TourInformationComponent } from './pages/tour-information/tour-information.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { InfoInformationTabComponent } from './pages/tour-information/info-information-tab/info-information-tab.component';
+import { InfoPlanTabComponent } from './pages/tour-information/info-plan-tab/info-plan-tab.component';
+import { InfoLocationTabComponent } from './pages/tour-information/info-location-tab/info-location-tab.component';
+import { InfoReviewsTabComponent } from './pages/tour-information/info-reviews-tab/info-reviews-tab.component';
+import { ReadOnlyStarsComponent } from './common/widgets/read-only-stars/read-only-stars.component';
+import { StepperComponent } from './common/widgets/stepper/stepper.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +78,16 @@ import { ProfileinputComponent } from './common/widgets/profileinput/profileinpu
     FormsModule,
     ReactiveFormsModule,
     MatCheckboxModule,
+    TourInformationComponent,
+    InfoInformationTabComponent,
+    InfoPlanTabComponent,
+    InfoLocationTabComponent,
+    InfoReviewsTabComponent,
+    ReadOnlyStarsComponent,
+    StepperComponent,
+    BrowserAnimationsModule, NgbModule,AppRoutingModule
   ],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, NgbModule],
   providers: [],
   bootstrap: [AppComponent],
 })
