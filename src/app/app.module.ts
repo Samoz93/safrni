@@ -70,7 +70,12 @@ import { JellyVectorComponent } from './common/widgets/jelly-vector/jelly-vector
     OffersPageComponent,
     JellyVectorComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, NgbModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    NgbModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

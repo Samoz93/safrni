@@ -1,4 +1,4 @@
-<div class="main card " [ngClass]="{'normal-trip':!isSingleTrip}">
+<div class="main card" [ngClass]="{'normal-trip':!isSingleTrip}" (click)="goToOffer()" [style.width]="width" [style.height]="height">
     <div class="bk">
         <img class="blur2" [src]="img" alt="">
     </div>
