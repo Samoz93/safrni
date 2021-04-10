@@ -34,6 +34,7 @@ import { InfoReviewsTabComponent } from './pages/tour-information/info-reviews-t
 import { ReadOnlyStarsComponent } from './common/widgets/read-only-stars/read-only-stars.component';
 import { StepperComponent } from './common/widgets/stepper/stepper.component';
 import { OffersPageComponent } from './pages/offers-page/offers-page.component';
+import { JellyVectorComponent } from './common/widgets/jelly-vector/jelly-vector.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { OffersPageComponent } from './pages/offers-page/offers-page.component';
     ReadOnlyStarsComponent,
     StepperComponent,
     OffersPageComponent,
+    JellyVectorComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, NgbModule],
   providers: [],
