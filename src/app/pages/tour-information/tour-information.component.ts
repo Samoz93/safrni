@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JellyVectorItem } from 'src/app/common/widgets/jelly-vector/jelly-vector.component';
 
 @Component({
   selector: 'app-tour-information',
@@ -7,6 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TourInformationComponent implements OnInit {
   selectedTab =1;
+
+  jellyVectors =  [
+    new JellyVectorItem(
+       25,60,'left'
+     ), new JellyVectorItem(
+       20,60,'right'
+     ),
+   ]
+
   constructor() {}
 
   ngOnInit(): void {}
