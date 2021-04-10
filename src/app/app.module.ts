@@ -33,6 +33,7 @@ import { InfoLocationTabComponent } from './pages/tour-information/info-location
 import { InfoReviewsTabComponent } from './pages/tour-information/info-reviews-tab/info-reviews-tab.component';
 import { ReadOnlyStarsComponent } from './common/widgets/read-only-stars/read-only-stars.component';
 import { StepperComponent } from './common/widgets/stepper/stepper.component';
+import { OffersPageComponent } from './pages/offers-page/offers-page.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { StepperComponent } from './common/widgets/stepper/stepper.component';
     InfoReviewsTabComponent,
     ReadOnlyStarsComponent,
     StepperComponent,
+    OffersPageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, NgbModule],
   providers: [],
