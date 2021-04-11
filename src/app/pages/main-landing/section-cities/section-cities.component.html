@@ -1,12 +1,19 @@
 <div class="trip-section">
-    <app-section-header title="Choose Your" desc="Best Holiday Destinations"
-        extra="Extraordinary pleasure trips in small groups"></app-section-header>
+  <app-section-header
+    title="Choose Your"
+    desc="Best Holiday Destinations"
+    extra="Extraordinary pleasure trips in small groups"
+  ></app-section-header>
 
-
-    <div class="data page-padding">
-        <div *ngFor="let city of cities" class="card" [ngClass]="{longX:city.longX,longY:city.longY}">
-            <img [src]="city.image" alt="">
-            <h5 class="title">{{city.name}}</h5>
-        </div>
+  <div class="data page-padding">
+    <div
+      *ngFor="let city of cities"
+      class="card"
+      [ngClass]="{ longX: city.longX, longY: city.longY }"
+      (click)="goToOffer()"
+    >
+      <img [src]="city.image" alt="" />
+      <h5 class="title">{{ city.name }}</h5>
     </div>
+  </div>
 </div>

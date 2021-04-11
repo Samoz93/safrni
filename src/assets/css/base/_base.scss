@@ -10,7 +10,7 @@ html {
   font-size: 62.5%;
   scroll-behavior: smooth;
   height: 100%;
-
+  padding: 0rem;
   @include res(tab-land) {
     font-size: 57.25%;
   }
@@ -28,6 +28,7 @@ html {
 }
 
 body {
+  padding: 0rem;
   box-sizing: border-box;
   background-color: $white;
   height: 100vh;
