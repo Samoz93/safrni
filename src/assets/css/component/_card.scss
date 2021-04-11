@@ -1,8 +1,6 @@
 .card {
   border-radius: $border-radius;
-  backdrop-filter: blur(1rem);
   box-shadow: 0px 5px 1rem 0.1rem rgba(#000000, 0.2);
-  -webkit-backdrop-filter: blur(1rem);
   border: 3px solid rgba($color: #ffffff, $alpha: 0.005);
   background: #ffffff82 0% 0% no-repeat padding-box;
   opacity: 1;

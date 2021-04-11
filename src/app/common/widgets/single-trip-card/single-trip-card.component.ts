@@ -12,8 +12,8 @@ export class SingleTripCardComponent implements OnInit {
   @Input() duration: string = '1';
   @Input() price: string = '40$';
   @Input() isSingleTrip = true;
-  @Input() width: string = '50rem';
-  @Input() height: string = '30rem';
+  @Input() width: string = '30rem';
+  @Input() height: string = '50rem';
   constructor(private router: Router, private activeRoute: ActivatedRoute) {}
 
   ngOnInit(): void {}
