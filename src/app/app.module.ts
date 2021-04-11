@@ -35,6 +35,7 @@ import { ReadOnlyStarsComponent } from './common/widgets/read-only-stars/read-on
 import { StepperComponent } from './common/widgets/stepper/stepper.component';
 import { OffersPageComponent } from './pages/offers-page/offers-page.component';
 import { JellyVectorComponent } from './common/widgets/jelly-vector/jelly-vector.component';
+import { OffersFilterComponent } from './pages/offers-page/offers-filter/offers-filter.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { JellyVectorComponent } from './common/widgets/jelly-vector/jelly-vector
     StepperComponent,
     OffersPageComponent,
     JellyVectorComponent,
+    OffersFilterComponent,
   ],
   imports: [
     BrowserModule,
