@@ -4,7 +4,7 @@
 
 
     <div class="data page-padding">
-        <div *ngFor="let city of cities" class="card" [ngClass]="{longX:city.longX,longY:city.longY}">
+        <div *ngFor="let city of cities" class="card" [ngClass]="{longX:city.longX,longY:city.longY}"  (click)="goToOffer()">
             <img [src]="city.image" alt="">
             <h5 class="title">{{city.name}}</h5>
         </div>

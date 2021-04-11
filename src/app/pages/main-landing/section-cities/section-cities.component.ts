@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-section-cities',
@@ -44,7 +45,11 @@ export class SectionCitiesComponent implements OnInit {
       image: 'https://i.hurimg.com/i/hdn/75/0x0/5cc305f3c03c0e264c998b7b.jpg',
     },
   ];
-  constructor() {}
+  constructor(private router: Router, private activeRoute: ActivatedRoute) {}
 
   ngOnInit(): void {}
+
+  goToOffer() {
+    this.router.navigate(['/offers']);
+  }
 }
