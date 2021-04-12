@@ -1,23 +1,26 @@
 @import "/src/assets/css/abstract/variables";
-.read-stars
-{
-    display: flex;
+.read-stars {
+  display: flex;
 
-    i 
-    {
-        font-size: 2rem;
-       
-    }
-    .fa-star-half-o
-    {
-        color: $accent;
-    }
-    .fa-star
-    {
-        color: $accent;
-    }
-    .fa-star-o
-    {
-        color: $accent;
-    }
+  i {
+    font-size: 2rem;
+  }
+  // .fa-star-half-o {
+  //   color: $accent;
+  // }
+  // .fa-star {
+  //   color: $accent;
+  // }
+  // .fa-star-o {
+  //   color: $accent;
+  // }
+  i.isBig {
+    font-size: 3rem;
+  }
+}
+.black {
+  color: $black;
+}
+.accent {
+  color: $accent;
 }

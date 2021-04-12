@@ -10,7 +10,9 @@
 .m8 {
   margin: paddingMultiplayer(8);
 }
-
+.p1 {
+  padding: paddingMultiplayer(1);
+}
 .p2 {
   padding: paddingMultiplayer(2);
 }
@@ -22,6 +24,39 @@
 }
 .p8 {
   padding: paddingMultiplayer(8);
+}
+//horizontal padding only
+
+.hp1 {
+  padding: 0rem paddingMultiplayer(1);
+}
+.hp2 {
+  padding: 0rem paddingMultiplayer(2);
+}
+.hp4 {
+  padding: 0rem paddingMultiplayer(4);
+}
+.hp6 {
+  padding: 0rem paddingMultiplayer(6);
+}
+.hp8 {
+  padding: 0rem paddingMultiplayer(8);
+}
+//vertical padding only
+.vp1 {
+  padding: paddingMultiplayer(1) 0rem;
+}
+.vp2 {
+  padding: paddingMultiplayer(2) 0rem;
+}
+.vp4 {
+  padding: paddingMultiplayer(4) 0rem;
+}
+.vp6 {
+  padding: paddingMultiplayer(6) 0rem;
+}
+.vp8 {
+  padding: paddingMultiplayer(8) 0rem;
 }
 
 $blur: 0.15rem;

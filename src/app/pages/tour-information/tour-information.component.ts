@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { JellyVectorItem } from 'src/app/common/widgets/jelly-vector/jelly-vector.component';
+
 
 @Component({
   selector: 'app-tour-information',
@@ -9,13 +9,7 @@ import { JellyVectorItem } from 'src/app/common/widgets/jelly-vector/jelly-vecto
 export class TourInformationComponent implements OnInit {
   selectedTab =1;
 
-  jellyVectors =  [
-    new JellyVectorItem(
-       25,60,'left'
-     ), new JellyVectorItem(
-       20,60,'right'
-     ),
-   ]
+
 
   constructor() {}
 

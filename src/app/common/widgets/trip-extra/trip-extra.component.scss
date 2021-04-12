@@ -1,11 +1,22 @@
+@import "/src/assets/css/abstract/variables";
 .main {
   display: flex;
   flex-direction: row;
-  .extra {
-    height: 3rem;
-    width: 3rem;
-    img {
-      width: 100%;
+  align-items: center;
+  .fa {
+    font-size: 2rem;
+    text-align: center;
+    &:not(:last-child) {
+      padding-right: 1rem;
     }
+  }
+  .fa.isBlack {
+    color: $black;
+  }
+  .fa.isWhite {
+    color: $white;
+  }
+  .fa.extraBig {
+    font-size: 4rem;
   }
 }

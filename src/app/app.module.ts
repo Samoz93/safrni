@@ -42,8 +42,11 @@ import { ReadOnlyStarsComponent } from './common/widgets/read-only-stars/read-on
 import { StepperComponent } from './common/widgets/stepper/stepper.component';
 import { MatIconModule } from '@angular/material/icon';
 import { OffersPageComponent } from './pages/offers-page/offers-page.component';
-import { JellyVectorComponent } from './common/widgets/jelly-vector/jelly-vector.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+
 import { OffersFilterComponent } from './pages/offers-page/offers-filter/offers-filter.component';
+import { BookingPageComponent } from './pages/booking/booking-page.component';
+import { LoaderComponent } from './common/widgets/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -81,8 +84,12 @@ import { OffersFilterComponent } from './pages/offers-page/offers-filter/offers-
     ReadOnlyStarsComponent,
     StepperComponent,
     OffersPageComponent,
-    JellyVectorComponent,
+
     OffersFilterComponent,
+
+    BookingPageComponent,
+
+    LoaderComponent,
   ],
 
   imports: [
@@ -96,6 +103,8 @@ import { OffersFilterComponent } from './pages/offers-page/offers-filter/offers-
     BrowserAnimationsModule,
     NgbModule,
     MatIconModule,
+    NgSelectModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

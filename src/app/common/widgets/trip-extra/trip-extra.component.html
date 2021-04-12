@@ -1,12 +1,26 @@
 <div class="main">
-    <div *ngIf="hascar" class="extra">
-        <img src="/assets/images/svgs/car.svg" alt="">
-    </div>
-    <div *ngIf="hasairport" class="extra">
-        <img src="/assets/images/svgs/car.svg" alt="">
-    </div>
-    <div *ngIf="hasbreakfast" class="extra">
-        <img src="/assets/images/svgs/car.svg" alt="">
-    </div>
-
+  <i
+    *ngIf="options.hasCar"
+    class="fa fa-car"
+    [ngClass]="{ isWhite: !isBlack, isBlack: isBlack, extraBig: isBig }"
+  >
+  </i>
+  <i
+    *ngIf="options.hasAirport"
+    class="fa fa-plane"
+    [ngClass]="{ isWhite: !isBlack, isBlack: isBlack, extraBig: isBig }"
+  >
+  </i>
+  <i
+    *ngIf="options.hasBreakfast"
+    class="fa fa-coffee"
+    [ngClass]="{ isWhite: !isBlack, isBlack: isBlack, extraBig: isBig }"
+  >
+  </i>
+  <i
+    *ngIf="options.hasHotel"
+    class="fa fa-hotel"
+    [ngClass]="{ isWhite: !isBlack, isBlack: isBlack, extraBig: isBig }"
+  >
+  </i>
 </div>

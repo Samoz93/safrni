@@ -3,16 +3,15 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'app-read-only-stars',
   templateUrl: './read-only-stars.component.html',
-  styleUrls: ['./read-only-stars.component.scss']
+  styleUrls: ['./read-only-stars.component.scss'],
 })
 export class ReadOnlyStarsComponent implements OnInit {
-
-
   @Input() stars: number = 0;
   hasHalfStar: Boolean = false;
   filledStarsCount: number;
   unfilledStarsCount: number;
-
+  @Input() isBlack = false;
+  @Input() isBig = false;
   constructor() {
     this.filledStarsCount = 0;
     this.unfilledStarsCount = 0;
@@ -27,23 +26,17 @@ export class ReadOnlyStarsComponent implements OnInit {
     if (this.stars % 1 == 0) {
       this.filledStarsCount = this.stars;
       this.unfilledStarsCount = 5 - this.filledStarsCount;
-    }
-    else if (this.stars % 1 > .85) {
+    } else if (this.stars % 1 > 0.85) {
       this.filledStarsCount = Math.round(this.stars);
       this.unfilledStarsCount = 5 - this.filledStarsCount;
-    }
-    else if (this.stars % 1 < .2) {
+    } else if (this.stars % 1 < 0.2) {
       this.filledStarsCount = Math.floor(this.stars);
       this.unfilledStarsCount = 5 - this.filledStarsCount;
-    }
-    else {
+    } else {
       this.filledStarsCount = Math.floor(this.stars);
       this.unfilledStarsCount = 5 - this.filledStarsCount - 1;
       this.hasHalfStar = true;
     }
-
-
-
   }
   round(value: number, step: number) {
     step || (step = 1.0);
@@ -51,5 +44,3 @@ export class ReadOnlyStarsComponent implements OnInit {
     return Math.round(value * inv) / inv;
   }
 }
-
-

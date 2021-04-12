@@ -4,6 +4,7 @@ import { MainLandingComponent } from './pages/main-landing/main-landing.componen
 import { LoginComponent } from './pages/user/login/login.component';
 import { UserProfileLandingComponent } from './pages/user/user-profile-landing/user-profile-landing.component';
 import { OffersPageComponent } from './pages/offers-page/offers-page.component';
+import { BookingPageComponent } from './pages/booking/booking-page.component';
 
 const routes: Routes = [
   { path: '', component: MainLandingComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
     component: UserProfileLandingComponent,
   },
   { path: 'offers', component: OffersPageComponent },
+  { path: 'booking/:id', component: BookingPageComponent },
 ];
 
 @NgModule({

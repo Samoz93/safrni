@@ -1,0 +1,70 @@
+<app-loader *ngIf="isLoading"></app-loader>
+
+<div *ngIf="!isLoading" class="main">
+  <div class="img">
+    <img [src]="offer.image" alt="" />
+  </div>
+  <div class="info">
+    <h1 class="info_title">{{ offer.city }}</h1>
+    <app-read-only-stars
+      class="info_rating"
+      [stars]="offer.rating"
+      [isBlack]="true"
+      [isBig]="true"
+    ></app-read-only-stars>
+    <app-trip-extra
+      class="info_extra"
+      [options]="offer.options"
+      [isBig]="true"
+    ></app-trip-extra>
+    <h3 class="info_duration">{{ offer.duration }} days</h3>
+    <h3 class="info_price">{{ offer.price }} {{ offer.currency }}</h3>
+  </div>
+
+  <form class="form page-padding" [formGroup]="form">
+    <h1 class="form_title">Guest details</h1>
+    <h5 class="form_desc">
+      Never let your memories be greater than your dreams
+    </h5>
+    <div class="form_grid">
+      <app-profileinput
+        placeholder="Full Name"
+        formControlName="fullName"
+        [icon]="icns.profile"
+      ></app-profileinput>
+      <app-profileinput
+        placeholder="Email"
+        [icon]="icns.mail"
+        formControlName="email"
+      ></app-profileinput>
+      <app-profileinput
+        placeholder="Phone Number"
+        [icon]="icns.phone"
+        formControlName="phoneNumber"
+      ></app-profileinput>
+      <app-profileinput
+        placeholder="DD-MM-YY"
+        [icon]="icns.calendar"
+        formControlName="startDate"
+      ></app-profileinput>
+      <app-profileinput
+        placeholder="Number of tickets"
+        [icon]="icns.ticket"
+        formControlName="ticketCount"
+      ></app-profileinput>
+      <app-profileinput
+        placeholder="Message"
+        [icon]="icns.ticket"
+        formControlName="message"
+      ></app-profileinput>
+
+      <button class="btn-inverse button">Book Now</button>
+      <button class="btn-inverse button botton2">Upload The Ticket</button>
+    </div>
+  </form>
+
+  <div class="other">
+    <h1>Related Trips</h1>
+    GRID OF TRIPS
+  </div>
+</div>

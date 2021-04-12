@@ -1,7 +1,19 @@
 <div class="read-stars">
-    <!-- <i class="fa fa-star"></i> -->
+  <!-- <i class="fa fa-star"></i> -->
 
-    <i class="fa fa-star" *ngFor="let star of [].constructor(filledStarsCount);"></i>
-    <i class="fa fa-star-half-o" *ngIf="hasHalfStar"></i>
-    <i class="fa fa-star-o" *ngFor="let star of [].constructor(unfilledStarsCount);"></i>
+  <i
+    class="fa fa-star"
+    [ngClass]="{ accent: !isBlack, black: isBlack, isBig: isBig }"
+    *ngFor="let star of [].constructor(filledStarsCount)"
+  ></i>
+  <i
+    class="fa fa-star-half-o"
+    [ngClass]="{ accent: !isBlack, black: isBlack, isBig: isBig }"
+    *ngIf="hasHalfStar"
+  ></i>
+  <i
+    class="fa fa-star-o"
+    [ngClass]="{ accent: !isBlack, black: isBlack, isBig: isBig }"
+    *ngFor="let star of [].constructor(unfilledStarsCount)"
+  ></i>
 </div>

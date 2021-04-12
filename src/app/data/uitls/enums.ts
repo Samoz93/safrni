@@ -18,4 +18,5 @@ export enum ICONS {
   country = 'flag',
   title = 'title',
   pass = 'lock',
+  ticket = 'confirmation_number',
 }

@@ -64,7 +64,7 @@ export class ProfileinputComponent
   id: string = 's';
   focused: boolean;
   get empty() {
-    return !!this._value.trim();
+    return !!this._value.toString().trim();
   }
   @HostBinding('class.floating')
   get shouldLabelFloat() {

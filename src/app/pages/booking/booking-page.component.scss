@@ -1,0 +1,82 @@
+@import "/src/assets/css/abstract/variables";
+
+$verticalPadding: 5rem;
+$infoFontSize: 4rem;
+$titleFontSize: 5rem;
+
+.main {
+  .img {
+    height: 60vh;
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .info {
+    display: grid;
+    padding: $verticalPadding 5rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    &_duration {
+      grid-column: 2;
+      grid-row: 1;
+      font-size: $infoFontSize;
+
+      text-align: end;
+    }
+    &_price {
+      grid-column: 2;
+      grid-row: 2;
+      font-size: $infoFontSize;
+      text-align: end;
+    }
+    &_title {
+      font-size: $titleFontSize;
+    }
+  }
+
+  .form {
+    padding: $verticalPadding 15%;
+    background-color: $accent;
+    color: white;
+    text-align: center;
+    &_title {
+      font-size: $titleFontSize;
+    }
+    &_desc {
+      font-size: $infoFontSize / 2.5;
+    }
+    &_grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      margin-top: 4rem;
+      column-gap: 2rem;
+      row-gap: 3rem;
+      .button {
+        // grid-row: -1;
+        margin-top: 4rem;
+        height: 5rem;
+        width: 50%;
+        justify-self: end;
+        font-size: 2rem;
+      }
+      .botton2 {
+        justify-self: start;
+      }
+    }
+  }
+
+  .other {
+    padding: $verticalPadding 5rem;
+
+    h1 {
+      color: $accent;
+      font-weight: 800;
+      font-size: 5rem;
+      font-family: $main-font;
+    }
+    text-align: center;
+  }
+}

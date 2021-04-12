@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { TripOptions } from 'src/app/data/models/variousModels';
 
 @Component({
   selector: 'app-trip-extra',
@@ -6,9 +7,9 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./trip-extra.component.scss'],
 })
 export class TripExtraComponent implements OnInit {
-  @Input() hascar: boolean = true;
-  @Input() hasairport: boolean = false;
-  @Input() hasbreakfast: boolean = false;
+  @Input() options: TripOptions = new TripOptions(false, false, false);
+  @Input() isBlack: boolean = true;
+  @Input() isBig: boolean = false;
   constructor() {}
 
   ngOnInit(): void {}
