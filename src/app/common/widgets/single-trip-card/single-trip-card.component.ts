@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class SingleTripCardComponent implements OnInit {
   @Input() txt: string = 'Istanbul';
-  @Input() img: string = '/assets/images/placeholder/istanbul.jpg';
+  @Input() img: string = '/assets/images/placeholder/istanbul.png';
   @Input() duration: string = '1';
   @Input() price: string = '40$';
   @Input() isSingleTrip = true;
