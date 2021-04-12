@@ -1,0 +1,25 @@
+@import "/src/assets/css/abstract/variables";
+mat-form-field {
+  font-size: 1.5rem;
+  width: 100%;
+  border-radius: 0 !important;
+  mat-icon {
+    color: $accent;
+    margin-right: 2rem;
+  }
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: $primary !important;
+  border-radius: 0 !important;
+  // opacity: 1!important;
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end {
+  border-radius: 0 !important;
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start {
+  border-radius: 0 !important;
+}
+::ng-deep .mat-form-field-label {
+  color: $grey-light !important;
+  // color: $mainColor!important;
+}
