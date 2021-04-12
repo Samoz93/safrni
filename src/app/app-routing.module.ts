@@ -6,15 +6,22 @@ import { TourInformationComponent } from './pages/tour-information/tour-informat
 
 const routes: Routes = [
   { path: '', component: MainLandingComponent },
-  { path: 'tours/:id', component: TourInformationComponent },
-  { path: 'offers', component: OffersPageComponent },
+  {
+    path: 'tours/:id',
+    component: TourInformationComponent,
+    data: { animation: 'isRight' },
+  },
+  {
+    path: 'offers',
+    component: OffersPageComponent,
+    data: { animation: 'isRight' },
+  },
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      scrollPositionRestoration: 'enabled',
-      anchorScrolling: 'enabled',
+      // scrollPositionRestoration: 'enabled',
     }),
   ],
   exports: [RouterModule],

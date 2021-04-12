@@ -1,6 +1,12 @@
 <div class="main">
   <app-header-info></app-header-info>
   <app-header-tool-bar></app-header-tool-bar>
-  <router-outlet></router-outlet>
+  <div
+    class="main__router"
+    [@routeAnimations]="prepareRoute(outlet)"
+    style="position: relative"
+  >
+    <router-outlet #outlet="outlet" style="position: relative"></router-outlet>
+  </div>
   <app-footer></app-footer>
 </div>
