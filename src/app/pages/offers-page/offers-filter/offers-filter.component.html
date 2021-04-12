@@ -1,14 +1,19 @@
 <div class="main">
   <div class="filter">
     <div class="filter__item">
-      <select name="city" id="city">
-        <option value="istanbul">Istanbul</option>
-        <option value="bursa">Bursa</option>
-        <option value="ankara">Ankara</option>
-        <option value="antalya">Antalya</option>
-      </select>
+      <ng-select
+        [items]="cities"
+        [(ngModel)]="selectedCity"
+        bindLabel="name"
+        bindValue="name"
+        [clearable]="false"
+      >
+        <ng-template ng-label-tmp let-item="item">
+          {{ item.name }}
+        </ng-template>
+      </ng-select>
     </div>
-    <div class="filter__item">
+    <div class="filter__item hp2">
       <div class="price-range">
         <input type="number" placeholder="min" />
         <span>-</span>
@@ -16,11 +21,17 @@
       </div>
     </div>
     <div class="filter__item">
-      <select name="type" id="type">
-        <option value="tourism">Tourism</option>
-
-        <option value="medical">Medical</option>
-      </select>
+      <ng-select
+        [items]="tavelTypes"
+        [(ngModel)]="selectedType"
+        bindLabel="name"
+        bindValue="name"
+        [clearable]="false"
+      >
+        <ng-template ng-label-tmp let-item="item">
+          {{ item.name }}
+        </ng-template>
+      </ng-select>
     </div>
     <div class="filter__search">Search</div>
   </div>

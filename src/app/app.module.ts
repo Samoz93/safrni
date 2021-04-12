@@ -34,6 +34,8 @@ import { InfoReviewsTabComponent } from './pages/tour-information/info-reviews-t
 import { ReadOnlyStarsComponent } from './common/widgets/read-only-stars/read-only-stars.component';
 import { StepperComponent } from './common/widgets/stepper/stepper.component';
 import { OffersPageComponent } from './pages/offers-page/offers-page.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule } from '@angular/forms';
 
 import { OffersFilterComponent } from './pages/offers-page/offers-filter/offers-filter.component';
 
@@ -69,7 +71,7 @@ import { OffersFilterComponent } from './pages/offers-page/offers-filter/offers-
     ReadOnlyStarsComponent,
     StepperComponent,
     OffersPageComponent,
-    
+
     OffersFilterComponent,
   ],
   imports: [
@@ -77,6 +79,8 @@ import { OffersFilterComponent } from './pages/offers-page/offers-filter/offers-
     AppRoutingModule,
     BrowserAnimationsModule,
     NgbModule,
+    NgSelectModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,3 +1,6 @@
+// @import "~@ng-select/ng-select/themes/default.theme.css";
+
+@import "assets/css/component/ng-select";
 @import "assets/css/abstract/variables";
 @import "assets/css/abstract/function";
 @import "assets/css/abstract/mixins";
@@ -14,4 +17,4 @@
 @import "assets/css/base/utilites";
 
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
