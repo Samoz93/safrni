@@ -1,6 +1,6 @@
 @import "/src/assets/css/abstract/variables";
 @import "/src/assets/css/abstract/mixins";
-$transition :0.5s all;
+$transition: 0.5s all;
 @mixin active {
   // width: 100%;
   // border-bottom: grey 1px solid;
@@ -8,7 +8,7 @@ $transition :0.5s all;
   color: $accent;
   transition: $transition;
 
-  &::after{
+  &::after {
     position: absolute;
     transition: $transition;
     content: "";
@@ -18,8 +18,6 @@ $transition :0.5s all;
     height: 1px;
     background: $accent;
   }
-
-
 }
 
 @mixin center {
@@ -66,7 +64,7 @@ $header-padding: 0 5%;
     row-gap: 5rem;
     flex-direction: column;
     justify-content: space-evenly;
-    &_title{
+    &_title {
       margin-bottom: 3rem;
     }
 
@@ -77,13 +75,12 @@ $header-padding: 0 5%;
       align-items: center;
       flex: 1;
     }
-    .col1{
-      flex: 3
-    }   
-    .col2{
-      flex:2;
-      justify-content: space-between;
-
+    .col1 {
+      flex: 3;
+    }
+    .col2 {
+      flex: 2;
+      justify-content: space-evenly;
     }
     &_image {
       @include center();
@@ -98,7 +95,6 @@ $header-padding: 0 5%;
         width: 100%;
         scale: 1.2;
         border-radius: 50rem;
-
       }
     }
     &_btn-delete {
@@ -114,7 +110,7 @@ $header-padding: 0 5%;
 
       padding: 0;
       cursor: pointer;
-      &::after{
+      &::after {
         position: absolute;
         content: "";
         width: 0%;
