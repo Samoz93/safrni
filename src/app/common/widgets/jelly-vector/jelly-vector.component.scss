@@ -1,0 +1,15 @@
+.img {
+    position: absolute;
+   
+  }
+
+  .left {
+    left: 0;
+   
+    transform: translateX(-20%);
+  }
+  .right {
+   
+    transform: translateX(20%);
+    right: 0;
+  }

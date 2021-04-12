@@ -1,7 +1,10 @@
+@import "../../../../assets/css/abstract/mixins";
 .main {
+  height: 8rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @include shadow;
   &_logo {
     flex: 3;
   }
@@ -10,6 +13,7 @@
     flex: 3;
     display: flex;
     justify-content: start;
+    align-items: center;
     *:not(:last-child) {
       margin-right: 5rem;
     }

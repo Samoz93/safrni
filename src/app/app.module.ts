@@ -41,6 +41,9 @@ import { InfoReviewsTabComponent } from './pages/tour-information/info-reviews-t
 import { ReadOnlyStarsComponent } from './common/widgets/read-only-stars/read-only-stars.component';
 import { StepperComponent } from './common/widgets/stepper/stepper.component';
 import { MatIconModule } from '@angular/material/icon';
+import { OffersPageComponent } from './pages/offers-page/offers-page.component';
+import { JellyVectorComponent } from './common/widgets/jelly-vector/jelly-vector.component';
+import { OffersFilterComponent } from './pages/offers-page/offers-filter/offers-filter.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +80,11 @@ import { MatIconModule } from '@angular/material/icon';
     InfoReviewsTabComponent,
     ReadOnlyStarsComponent,
     StepperComponent,
+    OffersPageComponent,
+    JellyVectorComponent,
+    OffersFilterComponent,
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,

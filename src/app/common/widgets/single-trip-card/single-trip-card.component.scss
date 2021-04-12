@@ -4,10 +4,16 @@ $w: 30rem;
 .main {
   height: $h;
   width: $w;
+  cursor: pointer;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(10, 1fr);
   color: $white;
+
+  transition: all 0.3s ease-out;
+  &:hover {
+    transform: scale(0.975);
+  }
   * {
     margin: 0.8rem;
   }
