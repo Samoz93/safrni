@@ -21,7 +21,6 @@ import { ICONS } from 'src/app/data/uitls/enums';
   selector: 'app-profileinput',
   templateUrl: './profileinput.component.html',
   styleUrls: ['./profileinput.component.scss'],
-
   providers: [
     // {
     //   provide: NG_VALUE_ACCESSOR,
@@ -74,6 +73,8 @@ export class ProfileinputComponent
   controlType = 'text';
   autofilled = true;
   userAriaDescribedBy?: string | undefined;
+  @Input()
+  isNumeric = false;
 
   @Input()
   get placeholder() {
@@ -160,7 +161,11 @@ export class ProfileinputComponent
   hasError() {
     return this.getError().length > 0;
   }
-
+  add(val: number) {
+    const oldVal = Number.parseInt(this._value);
+    const newVal = val + oldVal;
+    this.value = newVal < 0 ? 0 : newVal;
+  }
   ngOnInit(): void {}
   ngDoCheck(): void {
     if (this.ngControl) {

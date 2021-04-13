@@ -19,11 +19,13 @@ $titleFontSize: 5rem;
     padding: $verticalPadding 5rem;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
+    & > * {
+      font-weight: 400;
+    }
     &_duration {
       grid-column: 2;
       grid-row: 1;
       font-size: $infoFontSize;
-
       text-align: end;
     }
     &_price {
@@ -34,6 +36,7 @@ $titleFontSize: 5rem;
     }
     &_title {
       font-size: $titleFontSize;
+      font-weight: 800;
     }
   }
 

@@ -15,18 +15,18 @@ export class BookingModel {
     public isApproved: boolean = false
   ) {}
 }
-// export interface BookingInterface {
-//   image: string;
-//   id: string;
-//   duration: number;
-//   price: number;
-//   currency: string;
-//   fullName: string;
-//   email: string;
-//   phoneNumber: string;
-//   startDate: number;
-//   ticketCount: number;
-//   message: string;
-//   ticketImage: string;
-//   isApproved: boolean;
-// }
+export interface BookingInterface {
+  image: string;
+  id: string;
+  duration: number;
+  price: number;
+  currency: string;
+  fullName: string;
+  email: string;
+  phoneNumber: string;
+  startDate: number;
+  ticketCount: number;
+  message: string;
+  ticketImage: string;
+  isApproved: boolean;
+}

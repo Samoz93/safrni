@@ -10,6 +10,7 @@ export class OfferModel {
     public city: string,
     public options: TripOptions,
     public rating: number,
-    public comments: string[]
+    public comments: string[],
+    public tripId: string = ''
   ) {}
 }

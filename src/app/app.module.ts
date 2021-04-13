@@ -47,6 +47,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { OffersFilterComponent } from './pages/offers-page/offers-filter/offers-filter.component';
 import { BookingPageComponent } from './pages/booking/booking-page.component';
 import { LoaderComponent } from './common/widgets/loader/loader.component';
+import { Onlynumbers } from './data/directives/onlynumbers.directive';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,8 @@ import { LoaderComponent } from './common/widgets/loader/loader.component';
     BookingPageComponent,
 
     LoaderComponent,
+
+    Onlynumbers,
   ],
 
   imports: [

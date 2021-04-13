@@ -121,6 +121,10 @@
         "check-typecast"
       ]
     },
+    "compilerOptions": {
+      "checkJs": false
+    },
+  
     "component-class-suffix": true,
     "contextual-lifecycle": true,
     "directive-class-suffix": true,

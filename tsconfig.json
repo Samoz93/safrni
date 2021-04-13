@@ -19,6 +19,8 @@
     "strictPropertyInitialization": false,
     "lib": ["es2018", "dom"]
   },
+  "suppressImplicitAnyIndexErrors": true,
+
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

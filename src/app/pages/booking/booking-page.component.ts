@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { BookingModel } from 'src/app/data/models/bookingModel';
+import {
+  BookingInterface,
+  BookingModel,
+} from 'src/app/data/models/bookingModel';
 import { OfferModel } from 'src/app/data/models/offerModel';
-import { TripOptions } from 'src/app/data/models/variousModels';
+import { ImageSnippet } from 'src/app/data/models/variousModels';
 import { OfferSeviceService } from 'src/app/data/servers/offer-sevice.service';
 import { ICONS } from 'src/app/data/uitls/enums';
 
@@ -22,30 +25,61 @@ export class BookingPageComponent implements OnInit {
     public fb: FormBuilder
   ) {}
   form: FormGroup;
-  model = new BookingModel();
-  // ref: BookingInterface = {
-  //   currency: '',
-  //   duration: 5,
-  //   email: '',
-  //   fullName: '',
-  //   id: '',
-  //   image: '',
-  //   isApproved: false,
-  //   message: '',
-  //   phoneNumber: '',
-  //   price: 0,
-  //   startDate: 0,
-  //   ticketCount: 0,
-  //   ticketImage: '',
-  // };
+  ref: BookingInterface;
   ngOnInit(): void {
     this.route.params.subscribe((f) => {
       this.offer = this._ser.getOfferById(f['id']);
       this.isLoading = false;
+      this.ref = {
+        currency: this.offer.currency,
+        duration: this.offer.duration,
+        email: '',
+        fullName: '',
+        id: '',
+        image: '',
+        isApproved: false,
+        message: '',
+        phoneNumber: '',
+        price: this.offer.price,
+        startDate: Date.now(),
+        ticketCount: 0,
+        ticketImage: '',
+      };
     });
+
     this.form = this.fb.group({
-      ...this.model,
-      startDate: new Date(this.model.startDate),
+      ...this.ref,
+      startDate: new Date(this.ref.startDate),
     });
+  }
+
+  selectedFile: ImageSnippet;
+
+  saveData() {
+    const isValid = this.form.valid;
+    if (!isValid) return;
+
+    const booking: BookingInterface = {
+      ...this.form.value,
+    };
+
+    console.log(booking);
+  }
+  onSelectFile(event: any) {
+    if (!event.target.files) return;
+    const file: File = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener('load', (event: any) => {
+      this.selectedFile = new ImageSnippet(event.target.result, file);
+      console.log(this.selectedFile);
+
+      // this.imageService.uploadImage(this.selectedFile.file).subscribe(
+      //   (res) => {},
+      //   (err) => {}
+      // );
+    });
+
+    reader.readAsDataURL(file);
   }
 }

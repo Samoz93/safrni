@@ -51,6 +51,7 @@
         placeholder="Number of tickets"
         [icon]="icns.ticket"
         formControlName="ticketCount"
+        [isNumeric]="true"
       ></app-profileinput>
       <app-profileinput
         placeholder="Message"
@@ -58,8 +59,22 @@
         formControlName="message"
       ></app-profileinput>
 
-      <button class="btn-inverse button">Book Now</button>
-      <button class="btn-inverse button botton2">Upload The Ticket</button>
+      <button (click)="saveData()" class="btn-inverse button">Book Now</button>
+      <input
+        #imgInput
+        hidden="true"
+        type="file"
+        (change)="onSelectFile($event)"
+        accept="image/*"
+      />
+
+      <button
+        (click)="imgInput.click()"
+        type="file"
+        class="btn-inverse button botton2"
+      >
+        Upload The Ticket
+      </button>
     </div>
   </form>
 

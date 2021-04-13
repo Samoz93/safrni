@@ -10,6 +10,15 @@ mat-form-field {
     // margin-right: 2rem;
   }
 }
+
+.row {
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-evenly;
+  & * {
+    cursor: pointer;
+  }
+}
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
   color: $primary !important;
   border-radius: 0 !important;
