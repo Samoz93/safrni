@@ -1,0 +1,63 @@
+@import "/src/assets/css/abstract/variables";
+.main {
+  height: 100%;
+  .display {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    &_box {
+      width: 3rem;
+      height: 3rem;
+      background: $accent;
+      display: grid;
+      place-items: center;
+      i {
+        font-size: 2rem;
+        transition: all 0.5s ease;
+        color: white;
+      }
+
+      i.shown {
+        transform: rotateZ(540deg);
+        transition: all 0.5s ease;
+      }
+    }
+  }
+  .expandable.shown {
+    height: 100%;
+    transition: all 0.5s ease;
+  }
+  .expandable {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 0%;
+    overflow: hidden;
+    transition: all 0.5s ease;
+
+    .options {
+      display: grid;
+      grid-template-columns: 60% 10% 20% 10%;
+      // text-align: center;
+      mat-icon {
+        color: $accent;
+        justify-self: flex-end;
+        width: 100%;
+        text-align: end;
+      }
+      &-minus {
+        justify-self: flex-start;
+      }
+      &-value {
+        text-align: center;
+      }
+      &-title {
+        text-align: start;
+      }
+      .clickable {
+        cursor: pointer;
+      }
+    }
+  }
+}

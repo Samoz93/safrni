@@ -1,7 +1,5 @@
-<div class="main page-padding">
-  <div class="bk">
-    <img src="/assets/images/placeholder/istanbul.png" alt="" />
-  </div>
+<div class="main">
+  <img src="/assets/images/placeholder/istanbul.png" alt="" />
   <div class="info">
     <div class="info_desc">
       <h5>All year long travel</h5>
@@ -11,57 +9,30 @@
         let's find the best destination in Turkey with us.
       </h5>
     </div>
-    <div class="info_option card grey-color">
+    <div class="info_option">
       <h2 class="info_option--header">Reservation</h2>
-      <div class="info_option-data extra-span">
-        <h3>Guest</h3>
-        <div class="select">
-          <select class="my-select" name="" id="" place>
-            <option value="" disabled selected>Adults</option>
-            <option value="hurr">Durr</option>
-          </select>
-        </div>
-        <div class="select">
-          <select name="" id="">
-            <option value="" disabled selected>Children</option>
-            <option value="hurr">Durr</option>
-          </select>
-        </div>
-      </div>
-      <div class="info_option-data extra-span">
-        <h3>Dates</h3>
-        <div class="select">
-          <select class="my-select" name="" id="" place>
-            <option value="" disabled selected>Adults</option>
-            <option value="hurr">Durr</option>
-          </select>
-        </div>
-        <div class="select">
-          <select name="" id="">
-            <option value="" disabled selected>Children</option>
-            <option value="hurr">Durr</option>
-          </select>
-        </div>
-      </div>
-      <div class="info_option-data">
-        <h3>Destination</h3>
-        <div class="select">
-          <select name="" id="">
-            <option value="" disabled selected>Children</option>
-            <option value="hurr">Durr</option>
-          </select>
-        </div>
-      </div>
-      <div class="info_option-data">
-        <h3>Travel Type</h3>
-        <div class="select">
-          <select name="" id="">
-            <option value="" disabled selected>Children</option>
-            <option value="hurr">Durr</option>
-          </select>
-        </div>
-      </div>
+      <app-guest-count-input class="info_option--count"></app-guest-count-input>
+      <ng-select
+        [items]="tripTypes"
+        [(ngModel)]="selectedType"
+        bindLabel="name"
+        bindValue="id"
+        placeholder="Trip Type"
+        [clearable]="false"
+      >
+        <ng-template ng-label-tmp let-item="item">
+          {{ item.name }}
+        </ng-template>
+      </ng-select>
 
+      <mat-form-field class="info_option--date" appearance="fill">
+        <mat-label>Trip Date</mat-label>
+        <input matInput [matDatepicker]="picker" />
+        <mat-datepicker-toggle matSuffix [for]="picker">
+          <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
       <button class="info_option-btn btn-font-big main-btn">Search</button>
     </div>
   </div>

@@ -1,1 +1,7 @@
-<div class="main"></div>
+<div class="main">
+  <app-user-trip-card
+    class="crd"
+    *ngFor="let tr of trips"
+    [trip]="tr"
+  ></app-user-trip-card>
+</div>

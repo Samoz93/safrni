@@ -1,4 +1,4 @@
-@import "../../../../assets/css/abstract/mixins";
+@import "/src/assets/css/abstract/mixins";
 .main {
   height: 8rem;
   display: flex;
@@ -12,7 +12,7 @@
   &_tool-bar {
     flex: 3;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     *:not(:last-child) {
       margin-right: 5rem;

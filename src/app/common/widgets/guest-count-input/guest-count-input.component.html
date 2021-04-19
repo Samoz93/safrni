@@ -1,0 +1,20 @@
+<div class="main">
+  <div class="display">
+    <h3>{{ str }}</h3>
+    <div class="display_box" (click)="isShowen = !isShowen">
+      <i class="fa fa-chevron-down" [ngClass]="{ shown: isShowen }"></i>
+    </div>
+  </div>
+  <div class="expandable" [ngClass]="{ shown: isShowen }">
+    <div class="options" *ngFor="let i of data | keyvalue">
+      <div class="options-title">{{ i.key | upperFirstChar }}</div>
+      <a class="options-minus clickable" (click)="decrease(i.key)"
+        ><mat-icon>remove_circle</mat-icon></a
+      >
+      <div class="options-value">{{ i.value }}</div>
+      <a class="options-plus clickable" (click)="increase(i.key)"
+        ><mat-icon>add_circle</mat-icon></a
+      >
+    </div>
+  </div>
+</div>

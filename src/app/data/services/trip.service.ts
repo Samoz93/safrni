@@ -1,60 +1,58 @@
 import { Injectable } from '@angular/core';
-import { OfferModel } from '../models/offerModel';
+import { TripModel } from '../models/TripModel';
 import { TripOptions } from '../models/variousModels';
 
 @Injectable({
   providedIn: 'root',
 })
-export class OfferSeviceService {
+export class TripService {
   offers = [
-    new OfferModel(
+    new TripModel(
       '11',
+      'test',
+      'test2',
       'https://idsb.tmgrup.com.tr/ly/uploads/images/2020/04/17/thumbs/800x531/31299.jpg',
       10,
+      'Istanbul',
       400,
       '$',
-      'Istanbul',
       new TripOptions(true, true, true),
       3.25,
+      [],
       []
     ),
-    new OfferModel(
-      '22',
+    new TripModel(
+      '11',
+      'test',
+      'test2',
       'https://idsb.tmgrup.com.tr/ly/uploads/images/2020/04/17/thumbs/800x531/31299.jpg',
       10,
+      'Istanbul',
       400,
       '$',
-      'Istanbul',
       new TripOptions(true, true, true),
       3.25,
+      [],
       []
     ),
-    new OfferModel(
-      '33',
+    new TripModel(
+      '11',
+      'test',
+      'test2',
       'https://idsb.tmgrup.com.tr/ly/uploads/images/2020/04/17/thumbs/800x531/31299.jpg',
       10,
+      'Istanbul',
       400,
       '$',
-      'Istanbul',
       new TripOptions(true, true, true),
       3.25,
-      []
-    ),
-    new OfferModel(
-      '44',
-      'https://idsb.tmgrup.com.tr/ly/uploads/images/2020/04/17/thumbs/800x531/31299.jpg',
-      10,
-      400,
-      '$',
-      'Istanbul',
-      new TripOptions(true, true, true),
-      3.25,
+      [],
       []
     ),
   ];
   constructor() {}
 
-  getOfferById(id: string): OfferModel {
+  getOfferById(id: string): TripModel {
     return this.offers.filter((f) => f.id == id)[0];
   }
 }
