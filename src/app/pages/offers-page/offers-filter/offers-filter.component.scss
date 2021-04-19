@@ -63,15 +63,19 @@
   justify-content: center;
   align-items: center;
 
-  span {
-    color: black;
-    margin: 0rem 1rem;
+  &__divider {
+    height: 30%;
+    width: 1px;
+    color: #cdcdcd;
+    background-color: #cdcdcd;
+    // border-left: solid 2px black;
   }
   input {
-    width: 30%;
+    width: 49%;
+    padding: 0rem 1rem;
     border: 5px transparent;
     display: block;
-
+    text-align: center;
     @include res(tab) {
       width: 50%;
     }
