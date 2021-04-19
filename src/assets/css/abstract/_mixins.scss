@@ -13,6 +13,9 @@
   box-shadow: 1px 2px 1rem 0.5rem rgba($color, 0.2);
 }
 
+@mixin textPref() {
+  width: clamp(45ch, 50%, 75ch);
+}
 ///
 @mixin res($break) {
   @if $break == phone {

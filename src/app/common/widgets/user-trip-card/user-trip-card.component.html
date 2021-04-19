@@ -1,0 +1,7 @@
+<div [style]="'--img:' + trip.image" *ngIf="trip" class="main">
+  <img [src]="trip.image" alt="" />
+  <h1 class="city">{{ trip.city }}</h1>
+  <p class="date">{{ trip.fromdateTodateString }}</p>
+  <h3 class="year">{{ trip.year }}</h3>
+</div>
+<div *ngIf="!trip" class="main">provide a trip detail</div>

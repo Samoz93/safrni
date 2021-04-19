@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import {
-  BookingInterface,
-  BookingModel,
-} from 'src/app/data/models/bookingModel';
-import { OfferModel } from 'src/app/data/models/offerModel';
+import { BookingInterface } from 'src/app/data/models/bookingModel';
+import { TripModel } from 'src/app/data/models/TripModel';
 import { ImageSnippet } from 'src/app/data/models/variousModels';
-import { OfferSeviceService } from 'src/app/data/servers/offer-sevice.service';
+import { TripService } from 'src/app/data/services/trip.service';
 import { ICONS } from 'src/app/data/uitls/enums';
 
 @Component({
@@ -16,12 +13,12 @@ import { ICONS } from 'src/app/data/uitls/enums';
   styleUrls: ['./booking-page.component.scss'],
 })
 export class BookingPageComponent implements OnInit {
-  offer: OfferModel;
+  offer: TripModel;
   isLoading = true;
   icns = ICONS;
   constructor(
     public route: ActivatedRoute,
-    public _ser: OfferSeviceService,
+    public _ser: TripService,
     public fb: FormBuilder
   ) {}
   form: FormGroup;

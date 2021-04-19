@@ -48,6 +48,11 @@ import { OffersFilterComponent } from './pages/offers-page/offers-filter/offers-
 import { BookingPageComponent } from './pages/booking/booking-page.component';
 import { LoaderComponent } from './common/widgets/loader/loader.component';
 import { Onlynumbers } from './data/directives/onlynumbers.directive';
+import { UserTripCardComponent } from './common/widgets/user-trip-card/user-trip-card.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { GuestCountInputComponent } from './common/widgets/guest-count-input/guest-count-input.component';
+import { UpperFirstCharPipe } from './data/pipes/upper-first-char.pipe';
 
 @NgModule({
   declarations: [
@@ -93,6 +98,12 @@ import { Onlynumbers } from './data/directives/onlynumbers.directive';
     LoaderComponent,
 
     Onlynumbers,
+
+    UserTripCardComponent,
+
+    GuestCountInputComponent,
+
+    UpperFirstCharPipe,
   ],
 
   imports: [
@@ -108,6 +119,8 @@ import { Onlynumbers } from './data/directives/onlynumbers.directive';
     MatIconModule,
     NgSelectModule,
     FormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
