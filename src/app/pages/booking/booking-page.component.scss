@@ -16,7 +16,7 @@ $titleFontSize: 5rem;
 
   .info {
     display: grid;
-    padding: $verticalPadding 5rem;
+    padding: $verticalPadding 25rem;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
     & > * {
@@ -41,7 +41,7 @@ $titleFontSize: 5rem;
   }
 
   .form {
-    padding: $verticalPadding 15%;
+    padding: $verticalPadding 41rem;
     background-color: $accent;
     color: white;
     text-align: center;
