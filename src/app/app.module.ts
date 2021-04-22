@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatInputModule } from '@angular/material/input';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -53,6 +54,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { GuestCountInputComponent } from './common/widgets/guest-count-input/guest-count-input.component';
 import { UpperFirstCharPipe } from './data/pipes/upper-first-char.pipe';
+import { ServerimagePipe } from './data/pipes/serverimage.pipe';
 
 @NgModule({
   declarations: [
@@ -104,6 +106,8 @@ import { UpperFirstCharPipe } from './data/pipes/upper-first-char.pipe';
     GuestCountInputComponent,
 
     UpperFirstCharPipe,
+
+    ServerimagePipe,
   ],
 
   imports: [
@@ -121,6 +125,7 @@ import { UpperFirstCharPipe } from './data/pipes/upper-first-char.pipe';
     FormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

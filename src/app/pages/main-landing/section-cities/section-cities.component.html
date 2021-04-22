@@ -7,13 +7,16 @@
 
   <div class="data page-padding">
     <div
-      *ngFor="let city of cities"
+      *ngFor="let city of _ser.data$ | async; let i = index"
       class="card"
-      [ngClass]="{ longX: city.longX, longY: city.longY }"
-      (click)="goToOffer()"
+      [ngClass]="{
+        longX: i == 0 && _ser.data.length > 2,
+        longY: i == 1 && _ser.data.length > 2
+      }"
+      (click)="goToOffer(city.id)"
     >
-      <img [src]="city.image" alt="" />
-      <h5 class="title">{{ city.name }}</h5>
+      <img [src]="city?.previewImage | serverimage" alt="" />
+      <h5 class="title">{{ city.cityName }}</h5>
     </div>
   </div>
 </div>

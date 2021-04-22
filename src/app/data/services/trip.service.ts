@@ -1,58 +1,20 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { TripModel } from '../models/TripModel';
+import { CityObj, TripModel } from '../models/TripModel';
 import { TripOptions } from '../models/variousModels';
+import { EndPoints } from '../static/main-info';
+import { BaseService } from './base.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class TripService {
-  offers = [
-    new TripModel(
-      '11',
-      'test',
-      'test2',
-      'https://idsb.tmgrup.com.tr/ly/uploads/images/2020/04/17/thumbs/800x531/31299.jpg',
-      10,
-      'Istanbul',
-      400,
-      '$',
-      new TripOptions(true, true, true),
-      3.25,
-      [],
-      []
-    ),
-    new TripModel(
-      '11',
-      'test',
-      'test2',
-      'https://idsb.tmgrup.com.tr/ly/uploads/images/2020/04/17/thumbs/800x531/31299.jpg',
-      10,
-      'Istanbul',
-      400,
-      '$',
-      new TripOptions(true, true, true),
-      3.25,
-      [],
-      []
-    ),
-    new TripModel(
-      '11',
-      'test',
-      'test2',
-      'https://idsb.tmgrup.com.tr/ly/uploads/images/2020/04/17/thumbs/800x531/31299.jpg',
-      10,
-      'Istanbul',
-      400,
-      '$',
-      new TripOptions(true, true, true),
-      3.25,
-      [],
-      []
-    ),
-  ];
-  constructor() {}
+export class TripService extends BaseService<TripModel> {
+  constructor(protected http: HttpClient) {
+    super(http, EndPoints.trips, {});
+    super.fetchAllData();
+  }
 
-  getOfferById(id: string): TripModel {
-    return this.offers.filter((f) => f.id == id)[0];
+  async getOfferById(id: string): Promise<TripModel> {
+    return await this.getById(id);
   }
 }
