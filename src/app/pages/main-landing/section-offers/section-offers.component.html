@@ -1,21 +1,19 @@
-<app-loader [isLoading]="isLoading">
-  <div class="trip-section">
-    <app-section-header
-      title="Our Special Offers"
-      desc="Competitive prices"
-      extra="ALL Around Lovely Cities"
-    >
-    </app-section-header>
+<div class="main page-padding">
+  <app-section-header
+    title="Our Special Offers"
+    desc="Competitive prices"
+    extra="ALL Around Lovely Cities"
+  >
+  </app-section-header>
 
-    <div class="data page-padding">
-      <div *ngFor="let item of _ser.data$ | async">
-        <app-trip-card
-          [isSingleTrip]="false"
-          [width]="'30rem'"
-          [height]="'20rem'"
-          [trip]="item"
-        ></app-trip-card>
-      </div>
-    </div>
+  <div class="data">
+    <app-trip-card
+      *ngFor="let item of _ser.data$ | async; let i = index"
+      [ngClass]="{
+        longX: isLongX(i)
+      }"
+      [isSingleTrip]="true"
+      [trip]="item"
+    ></app-trip-card>
   </div>
-</app-loader>
+</div>

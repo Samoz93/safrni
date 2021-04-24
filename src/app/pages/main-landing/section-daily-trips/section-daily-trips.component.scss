@@ -1,4 +1,21 @@
 .data {
-  display: flex;
-  justify-content: space-evenly;
+  height: 72rem;
+
+  padding: 1rem;
+  .slide {
+    height: 72rem;
+  }
+  swiper {
+    height: 100%;
+    display: grid;
+    place-items: center;
+  }
+}
+
+::ng-deep .swiper-scrollbar {
+  display: none !important;
+}
+::ng-deep .swiper-slide {
+  height: 80rem !important;
+  width: 40rem !important;
 }

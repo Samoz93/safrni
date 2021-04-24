@@ -4,18 +4,14 @@
       <img [src]="trip.previewImage | serverimage" alt="" />
     </div>
     <div class="info">
-      <h1 class="info_title">{{ trip.cityObj.name }}</h1>
+      <h1 class="info_title">{{ trip.cityObj?.name }}</h1>
       <app-read-only-stars
         class="info_rating"
         [stars]="5"
         [isBlack]="true"
         [isBig]="true"
       ></app-read-only-stars>
-      <app-trip-extra
-        class="info_extra"
-        [features]="trip.features"
-        [isBig]="true"
-      ></app-trip-extra>
+      <app-trip-extra class="info_extra" [isBig]="true"></app-trip-extra>
       <h3 class="info_duration">{{ trip.duration }} days</h3>
       <h3 class="info_price">{{ trip.price }} {{ trip.currency }}</h3>
     </div>

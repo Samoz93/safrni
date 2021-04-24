@@ -16,4 +16,12 @@ export class SectionOffersComponent implements OnInit {
       console.log(this.isLoading, f.isLoading);
     });
   }
+
+  get lnth() {
+    return this._ser.data.length;
+  }
+
+  isLongX(index: number) {
+    return (this.lnth - 1) % 3 == 0 && this.lnth - 1 == index;
+  }
 }

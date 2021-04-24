@@ -1,0 +1,13 @@
+<div class="main">
+  <mat-icon matPrefix>{{ icon }}</mat-icon>
+  <div class="wrapper">
+    <mat-form-field appearance="fill" floatLabel="never">
+      <mat-label>Travel Type</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let data of values" [value]="data.id">
+          {{ data.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>

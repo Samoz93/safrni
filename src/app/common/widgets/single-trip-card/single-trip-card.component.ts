@@ -11,8 +11,6 @@ import { DevData } from 'src/app/data/static/main-info';
 export class SingleTripCardComponent implements OnInit {
   @Input() trip: TripModel;
   @Input() isSingleTrip: boolean = false;
-  @Input() width: string = '30rem';
-  @Input() height: string = '50rem';
   constructor(private router: Router, private activeRoute: ActivatedRoute) {}
 
   ngOnInit(): void {}

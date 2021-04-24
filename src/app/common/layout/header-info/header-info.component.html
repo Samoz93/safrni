@@ -6,8 +6,8 @@
       [icon]="q.icon"
     ></app-header-icon>
   </div>
-  <app-oursocialmedia></app-oursocialmedia>
-  <div *ngIf="!isSigned" class="main_login">
+  <app-oursocialmedia class="main_social-icons"></app-oursocialmedia>
+  <div *ngIf="!isSigned" class="main_login log">
     <div
       class="main_social-login"
       [routerLink]="['/login', { isLogin: false }]"
@@ -23,7 +23,7 @@
     *ngIf="isSigned"
     [routerLink]="['/profile']"
     routerLinkActive="router-link-active"
-    class="main_user"
+    class="main_user log"
   >
     <app-header-icon
       txt="Hey, Sameh"

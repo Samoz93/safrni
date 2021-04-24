@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import urljoin from 'url-join';
 import { PreviewImage } from '../models/TripModel';
 import { DevData } from '../static/main-info';
@@ -8,8 +9,9 @@ import { DevData } from '../static/main-info';
 })
 export class ServerimagePipe implements PipeTransform {
   //TODO resposive image here
-  transform(value: PreviewImage | undefined): string {
-    if (value) return urljoin(DevData.baseUrl, value.url);
+  transform(pr: PreviewImage | undefined): string {
+    if (!environment.production) return pr?.url!;
+    if (pr) return urljoin(DevData.baseUrl, pr.url);
     return '';
   }
 }

@@ -19,4 +19,6 @@ export enum ICONS {
   title = 'title',
   pass = 'lock',
   ticket = 'confirmation_number',
+  compass = 'explore',
+  work = 'work',
 }

@@ -2,51 +2,51 @@ export interface TripModel {
   id: number;
   name: string;
   trip_type: string;
-  published_at: Date;
-  created_at: Date;
-  updated_at: Date;
+  published_at?: Date;
+  updated_at?: Date;
+  created_at?: Date;
   description: string;
   duration: number;
   currency: string;
-  provider: ProviderClass;
+  provider?: ProviderClass;
   price: number;
-  cityObj: CityObj;
-  timelines: Timeline[];
-  previewImage: PreviewImage;
-  reviews: Review[];
-  features: Feature[];
+  cityObj?: CityObj;
+  timelines?: Timeline[];
+  previewImage?: PreviewImage;
+  reviews?: Review[];
+  features?: Feature[];
 }
 
 export interface CityObj {
   id: number;
-  name: string;
+  name?: string;
   description: string;
   published_at: Date;
-  created_at: Date;
-  updated_at: Date;
+  created_at?: Date;
+  updated_at?: Date;
   cityName: string;
   cityDescription: string;
-  previewImage: PreviewImage;
+  previewImage?: PreviewImage;
 }
 
 export interface PreviewImage {
-  id: number;
-  name: string;
-  alternativeText: string;
-  caption: string;
-  width: number;
-  height: number;
-  formats: Formats;
-  hash: Hash;
-  ext: EXT;
-  mime: MIME;
-  size: number;
-  url: URL;
-  previewUrl: any;
-  provider: ProviderEnum;
-  provider_metadata: any;
-  created_at: Date;
-  updated_at: Date;
+  id?: number;
+  name?: string;
+  alternativeText?: string;
+  caption?: string;
+  width?: number;
+  height?: number;
+  formats?: Formats;
+  hash?: Hash;
+  ext?: EXT;
+  mime?: MIME;
+  size?: number;
+  url: string;
+  previewUrl?: any;
+  provider?: ProviderEnum;
+  provider_metadata?: any;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export enum EXT {

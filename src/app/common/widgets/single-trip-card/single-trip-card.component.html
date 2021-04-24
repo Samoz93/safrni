@@ -1,11 +1,4 @@
-<div
-  *ngIf="trip"
-  class="main card"
-  [ngClass]="{ 'normal-trip': !isSingleTrip }"
-  (click)="goToOffer()"
-  [style.width]="width"
-  [style.height]="height"
->
+<div *ngIf="trip" class="main card" (click)="goToOffer()">
   <div class="bk">
     <img [src]="trip?.previewImage | serverimage" alt="" />
   </div>

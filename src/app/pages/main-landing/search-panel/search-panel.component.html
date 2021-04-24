@@ -1,39 +1,32 @@
-<div class="main">
+<div class="main page-padding">
   <img src="/assets/images/placeholder/istanbul.png" alt="" />
   <div class="info">
-    <div class="info_desc">
-      <h5>All year long travel</h5>
-      <h1>Let's explore all Wonderful Turkey Destination</h1>
-      <h5>
-        Hi! would you explore nature paradise in the world, <br />
-        let's find the best destination in Turkey with us.
-      </h5>
-    </div>
-    <div class="info_option">
-      <h2 class="info_option--header">Reservation</h2>
-      <app-guest-count-input class="info_option--count"></app-guest-count-input>
-      <ng-select
-        [items]="tripTypes"
-        [(ngModel)]="selectedType"
-        bindLabel="name"
-        bindValue="id"
-        placeholder="Trip Type"
-        [clearable]="false"
+    <h2>All year long travel</h2>
+    <h1>Let's explore all Wonderful Turkey Destination</h1>
+    <h2>
+      Hi! would you explore nature paradise in the world, <br />
+      let's find the best destination in Turkey with us.
+    </h2>
+    <form [formGroup]="form" class="info_inputs">
+      <app-main-page-input
+        formControlName="whereTo"
+        [icon]="icons.compass"
+        placeholder="sss"
       >
-        <ng-template ng-label-tmp let-item="item">
-          {{ item.name }}
-        </ng-template>
-      </ng-select>
-
-      <mat-form-field class="info_option--date" appearance="fill">
-        <mat-label>Trip Date</mat-label>
-        <input matInput [matDatepicker]="picker" />
-        <mat-datepicker-toggle matSuffix [for]="picker">
-          <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-        </mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-      <button class="info_option-btn btn-font-big main-btn">Search</button>
-    </div>
+      </app-main-page-input>
+      <app-main-page-input formControlName="guest" placeholder="sss">
+      </app-main-page-input>
+      <app-custom-select
+        [icon]="icons.work"
+        [values]="tripTypes"
+      ></app-custom-select>
+      <app-main-page-input
+        formControlName="date"
+        [icon]="icons.calendar"
+        placeholder="sss"
+      >
+      </app-main-page-input>
+      <button class="main-btn">Search</button>
+    </form>
   </div>
 </div>

@@ -1,15 +1,12 @@
 @import "/src/assets/css/abstract/variables";
-$h: 50rem;
-$w: 30rem;
 .main {
-  height: $h;
-  width: $w;
   cursor: pointer;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(10, 1fr);
   color: $white;
-
+  height: 100%;
+  width: 100%;
   transition: all 0.3s ease-out;
   &:hover {
     transform: scale(0.975);
@@ -46,12 +43,13 @@ $w: 30rem;
   }
   .bk {
     margin: 0;
-    height: 100%;
     grid-column: 1/-1;
     grid-row: 1/-1;
+    height: 100%;
+    width: 100%;
+
     img {
       margin: 0;
-
       border-radius: $border-radius;
       height: 100%;
       width: 100%;
@@ -59,9 +57,4 @@ $w: 30rem;
       object-position: center;
     }
   }
-}
-
-.normal-trip {
-  height: $w;
-  width: $h;
 }

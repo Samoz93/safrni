@@ -11,8 +11,9 @@
 
   &_tool-bar {
     flex: 3;
+
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-end;
     align-items: center;
     *:not(:last-child) {
       margin-right: 5rem;

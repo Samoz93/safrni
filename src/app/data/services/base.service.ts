@@ -1,6 +1,4 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { af } from 'date-fns/locale';
 import { BehaviorSubject, ReplaySubject, Subject, Subscription } from 'rxjs';
 import urljoin from 'url-join';
 import { DevData, EndPoints, LoadingState } from '../static/main-info';
@@ -43,10 +41,10 @@ export class BaseService<T> {
         //todo filter ?
         if (!!filterData) return filterData[0];
         else {
-          return await this.http.get<T>(url);
+          return await this.http.get<T>(url).toPromise();
         }
       } else {
-        return await this.http.get<T>(url);
+        return await this.http.get<T>(url).toPromise();
       }
     });
 

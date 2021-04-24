@@ -10,13 +10,13 @@
       *ngFor="let city of _ser.data$ | async; let i = index"
       class="card"
       [ngClass]="{
-        longX: i == 0 && _ser.data.length > 2,
-        longY: i == 1 && _ser.data.length > 2
+        longX: i == 0 && _ser.data.length > 2
       }"
       (click)="goToOffer(city.id)"
     >
       <img [src]="city?.previewImage | serverimage" alt="" />
       <h5 class="title">{{ city.cityName }}</h5>
+      <h5 class="price-range">Start from 400$</h5>
     </div>
   </div>
 </div>
