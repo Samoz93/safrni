@@ -5,10 +5,18 @@
   align-items: center;
   justify-content: space-between;
   position: relative;
-  @include shadow;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
   &_logo {
   }
-
+  &__profile-links {
+    display: none;
+    justify-content: flex-end;
+    align-items: center;
+    list-style: none;
+    list-style-type: none;
+    z-index: 9999;
+  }
   &_tool-bar {
     display: flex;
     justify-content: flex-end;
@@ -18,6 +26,14 @@
     z-index: 9999;
     *:not(:last-child) {
       margin-right: 5rem;
+    }
+  }
+  .profile-toggler {
+    display: none;
+    cursor: pointer;
+    i {
+      font-size: 4rem;
+      color: #20aed5;
     }
   }
   .nav-toggler {
@@ -58,6 +74,36 @@
     .nav-toggler {
       display: block;
     }
+    .profile-toggler {
+      display: block;
+    }
+
+    .main__profile-links {
+      display: flex;
+      position: absolute;
+      width: 100%;
+      height: calc(100vh - 60px);
+      left: 0;
+      top: 8rem;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba($color: #20aed5, $alpha: 1);
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.5s;
+      transition-timing-function: cubic-bezier(0.57, 0.48, 0.28, 1.07);
+
+      li {
+        width: 100%;
+        text-align: center;
+        margin: 0rem 0rem;
+      }
+    }
+    .main__profile-links.open {
+      overflow: visible;
+      max-height: 100vh;
+    }
     .main_tool-bar {
       position: absolute;
       width: 100%;
@@ -70,7 +116,8 @@
       background-color: rgba($color: #20aed5, $alpha: 1);
       max-height: 0;
       overflow: hidden;
-      transition: all 0.25s ease-out;
+      transition: all 0.5s;
+      transition-timing-function: cubic-bezier(0.57, 0.48, 0.28, 1.07);
 
       li {
         width: 100%;

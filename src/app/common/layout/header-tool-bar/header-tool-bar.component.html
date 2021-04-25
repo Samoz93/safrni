@@ -1,20 +1,28 @@
 <nav class="main page-padding">
+  <button
+    class="nav-toggler"
+    [ngClass]="isNavOpen ? 'toggler-open' : ''"
+    (click)="toggleNav(true)"
+  >
+    <span></span>
+  </button>
   <div class="main_logo">
     <h1>{{ projectName }}</h1>
   </div>
-  <ul class="main_tool-bar" [ngClass]="isOpen ? 'open' : ''">
+  <ul class="main_tool-bar" [ngClass]="isNavOpen ? 'open' : ''">
     <li><a class="navlink" [routerLink]="['/']">Home</a></li>
     <li><a class="navlink" [routerLink]="['/tours/asd']">Trips</a></li>
     <li><a class="navlink" [routerLink]="['/booking/11']">Destination</a></li>
     <li><a class="navlink">Medical Treatments</a></li>
     <li><a class="navlink">About Us</a></li>
   </ul>
-
-  <button
-    class="nav-toggler"
-    [ngClass]="isOpen ? 'toggler-open' : ''"
-    (click)="toggleNav()"
-  >
-    <span></span>
-  </button>
+  <ul class="main__profile-links" [ngClass]="isProfileOpen ? 'open' : ''">
+    <li><a href="#">bla</a></li>
+    <li><a href="#">bla</a></li>
+    <li><a href="#">bla</a></li>
+    <li><a href="#">bla</a></li>
+  </ul>
+  <div class="profile-toggler" (click)="toggleNav(false)">
+    <i class="fa fa-user-circle"></i>
+  </div>
 </nav>

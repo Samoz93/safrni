@@ -8,12 +8,19 @@ import { StaticInfo } from 'src/app/data/static/main-info';
 })
 export class HeaderToolBarComponent implements OnInit {
   projectName = StaticInfo.projectName;
-  isOpen = false;
+  isNavOpen = false;
+  isProfileOpen = false;
   constructor() {}
 
   ngOnInit(): void {}
 
-  toggleNav() {
-    this.isOpen = !this.isOpen;
+  toggleNav(isNav:boolean) {
+    if(isNav)
+    {
+      this.isNavOpen = !this.isNavOpen;
+    }
+    else {
+      this.isProfileOpen = !this.isProfileOpen;
+    }
   }
 }
