@@ -1,10 +1,9 @@
-@font-face {
-  font-family: "Segoe Script Regular";
-  font-style: normal;
-  font-weight: normal;
-  src: local("Segoe Script Regular"),
-    url("/assets/fonts/Segoe.woff") format("woff");
-}
+$montserrat-font: "Montserrat", sans-serif;
+$righteous-font: "Righteous";
+$montserrat-font: "Roboto", sans-serif;
+$main-font: "Source Sans Pro", sans-serif;
+$segoe: "Segoe Script Regular";
+
 $primary: #252629;
 $accent: #20aed5;
 $grey: #7e7e7e;
@@ -26,12 +25,6 @@ $login-bk: #20aed5;
 // $grey: #707070;
 $black: black;
 $font-color: $primary;
-
-$montserrat-font: "Montserrat", sans-serif;
-$righteous-font: "Righteous", cursive;
-$montserrat-font: "Roboto", sans-serif;
-$main-font: "Source Sans Pro", sans-serif;
-$segoe: "Segoe Script Regular";
 
 $border-radius: 0;
 $border: 5rem;

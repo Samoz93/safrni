@@ -9,6 +9,89 @@
   padding: 0 1rem;
 }
 
+@mixin myCustomCalendarStyle {
+  ::ng-deep .mat-form-field-wrapper {
+    font-size: 1.5rem;
+    background-color: white;
+    color: grey;
+    height: 100%;
+    padding-bottom: 0;
+    display: flex;
+    align-items: center;
+    border-right: $border;
+
+    @include res(phone) {
+      border-right: none;
+      border-bottom: $border;
+    }
+    .mat-form-field-flex {
+      background-color: white;
+      display: flex;
+      align-items: center;
+    }
+
+    .mat-input-element {
+      height: 100%;
+    }
+    ::ng-deep mat-datepicker-toggle {
+      font-size: 2rem;
+    }
+  }
+  ::ng-deep .mat-form-field-underline {
+    display: none;
+  }
+}
+
+@mixin angularMatInputStyle {
+  border-right: $border;
+
+  mat-icon {
+    margin: 0 1rem 0 0;
+    order: 0;
+  }
+
+  @include res(phone) {
+    border-right: none;
+    border-bottom: $border;
+  }
+  ::ng-deep .mat-form-field {
+    width: 100%;
+  }
+
+  ::ng-deep .mat-form-field-appearance-fill .mat-form-field-underline,
+  .mat-form-field-label {
+    display: none;
+  }
+
+  ::ng-deep .mat-form-field-should-float .mat-form-field-label {
+    display: none !important;
+  }
+
+  ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    background: transparent;
+    display: flex;
+    color: grey;
+    align-items: center;
+  }
+  // ::ng-deep .mat-select-trigger {
+  // }
+
+  ::ng-deep .mat-select-arrow-wrapper {
+    transform: none;
+  }
+  ::ng-deep .mat-select-value-text {
+    transform: none;
+    text-align: center;
+    padding: 0;
+  }
+  ::ng-deep .mat-form-field-infix {
+    padding: 0;
+  }
+  ::ng-deep .mat-select-placeholder {
+    padding: 0;
+    line-height: 1;
+  }
+}
 @mixin shadow($color: rgb(0, 0, 0)) {
   box-shadow: 1px 2px 1rem 0.5rem rgba($color, 0.2);
 }

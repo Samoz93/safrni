@@ -6,42 +6,73 @@
   place-items: center;
   position: relative;
   height: 90rem;
+  @include res(med) {
+    padding: 0 10%;
+  }
+  @include res(phone) {
+    height: 110rem;
+    padding: 10%;
+  }
+
   img {
     top: 0;
     left: -1%;
     position: absolute;
     width: 110%;
-
     height: 100%;
     object-fit: cover;
   }
 
   .info {
     display: grid;
-    height: 70%;
+    height: 100%;
     z-index: 1;
     color: white;
     text-align: center;
+    padding: 10% 0;
+    @include res(phone) {
+      padding: 0;
+    }
     &_inputs {
-      height: 8.6rem;
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       * {
-        flex: 1;
+        height: 8.6rem;
+      }
+      @include res(med) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @include res(phone) {
+        grid-template-columns: repeat(1, 1fr);
       }
       .main-btn {
         font-size: 3.5rem;
         font-weight: 800;
+        @include res(med) {
+          grid-column: span 2;
+        }
+        @include res(phone) {
+          grid-column: span 1;
+        }
       }
       align-self: flex-end;
+      .date {
+        @include myCustomCalendarStyle;
+      }
     }
     h2 {
       font-size: 3.1rem;
       font-weight: 400;
+      @include res(med) {
+        font-size: 2rem;
+      }
     }
     h1 {
       font-size: 7.1rem;
       font-weight: 400;
+      @include res(med) {
+        font-size: 5.5rem;
+      }
     }
   }
 }

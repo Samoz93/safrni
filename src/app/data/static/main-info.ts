@@ -4,7 +4,8 @@ export class StaticInfo {
   static Email = 'Saferni@emali.com';
 }
 export class DevData {
-  static baseUrl = 'http://165.22.85.57';
+  static baseUrl = 'http://localhost:1337/';
+  static isDev = false;
   static offersRoute = 'offers';
   static bookingRoute = 'booking';
   static tourInfoRoute = 'tourInfo';

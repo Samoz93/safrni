@@ -20,12 +20,11 @@
         [icon]="icons.work"
         [values]="tripTypes"
       ></app-custom-select>
-      <app-main-page-input
-        formControlName="date"
-        [icon]="icons.calendar"
-        placeholder="sss"
-      >
-      </app-main-page-input>
+      <mat-form-field class="date" appearance="fill" color="white">
+        <input matInput [matDatepicker]="picker" />
+        <mat-datepicker-toggle matPrefix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
       <button class="main-btn">Search</button>
     </form>
   </div>
