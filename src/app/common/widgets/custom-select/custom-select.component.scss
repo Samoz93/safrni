@@ -1,4 +1,5 @@
 @import "/src/assets/css/abstract/variables";
+@import "/src/assets/css/abstract/mixins";
 
 $border: grey solid 1px;
 
@@ -14,48 +15,5 @@ $border: grey solid 1px;
   // margin: 1px;
   padding: 0 2rem;
   font-size: 1.5rem;
-  border-right: $border;
-
-  mat-icon {
-    margin: 0 1rem 0 0;
-    order: 0;
-  }
-  .wrapper {
-    display: grid;
-    place-items: center;
-    color: grey;
-  }
-  ::ng-deep .mat-form-field-appearance-fill .mat-form-field-underline,
-  .mat-form-field-label {
-    display: none;
-  }
-
-  ::ng-deep .mat-form-field-should-float .mat-form-field-label {
-    display: none !important;
-  }
-
-  ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
-    background: transparent;
-    display: grid;
-    color: grey;
-    place-items: center;
-  }
-  // ::ng-deep .mat-select-trigger {
-  // }
-
-  ::ng-deep .mat-select-arrow-wrapper {
-    transform: none;
-  }
-  ::ng-deep .mat-select-value-text {
-    transform: none;
-    text-align: center;
-    padding: 0;
-  }
-  ::ng-deep .mat-form-field-infix {
-    padding: 0;
-  }
-  ::ng-deep .mat-select-placeholder {
-    padding: 0;
-    line-height: 1;
-  }
+  @include angularMatInputStyle;
 }

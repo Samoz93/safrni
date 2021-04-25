@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { longX } from 'src/app/data/abstract/longX';
 import { TripService } from 'src/app/data/services/trip.service';
 
 @Component({
@@ -6,14 +7,14 @@ import { TripService } from 'src/app/data/services/trip.service';
   templateUrl: './section-daily-trips.component.html',
   styleUrls: ['./section-daily-trips.component.scss'],
 })
-export class SectionDailyTripsComponent implements OnInit {
-  constructor(public _ser: TripService) {}
-  ngOnInit(): void {
-    this.innerWidth = window.innerWidth;
+export class SectionDailyTripsComponent extends longX implements OnInit {
+  constructor(public _ser: TripService) {
+    super();
   }
-  innerWidth = 0;
-  @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
-    this.innerWidth = window.innerWidth;
+  ngOnInit(): void {}
+
+  get slideCount(): number {
+    const x = this.innerWidth / 16 / 40;
+    return x > 3 ? 3 : x;
   }
 }

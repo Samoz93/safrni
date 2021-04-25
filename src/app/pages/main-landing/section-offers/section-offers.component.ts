@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { longX } from 'src/app/data/abstract/longX';
 import { TripService } from 'src/app/data/services/trip.service';
 
 @Component({
@@ -6,10 +7,11 @@ import { TripService } from 'src/app/data/services/trip.service';
   templateUrl: './section-offers.component.html',
   styleUrls: ['./section-offers.component.scss'],
 })
-export class SectionOffersComponent implements OnInit {
+export class SectionOffersComponent extends longX implements OnInit {
   isLoading = true;
-  constructor(public _ser: TripService) {}
-
+  constructor(public _ser: TripService) {
+    super();
+  }
   ngOnInit(): void {
     this._ser.loadingState$.subscribe((f) => {
       this.isLoading = f.isLoading;
@@ -22,6 +24,8 @@ export class SectionOffersComponent implements OnInit {
   }
 
   isLongX(index: number) {
-    return (this.lnth - 1) % 3 == 0 && this.lnth - 1 == index;
+    return innerWidth > 1625
+      ? (this.lnth - 1) % 3 == 0 && this.lnth - 1 == index
+      : this.lnth % 2 != 0 && this.lnth - 1 == index;
   }
 }

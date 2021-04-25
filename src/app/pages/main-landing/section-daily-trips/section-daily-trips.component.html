@@ -8,16 +8,12 @@
   <div class="data">
     <swiper
       class="swiper-container"
-      [slidesPerView]="3"
+      [slidesPerView]="slideCount"
       class="slide"
       [spaceBetween]="100"
     >
       <ng-template swiperSlide *ngFor="let item of _ser.data$ | async">
-        <app-trip-card
-          class="slide"
-          [isSingleTrip]="true"
-          [trip]="item"
-        ></app-trip-card>
+        <app-trip-card class="slide" [trip]="item"></app-trip-card>
         ></ng-template
       >
     </swiper>

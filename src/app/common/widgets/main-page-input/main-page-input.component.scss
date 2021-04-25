@@ -1,4 +1,5 @@
 @import "/src/assets/css/abstract/variables";
+@import "/src/assets/css/abstract/mixins";
 
 $border: grey solid 1px;
 .main {
@@ -16,6 +17,14 @@ $border: grey solid 1px;
   mat-icon {
     margin: 0 1rem 0 0;
     order: 0;
+  }
+  @include res(med) {
+    border-right: $border;
+    border-bottom: $border;
+  }
+  @include res(phone) {
+    border-right: none;
+    border-bottom: $border;
   }
   input {
     border: none;

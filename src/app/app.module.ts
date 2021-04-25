@@ -59,6 +59,7 @@ import { CustomSelectComponent } from './common/widgets/custom-select/custom-sel
 import { MatSelectModule } from '@angular/material/select';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { SwiperModule } from 'swiper/angular';
+import { CustomDatePickerComponent } from './common/widgets/custom-date-picker/custom-date-picker.component';
 
 @NgModule({
   declarations: [
@@ -116,6 +117,8 @@ import { SwiperModule } from 'swiper/angular';
     MainPageInputComponent,
 
     CustomSelectComponent,
+
+    CustomDatePickerComponent,
   ],
 
   imports: [

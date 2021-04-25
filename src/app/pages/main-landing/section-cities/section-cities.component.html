@@ -10,7 +10,7 @@
       *ngFor="let city of _ser.data$ | async; let i = index"
       class="card"
       [ngClass]="{
-        longX: i == 0 && _ser.data.length > 2
+        longX: isLongX(i)
       }"
       (click)="goToOffer(city.id)"
     >
