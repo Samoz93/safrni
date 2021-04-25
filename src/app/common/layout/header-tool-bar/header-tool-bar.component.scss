@@ -4,19 +4,83 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
   @include shadow;
   &_logo {
-    flex: 3;
   }
 
   &_tool-bar {
-    flex: 3;
-
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    list-style: none;
+    list-style-type: none;
+    z-index: 9999;
     *:not(:last-child) {
       margin-right: 5rem;
+    }
+  }
+  .nav-toggler {
+    padding: 5px;
+    background-color: transparent;
+    cursor: pointer;
+    height: 39px;
+    display: none;
+    border: none;
+  }
+  .nav-toggler span,
+  .nav-toggler span:before,
+  .nav-toggler span:after {
+    width: 28px;
+    height: 3px;
+    background-color: #20aed5;
+    display: block;
+    transition: 0.3s;
+  }
+  .nav-toggler span:before {
+    content: "";
+    transform: translateY(-9px);
+  }
+  .nav-toggler span:after {
+    content: "";
+    transform: translateY(6px);
+  }
+  .nav-toggler.toggler-open span {
+    background-color: transparent;
+  }
+  .nav-toggler.toggler-open span:before {
+    transform: translateY(0px) rotate(45deg);
+  }
+  .nav-toggler.toggler-open span:after {
+    transform: translateY(-3px) rotate(-45deg);
+  }
+  @include res(tab) {
+    .nav-toggler {
+      display: block;
+    }
+    .main_tool-bar {
+      position: absolute;
+      width: 100%;
+      height: calc(100vh - 60px);
+      left: 0;
+      top: 8rem;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba($color: #20aed5, $alpha: 1);
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.25s ease-out;
+
+      li {
+        width: 100%;
+        text-align: center;
+        margin: 0rem 0rem;
+      }
+    }
+    .main_tool-bar.open {
+      max-height: 100vh;
+      overflow: visible;
     }
   }
 }

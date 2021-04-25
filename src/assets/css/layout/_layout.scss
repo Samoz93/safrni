@@ -14,8 +14,11 @@ section {
 
 .page-padding {
   padding: 0 $page-padding;
+  @include res(med) {
+    padding: 0rem 10rem;
+  }
   @include res(tab) {
-    padding: 0;
+    padding: 0rem 5rem;
   }
 }
 .page-margin {

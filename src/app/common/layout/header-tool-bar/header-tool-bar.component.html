@@ -1,12 +1,20 @@
-<div class="main page-padding">
+<nav class="main page-padding">
   <div class="main_logo">
     <h1>{{ projectName }}</h1>
   </div>
-  <div class="main_tool-bar">
-    <a class="navlink" [routerLink]="['/']">Home</a>
-    <a class="navlink" [routerLink]="['/tours/asd']">Trips</a>
-    <a class="navlink" [routerLink]="['/booking/11']">Destination</a>
-    <a class="navlink">Medical Treatments</a>
-    <a class="navlink">About Us</a>
-  </div>
-</div>
+  <ul class="main_tool-bar" [ngClass]="isOpen ? 'open' : ''">
+    <li><a class="navlink" [routerLink]="['/']">Home</a></li>
+    <li><a class="navlink" [routerLink]="['/tours/asd']">Trips</a></li>
+    <li><a class="navlink" [routerLink]="['/booking/11']">Destination</a></li>
+    <li><a class="navlink">Medical Treatments</a></li>
+    <li><a class="navlink">About Us</a></li>
+  </ul>
+
+  <button
+    class="nav-toggler"
+    [ngClass]="isOpen ? 'toggler-open' : ''"
+    (click)="toggleNav()"
+  >
+    <span></span>
+  </button>
+</nav>
