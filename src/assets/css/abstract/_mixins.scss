@@ -144,3 +144,13 @@
   filter: invert(47%) sepia(76%) saturate(498%) hue-rotate(146deg)
     brightness(106%) contrast(88%);
 }
+@mixin respondMax($breakpoint) {
+  @media screen and (max-width: $breakpoint) {
+    @content;
+  }
+}
+@mixin respondMin($breakpoint) {
+  @media screen and (min-width: $breakpoint) {
+    @content;
+  }
+}

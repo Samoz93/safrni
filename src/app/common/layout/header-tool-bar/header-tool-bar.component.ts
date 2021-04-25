@@ -14,12 +14,12 @@ export class HeaderToolBarComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  toggleNav(isNav:boolean) {
-    if(isNav)
-    {
+  toggleNav(isNav: boolean) {
+    if (isNav) {
+      this.isProfileOpen = false;
       this.isNavOpen = !this.isNavOpen;
-    }
-    else {
+    } else {
+      this.isNavOpen = false;
       this.isProfileOpen = !this.isProfileOpen;
     }
   }
