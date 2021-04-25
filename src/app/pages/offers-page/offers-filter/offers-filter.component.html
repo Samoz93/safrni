@@ -13,11 +13,23 @@
         </ng-template>
       </ng-select>
     </div>
-    <div class="filter__item hp2">
+    <div class="filter__item">
       <div class="price-range">
-        <input type="number" placeholder="min" />
-        <span>-</span>
-        <input type="number" placeholder="max" />
+        <input
+          type="text"
+          oninput="this.value=this.value.replace(/[^0-9]/g,'').replace(/\B(?=(\d{3})+(?!\d))/g, ',');"
+          maxlength="4"
+          placeholder="min"
+          step="100"
+        />
+        <div class="price-range__divider"></div>
+        <input
+          type="text"
+          oninput="this.value=this.value.replace(/[^0-9]/g,'').replace(/\B(?=(\d{3})+(?!\d))/g, ',');"
+          maxlength="4"
+          placeholder="max"
+          step="1"
+        />
       </div>
     </div>
     <div class="filter__item">
