@@ -1,3 +1,15 @@
 .main {
   text-align: center;
+  font-weight: 100;
+  line-height: 1;
+  .offer-title {
+    font-size: 7.8rem;
+  }
+  .desc {
+    font-size: 7.4rem;
+  }
+  .extra {
+    font-size: 3.7rem;
+    line-height: 1.5;
+  }
 }

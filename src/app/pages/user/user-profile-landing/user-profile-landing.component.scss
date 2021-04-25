@@ -1,6 +1,7 @@
 @import "/src/assets/css/abstract/variables";
 @import "/src/assets/css/abstract/mixins";
 $transition: 0.5s all;
+$header-padding: 0 5%;
 @mixin active {
   // width: 100%;
   // border-bottom: grey 1px solid;
@@ -24,15 +25,13 @@ $transition: 0.5s all;
   display: grid;
   place-items: center;
 }
-$header-padding: 0 5%;
 
 .main {
-  //TODO tets
   height: 100vh;
   width: 100vw;
   display: grid;
   place-items: center;
-  padding: $page-padding;
+  padding: 0 $page-padding;
 }
 .header {
   color: $accent;

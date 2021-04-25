@@ -1,26 +1,8 @@
 <div class="main">
   <i
-    *ngIf="options.hasCar"
-    class="fa fa-car"
+    *ngFor="let feature of features"
     [ngClass]="{ isWhite: !isBlack, isBlack: isBlack, extraBig: isBig }"
   >
-  </i>
-  <i
-    *ngIf="options.hasAirport"
-    class="fa fa-plane"
-    [ngClass]="{ isWhite: !isBlack, isBlack: isBlack, extraBig: isBig }"
-  >
-  </i>
-  <i
-    *ngIf="options.hasBreakfast"
-    class="fa fa-coffee"
-    [ngClass]="{ isWhite: !isBlack, isBlack: isBlack, extraBig: isBig }"
-  >
-  </i>
-  <i
-    *ngIf="options.hasHotel"
-    class="fa fa-hotel"
-    [ngClass]="{ isWhite: !isBlack, isBlack: isBlack, extraBig: isBig }"
-  >
+    {{ feature.name }}
   </i>
 </div>

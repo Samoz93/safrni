@@ -13,7 +13,7 @@ import { ICONS } from 'src/app/data/uitls/enums';
   styleUrls: ['./booking-page.component.scss'],
 })
 export class BookingPageComponent implements OnInit {
-  offer: TripModel;
+  trip: TripModel;
   isLoading = true;
   icns = ICONS;
   constructor(
@@ -24,24 +24,24 @@ export class BookingPageComponent implements OnInit {
   form: FormGroup;
   ref: BookingInterface;
   ngOnInit(): void {
-    this.route.params.subscribe((f) => {
-      this.offer = this._ser.getOfferById(f['id']);
+    this.route.params.subscribe(async (f) => {
+      this.trip = await this._ser.getOfferById(f['id']);
       this.isLoading = false;
-      this.ref = {
-        currency: this.offer.currency,
-        duration: this.offer.duration,
-        email: '',
-        fullName: '',
-        id: '',
-        image: '',
-        isApproved: false,
-        message: '',
-        phoneNumber: '',
-        price: this.offer.price,
-        startDate: Date.now(),
-        ticketCount: 0,
-        ticketImage: '',
-      };
+      // this.ref = {
+      //   // currency: this.offer.currency,
+      //   // duration: this.offer.duration,
+      //   // email: '',
+      //   // fullName: '',
+      //   // id: '',
+      //   // image: '',
+      //   // isApproved: false,
+      //   // message: '',
+      //   // phoneNumber: '',
+      //   // price: this.price,
+      //   // startDate: Date.now(),
+      //   // ticketCount: 0,
+      //   // ticketImage: '',
+      // };
     });
 
     this.form = this.fb.group({

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatInputModule } from '@angular/material/input';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -43,7 +44,6 @@ import { StepperComponent } from './common/widgets/stepper/stepper.component';
 import { MatIconModule } from '@angular/material/icon';
 import { OffersPageComponent } from './pages/offers-page/offers-page.component';
 import { NgSelectModule } from '@ng-select/ng-select';
-
 import { OffersFilterComponent } from './pages/offers-page/offers-filter/offers-filter.component';
 import { BookingPageComponent } from './pages/booking/booking-page.component';
 import { LoaderComponent } from './common/widgets/loader/loader.component';
@@ -53,6 +53,12 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { GuestCountInputComponent } from './common/widgets/guest-count-input/guest-count-input.component';
 import { UpperFirstCharPipe } from './data/pipes/upper-first-char.pipe';
+import { ServerimagePipe } from './data/pipes/serverimage.pipe';
+import { MainPageInputComponent } from './common/widgets/main-page-input/main-page-input.component';
+import { CustomSelectComponent } from './common/widgets/custom-select/custom-select.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { SwiperModule } from 'swiper/angular';
 
 @NgModule({
   declarations: [
@@ -104,6 +110,12 @@ import { UpperFirstCharPipe } from './data/pipes/upper-first-char.pipe';
     GuestCountInputComponent,
 
     UpperFirstCharPipe,
+
+    ServerimagePipe,
+
+    MainPageInputComponent,
+
+    CustomSelectComponent,
   ],
 
   imports: [
@@ -121,8 +133,16 @@ import { UpperFirstCharPipe } from './data/pipes/upper-first-char.pipe';
     FormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    HttpClientModule,
+    MatSelectModule,
+    SwiperModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { floatLabel: 'never' },
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,16 +1,10 @@
-<div
-  class="main card"
-  [ngClass]="{ 'normal-trip': !isSingleTrip }"
-  (click)="goToOffer()"
-  [style.width]="width"
-  [style.height]="height"
->
+<div *ngIf="trip" class="main card" (click)="goToOffer()">
   <div class="bk">
-    <img [src]="img" alt="" />
+    <img [src]="trip?.previewImage | serverimage" alt="" />
   </div>
   <app-trip-extra class="extra"> </app-trip-extra>
 
-  <h6 class="main_info">{{ txt }}</h6>
-  <h6 class="main_price">{{ price }}</h6>
-  <h6 class="main_duration">{{ duration }} day trip</h6>
+  <h6 class="main_info">{{ trip.name }}</h6>
+  <h6 class="main_price">{{ trip.price }}</h6>
+  <h6 class="main_duration">{{ trip.duration }} day trip</h6>
 </div>

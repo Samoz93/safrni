@@ -6,11 +6,16 @@
   justify-content: space-between;
   align-items: center;
   color: white;
+
   &_quickreach {
     flex: 8;
     display: flex;
+    justify-content: flex-start;
   }
 
+  &_social-icons {
+    margin-right: 5rem;
+  }
   &_login {
     display: flex;
     justify-content: center;
@@ -19,9 +24,5 @@
     * {
       margin: 0 0.5rem;
     }
-  }
-  &_user {
-    flex: 2;
-    @include center;
   }
 }
