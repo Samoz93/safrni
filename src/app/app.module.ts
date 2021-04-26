@@ -3,9 +3,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
-
+import { AgmCoreModule } from '@agm/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AgmOverlays } from "agm-overlays"
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainLandingComponent } from './pages/main-landing/main-landing.component';
 import { SearchPanelComponent } from './pages/main-landing/search-panel/search-panel.component';
@@ -60,6 +61,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { SwiperModule } from 'swiper/angular';
 import { CustomDatePickerComponent } from './common/widgets/custom-date-picker/custom-date-picker.component';
+import { MapStepperComponent } from './common/widgets/map-stepper/map-stepper.component';
 
 @NgModule({
   declarations: [
@@ -119,6 +121,8 @@ import { CustomDatePickerComponent } from './common/widgets/custom-date-picker/c
     CustomSelectComponent,
 
     CustomDatePickerComponent,
+
+    MapStepperComponent,
   ],
 
   imports: [
@@ -139,6 +143,10 @@ import { CustomDatePickerComponent } from './common/widgets/custom-date-picker/c
     HttpClientModule,
     MatSelectModule,
     SwiperModule,
+    AgmOverlays,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyB33Yp_MzVXNyeTWkiip0mfGThC5xMSp-I',
+    }),
   ],
   providers: [
     {

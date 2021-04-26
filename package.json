@@ -11,6 +11,7 @@
   },
   "private": true,
   "dependencies": {
+    "@agm/core": "^1.1.0",
     "@angular/animations": "~11.2.0",
     "@angular/cdk": "^11.2.2",
     "@angular/common": "~11.2.0",
@@ -32,7 +33,6 @@
     "swiper": "^6.5.8",
     "tslib": "^2.0.0",
     "url-join": "^4.0.1",
-    "videogular2": "^7.0.2",
     "zone.js": "~0.11.3"
   },
   "devDependencies": {
@@ -40,8 +40,10 @@
     "@angular/cli": "~11.2.0",
     "@angular/compiler-cli": "~11.2.0",
     "@types/core-js": "^2.5.4",
+    "@types/googlemaps": "^3.39.12",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
+    "agm-overlays": "^2.0.0",
     "codelyzer": "^6.0.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",

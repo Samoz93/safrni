@@ -1,0 +1,72 @@
+<div class="map">
+  <agm-map
+    #agmMap
+    [latitude]="currentLat"
+    [longitude]="currentLong"
+    [zoom]="zoom"
+    [usePanning]="true"
+    [restriction]="restriction"
+  >
+    <!-- <agm-marker
+      *ngFor="let location of mapSteps"
+      [latitude]="location.geo.latitude"
+      [longitude]="location.geo.longitude"
+    ></agm-marker> -->
+    <!-- <agm-polyline [strokeColor]="'#ffffff'" [strokeWeight]="20">
+      <agm-polyline-point
+        *ngFor="let location of mapSteps"
+        [latitude]="location.geo.latitude"
+        [longitude]="location.geo.longitude"
+      >
+      </agm-polyline-point>
+    </agm-polyline> -->
+
+    <agm-polyline
+      *ngFor="
+        let location of mapSteps | slice: 0:mapSteps.length - 1;
+        let i = index
+      "
+    >
+      <agm-polyline-point
+        [latitude]="mapSteps[i].geo.latitude"
+        [longitude]="mapSteps[i].geo.longitude"
+      >
+      </agm-polyline-point>
+      <agm-polyline-point
+        [latitude]="mapSteps[i + 1].geo.latitude"
+        [longitude]="mapSteps[i + 1].geo.longitude"
+      >
+      </agm-polyline-point>
+
+      <agm-icon-sequence
+        [strokeColor]="'#a6a6a6'"
+        [repeat]="'20px'"
+        [strokeWeight]="10"
+        [scale]="2"
+        [strokeOpacity]="100"
+        [path]="'M 0,-1 0,1'"
+      >
+      </agm-icon-sequence>
+    </agm-polyline>
+
+    <agm-overlay
+      *ngFor="let location of mapSteps"
+      [latitude]="location.geo.latitude"
+      [longitude]="location.geo.longitude"
+      [bounds]="{
+        x: { latitude: -0.003, longitude: -0.0052 },
+        y: { latitude: 0.003, longitude: 0.0052 }
+      }"
+      (markerClick)="
+        locationOverlayClicked(location.geo.latitude, location.geo.longitude)
+      "
+    >
+      <!-- blue html square -->
+      <div class="location-overlay">
+        <img [src]="location.image" />
+        <h2>{{ location.name }}</h2>
+        <p>{{ location.desc }}</p>
+      </div>
+    </agm-overlay>
+  </agm-map>
+</div>
