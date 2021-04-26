@@ -1,70 +1,58 @@
-$midnight: #2c3e50;
+@import "/src/assets/css/abstract/variables";
+$midnight: $accent;
 $clouds: #ecf0f1;
 // General
-body {
-  color: $midnight;
-  background: $clouds;
-  padding: 0 1em 1em;
-}
-h1 {
-  margin: 0;
-  line-height: 2;
-  text-align: center;
-}
-h2 {
-  margin: 0 0 0.5em;
-  font-weight: normal;
-}
+
 input {
   position: absolute;
   opacity: 0;
   z-index: -1;
 }
 // Layout
-.row {
-  display: flex;
-  .col {
-    flex: 1;
-    &:last-child {
-      margin-left: 1em;
-    }
-  }
-}
+
 /* Accordion styles */
 .tabs {
-  border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
+  height: 100%;
+  background-color: rgba($color: #000000, $alpha: 0.25);
+  width: 100%;
 }
 .tab {
   width: 100%;
+
   color: white;
   overflow: hidden;
   &-label {
     display: flex;
     justify-content: space-between;
-    padding: 1em;
+    padding: 1rem 2rem;
     background: $midnight;
     font-weight: bold;
     cursor: pointer;
+    font-size: 2rem;
     /* Icon */
     &:hover {
       background: darken($midnight, 10%);
     }
     &::after {
       content: "\276F";
-      width: 1em;
-      height: 1em;
+      width: 1rem;
+      height: 1rem;
       text-align: center;
       transition: all 0.35s;
     }
   }
   &-content {
     max-height: 0;
-    padding: 0 1em;
+    padding: 1rem 2rem;
     color: $midnight;
     background: white;
     transition: all 0.35s;
+
+    &__item {
+      font-size: 2rem;
+    }
   }
   &-close {
     display: flex;
