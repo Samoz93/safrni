@@ -19,9 +19,10 @@ $clouds: #ecf0f1;
     justify-content: space-between;
     padding: 1rem 2rem;
     background: $midnight;
-
+    align-items: center;
     cursor: pointer;
     margin: 0rem;
+
     /* Icon */
     &:hover {
       background: darken($midnight, 10%);
@@ -30,14 +31,18 @@ $clouds: #ecf0f1;
       font-size: 2rem;
       font-weight: bold;
     }
-    // &::after {
-    //   content: "\276F";
-    //   width: 1rem;
-    //   height: 1rem;
-    //   text-align: center;
-    //   transition: all 0.35s;
-    // }
+    i {
+      transition: all 0.2s ease-out;
+      font-size: 2rem;
+    }
   }
+
+  &-label.open {
+    i {
+      transform: rotateZ(-180deg);
+    }
+  }
+
   &-content {
     height: 0px;
     transition: all 0.2s ease-out;
@@ -47,6 +52,7 @@ $clouds: #ecf0f1;
     transition: all 0.35s;
 
     &__item {
+      cursor: pointer;
       font-size: 2rem;
     }
   }

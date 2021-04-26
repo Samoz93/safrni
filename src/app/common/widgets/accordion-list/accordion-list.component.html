@@ -1,10 +1,19 @@
 <div class="tabs">
   <div class="tab" *ngFor="let item of items; let i = index">
-    <div class="tab-label" (click)="toggleHeader(i)">
-      <p>day {{ i }}</p>
+    <div
+      class="tab-label"
+      (click)="toggleHeader(i)"
+      [ngClass]="openHeaders[i] ? 'open' : ''"
+    >
+      <p>day {{ i + 1 }}</p>
+      <i class="fa fa-arrow-down"></i>
     </div>
     <div class="tab-content" [ngClass]="openHeaders[i] ? 'open' : ''">
-      <div class="tab-content__item" *ngFor="let opt of item.options">
+      <div
+        class="tab-content__item"
+        *ngFor="let opt of item.options; let j = index"
+        (click)="onItemClicked({ parentIndex: i, childIndex: j })"
+      >
         {{ opt.label }}
       </div>
     </div>

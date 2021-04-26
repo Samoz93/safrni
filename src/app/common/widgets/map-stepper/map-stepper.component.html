@@ -58,7 +58,7 @@
     </ng-container>
   </agm-map>
   <div class="locations-list">
-    <app-accordion-list [items]="accordionItems"></app-accordion-list>
+    <app-accordion-list [items]="accordionItems" (itemClicked)="onLocationClicked($event)"></app-accordion-list>
   </div>
 </div>
 <!-- <agm-marker

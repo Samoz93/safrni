@@ -1,5 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { AccordionListItem } from './accordion-list-item';
+
+export type AccordionClickEventData = {
+  parentIndex: number;
+  childIndex: number;
+};
 
 @Component({
   selector: 'app-accordion-list',
@@ -10,6 +15,7 @@ export class AccordionListComponent implements OnInit {
   constructor() {}
 
   @Input() items: AccordionListItem[];
+  @Output() itemClicked = new EventEmitter<AccordionClickEventData>();
 
   openHeaders: boolean[] = [];
   ngOnInit(): void {
@@ -18,7 +24,14 @@ export class AccordionListComponent implements OnInit {
   }
 
   toggleHeader(headerIndex: number) {
-    this.openHeaders = new Array(this.items.length).fill(false);
-    this.openHeaders[headerIndex] = true
+    if (this.openHeaders[headerIndex]) {
+      this.openHeaders[headerIndex] = false;
+    } else {
+      this.openHeaders = new Array(this.items.length).fill(false);
+      this.openHeaders[headerIndex] = true;
+    }
+  }
+  onItemClicked(item: AccordionClickEventData) {
+    this.itemClicked.emit(item);
   }
 }

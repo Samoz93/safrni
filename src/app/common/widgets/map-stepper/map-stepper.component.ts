@@ -14,6 +14,7 @@ import {
   AccordionListItem,
   AccordionListItemOption,
 } from '../accordion-list/accordion-list-item';
+import { AccordionClickEventData } from '../accordion-list/accordion-list.component';
 
 @Component({
   selector: 'app-map-stepper',
@@ -35,7 +36,7 @@ export class MapStepperComponent implements OnInit, AfterViewInit {
     strictBounds: true,
   };
   map: AgmMap;
-  zoom: number = 15;
+  zoom: number = 10;
 
   accordionItems: AccordionListItem[] = [];
   allLocationsSorted: LocationModel[] = [];
@@ -66,6 +67,15 @@ export class MapStepperComponent implements OnInit, AfterViewInit {
   locationOverlayClicked(lat: number, long: number) {
     this.currentLat = lat;
     this.currentLong = long;
-    this.zoom = 15;
+    this.zoom = 10;
+  }
+
+  onLocationClicked(data: AccordionClickEventData) {
+    this.currentLat = this.timelines[data.parentIndex].locations[
+      data.childIndex
+    ].geo.latitude;
+    this.currentLong = this.timelines[data.parentIndex].locations[
+      data.childIndex
+    ].geo.longitude;
   }
 }
