@@ -32,13 +32,12 @@
   //     grid-row: 1 / 1;
   //   }
   // }
-  .card {
+  .data_card {
     height: 40rem;
     position: relative;
     cursor: pointer;
     transition: all 0.3s ease-out;
     overflow: hidden;
-
     &:hover {
       // transform: scale(0.975);
       img {

@@ -1,10 +1,9 @@
-<div *ngIf="trip" class="main card" (click)="goToOffer()">
-  <div class="bk">
-    <img [src]="trip?.previewImage | serverimage" alt="" />
+<div class="main card" (click)="goToOffer()">
+  <img [src]="img | serverimage" alt="" />
+  <app-trip-extra [features]="features" class="extra"> </app-trip-extra>
+  <div *ngIf="isOffer" class="duration-price">
+    <h6 class="main_price">{{ price | price }}</h6>
+    <h6 class="main_duration">{{ duration }} days</h6>
   </div>
-  <app-trip-extra class="extra"> </app-trip-extra>
-
-  <h6 class="main_info">{{ trip.name }}</h6>
-  <h6 class="main_price">{{ trip.price }}</h6>
-  <h6 class="main_duration">{{ trip.duration }} day trip</h6>
+  <h6 class="main_title">{{ name }}</h6>
 </div>

@@ -6,17 +6,17 @@
   ></app-section-header>
 
   <div class="data page-padding">
-    <div
-      *ngFor="let city of _ser.data$ | async; let i = index"
-      class="card"
+    <app-trip-card
+      *ngFor="let item of _ser.data$ | async; let i = index"
+      class="data_card"
       [ngClass]="{
         longX: isLongX(i)
       }"
-      (click)="goToOffer(city.id)"
-    >
-      <img [src]="city?.previewImage | serverimage" alt="" />
-      <h5 class="title">{{ city.cityName }}</h5>
-      <h5 class="price-range">Start from 400$</h5>
-    </div>
+      [id]="item._id"
+      [img]="item.image"
+      [name]="item.name"
+      [isOffer]="false"
+      [duration]="0"
+    ></app-trip-card>
   </div>
 </div>

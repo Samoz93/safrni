@@ -60,6 +60,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { SwiperModule } from 'swiper/angular';
 import { CustomDatePickerComponent } from './common/widgets/custom-date-picker/custom-date-picker.component';
+import { PricePipe } from './data/pipes/price.pipe';
+import { NgxPopperjsModule } from 'ngx-popperjs';
+import { HoverableItemComponent } from './common/widgets/hoverable-item/hoverable-item.component';
+import { ValidationIconComponent } from './common/widgets/validation-icon/validation-icon.component';
 
 @NgModule({
   declarations: [
@@ -119,6 +123,12 @@ import { CustomDatePickerComponent } from './common/widgets/custom-date-picker/c
     CustomSelectComponent,
 
     CustomDatePickerComponent,
+
+    PricePipe,
+
+    HoverableItemComponent,
+
+    ValidationIconComponent,
   ],
 
   imports: [
@@ -139,6 +149,7 @@ import { CustomDatePickerComponent } from './common/widgets/custom-date-picker/c
     HttpClientModule,
     MatSelectModule,
     SwiperModule,
+    NgxPopperjsModule,
   ],
   providers: [
     {

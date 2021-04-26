@@ -1,0 +1,13 @@
+<popper-content #content>
+  <h1>{{ title }}</h1>
+  <p>{{ desc }}</p>
+</popper-content>
+
+<img
+  [popper]="content"
+  [popperShowOnStart]="false"
+  [popperTrigger]="triggers.hover"
+  [popperPlacement]="placement.TOP"
+  [src]="img"
+  alt=""
+/>

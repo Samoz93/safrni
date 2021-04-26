@@ -1,8 +1,14 @@
 <div class="main">
-  <i
-    *ngFor="let feature of features"
-    [ngClass]="{ isWhite: !isBlack, isBlack: isBlack, extraBig: isBig }"
+  <app-hoverable-item
+    *ngFor="let feature of features; let i = index"
+    [img]="feature.image | serverimage"
+    [title]="feature.name"
+    [desc]="feature.description"
+    class="feature"
   >
-    {{ feature.name }}
-  </i>
+    <!-- <div [style]="'--i:' + i" class="info_card">
+      <h1>{{ feature.name }}</h1>
+      <p>{{ feature.description }}</p>
+    </div> -->
+  </app-hoverable-item>
 </div>

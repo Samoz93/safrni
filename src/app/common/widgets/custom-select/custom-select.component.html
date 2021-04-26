@@ -2,7 +2,7 @@
   <mat-icon matPrefix>{{ icon }}</mat-icon>
   <mat-form-field appearance="fill" floatLabel="never">
     <mat-label>Travel Type</mat-label>
-    <mat-select>
+    <mat-select [formControl]="control">
       <mat-option *ngFor="let data of values" [value]="data.id">
         {{ data.name }}
       </mat-option>

@@ -1,11 +1,12 @@
-import { Component, Injector, Input, ViewChild } from '@angular/core';
 import {
-  ControlValueAccessor,
-  FormControl,
-  FormControlDirective,
-  NG_VALUE_ACCESSOR,
-} from '@angular/forms';
-import { ControlValueAccessorConnector } from './control-value-accessor-connector';
+  Component,
+  forwardRef,
+  Injector,
+  Input,
+  ViewChild,
+} from '@angular/core';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessorConnector } from 'src/app/data/abstract/control-value-accessor-connector';
 
 @Component({
   selector: 'app-main-page-input',
@@ -14,7 +15,7 @@ import { ControlValueAccessorConnector } from './control-value-accessor-connecto
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: MainPageInputComponent,
+      useExisting: forwardRef(() => MainPageInputComponent),
       multi: true,
     },
   ],

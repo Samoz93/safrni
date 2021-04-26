@@ -19,9 +19,10 @@
       <app-custom-select
         [icon]="icons.work"
         [values]="tripTypes"
+        formControlName="travelType"
       ></app-custom-select>
       <mat-form-field class="date" appearance="fill" color="white">
-        <input matInput [matDatepicker]="picker" />
+        <input formControlName="date" matInput [matDatepicker]="picker" />
         <mat-datepicker-toggle matPrefix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>

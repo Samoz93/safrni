@@ -1,4 +1,15 @@
 <div class="main">
-  <input [formControl]="control" type="text" [placeholder]="placeholder" />
-  <mat-icon>{{ icon }}</mat-icon>
+  <input
+    on-focus="onFocus($event)"
+    on-focusout="onFocusOut()"
+    [formControl]="control"
+    type="text"
+    [placeholder]="placeholder"
+    #input
+  />
+  <app-validation-icon
+    [icon]="icon"
+    [isFocused]="isfocused"
+    [errors]="errmsg"
+  ></app-validation-icon>
 </div>

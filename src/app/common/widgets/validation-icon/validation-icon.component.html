@@ -1,0 +1,12 @@
+<mat-icon
+  [popper]="content"
+  [popperShowOnStart]="false"
+  [popperTrigger]="triggers.hover"
+  [popperPlacement]="placement.TOP"
+  [ngClass]="{ focused: isFocused, error: !!errors }"
+  >{{ icon }}</mat-icon
+>
+
+<popper-content #content>
+  <h1>{{ errors }}</h1>
+</popper-content>

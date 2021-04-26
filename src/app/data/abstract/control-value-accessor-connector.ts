@@ -3,17 +3,34 @@ import {
   ControlValueAccessor,
   FormControl,
   FormControlDirective,
+  NG_VALUE_ACCESSOR,
 } from '@angular/forms';
-import { Component, Injector, Input, ViewChild } from '@angular/core';
+import {
+  Component,
+  forwardRef,
+  HostBinding,
+  HostListener,
+  Injector,
+  Input,
+  ViewChild,
+} from '@angular/core';
 import { ICONS } from 'src/app/data/uitls/enums';
 
 @Component({
   template: '',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => ControlValueAccessorConnector),
+      multi: true,
+    },
+  ],
 })
 export class ControlValueAccessorConnector implements ControlValueAccessor {
   @ViewChild(FormControlDirective, { static: true })
   formControlDirective: FormControlDirective;
   @Input() values: any[];
+  @Input() icon: ICONS = ICONS.profile;
 
   @Input()
   formControl: FormControl;
@@ -22,7 +39,6 @@ export class ControlValueAccessorConnector implements ControlValueAccessor {
   formControlName: string;
   @Input()
   placeholder: string = '';
-  @Input() icon: ICONS = ICONS.profile;
 
   get control() {
     return (
@@ -31,7 +47,9 @@ export class ControlValueAccessorConnector implements ControlValueAccessor {
     );
   }
 
-  constructor(private injector: Injector) {}
+  constructor(private injector: Injector) {
+    console.log(this.control);
+  }
 
   get controlContainer() {
     return this.injector.get(ControlContainer);
@@ -53,4 +71,33 @@ export class ControlValueAccessorConnector implements ControlValueAccessor {
     if (this.formControlDirective?.valueAccessor?.setDisabledState)
       this.formControlDirective?.valueAccessor.setDisabledState(isDisabled);
   }
+
+  get errmsg(): any[] | undefined {
+    let lst;
+    if (this.control.errors && this.control.dirty) {
+      lst = [];
+      Object.keys(this.control.errors).forEach((f) =>
+        lst.push(this._getMsg(f))
+      );
+    }
+    return lst;
+  }
+  _getMsg(name: any) {
+    return errMsgs.filter((g) => g.name == name)[0]?.msg ?? name;
+  }
+  isfocused = false;
+  onFocus(e: any) {
+    this.isfocused = true;
+  }
+
+  onFocusOut() {
+    this.isfocused = false;
+  }
 }
+
+const errMsgs = [
+  {
+    name: 'required',
+    msg: 'this field is required',
+  },
+];
