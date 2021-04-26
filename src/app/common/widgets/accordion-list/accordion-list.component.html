@@ -1,8 +1,9 @@
 <div class="tabs">
   <div class="tab" *ngFor="let item of items; let i = index">
-    <input type="radio" id="{{ 'rd' + i }}" name="rd" />
-    <label class="tab-label" for="{{ 'rd' + i }}">day {{ i }}</label>
-    <div class="tab-content">
+    <div class="tab-label" (click)="toggleHeader(i)">
+      <p>day {{ i }}</p>
+    </div>
+    <div class="tab-content" [ngClass]="openHeaders[i] ? 'open' : ''">
       <div class="tab-content__item" *ngFor="let opt of item.options">
         {{ opt.label }}
       </div>

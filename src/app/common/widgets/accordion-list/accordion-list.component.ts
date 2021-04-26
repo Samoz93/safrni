@@ -11,5 +11,14 @@ export class AccordionListComponent implements OnInit {
 
   @Input() items: AccordionListItem[];
 
-  ngOnInit(): void {}
+  openHeaders: boolean[] = [];
+  ngOnInit(): void {
+    this.openHeaders = new Array(this.items.length).fill(false);
+    this.openHeaders[0] = true;
+  }
+
+  toggleHeader(headerIndex: number) {
+    this.openHeaders = new Array(this.items.length).fill(false);
+    this.openHeaders[headerIndex] = true
+  }
 }
