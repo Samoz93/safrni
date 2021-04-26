@@ -6,7 +6,14 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+
 import { LocationModel } from 'src/app/data/models/LocationModel';
+import { TimelineItemModel } from 'src/app/data/models/timelineModel';
+
+import {
+  AccordionListItem,
+  AccordionListItemOption,
+} from '../accordion-list/accordion-list-item';
 
 @Component({
   selector: 'app-map-stepper',
@@ -30,17 +37,30 @@ export class MapStepperComponent implements OnInit, AfterViewInit {
   map: AgmMap;
   zoom: number = 15;
 
+  accordionItems: AccordionListItem[] = [];
+  allLocationsSorted: LocationModel[] = [];
   ngAfterViewInit(): void {
     this.agmMap.mapReady.subscribe((map) => {
       this.map = map;
     });
   }
-  @Input('mapSteps') mapSteps: LocationModel[];
+  @Input('timelines') timelines: TimelineItemModel[];
   @ViewChild('agmMap') agmMap: AgmMap;
 
   ngOnInit(): void {
-    this.currentLat = this.mapSteps[0].geo.latitude;
-    this.currentLong = this.mapSteps[1].geo.longitude;
+    this.timelines.forEach((timeline) => {
+      this.accordionItems.push(
+        new AccordionListItem(
+          timeline.locations.map((location) => {
+            return new AccordionListItemOption(location.id, location.name);
+          })
+        )
+      );
+      this.allLocationsSorted.push(...timeline.locations);
+    });
+
+    this.currentLat = this.timelines[0].locations[0].geo.latitude;
+    this.currentLong = this.timelines[1].locations[0].geo.longitude;
   }
 
   locationOverlayClicked(lat: number, long: number) {

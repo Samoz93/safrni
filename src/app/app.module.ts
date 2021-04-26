@@ -62,6 +62,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { SwiperModule } from 'swiper/angular';
 import { CustomDatePickerComponent } from './common/widgets/custom-date-picker/custom-date-picker.component';
 import { MapStepperComponent } from './common/widgets/map-stepper/map-stepper.component';
+import { AccordionListComponent } from './common/widgets/accordion-list/accordion-list.component';
 
 @NgModule({
   declarations: [
@@ -123,6 +124,8 @@ import { MapStepperComponent } from './common/widgets/map-stepper/map-stepper.co
     CustomDatePickerComponent,
 
     MapStepperComponent,
+
+    AccordionListComponent,
   ],
 
   imports: [

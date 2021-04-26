@@ -2,7 +2,7 @@ export class LocationModel {
   constructor(
     public id: string,
     public image: string,
-    public name: String,
+    public name: string,
     public desc: string,
     public geo: Coordinates
   ) {}
