@@ -27,7 +27,7 @@ export class AccordionListComponent implements OnInit {
     if (this.openHeaders[headerIndex]) {
       this.openHeaders[headerIndex] = false;
     } else {
-      this.openHeaders = new Array(this.items.length).fill(false);
+      // this.openHeaders = new Array(this.items.length).fill(false);
       this.openHeaders[headerIndex] = true;
     }
   }

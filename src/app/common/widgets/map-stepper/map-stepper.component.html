@@ -6,6 +6,8 @@
     [zoom]="zoom"
     [usePanning]="true"
     [restriction]="restriction"
+    [maxZoom]="15"
+    [styles]="styles"
   >
     <agm-polyline
       *ngFor="
@@ -25,12 +27,12 @@
       </agm-polyline-point>
 
       <agm-icon-sequence
-        [strokeColor]="'#a6a6a6'"
+        [strokeColor]="'#20aed5'"
         [repeat]="'20px'"
-        [strokeWeight]="10"
+        [strokeWeight]="5"
         [scale]="2"
         [strokeOpacity]="100"
-        [path]="'M 0,-1 0,1'"
+        [path]="'FORWARD_CLOSED_ARROW'"
       >
       </agm-icon-sequence>
     </agm-polyline>
@@ -58,8 +60,26 @@
     </ng-container>
   </agm-map>
   <div class="locations-list">
-    <app-accordion-list [items]="accordionItems" (itemClicked)="onLocationClicked($event)"></app-accordion-list>
+    <app-accordion-list
+      [items]="accordionItems"
+      (itemClicked)="onLocationClicked($event)"
+    ></app-accordion-list>
   </div>
+  <div
+    class="side-information-bar"
+    [ngStyle]="{ left: sideBarVisibility ? ' 0px' : '-25%' }"
+  >
+    <div class="side-information-bar__content">
+      <img src="{{ sidebarLocation.image }}" />
+      <h2>{{ sidebarLocation.name }}</h2>
+      <p>{{ sidebarLocation.desc }}</p>
+    </div>
+  </div>
+  <i
+    class="fa fa-arrow-left sidebar-toggle"
+    (click)="toggleSidebar()"
+    [ngClass]="sideBarVisibility ? '' : 'open'"
+  ></i>
 </div>
 <!-- <agm-marker
       *ngFor="let location of mapSteps"
