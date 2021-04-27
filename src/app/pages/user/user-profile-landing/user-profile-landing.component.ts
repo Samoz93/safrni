@@ -8,7 +8,7 @@ import { UserProfileComponent } from './tabs/user-profile/user-profile.component
   styleUrls: ['./user-profile-landing.component.scss'],
 })
 export class UserProfileLandingComponent implements OnInit {
-  type = ProfileEnum.trips;
+  type = ProfileEnum.profile;
   enum = ProfileEnum;
 
   profile = new UserProfileComponent();

@@ -42,6 +42,10 @@
       @include res(med) {
         grid-template-columns: repeat(2, 1fr);
       }
+      @include res(tab-land-extra) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       @include res(phone) {
         grid-template-columns: repeat(1, 1fr);
       }
@@ -51,14 +55,14 @@
         @include res(med) {
           grid-column: span 2;
         }
+        @include res(tab-land-extra) {
+          grid-column: span 2;
+        }
         @include res(phone) {
           grid-column: span 1;
         }
       }
       align-self: flex-end;
-      .date {
-        @include myCustomCalendarStyle;
-      }
     }
     h2 {
       font-size: 3.1rem;

@@ -15,6 +15,7 @@ export class ValidationIconComponent implements OnInit {
   @Input() icon: ICONS;
   @Input() errors: any[] | undefined = [];
   @Input() isFocused: any;
+  @Input() placeholder: string = '';
   @ViewChild('content', { static: true }) popper: NgxPopperjsContentComponent;
   placement = NgxPopperjsPlacements;
   triggers = NgxPopperjsTriggers;

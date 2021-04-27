@@ -54,7 +54,6 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { GuestCountInputComponent } from './common/widgets/guest-count-input/guest-count-input.component';
 import { UpperFirstCharPipe } from './data/pipes/upper-first-char.pipe';
 import { ServerimagePipe } from './data/pipes/serverimage.pipe';
-import { MainPageInputComponent } from './common/widgets/main-page-input/main-page-input.component';
 import { CustomSelectComponent } from './common/widgets/custom-select/custom-select.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
@@ -64,6 +63,7 @@ import { PricePipe } from './data/pipes/price.pipe';
 import { NgxPopperjsModule } from 'ngx-popperjs';
 import { HoverableItemComponent } from './common/widgets/hoverable-item/hoverable-item.component';
 import { ValidationIconComponent } from './common/widgets/validation-icon/validation-icon.component';
+import { CustomInputComponent } from './common/widgets/custom-input/custom-input.component';
 
 @NgModule({
   declarations: [
@@ -118,8 +118,6 @@ import { ValidationIconComponent } from './common/widgets/validation-icon/valida
 
     ServerimagePipe,
 
-    MainPageInputComponent,
-
     CustomSelectComponent,
 
     CustomDatePickerComponent,
@@ -129,6 +127,8 @@ import { ValidationIconComponent } from './common/widgets/validation-icon/valida
     HoverableItemComponent,
 
     ValidationIconComponent,
+
+    CustomInputComponent,
   ],
 
   imports: [

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MainPageInputComponent } from './main-page-input.component';
+import { CustomInputComponent } from './custom-input.component';
 
-describe('MainPageInputComponent', () => {
-  let component: MainPageInputComponent;
-  let fixture: ComponentFixture<MainPageInputComponent>;
+describe('CustomInputComponent', () => {
+  let component: CustomInputComponent;
+  let fixture: ComponentFixture<CustomInputComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MainPageInputComponent ]
+      declarations: [ CustomInputComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MainPageInputComponent);
+    fixture = TestBed.createComponent(CustomInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

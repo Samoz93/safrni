@@ -8,13 +8,12 @@ import {
 import {
   Component,
   forwardRef,
-  HostBinding,
-  HostListener,
   Injector,
   Input,
   ViewChild,
 } from '@angular/core';
 import { ICONS } from 'src/app/data/uitls/enums';
+import { MyControlAbstract } from './my-controls-abstract';
 
 @Component({
   template: '',
@@ -26,11 +25,12 @@ import { ICONS } from 'src/app/data/uitls/enums';
     },
   ],
 })
-export class ControlValueAccessorConnector implements ControlValueAccessor {
+export class ControlValueAccessorConnector
+  extends MyControlAbstract
+  implements ControlValueAccessor {
   @ViewChild(FormControlDirective, { static: true })
   formControlDirective: FormControlDirective;
   @Input() values: any[];
-  @Input() icon: ICONS = ICONS.profile;
 
   @Input()
   formControl: FormControl;
@@ -48,7 +48,7 @@ export class ControlValueAccessorConnector implements ControlValueAccessor {
   }
 
   constructor(private injector: Injector) {
-    console.log(this.control);
+    super();
   }
 
   get controlContainer() {
@@ -83,21 +83,6 @@ export class ControlValueAccessorConnector implements ControlValueAccessor {
     return lst;
   }
   _getMsg(name: any) {
-    return errMsgs.filter((g) => g.name == name)[0]?.msg ?? name;
-  }
-  isfocused = false;
-  onFocus(e: any) {
-    this.isfocused = true;
-  }
-
-  onFocusOut() {
-    this.isfocused = false;
+    return this.errMsgs.filter((g) => g.name == name)[0]?.msg ?? name;
   }
 }
-
-const errMsgs = [
-  {
-    name: 'required',
-    msg: 'this field is required',
-  },
-];

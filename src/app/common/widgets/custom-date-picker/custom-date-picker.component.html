@@ -1,1 +1,21 @@
-<p>custom-date-picker works!</p>
+<div class="main">
+  <mat-form-field class="date" appearance="fill">
+    <input
+      on-focus="onFocus($event)"
+      on-focusout="onFocusOut()"
+      [formControl]="control"
+      matInput
+      [matDatepicker]="picker"
+    />
+    <mat-datepicker-toggle matPrefix [for]="picker">
+      <app-validation-icon
+        matDatepickerToggleIcon
+        [icon]="iconsData.calendar"
+        [isFocused]="isfocused"
+        [errors]="errmsg"
+        [placeholder]="placeholder"
+      ></app-validation-icon>
+    </mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>
