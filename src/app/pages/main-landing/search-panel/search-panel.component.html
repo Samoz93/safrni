@@ -14,8 +14,8 @@
         placeholder="sss"
       >
       </app-custom-input>
-      <app-custom-input formControlName="guest" placeholder="sss">
-      </app-custom-input>
+      <app-guest-count-input class="guest" formControlName="guest">
+      </app-guest-count-input>
       <app-custom-select
         [icon]="icons.work"
         [values]="tripTypes"
@@ -27,5 +27,7 @@
       ></app-custom-date-picker>
       <button class="main-btn">Search</button>
     </form>
+    {{ form.value | json }}
+    {{ form.controls["guest"].errors | json }}
   </div>
 </div>

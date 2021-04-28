@@ -1,20 +1,36 @@
-<div class="main">
-  <div class="display">
-    <h3>{{ str }}</h3>
-    <div class="display_box" (click)="isShowen = !isShowen">
-      <i class="fa fa-chevron-down" [ngClass]="{ shown: isShowen }"></i>
+<div
+  class="main"
+  [attr.aria-describedby]="userAriaDescribedBy"
+  [attr.aria-labelledby]="parentFormField?.getLabelId()"
+>
+  <div class="display" (click)="isShowen = !isShowen">
+    <app-validation-icon
+      class="display-prefix"
+      [icon]="icons.profile"
+      [isFocused]="isShowen"
+      [errors]="errmsg"
+      [placeholder]="placeholder"
+    ></app-validation-icon>
+    <div class="display-text">
+      <p class="display-text-label">{{ placeholder }}</p>
+      <p class="display-text-data">{{ str }}</p>
     </div>
+    <i
+      class="fa fa-chevron-down display-suffix"
+      [ngClass]="{ shown: isShowen }"
+    ></i>
   </div>
-  <div class="expandable" [ngClass]="{ shown: isShowen }">
-    <div class="options" *ngFor="let i of data | keyvalue">
+  <ul class="expandable" [ngClass]="{ shown: isShowen }">
+    <li class="options" *ngFor="let i of value | keyvalue">
       <div class="options-title">{{ i.key | upperFirstChar }}</div>
-      <a class="options-minus clickable" (click)="decrease(i.key)"
-        ><mat-icon>remove_circle</mat-icon></a
+      <mat-icon class="options-minus clickable" (click)="decrease(i.key)"
+        >remove</mat-icon
       >
+
       <div class="options-value">{{ i.value }}</div>
-      <a class="options-plus clickable" (click)="increase(i.key)"
-        ><mat-icon>add_circle</mat-icon></a
+      <mat-icon class="options-plus clickable" (click)="increase(i.key)"
+        >add</mat-icon
       >
-    </div>
-  </div>
+    </li>
+  </ul>
 </div>

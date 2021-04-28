@@ -35,6 +35,7 @@ $border: grey solid 1px;
     width: 100%;
     height: 100%;
     order: 1;
+    margin-left: 0.5rem;
   }
   input:focus + mat-icon {
     color: $accent;

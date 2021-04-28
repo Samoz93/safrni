@@ -14,11 +14,4 @@ export class MyControlAbstract {
   onFocusOut() {
     this.isfocused = false;
   }
-
-  errMsgs = [
-    {
-      name: 'required',
-      msg: 'this field is required',
-    },
-  ];
 }

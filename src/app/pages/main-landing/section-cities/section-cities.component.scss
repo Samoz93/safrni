@@ -20,18 +20,6 @@
     }
   }
 
-  // @include res(tab) {
-  //   grid-template-columns: repeat(2, 30rem);
-  //   grid-auto-rows: 30rem;
-  //   .longX {
-  //     grid-row: 2 / 3;
-  //     grid-column: 1 / 1;
-  //   }
-  //   .longY {
-  //     grid-column: 2 / 3;
-  //     grid-row: 1 / 1;
-  //   }
-  // }
   .data_card {
     height: 40rem;
     position: relative;

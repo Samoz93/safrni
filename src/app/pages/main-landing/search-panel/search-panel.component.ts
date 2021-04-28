@@ -19,7 +19,11 @@ export class SearchPanelComponent implements OnInit {
   constructor(public fb: FormBuilder) {
     this.form = fb.group({
       whereTo: ['sasdasd', Validators.required],
-      guest: '',
+      guest: {
+        adult: 1,
+        child: 0,
+        infant: 0,
+      },
       travelType: '1',
       date: new Date(),
     });

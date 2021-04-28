@@ -12,8 +12,8 @@ import {
   Input,
   ViewChild,
 } from '@angular/core';
-import { ICONS } from 'src/app/data/uitls/enums';
 import { MyControlAbstract } from './my-controls-abstract';
+import { DevData } from '../static/main-info';
 
 @Component({
   template: '',
@@ -83,6 +83,6 @@ export class ControlValueAccessorConnector
     return lst;
   }
   _getMsg(name: any) {
-    return this.errMsgs.filter((g) => g.name == name)[0]?.msg ?? name;
+    return DevData.errMsgs.filter((g) => g.name == name)[0]?.msg ?? name;
   }
 }

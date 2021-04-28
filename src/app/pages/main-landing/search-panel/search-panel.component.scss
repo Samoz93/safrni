@@ -6,6 +6,9 @@
   place-items: center;
   position: relative;
   height: 90rem;
+  .guest {
+    z-index: 1000;
+  }
   @include res(med) {
     padding: 0 10%;
   }
