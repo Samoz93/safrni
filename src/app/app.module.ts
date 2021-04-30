@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AgmCoreModule } from '@agm/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AgmOverlays } from "agm-overlays"
+import { AgmOverlays } from 'agm-overlays';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainLandingComponent } from './pages/main-landing/main-landing.component';
 import { SearchPanelComponent } from './pages/main-landing/search-panel/search-panel.component';
@@ -36,10 +36,6 @@ import { UserSecurityComponent } from './pages/user/user-profile-landing/tabs/us
 import { ProfileinputComponent } from './common/widgets/profileinput/profileinput.component';
 import { TourInformationComponent } from './pages/tour-information/tour-information.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { InfoInformationTabComponent } from './pages/tour-information/info-information-tab/info-information-tab.component';
-import { InfoPlanTabComponent } from './pages/tour-information/info-plan-tab/info-plan-tab.component';
-import { InfoLocationTabComponent } from './pages/tour-information/info-location-tab/info-location-tab.component';
-import { InfoReviewsTabComponent } from './pages/tour-information/info-reviews-tab/info-reviews-tab.component';
 import { ReadOnlyStarsComponent } from './common/widgets/read-only-stars/read-only-stars.component';
 import { StepperComponent } from './common/widgets/stepper/stepper.component';
 import { MatIconModule } from '@angular/material/icon';
@@ -98,10 +94,7 @@ import { CustomInputComponent } from './common/widgets/custom-input/custom-input
     UserSecurityComponent,
     ProfileinputComponent,
     TourInformationComponent,
-    InfoInformationTabComponent,
-    InfoPlanTabComponent,
-    InfoLocationTabComponent,
-    InfoReviewsTabComponent,
+
     ReadOnlyStarsComponent,
     StepperComponent,
     OffersPageComponent,
