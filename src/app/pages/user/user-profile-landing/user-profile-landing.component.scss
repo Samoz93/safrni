@@ -2,6 +2,9 @@
 @import "/src/assets/css/abstract/mixins";
 $transition: 0.5s all;
 $header-padding: 0 5%;
+@include res(tab) {
+  $header-padding: 0;
+}
 @mixin active {
   // width: 100%;
   // border-bottom: grey 1px solid;
@@ -27,58 +30,68 @@ $header-padding: 0 5%;
 }
 
 .main {
-  height: 100vh;
-  width: 100vw;
   display: grid;
   place-items: center;
   padding: 0 $page-padding;
 }
-.header {
-  color: $accent;
-  display: flex;
-  align-items: center;
-  padding: $header-padding;
-  font-size: 5rem;
-}
-.center {
-  padding: $header-padding;
-  color: black;
-  overflow: scroll;
-}
+
 .wrapper {
   width: 100%;
   height: 90vh;
   display: grid;
   grid-template-columns: 20% 80%;
-  grid-template-rows: 20% 80%;
+  grid-template-rows: 15% 50% 35%;
+  @include res(tab) {
+    grid-template-rows: 10% 40% 10% 40%;
+  }
+  @include res(tab) {
+    grid-template-columns: 60% 40%;
+  }
   border-radius: $border-radius;
   font-size: 2.5rem;
   font-weight: 700;
-  .nav-bar {
+  .header {
+    color: $accent;
+    grid-row: 1;
+    grid-column: 2;
+    padding: $header-padding;
+    font-size: 5rem;
+    @include res(tab) {
+      grid-column: span 2;
+      text-align: center;
+    }
+  }
+
+  .center {
     grid-row: span 2;
-    // background-color: $accent;
-    text-align: center;
+    grid-column: 2;
+    align-self: flex-start;
+    height: 100%;
+    color: black;
+    @include res(tab) {
+      grid-row: 4;
+      grid-column: span 2;
+    }
+  }
+  .user-info {
+    grid-row: span 2;
+    grid-column: 1;
     display: flex;
-    row-gap: 5rem;
     flex-direction: column;
+    align-items: center;
     justify-content: space-evenly;
+    @include res(tab) {
+      grid-row: 2;
+      grid-column: span 2;
+    }
     &_title {
       margin-bottom: 3rem;
+      font-size: 2rem;
     }
-
-    &_col {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
-      align-items: center;
-      flex: 1;
-    }
-    .col1 {
-      flex: 3;
-    }
-    .col2 {
-      flex: 2;
-      justify-content: space-evenly;
+    .main-btn {
+      width: 40%;
+      display: grid;
+      place-items: center;
     }
     &_image {
       @include center();
@@ -95,11 +108,23 @@ $header-padding: 0 5%;
         border-radius: 50rem;
       }
     }
-    &_btn-delete {
-      width: 60% !important;
+  }
+  .links {
+    grid-row: 3;
+    grid-column: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    @include res(tab) {
+      grid-row: 3;
+      grid-column: span 2;
+      flex-direction: row;
+      justify-content: space-between;
     }
-    &_title {
-      font-size: 2rem;
+    a:hover,
+    :visited {
+      text-decoration: none;
     }
     &_nav-item {
       height: 7vh;

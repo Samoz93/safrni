@@ -48,7 +48,6 @@ import { OffersFilterComponent } from './pages/offers-page/offers-filter/offers-
 import { BookingPageComponent } from './pages/booking/booking-page.component';
 import { LoaderComponent } from './common/widgets/loader/loader.component';
 import { Onlynumbers } from './data/directives/onlynumbers.directive';
-import { UserTripCardComponent } from './common/widgets/user-trip-card/user-trip-card.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { GuestCountInputComponent } from './common/widgets/guest-count-input/guest-count-input.component';
@@ -109,8 +108,6 @@ import { CustomInputComponent } from './common/widgets/custom-input/custom-input
     LoaderComponent,
 
     Onlynumbers,
-
-    UserTripCardComponent,
 
     GuestCountInputComponent,
 
