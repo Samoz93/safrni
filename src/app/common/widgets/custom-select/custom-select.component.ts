@@ -1,6 +1,7 @@
 import { Component, forwardRef, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ControlValueAccessorConnector } from 'src/app/data/abstract/control-value-accessor-connector';
+import { ICONS } from 'src/app/data/uitls/enums';
 
 @Component({
   selector: 'app-custom-select',
@@ -14,4 +15,9 @@ import { ControlValueAccessorConnector } from 'src/app/data/abstract/control-val
     },
   ],
 })
-export class CustomSelectComponent extends ControlValueAccessorConnector {}
+export class CustomSelectComponent extends ControlValueAccessorConnector {
+  getImage(icon: string): string {
+    if (icon) return 'assets/images/svgs/' + icon + '.svg';
+    return '';
+  }
+}
