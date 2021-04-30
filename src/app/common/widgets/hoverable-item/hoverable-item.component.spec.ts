@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MainPageInputComponent } from './main-page-input.component';
+import { HoverableItemComponent } from './hoverable-item.component';
 
-describe('MainPageInputComponent', () => {
-  let component: MainPageInputComponent;
-  let fixture: ComponentFixture<MainPageInputComponent>;
+describe('HoverableItemComponent', () => {
+  let component: HoverableItemComponent;
+  let fixture: ComponentFixture<HoverableItemComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MainPageInputComponent ]
+      declarations: [ HoverableItemComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MainPageInputComponent);
+    fixture = TestBed.createComponent(HoverableItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

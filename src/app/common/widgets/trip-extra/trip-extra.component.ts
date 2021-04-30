@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NgxPopperjsPlacements, NgxPopperjsTriggers } from 'ngx-popperjs';
 import { Feature } from 'src/app/data/models/TripModel';
-import { FeatureEnum } from 'src/app/data/static/main-info';
 
 @Component({
   selector: 'app-trip-extra',
@@ -8,7 +8,6 @@ import { FeatureEnum } from 'src/app/data/static/main-info';
   styleUrls: ['./trip-extra.component.scss'],
 })
 export class TripExtraComponent implements OnInit {
-  enum = FeatureEnum;
   @Input() features: Feature[];
   @Input() isBlack: boolean = true;
   @Input() isBig: boolean = false;

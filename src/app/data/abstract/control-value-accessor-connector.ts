@@ -3,14 +3,31 @@ import {
   ControlValueAccessor,
   FormControl,
   FormControlDirective,
+  NG_VALUE_ACCESSOR,
 } from '@angular/forms';
-import { Component, Injector, Input, ViewChild } from '@angular/core';
-import { ICONS } from 'src/app/data/uitls/enums';
+import {
+  Component,
+  forwardRef,
+  Injector,
+  Input,
+  ViewChild,
+} from '@angular/core';
+import { MyControlAbstract } from './my-controls-abstract';
+import { DevData } from '../static/main-info';
 
 @Component({
   template: '',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => ControlValueAccessorConnector),
+      multi: true,
+    },
+  ],
 })
-export class ControlValueAccessorConnector implements ControlValueAccessor {
+export class ControlValueAccessorConnector
+  extends MyControlAbstract
+  implements ControlValueAccessor {
   @ViewChild(FormControlDirective, { static: true })
   formControlDirective: FormControlDirective;
   @Input() values: any[];
@@ -22,7 +39,6 @@ export class ControlValueAccessorConnector implements ControlValueAccessor {
   formControlName: string;
   @Input()
   placeholder: string = '';
-  @Input() icon: ICONS = ICONS.profile;
 
   get control() {
     return (
@@ -31,7 +47,9 @@ export class ControlValueAccessorConnector implements ControlValueAccessor {
     );
   }
 
-  constructor(private injector: Injector) {}
+  constructor(private injector: Injector) {
+    super();
+  }
 
   get controlContainer() {
     return this.injector.get(ControlContainer);
@@ -52,5 +70,19 @@ export class ControlValueAccessorConnector implements ControlValueAccessor {
   setDisabledState(isDisabled: boolean): void {
     if (this.formControlDirective?.valueAccessor?.setDisabledState)
       this.formControlDirective?.valueAccessor.setDisabledState(isDisabled);
+  }
+
+  get errmsg(): any[] | undefined {
+    let lst;
+    if (this.control.errors && this.control.dirty) {
+      lst = [];
+      Object.keys(this.control.errors).forEach((f) =>
+        lst.push(this._getMsg(f))
+      );
+    }
+    return lst;
+  }
+  _getMsg(name: any) {
+    return DevData.errMsgs.filter((g) => g.name == name)[0]?.msg ?? name;
   }
 }

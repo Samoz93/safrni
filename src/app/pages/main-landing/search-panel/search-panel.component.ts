@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ICONS } from 'src/app/data/uitls/enums';
 
 @Component({
@@ -18,10 +18,14 @@ export class SearchPanelComponent implements OnInit {
   selectedType: string;
   constructor(public fb: FormBuilder) {
     this.form = fb.group({
-      whereTo: '',
-      guest: '',
+      whereTo: ['sasdasd', Validators.required],
+      guest: {
+        adult: 1,
+        child: 0,
+        infant: 0,
+      },
       travelType: '1',
-      date: Date.now(),
+      date: new Date(),
     });
   }
 

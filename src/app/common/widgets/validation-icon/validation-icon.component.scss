@@ -1,0 +1,16 @@
+@import "/src/assets/css/abstract/variables";
+
+.main {
+  display: flex;
+  align-items: flex-end;
+}
+mat-icon.focused {
+  color: $accent;
+}
+mat-icon.error {
+  color: $err;
+}
+
+::ng-deep #content {
+  padding: 10rem;
+}

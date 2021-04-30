@@ -4,7 +4,7 @@
       <img [src]="trip.previewImage | serverimage" alt="" />
     </div>
     <div class="info">
-      <h1 class="info_title">{{ trip.cityObj?.name }}</h1>
+      <h1 class="info_title">{{ trip.city.name }}</h1>
       <app-read-only-stars
         class="info_rating"
         [stars]="5"

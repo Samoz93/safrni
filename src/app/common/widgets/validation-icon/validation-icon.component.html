@@ -1,0 +1,14 @@
+<div class="main">
+  <popper-content #content>
+    <h1>{{ errors || placeholder }}</h1>
+  </popper-content>
+
+  <mat-icon
+    [popper]="content"
+    [popperShowOnStart]="false"
+    [popperTrigger]="triggers.hover"
+    [popperPlacement]="placement.TOP"
+    [ngClass]="{ focused: isFocused, error: !!errors }"
+    >{{ icon }}</mat-icon
+  >
+</div>

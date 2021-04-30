@@ -12,8 +12,12 @@
       [ngClass]="{
         longX: isLongX(i)
       }"
-      [isSingleTrip]="true"
-      [trip]="item"
+      [id]="item._id"
+      [features]="item.features"
+      [img]="item.previewImage"
+      [name]="item.name"
+      [price]="item.price"
+      [duration]="item.duration"
     ></app-trip-card>
   </div>
 </div>

@@ -1,152 +1,84 @@
+import { ImageModel } from './ImageModel';
+import { City } from './CitiesModel';
+
 export interface TripModel {
-  id: number;
-  name: string;
+  active: boolean;
   trip_type: string;
-  published_at?: Date;
-  updated_at?: Date;
-  created_at?: Date;
-  description: string;
-  duration: number;
   currency: string;
-  provider?: ProviderClass;
-  price: number;
-  cityObj?: CityObj;
-  timelines?: Timeline[];
-  previewImage?: PreviewImage;
-  reviews?: Review[];
-  features?: Feature[];
-}
-
-export interface CityObj {
-  id: number;
-  name?: string;
-  description: string;
-  published_at: Date;
-  created_at?: Date;
-  updated_at?: Date;
-  cityName: string;
-  cityDescription: string;
-  previewImage?: PreviewImage;
-}
-
-export interface PreviewImage {
-  id?: number;
-  name?: string;
-  alternativeText?: string;
-  caption?: string;
-  width?: number;
-  height?: number;
-  formats?: Formats;
-  hash?: Hash;
-  ext?: EXT;
-  mime?: MIME;
-  size?: number;
-  url: string;
-  previewUrl?: any;
-  provider?: ProviderEnum;
-  provider_metadata?: any;
-  created_at?: Date;
-  updated_at?: Date;
-}
-
-export enum EXT {
-  Jpg = '.jpg',
-}
-
-export interface Formats {
-  small: Large;
-  medium: Large;
-  thumbnail: Large;
-  large?: Large;
-}
-
-export interface Large {
-  ext: EXT;
-  url: string;
-  hash: string;
-  mime: MIME;
+  features: Feature[];
+  localizations: any[];
+  _id: string;
   name: string;
-  path: any;
-  size: number;
-  width: number;
-  height: number;
-}
-
-export enum MIME {
-  ImageJPEG = 'image/jpeg',
-}
-
-export enum Hash {
-  ChickenWingItC7F4E1F550 = 'chicken_wing_it_c7f4e1f550',
-  IstanbulC4Cee35715 = 'istanbul_c4cee35715',
-  IstanbulTurkeyF24192659D = 'Istanbul_Turkey_f24192659d',
-}
-
-export enum Name {
-  ChickenWingItJpg = 'chicken_wing_it.jpg',
-  IstanbulJpg = 'istanbul.jpg',
-  IstanbulTurkeyJpg = 'Istanbul-Turkey.jpg',
-}
-
-export enum ProviderEnum {
-  Local = 'local',
-}
-
-export enum URL {
-  UploadsChickenWingItC7F4E1F550Jpg = '/uploads/chicken_wing_it_c7f4e1f550.jpg',
-  UploadsIstanbulC4Cee35715Jpg = '/uploads/istanbul_c4cee35715.jpg',
-  UploadsIstanbulTurkeyF24192659DJpg = '/uploads/Istanbul_Turkey_f24192659d.jpg',
+  duration: number;
+  description: string;
+  price: Price;
+  locale: string;
+  published_at: Date;
+  timelines: Timeline[];
+  createdAt: Date;
+  updatedAt: Date;
+  __v: number;
+  previewImage: ImageModel;
+  city: City;
+  reviews: any[];
+  id: string;
 }
 
 export interface Feature {
-  id: number;
+  _id: string;
   name: string;
   description: string;
-  link: null;
   published_at: Date;
-  created_at: Date;
-  updated_at: Date;
-  icon: PreviewImage;
+  createdAt: Date;
+  updatedAt: Date;
+  __v: number;
+  image?: ImageModel;
+  id: string;
 }
 
-export interface ProviderClass {
-  id: number;
-  name: string;
-  address: string;
-  email: string;
-  phone: string;
-  published_at: Date;
-  created_at: Date;
-  updated_at: Date;
-}
-
-export interface Review {
-  id: number;
-  text: string;
-  visible: boolean;
-  rating: number;
-  published_at: Date;
-  created_at: Date;
-  updated_at: Date;
-  trip_id: number;
+export interface Price {
+  currency: string;
+  extraAdultFee: number;
+  extraChildFee: number;
+  discount: number;
+  _id: string;
+  basePrice: number;
+  baseAdultCount: number;
+  baseChildCount: string;
+  __v: number;
+  id: string;
 }
 
 export interface Timeline {
-  id: number;
+  _id: string;
   day: number;
-  pois: Pois;
-  description: null;
+  description: string;
+  __v: number;
+  location: Location;
+  id: string;
 }
 
-export interface Pois {
-  id: number;
+export interface Location {
+  images: any[];
+  localizations: Localization[];
+  _id: string;
   name: string;
-  cityName: string;
   description: string;
-  latitude: number;
-  longitude: number;
+  locale: string;
   published_at: Date;
-  created_at: Date;
-  updated_at: Date;
-  images: PreviewImage[];
+  coordinate: string;
+  createdAt: Date;
+  updatedAt: Date;
+  __v: number;
+  city: string;
+  id: string;
+}
+
+export interface Localization {
+  id: ID;
+}
+
+export interface ID {
+  type: string;
+  data: number[];
 }

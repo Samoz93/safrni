@@ -8,24 +8,26 @@
       let's find the best destination in Turkey with us.
     </h2>
     <form [formGroup]="form" class="info_inputs">
-      <app-main-page-input
+      <app-custom-input
         formControlName="whereTo"
         [icon]="icons.compass"
         placeholder="sss"
       >
-      </app-main-page-input>
-      <app-main-page-input formControlName="guest" placeholder="sss">
-      </app-main-page-input>
+      </app-custom-input>
+      <app-guest-count-input class="guest" formControlName="guest">
+      </app-guest-count-input>
       <app-custom-select
         [icon]="icons.work"
         [values]="tripTypes"
+        formControlName="travelType"
       ></app-custom-select>
-      <mat-form-field class="date" appearance="fill" color="white">
-        <input matInput [matDatepicker]="picker" />
-        <mat-datepicker-toggle matPrefix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
+      <app-custom-date-picker
+        [icon]="icons.profile"
+        formControlName="date"
+      ></app-custom-date-picker>
       <button class="main-btn">Search</button>
     </form>
+    {{ form.value | json }}
+    {{ form.controls["guest"].errors | json }}
   </div>
 </div>

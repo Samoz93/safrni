@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TripModel } from 'src/app/data/models/TripModel';
+import { ImageModel } from 'src/app/data/models/ImageModel';
+import { Feature, Price, TripModel } from 'src/app/data/models/TripModel';
 import { DevData } from 'src/app/data/static/main-info';
 
 @Component({
@@ -9,13 +10,19 @@ import { DevData } from 'src/app/data/static/main-info';
   styleUrls: ['./single-trip-card.component.scss'],
 })
 export class SingleTripCardComponent implements OnInit {
-  @Input() trip: TripModel;
-  @Input() isSingleTrip: boolean = false;
+  @Input() name: string = '';
+  @Input() duration: number = 0;
+  @Input() price: Price;
+  @Input() img: ImageModel;
+  @Input() features: Feature[] = [];
+  @Input() id: string = '';
+  @Input() isOffer: boolean = true;
+
   constructor(private router: Router, private activeRoute: ActivatedRoute) {}
 
   ngOnInit(): void {}
 
   goToOffer() {
-    this.router.navigate([DevData.tourInfoRoute, this.trip.id]);
+    this.router.navigate([DevData.tourInfoRoute, this.id]);
   }
 }

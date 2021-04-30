@@ -22,7 +22,6 @@ export class BaseService<T> {
   async fetchAllData() {
     this._tryCatch(async () => {
       const url = urljoin(DevData.baseUrl, this.endPoint);
-
       if (this.data.length < 1) {
         const d = await this.http.get<T[]>(url).toPromise();
         this.data.push(...d);

@@ -13,7 +13,15 @@
       [spaceBetween]="100"
     >
       <ng-template swiperSlide *ngFor="let item of _ser.data$ | async">
-        <app-trip-card class="slide" [trip]="item"></app-trip-card>
+        <app-trip-card
+          class="slide"
+          [id]="item._id"
+          [features]="item.features"
+          [img]="item.previewImage"
+          [name]="item.name"
+          [price]="item.price"
+          [duration]="item.duration"
+        ></app-trip-card>
         ></ng-template
       >
     </swiper>

@@ -9,6 +9,13 @@ export class DevData {
   static offersRoute = 'offers';
   static bookingRoute = 'booking';
   static tourInfoRoute = 'tourInfo';
+
+  static errMsgs = [
+    {
+      name: 'required',
+      msg: 'this field is required',
+    },
+  ];
 }
 
 export interface LoadingState {
