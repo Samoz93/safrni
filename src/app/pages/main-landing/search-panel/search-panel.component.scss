@@ -10,8 +10,12 @@ $btn-to-border-margin: 3rem;
   place-items: center;
   position: relative;
   height: 90rem;
+
   width: 100%;
   padding: 0 5rem;
+  @include res(tab) {
+    padding: 0;
+  }
   img {
     top: 0;
     left: -1%;
@@ -32,6 +36,9 @@ $btn-to-border-margin: 3rem;
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
+      @include res(tab) {
+        height: calc(50% - 8rem - 7.5rem);
+      }
     }
     &-options {
       height: 8rem;
@@ -59,21 +66,32 @@ $btn-to-border-margin: 3rem;
     &_inputs {
       padding: 0;
       margin: 0;
-
       height: 15rem;
       display: grid;
       grid-template-columns: 80.5% 17.5%;
+      justify-items: stretch;
+      @include res(tab) {
+        grid-template-columns: 100%;
+      }
       align-items: center;
+      width: 100%;
+
       &-controls {
+        order: 0;
         padding: 0 2rem;
-        height: 8rem;
         * {
           height: 8rem;
         }
         display: grid;
         grid-template-columns: repeat(4, 25%);
         position: relative;
+        @include res(tab) {
+          grid-template-columns: 100%;
+        }
         &::after {
+          @include res(tab) {
+            display: none;
+          }
           content: "";
           position: absolute;
           top: 0;
@@ -92,6 +110,9 @@ $btn-to-border-margin: 3rem;
         width: 100%;
         height: 15rem;
         object-fit: fill;
+        @include res(tab) {
+          display: none;
+        }
       }
     }
   }
