@@ -34,7 +34,7 @@
     "swiper": "^6.5.8",
     "tslib": "^2.0.0",
     "url-join": "^4.0.1",
-    "videogular2": "^7.0.2",
+    
     "zone.js": "~0.11.3"
   },
   "devDependencies": {
