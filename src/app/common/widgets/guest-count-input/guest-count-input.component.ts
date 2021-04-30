@@ -28,7 +28,7 @@ import { DevData } from 'src/app/data/static/main-info';
 import { ICONS } from 'src/app/data/uitls/enums';
 const isInstanceOfGuesCount = (obj: any) => {
   if (typeof obj !== 'object') return false;
-  return 'adult' in obj && 'child' in obj && 'infant' in obj;
+  return 'adult' in obj && 'child' in obj;
 };
 @Component({
   selector: 'app-guest-count-input',
@@ -49,27 +49,19 @@ const isInstanceOfGuesCount = (obj: any) => {
 
         return !isInstanceOfGuesCount(c.value)
           ? notObject
-          : c.value.adult == 0 && c.value.child == 0 && c.value.infant == 0
+          : c.value.adult == 0 && c.value.child == 0
           ? noValue
           : null;
       },
       multi: true,
     },
   ],
-  // providers: [
-  //   {
-  //     provide: NG_VALUE_ACCESSOR,
-  //     useExisting: forwardRef(() => GuestCountInputComponent),
-  //     multi: true,
-  //   },
-  // ],
 })
 export class GuestCountInputComponent
   implements OnInit, MatFormFieldControl<GuestCountModel> {
   _data: GuestCountModel = {
     adult: 0,
     child: 0,
-    infant: 0,
   };
   icons = ICONS;
   @Input() max = 20;
@@ -88,15 +80,12 @@ export class GuestCountInputComponent
   @Input()
   set value(obj: GuestCountModel) {
     if (isInstanceOfGuesCount(obj)) {
-      if (obj.adult > this.max || obj.child > this.max || obj.infant > this.max)
-        return;
-
+      if (obj.adult > this.max || obj.child > this.max) return;
       this._data = obj;
     } else {
       this._data = {
         adult: 1,
         child: 0,
-        infant: 0,
       };
     }
     this.stateChanges.next();
@@ -167,7 +156,9 @@ export class GuestCountInputComponent
     this.onTouched = fn;
   }
   isShowen = false;
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.value);
+  }
   getValue(key: string): number {
     return Object(this.value)[key];
   }
@@ -188,7 +179,7 @@ export class GuestCountInputComponent
   }
 
   get str() {
-    return `${this.value['adult']} Adult ${this.value['child']} Child ${this.value['infant']} Infant`;
+    return `${this.value['adult']} Adult ${this.value['child']} Child`;
   }
 
   @Input() disabled: boolean;

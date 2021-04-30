@@ -23,7 +23,6 @@ export class SearchPanelComponent implements OnInit {
       guest: {
         adult: 1,
         child: 0,
-        infant: 0,
       },
       travelType: '1',
       date: new Date(),
