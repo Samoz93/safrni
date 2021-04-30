@@ -63,6 +63,7 @@ import { SwiperModule } from 'swiper/angular';
 import { CustomDatePickerComponent } from './common/widgets/custom-date-picker/custom-date-picker.component';
 import { MapStepperComponent } from './common/widgets/map-stepper/map-stepper.component';
 import { AccordionListComponent } from './common/widgets/accordion-list/accordion-list.component';
+import { BannerCarouselComponent } from './common/widgets/banner-carousel/banner-carousel.component';
 
 @NgModule({
   declarations: [
@@ -126,6 +127,8 @@ import { AccordionListComponent } from './common/widgets/accordion-list/accordio
     MapStepperComponent,
 
     AccordionListComponent,
+
+    BannerCarouselComponent,
   ],
 
   imports: [

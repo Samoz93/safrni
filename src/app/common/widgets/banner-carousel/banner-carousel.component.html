@@ -1,0 +1,23 @@
+<div class="banner-carousel">
+  <swiper
+    class="swiper-container"
+    [slidesPerView]="1"
+    class="slide"
+    [spaceBetween]="0"
+    [(index)]="currentSwiperIndex"
+  >
+    <ng-template swiperSlide class="slide" *ngFor="let image of images">
+      <img
+        src="{{ image }}"
+        [ngStyle]="{ height: screenHeightPercentage + 'vh' }"
+        style="width: 100%; object-fit: cover"
+      />
+    </ng-template>
+  </swiper>
+  <div class="swiper-arrow left" (click)="swipe(false)">
+    <i class="fa fa-chevron-left"></i>
+  </div>
+  <div class="swiper-arrow right" (click)="swipe(true)">
+    <i class="fa fa-chevron-right"></i>
+  </div>
+</div>

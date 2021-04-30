@@ -8,7 +8,13 @@ import { TimelineItemModel } from 'src/app/data/models/timelineModel';
   styleUrls: ['./tour-information.component.scss'],
 })
 export class TourInformationComponent implements OnInit {
-  selectedTab = 1;
+ 
+
+  images = [
+    'https://wallpapercave.com/wp/wp1813727.jpg',
+    'https://wallpapercave.com/wp/wp1813725.jpg',
+    'https://i.ytimg.com/vi/no7LCcGTvn8/maxresdefault.jpg',
+  ];
   timelines = [
     new TimelineItemModel(1, [
       new LocationModel(
@@ -46,18 +52,9 @@ export class TourInformationComponent implements OnInit {
     ]),
   ];
 
+ 
+
   constructor() {}
 
   ngOnInit(): void {}
-
-  setTabIndex(index: number) {
-    this.selectedTab = index;
-  }
-
-  styleObject(index: number) {
-    return {
-      display: index === this.selectedTab ? 'unset' : 'none',
-      opacity: index === this.selectedTab ? 1 : 0,
-    };
-  }
 }
