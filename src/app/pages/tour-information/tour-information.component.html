@@ -4,4 +4,64 @@
     [images]="images"
     [screenHeightPercentage]="60"
   ></app-banner-carousel>
+
+  <div class="tour-infomation__content-grid">
+    <section class="brief-intro">
+      <h1 class="brief-intro__city-name">Istanbul</h1>
+      <p class="brief-intro__cost-duration">
+        5 Days - 4 Nights / 400$ Per Person
+      </p>
+      <p class="brief-intro__description">
+        The city embraces Asia on the one hand and Europe on the other. Istanbul
+        is Turkey's most populous city and its cultural and financial center.
+        Located on both sides of the Bosphorus, the narrow strait between the
+        Black Sea and the Marmara Sea, Istanbul bridges Asia and Europe both
+        physically and culturally.
+      </p>
+    </section>
+
+    <section class="trip-info-card">
+      <div class="trip-card-header">
+        <div class="trip-card-header__image">
+          <img src="https://wallpapercave.com/wp/wp1813727.jpg" />
+        </div>
+        <p class="trip-card-header__price">400$</p>
+        <app-read-only-stars
+          [stars]="3.5"
+          [color]="'#fff'"
+        ></app-read-only-stars>
+      </div>
+      <div class="trip-card-brief-info">
+        <h2 class="trip-card-brief-info__city-name">Istanbul</h2>
+        <p class="trip-card-brief-info__price-duration">
+          5 Days - 4 Nights / 400$ Per Person
+        </p>
+      </div>
+
+      <div class="trip-card-features">
+        <div class="trip-card-features__row">
+          <h2>hotel</h2>
+          <p>four season hotel</p>
+        </div>
+        <div class="trip-card-features__row">
+          <h2>hotel</h2>
+          <p>four season hotel</p>
+        </div>
+        <div class="trip-card-features__row">
+          <h2>hotel</h2>
+          <p>four season hotel</p>
+        </div>
+        <div class="trip-card-features__row">
+          <h2>hotel</h2>
+          <p>four season hotel</p>
+        </div>
+        <div class="trip-card-features__row">
+          <h2>hotel</h2>
+          <p>four season hotel</p>
+        </div>
+      </div>
+
+      <button class="main-btn">show on the map</button>
+    </section>
+  </div>
 </div>

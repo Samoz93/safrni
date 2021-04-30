@@ -7,11 +7,14 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ReadOnlyStarsComponent implements OnInit {
   @Input() stars: number = 0;
+  @Input() color:string = '#20aed5';
+  @Input() size:number= 2;
+
   hasHalfStar: Boolean = false;
   filledStarsCount: number;
   unfilledStarsCount: number;
-  @Input() isBlack = false;
-  @Input() isBig = false;
+
+
   constructor() {
     this.filledStarsCount = 0;
     this.unfilledStarsCount = 0;
