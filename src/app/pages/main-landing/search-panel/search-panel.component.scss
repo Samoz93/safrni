@@ -1,85 +1,58 @@
 @import "/src/assets/css/abstract/mixins";
 @import "/src/assets/css/abstract/variables";
 
+$btn-to-border-margin: 3rem;
 .main {
+  * {
+    z-index: 2;
+  }
   display: grid;
   place-items: center;
   position: relative;
   height: 90rem;
-  .guest {
-    z-index: 1000;
-  }
-  @include res(med) {
-    padding: 0 10%;
-  }
-  @include res(phone) {
-    height: 110rem;
-    padding: 10%;
-  }
-
+  width: 100%;
+  padding: 0 20rem;
+  background-color: red;
   img {
     top: 0;
     left: -1%;
     position: absolute;
     width: 110%;
-    height: 100%;
+    height: 75%;
     object-fit: cover;
+    z-index: 0;
   }
 
   .info {
-    display: grid;
-    height: 100%;
-    z-index: 1;
     color: white;
     text-align: center;
-    padding: 10% 0;
-    @include res(phone) {
-      padding: 0;
-    }
+    align-items: flex-start;
+    justify-items: center;
+    height: 75%;
+    display: grid;
+    width: 100%;
     &_inputs {
+      background: blue;
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      * {
-        height: 8.6rem;
-      }
-      @include res(med) {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      @include res(tab-land-extra) {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      @include res(phone) {
-        grid-template-columns: repeat(1, 1fr);
-      }
-      .main-btn {
-        font-size: 3.5rem;
-        font-weight: 800;
-        @include res(med) {
-          grid-column: span 2;
-        }
-        @include res(tab-land-extra) {
-          grid-column: span 2;
-        }
-        @include res(phone) {
-          grid-column: span 1;
-        }
-      }
-      align-self: flex-end;
-    }
-    h2 {
-      font-size: 3.1rem;
-      font-weight: 400;
-      @include res(med) {
-        font-size: 2rem;
+      grid-template-columns: 80% 20%;
+      &-controls {
+        display: grid;
+        grid-template-columns: repeat(4, 25%);
       }
     }
-    h1 {
-      font-size: 7.1rem;
-      font-weight: 400;
-      @include res(med) {
-        font-size: 5.5rem;
-      }
+  }
+  h2 {
+    font-size: 3.1rem;
+    font-weight: 400;
+    @include res(med) {
+      font-size: 2rem;
+    }
+  }
+  h1 {
+    font-size: 7.1rem;
+    font-weight: 400;
+    @include res(med) {
+      font-size: 5.5rem;
     }
   }
 }

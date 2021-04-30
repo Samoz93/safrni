@@ -1,33 +1,39 @@
-<div class="main page-padding">
+<div class="main">
   <img src="/assets/images/placeholder/istanbul.png" alt="" />
+
   <div class="info">
     <h2>All year long travel</h2>
-    <h1>Let's explore all Wonderful Turkey Destination</h1>
+    <h1 class="break">
+      Let's explore all <br />
+      Wonderful Turkey Destination
+    </h1>
     <h2>
       Hi! would you explore nature paradise in the world, <br />
       let's find the best destination in Turkey with us.
     </h2>
+
     <form [formGroup]="form" class="info_inputs">
-      <app-custom-input
-        formControlName="whereTo"
-        [icon]="icons.compass"
-        placeholder="sss"
-      >
-      </app-custom-input>
-      <app-guest-count-input class="guest" formControlName="guest">
-      </app-guest-count-input>
-      <app-custom-select
-        [icon]="icons.work"
-        [values]="tripTypes"
-        formControlName="travelType"
-      ></app-custom-select>
-      <app-custom-date-picker
-        [icon]="icons.profile"
-        formControlName="date"
-      ></app-custom-date-picker>
-      <button class="main-btn">Search</button>
+      <div class="info_inputs-controls">
+        <app-custom-input
+          formControlName="whereTo"
+          [icon]="icons.compass"
+          placeholder="sss"
+        >
+        </app-custom-input>
+        <app-guest-count-input class="guest" formControlName="guest">
+        </app-guest-count-input>
+        <app-custom-select
+          [icon]="icons.work"
+          [values]="tripTypes"
+          formControlName="travelType"
+        ></app-custom-select>
+        <app-custom-date-picker
+          [icon]="icons.profile"
+          formControlName="date"
+          class="last-item"
+        ></app-custom-date-picker>
+      </div>
+      <button class="main-btn info_inputs-btn">Search</button>
     </form>
-    {{ form.value | json }}
-    {{ form.controls["guest"].errors | json }}
   </div>
 </div>
