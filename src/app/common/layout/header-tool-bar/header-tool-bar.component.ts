@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StaticInfo } from 'src/app/data/static/main-info';
-
+import { Constants } from 'src/app/common/constants';
 @Component({
   selector: 'app-header-tool-bar',
   templateUrl: './header-tool-bar.component.html',
@@ -9,18 +9,19 @@ import { StaticInfo } from 'src/app/data/static/main-info';
 export class HeaderToolBarComponent implements OnInit {
   projectName = StaticInfo.projectName;
   isNavOpen = false;
-  isProfileOpen = false;
+
+  contactInfo = {
+    phone: Constants.ourPhone,
+    location: Constants.ourLocation,
+    email: Constants.ourEmail,
+  };
+
   constructor() {}
 
   ngOnInit(): void {}
 
-  toggleNav(isNav: boolean) {
-    if (isNav) {
-      this.isProfileOpen = false;
-      this.isNavOpen = !this.isNavOpen;
-    } else {
-      this.isNavOpen = false;
-      this.isProfileOpen = !this.isProfileOpen;
-    }
+  toggleNav() {
+    this.isNavOpen = !this.isNavOpen;
   }
+  goToProfile() {}
 }

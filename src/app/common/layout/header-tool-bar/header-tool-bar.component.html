@@ -2,27 +2,43 @@
   <button
     class="nav-toggler"
     [ngClass]="isNavOpen ? 'toggler-open' : ''"
-    (click)="toggleNav(true)"
+    (click)="toggleNav()"
   >
     <span></span>
   </button>
   <div class="main_logo">
     <h1>{{ projectName }}</h1>
   </div>
-  <ul class="main_tool-bar" [ngClass]="isNavOpen ? 'open' : ''">
+  <ul class="main_tool-bar">
     <li><a class="navlink" [routerLink]="['/']">Home</a></li>
     <li><a class="navlink" [routerLink]="['/tours/asd']">Trips</a></li>
     <li><a class="navlink" [routerLink]="['/booking/11']">Destination</a></li>
     <li><a class="navlink">Medical Treatments</a></li>
     <li><a class="navlink">About Us</a></li>
   </ul>
-  <ul class="main__profile-links" [ngClass]="isProfileOpen ? 'open' : ''">
-    <li><a href="#">bla</a></li>
-    <li><a href="#">bla</a></li>
-    <li><a href="#">bla</a></li>
-    <li><a href="#">bla</a></li>
-  </ul>
-  <div class="profile-toggler" (click)="toggleNav(false)">
+  <div class="main_mobile-tool-bar" [ngClass]="isNavOpen ? 'open' : ''">
+    <ul class="navLinks">
+      <li><a class="navlink" [routerLink]="['/']">Home</a></li>
+      <li><a class="navlink" [routerLink]="['/tours/asd']">Trips</a></li>
+      <li><a class="navlink" [routerLink]="['/booking/11']">Destination</a></li>
+      <li><a class="navlink">Medical Treatments</a></li>
+      <li><a class="navlink">About Us</a></li>
+    </ul>
+
+    <ul class="contactLinks">
+      <li>
+        <i class="fa fa-phone"></i><a href="">{{ contactInfo.phone }}</a>
+      </li>
+      <li>
+        <i class="fa fa-envelope"></i><a href="">{{ contactInfo.email }}</a>
+      </li>
+      <li>
+        <i class="fa fa-compass"></i><a href="">{{ contactInfo.location }}</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="profile-toggler" (click)="goToProfile()">
     <i class="fa fa-user-circle"></i>
   </div>
 </nav>
