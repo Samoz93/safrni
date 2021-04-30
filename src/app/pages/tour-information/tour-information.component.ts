@@ -8,8 +8,6 @@ import { TimelineItemModel } from 'src/app/data/models/timelineModel';
   styleUrls: ['./tour-information.component.scss'],
 })
 export class TourInformationComponent implements OnInit {
- 
-
   images = [
     'https://wallpapercave.com/wp/wp1813727.jpg',
     'https://wallpapercave.com/wp/wp1813725.jpg',
@@ -106,7 +104,6 @@ export class TourInformationComponent implements OnInit {
       },
     },
   ];
- 
 
   constructor() {}
 
