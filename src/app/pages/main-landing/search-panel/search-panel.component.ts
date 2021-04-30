@@ -9,13 +9,14 @@ import { ICONS } from 'src/app/data/uitls/enums';
 })
 export class SearchPanelComponent implements OnInit {
   tripTypes = [
-    { id: '1', name: 'normal' },
-    { id: '2', name: 'medical' },
+    { id: '1', name: 'Public', icon: 'group' },
+    { id: '2', name: 'Private', icon: 'private' },
   ];
   selctedTrip: string = '';
   form: FormGroup;
   icons = ICONS;
   selectedType: string;
+  activeTab = TABS.tour;
   constructor(public fb: FormBuilder) {
     this.form = fb.group({
       whereTo: ['sasdasd', Validators.required],
@@ -28,6 +29,12 @@ export class SearchPanelComponent implements OnInit {
       date: new Date(),
     });
   }
-
+  changeTab(tab: any) {
+    this.activeTab = tab;
+  }
   ngOnInit(): void {}
+}
+enum TABS {
+  tour = 'tour',
+  medic = 'medic',
 }
