@@ -13,6 +13,7 @@
 }
 .main-btn {
   @include _mainBtnMixin();
+  @include clickScaleEffect();
 }
 
 .main-btn_round {

@@ -52,6 +52,60 @@ export class TourInformationComponent implements OnInit {
     ]),
   ];
 
+  trips = [
+    {
+      id: 1,
+      currency: '$',
+      duration: 40,
+      name: 'toIstanbul',
+      price: 500,
+      trip_type: 'touristic',
+      description: 'lorem',
+      previewImage: {
+        url:
+          'https://media.gettyimages.com/photos/blue-mosque-in-istanbul-picture-id160193420?s=612x612',
+      },
+    },
+    {
+      id: 1,
+      currency: '$',
+      duration: 40,
+      name: 'toIstanbul',
+      price: 500,
+      trip_type: 'touristic',
+      description: 'lorem',
+      previewImage: {
+        url:
+          'https://media.gettyimages.com/photos/blue-mosque-in-istanbul-picture-id160193420?s=612x612',
+      },
+    },
+    {
+      id: 1,
+      currency: '$',
+      duration: 40,
+      name: 'toIstanbul',
+      price: 500,
+      trip_type: 'touristic',
+      description: 'lorem',
+      previewImage: {
+        url:
+          'https://media.gettyimages.com/photos/blue-mosque-in-istanbul-picture-id160193420?s=612x612',
+      },
+    },
+    {
+      id: 1,
+      currency: '$',
+      duration: 40,
+      name: 'toIstanbul',
+      price: 500,
+      trip_type: 'touristic',
+      description: 'lorem',
+      previewImage: {
+        url:
+          'https://media.gettyimages.com/photos/blue-mosque-in-istanbul-picture-id160193420?s=612x612',
+      },
+    },
+  ];
  
 
   constructor() {}

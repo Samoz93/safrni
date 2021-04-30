@@ -5,6 +5,9 @@
   &__content-grid {
     display: grid;
     grid-template-columns: 1fr 51rem 17rem 43rem 1fr;
+
+    gap: 4rem 0rem;
+
     grid-template-rows: repeat(10, 25rem);
     grid-auto-rows: min-content;
 
@@ -87,6 +90,7 @@
         &__price-duration {
           font-weight: 400;
           font-size: 1.9rem;
+          text-transform: capitalize;
           color: #717171;
         }
       }
@@ -97,10 +101,12 @@
           display: flex;
           justify-content: space-between;
           h2 {
+            text-transform: capitalize;
             font-size: 2.5rem;
             font-weight: bold;
           }
           p {
+            text-transform: capitalize;
             font-size: 1.9rem;
             font-weight: 300;
           }
@@ -110,6 +116,32 @@
       .main-btn {
         align-self: flex-start;
         margin: 5rem 2rem;
+      }
+    }
+
+    .places {
+      grid-column: 2/3;
+
+      display: flex;
+      flex-direction: column;
+      &__title {
+        font-size: 3.1rem;
+        font-weight: bold;
+        text-transform: capitalize;
+      }
+      &__description {
+        font-size: 1.5rem;
+        font-weight: 400;
+        text-transform: capitalize;
+      }
+      &__grid {
+        margin-top: 2rem;
+
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+        grid-template-rows: repeat(2, calc(calc(51rem - 2.2rem) / 2));
+
+        gap: 2.2rem;
       }
     }
   }

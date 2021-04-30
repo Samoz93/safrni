@@ -63,5 +63,17 @@
 
       <button class="main-btn">show on the map</button>
     </section>
+
+    <section class="places">
+      <h2 class="places__title">places you will visit</h2>
+      <p class="places__description">A lot of different tours around Turkey</p>
+      <div class="places__grid">
+        <app-trip-card
+          *ngFor="let item of trips; let i = index"
+          [isSingleTrip]="true"
+          [trip]="item"
+        ></app-trip-card>
+      </div>
+    </section>
   </div>
 </div>
