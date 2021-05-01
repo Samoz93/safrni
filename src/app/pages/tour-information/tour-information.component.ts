@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LocationModel, Coordinates } from 'src/app/data/models/LocationModel';
 import { TimelineItemModel } from 'src/app/data/models/timelineModel';
+import { ICONS } from 'src/app/data/uitls/enums';
 
 @Component({
   selector: 'app-tour-information',
@@ -105,7 +107,23 @@ export class TourInformationComponent implements OnInit {
     },
   ];
 
+  bookForm: FormGroup;
+  icons = ICONS;
+  
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.bookForm = new FormGroup({
+      fullName: new FormControl(null, [Validators.required]),
+      phone: new FormControl(null, [Validators.required]),
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      arrivalDate: new FormControl(null, [Validators.required]),
+      message: new FormControl(null, [Validators.required]),
+    });
+  }
+
+  onFormSubmitted()
+  {
+    
+  }
 }

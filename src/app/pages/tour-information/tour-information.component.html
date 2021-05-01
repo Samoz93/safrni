@@ -106,5 +106,25 @@
         </div>
       </div>
     </section>
+
+    <section class="booking-section">
+      <h2 class="booking-section__title">Booking Information</h2>
+      <p class="booking-section__description">
+        This information will not be shared
+      </p>
+      <form
+        [formGroup]="bookForm"
+        (ngSubmit)="onFormSubmitted()"
+        class="booking-form"
+      >
+        <app-profileinput formControlName="fullName"></app-profileinput>
+        <app-profileinput formControlName="phone"></app-profileinput>
+        <app-profileinput formControlName="email"></app-profileinput>
+        <app-custom-date-picker
+          formControlName="arrivalDate"
+        ></app-custom-date-picker>
+        <app-profileinput formControlName="message"></app-profileinput>
+      </form>
+    </section>
   </div>
 </div>

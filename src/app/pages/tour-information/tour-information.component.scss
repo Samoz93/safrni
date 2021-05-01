@@ -194,5 +194,26 @@
         }
       }
     }
+
+    .booking-section {
+      grid-column: 2/3;
+      grid-row: 27 / span 7;
+      &__title {
+        font-size: 3.1rem;
+        font-weight: bold;
+        text-transform: capitalize;
+      }
+      &__description {
+        font-size: 1.5rem;
+        font-weight: 400;
+        text-transform: capitalize;
+        color: #252629;
+      }
+      .booking-form {
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+      }
+    }
   }
 }
