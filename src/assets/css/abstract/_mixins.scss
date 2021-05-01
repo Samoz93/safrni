@@ -10,15 +10,15 @@
 }
 $field-border-var: grey 1px solid;
 @mixin field-border {
-  border-right: $field-border-var;
-  @include res(tab-land-extra) {
-    border-right: $field-border-var;
-    border-bottom: $field-border-var;
-  }
-  @include res(phone) {
-    border-right: none;
-    border-bottom: $field-border-var;
-  }
+  border: $field-border-var;
+  // @include res(tab-land-extra) {
+  //   border-right: $field-border-var;
+  //   border-bottom: $field-border-var;
+  // }
+  // @include res(phone) {
+  //   border-right: none;
+  //   border-bottom: $field-border-var;
+  // }
 }
 @mixin myCustomCalendarStyle {
   ::ng-deep .mat-form-field-wrapper {
@@ -41,7 +41,7 @@ $field-border-var: grey 1px solid;
       height: 100%;
     }
     ::ng-deep mat-datepicker-toggle {
-      font-size: 2rem;
+      font-size: 1.5rem;
     }
   }
   ::ng-deep .mat-form-field-underline {

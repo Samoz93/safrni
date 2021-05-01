@@ -5,9 +5,9 @@ import { Price } from '../models/TripModel';
   name: 'price',
 })
 export class PricePipe implements PipeTransform {
-  transform(value: Price, ...args: unknown[]): unknown {
-    const sign = signs.filter((f) => f.id == value.currency)[0]?.sign ?? '$';
-    return `${value.basePrice} ${sign}`;
+  transform(pr: Price, ...args: unknown[]): unknown {
+    const sign = signs.filter((f) => f.id == pr.currency)[0]?.sign ?? '$';
+    return `${pr?.basePrice ?? 0} ${sign}`;
   }
 }
 

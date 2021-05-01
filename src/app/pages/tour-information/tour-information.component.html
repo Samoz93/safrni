@@ -68,9 +68,9 @@
       <h2 class="places__title">places you will visit</h2>
       <p class="places__description">A lot of different tours around Turkey</p>
       <div class="places__grid">
-        <app-trip-card
+        <!-- <app-trip-card
           *ngFor="let item of trips; let i = index"
-        ></app-trip-card>
+        ></app-trip-card> -->
       </div>
     </section>
 
@@ -117,26 +117,26 @@
         (ngSubmit)="onFormSubmitted()"
         class="booking-form"
       >
-        <app-profileinput
+        <app-custom-input
           formControlName="fullName"
           [icon]="icons.profile"
-        ></app-profileinput>
-        <app-profileinput
+        ></app-custom-input>
+        <app-custom-input
           formControlName="phone"
           [icon]="icons.profile"
-        ></app-profileinput>
-        <app-profileinput
+        ></app-custom-input>
+        <app-custom-input
           formControlName="email"
           [icon]="icons.profile"
-        ></app-profileinput>
+        ></app-custom-input>
         <app-custom-date-picker
           [icon]="icons.profile"
           formControlName="arrivalDate"
         ></app-custom-date-picker>
-        <app-profileinput
+        <app-custom-input
           formControlName="message"
           [icon]="icons.profile"
-        ></app-profileinput>
+        ></app-custom-input>
       </form>
     </section>
   </div>

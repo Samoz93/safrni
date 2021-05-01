@@ -197,7 +197,7 @@
 
     .booking-section {
       grid-column: 2/3;
-      grid-row: 27 / span 7;
+      grid-row: 27 / span 9;
       &__title {
         font-size: 3.1rem;
         font-weight: bold;
@@ -210,9 +210,13 @@
         color: #252629;
       }
       .booking-form {
+        height: 40rem;
         margin-top: 2rem;
         display: flex;
         flex-direction: column;
+        & > * {
+          flex: 1;
+        }
       }
     }
   }
