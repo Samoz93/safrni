@@ -13,6 +13,12 @@
       [formControl]="control"
     >
       <mat-option *ngFor="let data of values" [value]="data.id">
+        <img
+          [ngClass]="{ hide: !data.icon }"
+          class="icon"
+          [src]="getImage(data.icon)"
+          alt=""
+        />
         {{ data.name }}
       </mat-option>
     </mat-select>

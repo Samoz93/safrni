@@ -1,7 +1,28 @@
 <div class="main">
-  <app-user-trip-card
-    class="crd"
-    *ngFor="let tr of trips"
-    [trip]="tr"
-  ></app-user-trip-card>
+  <div *ngIf="activeTrip" class="new">
+    <h1 class="trip-type">Active Trips</h1>
+    <div class="trip">
+      <figure class="img">
+        <img [src]="activeTrip.image" alt="" />
+      </figure>
+      <div class="text">
+        <h1 class="city">{{ activeTrip.city }}</h1>
+        <p class="date">{{ activeTrip.fromdateTodateString }}</p>
+      </div>
+      <h3 class="year">{{ activeTrip.year }}</h3>
+    </div>
+  </div>
+  <div class="old">
+    <h1 class="trip-type">Past</h1>
+    <div *ngFor="let trip of trips" class="trip">
+      <figure class="img">
+        <img [src]="trip.image" alt="" />
+      </figure>
+      <div class="text">
+        <h1 class="city">{{ trip.city }}</h1>
+        <p class="date">{{ trip.fromdateTodateString }}</p>
+      </div>
+      <h3 class="year">{{ trip.year }}</h3>
+    </div>
+  </div>
 </div>

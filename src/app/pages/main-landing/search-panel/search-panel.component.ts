@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TABS } from 'src/app/data/static/main-info';
 import { ICONS } from 'src/app/data/uitls/enums';
 
 @Component({
@@ -9,25 +10,27 @@ import { ICONS } from 'src/app/data/uitls/enums';
 })
 export class SearchPanelComponent implements OnInit {
   tripTypes = [
-    { id: '1', name: 'normal' },
-    { id: '2', name: 'medical' },
+    { id: '1', name: 'Public', icon: 'group' },
+    { id: '2', name: 'Private', icon: 'private' },
   ];
   selctedTrip: string = '';
   form: FormGroup;
   icons = ICONS;
   selectedType: string;
+  activeTab = TABS.tour;
   constructor(public fb: FormBuilder) {
     this.form = fb.group({
       whereTo: ['sasdasd', Validators.required],
       guest: {
         adult: 1,
         child: 0,
-        infant: 0,
       },
       travelType: '1',
       date: new Date(),
     });
   }
-
+  changeTab(tab: any) {
+    this.activeTab = tab;
+  }
   ngOnInit(): void {}
 }

@@ -111,6 +111,12 @@ $field-border-var: grey 1px solid;
     }
   }
 
+  @if $break == tab-small {
+    @media (max-width: 50em) {
+      //800px
+      @content;
+    }
+  }
   @if $break == tab {
     @media (max-width: 56.25em) {
       //900px

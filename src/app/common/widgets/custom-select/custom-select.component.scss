@@ -17,3 +17,11 @@ $border: grey solid 1px;
   font-size: 1.5rem;
   @include angularMatInputStyle;
 }
+img.icon {
+  height: 5rem;
+  width: 5rem;
+  padding: 1.5rem;
+}
+img.hide {
+  opacity: 0;
+}

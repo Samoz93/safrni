@@ -11,10 +11,8 @@
       [errors]="errmsg"
       [placeholder]="placeholder"
     ></app-validation-icon>
-    <div class="display-text">
-      <p class="display-text-label">{{ placeholder }}</p>
-      <p class="display-text-data">{{ str }}</p>
-    </div>
+    <p class="display-text">{{ placeholder }}</p>
+    <p class="display-data">{{ str }}</p>
     <i
       class="fa fa-chevron-down display-suffix"
       [ngClass]="{ shown: isShowen }"

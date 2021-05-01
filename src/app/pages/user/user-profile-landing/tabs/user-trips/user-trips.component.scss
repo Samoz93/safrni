@@ -1,4 +1,94 @@
+@import "/src/assets/css/abstract/mixins";
+
+$trans: all 1s;
 .main {
-  display: grid;
-  gap: 10rem;
+  height: 100%;
+  overflow: scroll;
+}
+
+.old,
+.new {
+  .trip-type {
+    padding: 5% 7%;
+    font-size: 2rem;
+    font-weight: 800;
+    @include res(tab) {
+      padding: 10% 0 0 0;
+      text-align: center;
+    }
+  }
+  .trip {
+    color: white;
+    display: grid;
+    grid-template-columns: 15% 40% 45%;
+    row-gap: 2rem;
+    font-size: 2rem;
+    width: 50%;
+    @include res(tab) {
+      grid-template-rows: 15% 85%;
+      width: 100%;
+      padding: 0 10%;
+    }
+    &:hover {
+      img {
+        transform: scale(1.1);
+        z-index: 0;
+        transition: $trans;
+      }
+    }
+    figure.img {
+      grid-column: span 3;
+      grid-row: 2;
+      overflow: hidden;
+      transition: $trans;
+      cursor: pointer;
+      width: 100%;
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+      @include res(tab) {
+        grid-row: 2;
+        grid-column: 1 / span 3;
+      }
+    }
+    .year {
+      z-index: 1;
+      grid-row: span 3;
+      grid-column: 1;
+      align-self: center;
+      transform: rotateZ(-90deg);
+      color: black;
+      font-size: 3rem;
+
+      @include res(tab) {
+        transform: rotateZ(0);
+        grid-column: span 3;
+        grid-row: 1;
+        text-align: center;
+      }
+    }
+    .text {
+      z-index: 2;
+      grid-row: 1;
+      grid-column: 2;
+      padding: 2rem 2rem;
+      .city {
+        font-size: 6.8rem;
+        text-decoration: underline 0.5rem white;
+        text-underline-offset: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .date {
+        font-size: inherit;
+      }
+      @include res(tab) {
+        grid-row: 2;
+        grid-column: 1 / span 3;
+        text-align: start;
+        z-index: 10;
+      }
+    }
+  }
 }

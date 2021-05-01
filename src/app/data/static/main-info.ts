@@ -36,3 +36,7 @@ export enum CitiesEnum {
   Bursa = 'Bursa',
   Trabzon = 'Trabzon',
 }
+export enum TABS {
+  tour = 'tour',
+  medic = 'medic',
+}

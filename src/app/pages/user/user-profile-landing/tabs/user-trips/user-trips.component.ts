@@ -15,4 +15,8 @@ export class UserTripsComponent implements OnInit {
     this.trips = [];
     this.trips.push(...this.ser.trips);
   }
+
+  get activeTrip() {
+    return this.trips[0];
+  }
 }

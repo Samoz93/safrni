@@ -34,6 +34,8 @@ export class ControlValueAccessorConnector
 
   @Input()
   formControl: FormControl;
+  @Input()
+  hideIcon: boolean = false;
 
   @Input()
   formControlName: string;
@@ -74,9 +76,9 @@ export class ControlValueAccessorConnector
 
   get errmsg(): any[] | undefined {
     let lst;
-    if (this.control.errors && this.control.dirty) {
+    if (this.control?.errors && this.control?.dirty) {
       lst = [];
-      Object.keys(this.control.errors).forEach((f) =>
+      Object.keys(this.control?.errors ?? []).forEach((f) =>
         lst.push(this._getMsg(f))
       );
     }

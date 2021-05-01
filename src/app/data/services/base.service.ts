@@ -25,6 +25,11 @@ export class BaseService<T> {
       if (this.data.length < 1) {
         const d = await this.http.get<T[]>(url).toPromise();
         this.data.push(...d);
+        //TODO for test
+        this.data.push(...d);
+        this.data.push(...this.data);
+        this.data.push(...this.data);
+        this.data.push(...this.data);
       }
       this.data$.next(this.data);
     });
