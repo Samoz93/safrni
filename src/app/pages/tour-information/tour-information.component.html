@@ -68,9 +68,9 @@
       <h2 class="places__title">places you will visit</h2>
       <p class="places__description">A lot of different tours around Turkey</p>
       <div class="places__grid">
-        <!-- <app-trip-card
+        <app-trip-card
           *ngFor="let item of trips; let i = index"
-        ></app-trip-card> -->
+        ></app-trip-card>
       </div>
     </section>
 
@@ -120,24 +120,35 @@
         <app-custom-input
           formControlName="fullName"
           [icon]="icons.profile"
+          [placeholder]="'Full Name'"
         ></app-custom-input>
         <app-custom-input
           formControlName="phone"
           [icon]="icons.profile"
+          [placeholder]="'phone'"
         ></app-custom-input>
         <app-custom-input
           formControlName="email"
           [icon]="icons.profile"
+          [placeholder]="'email'"
         ></app-custom-input>
         <app-custom-date-picker
           [icon]="icons.profile"
           formControlName="arrivalDate"
+          [placeholder]="'Estimated Arrival Date'"
         ></app-custom-date-picker>
         <app-custom-input
           formControlName="message"
+          [placeholder]="'message'"
           [icon]="icons.profile"
         ></app-custom-input>
+
+        <button class="main-btn" type="submit">Book Now</button>
       </form>
+    </section>
+
+    <section class="similar-tours">
+      
     </section>
   </div>
 </div>
