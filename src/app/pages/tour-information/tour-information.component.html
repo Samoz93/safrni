@@ -117,13 +117,26 @@
         (ngSubmit)="onFormSubmitted()"
         class="booking-form"
       >
-        <app-profileinput formControlName="fullName"></app-profileinput>
-        <app-profileinput formControlName="phone"></app-profileinput>
-        <app-profileinput formControlName="email"></app-profileinput>
+        <app-profileinput
+          formControlName="fullName"
+          [icon]="icons.profile"
+        ></app-profileinput>
+        <app-profileinput
+          formControlName="phone"
+          [icon]="icons.profile"
+        ></app-profileinput>
+        <app-profileinput
+          formControlName="email"
+          [icon]="icons.profile"
+        ></app-profileinput>
         <app-custom-date-picker
+          [icon]="icons.profile"
           formControlName="arrivalDate"
         ></app-custom-date-picker>
-        <app-profileinput formControlName="message"></app-profileinput>
+        <app-profileinput
+          formControlName="message"
+          [icon]="icons.profile"
+        ></app-profileinput>
       </form>
     </section>
   </div>
