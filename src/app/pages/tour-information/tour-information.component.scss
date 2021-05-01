@@ -2,6 +2,55 @@
 @import "/src/assets/css/abstract/mixins";
 
 .tour-infomation {
+  .fab {
+    position: fixed;
+    right: 10rem;
+    z-index: 9999;
+
+    cursor: pointer;
+  }
+  .whatsapp-fab {
+    width: 7rem;
+    height: 7rem;
+    background-color: transparent;
+    box-shadow: $subtleShadow;
+    border-radius: 50%;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .circle-fab {
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    border: solid 5px white;
+
+    box-shadow: $subtleShadow;
+    .inner-circle-fab {
+      background-color: $accent;
+      width: 100%;
+      border-radius: 50%;
+      height: 100%;
+      text-align: center;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      box-shadow: inset 0px 3px 6px 0px rgba($color: #000000, $alpha: 0.15);
+
+      p {
+        padding: 0rem;
+        margin: 0rem;
+        color: white;
+        text-align: center;
+        font-size: 1.3rem;
+        font-weight: bold;
+      }
+    }
+  }
+
   &__content-grid {
     display: grid;
     grid-template-columns: 1fr 51rem 17rem 43rem 1fr;
