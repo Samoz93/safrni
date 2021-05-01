@@ -57,7 +57,7 @@
 
     // gap: 4rem 0rem;
 
-    grid-template-rows: repeat(30, 5rem);
+    grid-template-rows: repeat(42, 5rem);
     grid-auto-rows: min-content;
 
     padding: 7.5rem 0rem;
@@ -246,7 +246,7 @@
 
     .booking-section {
       grid-column: 2/3;
-      grid-row: 27 / span 11;
+      grid-row: 27 / span 12;
 
       padding-bottom: 3rem;
       border-bottom: 1px solid $dividerColor;
@@ -272,6 +272,36 @@
           margin-bottom: 3rem;
         }
       }
+    }
+  }
+
+  .similar-tours {
+    display: grid;
+    grid-template-columns: 1fr 111rem 1fr;
+    grid-template-rows: 10rem 44rem;
+    gap: 1rem;
+
+    &__header {
+      grid-column: 2/3;
+      grid-row: 1/2;
+      h2 {
+        font-size: 3.1rem;
+        font-weight: bold;
+        text-transform: capitalize;
+      }
+      p {
+        font-size: 1.5rem;
+        font-weight: 400;
+        text-transform: capitalize;
+        color: #252629;
+      }
+    }
+    &__grid {
+      grid-column: 2 / 3;
+      grid-row: 2/3;
+
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
     }
   }
 }
