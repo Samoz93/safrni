@@ -6,22 +6,21 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+import {
+  AccordionListItem,
+  AccordionListItemOption,
+} from 'src/app/common/widgets/accordion-list/accordion-list-item';
+import { AccordionClickEventData } from 'src/app/common/widgets/accordion-list/accordion-list.component';
 
 import { LocationModel } from 'src/app/data/models/LocationModel';
 import { TimelineItemModel } from 'src/app/data/models/timelineModel';
 
-import {
-  AccordionListItem,
-  AccordionListItemOption,
-} from '../accordion-list/accordion-list-item';
-import { AccordionClickEventData } from '../accordion-list/accordion-list.component';
-
 @Component({
-  selector: 'app-map-stepper',
-  templateUrl: './map-stepper.component.html',
-  styleUrls: ['./map-stepper.component.scss'],
+  selector: 'app-tour-map',
+  templateUrl: './tour-map.component.html',
+  styleUrls: ['./tour-map.component.scss'],
 })
-export class MapStepperComponent implements OnInit, AfterViewInit {
+export class TourMapComponent implements OnInit {
   constructor() {}
 
   sideBarVisibility = true;
@@ -48,7 +47,7 @@ export class MapStepperComponent implements OnInit, AfterViewInit {
       this.map = map;
     });
   }
-  @Input('timelines') timelines: TimelineItemModel[];
+
   @ViewChild('agmMap') agmMap: AgmMap;
 
   ngOnInit(): void {
@@ -403,5 +402,41 @@ export class MapStepperComponent implements OnInit, AfterViewInit {
         },
       ],
     },
+  ];
+  timelines = [
+    new TimelineItemModel(1, [
+      new LocationModel(
+        '1',
+        'https://i4.hurimg.com/i/hurriyet/75/0x0/5f0867e50f254420f0a144e0.jpg',
+        'aya sofya',
+        'a random place in instanbul',
+        { latitude: 41.008583, longitude: 28.980175 }
+      ),
+    ]),
+    new TimelineItemModel(2, [
+      new LocationModel(
+        '2',
+        'https://i.ytimg.com/vi/no7LCcGTvn8/maxresdefault.jpg',
+        'kiz kulesi',
+        'a random place in instanbul',
+        { latitude: 41.0191765, longitude: 29.00444 }
+      ),
+      new LocationModel(
+        '4',
+        'https://image.tatilbudur.com/aboutinfo/602fba55f6de65928ad2530a0f9f20a2.jpg',
+        'Sile sahili',
+        'a random place in instanbul',
+        { latitude: 41.1664882, longitude: 29.5802089 }
+      ),
+    ]),
+    new TimelineItemModel(3, [
+      new LocationModel(
+        '2',
+        'https://tatilsepeti.cubecdn.net/images/Yalova-Termal-Otelleri.jpg',
+        'Termal',
+        'a random place in instanbul',
+        { latitude: 40.6056569, longitude: 29.1723517 }
+      ),
+    ]),
   ];
 }

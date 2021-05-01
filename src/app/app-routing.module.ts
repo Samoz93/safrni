@@ -7,6 +7,7 @@ import { OffersPageComponent } from './pages/offers-page/offers-page.component';
 import { BookingPageComponent } from './pages/booking/booking-page.component';
 import { TourInformationComponent } from './pages/tour-information/tour-information.component';
 import { DevData } from './data/static/main-info';
+import { TourMapComponent } from './pages/tour-information/tour-map/tour-map.component';
 
 const routes: Routes = [
   { path: '', component: MainLandingComponent },
@@ -15,9 +16,14 @@ const routes: Routes = [
     path: 'profile',
     component: UserProfileLandingComponent,
   },
+
   { path: `${DevData.offersRoute}/:cityid`, component: OffersPageComponent },
   { path: 'booking/:id', component: BookingPageComponent },
   { path: 'tours/:id', component: TourInformationComponent },
+  {
+    path: 'map/:id',
+    component: TourMapComponent,
+  },
   { path: `${DevData.tourInfoRoute}/:id`, component: TourInformationComponent },
 ];
 

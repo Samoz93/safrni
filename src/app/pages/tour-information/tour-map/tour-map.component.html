@@ -1,0 +1,97 @@
+<div class="map-box">
+    <agm-map
+      #agmMap
+      [latitude]="currentLat"
+      [longitude]="currentLong"
+      [zoom]="zoom"
+      [usePanning]="true"
+      [restriction]="restriction"
+      [maxZoom]="15"
+      [styles]="styles"
+    >
+      <agm-polyline
+        *ngFor="
+          let location of allLocationsSorted | slice: 0:timelines.length;
+          let i = index
+        "
+      >
+        <agm-polyline-point
+          [latitude]="allLocationsSorted[i].geo.latitude"
+          [longitude]="allLocationsSorted[i].geo.longitude"
+        >
+        </agm-polyline-point>
+        <agm-polyline-point
+          [latitude]="allLocationsSorted[i + 1].geo.latitude"
+          [longitude]="allLocationsSorted[i + 1].geo.longitude"
+        >
+        </agm-polyline-point>
+  
+        <agm-icon-sequence
+          [strokeColor]="'#20aed5'"
+          [repeat]="'20px'"
+          [strokeWeight]="5"
+          [scale]="2"
+          [strokeOpacity]="100"
+          [path]="'FORWARD_CLOSED_ARROW'"
+        >
+        </agm-icon-sequence>
+      </agm-polyline>
+  
+      <ng-container *ngFor="let timeline of timelines">
+        <agm-overlay
+          *ngFor="let location of timeline.locations"
+          [latitude]="location.geo.latitude"
+          [longitude]="location.geo.longitude"
+          [bounds]="{
+            x: { latitude: -0.003, longitude: -0.0052 },
+            y: { latitude: 0.003, longitude: 0.0052 }
+          }"
+          (markerClick)="
+            locationOverlayClicked(location.geo.latitude, location.geo.longitude)
+          "
+        >
+          <!-- blue html square -->
+          <div class="location-overlay">
+            <img [src]="location.image" />
+            <h2>{{ location.name }}</h2>
+            <p>{{ location.desc }}</p>
+          </div>
+        </agm-overlay>
+      </ng-container>
+    </agm-map>
+    <div class="locations-list">
+      <app-accordion-list
+        [items]="accordionItems"
+        (itemClicked)="onLocationClicked($event)"
+      ></app-accordion-list>
+    </div>
+    <div
+      class="side-information-bar"
+      [ngStyle]="{ left: sideBarVisibility ? ' 0px' : '-25%' }"
+    >
+      <div class="side-information-bar__content">
+        <img src="{{ sidebarLocation.image }}" />
+        <h2>{{ sidebarLocation.name }}</h2>
+        <p>{{ sidebarLocation.desc }}</p>
+      </div>
+    </div>
+    <i
+      class="fa fa-arrow-left sidebar-toggle"
+      (click)="toggleSidebar()"
+      [ngClass]="sideBarVisibility ? '' : 'open'"
+    ></i>
+  </div>
+  <!-- <agm-marker
+        *ngFor="let location of mapSteps"
+        [latitude]="location.geo.latitude"
+        [longitude]="location.geo.longitude"
+      ></agm-marker> -->
+  <!-- <agm-polyline [strokeColor]="'#ffffff'" [strokeWeight]="20">
+        <agm-polyline-point
+          *ngFor="let location of mapSteps"
+          [latitude]="location.geo.latitude"
+          [longitude]="location.geo.longitude"
+        >
+        </agm-polyline-point>
+      </agm-polyline> -->
+  

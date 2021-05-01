@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MapStepperComponent } from './map-stepper.component';
+import { TourMapComponent } from './tour-map.component';
 
-describe('MapStepperComponent', () => {
-  let component: MapStepperComponent;
-  let fixture: ComponentFixture<MapStepperComponent>;
+describe('TourMapComponent', () => {
+  let component: TourMapComponent;
+  let fixture: ComponentFixture<TourMapComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MapStepperComponent ]
+      declarations: [ TourMapComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MapStepperComponent);
+    fixture = TestBed.createComponent(TourMapComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

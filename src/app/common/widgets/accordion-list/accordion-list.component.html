@@ -14,7 +14,7 @@
         *ngFor="let opt of item.options; let j = index"
         (click)="onItemClicked({ parentIndex: i, childIndex: j })"
       >
-        {{ opt.label }}
+       <p> {{ opt.label }}</p>
       </div>
     </div>
   </div>
