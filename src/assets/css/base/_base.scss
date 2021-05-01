@@ -22,13 +22,15 @@ html {
   @include res(phone) {
     font-size: 40%;
   }
-  
+
   @include res(desktop) {
     font-size: 60.25%;
   }
   overflow-x: hidden;
 }
-
+section {
+  min-height: min-content;
+}
 body {
   padding: 0rem;
   box-sizing: border-box;

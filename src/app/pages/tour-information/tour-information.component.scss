@@ -1,113 +1,223 @@
 @import "/src/assets/css/abstract/variables";
-.tour-info {
-  position: relative;
+@import "/src/assets/css/abstract/mixins";
 
-  &__banner {
-    z-index: 0;
-    width: 100%;
-    min-height: 60vh;
-    max-height: 60vh;
-    img {
-      min-width: 100%;
-      max-height: 60vh;
-      object-fit: cover;
-    }
-  }
-  .headline {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    max-height: 60vh;
+.tour-infomation {
+  &__content-grid {
+    display: grid;
+    grid-template-columns: 1fr 51rem 17rem 43rem 1fr;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 12.5rem;
-    &__explore {
-      color: white;
-      font-size: 3.5rem;
-      line-height: 1.5rem;
-    }
-    &__city {
-      color: white;
-      font-size: 6rem;
-      font-weight: 900;
-      line-height: 7rem;
-    }
-    &__description {
-      color: white;
-      font-size: 2rem;
-      line-height: 1.5rem;
-    }
-  }
-  &__card {
-    transform: translateX(-50%);
-    margin-left: 50%;
-    animation: card-translation 0.5s;
-    width: 75rem;
-    height: 88.23rem;
-    aspect-ratio: 0.85;
-    margin-top: -17.5rem;
-    background-color: white;
-    // border-radius: 1rem;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    overflow: hidden;
-    &__tabs {
-      height: 6rem;
+    // gap: 4rem 0rem;
 
-      ul {
-        height: 100%;
-        list-style-type: none;
+    grid-template-rows: repeat(30, 5rem);
+    grid-auto-rows: min-content;
+
+    padding: 7.5rem 0rem;
+
+    .brief-intro {
+      grid-column: 2/3;
+      grid-row: 1 / span 5;
+      border-bottom: 1px solid $dividerColor;
+
+      &__city-name {
+        font-weight: bold;
+        font-size: 5.3rem;
+      }
+      &__description {
+        font-weight: 400;
+        font-size: 1.5rem;
+        color: #717171;
+      }
+      &__cost-duration {
+        font-weight: 400;
+        font-size: 3rem;
+        color: #252629;
+      }
+    }
+
+    .trip-info-card {
+      grid-column: 4/5;
+      grid-row-start: 1;
+
+      position: sticky;
+      top: 5rem;
+
+      height: min-content;
+      display: flex;
+      flex-direction: column;
+      box-shadow: $subtleShadow;
+
+      .trip-card-header {
+        position: relative;
+        width: 100%;
+        height: 25%;
+        &__image {
+          width: 100%;
+          height: 100%;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+          @include imageOverlay(0.25);
+        }
+        &__price {
+          text-align: start;
+          line-height: 1;
+
+          position: absolute;
+          left: 2rem;
+          top: 1rem;
+          font-size: 5.4rem;
+          font-weight: bold;
+          color: #fff;
+        }
+        app-read-only-stars {
+          position: absolute;
+          right: 2rem;
+          top: 1rem;
+        }
+      }
+
+      .trip-card-brief-info {
         display: flex;
-        flex-direction: row;
-        align-items: stretch;
-        background-color: #f2fafd;
+        flex-direction: column;
 
-        .tab-button {
-          width: 20rem;
+        padding: 2rem;
+
+        &__city-name {
+          font-size: 3.8rem;
+          font-weight: 400;
+          font-family: $secondary-font;
+        }
+
+        &__price-duration {
+          font-weight: 400;
+          font-size: 1.9rem;
+          text-transform: capitalize;
+          color: #717171;
+        }
+      }
+
+      .trip-card-features {
+        padding: 2rem;
+        &__row {
           display: flex;
-          justify-content: center;
+          justify-content: space-between;
+          h2 {
+            text-transform: capitalize;
+            font-size: 2.5rem;
+            font-weight: bold;
+          }
+          p {
+            text-transform: capitalize;
+            font-size: 1.9rem;
+            font-weight: 300;
+          }
+        }
+      }
+
+      .main-btn {
+        align-self: flex-start;
+        margin: 5rem 2rem;
+      }
+    }
+
+    .places {
+      grid-column: 2/3;
+      grid-row: 7 / span 13;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid $dividerColor;
+
+      &__title {
+        font-size: 3.1rem;
+        font-weight: bold;
+        text-transform: capitalize;
+      }
+      &__description {
+        font-size: 1.5rem;
+        font-weight: 400;
+        text-transform: capitalize;
+        color: #252629;
+      }
+      &__grid {
+        margin-top: 2rem;
+
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, calc(calc(51rem - 2.2rem) / 2));
+
+        gap: 2.2rem;
+      }
+    }
+
+    .features {
+      grid-column: 2/3;
+      grid-row: 21 / span 5;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid $dividerColor;
+
+      &__title {
+        font-size: 3.1rem;
+        font-weight: bold;
+        text-transform: capitalize;
+      }
+      &__description {
+        font-size: 1.5rem;
+        font-weight: 400;
+        text-transform: capitalize;
+        color: #252629;
+      }
+      &__grid {
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+
+        &__item {
+          display: flex;
+          justify-content: flex-start;
           align-items: center;
-          cursor: pointer;
-          background-color: #f2fafd;
-          transition: all 0.3s;
           i {
-            color: $accent;
             font-size: 2rem;
-            margin-right: 0.5rem;
+            color: $accent;
+            margin-right: 1rem;
           }
-          a {
-            font-size: 1.5rem;
-          }
-
-          &:hover {
-            box-shadow: inset 0 -0.25rem 0 0 $accent;
-          }
-
-          &.active {
-            background-color: white;
-            box-shadow: none;
+          p {
+            font-size: 2rem;
+            font-weight: 300;
+            text-transform: capitalize;
+            text-align: center;
+            padding: 0rem;
+            margin: 0rem;
           }
         }
       }
     }
-    &__body {
-      padding: 2rem 2rem;
-      height: 100%;
-      &__content {
-        font-size: 5rem;
-        transition: opacity 0.3s;
+
+    .booking-section {
+      grid-column: 2/3;
+      grid-row: 27 / span 9;
+      &__title {
+        font-size: 3.1rem;
+        font-weight: bold;
+        text-transform: capitalize;
       }
-    }
-  }
-  @keyframes card-translation {
-    0% {
-      margin-top: -50.5rem;
-      opacity: 0.3;
-    }
-    100% {
-      margin-top: -17.5rem;
-      opacity: 1;
+      &__description {
+        font-size: 1.5rem;
+        font-weight: 400;
+        text-transform: capitalize;
+        color: #252629;
+      }
+      .booking-form {
+        height: 40rem;
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        & > * {
+          flex: 1;
+        }
+      }
     }
   }
 }

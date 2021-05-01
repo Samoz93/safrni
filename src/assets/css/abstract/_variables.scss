@@ -1,6 +1,4 @@
-$montserrat-font: "Montserrat", sans-serif;
-$righteous-font: "Righteous";
-$montserrat-font: "Roboto", sans-serif;
+$secondary-font: "Righteous";
 $main-font: "Source Sans Pro", sans-serif;
 $segoe: "Segoe Script Regular";
 
@@ -16,11 +14,21 @@ $light-black: #252629;
 $light-blue: #ebf3fa;
 $login-bk: #20aed5;
 
+$dividerColor: #C8C8C8;
+// $card-1: #025e73;
+// $card-2: #768591;
+// $card-3: #f2c879;
+// $card-4: #f96467;
+// $card-5: #a1b67e;
+// $card-6: #92a1d1;
+
 $black: black;
 $font-color: $primary;
 
 $border-radius: 0;
 $page-padding: 20rem;
+
+$subtleShadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 
 .grey {
   color: $grey;

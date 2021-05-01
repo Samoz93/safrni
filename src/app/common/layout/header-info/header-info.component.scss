@@ -25,4 +25,8 @@
       margin: 0 0.5rem;
     }
   }
+
+  @include res(tab) {
+    display: none;
+  }
 }

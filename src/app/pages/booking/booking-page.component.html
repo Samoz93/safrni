@@ -1,4 +1,4 @@
-<app-loader [isLoading]="isLoading">
+<!-- <app-loader [isLoading]="isLoading">
   <div *ngIf="!isLoading" class="main">
     <div class="img">
       <img [src]="trip.previewImage | serverimage" alt="" />
@@ -8,8 +8,8 @@
       <app-read-only-stars
         class="info_rating"
         [stars]="5"
-        [isBlack]="true"
-        [isBig]="true"
+        [color]="'#000'"
+        [size]="2"
       ></app-read-only-stars>
       <app-trip-extra class="info_extra" [isBig]="true"></app-trip-extra>
       <h3 class="info_duration">{{ trip.duration }} days</h3>
@@ -80,4 +80,4 @@
       GRID OF TRIPS
     </div>
   </div>
-</app-loader>
+</app-loader> -->

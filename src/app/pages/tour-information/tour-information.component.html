@@ -1,63 +1,143 @@
-<div class="tour-info">
+<!-- <app-map-stepper [timelines]="timelines"></app-map-stepper> -->
+<div class="tour-infomation">
+  <app-banner-carousel
+    [images]="images"
+    [screenHeightPercentage]="60"
+  ></app-banner-carousel>
 
-  <div class="tour-info__banner">
-    <img src="https://picsum.photos/id/1019/1080/720" />
-  </div>
-  <div class="headline">
-    <p class="headline__explore">Explore in 5 days</p>
-    <p class="headline__city">Istanbul</p>
-    <p class="headline__description">People were right when they say there is no other place on earth as beautiful looking as Istanbul.</p>
-  </div>
-  <div class="tour-info__card">
-    <div class="tour-info__card__tabs">
-      <ul>
-        <li
-          class="tab-button"
-          [ngClass]="{ active: 1 == selectedTab }"
-          (click)="setTabIndex(1)"
-        >
-          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-          <a>Information</a>
-        </li>
-        <li
-          class="tab-button"
-          [ngClass]="{ active: 2 == selectedTab }"
-          (click)="setTabIndex(2)"
-        >
-          <i class="fa fa-calendar" aria-hidden="true"></i>
-          <a>Tour Plan</a>
-        </li>
-        <li
-          class="tab-button"
-          [ngClass]="{ active: 3 == selectedTab }"
-          (click)="setTabIndex(3)"
-        >
-          <i class="fa fa-map-marker" aria-hidden="true"></i>
-          <a>Location</a>
-        </li>
-        <li
-          class="tab-button"
-          [ngClass]="{ active: 4 == selectedTab }"
-          (click)="setTabIndex(4)"
-        >
-          <i class="fa fa-star-o" aria-hidden="true"></i>
-          <a>Reviews</a>
-        </li>
-      </ul>
-    </div>
-    <div class="tour-info__card__body">
-      <div class="" [ngStyle]="styleObject(1)">
-        <app-info-information-tab></app-info-information-tab>
+  <div class="tour-infomation__content-grid">
+    <section class="brief-intro">
+      <h1 class="brief-intro__city-name">Istanbul</h1>
+      <p class="brief-intro__cost-duration">
+        5 Days - 4 Nights / 400$ Per Person
+      </p>
+      <p class="brief-intro__description">
+        The city embraces Asia on the one hand and Europe on the other. Istanbul
+        is Turkey's most populous city and its cultural and financial center.
+        Located on both sides of the Bosphorus, the narrow strait between the
+        Black Sea and the Marmara Sea, Istanbul bridges Asia and Europe both
+        physically and culturally.
+      </p>
+    </section>
+
+    <section class="trip-info-card">
+      <div class="trip-card-header">
+        <div class="trip-card-header__image">
+          <img src="https://wallpapercave.com/wp/wp1813727.jpg" />
+        </div>
+        <p class="trip-card-header__price">400$</p>
+        <app-read-only-stars
+          [stars]="3.5"
+          [color]="'#fff'"
+        ></app-read-only-stars>
       </div>
-      <div class="" [ngStyle]="styleObject(2)">
-        <app-info-plan-tab></app-info-plan-tab>
+      <div class="trip-card-brief-info">
+        <h2 class="trip-card-brief-info__city-name">Istanbul</h2>
+        <p class="trip-card-brief-info__price-duration">
+          5 Days - 4 Nights / 400$ Per Person
+        </p>
       </div>
-      <div class="" [ngStyle]="styleObject(3)">
-        <app-info-location-tab></app-info-location-tab>
+
+      <div class="trip-card-features">
+        <div class="trip-card-features__row">
+          <h2>hotel</h2>
+          <p>four season hotel</p>
+        </div>
+        <div class="trip-card-features__row">
+          <h2>hotel</h2>
+          <p>four season hotel</p>
+        </div>
+        <div class="trip-card-features__row">
+          <h2>hotel</h2>
+          <p>four season hotel</p>
+        </div>
+        <div class="trip-card-features__row">
+          <h2>hotel</h2>
+          <p>four season hotel</p>
+        </div>
+        <div class="trip-card-features__row">
+          <h2>hotel</h2>
+          <p>four season hotel</p>
+        </div>
       </div>
-      <div class="" [ngStyle]="styleObject(4)">
-        <app-info-reviews-tab></app-info-reviews-tab>
+
+      <button class="main-btn">show on the map</button>
+    </section>
+
+    <section class="places">
+      <h2 class="places__title">places you will visit</h2>
+      <p class="places__description">A lot of different tours around Turkey</p>
+      <div class="places__grid">
+        <!-- <app-trip-card
+          *ngFor="let item of trips; let i = index"
+        ></app-trip-card> -->
       </div>
-    </div>
+    </section>
+
+    <section class="features">
+      <h2 class="features__title">included</h2>
+      <p class="features__description">
+        A lot of different tours around Turkey
+      </p>
+      <div class="features__grid">
+        <div class="features__grid__item">
+          <i class="fa fa-check-square"></i>
+          <p>some feature</p>
+        </div>
+        <div class="features__grid__item">
+          <i class="fa fa-check-square"></i>
+          <p>some feature</p>
+        </div>
+        <div class="features__grid__item">
+          <i class="fa fa-check-square"></i>
+          <p>some feature</p>
+        </div>
+        <div class="features__grid__item">
+          <i class="fa fa-check-square"></i>
+          <p>some feature</p>
+        </div>
+        <div class="features__grid__item">
+          <i class="fa fa-check-square"></i>
+          <p>some feature</p>
+        </div>
+        <div class="features__grid__item">
+          <i class="fa fa-check-square"></i>
+          <p>some feature</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking-section">
+      <h2 class="booking-section__title">Booking Information</h2>
+      <p class="booking-section__description">
+        This information will not be shared
+      </p>
+      <form
+        [formGroup]="bookForm"
+        (ngSubmit)="onFormSubmitted()"
+        class="booking-form"
+      >
+        <app-custom-input
+          formControlName="fullName"
+          [icon]="icons.profile"
+        ></app-custom-input>
+        <app-custom-input
+          formControlName="phone"
+          [icon]="icons.profile"
+        ></app-custom-input>
+        <app-custom-input
+          formControlName="email"
+          [icon]="icons.profile"
+        ></app-custom-input>
+        <app-custom-date-picker
+          [icon]="icons.profile"
+          formControlName="arrivalDate"
+        ></app-custom-date-picker>
+        <app-custom-input
+          formControlName="message"
+          [icon]="icons.profile"
+        ></app-custom-input>
+      </form>
+    </section>
   </div>
 </div>

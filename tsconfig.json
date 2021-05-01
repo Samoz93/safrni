@@ -19,7 +19,7 @@
     "strictPropertyInitialization": false,
     "lib": ["es2018", "dom"],
     "esModuleInterop": true,
-
+    "resolveJsonModule": true
   },
   "suppressImplicitAnyIndexErrors": true,
 

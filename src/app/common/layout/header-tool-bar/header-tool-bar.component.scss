@@ -1,22 +1,141 @@
 @import "/src/assets/css/abstract/mixins";
+@import "/src/assets/css/abstract/variables";
 .main {
   height: 8rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  @include shadow;
+  position: relative;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
   &_logo {
-    flex: 3;
   }
 
   &_tool-bar {
-    flex: 3;
-
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    list-style: none;
+    list-style-type: none;
+    z-index: 9999;
+
     *:not(:last-child) {
       margin-right: 5rem;
+    }
+  }
+  &_mobile-tool-bar {
+    display: none;
+  }
+  .profile-toggler {
+    display: none;
+    cursor: pointer;
+    i {
+      font-size: 4rem;
+      color: #20aed5;
+    }
+  }
+  .nav-toggler {
+    padding: 5px;
+    background-color: transparent;
+    cursor: pointer;
+    height: 39px;
+    display: none;
+    border: none;
+  }
+  .nav-toggler span,
+  .nav-toggler span:before,
+  .nav-toggler span:after {
+    width: 28px;
+    height: 3px;
+    background-color: #20aed5;
+    display: block;
+    transition: 0.3s;
+  }
+  .nav-toggler span:before {
+    content: "";
+    transform: translateY(-9px);
+  }
+  .nav-toggler span:after {
+    content: "";
+    transform: translateY(6px);
+  }
+  .nav-toggler.toggler-open span {
+    background-color: transparent;
+  }
+  .nav-toggler.toggler-open span:before {
+    transform: translateY(0px) rotate(45deg);
+  }
+  .nav-toggler.toggler-open span:after {
+    transform: translateY(-3px) rotate(-45deg);
+  }
+  @include res(tab) {
+    .nav-toggler {
+      display: block;
+    }
+    .profile-toggler {
+      display: block;
+    }
+    .main_tool-bar {
+      display: none;
+    }
+    .main__profile-links.open {
+      overflow: visible;
+      max-height: 100vh;
+    }
+    .main_mobile-tool-bar {
+      position: absolute;
+      width: 100%;
+      height: 95vh;
+      left: 0;
+      top: 8rem;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      background-color: rgba($color: #20aed5, $alpha: 1);
+
+      opacity: 0;
+      overflow: hidden;
+
+      transition: all 0.2s ease-out;
+
+      padding: 0rem;
+
+      .navLinks {
+        list-style: none;
+        li {
+          width: 100%;
+          text-align: start;
+          margin-bottom: 1.5rem;
+
+          a {
+            font-size: 4rem;
+            color: white;
+            font-weight: 400;
+          }
+        }
+      }
+      .contactLinks {
+        list-style: none;
+        li {
+          i {
+            margin-right: 1.5rem;
+          }
+          i,
+          a {
+            color: white;
+            font-size: 2.5rem;
+          }
+        }
+      }
+    }
+    .main_mobile-tool-bar.open {
+      // height: 100vh;
+      overflow: visible;
+      opacity: 1;
+      padding: 4rem;
     }
   }
 }

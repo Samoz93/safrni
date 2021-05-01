@@ -3,9 +3,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
-
+import { AgmCoreModule } from '@agm/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AgmOverlays } from 'agm-overlays';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainLandingComponent } from './pages/main-landing/main-landing.component';
 import { SearchPanelComponent } from './pages/main-landing/search-panel/search-panel.component';
@@ -35,10 +36,6 @@ import { UserSecurityComponent } from './pages/user/user-profile-landing/tabs/us
 import { ProfileinputComponent } from './common/widgets/profileinput/profileinput.component';
 import { TourInformationComponent } from './pages/tour-information/tour-information.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { InfoInformationTabComponent } from './pages/tour-information/info-information-tab/info-information-tab.component';
-import { InfoPlanTabComponent } from './pages/tour-information/info-plan-tab/info-plan-tab.component';
-import { InfoLocationTabComponent } from './pages/tour-information/info-location-tab/info-location-tab.component';
-import { InfoReviewsTabComponent } from './pages/tour-information/info-reviews-tab/info-reviews-tab.component';
 import { ReadOnlyStarsComponent } from './common/widgets/read-only-stars/read-only-stars.component';
 import { StepperComponent } from './common/widgets/stepper/stepper.component';
 import { MatIconModule } from '@angular/material/icon';
@@ -58,6 +55,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { SwiperModule } from 'swiper/angular';
 import { CustomDatePickerComponent } from './common/widgets/custom-date-picker/custom-date-picker.component';
+import { MapStepperComponent } from './common/widgets/map-stepper/map-stepper.component';
+import { AccordionListComponent } from './common/widgets/accordion-list/accordion-list.component';
+import { BannerCarouselComponent } from './common/widgets/banner-carousel/banner-carousel.component';
 import { PricePipe } from './data/pipes/price.pipe';
 import { NgxPopperjsModule } from 'ngx-popperjs';
 import { HoverableItemComponent } from './common/widgets/hoverable-item/hoverable-item.component';
@@ -93,38 +93,26 @@ import { CustomInputComponent } from './common/widgets/custom-input/custom-input
     UserSecurityComponent,
     ProfileinputComponent,
     TourInformationComponent,
-    InfoInformationTabComponent,
-    InfoPlanTabComponent,
-    InfoLocationTabComponent,
-    InfoReviewsTabComponent,
+
     ReadOnlyStarsComponent,
     StepperComponent,
     OffersPageComponent,
-
     OffersFilterComponent,
-
     BookingPageComponent,
-
     LoaderComponent,
-
     Onlynumbers,
 
     GuestCountInputComponent,
-
     UpperFirstCharPipe,
-
     ServerimagePipe,
-
     CustomSelectComponent,
-
     CustomDatePickerComponent,
-
+    MapStepperComponent,
+    AccordionListComponent,
+    BannerCarouselComponent,
     PricePipe,
-
     HoverableItemComponent,
-
     ValidationIconComponent,
-
     CustomInputComponent,
   ],
 
@@ -146,6 +134,10 @@ import { CustomInputComponent } from './common/widgets/custom-input/custom-input
     HttpClientModule,
     MatSelectModule,
     SwiperModule,
+    AgmOverlays,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyB33Yp_MzVXNyeTWkiip0mfGThC5xMSp-I',
+    }),
     NgxPopperjsModule,
   ],
   providers: [

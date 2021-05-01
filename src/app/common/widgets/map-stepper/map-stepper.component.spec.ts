@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InfoInformationTabComponent } from './info-information-tab.component';
+import { MapStepperComponent } from './map-stepper.component';
 
-describe('InfoInformationTabComponent', () => {
-  let component: InfoInformationTabComponent;
-  let fixture: ComponentFixture<InfoInformationTabComponent>;
+describe('MapStepperComponent', () => {
+  let component: MapStepperComponent;
+  let fixture: ComponentFixture<MapStepperComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InfoInformationTabComponent ]
+      declarations: [ MapStepperComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InfoInformationTabComponent);
+    fixture = TestBed.createComponent(MapStepperComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

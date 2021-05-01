@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InfoLocationTabComponent } from './info-location-tab.component';
+import { AccordionListComponent } from './accordion-list.component';
 
-describe('InfoLocationTabComponent', () => {
-  let component: InfoLocationTabComponent;
-  let fixture: ComponentFixture<InfoLocationTabComponent>;
+describe('AccordionListComponent', () => {
+  let component: AccordionListComponent;
+  let fixture: ComponentFixture<AccordionListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InfoLocationTabComponent ]
+      declarations: [ AccordionListComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InfoLocationTabComponent);
+    fixture = TestBed.createComponent(AccordionListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

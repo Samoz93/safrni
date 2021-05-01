@@ -1,0 +1,32 @@
+<div class="tabs">
+  <div class="tab" *ngFor="let item of items; let i = index">
+    <div
+      class="tab-label"
+      (click)="toggleHeader(i)"
+      [ngClass]="openHeaders[i] ? 'open' : ''"
+    >
+      <p>day {{ i + 1 }}</p>
+      <i class="fa fa-arrow-down"></i>
+    </div>
+    <div class="tab-content" [ngClass]="openHeaders[i] ? 'open' : ''">
+      <div
+        class="tab-content__item"
+        *ngFor="let opt of item.options; let j = index"
+        (click)="onItemClicked({ parentIndex: i, childIndex: j })"
+      >
+        {{ opt.label }}
+      </div>
+    </div>
+  </div>
+  <!-- <div class="tab">
+    <input type="radio" id="rd2" name="rd" />
+    <label class="tab-label" for="rd2">Item 2</label>
+    <div class="tab-content">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil, aut.
+    </div>
+  </div>
+  <div class="tab">
+    <input type="radio" id="rd3" name="rd" />
+    <label for="rd3" class="tab-close">Close others &times;</label>
+  </div> -->
+</div>
