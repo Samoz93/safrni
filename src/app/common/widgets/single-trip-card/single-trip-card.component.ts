@@ -23,6 +23,12 @@ export class SingleTripCardComponent implements OnInit {
   ngOnInit(): void {}
 
   goToOffer() {
-    this.router.navigate([DevData.tourInfoRoute, this.id]);
+    console.log(this.id);
+
+    if (this.isOffer) this.router.navigate([DevData.tourInfoRoute, this.id]);
+    else
+      this.router.navigate([DevData.offersRoute], {
+        queryParams: { city: this.id },
+      });
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TABS } from 'src/app/data/static/main-info';
 import { ICONS } from 'src/app/data/uitls/enums';
 
 @Component({
@@ -32,8 +33,4 @@ export class SearchPanelComponent implements OnInit {
     this.activeTab = tab;
   }
   ngOnInit(): void {}
-}
-enum TABS {
-  tour = 'tour',
-  medic = 'medic',
 }

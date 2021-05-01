@@ -15,7 +15,7 @@ const routes: Routes = [
     path: 'profile',
     component: UserProfileLandingComponent,
   },
-  { path: `${DevData.offersRoute}/:cityid`, component: OffersPageComponent },
+  { path: `${DevData.offersRoute}`, component: OffersPageComponent },
   { path: 'booking/:id', component: BookingPageComponent },
   { path: 'tours/:id', component: TourInformationComponent },
   { path: `${DevData.tourInfoRoute}/:id`, component: TourInformationComponent },

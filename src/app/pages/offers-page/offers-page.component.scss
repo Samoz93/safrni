@@ -1,56 +1,151 @@
 @import "/src/assets/css/abstract/variables";
 @import "/src/assets/css/abstract/mixins";
-.main {
-  position: relative;
-  .offer-video {
-    img {
-      width: 100%;
-      max-height: 60vh;
-      object-fit: cover;
-    }
-  }
-  .offers-filter {
-    left: 50%;
-    top: 40rem;
-    transform: translateX(-50%);
-    position: absolute;
 
-    @include res(tab) {
-      top: 30rem;
+$trans: all 200ms;
+$padding: 0 2rem;
+$font-size: 1.5rem;
+@mixin divider {
+  &::after {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background: $non-active;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+.carousel {
+  z-index: 0;
+  position: relative;
+  &-info {
+    position: absolute;
+    padding: 0 $page-padding;
+
+    top: 20%;
+    width: 100%;
+    text-align: center;
+    font-size: 5rem;
+    z-index: 1000;
+    color: white;
+    & > * {
+      font-size: inherit;
+      text-shadow: 2px 2px #00000081;
     }
   }
-  .offers-headline {
-    margin: 5rem 0rem;
+}
+.main {
+  height: 150vh;
+}
+.grid_area {
+  display: grid;
+  transform: translate(0, -15rem);
+  grid-template-columns: 14rem 14rem 77rem;
+  grid-template-rows: 7rem 20rem 15rem 7rem;
+  grid-auto-rows: max-content;
+  column-gap: 2.7rem;
+  &-nav {
+    grid-column: span 2;
+    grid-row: 1;
+    display: grid;
+    @include shadow;
+    grid-template-columns: repeat(2, 1fr);
+    &-item {
+      background: $non-active;
+      color: black;
+      font-size: 1.5rem;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: $trans;
+    }
+    &-item.active {
+      background: white;
+      color: black;
+    }
+  }
+
+  &-guest-count {
+    padding: $padding;
+    grid-column: span 2;
+    grid-row: 2;
+    background: white;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    &__1 {
-      color: $accent;
-      font-size: 4rem;
-      margin: 0px;
-      font-weight: 600;
+    justify-content: space-evenly;
+    position: relative;
+    @include shadow;
+
+    &-item {
+      font-size: $font-size;
+      display: grid;
+      grid-template-columns: 50% 15% 15% 15%;
+      & > * {
+        font-size: inherit;
+      }
+      .val {
+        justify-self: center;
+      }
+      .minus {
+        justify-self: flex-end;
+      }
+      .plus {
+        justify-self: flex-start;
+      }
+      .icon {
+        background: $accent;
+        color: white;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+      }
     }
-    &__2 {
-      font-size: 4rem;
-      color: black;
-      margin: 0px;
-      font-weight: 400;
+    @include divider();
+  }
+  &-price {
+    padding: $padding;
+    grid-column: span 2;
+    grid-row: 3;
+    background: white;
+    position: relative;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: 45% 45%;
+    @include shadow;
+
+    gap: 10%;
+    @include divider();
+    &-title {
+      grid-column: span 2;
+      grid-row: 1;
+      font-size: $font-size;
+      align-self: flex-end;
     }
   }
-  .offers-content {
-    width: 100%;
-    padding: 0rem 5rem;
+  &-btn {
+    padding: $padding;
+
+    grid-column: span 2;
+    grid-row: 4;
+    background: white;
+    z-index: 0;
+    @include shadow;
     display: grid;
-    gap: 3rem;
-    justify-content: center;
-    grid-template-columns: repeat(3, 30rem);
-
-    @include res(tab) {
-      grid-template-columns: repeat(2, 30rem);
+    justify-content: flex-start;
+    align-items: center;
+  }
+  &-content {
+    grid-column: 3;
+    grid-row: 1 / -1;
+    height: 100vh;
+    overflow: scroll;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 25rem;
+    gap: 0.1rem;
+    .full-width {
+      grid-column: 1/-1;
     }
-
-    // @include res(phone) {
-    //   grid-template-columns: repeat(2, 30rem);
-    // }
   }
 }
