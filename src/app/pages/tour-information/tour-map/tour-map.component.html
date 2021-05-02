@@ -103,7 +103,18 @@
         <i class="fa fa-chevron-right"></i>
       </div>
     </div>
-    <div class="side-information-mobile__content">
+    <div
+      class="side-information-mobile__content"
+      (click)="toggleMobileSheet()"
+      [ngClass]="mobileSheetExpanded ? 'open' : ''"
+    >
+      <i
+        class="fa fa-chevron-up expand"
+        [ngClass]="mobileSheetExpanded ? 'open' : ''"
+      ></i>
+      <div class="side-information-mobile__main-image">
+        <img src="{{ sidebarLocation.image }}" />
+      </div>
       <h2>{{ sidebarLocation.name }}</h2>
       <p>{{ sidebarLocation.desc }}</p>
       <div class="side-information-mobile__images">
@@ -117,16 +128,3 @@
     [ngClass]="sideBarVisibility ? '' : 'open'"
   ></i>
 </div>
-<!-- <agm-marker
-        *ngFor="let location of mapSteps"
-        [latitude]="location.geo.latitude"
-        [longitude]="location.geo.longitude"
-      ></agm-marker> -->
-<!-- <agm-polyline [strokeColor]="'#ffffff'" [strokeWeight]="20">
-        <agm-polyline-point
-          *ngFor="let location of mapSteps"
-          [latitude]="location.geo.latitude"
-          [longitude]="location.geo.longitude"
-        >
-        </agm-polyline-point>
-      </agm-polyline> -->

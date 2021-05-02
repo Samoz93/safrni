@@ -18,6 +18,7 @@ export class TourMapComponent implements OnInit {
   constructor() {}
 
   sideBarVisibility = true;
+  mobileSheetExpanded = false;
   sidebarLocation: LocationModel;
 
   currentLat: number;
@@ -94,7 +95,7 @@ export class TourMapComponent implements OnInit {
       indexOfCurrent + 1 < this.allLocationsSorted.length
     );
   }
-  hasPrevLocation() : boolean {
+  hasPrevLocation(): boolean {
     let indexOfCurrent = this.allLocationsSorted.indexOf(this.sidebarLocation);
     return indexOfCurrent != null && indexOfCurrent > 0;
   }
@@ -113,6 +114,9 @@ export class TourMapComponent implements OnInit {
     this.sidebarLocation = this.timelines[data.parentIndex].locations[
       data.childIndex
     ];
+  }
+  toggleMobileSheet() {
+    this.mobileSheetExpanded = !this.mobileSheetExpanded;
   }
   styles: MapTypeStyle[] = [
     {
