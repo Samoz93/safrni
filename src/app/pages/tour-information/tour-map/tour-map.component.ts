@@ -51,6 +51,11 @@ export class TourMapComponent implements OnInit {
   @ViewChild('agmMap') agmMap: AgmMap;
 
   ngOnInit(): void {
+    this.currentLat = this.timelines[0].locations[0].geo.latitude;
+    this.currentLong = this.timelines[0].locations[0].geo.longitude;
+
+    this.sidebarLocation = this.timelines[0].locations[0];
+
     this.timelines.forEach((timeline) => {
       this.accordionItems.push(
         new AccordionListItem(
@@ -61,18 +66,18 @@ export class TourMapComponent implements OnInit {
       );
       this.allLocationsSorted.push(...timeline.locations);
     });
-
-    this.currentLat = this.timelines[0].locations[0].geo.latitude;
-    this.currentLong = this.timelines[1].locations[0].geo.longitude;
-
-    this.sidebarLocation = this.timelines[0].locations[0];
   }
 
-  locationOverlayClicked(lat: number, long: number) {
-    this.currentLat = lat;
-    this.currentLong = long;
-    this.zoom += 10;
+  recenterMapToLocation(location: LocationModel) {
+    if (location) {
+      this.currentLat = location.geo.latitude;
+      this.currentLong = location.geo.longitude;
+      this.zoom += 10;
+
+      this.sidebarLocation = location;
+    }
   }
+
   toggleSidebar() {
     this.sideBarVisibility = !this.sideBarVisibility;
   }
