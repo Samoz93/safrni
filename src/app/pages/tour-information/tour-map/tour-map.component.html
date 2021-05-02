@@ -79,6 +79,26 @@
       </div>
     </div>
   </div>
+
+  <div class="side-information-mobile">
+    <div class="location-controls">
+      <div class="location-control left" (click)="prevDestination()">
+        <i class="fa fa-chevron-left"></i>
+        <p>prev dest.</p>
+      </div>
+      <div class="location-control right" (click)="nextDestination()">
+        <p>prev dest.</p>
+        <i class="fa fa-chevron-right"></i>
+      </div>
+    </div>
+    <div class="side-information-mobile__content">
+      <h2>{{ sidebarLocation.name }}</h2>
+      <p>{{ sidebarLocation.desc }}</p>
+      <div class="side-information-mobile__images">
+        <img src="{{ sidebarLocation.image }}" />
+      </div>
+    </div>
+  </div>
   <i
     class="fa fa-chevron-left sidebar-toggle"
     (click)="toggleSidebar()"

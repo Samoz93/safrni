@@ -71,7 +71,21 @@ export class TourMapComponent implements OnInit {
       this.sidebarLocation = location;
     }
   }
-
+  nextDestination() {
+    let indexOfCurrent = this.allLocationsSorted.indexOf(this.sidebarLocation);
+    if (
+      indexOfCurrent != null &&
+      indexOfCurrent + 1 < this.allLocationsSorted.length
+    ) {
+      this.recenterMapToLocation(this.allLocationsSorted[++indexOfCurrent]);
+    }
+  }
+  prevDestination() {
+    let indexOfCurrent = this.allLocationsSorted.indexOf(this.sidebarLocation);
+    if (indexOfCurrent != null && indexOfCurrent > 0) {
+      this.recenterMapToLocation(this.allLocationsSorted[--indexOfCurrent]);
+    }
+  }
   toggleSidebar() {
     this.sideBarVisibility = !this.sideBarVisibility;
   }
