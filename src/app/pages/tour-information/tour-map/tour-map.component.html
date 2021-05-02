@@ -82,11 +82,23 @@
 
   <div class="side-information-mobile">
     <div class="location-controls">
-      <div class="location-control left" (click)="prevDestination()">
+      <div
+        class="location-control left"
+        (click)="prevDestination()"
+        [ngStyle]="{
+          backgroundColor: hasPrevLocation() ? 'white' : 'lightgrey'
+        }"
+      >
         <i class="fa fa-chevron-left"></i>
         <p>prev dest.</p>
       </div>
-      <div class="location-control right" (click)="nextDestination()">
+      <div
+        class="location-control right"
+        (click)="nextDestination()"
+        [ngStyle]="{
+          backgroundColor: hasNextLocation() ? 'white' : 'lightgrey'
+        }"
+      >
         <p>prev dest.</p>
         <i class="fa fa-chevron-right"></i>
       </div>

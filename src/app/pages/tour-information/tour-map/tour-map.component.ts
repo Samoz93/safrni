@@ -71,7 +71,7 @@ export class TourMapComponent implements OnInit {
       this.sidebarLocation = location;
     }
   }
-  nextDestination() {
+  nextDestination(): void {
     let indexOfCurrent = this.allLocationsSorted.indexOf(this.sidebarLocation);
     if (
       indexOfCurrent != null &&
@@ -80,11 +80,23 @@ export class TourMapComponent implements OnInit {
       this.recenterMapToLocation(this.allLocationsSorted[++indexOfCurrent]);
     }
   }
-  prevDestination() {
+  prevDestination(): void {
     let indexOfCurrent = this.allLocationsSorted.indexOf(this.sidebarLocation);
     if (indexOfCurrent != null && indexOfCurrent > 0) {
       this.recenterMapToLocation(this.allLocationsSorted[--indexOfCurrent]);
     }
+  }
+  hasNextLocation(): boolean {
+    let indexOfCurrent = this.allLocationsSorted.indexOf(this.sidebarLocation);
+
+    return (
+      indexOfCurrent != null &&
+      indexOfCurrent + 1 < this.allLocationsSorted.length
+    );
+  }
+  hasPrevLocation() : boolean {
+    let indexOfCurrent = this.allLocationsSorted.indexOf(this.sidebarLocation);
+    return indexOfCurrent != null && indexOfCurrent > 0;
   }
   toggleSidebar() {
     this.sideBarVisibility = !this.sideBarVisibility;
