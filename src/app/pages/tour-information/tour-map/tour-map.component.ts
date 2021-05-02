@@ -1,11 +1,5 @@
 import { AgmMap, MapTypeStyle } from '@agm/core';
-import {
-  AfterViewInit,
-  Component,
-  Input,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   AccordionListItem,
   AccordionListItemOption,
