@@ -1,5 +1,5 @@
 import { ImageModel } from './ImageModel';
-import { City } from './CitiesModel';
+import { City } from './CityModel';
 
 export interface TripModel {
   active: boolean;
