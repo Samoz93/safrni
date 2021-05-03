@@ -2,17 +2,16 @@
 @import "/src/assets/css/abstract/variables";
 
 $btn-to-border-margin: 3rem;
+$vert-image-width: 40rem;
+$brdr: 1px rgba(128, 128, 128, 0.288) solid;
 .main {
   * {
     z-index: 2;
   }
   display: grid;
-  place-items: center;
   position: relative;
   height: 90rem;
-
   width: 100%;
-  padding: 0 5rem;
   @include res(tab) {
     padding: 0;
   }
@@ -24,13 +23,24 @@ $btn-to-border-margin: 3rem;
     height: 75%;
     object-fit: cover;
     z-index: 0;
+    @include res(tab) {
+      height: 90%;
+    }
   }
-
+  .control {
+    border: $brdr;
+    font-size: 1.5rem;
+    @include res(tab) {
+      border: none;
+      border-bottom: $brdr;
+    }
+  }
   .info {
     color: white;
     text-align: center;
     height: 100%;
     width: 100%;
+
     &-text {
       height: calc(75% - 8rem - 7.5rem);
       display: flex;
@@ -42,9 +52,9 @@ $btn-to-border-margin: 3rem;
     }
     &-options {
       height: 8rem;
-      width: 20rem;
       padding: 0;
-      margin: 0 2.5rem;
+      margin: 0 2rem;
+      width: 20rem;
       display: grid;
       grid-template-columns: repeat(2, 50%);
       transform: translateY(10%);
@@ -69,13 +79,14 @@ $btn-to-border-margin: 3rem;
       height: 15rem;
       display: grid;
       grid-template-columns: 80.5% 17.5%;
-      justify-items: stretch;
       @include res(tab) {
+        width: $vert-image-width;
         grid-template-columns: 100%;
+        grid-template-rows: calc(80% - 5rem) 20%;
+        row-gap: 6.5rem;
+        height: 100%;
       }
-      align-items: center;
-      width: 100%;
-
+      align-content: center;
       &-controls {
         order: 0;
         padding: 0 2rem;
@@ -83,21 +94,27 @@ $btn-to-border-margin: 3rem;
           height: 8rem;
         }
         display: grid;
-        grid-template-columns: repeat(4, 25%);
+        grid-template-columns: repeat(3, calc(100% / 3));
         position: relative;
+        align-items: center;
         @include res(tab) {
           grid-template-columns: 100%;
+          grid-template-rows: repeat(3, calc(100% / 3));
         }
         &::after {
-          @include res(tab) {
-            display: none;
-          }
           content: "";
           position: absolute;
           top: 0;
           right: 0;
           height: 100%;
-          border: 1px dashed black;
+          border: $brdr;
+          @include res(tab) {
+            height: 1%;
+            width: 70%;
+            bottom: -13%;
+            transform: translate(-21%, 0);
+            top: auto;
+          }
         }
         .guest {
           z-index: 1000;
@@ -108,7 +125,8 @@ $btn-to-border-margin: 3rem;
         height: 8rem;
       }
       position: relative;
-      img.svg {
+
+      img.horiz {
         position: absolute;
         width: 100%;
         height: 15rem;
@@ -131,6 +149,31 @@ $btn-to-border-margin: 3rem;
     font-weight: 400;
     @include res(med) {
       font-size: 5.5rem;
+    }
+  }
+}
+section.info-warpper {
+  position: relative;
+  img.vert {
+    display: none;
+  }
+  @include res(tab) {
+    img.vert {
+      display: block;
+      position: absolute;
+      height: 50rem;
+      object-fit: fill;
+      width: 102%;
+    }
+    display: flex;
+    flex-direction: column;
+    width: $vert-image-width;
+    margin: 0 auto;
+    .info-options {
+      align-self: center;
+      width: 80%;
+      margin: 0 auto;
+      margin-bottom: 1rem;
     }
   }
 }

@@ -1,16 +1,16 @@
-<div class="trip-section">
+<div class="trip-section page-padding">
   <app-section-header
     title="Choose Your"
     desc="Best Holiday Destinations"
     extra="Extraordinary pleasure trips in small groups"
   ></app-section-header>
 
-  <div class="data page-padding">
+  <div class="data">
     <app-trip-card
-      *ngFor="let item of _ser.data$ | async; let i = index"
+      *ngFor="let item of $data | async; let i = index"
       class="data_card"
       [ngClass]="{
-        longX: isLongX(i)
+        longX: i == 0
       }"
       [id]="item._id"
       [img]="item.image"

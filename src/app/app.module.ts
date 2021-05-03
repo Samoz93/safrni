@@ -62,7 +62,8 @@ import { NgxPopperjsModule } from 'ngx-popperjs';
 import { HoverableItemComponent } from './common/widgets/hoverable-item/hoverable-item.component';
 import { ValidationIconComponent } from './common/widgets/validation-icon/validation-icon.component';
 import { CustomInputComponent } from './common/widgets/custom-input/custom-input.component';
-
+import { FilterWidgetComponent } from './pages/offers-page/filter-widget/filter-widget.component';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 @NgModule({
   declarations: [
     AppComponent,
@@ -112,6 +113,7 @@ import { CustomInputComponent } from './common/widgets/custom-input/custom-input
     HoverableItemComponent,
     ValidationIconComponent,
     CustomInputComponent,
+    FilterWidgetComponent,
   ],
 
   imports: [
@@ -137,6 +139,7 @@ import { CustomInputComponent } from './common/widgets/custom-input/custom-input
       apiKey: 'AIzaSyB33Yp_MzVXNyeTWkiip0mfGThC5xMSp-I',
     }),
     NgxPopperjsModule,
+    MatBottomSheetModule,
   ],
   providers: [
     {

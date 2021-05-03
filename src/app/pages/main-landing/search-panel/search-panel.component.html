@@ -1,4 +1,4 @@
-<div class="main">
+<div class="main page-padding">
   <img src="/assets/images/placeholder/istanbul.png" alt="" />
 
   <div class="info">
@@ -10,43 +10,56 @@
         let's find the best destination in Turkey with us.
       </h2>
     </div>
-    <ul class="info-options">
-      <li
-        [ngClass]="{ active: activeTab == 'tour' }"
-        (click)="changeTab('tour')"
-      >
-        Tours
-      </li>
-      <li
-        [ngClass]="{ active: activeTab == 'medic' }"
-        (click)="changeTab('medic')"
-      >
-        Medic
-      </li>
-    </ul>
-    <form [formGroup]="form" class="info_inputs">
-      <div class="info_inputs-controls">
-        <app-custom-input
-          formControlName="whereTo"
-          [icon]="icons.compass"
-          placeholder="sss"
+    <section class="info-warpper">
+      <ul class="info-options">
+        <li
+          [ngClass]="{ active: activeTab == 'tour' }"
+          (click)="changeTab('tour')"
         >
-        </app-custom-input>
-        <app-guest-count-input class="guest" formControlName="guest">
-        </app-guest-count-input>
-        <app-custom-select
+          Tours
+        </li>
+        <li
+          [ngClass]="{ active: activeTab == 'medic' }"
+          (click)="changeTab('medic')"
+        >
+          Medic
+        </li>
+      </ul>
+      <form [formGroup]="form" class="info_inputs">
+        <div class="info_inputs-controls">
+          <app-custom-input
+            class="control"
+            formControlName="whereTo"
+            [icon]="icons.compass"
+            placeholder="sss"
+          >
+          </app-custom-input>
+          <app-guest-count-input class="guest control" formControlName="guest">
+          </app-guest-count-input>
+          <!-- <app-custom-select
           [icon]="icons.work"
           [values]="tripTypes"
           formControlName="travelType"
-        ></app-custom-select>
-        <app-custom-date-picker
-          [icon]="icons.profile"
-          formControlName="date"
-          class="last-item"
-        ></app-custom-date-picker>
-      </div>
-      <button class="main-btn info_inputs-btn">Search</button>
-      <img src="assets/images/bk/ticket2.png" alt="" class="svg" />
-    </form>
+        ></app-custom-select> -->
+          <app-custom-date-picker
+            [icon]="icons.profile"
+            formControlName="date"
+            class="last-item control"
+          ></app-custom-date-picker>
+        </div>
+        <button class="main-btn info_inputs-btn">Search</button>
+
+        <img
+          src="assets/images/bk/ticket2.png"
+          class="horiz"
+          alt="Chris standing up holding his daughter Elva"
+        />
+      </form>
+      <img
+        src="assets/images/bk/ticketv.png"
+        class="vert"
+        alt="Chris standing up holding his daughter Elva"
+      />
+    </section>
   </div>
 </div>

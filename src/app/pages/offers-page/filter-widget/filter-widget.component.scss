@@ -1,0 +1,97 @@
+@import "/src/assets/css/abstract/variables";
+@import "/src/assets/css/abstract/mixins";
+$trans: all 200ms;
+$padding: 0 2rem;
+$font-size: 1.5rem;
+
+.flex_area_filter {
+  @include shadow;
+  height: 50rem;
+  width: 100%;
+  @include res(phone) {
+    height: 100vh;
+  }
+  &-nav {
+    height: 7rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    &-item {
+      background: $non-active;
+      color: black;
+      font-size: 1.5rem;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: $trans;
+      text-align: center;
+    }
+    &-item.active {
+      background: white;
+      color: black;
+    }
+  }
+  &-guest-count {
+    height: 15rem;
+
+    padding: $padding;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: relative;
+
+    &-item {
+      font-size: $font-size;
+      display: grid;
+      grid-template-columns: 50% 15% 15% 15%;
+      & > * {
+        font-size: inherit;
+      }
+      .val {
+        justify-self: center;
+      }
+      .minus {
+        justify-self: flex-end;
+      }
+      .plus {
+        justify-self: flex-start;
+      }
+      .icon {
+        background: $accent;
+        color: white;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+      }
+    }
+    @include divider();
+  }
+  &-price {
+    height: 10rem;
+    padding: $padding;
+    position: relative;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1%;
+    @include divider();
+    .control {
+      border: 1px grey solid;
+    }
+    &-title {
+      grid-column: span 2;
+      grid-row: 1;
+      font-size: $font-size;
+      align-self: flex-end;
+    }
+  }
+  &-btn {
+    height: 7rem;
+    padding: $padding;
+    z-index: 0;
+    display: grid;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}

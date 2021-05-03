@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { longX } from 'src/app/data/abstract/longX';
+import { TripModel } from 'src/app/data/models/TripModel';
 import { TripService } from 'src/app/data/services/trip.service';
 
 @Component({
@@ -9,10 +12,12 @@ import { TripService } from 'src/app/data/services/trip.service';
 })
 export class SectionOffersComponent extends longX implements OnInit {
   isLoading = true;
+  data$: Observable<TripModel[]>;
   constructor(public _ser: TripService) {
     super();
   }
   ngOnInit(): void {
+    this.data$ = this._ser.data$.pipe(map((f) => f.slice(0, 7)));
     this._ser.loadingState$.subscribe((f) => {
       this.isLoading = f.isLoading;
       console.log(this.isLoading, f.isLoading);
@@ -23,9 +28,9 @@ export class SectionOffersComponent extends longX implements OnInit {
     return this._ser.data.length;
   }
 
-  isLongX(index: number) {
-    return innerWidth > 1625
-      ? (this.lnth - 1) % 3 == 0 && this.lnth - 1 == index
-      : this.lnth % 2 != 0 && this.lnth - 1 == index;
-  }
+  // isLongX(index: number) {
+  //   return innerWidth > 1625
+  //     ? (this.lnth - 1) % 3 == 0 && this.lnth - 1 == index
+  //     : this.lnth % 2 != 0 && this.lnth - 1 == index;
+  // }
 }

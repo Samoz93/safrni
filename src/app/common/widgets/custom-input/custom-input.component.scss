@@ -22,14 +22,7 @@ $border: grey solid 1px;
     margin: 0 1rem 0 0;
     order: 0;
   }
-  @include res(med) {
-    border-right: $border;
-    border-bottom: $border;
-  }
-  @include res(phone) {
-    border-right: none;
-    border-bottom: $border;
-  }
+
   input {
     border: none;
     width: 100%;
