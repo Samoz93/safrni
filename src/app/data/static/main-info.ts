@@ -2,6 +2,7 @@ export class StaticInfo {
   static projectName = 'Saferni';
   static phoneNumber = '90 537 695 8305';
   static Email = 'Saferni@emali.com';
+  static baseUrl = 'saferni.xyz';
 }
 export class DevData {
   static baseUrl = 'http://localhost:1337/';

@@ -17,7 +17,7 @@ export class LocationModel {
 export type Coordinates = { latitude: number; longitude: number };
 
 @Injectable({ providedIn: 'root' })
-export class CourseAdapter implements Adapter<LocationModel> {
+export class LocationModelAdapter implements Adapter<LocationModel> {
   adapt(item: any): LocationModel {
     let images: ImageModel[] = item.images.map((imageObject: any) => {
       return new ImageModelAdapter().adapt(imageObject);
