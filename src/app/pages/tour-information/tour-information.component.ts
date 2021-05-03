@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LocationModel, Coordinates } from 'src/app/data/models/LocationModel';
-import { TimelineItemModel } from 'src/app/data/models/timelineModel';
 import { ICONS } from 'src/app/data/uitls/enums';
 
 @Component({

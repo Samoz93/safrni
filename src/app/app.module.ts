@@ -13,7 +13,7 @@ import { SearchPanelComponent } from './pages/main-landing/search-panel/search-p
 import { SectionHeaderComponent } from './pages/main-landing/section-header/section-header.component';
 import { SectionOffersComponent } from './pages/main-landing/section-offers/section-offers.component';
 import { SectionCitiesComponent } from './pages/main-landing/section-cities/section-cities.component';
-import { SectionDailyTripsComponent } from './pages/main-landing/section-daily-trips/section-daily-trips.component';
+
 import { FooterComponent } from './common/layout/footer/footer.component';
 import { HeaderInfoComponent } from './common/layout/header-info/header-info.component';
 import { HeaderToolBarComponent } from './common/layout/header-tool-bar/header-tool-bar.component';
@@ -73,7 +73,7 @@ import { TourMapComponent } from './pages/tour-information/tour-map/tour-map.com
     SectionHeaderComponent,
     SectionOffersComponent,
     SectionCitiesComponent,
-    SectionDailyTripsComponent,
+
     FooterComponent,
     HeaderInfoComponent,
     HeaderToolBarComponent,

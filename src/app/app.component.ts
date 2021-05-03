@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Subscription, zip } from 'rxjs';
-import { CitiesService } from './data/services/cities.service';
+import { CityService } from './data/services/city.service';
 import { TripService } from './data/services/trip.service';
 
 @Component({
@@ -12,15 +12,12 @@ export class AppComponent {
   title = 'safrni';
   isLoading = true;
   sub: Subscription;
-  constructor(
-    private _tripSer: TripService,
-    private _citiesSer: CitiesService
-  ) {
-    this.sub = zip(_tripSer.loadingState$, _citiesSer.loadingState$).subscribe(
-      (f) => {
-        this.isLoading = f.every((g) => g.isLoading);
-      }
-    );
+  constructor(private _tripSer: TripService, private _citiesSer: CityService) {
+    // this.sub = zip(_tripSer.loadingState$, _citiesSer.loadingState$).subscribe(
+    //   (f) => {
+    //     this.isLoading = f.every((g) => g.isLoading);
+    //   }
+    // );
   }
 
   ngOnDestroy(): void {

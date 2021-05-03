@@ -7,12 +7,12 @@
 
   <div class="data page-padding">
     <app-trip-card
-      *ngFor="let item of _ser.data$ | async; let i = index"
+      *ngFor="let item of _ser.getCities() | async; let i = index"
       class="data_card"
       [ngClass]="{
         longX: isLongX(i)
       }"
-      [id]="item._id"
+      [id]="item.id"
       [img]="item.image"
       [name]="item.name"
       [isOffer]="false"

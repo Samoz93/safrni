@@ -1,9 +1,7 @@
 <div class="main">
   <app-hoverable-item
     *ngFor="let feature of features; let i = index"
-    [img]="feature.image | serverimage"
     [title]="feature.name"
-    [desc]="feature.description"
     class="feature"
   >
     <!-- <div [style]="'--i:' + i" class="info_card">

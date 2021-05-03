@@ -13,14 +13,14 @@ export class SectionOffersComponent extends longX implements OnInit {
     super();
   }
   ngOnInit(): void {
-    this._ser.loadingState$.subscribe((f) => {
-      this.isLoading = f.isLoading;
-      console.log(this.isLoading, f.isLoading);
-    });
+    // this._ser.loadingState$.subscribe((f) => {
+    //   this.isLoading = f.isLoading;
+    //   console.log(this.isLoading, f.isLoading);
+    // });
   }
 
   get lnth() {
-    return this._ser.data.length;
+    return 0;//this._ser.data.length;
   }
 
   isLongX(index: number) {

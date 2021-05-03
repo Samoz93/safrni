@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { longX } from 'src/app/data/abstract/longX';
-import { CitiesService } from 'src/app/data/services/cities.service';
+import { CityModel } from 'src/app/data/models/CityModel';
+import { CityService } from 'src/app/data/services/city.service';
 import { DevData } from 'src/app/data/static/main-info';
 
 @Component({
@@ -10,17 +11,27 @@ import { DevData } from 'src/app/data/static/main-info';
   styleUrls: ['./section-cities.component.scss'],
 })
 export class SectionCitiesComponent extends longX implements OnInit {
-  constructor(private router: Router, public _ser: CitiesService) {
+  cities: CityModel[];
+  isLoading: boolean;
+
+  constructor(private router: Router, public _ser: CityService) {
     super();
+    this.cities = [];
+    this.isLoading = true;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._ser.getCities().subscribe((cities) => {
+      this.cities = cities;
+      this.isLoading = false;
+    });
+  }
 
   goToOffer(cityId: any) {
     this.router.navigate([DevData.offersRoute, cityId]);
   }
   get lnth() {
-    return this._ser.data.length;
+    return this.cities.length;
   }
   isLongX(index: number) {
     return innerWidth > 1625

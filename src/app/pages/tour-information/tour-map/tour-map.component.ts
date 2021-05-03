@@ -1,5 +1,5 @@
 import { AgmMap, MapTypeStyle } from '@agm/core';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import {
   AccordionListItem,
   AccordionListItemOption,
@@ -7,7 +7,8 @@ import {
 import { AccordionClickEventData } from 'src/app/common/widgets/accordion-list/accordion-list.component';
 
 import { LocationModel } from 'src/app/data/models/LocationModel';
-import { TimelineItemModel } from 'src/app/data/models/timelineModel';
+import { TimelineModel } from 'src/app/data/models/timelineModel';
+import { TripModel } from 'src/app/data/models/TripModel';
 
 @Component({
   selector: 'app-tour-map',
@@ -16,6 +17,8 @@ import { TimelineItemModel } from 'src/app/data/models/timelineModel';
 })
 export class TourMapComponent implements OnInit {
   constructor() {}
+
+  @Input() trip: TripModel;
 
   sideBarVisibility = true;
   mobileSheetExpanded = false;
@@ -46,12 +49,12 @@ export class TourMapComponent implements OnInit {
   @ViewChild('agmMap') agmMap: AgmMap;
 
   ngOnInit(): void {
-    this.currentLat = this.timelines[0].locations[0].geo.latitude;
-    this.currentLong = this.timelines[0].locations[0].geo.longitude;
+    this.currentLat = this.trip.timelines[0].locations[0].geo.latitude;
+    this.currentLong = this.trip.timelines[0].locations[0].geo.longitude;
 
-    this.sidebarLocation = this.timelines[0].locations[0];
+    this.sidebarLocation = this.trip.timelines[0].locations[0];
 
-    this.timelines.forEach((timeline) => {
+    this.trip.timelines.forEach((timeline) => {
       this.accordionItems.push(
         new AccordionListItem(
           timeline.locations.map((location) => {
@@ -103,15 +106,15 @@ export class TourMapComponent implements OnInit {
     this.sideBarVisibility = !this.sideBarVisibility;
   }
   onLocationClicked(data: AccordionClickEventData) {
-    this.currentLat = this.timelines[data.parentIndex].locations[
+    this.currentLat = this.trip.timelines[data.parentIndex].locations[
       data.childIndex
     ].geo.latitude;
-    this.currentLong = this.timelines[data.parentIndex].locations[
+    this.currentLong = this.trip.timelines[data.parentIndex].locations[
       data.childIndex
     ].geo.longitude;
     this.zoom += 10;
 
-    this.sidebarLocation = this.timelines[data.parentIndex].locations[
+    this.sidebarLocation = this.trip.timelines[data.parentIndex].locations[
       data.childIndex
     ];
   }
@@ -431,41 +434,5 @@ export class TourMapComponent implements OnInit {
         },
       ],
     },
-  ];
-  timelines = [
-    new TimelineItemModel(1, [
-      new LocationModel(
-        '1',
-        'https://i4.hurimg.com/i/hurriyet/75/0x0/5f0867e50f254420f0a144e0.jpg',
-        'aya sofya',
-        'a random place in instanbul',
-        { latitude: 41.008583, longitude: 28.980175 }
-      ),
-    ]),
-    new TimelineItemModel(2, [
-      new LocationModel(
-        '2',
-        'https://i.ytimg.com/vi/no7LCcGTvn8/maxresdefault.jpg',
-        'kiz kulesi',
-        'a random place in instanbul',
-        { latitude: 41.0191765, longitude: 29.00444 }
-      ),
-      new LocationModel(
-        '4',
-        'https://image.tatilbudur.com/aboutinfo/602fba55f6de65928ad2530a0f9f20a2.jpg',
-        'Sile sahili',
-        'a random place in instanbul',
-        { latitude: 41.1664882, longitude: 29.5802089 }
-      ),
-    ]),
-    new TimelineItemModel(3, [
-      new LocationModel(
-        '2',
-        'https://tatilsepeti.cubecdn.net/images/Yalova-Termal-Otelleri.jpg',
-        'Termal',
-        'a random place in instanbul',
-        { latitude: 40.6056569, longitude: 29.1723517 }
-      ),
-    ]),
   ];
 }

@@ -15,6 +15,8 @@ export class CityModel {
 @Injectable({ providedIn: 'root' })
 export class CityModelAdapter implements Adapter<CityModel> {
   adapt(item: any): CityModel {
+    if (!item.image) console.log(item.name);
+
     return new CityModel(
       item.id,
       item.name,

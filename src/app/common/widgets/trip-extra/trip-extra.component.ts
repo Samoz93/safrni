@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgxPopperjsPlacements, NgxPopperjsTriggers } from 'ngx-popperjs';
-import { Feature } from 'src/app/data/models/TripModel';
+import { FeatureModel } from 'src/app/data/models/FeatureModel';
 
 @Component({
   selector: 'app-trip-extra',
@@ -8,7 +8,7 @@ import { Feature } from 'src/app/data/models/TripModel';
   styleUrls: ['./trip-extra.component.scss'],
 })
 export class TripExtraComponent implements OnInit {
-  @Input() features: Feature[];
+  @Input() features: FeatureModel[];
   @Input() isBlack: boolean = true;
   @Input() isBig: boolean = false;
   constructor() {}

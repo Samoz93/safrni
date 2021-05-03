@@ -5,20 +5,22 @@ export class ImageModel {
     public id: string,
     public width: number,
     public height: number,
-    public realtiveUrl: string,
-    public formats: ImageFormatsObject
-  ) {}
+    public realtiveUrl: string
+  ) // public formats: ImageFormatsObject
+  {}
 }
 export class ImageModelAdapter implements Adapter<ImageModel> {
   adapt(item: any): ImageModel {
-    return new ImageModel(item.id, item.width, item.height, item.url, {
-      thumbnail: new ImageFormatAdapter().adapt(item.formats.thumbnail),
-      large: new ImageFormatAdapter().adapt(item.formats.large),
-      medium: new ImageFormatAdapter().adapt(item.formats.medium),
-      small: new ImageFormatAdapter().adapt(item.formats.small),
-    });
+    return new ImageModel(item.id, item.width, item.height, item.url);
   }
 }
+
+// {
+//   thumbnail: new ImageFormatAdapter().adapt(item.formats.thumbnail),
+//   large: new ImageFormatAdapter().adapt(item.formats.large),
+//   medium: new ImageFormatAdapter().adapt(item.formats.medium),
+//   small: new ImageFormatAdapter().adapt(item.formats.small),
+// }
 export type ImageFormatsObject = {
   thumbnail: ImageFormatModel;
   large: ImageFormatModel;

@@ -34,7 +34,7 @@ export class OffersPageComponent implements OnInit {
   ngOnInit(): void {
     this.minPriceCtrl = new FormControl(this.filterOptions.minPrice);
     this.maxPriceCtrl = new FormControl(this.filterOptions.maxPrice);
-    this.data$ = this._ser.data$;
+    this.data$// this._ser.data$;
     this.minPriceCtrl.valueChanges.subscribe((f) => {
       let val = f;
       if (isNaN(val)) val = 0;

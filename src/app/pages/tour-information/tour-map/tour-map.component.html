@@ -11,7 +11,7 @@
   >
     <agm-polyline
       *ngFor="
-        let location of allLocationsSorted | slice: 0:timelines.length;
+        let location of allLocationsSorted | slice: 0:trip.timelines.length;
         let i = index
       "
       [clickable]="true"
@@ -39,7 +39,7 @@
       </agm-icon-sequence>
     </agm-polyline>
 
-    <ng-container *ngFor="let timeline of timelines">
+    <ng-container *ngFor="let timeline of trip.timelines">
       <agm-overlay
         *ngFor="let location of timeline.locations"
         [latitude]="location.geo.latitude"
@@ -52,7 +52,7 @@
       >
         <!-- blue html square -->
         <div class="location-overlay">
-          <img [src]="location.image" />
+          <img [src]="location.images[0]" />
           <h2>{{ location.name }}</h2>
         </div>
       </agm-overlay>
@@ -71,7 +71,7 @@
     <div class="side-information-bar__wrapper">
       <div class="side-information-bar-header"><p>Tour plan</p></div>
       <div class="side-information-bar-content">
-        <img src="{{ sidebarLocation.image }}" />
+        <img src="{{ sidebarLocation.images[0] }}" />
         <div class="side-information-bar-content__body">
           <h2>{{ sidebarLocation.name }}</h2>
           <p>{{ sidebarLocation.desc }}</p>
@@ -113,12 +113,12 @@
         [ngClass]="mobileSheetExpanded ? 'open' : ''"
       ></i>
       <div class="side-information-mobile__main-image">
-        <img src="{{ sidebarLocation.image }}" />
+        <img src="{{ sidebarLocation.images[0] }}" />
       </div>
       <h2>{{ sidebarLocation.name }}</h2>
       <p>{{ sidebarLocation.desc }}</p>
       <div class="side-information-mobile__images">
-        <img src="{{ sidebarLocation.image }}" />
+        <img src="{{ sidebarLocation.images[0] }}" />
       </div>
     </div>
   </div>
