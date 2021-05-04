@@ -26,9 +26,9 @@ export class TripModelAdapter implements Adapter<TripModel> {
     let features: FeatureModel[] = item.features.map((feature: any) =>
       new FeatureModelAdapter().adapt(feature)
     );
-    // let timelines: TimelineModel[] = item.timelines.map((timeline: any) =>
-    //   new TimelineModelAdapter().adapt(timeline)
-    // );
+    let timelines: TimelineModel[] = item.timelines.map((timeline: any) =>
+      new TimelineModelAdapter().adapt(timeline)
+    );
     return new TripModel(
       item.id,
       item.name,
@@ -38,7 +38,7 @@ export class TripModelAdapter implements Adapter<TripModel> {
       item.active,
       new ImageModelAdapter().adapt(item.previewImage),
       features,
-      [],
+      [],//TODO:
       new PriceModelAdapter().adapt(item.price)
     );
   }

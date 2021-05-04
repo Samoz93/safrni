@@ -22,6 +22,8 @@ export class SectionCitiesComponent extends longX implements OnInit {
 
   ngOnInit(): void {
     this._ser.getCities().subscribe((cities) => {
+      console.log(cities);
+
       this.cities = cities;
       this.isLoading = false;
     });
