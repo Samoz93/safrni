@@ -5,21 +5,11 @@ import { environment } from 'src/environments/environment';
 import { CityModel, CityModelAdapter } from '../models/CityModel';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { BaseService } from '../services/base.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CityService {
-  constructor(
-    private http: HttpClient,
-    private cityAdapter: CityModelAdapter
-  ) {}
-
-  getCities(): Observable<CityModel[]> {
-    return this.http
-      .get<any[]>(`${StaticInfo.baseUrl}/cities`)
-      .pipe(
-        map((data: any[]) => data.map((item) => this.cityAdapter.adapt(item)))
-      );
-  }
+export class CityService extends BaseService<CityModel> {
+  
 }

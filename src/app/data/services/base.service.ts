@@ -1,12 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, ReplaySubject, Subject, Subscription } from 'rxjs';
 import urljoin from 'url-join';
-import { DevData, EndPoints, LoadingState } from '../static/main-info';
+import { Adapter } from '../adapters/adapter';
+import { StaticInfo, EndPoints, LoadingState } from '../static/main-info';
 
 export class BaseService<T> {
   subs: Subscription[];
   data$ = new ReplaySubject<T[]>();
   data: T[] = Array<T>();
+
   loadingState$ = new BehaviorSubject<LoadingState>({
     hasError: false,
     isLoading: false,
@@ -15,27 +17,23 @@ export class BaseService<T> {
   x = [];
   constructor(
     protected http: HttpClient,
-    public endPoint: EndPoints,
+    public adapter: Adapter<T>,
     public options = {}
   ) {}
 
-  async fetchAllData() {
-    this._tryCatch(async () => {
-      const url = urljoin(DevData.baseUrl, this.endPoint);
-      if (this.data.length < 1) {
-        const d = await this.http.get<T[]>(url).toPromise();
-        this.data.push(...d);
-        //TODO for test
-        this.data.push(...d);
-        this.data.push(...this.data);
-        this.data.push(...this.data);
-        this.data.push(...this.data);
-      }
-      this.data$.next(this.data);
-    });
+  async fetchAllData(segment: string) {
+    const url = urljoin(StaticInfo.baseUrl, segment);
+    console.log(url);
+    if (this.data.length < 1) {
+      const rawData = await this.http.get<any[]>(url).toPromise();
+
+      this.data.push(...rawData.map((item) => this.adapter.adapt(item)));
+    }
+    this.data$.next(this.data);
   }
-  async getById(id: string): Promise<T> {
-    const url = urljoin(DevData.baseUrl, this.endPoint, id);
+  async getById(segment: string, id: string): Promise<T> {
+    const url = urljoin(StaticInfo.baseUrl, segment, id);
+
     const data = await this._tryCatch(async () => {
       if (this.data instanceof Array) {
         let filterData;
@@ -45,10 +43,10 @@ export class BaseService<T> {
         //todo filter ?
         if (!!filterData) return filterData[0];
         else {
-          return await this.http.get<T>(url).toPromise();
+          return this.adapter.adapt(await this.http.get<any>(url).toPromise());
         }
       } else {
-        return await this.http.get<T>(url).toPromise();
+        return this.adapter.adapt(await this.http.get<any>(url).toPromise());
       }
     });
 
@@ -71,6 +69,7 @@ export class BaseService<T> {
       this._setBusy(false, error);
     }
   }
+
   clearSub() {
     this.data$.subscribe();
     this.loadingState$.subscribe();

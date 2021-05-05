@@ -12,20 +12,15 @@ import { DevData } from 'src/app/data/static/main-info';
 })
 export class SectionCitiesComponent extends longX implements OnInit {
   cities: CityModel[];
-  isLoading: boolean;
 
   constructor(private router: Router, public _ser: CityService) {
     super();
-    this.cities = [];
-    this.isLoading = true;
   }
 
-  ngOnInit(): void {
-    this._ser.getCities().subscribe((cities) => {
+  async ngOnInit(): Promise<void> {
+    this._ser.data$.subscribe((cities) => {
       console.log(cities);
-
       this.cities = cities;
-      this.isLoading = false;
     });
   }
 

@@ -4,15 +4,12 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { TripModel, TripModelAdapter } from '../models/TripModel';
 import { EndPoints, StaticInfo } from '../static/main-info';
+import { BaseService } from './base.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class TripService {
-  constructor(private http: HttpClient, private adapter: TripModelAdapter) {}
-  getTrips(): Observable<TripModel[]> {
-    return this.http
-      .get<any[]>(`${StaticInfo.baseUrl}/trips`)
-      .pipe(map((data: any[]) => data.map((item) => this.adapter.adapt(item))));
-  }
+export class TripService extends BaseService<TripModel> {
+ 
+ 
 }
