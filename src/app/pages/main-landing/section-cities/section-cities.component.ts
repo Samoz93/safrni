@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { longX } from 'src/app/data/abstract/longX';
 import { CityModel } from 'src/app/data/models/CityModel';
 import { CityService } from 'src/app/data/services/city.service';
@@ -10,18 +11,18 @@ import { DevData } from 'src/app/data/static/main-info';
   templateUrl: './section-cities.component.html',
   styleUrls: ['./section-cities.component.scss'],
 })
-export class SectionCitiesComponent extends longX implements OnInit {
+export class SectionCitiesComponent extends longX implements OnInit, OnDestroy {
   cities: CityModel[];
-
+  sub: Subscription;
   constructor(private router: Router, public _ser: CityService) {
     super();
   }
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
 
-  async ngOnInit(): Promise<void> {
-    this._ser.data$.subscribe((cities) => {
-      console.log(cities);
-      this.cities = cities;
-    });
+  ngOnInit() {
+    this.sub = this._ser.data$.subscribe((data) => (this.cities = data));
   }
 
   goToOffer(cityId: any) {
