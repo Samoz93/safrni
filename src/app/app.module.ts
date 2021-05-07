@@ -64,6 +64,7 @@ import { HoverableItemComponent } from './common/widgets/hoverable-item/hoverabl
 import { ValidationIconComponent } from './common/widgets/validation-icon/validation-icon.component';
 import { CustomInputComponent } from './common/widgets/custom-input/custom-input.component';
 import { TourMapComponent } from './pages/tour-information/tour-map/tour-map.component';
+import { SectionDailyTripsComponent } from './pages/main-landing/section-daily-trips/section-daily-trips.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { TourMapComponent } from './pages/tour-information/tour-map/tour-map.com
     SectionHeaderComponent,
     SectionOffersComponent,
     SectionCitiesComponent,
+    SectionDailyTripsComponent,
 
     FooterComponent,
     HeaderInfoComponent,

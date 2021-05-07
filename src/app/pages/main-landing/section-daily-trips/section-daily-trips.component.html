@@ -1,0 +1,29 @@
+<div class="main">
+  <app-section-header
+    title="Choose Your"
+    desc="Amazing Daily Trips "
+    extra="ALL Around Lovely Cities"
+  >
+  </app-section-header>
+  <div class="data">
+    <swiper
+      class="swiper-container"
+      [slidesPerView]="slideCount"
+      class="slide"
+      [spaceBetween]="100"
+    >
+      <ng-template swiperSlide *ngFor="let item of _ser.data$ | async">
+        <app-trip-card
+          class="slide"
+          [id]="item._id"
+          [features]="item.features"
+          [img]="item.previewImage"
+          [name]="item.name"
+          [price]="item.price"
+          [duration]="item.duration"
+        ></app-trip-card>
+        ></ng-template
+      >
+    </swiper>
+  </div>
+</div>
