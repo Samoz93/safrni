@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { longX } from 'src/app/data/abstract/longX';
+import { TripModel } from 'src/app/data/models/TripModel';
 import { TripService } from 'src/app/data/services/trip.service';
 
 @Component({
@@ -12,15 +13,14 @@ export class SectionOffersComponent extends longX implements OnInit {
   constructor(public _ser: TripService) {
     super();
   }
+  trips: TripModel[];
+
   ngOnInit(): void {
-    // this._ser.loadingState$.subscribe((f) => {
-    //   this.isLoading = f.isLoading;
-    //   console.log(this.isLoading, f.isLoading);
-    // });
+    this._ser.data$.subscribe((trips) => (this.trips = trips));
   }
 
   get lnth() {
-    return 0;//this._ser.data.length;
+    return this.trips.length;
   }
 
   isLongX(index: number) {

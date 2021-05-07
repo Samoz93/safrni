@@ -14,7 +14,7 @@ export class SingleTripCardComponent implements OnInit {
   @Input() name: string = '';
   @Input() duration: number = 0;
   @Input() price: PriceModel;
-  @Input() img: ImageModel;
+  @Input() img: ImageModel | undefined;
   @Input() features: FeatureModel[] = [];
   @Input() id: string = '';
   @Input() isOffer: boolean = true;

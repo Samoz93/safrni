@@ -12,7 +12,7 @@ import { CitiesGQL } from './saferniGraphql.service';
 @Injectable({
   providedIn: 'root',
 })
-export class CityService extends BaseService<CityModel[]> {
+export class CityService extends BaseService<CityModel> {
   constructor(
     private http: SaferniHttp,
     private adapter: CityModelAdapter,
@@ -24,9 +24,9 @@ export class CityService extends BaseService<CityModel[]> {
   async init(): Promise<any> {
     this.setBusy(true);
 
-    this.citiesGql.fetch({ limit: 10 }).subscribe((data) => console.log(data));
+    let data = await this.citiesGql.fetch({ limit: 10 }).toPromise();
 
-    // this.data$.next(data.map((item) => this.adapter.adapt(item)));
+    this.data$.next(data.data.cities?.map((city) => this.adapter.adapt(city))!);
 
     this.setBusy(false);
   }

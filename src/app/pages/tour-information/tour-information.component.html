@@ -1,4 +1,3 @@
-<!-- <app-map-stepper [timelines]="timelines"></app-map-stepper> -->
 <div class="tour-infomation">
   <app-banner-carousel
     [images]="images"
@@ -23,14 +22,14 @@
         <div class="trip-card-header__image">
           <img src="https://wallpapercave.com/wp/wp1813727.jpg" />
         </div>
-        <p class="trip-card-header__price">400$</p>
+        <p class="trip-card-header__price">{{ trip.price | price }}</p>
         <app-read-only-stars
           [stars]="3.5"
           [color]="'#fff'"
         ></app-read-only-stars>
       </div>
       <div class="trip-card-brief-info">
-        <h2 class="trip-card-brief-info__city-name">Istanbul</h2>
+        <h2 class="trip-card-brief-info__city-name">{{ trip.city.name }}</h2>
         <p class="trip-card-brief-info__price-duration">
           5 Days - 4 Nights / 400$ Per Person
         </p>
@@ -80,9 +79,12 @@
       <h2 class="places__title">places you will visit</h2>
       <p class="places__description">A lot of different tours around Turkey</p>
       <div class="places__grid">
-        <app-trip-card
-          *ngFor="let item of trips; let i = index"
-        ></app-trip-card>
+        <div
+          class="places__grid__item"
+          *ngFor="let item of getAllLocations(); let i = index"
+        >
+          <img [src]="item.images[0] | serverimage" />
+        </div>
       </div>
     </section>
 

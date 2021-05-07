@@ -1,0 +1,74 @@
+query trips($limit: Int) {
+  trips(limit: $limit) {
+    ...tripInfo
+  }
+}
+query getTrip($id: ID!) {
+  trip(id: $id) {
+    ...tripInfo
+  }
+}
+fragment tripInfo on Trips {
+  id
+  name
+  active
+  description
+  locale
+  trip_type
+  duration
+  city {
+    id
+    name
+  }
+  timeline {
+    id
+  }
+  previewImage {
+    id
+    width
+    height
+    url
+    formats
+  }
+  price {
+    basePrice
+    discount
+    currency
+    extraAdultFee
+    basePeopleCount
+  }
+  features {
+    included
+    feature {
+      name
+    }
+  }
+}
+query getTimeline($id: ID!) {
+  timeline(id: $id) {
+    timelines {
+      day
+      description
+      locations {
+        id
+        name
+        description
+        coordinate {
+          latitude
+          longitude
+        }
+        images {
+          id
+          width
+          height
+          url
+          formats
+        }
+        city {
+          id
+          name
+        }
+      }
+    }
+  }
+}

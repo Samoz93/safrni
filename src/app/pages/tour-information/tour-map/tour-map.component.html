@@ -11,7 +11,7 @@
   >
     <agm-polyline
       *ngFor="
-        let location of allLocationsSorted | slice: 0:trip.timelines.length;
+        let location of allLocationsSorted | slice: 0:timelines.length;
         let i = index
       "
       [clickable]="true"
@@ -39,7 +39,7 @@
       </agm-icon-sequence>
     </agm-polyline>
 
-    <ng-container *ngFor="let timeline of trip.timelines">
+    <ng-container *ngFor="let timeline of timelines">
       <agm-overlay
         *ngFor="let location of timeline.locations"
         [latitude]="location.geo.latitude"

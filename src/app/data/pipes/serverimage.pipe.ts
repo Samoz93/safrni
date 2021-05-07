@@ -10,7 +10,10 @@ import { DevData, StaticInfo } from '../static/main-info';
 export class ServerimagePipe implements PipeTransform {
   //TODO resposive image here
   transform(pr: ImageModel | undefined): string {
-    return `${StaticInfo.baseUrl}${pr?.realtiveUrl}`;
+    if (!pr) {
+      return StaticInfo.defaultImage;
+    } else if (pr.isRemote) return `${StaticInfo.baseUrl}${pr.realtiveUrl}`;
+    else return pr.realtiveUrl;
     //if (DevData.isDev && !environment.production) return pr?.url!;
 
     // if (pr) {

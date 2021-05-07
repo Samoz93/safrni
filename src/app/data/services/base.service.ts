@@ -3,8 +3,9 @@ import { LoadingState } from '../static/main-info';
 
 export abstract class BaseService<T> {
   abstract init(): Promise<any>;
-
-  data$ = new Subject<T>();
+  
+  
+  data$ = new BehaviorSubject<T[]>([]);
 
   loadingState$ = new BehaviorSubject<LoadingState>({
     hasError: false,

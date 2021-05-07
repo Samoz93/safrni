@@ -9,6 +9,7 @@ import { AccordionClickEventData } from 'src/app/common/widgets/accordion-list/a
 import { LocationModel } from 'src/app/data/models/LocationModel';
 import { TimelineModel } from 'src/app/data/models/timelineModel';
 import { TripModel } from 'src/app/data/models/TripModel';
+import { TripService } from 'src/app/data/services/trip.service';
 
 @Component({
   selector: 'app-tour-map',
@@ -16,7 +17,7 @@ import { TripModel } from 'src/app/data/models/TripModel';
   styleUrls: ['./tour-map.component.scss'],
 })
 export class TourMapComponent implements OnInit {
-  constructor() {}
+  constructor(private tripService: TripService) {}
 
   @Input() trip: TripModel;
 
@@ -40,6 +41,8 @@ export class TourMapComponent implements OnInit {
 
   accordionItems: AccordionListItem[] = [];
   allLocationsSorted: LocationModel[] = [];
+  timelines: TimelineModel[];
+
   ngAfterViewInit(): void {
     this.agmMap.mapReady.subscribe((map) => {
       this.map = map;
@@ -48,13 +51,17 @@ export class TourMapComponent implements OnInit {
 
   @ViewChild('agmMap') agmMap: AgmMap;
 
-  ngOnInit(): void {
-    this.currentLat = this.trip.timelines[0].locations[0].geo.latitude;
-    this.currentLong = this.trip.timelines[0].locations[0].geo.longitude;
+  async ngOnInit(): Promise<void> {
+    this.timelines = (await this.tripService.getTimeline(
+      this.trip.timelineId
+    ))!;
 
-    this.sidebarLocation = this.trip.timelines[0].locations[0];
+    this.currentLat = this.timelines[0].locations[0].geo.latitude;
+    this.currentLong = this.timelines[0].locations[0].geo.longitude;
 
-    this.trip.timelines.forEach((timeline) => {
+    this.sidebarLocation = this.timelines[0].locations[0];
+
+    this.timelines.forEach((timeline) => {
       this.accordionItems.push(
         new AccordionListItem(
           timeline.locations.map((location) => {
@@ -106,15 +113,15 @@ export class TourMapComponent implements OnInit {
     this.sideBarVisibility = !this.sideBarVisibility;
   }
   onLocationClicked(data: AccordionClickEventData) {
-    this.currentLat = this.trip.timelines[data.parentIndex].locations[
+    this.currentLat = this.timelines[data.parentIndex].locations[
       data.childIndex
     ].geo.latitude;
-    this.currentLong = this.trip.timelines[data.parentIndex].locations[
+    this.currentLong = this.timelines[data.parentIndex].locations[
       data.childIndex
     ].geo.longitude;
     this.zoom += 10;
 
-    this.sidebarLocation = this.trip.timelines[data.parentIndex].locations[
+    this.sidebarLocation = this.timelines[data.parentIndex].locations[
       data.childIndex
     ];
   }
