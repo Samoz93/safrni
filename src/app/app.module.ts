@@ -64,6 +64,7 @@ import { ValidationIconComponent } from './common/widgets/validation-icon/valida
 import { CustomInputComponent } from './common/widgets/custom-input/custom-input.component';
 import { TourMapComponent } from './pages/tour-information/tour-map/tour-map.component';
 import { SectionDailyTripsComponent } from './pages/main-landing/section-daily-trips/section-daily-trips.component';
+import { GraphQLModule } from './graphql.module';
 
 @NgModule({
   declarations: [
@@ -141,6 +142,7 @@ import { SectionDailyTripsComponent } from './pages/main-landing/section-daily-t
       apiKey: 'AIzaSyB33Yp_MzVXNyeTWkiip0mfGThC5xMSp-I',
     }),
     NgxPopperjsModule,
+    GraphQLModule,
   ],
   providers: [
     {

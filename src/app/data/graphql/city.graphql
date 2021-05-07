@@ -1,0 +1,16 @@
+query cities($limit: Int) 
+{
+    cities(limit:$limit){
+      id,
+      name
+    }
+}
+
+query getCity($id:ID!)
+{
+  city(id:$id)
+  {
+    name,
+    description
+  }
+}
