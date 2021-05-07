@@ -85,7 +85,7 @@
     .main_mobile-tool-bar {
       position: absolute;
       width: 100%;
-      height: 95vh;
+      height: 0vh;
       left: 0;
       top: 8rem;
 
@@ -132,7 +132,7 @@
       }
     }
     .main_mobile-tool-bar.open {
-      // height: 100vh;
+      height: 100vh;
       overflow: visible;
       opacity: 1;
       padding: 4rem;

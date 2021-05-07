@@ -1,30 +1,27 @@
 import { AgmMap, MapTypeStyle } from '@agm/core';
-import {
-  AfterViewInit,
-  Component,
-  Input,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
-
-import { LocationModel } from 'src/app/data/models/LocationModel';
-import { TimelineItemModel } from 'src/app/data/models/timelineModel';
-
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import {
   AccordionListItem,
   AccordionListItemOption,
-} from '../accordion-list/accordion-list-item';
-import { AccordionClickEventData } from '../accordion-list/accordion-list.component';
+} from 'src/app/common/widgets/accordion-list/accordion-list-item';
+import { AccordionClickEventData } from 'src/app/common/widgets/accordion-list/accordion-list.component';
+
+import { LocationModel } from 'src/app/data/models/LocationModel';
+import { TimelineModel } from 'src/app/data/models/timelineModel';
+import { TripModel } from 'src/app/data/models/TripModel';
 
 @Component({
-  selector: 'app-map-stepper',
-  templateUrl: './map-stepper.component.html',
-  styleUrls: ['./map-stepper.component.scss'],
+  selector: 'app-tour-map',
+  templateUrl: './tour-map.component.html',
+  styleUrls: ['./tour-map.component.scss'],
 })
-export class MapStepperComponent implements OnInit, AfterViewInit {
+export class TourMapComponent implements OnInit {
   constructor() {}
 
+  @Input() trip: TripModel;
+
   sideBarVisibility = true;
+  mobileSheetExpanded = false;
   sidebarLocation: LocationModel;
 
   currentLat: number;
@@ -48,11 +45,16 @@ export class MapStepperComponent implements OnInit, AfterViewInit {
       this.map = map;
     });
   }
-  @Input('timelines') timelines: TimelineItemModel[];
+
   @ViewChild('agmMap') agmMap: AgmMap;
 
   ngOnInit(): void {
-    this.timelines.forEach((timeline) => {
+    this.currentLat = this.trip.timelines[0].locations[0].geo.latitude;
+    this.currentLong = this.trip.timelines[0].locations[0].geo.longitude;
+
+    this.sidebarLocation = this.trip.timelines[0].locations[0];
+
+    this.trip.timelines.forEach((timeline) => {
       this.accordionItems.push(
         new AccordionListItem(
           timeline.locations.map((location) => {
@@ -62,33 +64,62 @@ export class MapStepperComponent implements OnInit, AfterViewInit {
       );
       this.allLocationsSorted.push(...timeline.locations);
     });
-
-    this.currentLat = this.timelines[0].locations[0].geo.latitude;
-    this.currentLong = this.timelines[1].locations[0].geo.longitude;
-
-    this.sidebarLocation = this.timelines[0].locations[0];
   }
 
-  locationOverlayClicked(lat: number, long: number) {
-    this.currentLat = lat;
-    this.currentLong = long;
-    this.zoom += 10;
+  recenterMapToLocation(location: LocationModel) {
+    if (location) {
+      this.currentLat = location.geo.latitude;
+      this.currentLong = location.geo.longitude;
+      this.zoom += 10;
+
+      this.sidebarLocation = location;
+    }
+  }
+  nextDestination(): void {
+    let indexOfCurrent = this.allLocationsSorted.indexOf(this.sidebarLocation);
+    if (
+      indexOfCurrent != null &&
+      indexOfCurrent + 1 < this.allLocationsSorted.length
+    ) {
+      this.recenterMapToLocation(this.allLocationsSorted[++indexOfCurrent]);
+    }
+  }
+  prevDestination(): void {
+    let indexOfCurrent = this.allLocationsSorted.indexOf(this.sidebarLocation);
+    if (indexOfCurrent != null && indexOfCurrent > 0) {
+      this.recenterMapToLocation(this.allLocationsSorted[--indexOfCurrent]);
+    }
+  }
+  hasNextLocation(): boolean {
+    let indexOfCurrent = this.allLocationsSorted.indexOf(this.sidebarLocation);
+
+    return (
+      indexOfCurrent != null &&
+      indexOfCurrent + 1 < this.allLocationsSorted.length
+    );
+  }
+  hasPrevLocation(): boolean {
+    let indexOfCurrent = this.allLocationsSorted.indexOf(this.sidebarLocation);
+    return indexOfCurrent != null && indexOfCurrent > 0;
   }
   toggleSidebar() {
     this.sideBarVisibility = !this.sideBarVisibility;
   }
   onLocationClicked(data: AccordionClickEventData) {
-    this.currentLat = this.timelines[data.parentIndex].locations[
+    this.currentLat = this.trip.timelines[data.parentIndex].locations[
       data.childIndex
     ].geo.latitude;
-    this.currentLong = this.timelines[data.parentIndex].locations[
+    this.currentLong = this.trip.timelines[data.parentIndex].locations[
       data.childIndex
     ].geo.longitude;
     this.zoom += 10;
 
-    this.sidebarLocation = this.timelines[data.parentIndex].locations[
+    this.sidebarLocation = this.trip.timelines[data.parentIndex].locations[
       data.childIndex
     ];
+  }
+  toggleMobileSheet() {
+    this.mobileSheetExpanded = !this.mobileSheetExpanded;
   }
   styles: MapTypeStyle[] = [
     {

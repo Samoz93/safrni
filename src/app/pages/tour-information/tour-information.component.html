@@ -5,21 +5,19 @@
     [screenHeightPercentage]="60"
   ></app-banner-carousel>
 
+  <div class="fab" style="bottom: 5rem">
+    <div class="circle-fab">
+      <div class="inner-circle-fab">
+        <p>Book Now</p>
+      </div>
+    </div>
+  </div>
+  <div class="fab" style="bottom: 13rem">
+    <div class="whatsapp-fab">
+      <img src="../../../assets/images/svgs/whatsapp.svg" />
+    </div>
+  </div>
   <div class="tour-infomation__content-grid">
-    <section class="brief-intro">
-      <h1 class="brief-intro__city-name">Istanbul</h1>
-      <p class="brief-intro__cost-duration">
-        5 Days - 4 Nights / 400$ Per Person
-      </p>
-      <p class="brief-intro__description">
-        The city embraces Asia on the one hand and Europe on the other. Istanbul
-        is Turkey's most populous city and its cultural and financial center.
-        Located on both sides of the Bosphorus, the narrow strait between the
-        Black Sea and the Marmara Sea, Istanbul bridges Asia and Europe both
-        physically and culturally.
-      </p>
-    </section>
-
     <section class="trip-info-card">
       <div class="trip-card-header">
         <div class="trip-card-header__image">
@@ -61,16 +59,30 @@
         </div>
       </div>
 
-      <button class="main-btn">show on the map</button>
+      <button class="main-btn" (click)="showOnMap()">show on the map</button>
+    </section>
+
+    <section class="brief-intro">
+      <h1 class="brief-intro__city-name">Istanbul</h1>
+      <p class="brief-intro__cost-duration">
+        5 Days - 4 Nights / 400$ Per Person
+      </p>
+      <p class="brief-intro__description">
+        The city embraces Asia on the one hand and Europe on the other. Istanbul
+        is Turkey's most populous city and its cultural and financial center.
+        Located on both sides of the Bosphorus, the narrow strait between the
+        Black Sea and the Marmara Sea, Istanbul bridges Asia and Europe both
+        physically and culturally.
+      </p>
     </section>
 
     <section class="places">
       <h2 class="places__title">places you will visit</h2>
       <p class="places__description">A lot of different tours around Turkey</p>
       <div class="places__grid">
-        <!-- <app-trip-card
+        <app-trip-card
           *ngFor="let item of trips; let i = index"
-        ></app-trip-card> -->
+        ></app-trip-card>
       </div>
     </section>
 
@@ -121,29 +133,58 @@
           formControlName="fullName"
           class="control"
           [icon]="icons.profile"
+          [placeholder]="'Full Name'"
         ></app-custom-input>
         <app-custom-input
           formControlName="phone"
           [icon]="icons.profile"
           class="control"
+          [placeholder]="'phone'"
         ></app-custom-input>
         <app-custom-input
           formControlName="email"
           [icon]="icons.profile"
           class="control"
+          [placeholder]="'email'"
         ></app-custom-input>
         <app-custom-date-picker
           [icon]="icons.profile"
           formControlName="arrivalDate"
           class="control"
         ></app-custom-date-picker>
-        <app-custom-input
+        <app-custom-date-picker
           formControlName="message"
           class="control"
           placeholder="message"
+          [placeholder]="'Estimated Arrival Date'"
+        ></app-custom-date-picker>
+        <app-custom-input
+          formControlName="message"
+          [placeholder]="'message'"
           [icon]="icons.profile"
         ></app-custom-input>
+
+        <button class="main-btn" type="submit">Book Now</button>
       </form>
     </section>
   </div>
+
+  <section class="similar-tours">
+    <div class="similar-tours__header">
+      <h2>Booking Information</h2>
+      <p>This information will not be shared</p>
+    </div>
+    <div class="similar-tours__grid">
+      <app-trip-card></app-trip-card>
+      <app-trip-card></app-trip-card>
+      <app-trip-card></app-trip-card>
+      <app-trip-card></app-trip-card>
+      <app-trip-card></app-trip-card>
+      <app-trip-card></app-trip-card>
+      <app-trip-card></app-trip-card>
+      <app-trip-card></app-trip-card>
+      <app-trip-card></app-trip-card>
+      <app-trip-card></app-trip-card>
+    </div>
+  </section>
 </div>

@@ -25,8 +25,8 @@ export class BookingPageComponent implements OnInit {
   ref: BookingInterface;
   ngOnInit(): void {
     this.route.params.subscribe(async (f) => {
-      this.trip = await this._ser.getOfferById(f['id']);
-      this.isLoading = false;
+      // this.trip = await this._ser.getOfferById(f['id']);
+      // this.isLoading = false;
       // this.ref = {
       //   // currency: this.offer.currency,
       //   // duration: this.offer.duration,

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatInputModule } from '@angular/material/input';
@@ -13,7 +13,7 @@ import { SearchPanelComponent } from './pages/main-landing/search-panel/search-p
 import { SectionHeaderComponent } from './pages/main-landing/section-header/section-header.component';
 import { SectionOffersComponent } from './pages/main-landing/section-offers/section-offers.component';
 import { SectionCitiesComponent } from './pages/main-landing/section-cities/section-cities.component';
-import { SectionDailyTripsComponent } from './pages/main-landing/section-daily-trips/section-daily-trips.component';
+
 import { FooterComponent } from './common/layout/footer/footer.component';
 import { HeaderInfoComponent } from './common/layout/header-info/header-info.component';
 import { HeaderToolBarComponent } from './common/layout/header-tool-bar/header-tool-bar.component';
@@ -54,7 +54,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { SwiperModule } from 'swiper/angular';
 import { CustomDatePickerComponent } from './common/widgets/custom-date-picker/custom-date-picker.component';
-import { MapStepperComponent } from './common/widgets/map-stepper/map-stepper.component';
+
 import { AccordionListComponent } from './common/widgets/accordion-list/accordion-list.component';
 import { BannerCarouselComponent } from './common/widgets/banner-carousel/banner-carousel.component';
 import { PricePipe } from './data/pipes/price.pipe';
@@ -64,6 +64,15 @@ import { ValidationIconComponent } from './common/widgets/validation-icon/valida
 import { CustomInputComponent } from './common/widgets/custom-input/custom-input.component';
 import { FilterWidgetComponent } from './pages/offers-page/filter-widget/filter-widget.component';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { TourMapComponent } from './pages/tour-information/tour-map/tour-map.component';
+import { Adapter } from './data/adapters/adapter';
+import { CityModel, CityModelAdapter } from './data/models/CityModel';
+import { TripModelAdapter } from './data/models/TripModel';
+import {
+  ADAPTERINEJCTION,
+  ADAPTER_CONFIG,
+} from './data/services/injectionTokens';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +81,7 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
     SectionHeaderComponent,
     SectionOffersComponent,
     SectionCitiesComponent,
-    SectionDailyTripsComponent,
+
     FooterComponent,
     HeaderInfoComponent,
     HeaderToolBarComponent,
@@ -106,7 +115,7 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
     ServerimagePipe,
     CustomSelectComponent,
     CustomDatePickerComponent,
-    MapStepperComponent,
+
     AccordionListComponent,
     BannerCarouselComponent,
     PricePipe,
@@ -114,6 +123,7 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
     ValidationIconComponent,
     CustomInputComponent,
     FilterWidgetComponent,
+    TourMapComponent,
   ],
 
   imports: [
@@ -146,7 +156,9 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { floatLabel: 'never' },
     },
+    { provide: ADAPTER_CONFIG, useValue: ADAPTERINEJCTION },
   ],
+
   bootstrap: [AppComponent],
 })
 export class AppModule {}

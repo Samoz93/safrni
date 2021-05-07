@@ -1,12 +1,21 @@
 import { HttpClient } from '@angular/common/http';
+import { Inject, Injectable } from '@angular/core';
 import { BehaviorSubject, ReplaySubject, Subject, Subscription } from 'rxjs';
 import urljoin from 'url-join';
-import { DevData, EndPoints, LoadingState } from '../static/main-info';
+import { Adapter } from '../adapters/adapter';
+import { CityModel, CityModelAdapter } from '../models/CityModel';
+import { TripModelAdapter } from '../models/TripModel';
+import { StaticInfo, EndPoints, LoadingState } from '../static/main-info';
+import { ADAPTER_CONFIG, MyAdapter } from './injectionTokens';
 
+@Injectable({
+  providedIn: 'root',
+})
 export class BaseService<T> {
   subs: Subscription[];
   data$ = new ReplaySubject<T[]>();
   data: T[] = Array<T>();
+
   loadingState$ = new BehaviorSubject<LoadingState>({
     hasError: false,
     isLoading: false,
@@ -15,44 +24,46 @@ export class BaseService<T> {
   x = [];
   constructor(
     protected http: HttpClient,
-    public endPoint: EndPoints,
-    public options = {}
+    @Inject(ADAPTER_CONFIG) protected conf: MyAdapter
   ) {}
 
-  async fetchAllData() {
-    this._tryCatch(async () => {
-      const url = urljoin(DevData.baseUrl, this.endPoint);
-      if (this.data.length < 1) {
-        const d = await this.http.get<T[]>(url).toPromise();
-        this.data.push(...d);
-        //TODO for test
-        this.data.push(...d);
-        this.data.push(...this.data);
-        this.data.push(...this.data);
-        this.data.push(...this.data);
-      }
-      this.data$.next(this.data);
-    });
-  }
-  async getById(id: string): Promise<T> {
-    const url = urljoin(DevData.baseUrl, this.endPoint, id);
-    const data = await this._tryCatch(async () => {
-      if (this.data instanceof Array) {
-        let filterData;
-        if (this.data.length > 0) {
-          filterData = this.data.filter((f) => Object(f).id == id);
-        }
-        //todo filter ?
-        if (!!filterData) return filterData[0];
-        else {
-          return await this.http.get<T>(url).toPromise();
-        }
-      } else {
-        return await this.http.get<T>(url).toPromise();
-      }
-    });
+  async fetchAllData(segment: string) {
+    const adapter = this.conf.adapter as Adapter<T>;
+    const csss = this.conf.class as T;
+    console.log(this.conf);
+    console.log(segment);
+    console.log('typeof', this.conf.class instanceof CityModel);
 
-    return data;
+    return;
+    const url = urljoin(StaticInfo.baseUrl, segment);
+    console.log(url);
+    if (this.data.length < 1) {
+      const rawData = await this.http.get<any[]>(url).toPromise();
+      this.data.push(...rawData.map((item) => adapter.adapt(item)));
+    }
+    this.data$.next(this.data);
+  }
+  async getById(segment: string, id: string): Promise<T | undefined> {
+    // const url = urljoin(StaticInfo.baseUrl, segment, id);
+
+    // const data = await this._tryCatch(async () => {
+    //   if (this.data instanceof Array) {
+    //     let filterData;
+    //     if (this.data.length > 0) {
+    //       filterData = this.data.filter((f) => Object(f).id == id);
+    //     }
+    //     //todo filter ?
+    //     if (!!filterData) return filterData[0];
+    //     else {
+    //       return this.adapter.adapt(await this.http.get<any>(url).toPromise());
+    //     }
+    //   } else {
+    //     return this.adapter.adapt(await this.http.get<any>(url).toPromise());
+    //   }
+    // });
+
+    // return data;
+    return;
   }
   _setBusy(isBusy = false, err: string | undefined = undefined) {
     this.loadingState$.next({
@@ -71,6 +82,7 @@ export class BaseService<T> {
       this._setBusy(false, error);
     }
   }
+
   clearSub() {
     this.data$.subscribe();
     this.loadingState$.subscribe();

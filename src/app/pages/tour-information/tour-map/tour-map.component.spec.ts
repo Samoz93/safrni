@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SectionDailyTripsComponent } from './section-daily-trips.component';
+import { TourMapComponent } from './tour-map.component';
 
-describe('SectionDailyTripsComponent', () => {
-  let component: SectionDailyTripsComponent;
-  let fixture: ComponentFixture<SectionDailyTripsComponent>;
+describe('TourMapComponent', () => {
+  let component: TourMapComponent;
+  let fixture: ComponentFixture<TourMapComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SectionDailyTripsComponent ]
+      declarations: [ TourMapComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SectionDailyTripsComponent);
+    fixture = TestBed.createComponent(TourMapComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

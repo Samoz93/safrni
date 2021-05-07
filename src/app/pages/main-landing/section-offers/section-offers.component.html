@@ -6,18 +6,22 @@
   >
   </app-section-header>
 
-  <div class="data">
+  <!-- <div class="data">
     <app-trip-card
+<<<<<<< HEAD
       *ngFor="let item of data$ | async; let i = index"
+=======
+      *ngFor="let item of _ser.getTrips() | async; let i = index"
+>>>>>>> 3
       [ngClass]="{
         longX: i == 6
       }"
-      [id]="item._id"
+      [id]="item.id"
       [features]="item.features"
       [img]="item.previewImage"
       [name]="item.name"
       [price]="item.price"
       [duration]="item.duration"
     ></app-trip-card>
-  </div>
+  </div> -->
 </div>

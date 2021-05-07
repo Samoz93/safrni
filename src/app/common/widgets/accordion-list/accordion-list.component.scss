@@ -4,9 +4,8 @@ $clouds: #ecf0f1;
 
 .tabs {
   overflow: hidden;
-  box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
+
   height: 100%;
-  background-color: rgba($color: #000000, $alpha: 0.25);
   width: 100%;
 }
 .tab {
@@ -29,7 +28,8 @@ $clouds: #ecf0f1;
     }
     p {
       font-size: 2rem;
-      font-weight: bold;
+      font-weight: 600;
+      margin: 0rem;
     }
     i {
       transition: all 0.2s ease-out;
@@ -46,19 +46,34 @@ $clouds: #ecf0f1;
   &-content {
     height: 0px;
     transition: all 0.2s ease-out;
-    // padding: 1rem 2rem;
+    padding: 0rem;
     color: $midnight;
     background: white;
-    transition: all 0.35s;
+    transition: all 0.35s ease-out;
 
     &__item {
       cursor: pointer;
-      font-size: 2rem;
+      padding: 1.5rem;
+
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      p {
+        font-size: 2rem;
+        padding: 0rem;
+        margin: 0rem;
+        text-transform: capitalize;
+        font-weight: 300;
+        color: black;
+      }
+
+      &:not(:last-child) {
+        border-bottom: solid 1px lightgrey;
+      }
     }
   }
   &-content.open {
     height: unset;
-    padding: 1rem 2rem;
   }
   &-close {
     display: flex;
