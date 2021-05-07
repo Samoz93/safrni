@@ -7,21 +7,26 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BaseService } from '../services/base.service';
 import { SaferniHttp } from './saferni.http.service';
+import { CitiesGQL } from './saferniGraphql.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CityService extends BaseService<CityModel[]> {
-  constructor(private http: SaferniHttp, private adapter: CityModelAdapter) {
+  constructor(
+    private http: SaferniHttp,
+    private adapter: CityModelAdapter,
+    private citiesGql: CitiesGQL
+  ) {
     super();
   }
 
   async init(): Promise<any> {
     this.setBusy(true);
 
-    let data = await this.http.get<any[]>(EndPoints.cities).toPromise();
+    this.citiesGql.fetch({ limit: 10 }).subscribe((data) => console.log(data));
 
-    this.data$.next(data.map((item) => this.adapter.adapt(item)));
+    // this.data$.next(data.map((item) => this.adapter.adapt(item)));
 
     this.setBusy(false);
   }
