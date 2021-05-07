@@ -41,7 +41,6 @@ import { StepperComponent } from './common/widgets/stepper/stepper.component';
 import { MatIconModule } from '@angular/material/icon';
 import { OffersPageComponent } from './pages/offers-page/offers-page.component';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { OffersFilterComponent } from './pages/offers-page/offers-filter/offers-filter.component';
 import { BookingPageComponent } from './pages/booking/booking-page.component';
 import { LoaderComponent } from './common/widgets/loader/loader.component';
 import { Onlynumbers } from './data/directives/onlynumbers.directive';
@@ -100,7 +99,6 @@ import { SectionDailyTripsComponent } from './pages/main-landing/section-daily-t
     ReadOnlyStarsComponent,
     StepperComponent,
     OffersPageComponent,
-    OffersFilterComponent,
     BookingPageComponent,
     LoaderComponent,
     Onlynumbers,

@@ -9,54 +9,56 @@
       [screenHeightPercentage]="60"
     ></app-banner-carousel>
   </div>
-  <div class="grid_area page-padding">
-    <section class="grid_area-nav">
-      <div
-        class="grid_area-nav-item"
-        [ngClass]="{ active: filterOptions.type == 'tour' }"
-        (click)="changeType('tour')"
-      >
-        Tours
-      </div>
-      <div
-        class="grid_area-nav-item"
-        [ngClass]="{ active: filterOptions.type == 'medic' }"
-        (click)="changeType('medic')"
-      >
-        Medical Tourism
-      </div>
-    </section>
-    <section class="grid_area-guest-count">
-      <div
-        class="grid_area-guest-count-item"
-        *ngFor="let set of filterOptions.count | keyvalue"
-      >
-        <p>{{ set.key | upperFirstChar }}</p>
-        <mat-icon class="icon minus" (click)="decrease(set.key)"
-          >remove</mat-icon
+  <div class="flex_area">
+    <div class="flex_area_filter">
+      <section class="flex_area_filter-nav">
+        <div
+          class="flex_area_filter-nav-item"
+          [ngClass]="{ active: filterOptions.type == 'tour' }"
+          (click)="changeType('tour')"
         >
-        <p class="val">{{ set.value }}</p>
+          Tours
+        </div>
+        <div
+          class="flex_area_filter-nav-item"
+          [ngClass]="{ active: filterOptions.type == 'medic' }"
+          (click)="changeType('medic')"
+        >
+          Medical Tourism
+        </div>
+      </section>
+      <section class="flex_area_filter-guest-count">
+        <div
+          class="flex_area_filter-guest-count-item"
+          *ngFor="let set of filterOptions.count | keyvalue"
+        >
+          <p>{{ set.key | upperFirstChar }}</p>
+          <mat-icon class="icon minus" (click)="decrease(set.key)"
+            >remove</mat-icon
+          >
+          <p class="val">{{ set.value }}</p>
 
-        <mat-icon class="icon plus" (click)="increase(set.key)">add</mat-icon>
-      </div>
-    </section>
-    <form class="grid_area-price">
-      <p class="grid_area-price-title">Price</p>
-      <app-custom-input
-        placeholder="Minimum"
-        [hideIcon]="true"
-        [formControl]="minPriceCtrl"
-      ></app-custom-input>
-      <app-custom-input
-        placeholder="Maximum"
-        [hideIcon]="true"
-        [formControl]="maxPriceCtrl"
-      ></app-custom-input>
-    </form>
-    <section class="grid_area-btn">
-      <button class="main-btn">Apply</button>
-    </section>
-    <section class="grid_area-content">
+          <mat-icon class="icon plus" (click)="increase(set.key)">add</mat-icon>
+        </div>
+      </section>
+      <form class="flex_area_filter-price">
+        <p class="flex_area_filter-price-title">Price</p>
+        <app-custom-input
+          placeholder="Minimum"
+          [hideIcon]="true"
+          [formControl]="minPriceCtrl"
+        ></app-custom-input>
+        <app-custom-input
+          placeholder="Maximum"
+          [hideIcon]="true"
+          [formControl]="maxPriceCtrl"
+        ></app-custom-input>
+      </form>
+      <section class="flex_area_filter-btn">
+        <button class="main-btn">Apply</button>
+      </section>
+    </div>
+    <section class="flex_area-content">
       <app-trip-card
         *ngFor="let item of data$ | async; let i = index"
         [name]="item.name"

@@ -34,115 +34,114 @@ $font-size: 1.5rem;
     }
   }
 }
-.main {
-  height: 150vh;
-}
-.grid_area {
-  display: grid;
-  justify-content: center;
+
+.flex_area {
+  display: flex;
+  flex-direction: row;
+
+  // justify-content: center;
   transform: translate(0, -15rem);
-  grid-template-columns: 14rem 14rem 77rem;
-  grid-template-rows: 7rem 20rem 15rem 7rem;
-  grid-auto-rows: max-content;
+  // grid-template-columns: 14rem 14rem 77rem;
+  // grid-template-rows: 7rem 20rem 15rem 7rem;
+  // grid-auto-rows: min-content;
   column-gap: 2.7rem;
-  &-nav {
-    grid-column: span 2;
-    grid-row: 1;
-    display: grid;
+  &_filter {
     @include shadow;
-    grid-template-columns: repeat(2, 1fr);
-    &-item {
-      background: $non-active;
-      color: black;
-      font-size: 1.5rem;
+    height: 100%;
+    width: 29rem;
+    margin-left: auto;
+    &-nav {
+      height: 7rem;
       display: grid;
-      place-items: center;
-      cursor: pointer;
-      transition: $trans;
-    }
-    &-item.active {
-      background: white;
-      color: black;
-    }
-  }
-
-  &-guest-count {
-    padding: $padding;
-    grid-column: span 2;
-    grid-row: 2;
-    background: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    position: relative;
-    @include shadow;
-
-    &-item {
-      font-size: $font-size;
-      display: grid;
-      grid-template-columns: 50% 15% 15% 15%;
-      & > * {
-        font-size: inherit;
-      }
-      .val {
-        justify-self: center;
-      }
-      .minus {
-        justify-self: flex-end;
-      }
-      .plus {
-        justify-self: flex-start;
-      }
-      .icon {
-        background: $accent;
-        color: white;
+      grid-template-columns: repeat(2, 1fr);
+      &-item {
+        background: $non-active;
+        color: black;
+        font-size: 1.5rem;
         display: grid;
         place-items: center;
         cursor: pointer;
+        transition: $trans;
+        text-align: center;
+      }
+      &-item.active {
+        background: white;
+        color: black;
       }
     }
-    @include divider();
-  }
-  &-price {
-    padding: $padding;
-    grid-column: span 2;
-    grid-row: 3;
-    background: white;
-    position: relative;
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    grid-template-columns: 45% 45%;
-    @include shadow;
+    &-guest-count {
+      height: 15rem;
 
-    gap: 10%;
-    @include divider();
-    &-title {
+      padding: $padding;
       grid-column: span 2;
-      grid-row: 1;
-      font-size: $font-size;
-      align-self: flex-end;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      position: relative;
+
+      &-item {
+        font-size: $font-size;
+        display: grid;
+        grid-template-columns: 50% 15% 15% 15%;
+        & > * {
+          font-size: inherit;
+        }
+        .val {
+          justify-self: center;
+        }
+        .minus {
+          justify-self: flex-end;
+        }
+        .plus {
+          justify-self: flex-start;
+        }
+        .icon {
+          background: $accent;
+          color: white;
+          display: grid;
+          place-items: center;
+          cursor: pointer;
+        }
+      }
+      @include divider();
+    }
+    &-price {
+      height: 15rem;
+      padding: $padding;
+      grid-column: span 2;
+      position: relative;
+      display: grid;
+      align-items: center;
+      justify-content: center;
+      grid-template-columns: 45% 45%;
+
+      gap: 10%;
+      @include divider();
+      &-title {
+        grid-column: span 2;
+        grid-row: 1;
+        font-size: $font-size;
+        align-self: flex-end;
+      }
+    }
+    &-btn {
+      height: 7rem;
+      padding: $padding;
+      grid-column: span 2;
+      z-index: 0;
+      display: grid;
+      justify-content: flex-start;
+      align-items: center;
     }
   }
-  &-btn {
-    padding: $padding;
 
-    grid-column: span 2;
-    grid-row: 4;
-    background: white;
-    z-index: 0;
-    @include shadow;
-    display: grid;
-    justify-content: flex-start;
-    align-items: center;
-  }
   &-content {
-    grid-column: 3;
-    grid-row: 1 / -1;
-    height: 100vh;
-    overflow: scroll;
+    margin-right: auto;
+
+    width: 78rem;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     grid-auto-rows: 25rem;
     gap: 0.1rem;
     .full-width {

@@ -1,8 +1,6 @@
 <div class="main">
   <app-header-info></app-header-info>
   <app-header-tool-bar></app-header-tool-bar>
-  <app-loader [isLoading]="false">
-    <router-outlet></router-outlet>
-  </app-loader>
+  <router-outlet class="outlet"></router-outlet>
   <app-footer></app-footer>
 </div>
