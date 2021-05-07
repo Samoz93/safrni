@@ -94,29 +94,13 @@
         A lot of different tours around Turkey
       </p>
       <div class="features__grid">
-        <div class="features__grid__item">
-          <i class="fa fa-check-square"></i>
-          <p>some feature</p>
-        </div>
-        <div class="features__grid__item">
-          <i class="fa fa-check-square"></i>
-          <p>some feature</p>
-        </div>
-        <div class="features__grid__item">
-          <i class="fa fa-check-square"></i>
-          <p>some feature</p>
-        </div>
-        <div class="features__grid__item">
-          <i class="fa fa-check-square"></i>
-          <p>some feature</p>
-        </div>
-        <div class="features__grid__item">
-          <i class="fa fa-check-square"></i>
-          <p>some feature</p>
-        </div>
-        <div class="features__grid__item">
-          <i class="fa fa-check-square"></i>
-          <p>some feature</p>
+        <div class="features__grid__item" *ngFor="let feature of trip.features">
+          <i
+            [ngClass]="
+              feature.included ? 'fa fa-check-square' : 'fa fa-times-square'
+            "
+          ></i>
+          <p>{{ feature.name }}</p>
         </div>
       </div>
     </section>

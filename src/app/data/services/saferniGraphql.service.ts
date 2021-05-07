@@ -2756,6 +2756,7 @@ export type CityInfoFragment = (
 
 export type TripsQueryVariables = Exact<{
   limit?: Maybe<Scalars['Int']>;
+  locale?: Maybe<Scalars['String']>;
 }>;
 
 
@@ -2925,8 +2926,8 @@ export const GetCityDocument = gql`
     }
   }
 export const TripsDocument = gql`
-    query trips($limit: Int) {
-  trips(limit: $limit) {
+    query trips($limit: Int, $locale: String) {
+  trips(limit: $limit, locale: $locale) {
     ...tripInfo
   }
 }

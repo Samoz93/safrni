@@ -1,5 +1,5 @@
-query trips($limit: Int) {
-  trips(limit: $limit) {
+query trips($limit: Int, $locale: String) {
+  trips(limit: $limit, locale: $locale) {
     ...tripInfo
   }
 }

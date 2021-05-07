@@ -27,7 +27,7 @@ export class TripService extends BaseService<TripModel> {
     this.setBusy(true);
 
     let trips = (
-      await this.tripsGql.fetch({ limit: 30 }).toPromise()
+      await this.tripsGql.fetch({ limit: 30, locale: 'en' }).toPromise()
     ).data.trips?.map((trip) => this.tripAdapter.adapt(trip));
 
     //for debug
