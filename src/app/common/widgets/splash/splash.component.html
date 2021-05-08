@@ -5,8 +5,9 @@
 >
   <div class="splash-screen__content">
     <ng-lottie
-      [options]="options"
+      [options]="options | async"
       (animationCreated)="animationCreated($event)"
+      (loopComplete)="onLoopComplete($event)"
     ></ng-lottie>
   </div>
 </div>

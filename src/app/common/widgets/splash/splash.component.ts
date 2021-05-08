@@ -1,6 +1,8 @@
+import { animation } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { AnimationItem } from 'lottie-web';
-import { AnimationOptions } from 'ngx-lottie';
+import { AnimationOptions, BMCompleteLoopEvent } from 'ngx-lottie';
+import { BehaviorSubject } from 'rxjs';
 import { SplashScreenStateService } from 'src/app/data/services/splash-screen-state.service';
 
 @Component({
@@ -18,30 +20,37 @@ export class SplashComponent implements OnInit {
 
   constructor(private splashScreenStateService: SplashScreenStateService) {}
 
+  currentAnimationIndex = 0;
+
   animationFiles: string[] = [
-    '/src/assets/animation/airplane.json',
-    '/src/assets/animation/luggage.json',
+    '../../../../assets/animation/airplane.json',
+    '../../../../assets/animation/luggage.json',
+    '../../../../assets/animation/car.json',
   ];
 
-  options: AnimationOptions = {
-    path: '/src/assets/animation/airplane.json',
-  };
+  options = new BehaviorSubject<AnimationOptions>({
+    autoplay: false,
+    loop: 1,
+    path: this.animationFiles[this.currentAnimationIndex],
+  });
 
   animationCreated(animationItem: AnimationItem): void {
-    console.log(animationItem);
+    animationItem.setSpeed(2);
+    animationItem.play();
   }
 
-  toggle(): void {
-    this.options = {
-      ...this.options,
-      path: '/assets/new-animation.json',
-    };
+  updateAnimationFile(newPath: string): void {
+    this.options.next({
+      ...this.options.value,
+      path: newPath,
+    });
   }
 
   ngOnInit(): void {
     this.splashScreenStateService.subscribe((res: any) => {
       this.hideSplashAnimation();
     });
+    this.options.subscribe((v) => console.log(v));
   }
 
   private hideSplashAnimation() {
@@ -50,5 +59,13 @@ export class SplashComponent implements OnInit {
     setTimeout(() => {
       this.showSplash = !this.showSplash;
     }, 1000);
+  }
+
+  onLoopComplete(event: BMCompleteLoopEvent) {
+    if (this.currentAnimationIndex + 1 >= this.animationFiles.length) {
+      this.currentAnimationIndex = 0;
+    } else this.currentAnimationIndex++;
+
+    this.updateAnimationFile(this.animationFiles[this.currentAnimationIndex]);
   }
 }

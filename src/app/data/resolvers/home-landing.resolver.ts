@@ -26,7 +26,7 @@ export class HomeLandingResolver implements Resolve<any> {
       this.cityService.init(),
       this.tripService.init(),
     ];
-    await delay(2500);
+    // await delay(113500);
     let data = await Promise.all(futureArray);
     this.splashScreenStateService.stop();
     return {
