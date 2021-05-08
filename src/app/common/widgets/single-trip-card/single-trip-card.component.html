@@ -1,5 +1,5 @@
 <div class="main card" (click)="goToOffer()">
-  <img [src]="img | serverimage" alt="" />
+  <app-saferni-image [imageModel]="img!"></app-saferni-image>
   <app-trip-extra [features]="features" class="extra"> </app-trip-extra>
   <div *ngIf="isOffer" class="duration-price">
     <h6 class="main_price">{{ price | price }}</h6>
