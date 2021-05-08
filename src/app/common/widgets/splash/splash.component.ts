@@ -1,5 +1,10 @@
 import { animation } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
 import { AnimationItem } from 'lottie-web';
 import { AnimationOptions, BMCompleteLoopEvent } from 'ngx-lottie';
 import { BehaviorSubject } from 'rxjs';
@@ -10,16 +15,30 @@ import { SplashScreenStateService } from 'src/app/data/services/splash-screen-st
   templateUrl: './splash.component.html',
   styleUrls: ['./splash.component.scss'],
 })
-export class SplashComponent implements OnInit {
-  // The screen starts with the maximum opacity
-  public opacityChange = 1;
-  public splashTransition = 'all 0.2s ease-out';
-  // First access the splash is visible
-  public showSplash = true;
+export class SplashComponent implements OnInit, AfterViewInit {
+  opacityChange = 1;
+  splashTransition = 'all 0.2s ease-out';
+
+  showSplash = false;
   readonly ANIMATION_DURATION = 1;
 
-  constructor(private splashScreenStateService: SplashScreenStateService) {}
-
+  constructor(public splashScreenStateService: SplashScreenStateService) {}
+  ngAfterViewInit(): void {
+    this.splashScreenStateService.playing.subscribe((state) => {
+      // console.log(state);
+      if (state != this.showSplash) {
+        if (state) {
+          this.showSplash = true;
+          console.log(state);
+          // this.cdRef.detectChanges();
+        } else {
+          console.log('hiding');
+          this.hideSplashAnimation();
+        }
+      }
+    });
+  }
+  ngOnInit(): void {}
   currentAnimationIndex = 0;
 
   animationFiles: string[] = [
@@ -46,18 +65,12 @@ export class SplashComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.splashScreenStateService.subscribe((res: any) => {
-      this.hideSplashAnimation();
-    });
-    this.options.subscribe((v) => console.log(v));
-  }
-
   private hideSplashAnimation() {
     this.splashTransition = `opacity ${this.ANIMATION_DURATION}s`;
     this.opacityChange = 0;
     setTimeout(() => {
-      this.showSplash = !this.showSplash;
+      this.showSplash = false;
+      // this.cdRef.detectChanges();
     }, 1000);
   }
 

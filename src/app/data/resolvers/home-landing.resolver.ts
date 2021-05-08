@@ -22,11 +22,12 @@ export class HomeLandingResolver implements Resolve<any> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Promise<{ cities: CityModel[]; trips: TripModel[] }> {
+    this.splashScreenStateService.start();
     let futureArray: [Promise<CityModel[]>, Promise<TripModel[]>] = [
       this.cityService.init(),
       this.tripService.init(),
     ];
-    // await delay(113500);
+    await delay(1500);
     let data = await Promise.all(futureArray);
     this.splashScreenStateService.stop();
     return {

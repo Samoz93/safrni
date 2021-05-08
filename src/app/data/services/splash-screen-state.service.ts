@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Subscription, Subject, PartialObserver } from 'rxjs';
-@Injectable({providedIn:'root'})
+import { Subscription, Subject, BehaviorSubject } from 'rxjs';
+@Injectable({ providedIn: 'root' })
 export class SplashScreenStateService {
-   subject = new Subject();
-   subscribe(onNext:any): Subscription {
-      return this.subject.subscribe(onNext);
-   }
-   stop() {
-      this.subject.next(false);
-   }
+  playing = new BehaviorSubject<boolean>(false);
+  start() {
+    this.playing.next(true);
+  }
+  stop() {
+    this.playing.next(false);
+  }
 }
