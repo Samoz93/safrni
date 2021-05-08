@@ -16,8 +16,7 @@ import { delay } from '../utils/helpers';
 export class TourInformationResolver implements Resolve<any> {
   constructor(
     private splashScreenStateService: SplashScreenStateService,
-    private tripService: TripService,
-    
+    private tripService: TripService
   ) {}
   async resolve(
     route: ActivatedRouteSnapshot,
@@ -26,7 +25,6 @@ export class TourInformationResolver implements Resolve<any> {
     this.splashScreenStateService.start();
     let tripId = route.paramMap.get('id');
     let trip = await this.tripService.getTripById(tripId!);
-    await delay(3500);
 
     this.splashScreenStateService.stop();
     return {

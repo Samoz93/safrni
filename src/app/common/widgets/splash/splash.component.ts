@@ -75,6 +75,7 @@ export class SplashComponent implements OnInit, AfterViewInit {
   }
 
   private showAnimation() {
+    this.currentAnimationIndex = 0;
     this.opacityChange = 1;
     this.showSplash = true;
     this.cdRef.detectChanges();
