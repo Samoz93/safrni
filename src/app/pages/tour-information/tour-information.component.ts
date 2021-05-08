@@ -34,17 +34,19 @@ export class TourInformationComponent implements OnInit {
       arrivalDate: new FormControl(null, [Validators.required]),
       message: new FormControl(null, [Validators.required]),
     });
-
-    this.activatedRoute.paramMap.subscribe(async (params) => {
-      console.log('is loading');
-
-      this.trip = await this.tripService.getTripById(params.get('id')!);
-
-      this.timelines.push(
-        ...(await this.tripService.getTimeline(this.trip.timelineId))!
-      );
-      console.log(`stopped loading ${this.timelines}`);
+    this.activatedRoute.data.subscribe(async (data) => {
+      this.trip = data.dataMap.trip;
+      if (this.trip) {
+        this.timelines.push(
+          ...(await this.tripService.getTimeline(this.trip.timelineId))!
+        );
+      }
     });
+    // this.activatedRoute.paramMap.subscribe(async (params) => {
+    //   console.log('is loading');
+
+    //   console.log(`stopped loading ${this.timelines}`);
+    // });
   }
 
   onFormSubmitted() {}

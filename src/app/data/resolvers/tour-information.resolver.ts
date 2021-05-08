@@ -2,6 +2,7 @@ import {
   Resolve,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
+  ActivatedRoute,
 } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { interval, Observable, of } from 'rxjs';
@@ -12,27 +13,24 @@ import { CityModel } from '../models/CityModel';
 import { TripModel } from '../models/TripModel';
 import { delay } from '../utils/helpers';
 @Injectable({ providedIn: 'root' })
-export class HomeLandingResolver implements Resolve<any> {
+export class TourInformationResolver implements Resolve<any> {
   constructor(
     private splashScreenStateService: SplashScreenStateService,
-    private cityService: CityService,
-    private tripService: TripService
+    private tripService: TripService,
+    
   ) {}
   async resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Promise<{ cities: CityModel[]; trips: TripModel[] }> {
+  ): Promise<{ trip: TripModel }> {
     this.splashScreenStateService.start();
-    let futureArray: [Promise<CityModel[]>, Promise<TripModel[]>] = [
-      this.cityService.init(),
-      this.tripService.init(),
-    ];
+    let tripId = route.paramMap.get('id');
+    let trip = await this.tripService.getTripById(tripId!);
     await delay(3500);
-    let data = await Promise.all(futureArray);
+
     this.splashScreenStateService.stop();
     return {
-      cities: data[0],
-      trips: data[1],
+      trip: trip,
     };
   }
 }

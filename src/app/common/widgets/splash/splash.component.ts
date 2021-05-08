@@ -22,17 +22,18 @@ export class SplashComponent implements OnInit, AfterViewInit {
   showSplash = false;
   readonly ANIMATION_DURATION = 1;
 
-  constructor(public splashScreenStateService: SplashScreenStateService) {}
+  constructor(
+    public splashScreenStateService: SplashScreenStateService,
+    private cdRef: ChangeDetectorRef
+  ) {}
   ngAfterViewInit(): void {
     this.splashScreenStateService.playing.subscribe((state) => {
-      // console.log(state);
       if (state != this.showSplash) {
         if (state) {
-          this.showSplash = true;
-          console.log(state);
-          // this.cdRef.detectChanges();
+          this.showAnimation();
+          console.log('showing loader');
         } else {
-          console.log('hiding');
+          console.log('hiding loader');
           this.hideSplashAnimation();
         }
       }
@@ -65,20 +66,26 @@ export class SplashComponent implements OnInit, AfterViewInit {
     });
   }
 
-  private hideSplashAnimation() {
-    this.splashTransition = `opacity ${this.ANIMATION_DURATION}s`;
-    this.opacityChange = 0;
-    setTimeout(() => {
-      this.showSplash = false;
-      // this.cdRef.detectChanges();
-    }, 1000);
-  }
-
   onLoopComplete(event: BMCompleteLoopEvent) {
     if (this.currentAnimationIndex + 1 >= this.animationFiles.length) {
       this.currentAnimationIndex = 0;
     } else this.currentAnimationIndex++;
 
     this.updateAnimationFile(this.animationFiles[this.currentAnimationIndex]);
+  }
+
+  private showAnimation() {
+    this.opacityChange = 1;
+    this.showSplash = true;
+    this.cdRef.detectChanges();
+  }
+
+  private hideSplashAnimation() {
+    this.splashTransition = `opacity ${this.ANIMATION_DURATION}s`;
+    this.opacityChange = 0;
+    setTimeout(() => {
+      this.showSplash = false;
+      this.cdRef.detectChanges();
+    }, 1000);
   }
 }

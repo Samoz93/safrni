@@ -10,7 +10,7 @@ export class DevData {
   static isDev = false;
   static offersRoute = 'offers';
   static bookingRoute = 'booking';
-  static tourInfoRoute = 'tourInfo';
+  static tourInfoRoute = 'tours';
 
   static errMsgs = [
     {
