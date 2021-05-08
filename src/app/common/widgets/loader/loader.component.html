@@ -15,4 +15,5 @@
     </body>
   </html>
 </div>
-<ng-content *ngIf="!isLoading"></ng-content>
+
+<template *ngIf="!isLoading" [ngTemplateOutlet]="viewRef"> </template>

@@ -1,219 +1,234 @@
-<div class="tour-infomation">
-  <app-banner-carousel
-    [images]="images"
-    [screenHeightPercentage]="60"
-  ></app-banner-carousel>
+<app-loader [isLoading]="isLoading" [viewRef]="content">
+  
+</app-loader>
 
-  <div class="fab" style="bottom: 5rem">
-    <div class="circle-fab">
-      <div class="inner-circle-fab">
-        <p>Book Now</p>
+
+<ng-template #content>
+  <div class="tour-infomation">
+    <app-banner-carousel
+      [images]="images"
+      [screenHeightPercentage]="60"
+    ></app-banner-carousel>
+
+    <div class="fab" style="bottom: 5rem">
+      <div class="circle-fab">
+        <div class="inner-circle-fab">
+          <p>Book Now</p>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="fab" style="bottom: 13rem">
-    <div class="whatsapp-fab">
-      <img src="../../../assets/images/svgs/whatsapp.svg" />
+    <div class="fab" style="bottom: 13rem">
+      <div class="whatsapp-fab">
+        <img src="../../../assets/images/svgs/whatsapp.svg" />
+      </div>
     </div>
-  </div>
-  <div class="tour-infomation__content-grid">
-    <div class="content-grid-col1">
-      <section class="trip-info-card">
-        <div class="trip-card-header">
-          <div class="trip-card-header__image">
-            <img src="https://wallpapercave.com/wp/wp1813727.jpg" />
+    <div class="tour-infomation__content-grid">
+      <div class="content-grid-col1">
+        <section class="trip-info-card">
+          <div class="trip-card-header">
+            <div class="trip-card-header__image">
+              <img src="https://wallpapercave.com/wp/wp1813727.jpg" />
+            </div>
+            <p class="trip-card-header__price">{{ trip.price | price }}</p>
+            <app-read-only-stars
+              [stars]="3.5"
+              [color]="'#fff'"
+            ></app-read-only-stars>
           </div>
-          <p class="trip-card-header__price">{{ trip.price | price }}</p>
-          <app-read-only-stars
-            [stars]="3.5"
-            [color]="'#fff'"
-          ></app-read-only-stars>
-        </div>
-        <div class="trip-card-brief-info">
-          <h2 class="trip-card-brief-info__city-name">{{ trip.city.name }}</h2>
-          <p class="trip-card-brief-info__price-duration">
+          <div class="trip-card-brief-info">
+            <h2 class="trip-card-brief-info__city-name">
+              {{ trip.city.name }}
+            </h2>
+            <p class="trip-card-brief-info__price-duration">
+              5 Days - 4 Nights / 400$ Per Person
+            </p>
+          </div>
+
+          <div class="trip-card-features">
+            <div class="trip-card-features__row">
+              <h2>hotel</h2>
+              <p>four season hotel</p>
+            </div>
+            <div class="trip-card-features__row">
+              <h2>hotel</h2>
+              <p>four season hotel</p>
+            </div>
+            <div class="trip-card-features__row">
+              <h2>hotel</h2>
+              <p>four season hotel</p>
+            </div>
+            <div class="trip-card-features__row">
+              <h2>hotel</h2>
+              <p>four season hotel</p>
+            </div>
+            <div class="trip-card-features__row">
+              <h2>hotel</h2>
+              <p>four season hotel</p>
+            </div>
+          </div>
+
+          <button class="main-btn" (click)="showOnMap()">
+            show on the map
+          </button>
+        </section>
+        <section class="brief-intro">
+          <h1 class="brief-intro__city-name">Istanbul</h1>
+          <p class="brief-intro__cost-duration">
             5 Days - 4 Nights / 400$ Per Person
           </p>
-        </div>
-
-        <div class="trip-card-features">
-          <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
-          </div>
-          <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
-          </div>
-          <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
-          </div>
-          <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
-          </div>
-          <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
-          </div>
-        </div>
-
-        <button class="main-btn" (click)="showOnMap()">show on the map</button>
-      </section>
-      <section class="brief-intro">
-        <h1 class="brief-intro__city-name">Istanbul</h1>
-        <p class="brief-intro__cost-duration">
-          5 Days - 4 Nights / 400$ Per Person
-        </p>
-        <p class="brief-intro__description">
-          The city embraces Asia on the one hand and Europe on the other.
-          Istanbul is Turkey's most populous city and its cultural and financial
-          center. Located on both sides of the Bosphorus, the narrow strait
-          between the Black Sea and the Marmara Sea, Istanbul bridges Asia and
-          Europe both physically and culturally.
-        </p>
-      </section>
-
-      <section class="places">
-        <h2 class="places__title">places you will visit</h2>
-        <p class="places__description">
-          A lot of different tours around Turkey
-        </p>
-        <div class="places__grid">
-          <div
-            class="places__grid__item"
-            *ngFor="let item of getAllLocations(); let i = index"
-          >
-            <img [src]="item.images[0] | serverimage" />
-          </div>
-        </div>
-      </section>
-
-      <section class="features">
-        <h2 class="features__title">included</h2>
-        <p class="features__description">
-          A lot of different tours around Turkey
-        </p>
-        <div class="features__grid">
-          <div
-            class="features__grid__item"
-            *ngFor="let feature of trip.features"
-          >
-            <i
-              [ngClass]="
-                feature.included ? 'fa fa-check-square' : 'fa fa-times'
-              "
-              [ngStyle]="{ color: feature.included ? '#20aed5' : 'red' }"
-            ></i>
-            <p>{{ feature.name }}</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="booking-section">
-        <h2 class="booking-section__title">Booking Information</h2>
-        <p class="booking-section__description">
-          This information will not be shared
-        </p>
-        <form
-          [formGroup]="bookForm"
-          (ngSubmit)="onFormSubmitted()"
-          class="booking-form"
-        >
-          <app-custom-input
-            formControlName="fullName"
-            [icon]="icons.profile"
-            [placeholder]="'Full Name'"
-          ></app-custom-input>
-          <app-custom-input
-            formControlName="phone"
-            [icon]="icons.profile"
-            [placeholder]="'phone'"
-          ></app-custom-input>
-          <app-custom-input
-            formControlName="email"
-            [icon]="icons.profile"
-            [placeholder]="'email'"
-          ></app-custom-input>
-          <app-custom-date-picker
-            [icon]="icons.profile"
-            formControlName="arrivalDate"
-            [placeholder]="'Estimated Arrival Date'"
-          ></app-custom-date-picker>
-          <app-custom-input
-            formControlName="message"
-            [placeholder]="'message'"
-            [icon]="icons.profile"
-          ></app-custom-input>
-
-          <button class="main-btn" type="submit">Book Now</button>
-        </form>
-      </section>
-    </div>
-    <div class="content-grid-col2">
-      <section class="trip-info-card">
-        <div class="trip-card-header">
-          <div class="trip-card-header__image">
-            <img src="https://wallpapercave.com/wp/wp1813727.jpg" />
-          </div>
-          <p class="trip-card-header__price">{{ trip.price | price }}</p>
-          <app-read-only-stars
-            [stars]="3.5"
-            [color]="'#fff'"
-          ></app-read-only-stars>
-        </div>
-        <div class="trip-card-brief-info">
-          <h2 class="trip-card-brief-info__city-name">{{ trip.city.name }}</h2>
-          <p class="trip-card-brief-info__price-duration">
-            5 Days - 4 Nights / 400$ Per Person
+          <p class="brief-intro__description">
+            The city embraces Asia on the one hand and Europe on the other.
+            Istanbul is Turkey's most populous city and its cultural and
+            financial center. Located on both sides of the Bosphorus, the narrow
+            strait between the Black Sea and the Marmara Sea, Istanbul bridges
+            Asia and Europe both physically and culturally.
           </p>
-        </div>
+        </section>
 
-        <div class="trip-card-features">
-          <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
+        <section class="places">
+          <h2 class="places__title">places you will visit</h2>
+          <p class="places__description">
+            A lot of different tours around Turkey
+          </p>
+          <div class="places__grid">
+            <div
+              class="places__grid__item"
+              *ngFor="let item of getAllLocations(); let i = index"
+            >
+              <img [src]="item.images[0] | serverimage" />
+            </div>
           </div>
-          <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
-          </div>
-          <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
-          </div>
-          <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
-          </div>
-          <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
-          </div>
-        </div>
+        </section>
 
-        <button class="main-btn" (click)="showOnMap()">show on the map</button>
-      </section>
+        <section class="features">
+          <h2 class="features__title">included</h2>
+          <p class="features__description">
+            A lot of different tours around Turkey
+          </p>
+          <div class="features__grid">
+            <div
+              class="features__grid__item"
+              *ngFor="let feature of trip.features"
+            >
+              <i
+                [ngClass]="
+                  feature.included ? 'fa fa-check-square' : 'fa fa-times'
+                "
+                [ngStyle]="{ color: feature.included ? '#20aed5' : 'red' }"
+              ></i>
+              <p>{{ feature.name }}</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="booking-section">
+          <h2 class="booking-section__title">Booking Information</h2>
+          <p class="booking-section__description">
+            This information will not be shared
+          </p>
+          <form
+            [formGroup]="bookForm"
+            (ngSubmit)="onFormSubmitted()"
+            class="booking-form"
+          >
+            <app-custom-input
+              formControlName="fullName"
+              [icon]="icons.profile"
+              [placeholder]="'Full Name'"
+            ></app-custom-input>
+            <app-custom-input
+              formControlName="phone"
+              [icon]="icons.profile"
+              [placeholder]="'phone'"
+            ></app-custom-input>
+            <app-custom-input
+              formControlName="email"
+              [icon]="icons.profile"
+              [placeholder]="'email'"
+            ></app-custom-input>
+            <app-custom-date-picker
+              [icon]="icons.profile"
+              formControlName="arrivalDate"
+              [placeholder]="'Estimated Arrival Date'"
+            ></app-custom-date-picker>
+            <app-custom-input
+              formControlName="message"
+              [placeholder]="'message'"
+              [icon]="icons.profile"
+            ></app-custom-input>
+
+            <button class="main-btn" type="submit">Book Now</button>
+          </form>
+        </section>
+      </div>
+      <div class="content-grid-col2">
+        <section class="trip-info-card">
+          <div class="trip-card-header">
+            <div class="trip-card-header__image">
+              <img src="https://wallpapercave.com/wp/wp1813727.jpg" />
+            </div>
+            <p class="trip-card-header__price">{{ trip.price | price }}</p>
+            <app-read-only-stars
+              [stars]="3.5"
+              [color]="'#fff'"
+            ></app-read-only-stars>
+          </div>
+          <div class="trip-card-brief-info">
+            <h2 class="trip-card-brief-info__city-name">
+              {{ trip.city.name }}
+            </h2>
+            <p class="trip-card-brief-info__price-duration">
+              5 Days - 4 Nights / 400$ Per Person
+            </p>
+          </div>
+
+          <div class="trip-card-features">
+            <div class="trip-card-features__row">
+              <h2>hotel</h2>
+              <p>four season hotel</p>
+            </div>
+            <div class="trip-card-features__row">
+              <h2>hotel</h2>
+              <p>four season hotel</p>
+            </div>
+            <div class="trip-card-features__row">
+              <h2>hotel</h2>
+              <p>four season hotel</p>
+            </div>
+            <div class="trip-card-features__row">
+              <h2>hotel</h2>
+              <p>four season hotel</p>
+            </div>
+            <div class="trip-card-features__row">
+              <h2>hotel</h2>
+              <p>four season hotel</p>
+            </div>
+          </div>
+
+          <button class="main-btn" (click)="showOnMap()">
+            show on the map
+          </button>
+        </section>
+      </div>
     </div>
+
+    <section class="similar-tours">
+      <div class="similar-tours__header">
+        <h2>Booking Information</h2>
+        <p>This information will not be shared</p>
+      </div>
+      <div class="similar-tours__grid">
+        <app-trip-card></app-trip-card>
+        <app-trip-card></app-trip-card>
+        <app-trip-card></app-trip-card>
+        <app-trip-card></app-trip-card>
+        <app-trip-card></app-trip-card>
+        <app-trip-card></app-trip-card>
+        <app-trip-card></app-trip-card>
+        <app-trip-card></app-trip-card>
+        <app-trip-card></app-trip-card>
+        <app-trip-card></app-trip-card>
+      </div>
+    </section>
   </div>
-
-  <section class="similar-tours">
-    <div class="similar-tours__header">
-      <h2>Booking Information</h2>
-      <p>This information will not be shared</p>
-    </div>
-    <div class="similar-tours__grid">
-      <app-trip-card></app-trip-card>
-      <app-trip-card></app-trip-card>
-      <app-trip-card></app-trip-card>
-      <app-trip-card></app-trip-card>
-      <app-trip-card></app-trip-card>
-      <app-trip-card></app-trip-card>
-      <app-trip-card></app-trip-card>
-      <app-trip-card></app-trip-card>
-      <app-trip-card></app-trip-card>
-      <app-trip-card></app-trip-card>
-    </div>
-  </section>
-</div>
+</ng-template>
