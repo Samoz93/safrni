@@ -65,6 +65,7 @@ import { CustomInputComponent } from './common/widgets/custom-input/custom-input
 import { TourMapComponent } from './pages/tour-information/tour-map/tour-map.component';
 import { SectionDailyTripsComponent } from './pages/main-landing/section-daily-trips/section-daily-trips.component';
 import { GraphQLModule } from './graphql.module';
+import { SplashComponent } from './common/widgets/splash/splash.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,7 @@ import { GraphQLModule } from './graphql.module';
     SectionOffersComponent,
     SectionCitiesComponent,
     SectionDailyTripsComponent,
-
+    SplashComponent,
     FooterComponent,
     HeaderInfoComponent,
     HeaderToolBarComponent,

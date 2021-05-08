@@ -21,13 +21,14 @@ export class CityService extends BaseService<CityModel> {
     super();
   }
 
-  async init(): Promise<any> {
+  async init(): Promise<CityModel[]> {
     this.setBusy(true);
 
     let data = await this.citiesGql.fetch({ limit: 10 }).toPromise();
-
     this.data$.next(data.data.cities?.map((city) => this.adapter.adapt(city))!);
 
     this.setBusy(false);
+    
+    return this.data$.value;
   }
 }

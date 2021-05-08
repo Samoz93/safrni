@@ -8,9 +8,14 @@ import { BookingPageComponent } from './pages/booking/booking-page.component';
 import { TourInformationComponent } from './pages/tour-information/tour-information.component';
 import { DevData } from './data/static/main-info';
 import { TourMapComponent } from './pages/tour-information/tour-map/tour-map.component';
+import { HomeLandingResolver } from './data/resolvers/home-landing.resolver';
 
 const routes: Routes = [
-  { path: '', component: MainLandingComponent },
+  {
+    path: '',
+    component: MainLandingComponent,
+    resolve: { initData: HomeLandingResolver },
+  },
   { path: 'login', component: LoginComponent },
   {
     path: 'profile',

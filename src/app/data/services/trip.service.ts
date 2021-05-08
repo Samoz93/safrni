@@ -23,7 +23,7 @@ export class TripService extends BaseService<TripModel> {
   ) {
     super();
   }
-  async init() {
+  async init() : Promise<TripModel[]> {
     this.setBusy(true);
 
     let trips = (
@@ -35,6 +35,7 @@ export class TripService extends BaseService<TripModel> {
     this.data$.next(new Array(10).fill(trips![0]));
 
     this.setBusy(false);
+    return this.data$.value;
   }
   async getTripById(id: string): Promise<TripModel> {
     let item = this.data$.value.find((x) => x.id === id);

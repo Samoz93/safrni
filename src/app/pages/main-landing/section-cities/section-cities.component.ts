@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 import { longX } from 'src/app/data/abstract/longX';
 import { CityModel } from 'src/app/data/models/CityModel';
 import { CityService } from 'src/app/data/services/city.service';
@@ -11,10 +12,10 @@ import { DevData } from 'src/app/data/static/main-info';
   templateUrl: './section-cities.component.html',
   styleUrls: ['./section-cities.component.scss'],
 })
-export class SectionCitiesComponent extends longX implements OnInit, OnDestroy {
+export class SectionCitiesComponent extends longX implements OnDestroy {
   cities: CityModel[];
   sub: Subscription;
-  constructor(private router: Router, public _ser: CityService) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
     super();
   }
   ngOnDestroy(): void {
@@ -22,7 +23,9 @@ export class SectionCitiesComponent extends longX implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.sub = this._ser.data$.subscribe((data) => (this.cities = data));
+    this.sub = this.activatedRoute.data.subscribe((data) => {
+      this.cities = data.initData.cities;
+    });
   }
 
   goToOffer(cityId: any) {
