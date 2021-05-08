@@ -8,7 +8,6 @@
 }
 
 .tour-infomation {
-  
   app-banner-carousel {
     position: relative;
   }
@@ -66,11 +65,8 @@
     justify-content: center;
     align-items: flex-start;
     padding-top: 7.5rem;
-
+    position: relative;
     .trip-info-card {
-      position: sticky;
-      top: 5rem;
-
       height: min-content;
       display: flex;
       flex-direction: column;
@@ -292,6 +288,10 @@
     }
     .content-grid-col2 {
       width: 43rem;
+      position: sticky;
+      top: 5rem;
+
+      align-self: flex-start;
     }
   }
 
