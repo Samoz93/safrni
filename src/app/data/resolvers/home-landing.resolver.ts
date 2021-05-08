@@ -4,12 +4,13 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { interval, Observable, of } from 'rxjs';
 import { SplashScreenStateService } from '../services/splash-screen-state.service';
 import { CityService } from '../services/city.service';
 import { TripService } from '../services/trip.service';
 import { CityModel } from '../models/CityModel';
 import { TripModel } from '../models/TripModel';
+import { delay } from '../utils/helpers';
 @Injectable({ providedIn: 'root' })
 export class HomeLandingResolver implements Resolve<any> {
   constructor(
@@ -25,6 +26,7 @@ export class HomeLandingResolver implements Resolve<any> {
       this.cityService.init(),
       this.tripService.init(),
     ];
+    await delay(2500);
     let data = await Promise.all(futureArray);
     this.splashScreenStateService.stop();
     return {

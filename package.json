@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "codegen":"gql-gen"
+    "codegen": "gql-gen"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +24,7 @@
     "@angular/platform-browser": "~11.2.0",
     "@angular/platform-browser-dynamic": "~11.2.0",
     "@angular/router": "~11.2.0",
+    "@apollo/client": "^3.0.0",
     "@ng-bootstrap/ng-bootstrap": "^9.0.2",
     "@ng-select/ng-select": "^6.1.0",
     "@popperjs/core": "^2.9.2",
@@ -32,14 +33,15 @@
     "bootstrap": "^4.5.0",
     "date-fns": "^2.21.1",
     "font-awesome": "^4.7.0",
+    "graphql": "^15.0.0",
+    "lottie-web": "^5.7.8",
+    "ngx-lottie": "^6.4.0",
     "ngx-popperjs": "^10.0.4",
     "rxjs": "~6.6.0",
     "swiper": "^6.5.8",
     "tslib": "^2.0.0",
     "url-join": "^4.0.1",
-    "zone.js": "~0.11.3",
-    "@apollo/client": "^3.0.0",
-    "graphql": "^15.0.0"
+    "zone.js": "~0.11.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1102.0",

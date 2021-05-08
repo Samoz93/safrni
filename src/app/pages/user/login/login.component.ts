@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoginEnum } from 'src/app/data/uitls/enums';
+import { LoginEnum } from 'src/app/data/utils/enums';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

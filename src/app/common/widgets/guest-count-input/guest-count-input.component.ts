@@ -25,7 +25,7 @@ import {
 import { Observable, Subject } from 'rxjs';
 import { GuestCountModel } from 'src/app/data/models/guestCountModel';
 import { DevData } from 'src/app/data/static/main-info';
-import { ICONS } from 'src/app/data/uitls/enums';
+import { ICONS } from 'src/app/data/utils/enums';
 const isInstanceOfGuesCount = (obj: any) => {
   if (typeof obj !== 'object') return false;
   return 'adult' in obj && 'child' in obj;

@@ -1,7 +1,7 @@
 import { Component, forwardRef, OnInit } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ControlValueAccessorConnector } from 'src/app/data/abstract/control-value-accessor-connector';
-import { ICONS } from 'src/app/data/uitls/enums';
+import { ICONS } from 'src/app/data/utils/enums';
 
 @Component({
   selector: 'app-custom-date-picker',

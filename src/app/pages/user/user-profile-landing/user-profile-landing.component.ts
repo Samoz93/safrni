@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProfileEnum } from 'src/app/data/uitls/enums';
+import { ProfileEnum } from 'src/app/data/utils/enums';
 import { UserProfileComponent } from './tabs/user-profile/user-profile.component';
 
 @Component({

@@ -54,7 +54,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { SwiperModule } from 'swiper/angular';
 import { CustomDatePickerComponent } from './common/widgets/custom-date-picker/custom-date-picker.component';
-
+import { LottieModule } from 'ngx-lottie';
 import { AccordionListComponent } from './common/widgets/accordion-list/accordion-list.component';
 import { BannerCarouselComponent } from './common/widgets/banner-carousel/banner-carousel.component';
 import { PricePipe } from './data/pipes/price.pipe';
@@ -66,6 +66,12 @@ import { TourMapComponent } from './pages/tour-information/tour-map/tour-map.com
 import { SectionDailyTripsComponent } from './pages/main-landing/section-daily-trips/section-daily-trips.component';
 import { GraphQLModule } from './graphql.module';
 import { SplashComponent } from './common/widgets/splash/splash.component';
+import player from 'lottie-web';
+
+
+export function playerFactory() {
+  return player;
+}
 
 @NgModule({
   declarations: [
@@ -144,6 +150,7 @@ import { SplashComponent } from './common/widgets/splash/splash.component';
     }),
     NgxPopperjsModule,
     GraphQLModule,
+    LottieModule.forRoot({ player: playerFactory }),
   ],
   providers: [
     {
