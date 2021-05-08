@@ -67,6 +67,7 @@ import { SectionDailyTripsComponent } from './pages/main-landing/section-daily-t
 import { GraphQLModule } from './graphql.module';
 import { SplashComponent } from './common/widgets/splash/splash.component';
 import player from 'lottie-web';
+import { SaferniImageComponent } from './common/widgets/saferni-image/saferni-image.component';
 
 
 export function playerFactory() {
@@ -91,6 +92,7 @@ export function playerFactory() {
     OfferInformationComponent,
     OfferPlanComponent,
     OfferLocationComponent,
+    SaferniImageComponent,
     LoginComponent,
     OfferBookingComponent,
     SingleTripCardComponent,

@@ -1,0 +1,12 @@
+<div class="image-wrapper" [ngClass]="isLoading ? 'shimmer' : ''">
+  <img
+    [alt]="alt"
+    [src]="imageModel | serverimage"
+    *ngIf="imageModel; else imageUrl"
+    (load)="onImageLoaded()"
+  />
+
+  <ng-template #imageUrl
+    ><img [alt]="alt" [src]="url" (load)="onImageLoaded()"
+  /></ng-template>
+</div>

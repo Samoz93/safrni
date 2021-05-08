@@ -1,4 +1,10 @@
-<div class="banner-carousel">
+<div
+  class="banner-carousel"
+  [ngStyle]="{
+    minHeight: screenHeightPercentage + 'vh',
+    height: screenHeightPercentage + 'vh'
+  }"
+>
   <swiper
     class="swiper-container"
     [slidesPerView]="1"
@@ -9,7 +15,10 @@
     <ng-template swiperSlide class="slide" *ngFor="let image of images">
       <img
         src="{{ image }}"
-        [ngStyle]="{ height: screenHeightPercentage + 'vh' }"
+        [ngStyle]="{
+          minHeight: screenHeightPercentage + 'vh',
+          height: screenHeightPercentage + 'vh'
+        }"
         style="width: 100%; object-fit: cover"
       />
     </ng-template>
