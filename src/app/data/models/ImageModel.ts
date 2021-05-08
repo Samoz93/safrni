@@ -2,6 +2,9 @@ import { Adapter } from '../adapters/adapter';
 import { StaticInfo } from '../static/main-info';
 
 export class ImageModel {
+  get url():string {
+    return this.isRemote? `${StaticInfo.baseUrl}${this.realtiveUrl}` : this.realtiveUrl;
+  }
   constructor(
     public id: string,
     public realtiveUrl: string,

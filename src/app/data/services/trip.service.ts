@@ -23,7 +23,7 @@ export class TripService extends BaseService<TripModel> {
   ) {
     super();
   }
-  async init() : Promise<TripModel[]> {
+  async init(): Promise<TripModel[]> {
     this.setBusy(true);
 
     let trips = (
@@ -42,14 +42,18 @@ export class TripService extends BaseService<TripModel> {
     if (item) {
       return item;
     } else {
-      return this.tripAdapter.adapt(
+      this.setBusy(true);
+      let trip = this.tripAdapter.adapt(
         (await this.getTrip.fetch({ id: id }).toPromise()).data.trip
       );
+      this.setBusy(false);
+      return trip;
     }
   }
   async getTimeline(id: string): Promise<TimelineModel[] | undefined> {
+    this.setBusy(true);
     let data = await this.timelineGql.fetch({ id: id }).toPromise();
-
+    this.setBusy(false);
     return data.data.timeline?.timelines?.map((tl) =>
       this.timelineAdapter.adapt(tl)
     );

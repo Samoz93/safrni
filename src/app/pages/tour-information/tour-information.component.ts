@@ -14,71 +14,8 @@ import { ICONS } from 'src/app/data/utils/enums';
   styleUrls: ['./tour-information.component.scss'],
 })
 export class TourInformationComponent implements OnInit {
-  images = [
-    'https://wallpapercave.com/wp/wp1813727.jpg',
-    'https://wallpapercave.com/wp/wp1813725.jpg',
-    'https://i.ytimg.com/vi/no7LCcGTvn8/maxresdefault.jpg',
-  ];
-
-  trips = [
-    {
-      id: 1,
-      currency: '$',
-      duration: 40,
-      name: 'toIstanbul',
-      price: 500,
-      trip_type: 'touristic',
-      description: 'lorem',
-      previewImage: {
-        url:
-          'https://media.gettyimages.com/photos/blue-mosque-in-istanbul-picture-id160193420?s=612x612',
-      },
-    },
-    {
-      id: 1,
-      currency: '$',
-      duration: 40,
-      name: 'toIstanbul',
-      price: 500,
-      trip_type: 'touristic',
-      description: 'lorem',
-      previewImage: {
-        url:
-          'https://media.gettyimages.com/photos/blue-mosque-in-istanbul-picture-id160193420?s=612x612',
-      },
-    },
-    {
-      id: 1,
-      currency: '$',
-      duration: 40,
-      name: 'toIstanbul',
-      price: 500,
-      trip_type: 'touristic',
-      description: 'lorem',
-      previewImage: {
-        url:
-          'https://media.gettyimages.com/photos/blue-mosque-in-istanbul-picture-id160193420?s=612x612',
-      },
-    },
-    {
-      id: 1,
-      currency: '$',
-      duration: 40,
-      name: 'toIstanbul',
-      price: 500,
-      trip_type: 'touristic',
-      description: 'lorem',
-      previewImage: {
-        url:
-          'https://media.gettyimages.com/photos/blue-mosque-in-istanbul-picture-id160193420?s=612x612',
-      },
-    },
-  ];
-
   trip: TripModel;
   timelines: TimelineModel[] = [];
-
-  isLoading: boolean = false;
 
   bookForm: FormGroup;
   icons = ICONS;
@@ -99,7 +36,6 @@ export class TourInformationComponent implements OnInit {
     });
 
     this.activatedRoute.paramMap.subscribe(async (params) => {
-      this.isLoading = true;
       console.log('is loading');
 
       this.trip = await this.tripService.getTripById(params.get('id')!);
@@ -108,8 +44,6 @@ export class TourInformationComponent implements OnInit {
         ...(await this.tripService.getTimeline(this.trip.timelineId))!
       );
       console.log(`stopped loading ${this.timelines}`);
-
-      this.isLoading = false;
     });
   }
 
@@ -117,6 +51,7 @@ export class TourInformationComponent implements OnInit {
   showOnMap() {
     this.router.navigate(['/map/1']);
   }
+
   getAllLocations(): LocationModel[] {
     let allLocations = new Array();
     this.timelines.forEach((element) => {
@@ -124,5 +59,12 @@ export class TourInformationComponent implements OnInit {
     });
 
     return allLocations;
+  }
+  getCarouselImages(): string[] {
+    let allImages: string[] = [];
+    this.getAllLocations().map((loc) =>
+      allImages.push(...loc.images.map((image) => image.url))
+    );
+    return allImages;
   }
 }
