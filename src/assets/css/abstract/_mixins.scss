@@ -8,7 +8,8 @@
   margin: 1rem 0;
   padding: 0 1rem;
 }
-$field-border-var: grey 1px solid;
+$field-border-var: #c5c5c5 solid 1px;
+
 @mixin field-border {
   border: $field-border-var;
   // @include res(tab-land-extra) {
