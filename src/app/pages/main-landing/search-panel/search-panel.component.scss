@@ -28,7 +28,6 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
     }
   }
   .control {
-    border: $brdr;
     font-size: 1.5rem;
     @include res(tab) {
       border: none;

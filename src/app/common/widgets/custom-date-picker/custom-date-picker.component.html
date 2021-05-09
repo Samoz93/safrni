@@ -1,4 +1,4 @@
-<div class="main">
+<div class="main" [ngClass]="{ 'all-border': hasBorder }">
   <mat-form-field class="date" appearance="fill">
     <input
       on-focus="onFocus($event)"

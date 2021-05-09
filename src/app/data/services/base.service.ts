@@ -24,6 +24,7 @@ export abstract class BaseService<T> {
     this.data = [];
     this.data.push(...data);
     this.data$.next(data);
+    this.setBusy(false);
   }
   clearSub() {
     this.loadingState$.subscribe();

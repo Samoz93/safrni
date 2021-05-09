@@ -1,13 +1,6 @@
 @import "/src/assets/css/abstract/variables";
 @import "/src/assets/css/abstract/mixins";
-$border: #c5c5c5 solid 1px;
 .main {
-  input:focus {
-    outline: none !important;
-  }
-  &:focus-within {
-    border: $accent solid 1px;
-  }
   width: 100%;
   height: 100%;
   display: flex;
@@ -16,7 +9,7 @@ $border: #c5c5c5 solid 1px;
   font-size: 1.5rem;
   color: grey;
   align-items: center;
-  border: $border;
+  // border: $border;
   padding: 0 2rem;
 
   mat-icon {
@@ -33,9 +26,5 @@ $border: #c5c5c5 solid 1px;
   }
   input:focus + mat-icon {
     color: $accent;
-  }
-
-  .all-border {
-    border: $border;
   }
 }

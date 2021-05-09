@@ -65,6 +65,7 @@ export class GuestCountInputComponent
   };
   icons = ICONS;
   @Input() max = 20;
+  @Input() hasBorder = false;
   @Input()
   get placeholder() {
     return this._placeholder;

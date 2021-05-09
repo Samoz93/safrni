@@ -13,23 +13,15 @@ import { CitiesGQL } from './saferniGraphql.service';
   providedIn: 'root',
 })
 export class CityService extends BaseService<CityModel> {
-  constructor(
-    private http: SaferniHttp,
-    private adapter: CityModelAdapter,
-    private citiesGql: CitiesGQL
-  ) {
+  constructor(private adapter: CityModelAdapter, private citiesGql: CitiesGQL) {
     super();
   }
 
   async init(): Promise<CityModel[]> {
     this.setBusy(true);
-    console.log('called fetch');
-
     let data = await this.citiesGql.fetch({ limit: 10 }).toPromise();
-    this.data$.next(data.data.cities?.map((city) => this.adapter.adapt(city))!);
-
-    this.setBusy(false);
-
-    return this.data$.value;
+    const models = data.data.cities?.map((city) => this.adapter.adapt(city))!;
+    this.prepareData(models);
+    return this.data;
   }
 }

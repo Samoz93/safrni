@@ -33,9 +33,14 @@
             formControlName="whereTo"
             [icon]="icons.compass"
             placeholder="sss"
+            [hasBorder]="hasBorder"
           >
           </app-custom-input>
-          <app-guest-count-input class="guest control" formControlName="guest">
+          <app-guest-count-input
+            [hasBorder]="hasBorder"
+            class="guest control"
+            formControlName="guest"
+          >
           </app-guest-count-input>
           <!-- <app-custom-select
           [icon]="icons.work"
@@ -44,6 +49,7 @@
         ></app-custom-select> -->
           <app-custom-date-picker
             [icon]="icons.profile"
+            [hasBorder]="hasBorder"
             formControlName="date"
             class="last-item control"
           ></app-custom-date-picker>

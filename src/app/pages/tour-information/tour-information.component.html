@@ -129,24 +129,29 @@
             formControlName="fullName"
             [icon]="icons.profile"
             [placeholder]="'Full Name'"
+            [hasBorder]="true"
           ></app-custom-input>
           <app-custom-input
             formControlName="phone"
+            [hasBorder]="true"
             [icon]="icons.profile"
             [placeholder]="'phone'"
           ></app-custom-input>
           <app-custom-input
+            [hasBorder]="true"
             formControlName="email"
             [icon]="icons.profile"
             [placeholder]="'email'"
           ></app-custom-input>
           <app-custom-date-picker
+            [hasBorder]="true"
             [icon]="icons.profile"
             formControlName="arrivalDate"
             [placeholder]="'Estimated Arrival Date'"
           ></app-custom-date-picker>
           <app-custom-textarea
             formControlName="message"
+            [hasBorder]="true"
             [placeholder]="'message'"
             [icon]="icons.profile"
           ></app-custom-textarea>

@@ -3,9 +3,11 @@
 .main {
   height: 100%;
   background: white;
-  @include field-border;
   font-size: 1.6rem;
   line-height: 1.6rem;
+  &:hover {
+    border: $accent solid 1px;
+  }
   .display {
     display: grid;
     grid-template-columns: 2rem 1fr 1fr;

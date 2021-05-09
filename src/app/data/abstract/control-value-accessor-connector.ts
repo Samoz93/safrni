@@ -31,6 +31,7 @@ export class ControlValueAccessorConnector
   @ViewChild(FormControlDirective, { static: true })
   formControlDirective: FormControlDirective;
   @Input() values: any[];
+  @Input() hasBorder = false;
 
   @Input()
   formControl: FormControl;

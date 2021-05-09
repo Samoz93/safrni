@@ -33,4 +33,8 @@ export class SearchPanelComponent implements OnInit {
     this.activeTab = tab;
   }
   ngOnInit(): void {}
+
+  get hasBorder(): boolean {
+    return window.innerWidth > 900;
+  }
 }

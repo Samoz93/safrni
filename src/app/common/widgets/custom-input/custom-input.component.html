@@ -1,4 +1,4 @@
-<div class="main">
+<div class="main" [ngClass]="{ 'all-border': hasBorder }">
   <input
     on-focus="onFocus($event)"
     on-focusout="onFocusOut()"
