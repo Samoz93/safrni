@@ -10,7 +10,7 @@
     "e2e": "ng e2e",
     "codegen": "gql-gen",
     "start:en": "ng serve --configuration=en",
-    "start:ar": "ng serve --configuration=es"
+    "start:ar": "ng serve --configuration=ar"
   },
   "private": true,
   "dependencies": {
