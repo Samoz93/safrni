@@ -8,7 +8,6 @@
   margin: 1rem 0;
   padding: 0 1rem;
 }
-$field-border-var: #c5c5c5 solid 1px;
 
 @mixin field-border {
   border: none;
@@ -222,4 +221,3 @@ $field-border-var: #c5c5c5 solid 1px;
   -webkit-line-clamp: $maxLines; /* number of lines to show */
   -webkit-box-orient: vertical;
 }
-
