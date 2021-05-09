@@ -25,6 +25,10 @@
     "guest": "عدد الاشخاص",
     "traveldate": "تايخ الرحلة"
   },
+  "offer-page": {
+    "with": "{{var}} مع",
+    "desc": "Plan easy, Pay less and experience more"
+  },
   "various": {
     "adult": "بالغ",
     "child": "طفل"

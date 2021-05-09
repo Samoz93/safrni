@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 import { TripModel } from 'src/app/data/models/TripModel';
+import { LocalService } from 'src/app/data/services/local.service';
 import { TripService } from 'src/app/data/services/trip.service';
 import { StaticInfo, TABS } from 'src/app/data/static/main-info';
 import { FilterWidgetComponent } from './filter-widget/filter-widget.component';
@@ -19,11 +19,22 @@ export class OffersPageComponent implements OnInit {
     'https://i.ytimg.com/vi/no7LCcGTvn8/maxresdefault.jpg',
   ];
   projectName = StaticInfo.projectName;
-  data$: BehaviorSubject<TripModel[]>;
-  constructor(public _ser: TripService, private _bottomSheet: MatBottomSheet) {}
+  data: TripModel[];
+  isArabic$;
+  constructor(
+    public _ser: TripService,
+    private _bottomSheet: MatBottomSheet,
+    private route: ActivatedRoute,
+    loc: LocalService
+  ) {
+    this.isArabic$ = loc.isArabic$;
+  }
 
   ngOnInit(): void {
-    this.data$ = this._ser.data$;
+    this.route.queryParams.subscribe((f) => {
+      console.log(f);
+      this.data = this._ser.data;
+    });
   }
 
   onFilterChange(filterData: any) {

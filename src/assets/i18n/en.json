@@ -21,7 +21,8 @@
     "extra": "ALL Around Lovely Cities"
   },
   "offer-page": {
-    "with": "with {var}"
+    "with": "with {{var}}",
+    "desc": "Plan easy, Pay less and experience more"
   },
   "inputs": {
     "whereto": "Where To",

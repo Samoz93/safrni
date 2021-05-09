@@ -1,9 +1,11 @@
-<div class="main">
+<div class="main" [ngClass]="{ 'arabic-layout': isArabic$ | async }">
   <div class="carousel">
     <div class="carousel-info">
-      <p class="carousel-info-title">
-        {{ "offer-page.with" | transloco: { val: projectName } }}
-      </p>
+      <p
+        class="carousel-info-title"
+        transloco="offer-page.with"
+        [translocoParams]="{ var: projectName }"
+      ></p>
       <p class="carousel-info-desc">Plan easy, Pay less and experience more</p>
     </div>
     <app-banner-carousel
@@ -21,7 +23,7 @@
     ></app-filter-widget>
     <section class="flex_area-content">
       <app-trip-card
-        *ngFor="let item of data$ | async; let i = index"
+        *ngFor="let item of data; let i = index"
         [name]="item.name"
         [duration]="item.duration"
         [price]="item.price"
