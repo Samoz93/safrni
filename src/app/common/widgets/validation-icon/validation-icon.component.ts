@@ -4,7 +4,7 @@ import {
   NgxPopperjsPlacements,
   NgxPopperjsTriggers,
 } from 'ngx-popperjs';
-import { ICONS } from 'src/app/data/uitls/enums';
+import { ICONS } from 'src/app/data/utils/enums';
 
 @Component({
   selector: 'app-validation-icon',

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { longX } from 'src/app/data/abstract/longX';
 import { TripModel } from 'src/app/data/models/TripModel';
 import { TripService } from 'src/app/data/services/trip.service';
@@ -10,27 +10,25 @@ import { TripService } from 'src/app/data/services/trip.service';
   templateUrl: './section-offers.component.html',
   styleUrls: ['./section-offers.component.scss'],
 })
-export class SectionOffersComponent extends longX implements OnInit {
-  isLoading = true;
-  data$: Observable<TripModel[]>;
-  constructor(public _ser: TripService) {
+export class SectionOffersComponent extends longX implements OnInit, OnDestroy {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
     super();
   }
-  ngOnInit(): void {
-    this._ser.init();
-    this.data$ = this._ser.data$.pipe(map((f) => f.slice(0, 7)));
-    this._ser.loadingState$.subscribe((f) => {
-      this.isLoading = f.isLoading;
-      console.log(this.isLoading, f.isLoading);
+  trips: TripModel[];
+  sub: Subscription;
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
+
+  ngOnInit() {
+    this.sub = this.activatedRoute.data.subscribe((data) => {
+      this.trips = data.initData.trips;
+      console.log(data.initData.trips);
     });
-    // this._ser.loadingState$.subscribe((f) => {
-    //   this.isLoading = f.isLoading;
-    //   console.log(this.isLoading, f.isLoading);
-    // });
   }
 
   get lnth() {
-    return 0; //this._ser.data.length;
+    return this.trips.length;
   }
 
   // isLongX(index: number) {

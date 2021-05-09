@@ -8,9 +8,16 @@ import { BookingPageComponent } from './pages/booking/booking-page.component';
 import { TourInformationComponent } from './pages/tour-information/tour-information.component';
 import { DevData } from './data/static/main-info';
 import { TourMapComponent } from './pages/tour-information/tour-map/tour-map.component';
+import { HomeLandingResolver } from './data/resolvers/home-landing.resolver';
+import { TourInformationResolver } from './data/resolvers/tour-information.resolver';
+import { MapResolver } from './data/resolvers/map.resolver';
 
 const routes: Routes = [
-  { path: '', component: MainLandingComponent },
+  {
+    path: '',
+    component: MainLandingComponent,
+    resolve: { initData: HomeLandingResolver },
+  },
   { path: 'login', component: LoginComponent },
   {
     path: 'profile',
@@ -18,12 +25,18 @@ const routes: Routes = [
   },
   { path: `${DevData.offersRoute}`, component: OffersPageComponent },
   { path: 'booking/:id', component: BookingPageComponent },
-  { path: 'tours/:id', component: TourInformationComponent },
+  {
+    path: 'tours/:id',
+    component: TourInformationComponent,
+    resolve: { dataMap: TourInformationResolver },
+  },
   {
     path: 'map/:id',
     component: TourMapComponent,
+    resolve: {
+      mapTripData: MapResolver,
+    },
   },
-  { path: `${DevData.tourInfoRoute}/:id`, component: TourInformationComponent },
 ];
 
 @NgModule({

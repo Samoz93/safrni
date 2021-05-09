@@ -1,5 +1,7 @@
 import { AgmMap, MapTypeStyle } from '@agm/core';
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import {
   AccordionListItem,
   AccordionListItemOption,
@@ -9,16 +11,22 @@ import { AccordionClickEventData } from 'src/app/common/widgets/accordion-list/a
 import { LocationModel } from 'src/app/data/models/LocationModel';
 import { TimelineModel } from 'src/app/data/models/timelineModel';
 import { TripModel } from 'src/app/data/models/TripModel';
+import { TripService } from 'src/app/data/services/trip.service';
 
 @Component({
   selector: 'app-tour-map',
   templateUrl: './tour-map.component.html',
   styleUrls: ['./tour-map.component.scss'],
 })
-export class TourMapComponent implements OnInit {
-  constructor() {}
+export class TourMapComponent implements OnInit, OnDestroy {
+  constructor(
+    private tripService: TripService,
+    private activeRoute: ActivatedRoute
+  ) {}
 
-  @Input() trip: TripModel;
+  routeSub: Subscription;
+  selectedImageIndex = 0;
+  trip: TripModel;
 
   sideBarVisibility = true;
   mobileSheetExpanded = false;
@@ -40,6 +48,8 @@ export class TourMapComponent implements OnInit {
 
   accordionItems: AccordionListItem[] = [];
   allLocationsSorted: LocationModel[] = [];
+  timelines: TimelineModel[];
+
   ngAfterViewInit(): void {
     this.agmMap.mapReady.subscribe((map) => {
       this.map = map;
@@ -48,13 +58,21 @@ export class TourMapComponent implements OnInit {
 
   @ViewChild('agmMap') agmMap: AgmMap;
 
-  ngOnInit(): void {
-    this.currentLat = this.trip.timelines[0].locations[0].geo.latitude;
-    this.currentLong = this.trip.timelines[0].locations[0].geo.longitude;
+  async ngOnInit(): Promise<void> {
+    this.routeSub = this.activeRoute.data.subscribe((data) => {
+      this.trip = data.mapTripData.trip;
+      this.timelines = data.mapTripData.timelines;
 
-    this.sidebarLocation = this.trip.timelines[0].locations[0];
+      this.initMapPosition();
+    });
+  }
+  initMapPosition() {
+    this.currentLat = this.timelines[0].locations[0].geo.latitude;
+    this.currentLong = this.timelines[0].locations[0].geo.longitude;
 
-    this.trip.timelines.forEach((timeline) => {
+    this.sidebarLocation = this.timelines[0].locations[0];
+
+    this.timelines.forEach((timeline) => {
       this.accordionItems.push(
         new AccordionListItem(
           timeline.locations.map((location) => {
@@ -65,7 +83,6 @@ export class TourMapComponent implements OnInit {
       this.allLocationsSorted.push(...timeline.locations);
     });
   }
-
   recenterMapToLocation(location: LocationModel) {
     if (location) {
       this.currentLat = location.geo.latitude;
@@ -74,6 +91,10 @@ export class TourMapComponent implements OnInit {
 
       this.sidebarLocation = location;
     }
+  }
+  onImageSliderClicked(imageIndex:number)
+  {
+    this.selectedImageIndex = imageIndex;
   }
   nextDestination(): void {
     let indexOfCurrent = this.allLocationsSorted.indexOf(this.sidebarLocation);
@@ -106,20 +127,23 @@ export class TourMapComponent implements OnInit {
     this.sideBarVisibility = !this.sideBarVisibility;
   }
   onLocationClicked(data: AccordionClickEventData) {
-    this.currentLat = this.trip.timelines[data.parentIndex].locations[
+    this.currentLat = this.timelines[data.parentIndex].locations[
       data.childIndex
     ].geo.latitude;
-    this.currentLong = this.trip.timelines[data.parentIndex].locations[
+    this.currentLong = this.timelines[data.parentIndex].locations[
       data.childIndex
     ].geo.longitude;
     this.zoom += 10;
 
-    this.sidebarLocation = this.trip.timelines[data.parentIndex].locations[
+    this.sidebarLocation = this.timelines[data.parentIndex].locations[
       data.childIndex
     ];
   }
   toggleMobileSheet() {
     this.mobileSheetExpanded = !this.mobileSheetExpanded;
+  }
+  ngOnDestroy(): void {
+    this.routeSub.unsubscribe();
   }
   styles: MapTypeStyle[] = [
     {

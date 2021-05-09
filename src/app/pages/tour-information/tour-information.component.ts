@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ICONS } from 'src/app/data/uitls/enums';
+import { LocationModel } from 'src/app/data/models/LocationModel';
+import { TimelineModel } from 'src/app/data/models/timelineModel';
+import { TripModel } from 'src/app/data/models/TripModel';
+import { Trips } from 'src/app/data/services/saferniGraphql.service';
+import { TripService } from 'src/app/data/services/trip.service';
+import { ICONS } from 'src/app/data/utils/enums';
 
 @Component({
   selector: 'app-tour-information',
@@ -9,72 +14,17 @@ import { ICONS } from 'src/app/data/uitls/enums';
   styleUrls: ['./tour-information.component.scss'],
 })
 export class TourInformationComponent implements OnInit {
-  images = [
-    'https://wallpapercave.com/wp/wp1813727.jpg',
-    'https://wallpapercave.com/wp/wp1813725.jpg',
-    'https://i.ytimg.com/vi/no7LCcGTvn8/maxresdefault.jpg',
-  ];
-  
-
-  trips = [
-    {
-      id: 1,
-      currency: '$',
-      duration: 40,
-      name: 'toIstanbul',
-      price: 500,
-      trip_type: 'touristic',
-      description: 'lorem',
-      previewImage: {
-        url:
-          'https://media.gettyimages.com/photos/blue-mosque-in-istanbul-picture-id160193420?s=612x612',
-      },
-    },
-    {
-      id: 1,
-      currency: '$',
-      duration: 40,
-      name: 'toIstanbul',
-      price: 500,
-      trip_type: 'touristic',
-      description: 'lorem',
-      previewImage: {
-        url:
-          'https://media.gettyimages.com/photos/blue-mosque-in-istanbul-picture-id160193420?s=612x612',
-      },
-    },
-    {
-      id: 1,
-      currency: '$',
-      duration: 40,
-      name: 'toIstanbul',
-      price: 500,
-      trip_type: 'touristic',
-      description: 'lorem',
-      previewImage: {
-        url:
-          'https://media.gettyimages.com/photos/blue-mosque-in-istanbul-picture-id160193420?s=612x612',
-      },
-    },
-    {
-      id: 1,
-      currency: '$',
-      duration: 40,
-      name: 'toIstanbul',
-      price: 500,
-      trip_type: 'touristic',
-      description: 'lorem',
-      previewImage: {
-        url:
-          'https://media.gettyimages.com/photos/blue-mosque-in-istanbul-picture-id160193420?s=612x612',
-      },
-    },
-  ];
+  trip: TripModel;
+  timelines: TimelineModel[] = [];
 
   bookForm: FormGroup;
   icons = ICONS;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private tripService: TripService
+  ) {}
 
   ngOnInit(): void {
     this.bookForm = new FormGroup({
@@ -84,10 +34,38 @@ export class TourInformationComponent implements OnInit {
       arrivalDate: new FormControl(null, [Validators.required]),
       message: new FormControl(null, [Validators.required]),
     });
+    this.activatedRoute.data.subscribe(async (data) => {
+      this.trip = data.dataMap.trip;
+      if (this.trip) {
+        this.timelines.push(
+          ...(await this.tripService.getTimeline(this.trip.timelineId))!
+        );
+      }
+    });
+   
   }
 
   onFormSubmitted() {}
   showOnMap() {
-    this.router.navigate(['/map/1']);
+    this.router.navigate([
+      '/map',
+      this.activatedRoute.snapshot.paramMap.get('id'),
+    ]);
+  }
+
+  getAllLocations(): LocationModel[] {
+    let allLocations = new Array();
+    this.timelines.forEach((element) => {
+      allLocations.push(...element.locations);
+    });
+
+    return allLocations;
+  }
+  getCarouselImages(): string[] {
+    let allImages: string[] = [];
+    this.getAllLocations().map((loc) =>
+      allImages.push(...loc.images.map((image) => image.url))
+    );
+    return allImages;
   }
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Adapter } from '../adapters/adapter';
+import { CityModel } from './CityModel';
 import { FeatureModel, FeatureModelAdapter } from './FeatureModel';
 import { ImageModel, ImageModelAdapter } from './ImageModel';
 import { PriceModel, PriceModelAdapter } from './PriceModel';
@@ -14,8 +15,9 @@ export class TripModel {
     public duration: number,
     public active: boolean,
     public previewImage: ImageModel,
+    public city: CityModel,
     public features: FeatureModel[],
-    public timelines: TimelineModel[],
+    public timelineId: string,
     public price: PriceModel
   ) {}
 }
@@ -26,9 +28,7 @@ export class TripModelAdapter implements Adapter<TripModel> {
     let features: FeatureModel[] = item.features.map((feature: any) =>
       new FeatureModelAdapter().adapt(feature)
     );
-    let timelines: TimelineModel[] = item.timelines.map((timeline: any) =>
-      new TimelineModelAdapter().adapt(timeline)
-    );
+
     return new TripModel(
       item.id,
       item.name,
@@ -37,8 +37,9 @@ export class TripModelAdapter implements Adapter<TripModel> {
       item.duration,
       item.active,
       new ImageModelAdapter().adapt(item.previewImage),
+      item.city,
       features,
-      [],//TODO:
+      item.timeline.id,
       new PriceModelAdapter().adapt(item.price)
     );
   }

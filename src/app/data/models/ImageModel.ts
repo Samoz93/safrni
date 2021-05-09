@@ -1,17 +1,23 @@
 import { Adapter } from '../adapters/adapter';
+import { StaticInfo } from '../static/main-info';
 
 export class ImageModel {
+  get url():string {
+    return this.isRemote? `${StaticInfo.baseUrl}${this.realtiveUrl}` : this.realtiveUrl;
+  }
   constructor(
     public id: string,
-    public width: number,
-    public height: number,
-    public realtiveUrl: string
-  ) // public formats: ImageFormatsObject
-  {}
+    public realtiveUrl: string,
+    public isRemote = true,
+    public width?: number,
+    public height?: number // public formats: ImageFormatsObject
+  ) {}
 }
 export class ImageModelAdapter implements Adapter<ImageModel> {
   adapt(item: any): ImageModel {
-    return new ImageModel(item.id, item.width, item.height, item.url);
+    if (!item) return new ImageModel('', StaticInfo.defaultImage, false);
+    else
+      return new ImageModel(item.id, item.url, true, item.width, item.height);
   }
 }
 
@@ -30,21 +36,21 @@ export type ImageFormatsObject = {
 
 export class ImageFormatModel {
   constructor(
-    public name: string,
-    public width: number,
-    public height: number,
-    public size: number,
-    public relativeUrl: string
+    public relativeUrl: string,
+    public name?: string,
+    public width?: number,
+    public height?: number,
+    public size?: number
   ) {}
 }
 class ImageFormatAdapter implements Adapter<ImageFormatModel> {
   adapt(item: any): ImageFormatModel {
     return new ImageFormatModel(
+      item.url,
       item.name,
       item.width,
       item.height,
-      item.size,
-      item.url
+      item.size
     );
   }
 }

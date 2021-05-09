@@ -8,7 +8,8 @@
   margin: 1rem 0;
   padding: 0 1rem;
 }
-$field-border-var: grey 1px solid;
+$field-border-var: #c5c5c5 solid 1px;
+
 @mixin field-border {
   border: none;
 }
@@ -39,8 +40,11 @@ $field-border-var: grey 1px solid;
       background-color: white;
       display: flex;
       align-items: center;
+      padding-top: 0;
     }
-
+    .mat-form-field-infix {
+      padding-top: 0;
+    }
     .mat-input-element {
       height: 100%;
     }
@@ -178,6 +182,25 @@ $field-border-var: grey 1px solid;
     -webkit-transition: all 1s;
   }
 }
+@mixin imageGradientOverlay($opacity) {
+  &::after {
+    content: "\A";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, $opacity)
+    );
+    opacity: 1;
+    transition: all 1s;
+    -webkit-transition: all 1s;
+  }
+}
 @mixin changeSvgImageToPrimary {
   filter: invert(47%) sepia(76%) saturate(498%) hue-rotate(146deg)
     brightness(106%) contrast(88%);
@@ -191,4 +214,11 @@ $field-border-var: grey 1px solid;
   @media screen and (min-width: $breakpoint) {
     @content;
   }
+}
+@mixin maxTextLines($maxLines) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $maxLines; /* number of lines to show */
+  -webkit-box-orient: vertical;
 }

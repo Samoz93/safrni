@@ -5,7 +5,7 @@ import { BookingInterface } from 'src/app/data/models/bookingModel';
 import { TripModel } from 'src/app/data/models/TripModel';
 import { ImageSnippet } from 'src/app/data/models/variousModels';
 import { TripService } from 'src/app/data/services/trip.service';
-import { ICONS } from 'src/app/data/uitls/enums';
+import { ICONS } from 'src/app/data/utils/enums';
 
 @Component({
   selector: 'app-booking-page',

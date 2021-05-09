@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TABS } from 'src/app/data/static/main-info';
-import { ICONS } from 'src/app/data/uitls/enums';
+import { ICONS } from 'src/app/data/utils/enums';
 
 @Component({
   selector: 'app-search-panel',

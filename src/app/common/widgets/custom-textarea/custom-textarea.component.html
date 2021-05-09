@@ -1,0 +1,17 @@
+<div class="main">
+  <app-validation-icon
+    [hidden]="hideIcon"
+    [icon]="icon"
+    [isFocused]="isfocused"
+    [errors]="errmsg"
+    [placeholder]="placeholder"
+  ></app-validation-icon
+  ><textarea
+    on-focus="onFocus($event)"
+    on-focusout="onFocusOut()"
+    [formControl]="control"
+    type="text"
+    [placeholder]="placeholder"
+    #input
+  ></textarea>
+</div>

@@ -1,7 +1,11 @@
+import { Injectable } from '@angular/core';
 import { Adapter } from '../adapters/adapter';
 import { LocationModel, LocationModelAdapter } from './LocationModel';
 
 export class TimelineModel {
+
+
+
   constructor(
     public id: string,
     public day: number,
@@ -9,6 +13,7 @@ export class TimelineModel {
     public locations: LocationModel[]
   ) {}
 }
+@Injectable({ providedIn: 'root' })
 export class TimelineModelAdapter implements Adapter<TimelineModel> {
   adapt(item: any): TimelineModel {
     let locations: LocationModel[] = item?.locations?.map((location: any) =>

@@ -1,0 +1,25 @@
+query cities($limit: Int) {
+  cities(limit: $limit) {
+    ...CityInfo
+  }
+}
+
+query getCity($id: ID!) {
+  city(id: $id) {
+    ...CityInfo
+  }
+}
+
+fragment CityInfo on City {
+  id
+  name
+  description
+  locale
+  image {
+    id
+    width
+    height
+    url
+    formats
+  }
+}

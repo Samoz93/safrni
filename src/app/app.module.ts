@@ -54,7 +54,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { SwiperModule } from 'swiper/angular';
 import { CustomDatePickerComponent } from './common/widgets/custom-date-picker/custom-date-picker.component';
-
+import { LottieModule } from 'ngx-lottie';
 import { AccordionListComponent } from './common/widgets/accordion-list/accordion-list.component';
 import { BannerCarouselComponent } from './common/widgets/banner-carousel/banner-carousel.component';
 import { PricePipe } from './data/pipes/price.pipe';
@@ -66,6 +66,16 @@ import { FilterWidgetComponent } from './pages/offers-page/filter-widget/filter-
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { TourMapComponent } from './pages/tour-information/tour-map/tour-map.component';
 import { SectionDailyTripsComponent } from './pages/main-landing/section-daily-trips/section-daily-trips.component';
+import { GraphQLModule } from './graphql.module';
+import { SplashComponent } from './common/widgets/splash/splash.component';
+import player from 'lottie-web';
+import { SaferniImageComponent } from './common/widgets/saferni-image/saferni-image.component';
+import { CustomTextareaComponent } from './common/widgets/custom-textarea/custom-textarea.component';
+import { HorizontalListviewComponent } from './common/widgets/horizontal-listview/horizontal-listview.component';
+
+export function playerFactory() {
+  return player;
+}
 
 @NgModule({
   declarations: [
@@ -76,15 +86,17 @@ import { SectionDailyTripsComponent } from './pages/main-landing/section-daily-t
     SectionOffersComponent,
     SectionCitiesComponent,
     SectionDailyTripsComponent,
-
+    SplashComponent,
     FooterComponent,
     HeaderInfoComponent,
     HeaderToolBarComponent,
     OfferLandingComponent,
+    CustomTextareaComponent,
     OfferInfoLandingComponent,
     OfferInformationComponent,
     OfferPlanComponent,
     OfferLocationComponent,
+    SaferniImageComponent,
     LoginComponent,
     OfferBookingComponent,
     SingleTripCardComponent,
@@ -97,7 +109,7 @@ import { SectionDailyTripsComponent } from './pages/main-landing/section-daily-t
     UserSecurityComponent,
     ProfileinputComponent,
     TourInformationComponent,
-
+    HorizontalListviewComponent,
     ReadOnlyStarsComponent,
     StepperComponent,
     OffersPageComponent,
@@ -145,6 +157,8 @@ import { SectionDailyTripsComponent } from './pages/main-landing/section-daily-t
     }),
     NgxPopperjsModule,
     MatBottomSheetModule,
+    GraphQLModule,
+    LottieModule.forRoot({ player: playerFactory }),
   ],
   providers: [
     {

@@ -3,13 +3,17 @@ export class StaticInfo {
   static phoneNumber = '90 537 695 8305';
   static Email = 'Saferni@emali.com';
   static baseUrl = 'http://saferni.xyz';
+  static defaultImage = '/assets/images/placeholder/default.jpeg';
+}
+export class StaticSettings {
+  static LOADER_MINIMUM_INTERVAL = 0;
 }
 export class DevData {
   static baseUrl = 'http://www.saferni.xyz/';
   static isDev = false;
   static offersRoute = 'offers';
   static bookingRoute = 'booking';
-  static tourInfoRoute = 'tourInfo';
+  static tourInfoRoute = 'tours';
 
   static errMsgs = [
     {

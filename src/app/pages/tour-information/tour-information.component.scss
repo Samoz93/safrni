@@ -2,6 +2,12 @@
 @import "/src/assets/css/abstract/mixins";
 
 $brdr: 1px grey solid;
+@mixin cellSettings {
+  padding-bottom: 2.25rem;
+  border-bottom: 1px solid $dividerColor;
+  margin-bottom: 2.6rem;
+}
+
 .tour-infomation {
   app-banner-carousel {
     position: relative;
@@ -56,47 +62,12 @@ $brdr: 1px grey solid;
   }
 
   &__content-grid {
-    display: grid;
-    grid-template-columns: 1fr 51rem 17rem 43rem 1fr;
-
-    // gap: 4rem 0rem;
-
-    grid-template-rows: repeat(38, 5rem);
-    grid-auto-rows: min-content;
-
-    padding: 7.5rem 0rem;
-    .control {
-      border: $brdr;
-      margin: 1rem 0;
-    }
-    .brief-intro {
-      grid-column: 2/3;
-      grid-row: 1 / span 5;
-      border-bottom: 1px solid $dividerColor;
-
-      &__city-name {
-        font-weight: bold;
-        font-size: 5.3rem;
-      }
-      &__description {
-        font-weight: 400;
-        font-size: 1.5rem;
-        color: #717171;
-      }
-      &__cost-duration {
-        font-weight: 400;
-        font-size: 3rem;
-        color: #252629;
-      }
-    }
-
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 7.5rem;
+    position: relative;
     .trip-info-card {
-      grid-column: 4/5;
-      grid-row-start: 1;
-
-      position: sticky;
-      top: 5rem;
-
       height: min-content;
       display: flex;
       flex-direction: column;
@@ -177,108 +148,157 @@ $brdr: 1px grey solid;
         margin: 5rem 2rem;
       }
     }
-
-    .places {
-      grid-column: 2/3;
-      grid-row: 7 / span 13;
-      display: flex;
-      flex-direction: column;
-      padding-bottom: 3rem;
-      border-bottom: 1px solid $dividerColor;
-
-      &__title {
-        font-size: 3.1rem;
-        font-weight: bold;
-        text-transform: capitalize;
+    .content-grid-col1 {
+      width: 51rem;
+      margin-right: 17rem;
+      .trip-info-card {
+        display: none;
       }
-      &__description {
-        font-size: 1.5rem;
-        font-weight: 400;
-        text-transform: capitalize;
-        color: #252629;
-      }
-      &__grid {
-        margin-top: 2rem;
-
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(2, calc(calc(51rem - 2.2rem) / 2));
-
-        gap: 2.2rem;
-      }
-    }
-
-    .features {
-      grid-column: 2/3;
-      grid-row: 21 / span 5;
-      padding-bottom: 3rem;
-      border-bottom: 1px solid $dividerColor;
-
-      &__title {
-        font-size: 3.1rem;
-        font-weight: bold;
-        text-transform: capitalize;
-      }
-      &__description {
-        font-size: 1.5rem;
-        font-weight: 400;
-        text-transform: capitalize;
-        color: #252629;
-      }
-      &__grid {
-        margin-top: 2rem;
-        display: grid;
-        grid-template-columns: repeat(2, 50%);
-
-        &__item {
-          display: flex;
-          justify-content: flex-start;
-          align-items: center;
-          i {
-            font-size: 2rem;
-            color: $accent;
-            margin-right: 1rem;
-          }
-          p {
-            font-size: 2rem;
-            font-weight: 300;
-            text-transform: capitalize;
-            text-align: center;
-            padding: 0rem;
-            margin: 0rem;
-          }
+      .brief-intro {
+        @include cellSettings;
+        &__city-name {
+          font-weight: bold;
+          font-size: 5.3rem;
+        }
+        &__description {
+          font-weight: 400;
+          font-size: 1.5rem;
+          color: #717171;
+        }
+        &__cost-duration {
+          font-weight: 400;
+          font-size: 3rem;
+          color: #252629;
         }
       }
-    }
 
-    .booking-section {
-      grid-column: 2/3;
-      grid-row: 27 / span 12;
-
-      padding-bottom: 3rem;
-      border-bottom: 1px solid $dividerColor;
-
-      &__title {
-        font-size: 3.1rem;
-        font-weight: bold;
-        text-transform: capitalize;
-      }
-      &__description {
-        font-size: 1.5rem;
-        font-weight: 400;
-        text-transform: capitalize;
-        color: #252629;
-      }
-      .booking-form {
-        height: 100%;
-        margin-top: 3rem;
+      .places {
         display: flex;
         flex-direction: column;
-        & > * {
-          height: 5rem;
-          margin-bottom: 3rem;
+        @include cellSettings;
+
+        &__title {
+          font-size: 3.1rem;
+          font-weight: bold;
+          text-transform: capitalize;
+        }
+        &__description {
+          font-size: 1.5rem;
+          font-weight: 400;
+          text-transform: capitalize;
+          color: #252629;
+        }
+        &__grid {
+          margin-top: 2rem;
+
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-auto-rows: calc(calc(51rem - 2.2rem) / 2);
+
+          gap: 2.2rem;
+
+          &__item {
+            width: 100%;
+            height: 100%;
+            position: relative;
+
+            app-saferni-image {
+              position: absolute;
+              width: 100%;
+              height: 100%;
+            }
+            p {
+              position: absolute;
+              left: 10px;
+              bottom: 10px;
+              font-size: 2.1rem;
+              font-family: $secondary-font;
+              margin: 0rem;
+              color: white;
+            }
+          }
         }
       }
+
+      .features {
+        @include cellSettings;
+
+        &__title {
+          font-size: 3.1rem;
+          font-weight: bold;
+          text-transform: capitalize;
+        }
+        &__description {
+          font-size: 1.5rem;
+          font-weight: 400;
+          text-transform: capitalize;
+          color: #252629;
+        }
+        &__grid {
+          margin-top: 2rem;
+          gap: 1rem;
+          display: grid;
+          grid-template-columns: repeat(2, 50%);
+
+          &__item {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+
+            i {
+              font-size: 2rem;
+              color: $accent;
+              margin-right: 1rem;
+            }
+            p {
+              font-size: 2rem;
+              font-weight: 300;
+              text-transform: capitalize;
+              text-align: start;
+              padding: 0rem;
+              margin: 0rem;
+            }
+          }
+        }
+      }
+
+      .booking-section {
+        @include cellSettings;
+        &__title {
+          font-size: 3.1rem;
+          font-weight: bold;
+          text-transform: capitalize;
+        }
+        &__description {
+          font-size: 1.5rem;
+          font-weight: 400;
+          text-transform: capitalize;
+          color: #252629;
+        }
+        .booking-form {
+          height: 100%;
+          margin-top: 3rem;
+          display: flex;
+          flex-direction: column;
+
+          & > * {
+            margin-bottom: 3rem;
+          }
+          & > app-custom-input {
+            height: 5rem;
+          }
+          & > app-custom-textarea {
+            height: 10rem;
+          }
+        }
+      }
+    }
+    .content-grid-col2 {
+      width: 43rem;
+      position: sticky;
+      top: 5rem;
+
+      align-self: flex-start;
     }
   }
 
@@ -314,7 +334,13 @@ $brdr: 1px grey solid;
 
   @include respondMax(1150px) {
     &__content-grid {
-      grid-template-columns: 1fr 40.8rem 13.6rem 34.4rem 1fr;
+      .content-grid-col1 {
+        width: 40.8rem;
+        margin-right: 13.6rem;
+      }
+      .content-grid-col2 {
+        width: 34.4rem;
+      }
     }
     .similar-tours {
       grid-template-columns: 1fr 88.8rem 1fr;
@@ -334,15 +360,15 @@ $brdr: 1px grey solid;
 
       transform: translateY(-3%);
 
-      & > * {
-        margin-bottom: 7.5rem;
+      .content-grid-col2 {
+        display: none;
       }
-      .trip-info-card {
-        position: relative;
-        height: 75rem;
-        top: unset;
-        .trip-card-header {
-          height: 25%;
+      .content-grid-col1 {
+        width: 100%;
+
+        .trip-info-card {
+          display: unset;
+          width: 100%;
         }
       }
     }

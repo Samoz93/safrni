@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ICONS } from '../uitls/enums';
+import { ICONS } from '../utils/enums';
 @Component({
   template: '',
 })

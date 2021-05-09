@@ -1,0 +1,13 @@
+<div
+  *ngIf="showSplash"
+  class="splash-screen"
+  [ngStyle]="{ opacity: opacityChange, transition: splashTransition }"
+>
+  <div class="splash-screen__content">
+    <ng-lottie
+      [options]="options | async"
+      (animationCreated)="animationCreated($event)"
+      (loopComplete)="onLoopComplete($event)"
+    ></ng-lottie>
+  </div>
+</div>

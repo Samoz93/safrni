@@ -1,0 +1,13 @@
+# Where to get schema data
+schema:
+  - http://saferni.xyz/graphql
+# The client side queries to turn into services
+documents:
+  - src/**/*.graphql
+# Where to output the services and the list of plugins
+generates:
+  ./src/app/data/services/saferniGraphql.service.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-apollo-angular

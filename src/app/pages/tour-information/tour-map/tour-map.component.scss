@@ -191,6 +191,9 @@
             display: unset;
             animation: fadeInScale 0.5s;
           }
+          p {
+            @include maxTextLines(20);
+          }
         }
 
         .expand {
@@ -224,6 +227,8 @@
           font-size: 1.2rem;
           font-weight: 400;
           color: #c5c5c5;
+
+          @include maxTextLines(5);
         }
         .side-information-mobile__images {
           height: 10rem;
