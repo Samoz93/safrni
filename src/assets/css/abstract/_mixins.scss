@@ -37,7 +37,9 @@ $field-border-var: #c5c5c5 solid 1px;
       display: flex;
       align-items: center;
     }
-
+    .mat-form-field-infix {
+      padding-top: 0;
+    }
     .mat-input-element {
       height: 100%;
     }

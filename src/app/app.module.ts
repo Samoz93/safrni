@@ -71,7 +71,6 @@ import { SaferniImageComponent } from './common/widgets/saferni-image/saferni-im
 import { CustomTextareaComponent } from './common/widgets/custom-textarea/custom-textarea.component';
 import { HorizontalListviewComponent } from './common/widgets/horizontal-listview/horizontal-listview.component';
 
-
 export function playerFactory() {
   return player;
 }
