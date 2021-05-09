@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TABS } from 'src/app/data/static/main-info';
 import { ICONS } from 'src/app/data/utils/enums';
+import { TranslocoService } from '@ngneat/transloco';
+import { LocalService } from 'src/app/data/services/local.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-search-panel',
@@ -18,7 +21,9 @@ export class SearchPanelComponent implements OnInit {
   icons = ICONS;
   selectedType: string;
   activeTab = TABS.tour;
-  constructor(public fb: FormBuilder) {
+
+  isArabic$: Observable<boolean>;
+  constructor(public fb: FormBuilder, private locale: LocalService) {
     this.form = fb.group({
       whereTo: ['sasdasd', Validators.required],
       guest: {
@@ -28,6 +33,7 @@ export class SearchPanelComponent implements OnInit {
       travelType: '1',
       date: new Date(),
     });
+    this.isArabic$ = locale.isArabic$;
   }
   changeTab(tab: any) {
     this.activeTab = tab;
@@ -36,5 +42,9 @@ export class SearchPanelComponent implements OnInit {
 
   get hasBorder(): boolean {
     return window.innerWidth > 900;
+  }
+
+  test() {
+    this.locale.testToggle();
   }
 }

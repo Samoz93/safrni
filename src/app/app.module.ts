@@ -13,7 +13,6 @@ import { SearchPanelComponent } from './pages/main-landing/search-panel/search-p
 import { SectionHeaderComponent } from './pages/main-landing/section-header/section-header.component';
 import { SectionOffersComponent } from './pages/main-landing/section-offers/section-offers.component';
 import { SectionCitiesComponent } from './pages/main-landing/section-cities/section-cities.component';
-
 import { FooterComponent } from './common/layout/footer/footer.component';
 import { HeaderInfoComponent } from './common/layout/header-info/header-info.component';
 import { HeaderToolBarComponent } from './common/layout/header-tool-bar/header-tool-bar.component';
@@ -72,6 +71,7 @@ import player from 'lottie-web';
 import { SaferniImageComponent } from './common/widgets/saferni-image/saferni-image.component';
 import { CustomTextareaComponent } from './common/widgets/custom-textarea/custom-textarea.component';
 import { HorizontalListviewComponent } from './common/widgets/horizontal-listview/horizontal-listview.component';
+import { TranslocoRootModule } from './transloco/transloco-root.module';
 
 export function playerFactory() {
   return player;
@@ -159,6 +159,7 @@ export function playerFactory() {
     MatBottomSheetModule,
     GraphQLModule,
     LottieModule.forRoot({ player: playerFactory }),
+    TranslocoRootModule,
   ],
   providers: [
     {

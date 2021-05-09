@@ -9,9 +9,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "codegen": "gql-gen",
-    "start:en": "ng serve --configuration=en",  
-    "start:ar": "ng serve --configuration=es" 
-
+    "start:en": "ng serve --configuration=en",
+    "start:ar": "ng serve --configuration=es"
   },
   "private": true,
   "dependencies": {
@@ -30,6 +29,7 @@
     "@apollo/client": "^3.0.0",
     "@ng-bootstrap/ng-bootstrap": "^9.0.2",
     "@ng-select/ng-select": "^6.1.0",
+    "@ngneat/transloco": "^2.20.1",
     "@popperjs/core": "^2.9.2",
     "@types/url-join": "^4.0.0",
     "apollo-angular": "^2.4.0",

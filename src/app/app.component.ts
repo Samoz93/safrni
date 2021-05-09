@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { TranslocoService } from '@ngneat/transloco';
+import { LocalService } from './data/services/local.service';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +9,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'safrni';
+  isArabic$;
+  constructor(locale: LocalService) {
+    this.isArabic$ = locale.isArabic$;
+  }
 }

@@ -24,6 +24,7 @@ import {
 } from '@angular/material/form-field';
 import { Observable, Subject } from 'rxjs';
 import { GuestCountModel } from 'src/app/data/models/guestCountModel';
+import { LocalService } from 'src/app/data/services/local.service';
 import { DevData } from 'src/app/data/static/main-info';
 import { ICONS } from 'src/app/data/utils/enums';
 const isInstanceOfGuesCount = (obj: any) => {
@@ -108,7 +109,8 @@ export class GuestCountInputComponent
     private elRef: ElementRef<HTMLElement>,
     private fm: FocusMonitor,
     @Optional() @Inject(MAT_FORM_FIELD) public _formField: MatFormField,
-    @Optional() public parentFormField: MatFormField
+    @Optional() public parentFormField: MatFormField,
+    private locale: LocalService
   ) {
     if (this.ngControl) {
       this.ngControl.valueAccessor = this;
@@ -176,7 +178,9 @@ export class GuestCountInputComponent
   }
 
   get str() {
-    return `${this.value['adult']} Adult ${this.value['child']} Child`;
+    return `${this.value['adult']} ${this.locale.getTranslation(
+      'various.adult'
+    )} ${this.value['child']} ${this.locale.getTranslation('various.child')}`;
   }
 
   @Input() disabled: boolean;

@@ -1,13 +1,18 @@
-<div class="main page-padding">
-  <img src="/assets/images/placeholder/istanbul.png" alt="" />
+<div
+  class="main page-padding"
+  [ngClass]="{ 'arabic-layout': isArabic$ | async }"
+>
+  <img class="img-main" src="/assets/images/placeholder/istanbul.png" alt="" />
 
   <div class="info">
     <div class="info-text">
-      <h2 i18n="main page header| main page header">All year long travel</h2>
-      <h1 class="title">Let's explore all Wonderful Turkey Destination</h1>
+      <h2 (click)="test()">
+        {{ "searchPannel.title" | transloco }}
+      </h2>
+      <h1 class="title">{{ "searchPannel.desc" | transloco }}</h1>
       <h2 class="desc">
-        Hi! would you explore nature paradise in the world,<br />
-        let's find the best destination in Turkey with us.
+        {{ "searchPannel.extra1" | transloco }}<br />
+        {{ "searchPannel.extra2" | transloco }}
       </h2>
     </div>
 
@@ -17,13 +22,13 @@
           [ngClass]="{ active: activeTab == 'tour' }"
           (click)="changeTab('tour')"
         >
-          Tours
+          {{ "searchPannel.buttons.tours" | transloco }}<br />
         </li>
         <li
           [ngClass]="{ active: activeTab == 'medic' }"
           (click)="changeTab('medic')"
         >
-          Medic
+          {{ "searchPannel.buttons.medic" | transloco }}<br />
         </li>
       </ul>
       <form [formGroup]="form" class="info_inputs">
@@ -32,13 +37,14 @@
             class="control"
             formControlName="whereTo"
             [icon]="icons.compass"
-            placeholder="sss"
+            [placeholder]="'inputs.whereto' | transloco"
             [hasBorder]="hasBorder"
           >
           </app-custom-input>
           <app-guest-count-input
             [hasBorder]="hasBorder"
             class="guest control"
+            [placeholder]="'inputs.guest' | transloco"
             formControlName="guest"
           >
           </app-guest-count-input>
@@ -50,12 +56,14 @@
           <app-custom-date-picker
             [icon]="icons.profile"
             [hasBorder]="hasBorder"
+            [placeholder]="'inputs.traveldate' | transloco"
             formControlName="date"
             class="last-item control"
           ></app-custom-date-picker>
         </div>
-        <button class="main-btn info_inputs-btn">Search</button>
-
+        <button class="main-btn info_inputs-btn">
+          {{ "searchPannel.buttons.search" | transloco }}
+        </button>
         <img
           src="assets/images/bk/ticket2.png"
           class="horiz"

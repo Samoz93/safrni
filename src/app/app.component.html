@@ -1,4 +1,4 @@
-<div class="main">
+<div class="main" [ngClass]="{ rtl: isArabic$ | async }">
   <app-header-info></app-header-info>
   <app-header-tool-bar></app-header-tool-bar>
   <router-outlet class="outlet"></router-outlet>

@@ -1,7 +1,9 @@
 <div class="main">
   <div class="carousel">
     <div class="carousel-info">
-      <p class="carousel-info-title">With {{ projectName }}</p>
+      <p class="carousel-info-title">
+        {{ "offer-page.with" | transloco: { val: projectName } }}
+      </p>
       <p class="carousel-info-desc">Plan easy, Pay less and experience more</p>
     </div>
     <app-banner-carousel

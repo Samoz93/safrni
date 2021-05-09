@@ -6,18 +6,8 @@
     "safrni": {
       "projectType": "application",
       "i18n": {
-        "sourceLocale": "en-US",
-        "locales":
-        { 
-          "en": {  
-            "translation": "src/locale/source.en.xlf"  
-          },  
-         "ar": {
-          "translation": "src/locale/source.ar.xlf",
-            "baseHref": "ar"
-          }
-        }
-      },  
+        "sourceLocale": "en-US"
+      },
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
@@ -44,7 +34,6 @@
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "./node_modules/font-awesome/css/font-awesome.min.css",
-
               "src/styles.scss"
             ],
             "scripts": []
@@ -76,14 +65,7 @@
                   "maximumError": "8kb"
                 }
               ]
-            },
-            "en": {  
-              "localize": ["en"]  
-            },  
-            "ar": {  
-              "localize": ["ar"]  
             }
-         
           }
         },
         "serve": {
@@ -94,12 +76,6 @@
           "configurations": {
             "production": {
               "browserTarget": "safrni:build:production"
-            },
-            "en": {  
-              "browserTarget": "safrni:build:en"  
-            },  
-            "ar": {  
-              "browserTarget": "safrni:build:ar"  
             }
           }
         },
@@ -118,9 +94,8 @@
             "karmaConfig": "karma.conf.js",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",  
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "./node_modules/font-awesome/css/font-awesome.min.css",
-
               "src/styles.scss"
             ],
             "scripts": []
