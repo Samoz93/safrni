@@ -208,3 +208,10 @@ $field-border-var: #c5c5c5 solid 1px;
     @content;
   }
 }
+@mixin maxTextLines($maxLines) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $maxLines; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
