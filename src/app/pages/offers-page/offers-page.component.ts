@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { TripModel } from 'src/app/data/models/TripModel';
 import { TripService } from 'src/app/data/services/trip.service';
 import { StaticInfo, TABS } from 'src/app/data/static/main-info';
@@ -19,7 +19,7 @@ export class OffersPageComponent implements OnInit {
     'https://i.ytimg.com/vi/no7LCcGTvn8/maxresdefault.jpg',
   ];
   projectName = StaticInfo.projectName;
-  data$: Observable<TripModel[]>;
+  data$: BehaviorSubject<TripModel[]>;
   constructor(public _ser: TripService, private _bottomSheet: MatBottomSheet) {}
 
   ngOnInit(): void {
