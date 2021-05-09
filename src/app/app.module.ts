@@ -68,6 +68,7 @@ import { GraphQLModule } from './graphql.module';
 import { SplashComponent } from './common/widgets/splash/splash.component';
 import player from 'lottie-web';
 import { SaferniImageComponent } from './common/widgets/saferni-image/saferni-image.component';
+import { CustomTextareaComponent } from './common/widgets/custom-textarea/custom-textarea.component';
 
 
 export function playerFactory() {
@@ -88,6 +89,7 @@ export function playerFactory() {
     HeaderInfoComponent,
     HeaderToolBarComponent,
     OfferLandingComponent,
+    CustomTextareaComponent,
     OfferInfoLandingComponent,
     OfferInformationComponent,
     OfferPlanComponent,

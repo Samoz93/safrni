@@ -89,7 +89,7 @@
           >
             <app-saferni-image [imageModel]="item.images[0]">
             </app-saferni-image>
-            <p>{{item.name}}</p>
+            <p>{{ item.name }}</p>
           </div>
         </div>
       </section>
@@ -145,11 +145,11 @@
             formControlName="arrivalDate"
             [placeholder]="'Estimated Arrival Date'"
           ></app-custom-date-picker>
-          <app-custom-input
+          <app-custom-textarea
             formControlName="message"
             [placeholder]="'message'"
             [icon]="icons.profile"
-          ></app-custom-input>
+          ></app-custom-textarea>
 
           <button class="main-btn" type="submit">Book Now</button>
         </form>
