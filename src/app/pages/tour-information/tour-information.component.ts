@@ -42,16 +42,15 @@ export class TourInformationComponent implements OnInit {
         );
       }
     });
-    // this.activatedRoute.paramMap.subscribe(async (params) => {
-    //   console.log('is loading');
-
-    //   console.log(`stopped loading ${this.timelines}`);
-    // });
+   
   }
 
   onFormSubmitted() {}
   showOnMap() {
-    this.router.navigate(['/map/1']);
+    this.router.navigate([
+      '/map',
+      this.activatedRoute.snapshot.paramMap.get('id'),
+    ]);
   }
 
   getAllLocations(): LocationModel[] {

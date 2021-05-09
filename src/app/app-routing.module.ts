@@ -10,6 +10,7 @@ import { DevData } from './data/static/main-info';
 import { TourMapComponent } from './pages/tour-information/tour-map/tour-map.component';
 import { HomeLandingResolver } from './data/resolvers/home-landing.resolver';
 import { TourInformationResolver } from './data/resolvers/tour-information.resolver';
+import { MapResolver } from './data/resolvers/map.resolver';
 
 const routes: Routes = [
   {
@@ -32,6 +33,9 @@ const routes: Routes = [
   {
     path: 'map/:id',
     component: TourMapComponent,
+    resolve: {
+      mapTripData: MapResolver,
+    },
   },
 ];
 

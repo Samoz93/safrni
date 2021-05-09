@@ -1,5 +1,7 @@
 import { AgmMap, MapTypeStyle } from '@agm/core';
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import {
   AccordionListItem,
   AccordionListItemOption,
@@ -16,10 +18,15 @@ import { TripService } from 'src/app/data/services/trip.service';
   templateUrl: './tour-map.component.html',
   styleUrls: ['./tour-map.component.scss'],
 })
-export class TourMapComponent implements OnInit {
-  constructor(private tripService: TripService) {}
+export class TourMapComponent implements OnInit, OnDestroy {
+  constructor(
+    private tripService: TripService,
+    private activeRoute: ActivatedRoute
+  ) {}
 
-  @Input() trip: TripModel;
+  routeSub: Subscription;
+
+  trip: TripModel;
 
   sideBarVisibility = true;
   mobileSheetExpanded = false;
@@ -52,10 +59,14 @@ export class TourMapComponent implements OnInit {
   @ViewChild('agmMap') agmMap: AgmMap;
 
   async ngOnInit(): Promise<void> {
-    this.timelines = (await this.tripService.getTimeline(
-      this.trip.timelineId
-    ))!;
+    this.routeSub = this.activeRoute.data.subscribe((data) => {
+      this.trip = data.mapTripData.trip;
+      this.timelines = data.mapTripData.timelines;
 
+      this.initMapPosition();
+    });
+  }
+  initMapPosition() {
     this.currentLat = this.timelines[0].locations[0].geo.latitude;
     this.currentLong = this.timelines[0].locations[0].geo.longitude;
 
@@ -72,7 +83,6 @@ export class TourMapComponent implements OnInit {
       this.allLocationsSorted.push(...timeline.locations);
     });
   }
-
   recenterMapToLocation(location: LocationModel) {
     if (location) {
       this.currentLat = location.geo.latitude;
@@ -127,6 +137,9 @@ export class TourMapComponent implements OnInit {
   }
   toggleMobileSheet() {
     this.mobileSheetExpanded = !this.mobileSheetExpanded;
+  }
+  ngOnDestroy(): void {
+    this.routeSub.unsubscribe();
   }
   styles: MapTypeStyle[] = [
     {
