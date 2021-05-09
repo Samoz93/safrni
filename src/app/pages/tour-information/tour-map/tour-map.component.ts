@@ -25,7 +25,7 @@ export class TourMapComponent implements OnInit, OnDestroy {
   ) {}
 
   routeSub: Subscription;
-
+  selectedImageIndex = 0;
   trip: TripModel;
 
   sideBarVisibility = true;
@@ -91,6 +91,10 @@ export class TourMapComponent implements OnInit, OnDestroy {
 
       this.sidebarLocation = location;
     }
+  }
+  onImageSliderClicked(imageIndex:number)
+  {
+    this.selectedImageIndex = imageIndex;
   }
   nextDestination(): void {
     let indexOfCurrent = this.allLocationsSorted.indexOf(this.sidebarLocation);

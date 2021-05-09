@@ -71,7 +71,9 @@
     <div class="side-information-bar__wrapper">
       <div class="side-information-bar-header"><p>Tour plan</p></div>
       <div class="side-information-bar-content">
-        <img src="{{ sidebarLocation.images[0] | serverimage }}" />
+        <img
+          src="{{ sidebarLocation.images[selectedImageIndex] | serverimage }}"
+        />
         <div class="side-information-bar-content__body">
           <h2>{{ sidebarLocation.name }}</h2>
           <p>{{ sidebarLocation.desc }}</p>
@@ -105,20 +107,25 @@
     </div>
     <div
       class="side-information-mobile__content"
-      (click)="toggleMobileSheet()"
       [ngClass]="mobileSheetExpanded ? 'open' : ''"
     >
       <i
         class="fa fa-chevron-up expand"
+        (click)="toggleMobileSheet()"
         [ngClass]="mobileSheetExpanded ? 'open' : ''"
       ></i>
       <div class="side-information-mobile__main-image">
-        <img src="{{ sidebarLocation.images[0] |serverimage}}" />
+        <img
+          src="{{ sidebarLocation.images[selectedImageIndex] | serverimage }}"
+        />
       </div>
       <h2>{{ sidebarLocation.name }}</h2>
-      <p>{{ sidebarLocation.desc }}</p>
+      <p (click)="toggleMobileSheet()">{{ sidebarLocation.desc }}</p>
       <div class="side-information-mobile__images">
-        <img src="{{ sidebarLocation.images[0] |serverimage }}" />
+        <app-horizontal-listview
+          [images]="sidebarLocation.images"
+          (itemClicked)="onImageSliderClicked($event)"
+        ></app-horizontal-listview>
       </div>
     </div>
   </div>

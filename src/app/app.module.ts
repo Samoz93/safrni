@@ -69,6 +69,7 @@ import { SplashComponent } from './common/widgets/splash/splash.component';
 import player from 'lottie-web';
 import { SaferniImageComponent } from './common/widgets/saferni-image/saferni-image.component';
 import { CustomTextareaComponent } from './common/widgets/custom-textarea/custom-textarea.component';
+import { HorizontalListviewComponent } from './common/widgets/horizontal-listview/horizontal-listview.component';
 
 
 export function playerFactory() {
@@ -107,7 +108,7 @@ export function playerFactory() {
     UserSecurityComponent,
     ProfileinputComponent,
     TourInformationComponent,
-
+    HorizontalListviewComponent,
     ReadOnlyStarsComponent,
     StepperComponent,
     OffersPageComponent,
