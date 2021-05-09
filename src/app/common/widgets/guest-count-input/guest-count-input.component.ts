@@ -156,15 +156,11 @@ export class GuestCountInputComponent
     this.onTouched = fn;
   }
   isShowen = false;
-  ngOnInit(): void {
-    console.log(this.value);
-  }
+  ngOnInit(): void {}
   getValue(key: string): number {
     return Object(this.value)[key];
   }
   increase(key: string) {
-    console.log('pressed');
-
     this.value = {
       ...this.value,
       [key]: this.getValue(key) + 1,

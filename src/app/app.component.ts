@@ -15,8 +15,8 @@ export class AppComponent implements OnInit {
   sub: Subscription;
   constructor(private _tripSer: TripService, private _citiesSer: CityService) {}
   ngOnInit(): void {
-    this._tripSer.fetchAllData('/trips');
-    this._citiesSer.fetchAllData('/cities');
+    this._tripSer.init();
+    this._citiesSer.init();
     this.sub = zip(
       this._tripSer.loadingState$,
       this._citiesSer.loadingState$

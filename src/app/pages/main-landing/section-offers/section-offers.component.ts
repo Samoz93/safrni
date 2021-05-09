@@ -17,6 +17,7 @@ export class SectionOffersComponent extends longX implements OnInit {
     super();
   }
   ngOnInit(): void {
+    this._ser.init();
     this.data$ = this._ser.data$.pipe(map((f) => f.slice(0, 7)));
     this._ser.loadingState$.subscribe((f) => {
       this.isLoading = f.isLoading;

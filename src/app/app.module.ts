@@ -65,13 +65,7 @@ import { CustomInputComponent } from './common/widgets/custom-input/custom-input
 import { FilterWidgetComponent } from './pages/offers-page/filter-widget/filter-widget.component';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { TourMapComponent } from './pages/tour-information/tour-map/tour-map.component';
-import { Adapter } from './data/adapters/adapter';
-import { CityModel, CityModelAdapter } from './data/models/CityModel';
-import { TripModelAdapter } from './data/models/TripModel';
-import {
-  ADAPTERINEJCTION,
-  ADAPTER_CONFIG,
-} from './data/services/injectionTokens';
+import { SectionDailyTripsComponent } from './pages/main-landing/section-daily-trips/section-daily-trips.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +75,7 @@ import {
     SectionHeaderComponent,
     SectionOffersComponent,
     SectionCitiesComponent,
+    SectionDailyTripsComponent,
 
     FooterComponent,
     HeaderInfoComponent,
@@ -156,7 +151,6 @@ import {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { floatLabel: 'never' },
     },
-    { provide: ADAPTER_CONFIG, useValue: ADAPTERINEJCTION },
   ],
 
   bootstrap: [AppComponent],
