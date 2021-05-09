@@ -16,7 +16,7 @@ export class TimelineModel {
 @Injectable({ providedIn: 'root' })
 export class TimelineModelAdapter implements Adapter<TimelineModel> {
   adapt(item: any): TimelineModel {
-    let locations: LocationModel[] = item.locations.map((location: any) =>
+    let locations: LocationModel[] = item?.locations?.map((location: any) =>
       new LocationModelAdapter().adapt(location)
     );
 

@@ -1,0 +1,50 @@
+<div class="flex_area_filter">
+  <section class="flex_area_filter-nav">
+    <div
+      class="flex_area_filter-nav-item"
+      [ngClass]="{ active: filterOptions.type == 'tour' }"
+      (click)="changeType('tour')"
+    >
+      Tours
+    </div>
+    <div
+      class="flex_area_filter-nav-item"
+      [ngClass]="{ active: filterOptions.type == 'medic' }"
+      (click)="changeType('medic')"
+    >
+      Medical Tourism
+    </div>
+  </section>
+  <section class="flex_area_filter-guest-count">
+    <div
+      class="flex_area_filter-guest-count-item"
+      *ngFor="let set of filterOptions.count | keyvalue"
+    >
+      <p>{{ set.key | upperFirstChar }}</p>
+      <mat-icon class="icon minus" (click)="decrease(set.key)">remove</mat-icon>
+      <p class="val">{{ set.value }}</p>
+
+      <mat-icon class="icon plus" (click)="increase(set.key)">add</mat-icon>
+    </div>
+  </section>
+  <form class="flex_area_filter-price">
+    <p class="flex_area_filter-price-title">Price</p>
+    <app-custom-input
+      placeholder="Minimum"
+      class="control"
+      [hideIcon]="true"
+      [isNumber]="true"
+      [formControl]="minPriceCtrl"
+    ></app-custom-input>
+    <app-custom-input
+      class="control"
+      placeholder="Maximum"
+      [hideIcon]="true"
+      [isNumber]="true"
+      [formControl]="maxPriceCtrl"
+    ></app-custom-input>
+  </form>
+  <section class="flex_area_filter-btn">
+    <button (click)="applyChanges()" class="main-btn">Apply</button>
+  </section>
+</div>

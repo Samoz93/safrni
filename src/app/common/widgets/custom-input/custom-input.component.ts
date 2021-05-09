@@ -1,4 +1,4 @@
-import { Component, forwardRef, OnInit } from '@angular/core';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ControlValueAccessorConnector } from 'src/app/data/abstract/control-value-accessor-connector';
 
@@ -14,4 +14,6 @@ import { ControlValueAccessorConnector } from 'src/app/data/abstract/control-val
     },
   ],
 })
-export class CustomInputComponent extends ControlValueAccessorConnector {}
+export class CustomInputComponent extends ControlValueAccessorConnector {
+  @Input() isNumber = false;
+}

@@ -3,8 +3,8 @@ import { LoadingState } from '../static/main-info';
 
 export abstract class BaseService<T> {
   abstract init(): Promise<T[]>;
-  
-  
+
+  data: T[] = [];
   data$ = new BehaviorSubject<T[]>([]);
 
   loadingState$ = new BehaviorSubject<LoadingState>({
@@ -20,7 +20,11 @@ export abstract class BaseService<T> {
       msg: err || '',
     });
   }
-
+  prepareData(data: T[]) {
+    this.data = [];
+    this.data.push(...data);
+    this.data$.next(data);
+  }
   clearSub() {
     this.loadingState$.subscribe();
   }

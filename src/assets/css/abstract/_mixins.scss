@@ -11,15 +11,19 @@
 $field-border-var: #c5c5c5 solid 1px;
 
 @mixin field-border {
-  border: $field-border-var;
-  // @include res(tab-land-extra) {
-  //   border-right: $field-border-var;
-  //   border-bottom: $field-border-var;
-  // }
-  // @include res(phone) {
-  //   border-right: none;
-  //   border-bottom: $field-border-var;
-  // }
+  border: none;
+}
+
+@mixin divider {
+  &::after {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background: $non-active;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 }
 @mixin myCustomCalendarStyle {
   ::ng-deep .mat-form-field-wrapper {
@@ -36,6 +40,7 @@ $field-border-var: #c5c5c5 solid 1px;
       background-color: white;
       display: flex;
       align-items: center;
+      padding-top: 0;
     }
     .mat-form-field-infix {
       padding-top: 0;

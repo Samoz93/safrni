@@ -10,7 +10,7 @@
     <app-trip-card
       *ngFor="let item of trips; let i = index"
       [ngClass]="{
-        longX: isLongX(i)
+        longX: i == 6
       }"
       [id]="item.id"
       [features]="item.features"

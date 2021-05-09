@@ -8,7 +8,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "codegen": "gql-gen"
+    "codegen": "gql-gen",
+    "start:en": "ng serve --configuration=en",  
+    "start:ar": "ng serve --configuration=es" 
+
   },
   "private": true,
   "dependencies": {

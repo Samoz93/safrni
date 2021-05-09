@@ -3,7 +3,7 @@
     on-focus="onFocus($event)"
     on-focusout="onFocusOut()"
     [formControl]="control"
-    type="text"
+    [type]="isNumber ? 'number' : 'text'"
     [placeholder]="placeholder"
     #input
   />

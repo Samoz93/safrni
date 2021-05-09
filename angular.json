@@ -5,6 +5,19 @@
   "projects": {
     "safrni": {
       "projectType": "application",
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales":
+        { 
+          "en": {  
+            "translation": "src/locale/source.en.xlf"  
+          },  
+         "ar": {
+          "translation": "src/locale/source.ar.xlf",
+            "baseHref": "ar"
+          }
+        }
+      },  
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
@@ -20,6 +33,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "localize": true,
             "outputPath": "dist/safrni",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -54,15 +68,22 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "1.5mb"
                 },
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumError": "8kb"
                 }
               ]
+            },
+            "en": {  
+              "localize": ["en"]  
+            },  
+            "ar": {  
+              "localize": ["ar"]  
             }
+         
           }
         },
         "serve": {
@@ -73,6 +94,12 @@
           "configurations": {
             "production": {
               "browserTarget": "safrni:build:production"
+            },
+            "en": {  
+              "browserTarget": "safrni:build:en"  
+            },  
+            "ar": {  
+              "browserTarget": "safrni:build:ar"  
             }
           }
         },
@@ -91,7 +118,9 @@
             "karmaConfig": "karma.conf.js",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",  
+              "./node_modules/font-awesome/css/font-awesome.min.css",
+
               "src/styles.scss"
             ],
             "scripts": []

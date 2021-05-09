@@ -1,6 +1,7 @@
 @import "/src/assets/css/abstract/variables";
 @import "/src/assets/css/abstract/mixins";
 
+$brdr: 1px grey solid;
 @mixin cellSettings {
   padding-bottom: 2.25rem;
   border-bottom: 1px solid $dividerColor;

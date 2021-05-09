@@ -27,16 +27,7 @@ export class SectionCitiesComponent extends longX implements OnDestroy {
       this.cities = data.initData.cities;
     });
   }
-
   goToOffer(cityId: any) {
     this.router.navigate([DevData.offersRoute, cityId]);
-  }
-  get lnth() {
-    return this.cities.length;
-  }
-  isLongX(index: number) {
-    return innerWidth > 1625
-      ? (this.lnth - 1) % 3 == 0 && this.lnth - 1 == index
-      : this.lnth % 2 != 0 && index == 0;
   }
 }

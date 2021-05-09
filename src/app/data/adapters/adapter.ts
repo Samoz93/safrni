@@ -1,3 +1,3 @@
-export interface Adapter<T> {
-  adapt(item: any): T;
+export abstract class Adapter<T> {
+  adapt = (item: any): any => {};
 }

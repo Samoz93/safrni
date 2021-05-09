@@ -16,21 +16,14 @@ $border: #c5c5c5 solid 1px;
   font-size: 1.5rem;
   color: grey;
   align-items: center;
-  border: #c5c5c5 solid 1px;
+  border: $border;
   padding: 0 2rem;
 
   mat-icon {
     margin: 0 1rem 0 0;
     order: 0;
   }
-  @include res(med) {
-    border-right: $border;
-    border-bottom: $border;
-  }
-  @include res(phone) {
-    border-right: none;
-    border-bottom: $border;
-  }
+
   input {
     border: none;
     width: 100%;

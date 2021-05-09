@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatInputModule } from '@angular/material/input';
@@ -62,6 +62,8 @@ import { NgxPopperjsModule } from 'ngx-popperjs';
 import { HoverableItemComponent } from './common/widgets/hoverable-item/hoverable-item.component';
 import { ValidationIconComponent } from './common/widgets/validation-icon/validation-icon.component';
 import { CustomInputComponent } from './common/widgets/custom-input/custom-input.component';
+import { FilterWidgetComponent } from './pages/offers-page/filter-widget/filter-widget.component';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { TourMapComponent } from './pages/tour-information/tour-map/tour-map.component';
 import { SectionDailyTripsComponent } from './pages/main-landing/section-daily-trips/section-daily-trips.component';
 import { GraphQLModule } from './graphql.module';
@@ -127,6 +129,7 @@ export function playerFactory() {
     HoverableItemComponent,
     ValidationIconComponent,
     CustomInputComponent,
+    FilterWidgetComponent,
     TourMapComponent,
   ],
 
@@ -153,6 +156,7 @@ export function playerFactory() {
       apiKey: 'AIzaSyB33Yp_MzVXNyeTWkiip0mfGThC5xMSp-I',
     }),
     NgxPopperjsModule,
+    MatBottomSheetModule,
     GraphQLModule,
     LottieModule.forRoot({ player: playerFactory }),
   ],
@@ -162,6 +166,7 @@ export function playerFactory() {
       useValue: { floatLabel: 'never' },
     },
   ],
+
   bootstrap: [AppComponent],
 })
 export class AppModule {}

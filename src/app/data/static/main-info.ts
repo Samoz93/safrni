@@ -9,7 +9,7 @@ export class StaticSettings {
   static LOADER_MINIMUM_INTERVAL = 0;
 }
 export class DevData {
-  static baseUrl = 'http://localhost:1337/';
+  static baseUrl = 'http://www.saferni.xyz/';
   static isDev = false;
   static offersRoute = 'offers';
   static bookingRoute = 'booking';

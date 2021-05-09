@@ -31,9 +31,9 @@ export class SectionOffersComponent extends longX implements OnInit, OnDestroy {
     return this.trips.length;
   }
 
-  isLongX(index: number) {
-    return innerWidth > 1625
-      ? (this.lnth - 1) % 3 == 0 && this.lnth - 1 == index
-      : this.lnth % 2 != 0 && this.lnth - 1 == index;
-  }
+  // isLongX(index: number) {
+  //   return innerWidth > 1625
+  //     ? (this.lnth - 1) % 3 == 0 && this.lnth - 1 == index
+  //     : this.lnth % 2 != 0 && this.lnth - 1 == index;
+  // }
 }
