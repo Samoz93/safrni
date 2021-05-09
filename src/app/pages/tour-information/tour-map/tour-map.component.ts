@@ -59,6 +59,10 @@ export class TourMapComponent implements OnInit, OnDestroy {
   @ViewChild('agmMap') agmMap: AgmMap;
 
   async ngOnInit(): Promise<void> {
+    // window.onscroll = function () {
+    //   window.scrollTo(1110, 11110);
+    // };
+
     this.routeSub = this.activeRoute.data.subscribe((data) => {
       this.trip = data.mapTripData.trip;
       this.timelines = data.mapTripData.timelines;
@@ -92,8 +96,7 @@ export class TourMapComponent implements OnInit, OnDestroy {
       this.sidebarLocation = location;
     }
   }
-  onImageSliderClicked(imageIndex:number)
-  {
+  onImageSliderClicked(imageIndex: number) {
     this.selectedImageIndex = imageIndex;
   }
   nextDestination(): void {
