@@ -9,24 +9,21 @@
     [maxZoom]="15"
     [styles]="styles"
   >
-    <ng-container *ngFor="let timeline of timelines">
-      <agm-overlay
-        *ngFor="let location of timeline.locations"
-        [latitude]="location.geo.latitude"
-        [longitude]="location.geo.longitude"
-        [bounds]="{
-          x: { latitude: -0.003, longitude: -0.0052 },
-          y: { latitude: 0.003, longitude: 0.0052 }
-        }"
-        (markerClick)="recenterMapToLocation(location)"
-      >
-        <!-- blue html square -->
-        <div class="location-overlay">
-          <img [src]="location.images[0] | serverimage" />
-          <h2>{{ location.name }}</h2>
-        </div>
-      </agm-overlay>
-    </ng-container>
+    <agm-overlay
+      *ngFor="let location of allLocationsSorted"
+      [latitude]="location.geo.latitude"
+      [longitude]="location.geo.longitude"
+      [bounds]="{
+        x: { latitude: -0.003, longitude: -0.0052 },
+        y: { latitude: 0.003, longitude: 0.0052 }
+      }"
+      (markerClick)="recenterMapToLocation(location)"
+    >
+      <!-- blue html square -->
+      <div class="location-overlay">
+        <img [src]="location.images[0] | serverimage" />
+      </div>
+    </agm-overlay>
   </agm-map>
   <div class="locations-list">
     <app-accordion-list
@@ -107,9 +104,7 @@
     [ngClass]="sideBarVisibility ? '' : 'open'"
   ></i>
 
-  <div class="map-controls">
-    
-  </div>
+  <div class="map-controls"></div>
 </div>
 <!-- <agm-polyline
 *ngFor="

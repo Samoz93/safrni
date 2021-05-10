@@ -54,23 +54,21 @@ export class TourMapComponent implements OnInit, OnDestroy {
   ngAfterViewInit(): void {
     this.agmMap.mapReady.subscribe((map) => {
       this.map = map;
-      let bounds = new google.maps.LatLngBounds();
-      for (const mm of this.allLocationsSorted) {
-        bounds.extend(
-          new google.maps.LatLng(mm.geo.latitude, mm.geo.longitude)
-        );
-      }
-      map.fitBounds(bounds);
+      //let bounds = new google.maps.LatLngBounds();
+      // for (const mm of this.allLocationsSorted) {
+      //   bounds.extend(
+      //     new google.maps.LatLng(mm.geo.latitude, mm.geo.longitude)
+      //   );
+      // }
+      // map.fitBounds(bounds);
+      // this.zoom = this.zoom - 3;
+      // map.setZoom(this.zoom);
     });
-    
   }
-  refitBounds()
-  {
+  refitBounds() {
     let bounds = new google.maps.LatLngBounds();
     for (const mm of this.allLocationsSorted) {
-      bounds.extend(
-        new google.maps.LatLng(mm.geo.latitude, mm.geo.longitude)
-      );
+      bounds.extend(new google.maps.LatLng(mm.geo.latitude, mm.geo.longitude));
     }
     this.map.fitBounds(bounds);
   }
