@@ -139,3 +139,12 @@
     }
   }
 }
+
+.arabic-layout {
+  .main_tool-bar {
+    *:not(:last-child) {
+      margin-right: unset;
+      margin-left: 5rem;
+    }
+  }
+}

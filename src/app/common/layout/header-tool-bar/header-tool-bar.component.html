@@ -1,4 +1,7 @@
-<nav class="main page-padding">
+<nav
+  class="main page-padding"
+  [ngClass]="{ 'arabic-layout': isArabic$ | async }"
+>
   <button
     class="nav-toggler"
     [ngClass]="isNavOpen ? 'toggler-open' : ''"
@@ -6,23 +9,55 @@
   >
     <span></span>
   </button>
-  <div class="main_logo">
+  <div class="main_logo" (click)="toggleLang()">
     <h1>{{ projectName }}</h1>
   </div>
   <ul class="main_tool-bar">
-    <li><a class="navlink" [routerLink]="['/']">Home</a></li>
-    <li><a class="navlink" [routerLink]="['/tours/1']">Trips</a></li>
-    <li><a class="navlink" [routerLink]="['/booking/11']">Destination</a></li>
-    <li><a class="navlink">Medical Treatments</a></li>
-    <li><a class="navlink">About Us</a></li>
+    <li>
+      <a class="navlink" [routerLink]="['/']">{{
+        "buttons.home" | transloco
+      }}</a>
+    </li>
+    <li>
+      <a class="navlink">{{ "buttons.aboutus" | transloco }}</a>
+    </li>
+    <li>
+      <a class="navlink" [routerLink]="['/tours/1']">{{
+        "buttons.trips" | transloco
+      }}</a>
+    </li>
+    <li>
+      <a class="navlink" [routerLink]="['/booking/11']">{{
+        "buttons.destination" | transloco
+      }}</a>
+    </li>
+    <li>
+      <a class="navlink">{{ "buttons.medic" | transloco }}</a>
+    </li>
   </ul>
   <div class="main_mobile-tool-bar" [ngClass]="isNavOpen ? 'open' : ''">
     <ul class="navLinks">
-      <li><a class="navlink" [routerLink]="['/']">Home</a></li>
-      <li><a class="navlink" [routerLink]="['/tours/1']">Trips</a></li>
-      <li><a class="navlink" [routerLink]="['/booking/11']">Destination</a></li>
-      <li><a class="navlink">Medical Treatments</a></li>
-      <li><a class="navlink">About Us</a></li>
+      <li>
+        <a class="navlink" [routerLink]="['/']">{{
+          "buttons.home" | transloco
+        }}</a>
+      </li>
+      <li>
+        <a class="navlink" [routerLink]="['/tours/1']">{{
+          "buttons.trips" | transloco
+        }}</a>
+      </li>
+      <li>
+        <a class="navlink" [routerLink]="['/booking/11']">{{
+          "buttons.destination" | transloco
+        }}</a>
+      </li>
+      <li>
+        <a class="navlink">{{ "buttons.medic" | transloco }}</a>
+      </li>
+      <li>
+        <a class="navlink">{{ "buttons.aboutus" | transloco }}</a>
+      </li>
     </ul>
 
     <ul class="contactLinks">

@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FeatureModel } from 'src/app/data/models/FeatureModel';
 import { ImageModel } from 'src/app/data/models/ImageModel';
 import { PriceModel } from 'src/app/data/models/PriceModel';
-import { DevData } from 'src/app/data/static/main-info';
+import { StaticInfo } from 'src/app/data/static/main-info';
 
 @Component({
   selector: 'app-trip-card',
@@ -26,9 +26,9 @@ export class SingleTripCardComponent implements OnInit {
   goToOffer() {
     console.log(this.id);
     if (!this.id) throw 'please provide a valid id';
-    if (this.isOffer) this.router.navigate([DevData.tourInfoRoute, this.id]);
+    if (this.isOffer) this.router.navigate([StaticInfo.tourInfoRoute, this.id]);
     else
-      this.router.navigate([DevData.offersRoute], {
+      this.router.navigate([StaticInfo.offersRoute], {
         queryParams: { city: this.id },
       });
   }

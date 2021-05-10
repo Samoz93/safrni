@@ -9,6 +9,7 @@ $brdr: 1px grey solid;
 }
 
 .tour-infomation {
+  text-align: start;
   app-banner-carousel {
     position: relative;
   }
@@ -357,7 +358,6 @@ $brdr: 1px grey solid;
       margin-left: auto;
       display: flex;
       flex-direction: column;
-
       transform: translateY(-3%);
 
       .content-grid-col2 {
@@ -391,5 +391,14 @@ $brdr: 1px grey solid;
         justify-content: center;
       }
     }
+  }
+}
+
+.arabic-layout {
+  ///////// change what you have to change here
+  ///// this class will be the main class just like 'tour-infomation'
+  .content-grid-col1 {
+    margin-left: 20rem;
+    margin-right: unset;
   }
 }

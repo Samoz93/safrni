@@ -5,14 +5,14 @@
       [ngClass]="{ active: filterOptions.type == 'tour' }"
       (click)="changeType('tour')"
     >
-      Tours
+      {{ "buttons.tours" | transloco }}
     </div>
     <div
       class="flex_area_filter-nav-item"
       [ngClass]="{ active: filterOptions.type == 'medic' }"
       (click)="changeType('medic')"
     >
-      Medical Tourism
+      {{ "buttons.medic" | transloco }}
     </div>
   </section>
   <section class="flex_area_filter-guest-count">
@@ -20,7 +20,7 @@
       class="flex_area_filter-guest-count-item"
       *ngFor="let set of filterOptions.count | keyvalue"
     >
-      <p>{{ set.key | upperFirstChar }}</p>
+      <p>{{ "various." + set.key | transloco }}</p>
       <mat-icon class="icon minus" (click)="decrease(set.key)">remove</mat-icon>
       <p class="val">{{ set.value }}</p>
 
@@ -28,7 +28,9 @@
     </div>
   </section>
   <form class="flex_area_filter-price">
-    <p class="flex_area_filter-price-title">Price</p>
+    <p class="flex_area_filter-price-title">
+      {{ "various.price" | transloco }}
+    </p>
     <app-custom-input
       placeholder="Minimum"
       class="control"
@@ -45,6 +47,8 @@
     ></app-custom-input>
   </form>
   <section class="flex_area_filter-btn">
-    <button (click)="applyChanges()" class="main-btn">Apply</button>
+    <button (click)="applyChanges()" class="main-btn">
+      {{ "buttons.apply" | transloco }}
+    </button>
   </section>
 </div>

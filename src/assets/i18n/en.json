@@ -3,12 +3,17 @@
     "title": "All year long travel",
     "desc": "Let's explore all Wonderful Turkey Destination",
     "extra1": "Hi! would you explore nature paradise in the world,",
-    "extra2": "let's find the best destination in Turkey with us.",
-    "buttons": {
-      "tours": "Tours",
-      "medic": "Medic",
-      "search": "Search"
-    }
+    "extra2": "let's find the best destination in Turkey with us."
+  },
+  "buttons": {
+    "tours": "Tours",
+    "medic": "Medic",
+    "search": "Search",
+    "apply": "Apply",
+    "aboutus": "About Us",
+    "trips": "Trips",
+    "destination": "Destination",
+    "home": "Home"
   },
   "citysection": {
     "title": "Choose Your",
@@ -27,11 +32,32 @@
   "inputs": {
     "whereto": "Where To",
     "guest": "Guest",
-    "traveldate": "Date"
+    "traveldate": "Date",
+    "name": "Full Name",
+    "phone": "Phone",
+    "email": "Email",
+    "arriveDate": "Estimated Arrival Date",
+    "message": "Message"
   },
 
   "various": {
     "adult": "Adult",
-    "child": "Child"
+    "child": "Child",
+    "price": "Price"
+  },
+  "map": {
+    "tourplan": "Tour plan",
+    "prev": "Previous Destination",
+    "next": "Next Destination"
+  },
+  "tour-info": {
+    "showOnMap": "Show on the map",
+    "book": "Book Now",
+    "bookingInfo": "Booking Information",
+    "bookingNotShared": "This information will not be shared",
+    "included": "Included",
+    "icludedInfo": "Alot of special features",
+    "visitedPlaces": "Places You Will Visit",
+    "visitedPlacesInfo": "A Lot Of Different Tours Around Turkey"
   }
 }

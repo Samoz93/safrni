@@ -5,6 +5,8 @@ $padding: 0 2rem;
 $font-size: 1.5rem;
 
 .flex_area_filter {
+  text-align: start;
+
   @include shadow;
   height: 50rem;
   width: 100%;

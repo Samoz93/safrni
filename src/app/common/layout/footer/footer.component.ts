@@ -9,7 +9,7 @@ import { StaticInfo } from 'src/app/data/static/main-info';
 export class FooterComponent implements OnInit {
   projectName = StaticInfo.projectName;
   phone = StaticInfo.phoneNumber;
-  email = StaticInfo.Email;
+  email = StaticInfo.email;
   constructor() {}
 
   ngOnInit(): void {}

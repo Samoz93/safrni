@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalService } from 'src/app/data/services/local.service';
 import { StaticInfo } from 'src/app/data/static/main-info';
-import { Constants } from 'src/app/common/constants';
 @Component({
   selector: 'app-header-tool-bar',
   templateUrl: './header-tool-bar.component.html',
@@ -11,12 +11,14 @@ export class HeaderToolBarComponent implements OnInit {
   isNavOpen = false;
 
   contactInfo = {
-    phone: Constants.ourPhone,
-    location: Constants.ourLocation,
-    email: Constants.ourEmail,
+    phone: StaticInfo.phoneNumber,
+    location: StaticInfo.location,
+    email: StaticInfo.email,
   };
-
-  constructor() {}
+  isArabic$;
+  constructor(private loc: LocalService) {
+    this.isArabic$ = loc.isArabic$;
+  }
 
   ngOnInit(): void {}
 
@@ -24,4 +26,7 @@ export class HeaderToolBarComponent implements OnInit {
     this.isNavOpen = !this.isNavOpen;
   }
   goToProfile() {}
+  toggleLang() {
+    this.loc.testToggle();
+  }
 }

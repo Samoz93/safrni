@@ -6,6 +6,7 @@ import { TimelineModel, TimelineModelAdapter } from '../models/timelineModel';
 import { TripModel, TripModelAdapter } from '../models/TripModel';
 import { EndPoints, StaticInfo } from '../static/main-info';
 import { BaseService } from './base.service';
+import { LocalService } from './local.service';
 import { SaferniHttp } from './saferni.http.service';
 import { GetTimelineGQL, GetTripGQL, TripsGQL } from './saferniGraphql.service';
 
@@ -19,7 +20,8 @@ export class TripService extends BaseService<TripModel> {
     private timelineAdapter: TimelineModelAdapter,
     private tripsGql: TripsGQL,
     private timelineGql: GetTimelineGQL,
-    private getTrip: GetTripGQL
+    private getTrip: GetTripGQL,
+    private loc: LocalService
   ) {
     super();
   }
@@ -27,7 +29,9 @@ export class TripService extends BaseService<TripModel> {
     this.setBusy(true);
 
     let trips = (
-      await this.tripsGql.fetch({ limit: 30, locale: 'en' }).toPromise()
+      await this.tripsGql
+        .fetch({ limit: 30, locale: this.loc.locale })
+        .toPromise()
     ).data.trips?.map((trip) => this.tripAdapter.adapt(trip));
 
     //for debug

@@ -8,12 +8,17 @@ import { map } from 'rxjs/operators';
 import { BaseService } from '../services/base.service';
 import { SaferniHttp } from './saferni.http.service';
 import { CitiesGQL } from './saferniGraphql.service';
+import { LocalService } from './local.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CityService extends BaseService<CityModel> {
-  constructor(private adapter: CityModelAdapter, private citiesGql: CitiesGQL) {
+  constructor(
+    private adapter: CityModelAdapter,
+    private citiesGql: CitiesGQL,
+    private loc: LocalService
+  ) {
     super();
   }
 

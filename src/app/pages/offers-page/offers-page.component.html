@@ -6,7 +6,7 @@
         transloco="offer-page.with"
         [translocoParams]="{ var: projectName }"
       ></p>
-      <p class="carousel-info-desc">Plan easy, Pay less and experience more</p>
+      <p class="carousel-info-desc">{{ "offer-page.desc" | transloco }}</p>
     </div>
     <app-banner-carousel
       [images]="images"
@@ -15,7 +15,7 @@
   </div>
   <div class="flex_area">
     <button (click)="openFilter()" class="flex_area-filter-btn main-btn">
-      Filter
+      {{ "buttons.search" | transloco }}
     </button>
     <app-filter-widget
       (onFilterChange)="onFilterChange($event)"

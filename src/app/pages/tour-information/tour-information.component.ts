@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LocationModel } from 'src/app/data/models/LocationModel';
 import { TimelineModel } from 'src/app/data/models/timelineModel';
 import { TripModel } from 'src/app/data/models/TripModel';
+import { LocalService } from 'src/app/data/services/local.service';
 import { Trips } from 'src/app/data/services/saferniGraphql.service';
 import { TripService } from 'src/app/data/services/trip.service';
 import { ICONS } from 'src/app/data/utils/enums';
@@ -19,12 +20,15 @@ export class TourInformationComponent implements OnInit {
 
   bookForm: FormGroup;
   icons = ICONS;
-
+  isArabic$;
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private tripService: TripService
-  ) {}
+    private tripService: TripService,
+    loc: LocalService
+  ) {
+    this.isArabic$ = loc.isArabic$;
+  }
 
   ngOnInit(): void {
     this.bookForm = new FormGroup({
@@ -42,7 +46,6 @@ export class TourInformationComponent implements OnInit {
         );
       }
     });
-   
   }
 
   onFormSubmitted() {}

@@ -3,7 +3,6 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
   Component,
   ElementRef,
-  forwardRef,
   HostBinding,
   Inject,
   Input,
@@ -22,7 +21,7 @@ import {
   MatFormFieldControl,
   MAT_FORM_FIELD,
 } from '@angular/material/form-field';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { GuestCountModel } from 'src/app/data/models/guestCountModel';
 import { LocalService } from 'src/app/data/services/local.service';
 import { DevData } from 'src/app/data/static/main-info';

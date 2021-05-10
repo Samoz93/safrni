@@ -69,7 +69,9 @@
     [ngStyle]="{ left: sideBarVisibility ? ' 0px' : '-25%' }"
   >
     <div class="side-information-bar__wrapper">
-      <div class="side-information-bar-header"><p>Tour plan</p></div>
+      <div class="side-information-bar-header">
+        <p>{{ "map.tourplan" | transloco }}</p>
+      </div>
       <div class="side-information-bar-content">
         <img
           src="{{ sidebarLocation.images[selectedImageIndex] | serverimage }}"

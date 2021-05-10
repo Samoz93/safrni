@@ -1,20 +1,19 @@
 export class StaticInfo {
   static projectName = 'سفرني';
   static phoneNumber = '90 537 695 8305';
-  static Email = 'Saferni@emali.com';
-  static baseUrl = 'http://saferni.xyz';
+  static email = 'Saferni@emali.com';
   static defaultImage = '/assets/images/placeholder/default.jpeg';
-}
-export class StaticSettings {
+  static baseUrl = 'http://www.saferni.xyz';
+  static location = '';
+
+  //settings
   static LOADER_MINIMUM_INTERVAL = 0;
-}
-export class DevData {
-  static baseUrl = 'http://www.saferni.xyz/';
-  static isDev = false;
+  //routing
   static offersRoute = 'offers';
   static bookingRoute = 'booking';
   static tourInfoRoute = 'tours';
-
+}
+export class DevData {
   static errMsgs = [
     {
       name: 'required',

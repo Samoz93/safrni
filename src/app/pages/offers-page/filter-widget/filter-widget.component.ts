@@ -1,7 +1,8 @@
 import { Component, OnInit, Optional, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { LocalService } from 'src/app/data/services/local.service';
 import { TABS } from 'src/app/data/static/main-info';
 
 @Component({
@@ -22,7 +23,6 @@ export class FilterWidgetComponent implements OnInit {
   };
   minPriceCtrl: FormControl;
   maxPriceCtrl: FormControl;
-
   constructor(
     @Optional() private dialogRef: MatBottomSheetRef<FilterWidgetComponent>
   ) {}

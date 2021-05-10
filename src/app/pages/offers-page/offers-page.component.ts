@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TripModel } from 'src/app/data/models/TripModel';
 import { LocalService } from 'src/app/data/services/local.service';
 import { TripService } from 'src/app/data/services/trip.service';
-import { StaticInfo, TABS } from 'src/app/data/static/main-info';
+import { StaticInfo } from 'src/app/data/static/main-info';
 import { FilterWidgetComponent } from './filter-widget/filter-widget.component';
 
 @Component({

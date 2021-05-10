@@ -1,4 +1,4 @@
-<div class="tour-infomation">
+<div class="tour-infomation" [ngClass]="{ 'arabic-layout': isArabic$ | async }">
   <app-banner-carousel
     [images]="getCarouselImages()"
     [screenHeightPercentage]="60"
@@ -7,7 +7,7 @@
   <div class="fab" style="bottom: 5rem">
     <div class="circle-fab">
       <div class="inner-circle-fab">
-        <p>Book Now</p>
+        <p>{{ "tour-info.book" | transloco }}</p>
       </div>
     </div>
   </div>
@@ -61,7 +61,9 @@
           </div>
         </div>
 
-        <button class="main-btn" (click)="showOnMap()">show on the map</button>
+        <button class="main-btn" (click)="showOnMap()">
+          {{ "tour-info.showOnMap" | transloco }}
+        </button>
       </section>
       <section class="brief-intro">
         <h1 class="brief-intro__city-name">Istanbul</h1>
@@ -78,9 +80,11 @@
       </section>
 
       <section class="places">
-        <h2 class="places__title">places you will visit</h2>
+        <h2 class="places__title">
+          {{ "tour-info.visitedPlaces" | transloco }}
+        </h2>
         <p class="places__description">
-          A lot of different tours around Turkey
+          {{ "tour-info.visitedPlacesInfo" | transloco }}
         </p>
         <div class="places__grid">
           <div
@@ -95,9 +99,9 @@
       </section>
 
       <section class="features">
-        <h2 class="features__title">included</h2>
+        <h2 class="features__title">{{ "tour-info.included" | transloco }}</h2>
         <p class="features__description">
-          A lot of different tours around Turkey
+          {{ "tour-info.icludedInfo" | transloco }}
         </p>
         <div class="features__grid">
           <div
@@ -116,9 +120,11 @@
       </section>
 
       <section class="booking-section">
-        <h2 class="booking-section__title">Booking Information</h2>
+        <h2 class="booking-section__title">
+          {{ "tour-info.bookingInfo" | transloco }}
+        </h2>
         <p class="booking-section__description">
-          This information will not be shared
+          {{ "tour-info.bookingNotShared" | transloco }}
         </p>
         <form
           [formGroup]="bookForm"
@@ -128,35 +134,37 @@
           <app-custom-input
             formControlName="fullName"
             [icon]="icons.profile"
-            [placeholder]="'Full Name'"
+            [placeholder]="'inputs.name' | transloco"
             [hasBorder]="true"
           ></app-custom-input>
           <app-custom-input
             formControlName="phone"
             [hasBorder]="true"
             [icon]="icons.profile"
-            [placeholder]="'phone'"
+            [placeholder]="'inputs.phone' | transloco"
           ></app-custom-input>
           <app-custom-input
             [hasBorder]="true"
             formControlName="email"
             [icon]="icons.profile"
-            [placeholder]="'email'"
+            [placeholder]="'inputs.email' | transloco"
           ></app-custom-input>
           <app-custom-date-picker
             [hasBorder]="true"
             [icon]="icons.profile"
             formControlName="arrivalDate"
-            [placeholder]="'Estimated Arrival Date'"
+            [placeholder]="'inputs.arriveDate' | transloco"
           ></app-custom-date-picker>
           <app-custom-textarea
             formControlName="message"
             [hasBorder]="true"
-            [placeholder]="'message'"
+            [placeholder]="'inputs.message' | transloco"
             [icon]="icons.profile"
           ></app-custom-textarea>
 
-          <button class="main-btn" type="submit">Book Now</button>
+          <button class="main-btn" type="submit">
+            <p>{{ "tour-info.book" | transloco }}</p>
+          </button>
         </form>
       </section>
     </div>
@@ -204,15 +212,19 @@
           </div>
         </div>
 
-        <button class="main-btn" (click)="showOnMap()">show on the map</button>
+        <button class="main-btn" (click)="showOnMap()">
+          <p>{{ "tour-info.showOnMap" | transloco }}</p>
+        </button>
       </section>
     </div>
   </div>
 
   <section class="similar-tours">
     <div class="similar-tours__header">
-      <h2>Booking Information</h2>
-      <p>This information will not be shared</p>
+      <h2>
+        <p>{{ "tour-info.bookingInfo" | transloco }}</p>
+      </h2>
+      <p>{{ "tour-info.bookingNotShared" | transloco }}</p>
     </div>
     <div class="similar-tours__grid">
       <app-trip-card></app-trip-card>

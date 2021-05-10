@@ -22,13 +22,13 @@
           [ngClass]="{ active: activeTab == 'tour' }"
           (click)="changeTab('tour')"
         >
-          {{ "searchPannel.buttons.tours" | transloco }}<br />
+          {{ "buttons.tours" | transloco }}<br />
         </li>
         <li
           [ngClass]="{ active: activeTab == 'medic' }"
           (click)="changeTab('medic')"
         >
-          {{ "searchPannel.buttons.medic" | transloco }}<br />
+          {{ "buttons.medic" | transloco }}<br />
         </li>
       </ul>
       <form [formGroup]="form" class="info_inputs">
@@ -62,7 +62,7 @@
           ></app-custom-date-picker>
         </div>
         <button class="main-btn info_inputs-btn">
-          {{ "searchPannel.buttons.search" | transloco }}
+          {{ "buttons.search" | transloco }}
         </button>
         <img
           src="assets/images/bk/ticket2.png"
