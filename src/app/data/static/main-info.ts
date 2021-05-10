@@ -6,7 +6,7 @@ export class StaticInfo {
   static defaultImage = '/assets/images/placeholder/default.jpeg';
 }
 export class StaticSettings {
-  static LOADER_MINIMUM_INTERVAL = 0;
+  static readonly LOADER_MINIMUM_INTERVAL = 0;
 }
 export class DevData {
   static baseUrl = 'http://www.saferni.xyz/';

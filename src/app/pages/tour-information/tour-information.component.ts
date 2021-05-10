@@ -36,13 +36,8 @@ export class TourInformationComponent implements OnInit {
     });
     this.activatedRoute.data.subscribe(async (data) => {
       this.trip = data.dataMap.trip;
-      if (this.trip) {
-        this.timelines.push(
-          ...(await this.tripService.getTimeline(this.trip.timelineId))!
-        );
-      }
+      this.timelines = data.dataMap.timelines;
     });
-   
   }
 
   onFormSubmitted() {}
