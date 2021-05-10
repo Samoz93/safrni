@@ -9,36 +9,6 @@
     [maxZoom]="15"
     [styles]="styles"
   >
-    <agm-polyline
-      *ngFor="
-        let location of allLocationsSorted | slice: 0:timelines.length - 1;
-        let i = index
-      "
-      [clickable]="true"
-      (lineClick)="recenterMapToLocation(allLocationsSorted[i + 1])"
-    >
-      <agm-polyline-point
-        [latitude]="allLocationsSorted[i].geo.latitude"
-        [longitude]="allLocationsSorted[i].geo.longitude"
-      >
-      </agm-polyline-point>
-      <agm-polyline-point
-        [latitude]="allLocationsSorted[i + 1].geo.latitude"
-        [longitude]="allLocationsSorted[i + 1].geo.longitude"
-      >
-      </agm-polyline-point>
-
-      <agm-icon-sequence
-        [strokeColor]="'#20aed5'"
-        [repeat]="'20px'"
-        [strokeWeight]="5"
-        [scale]="2"
-        [strokeOpacity]="100"
-        [path]="'FORWARD_CLOSED_ARROW'"
-      >
-      </agm-icon-sequence>
-    </agm-polyline>
-
     <ng-container *ngFor="let timeline of timelines">
       <agm-overlay
         *ngFor="let location of timeline.locations"
@@ -136,4 +106,37 @@
     (click)="toggleSidebar()"
     [ngClass]="sideBarVisibility ? '' : 'open'"
   ></i>
+
+  <div class="map-controls">
+    
+  </div>
 </div>
+<!-- <agm-polyline
+*ngFor="
+  let location of allLocationsSorted | slice: 0:timelines.length - 1;
+  let i = index
+"
+[clickable]="true"
+(lineClick)="recenterMapToLocation(allLocationsSorted[i + 1])"
+>
+<agm-polyline-point
+  [latitude]="allLocationsSorted[i].geo.latitude"
+  [longitude]="allLocationsSorted[i].geo.longitude"
+>
+</agm-polyline-point>
+<agm-polyline-point
+  [latitude]="allLocationsSorted[i + 1].geo.latitude"
+  [longitude]="allLocationsSorted[i + 1].geo.longitude"
+>
+</agm-polyline-point>
+
+<agm-icon-sequence
+  [strokeColor]="'#20aed5'"
+  [repeat]="'20px'"
+  [strokeWeight]="5"
+  [scale]="2"
+  [strokeOpacity]="100"
+  [path]="'FORWARD_CLOSED_ARROW'"
+>
+</agm-icon-sequence>
+</agm-polyline> -->

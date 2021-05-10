@@ -22,6 +22,8 @@
     min-height: 20rem;
     max-width: 25rem;
     max-height: 30rem;
+    // width: 25rem;
+    // height: 30rem;
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -242,6 +244,18 @@
         }
       }
     }
+  }
+
+  .map-controls {
+    position: absolute;
+    width: 40%;
+    height: 15%;
+    bottom: 0px;
+    right: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
   }
 }
 @keyframes fadeInScale {

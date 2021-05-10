@@ -55,7 +55,7 @@
     "@graphql-codegen/typescript-apollo-angular": "^2.3.3",
     "@graphql-codegen/typescript-operations": "^1.17.16",
     "@types/core-js": "^2.5.4",
-    "@types/googlemaps": "^3.39.12",
+    "@types/googlemaps": "^3.43.3",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
     "agm-overlays": "^2.0.0",

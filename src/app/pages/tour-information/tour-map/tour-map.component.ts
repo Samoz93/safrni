@@ -1,4 +1,5 @@
-import { AgmMap, MapTypeStyle } from '@agm/core';
+/// <reference types="@types/googlemaps" />
+import { AgmMap, LatLngBounds, MapTypeStyle } from '@agm/core';
 import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -43,7 +44,7 @@ export class TourMapComponent implements OnInit, OnDestroy {
     },
     strictBounds: true,
   };
-  map: AgmMap;
+  map: any;
   zoom: number = 15;
 
   accordionItems: AccordionListItem[] = [];
@@ -53,9 +54,26 @@ export class TourMapComponent implements OnInit, OnDestroy {
   ngAfterViewInit(): void {
     this.agmMap.mapReady.subscribe((map) => {
       this.map = map;
+      let bounds = new google.maps.LatLngBounds();
+      for (const mm of this.allLocationsSorted) {
+        bounds.extend(
+          new google.maps.LatLng(mm.geo.latitude, mm.geo.longitude)
+        );
+      }
+      map.fitBounds(bounds);
     });
+    
   }
-
+  refitBounds()
+  {
+    let bounds = new google.maps.LatLngBounds();
+    for (const mm of this.allLocationsSorted) {
+      bounds.extend(
+        new google.maps.LatLng(mm.geo.latitude, mm.geo.longitude)
+      );
+    }
+    this.map.fitBounds(bounds);
+  }
   @ViewChild('agmMap') agmMap: AgmMap;
 
   async ngOnInit(): Promise<void> {

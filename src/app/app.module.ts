@@ -7,6 +7,7 @@ import { AgmCoreModule } from '@agm/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AgmOverlays } from 'agm-overlays';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainLandingComponent } from './pages/main-landing/main-landing.component';
 import { SearchPanelComponent } from './pages/main-landing/search-panel/search-panel.component';
