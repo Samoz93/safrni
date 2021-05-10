@@ -1,8 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { longX } from 'src/app/data/abstract/longX';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { CityModel } from 'src/app/data/models/CityModel';
+import { CityService } from 'src/app/data/services/city.service';
 import { StaticInfo } from 'src/app/data/static/main-info';
 
 @Component({
@@ -10,20 +10,13 @@ import { StaticInfo } from 'src/app/data/static/main-info';
   templateUrl: './section-cities.component.html',
   styleUrls: ['./section-cities.component.scss'],
 })
-export class SectionCitiesComponent extends longX implements OnDestroy {
-  cities: CityModel[];
-  sub: Subscription;
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
-    super();
-  }
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
-  }
+export class SectionCitiesComponent implements OnInit {
+  cities$: Observable<CityModel[]>;
+  constructor(private router: Router, private _ser: CityService) {}
+  ngOnInit(): void {
+    this._ser.init();
 
-  ngOnInit() {
-    this.sub = this.activatedRoute.data.subscribe((data) => {
-      this.cities = data.initData.cities;
-    });
+    this.cities$ = this._ser.data$;
   }
   goToOffer(cityId: any) {
     this.router.navigate([StaticInfo.offersRoute, cityId]);

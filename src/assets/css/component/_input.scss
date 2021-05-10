@@ -11,3 +11,7 @@
     border: $accent solid 1px;
   }
 }
+
+.err-border {
+  border: $field-border-error;
+}

@@ -1,4 +1,7 @@
-<div class="main" [ngClass]="{ 'all-border': hasBorder }">
+<div
+  class="main"
+  [ngClass]="{ 'all-border': hasBorder, 'err-border': !!errmsg }"
+>
   <app-validation-icon
     [hidden]="hideIcon"
     [icon]="icon"

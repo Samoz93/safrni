@@ -8,5 +8,10 @@
       "tours": "Tours",
       "medic": "Medic"
     }
+  },
+  "various": {
+    "adult": "Adult",
+    "child": "Child",
+    "price": "Price"
   }
 }

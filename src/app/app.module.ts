@@ -72,6 +72,7 @@ import { SaferniImageComponent } from './common/widgets/saferni-image/saferni-im
 import { CustomTextareaComponent } from './common/widgets/custom-textarea/custom-textarea.component';
 import { HorizontalListviewComponent } from './common/widgets/horizontal-listview/horizontal-listview.component';
 import { TranslocoRootModule } from './transloco/transloco-root.module';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 export function playerFactory() {
   return player;
@@ -160,6 +161,7 @@ export function playerFactory() {
     GraphQLModule,
     LottieModule.forRoot({ player: playerFactory }),
     TranslocoRootModule,
+    MatExpansionModule,
   ],
   providers: [
     {

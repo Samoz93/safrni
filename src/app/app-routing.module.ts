@@ -16,7 +16,6 @@ const routes: Routes = [
   {
     path: '',
     component: MainLandingComponent,
-    resolve: { initData: HomeLandingResolver },
   },
   { path: 'login', component: LoginComponent },
   {

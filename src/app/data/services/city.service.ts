@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BaseService } from '../services/base.service';
 import { SaferniHttp } from './saferni.http.service';
-import { CitiesGQL } from './saferniGraphql.service';
+import { CitiesGQL, City } from './saferniGraphql.service';
 import { LocalService } from './local.service';
 
 @Injectable({
@@ -17,14 +17,17 @@ export class CityService extends BaseService<CityModel> {
   constructor(
     private adapter: CityModelAdapter,
     private citiesGql: CitiesGQL,
-    private loc: LocalService
+    loc: LocalService
   ) {
     super();
-    // this.loc.isArabic$.subscribe(async (f) => {
-    //   this.init();
-    // });
+    loc.isArabic$.subscribe(async (f) => {
+      await this.init();
+      console.log('refetching data');
+    });
   }
-
+  get landingObservable$(): Observable<CityModel[]> {
+    return this.data$.pipe(map((f) => f.slice(0, 7)));
+  }
   async init(): Promise<CityModel[]> {
     this.setBusy(true);
     let data = await this.citiesGql.fetch({ limit: 10 }).toPromise();

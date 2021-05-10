@@ -8,7 +8,7 @@
 
   <div class="data">
     <app-trip-card
-      *ngFor="let item of trips; let i = index"
+      *ngFor="let item of trips$ | async; let i = index"
       [ngClass]="{
         longX: i == 6
       }"

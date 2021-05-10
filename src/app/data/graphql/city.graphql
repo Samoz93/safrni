@@ -1,5 +1,5 @@
-query cities($limit: Int) {
-  cities(limit: $limit) {
+query cities($limit: Int,$locale: String) {
+  cities(limit: $limit,$locale: String) {
     ...CityInfo
   }
 }

@@ -15,6 +15,10 @@ import { ICONS } from 'src/app/data/utils/enums';
     },
   ],
 })
-export class CustomDatePickerComponent extends ControlValueAccessorConnector {
+export class CustomDatePickerComponent
+  extends ControlValueAccessorConnector
+  implements OnInit {
+  ngOnInit(): void {}
   iconsData = ICONS;
+  minDate: Date = new Date();
 }

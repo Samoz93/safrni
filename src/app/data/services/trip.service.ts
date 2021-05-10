@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { TimelineModel, TimelineModelAdapter } from '../models/timelineModel';
 import { TripModel, TripModelAdapter } from '../models/TripModel';
 import { BaseService } from './base.service';
@@ -20,9 +22,14 @@ export class TripService extends BaseService<TripModel> {
     private loc: LocalService
   ) {
     super();
-    // this.loc.isArabic$.subscribe(async (f) => {
-    //   this.init();
-    // });
+    this.loc.isArabic$.subscribe(async (f) => {
+      await this.init();
+      console.log('refetching trips with arabic ?', f);
+    });
+  }
+
+  get landingObservable$(): Observable<TripModel[]> {
+    return this.data$.pipe(map((f) => f.slice(0, 7)));
   }
   async init(): Promise<TripModel[]> {
     this.setBusy(true);

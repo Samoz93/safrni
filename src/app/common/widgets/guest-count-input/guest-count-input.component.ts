@@ -49,7 +49,7 @@ const isInstanceOfGuesCount = (obj: any) => {
 
         return !isInstanceOfGuesCount(c.value)
           ? notObject
-          : c.value.adult == 0 && c.value.child == 0
+          : c.value.adult == 0
           ? noValue
           : null;
       },

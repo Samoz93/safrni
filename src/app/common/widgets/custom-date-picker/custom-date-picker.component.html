@@ -1,4 +1,7 @@
-<div class="main" [ngClass]="{ 'all-border': hasBorder }">
+<div
+  class="main"
+  [ngClass]="{ 'all-border': hasBorder, 'err-border': !!errmsg }"
+>
   <mat-form-field class="date" appearance="fill">
     <input
       on-focus="onFocus($event)"
@@ -6,6 +9,9 @@
       [formControl]="control"
       [placeholder]="placeholder"
       matInput
+      [min]="minDate"
+      [readonly]="true"
+      (click)="picker.open()"
       [matDatepicker]="picker"
     />
     <mat-datepicker-toggle matPrefix [for]="picker">
@@ -17,6 +23,10 @@
         [placeholder]="placeholder"
       ></app-validation-icon>
     </mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
+    <mat-datepicker
+      startView="year"
+      [startAt]="minDate"
+      #picker
+    ></mat-datepicker>
   </mat-form-field>
 </div>

@@ -1,4 +1,4 @@
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { LoadingState } from '../static/main-info';
 
 export abstract class BaseService<T> {

@@ -5,8 +5,8 @@
   background: white;
   font-size: 1.6rem;
   line-height: 1.6rem;
-  &:hover {
-    border: $accent solid 1px;
+  .header {
+    height: 101%;
   }
   .display {
     display: grid;
