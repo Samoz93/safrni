@@ -39,6 +39,8 @@
             "scripts": []
           },
           "configurations": {
+            "ar": {},
+            "en": {},
             "production": {
               "fileReplacements": [
                 {
@@ -76,6 +78,12 @@
           "configurations": {
             "production": {
               "browserTarget": "safrni:build:production"
+            },
+            "ar": {
+              "browserTarget": "safrni:build:ar"
+            },
+            "en": {
+              "browserTarget": "safrni:build:en"
             }
           }
         },
