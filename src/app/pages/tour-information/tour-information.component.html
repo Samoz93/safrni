@@ -23,7 +23,7 @@
           <div class="trip-card-header__image">
             <img src="https://wallpapercave.com/wp/wp1813727.jpg" />
           </div>
-          <p class="trip-card-header__price">{{ trip.price | price }}</p>
+          <p class="trip-card-header__price">{{ trip.basePrice }}</p>
           <app-read-only-stars
             [stars]="3.5"
             [color]="'#fff'"
@@ -174,7 +174,7 @@
           <div class="trip-card-header__image">
             <img src="https://wallpapercave.com/wp/wp1813727.jpg" />
           </div>
-          <p class="trip-card-header__price">{{ trip.price | price }}</p>
+          <p class="trip-card-header__price">{{ trip.basePrice }}</p>
           <app-read-only-stars
             [stars]="3.5"
             [color]="'#fff'"

@@ -1,5 +1,5 @@
-query trips($limit: Int, $locale: String) {
-  trips(limit: $limit, locale: $locale) {
+query trips($limit: Int = 10, $locale: String = "en", $where: JSON) {
+  trips(limit: $limit, locale: $locale, where: $where) {
     ...tripInfo
   }
 }
@@ -30,13 +30,11 @@ fragment tripInfo on Trips {
     url
     formats
   }
-  price {
-    basePrice
-    discount
-    currency
-    extraAdultFee
-    basePeopleCount
-  }
+  basePrice
+  discount
+  currency
+
+  basePeopleCount
   features {
     included
     feature {

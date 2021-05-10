@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { locale } from 'core-js';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { TimelineModel, TimelineModelAdapter } from '../models/timelineModel';
@@ -33,15 +34,57 @@ export class TripService extends BaseService<TripModel> {
   }
   async init(): Promise<TripModel[]> {
     this.setBusy(true);
+
+    this.data$.next;
+    //for debug
+    this.prepareData(await this.queryTrips());
+    return this.data$.value;
+  }
+  async queryTrips(
+    query: {
+      limit?: number;
+      cityId?: String;
+      locale?: string;
+      priceRange?: { minPrice: number; maxPrice: number };
+      text?: string;
+      date?: number;
+    } = {
+      limit: 10,
+      cityId: '',
+      locale: 'en',
+      priceRange: { minPrice: 1300, maxPrice: 1500 },
+    }
+  ): Promise<TripModel[]> {
+    let whereQuery: any = {};
+    if (query.cityId) {
+      whereQuery.city = { id: query.cityId };
+    }
+    if (query.priceRange) {
+      whereQuery = {
+        ...whereQuery,
+        basePrice_gt: query.priceRange.minPrice,
+        basePrice_lt: query.priceRange.maxPrice,
+      };
+    }
+    if (query.text) {
+      whereQuery = {
+        ...whereQuery,
+        name_contains: query.text,
+      };
+    }
+    console.log(whereQuery);
+
     let trips = (
       await this.tripsGql
-        .fetch({ limit: 30, locale: this.loc.locale })
+        .fetch({
+          limit: query?.limit ?? 10,
+          locale: query?.locale ?? 'ar',
+          where: whereQuery,
+        })
         .toPromise()
     ).data.trips?.map((trip) => this.tripAdapter.adapt(trip));
 
-    //for debug
-    this.prepareData(new Array(10).fill(trips![0]));
-    return this.data$.value;
+    return trips!;
   }
   async getTripById(id: string): Promise<TripModel> {
     let item = this.data$.value.find((x) => x.id === id);
@@ -56,6 +99,7 @@ export class TripService extends BaseService<TripModel> {
       return trip;
     }
   }
+
   async getTimeline(id: string): Promise<TimelineModel[] | undefined> {
     this.setBusy(true);
     let data = await this.timelineGql.fetch({ id: id }).toPromise();

@@ -18,7 +18,10 @@ export class TripModel {
     public city: CityModel,
     public features: FeatureModel[],
     public timelineId: string,
-    public price: PriceModel
+    public basePrice: number,
+    public discount: number,
+    public basePeopleCount: number,
+    public curreny: string
   ) {}
 }
 
@@ -40,7 +43,10 @@ export class TripModelAdapter implements Adapter<TripModel> {
       item.city,
       features,
       item.timeline.id,
-      new PriceModelAdapter().adapt(item.price)
+      item.basePrice,
+      item.discount,
+      item.basePeopleCount,
+      item.currency
     );
   }
 }

@@ -2,7 +2,7 @@ import { BehaviorSubject } from 'rxjs';
 import { LoadingState } from '../static/main-info';
 
 export abstract class BaseService<T> {
-  abstract init(): Promise<T[]>;
+  abstract init(params?:any): Promise<T[]>;
 
   data: T[] = [];
   data$ = new BehaviorSubject<T[]>([]);
