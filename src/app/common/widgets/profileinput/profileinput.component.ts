@@ -41,8 +41,6 @@ export class ProfileinputComponent
     DoCheck {
   onChange: any = () => {};
   onTouched = () => {
-    console.log('setting on toucvhed');
-
     this.touched = true;
   };
   touched = false;
@@ -136,9 +134,6 @@ export class ProfileinputComponent
   }
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
-  }
-  test() {
-    console.log(this.ngControl);
   }
 
   getError() {

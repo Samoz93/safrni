@@ -22,10 +22,8 @@ export class LoginComponent implements OnInit {
     // this._initForm();
   }
   ngOnInit(): void {
-    console.log('init');
     this.route.paramMap.subscribe((f) => {
       const x = f.get('isLogin') == 'true' ? true : false;
-
       if (x) {
         this.switchToLogin();
       } else {
@@ -105,14 +103,10 @@ export class LoginComponent implements OnInit {
     this.type = LoginEnum.privacy;
   }
   switchToLogin() {
-    console.log('switching to login');
-
     this.type = LoginEnum.login;
     this._initForm();
   }
   switchToSignUp() {
-    console.log('switching to signup');
-
     this.type = LoginEnum.signup;
     this._initForm();
   }

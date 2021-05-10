@@ -7,7 +7,6 @@ import { Injectable } from '@angular/core';
 import { SplashScreenStateService } from '../services/splash-screen-state.service';
 import { TripService } from '../services/trip.service';
 import { TripModel } from '../models/TripModel';
-import { delay } from '../utils/helpers';
 import { TimelineModel } from '../models/timelineModel';
 @Injectable({ providedIn: 'root' })
 export class TourInformationResolver implements Resolve<any> {

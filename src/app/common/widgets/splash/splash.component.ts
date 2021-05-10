@@ -31,9 +31,7 @@ export class SplashComponent implements OnInit, AfterViewInit {
       if (state != this.showSplash) {
         if (state) {
           this.showAnimation();
-          console.log('showing loader');
         } else {
-          console.log('hiding loader');
           this.hideSplashAnimation();
         }
       }

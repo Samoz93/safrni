@@ -24,7 +24,6 @@ export class TourInformationComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private tripService: TripService,
     loc: LocalService
   ) {
     this.isArabic$ = loc.isArabic$;

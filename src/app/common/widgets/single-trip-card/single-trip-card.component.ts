@@ -24,7 +24,6 @@ export class SingleTripCardComponent implements OnInit {
   ngOnInit(): void {}
 
   goToOffer() {
-    console.log(this.id);
     if (!this.id) throw 'please provide a valid id';
     if (this.isOffer) this.router.navigate([StaticInfo.tourInfoRoute, this.id]);
     else

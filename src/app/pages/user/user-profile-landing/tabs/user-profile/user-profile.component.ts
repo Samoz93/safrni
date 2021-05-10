@@ -21,8 +21,4 @@ export class UserProfileComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
-
-  test() {
-    console.log(this.form.value);
-  }
 }

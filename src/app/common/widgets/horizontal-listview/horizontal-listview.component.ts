@@ -20,8 +20,6 @@ export class HorizontalListviewComponent implements OnInit {
     else return this.images.map((image: ImageModel) => image.url);
   }
   onImageClicked(index: number) {
-    console.log(index);
-
     this.itemClicked.emit(index);
   }
   isStringList(images: string[] | ImageModel[]): images is string[] {

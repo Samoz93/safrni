@@ -1,10 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { TimelineModel, TimelineModelAdapter } from '../models/timelineModel';
 import { TripModel, TripModelAdapter } from '../models/TripModel';
-import { EndPoints, StaticInfo } from '../static/main-info';
 import { BaseService } from './base.service';
 import { LocalService } from './local.service';
 import { SaferniHttp } from './saferni.http.service';
@@ -15,7 +12,6 @@ import { GetTimelineGQL, GetTripGQL, TripsGQL } from './saferniGraphql.service';
 })
 export class TripService extends BaseService<TripModel> {
   constructor(
-    private http: SaferniHttp,
     private tripAdapter: TripModelAdapter,
     private timelineAdapter: TimelineModelAdapter,
     private tripsGql: TripsGQL,
@@ -24,10 +20,12 @@ export class TripService extends BaseService<TripModel> {
     private loc: LocalService
   ) {
     super();
+    // this.loc.isArabic$.subscribe(async (f) => {
+    //   this.init();
+    // });
   }
   async init(): Promise<TripModel[]> {
     this.setBusy(true);
-
     let trips = (
       await this.tripsGql
         .fetch({ limit: 30, locale: this.loc.locale })
@@ -35,10 +33,7 @@ export class TripService extends BaseService<TripModel> {
     ).data.trips?.map((trip) => this.tripAdapter.adapt(trip));
 
     //for debug
-
-    this.data$.next(new Array(10).fill(trips![0]));
-
-    this.setBusy(false);
+    this.prepareData(new Array(10).fill(trips![0]));
     return this.data$.value;
   }
   async getTripById(id: string): Promise<TripModel> {

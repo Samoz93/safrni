@@ -23,6 +23,8 @@ export abstract class BaseService<T> {
   prepareData(data: T[]) {
     this.data = [];
     this.data.push(...data);
+    console.log('will send data');
+
     this.data$.next(data);
     this.setBusy(false);
   }

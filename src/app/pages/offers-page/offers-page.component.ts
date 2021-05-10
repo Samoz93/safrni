@@ -32,7 +32,6 @@ export class OffersPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((f) => {
-      console.log(f);
       this.data = this._ser.data;
     });
   }

@@ -20,6 +20,9 @@ export class CityService extends BaseService<CityModel> {
     private loc: LocalService
   ) {
     super();
+    // this.loc.isArabic$.subscribe(async (f) => {
+    //   this.init();
+    // });
   }
 
   async init(): Promise<CityModel[]> {

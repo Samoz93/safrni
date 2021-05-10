@@ -59,8 +59,6 @@ export class BookingPageComponent implements OnInit {
     const booking: BookingInterface = {
       ...this.form.value,
     };
-
-    console.log(booking);
   }
   onSelectFile(event: any) {
     if (!event.target.files) return;
@@ -69,7 +67,6 @@ export class BookingPageComponent implements OnInit {
 
     reader.addEventListener('load', (event: any) => {
       this.selectedFile = new ImageSnippet(event.target.result, file);
-      console.log(this.selectedFile);
 
       // this.imageService.uploadImage(this.selectedFile.file).subscribe(
       //   (res) => {},
