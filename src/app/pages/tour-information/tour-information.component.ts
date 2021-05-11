@@ -17,13 +17,14 @@ import { ICONS } from 'src/app/data/utils/enums';
 export class TourInformationComponent implements OnInit {
   trip: TripModel;
   timelines: TimelineModel[] = [];
-
+  relatedTrips: TripModel[];
   bookForm: FormGroup;
   icons = ICONS;
   isArabic$;
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private tripService: TripService,
     loc: LocalService
   ) {
     this.isArabic$ = loc.isArabic$;
@@ -40,6 +41,8 @@ export class TourInformationComponent implements OnInit {
     this.activatedRoute.data.subscribe(async (data) => {
       this.trip = data.dataMap.trip;
       this.timelines = data.dataMap.timelines;
+      this.relatedTrips = await this.tripService.getRelatedTrips(this.trip);
+
     });
   }
 

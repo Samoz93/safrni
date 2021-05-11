@@ -227,16 +227,15 @@
       <p>{{ "tour-info.bookingNotShared" | transloco }}</p>
     </div>
     <div class="similar-tours__grid">
-      <app-trip-card></app-trip-card>
-      <app-trip-card></app-trip-card>
-      <app-trip-card></app-trip-card>
-      <app-trip-card></app-trip-card>
-      <app-trip-card></app-trip-card>
-      <app-trip-card></app-trip-card>
-      <app-trip-card></app-trip-card>
-      <app-trip-card></app-trip-card>
-      <app-trip-card></app-trip-card>
-      <app-trip-card></app-trip-card>
+      <app-trip-card
+        *ngFor="let item of relatedTrips; let i = index"
+        [id]="item.id"
+        [features]="item.features"
+        [img]="item.previewImage"
+        [name]="item.name"
+        [price]="item.basePrice"
+        [duration]="item.duration"
+      ></app-trip-card>
     </div>
   </section>
 </div>
