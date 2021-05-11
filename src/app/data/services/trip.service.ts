@@ -35,8 +35,6 @@ export class TripService extends BaseService<TripModel> {
   async init(): Promise<TripModel[]> {
     this.setBusy(true);
 
-    this.data$.next;
-    //for debug
     this.prepareData(await this.queryTrips());
     return this.data$.value;
   }
@@ -50,9 +48,7 @@ export class TripService extends BaseService<TripModel> {
       date?: number;
     } = {
       limit: 10,
-      cityId: '',
-      locale: 'en',
-      priceRange: { minPrice: 1300, maxPrice: 1500 },
+      locale: this.loc.locale,
     }
   ): Promise<TripModel[]> {
     let whereQuery: any = {};
@@ -78,7 +74,7 @@ export class TripService extends BaseService<TripModel> {
       await this.tripsGql
         .fetch({
           limit: query?.limit ?? 10,
-          locale: query?.locale ?? 'ar',
+          locale: query?.locale ?? 'en',
           where: whereQuery,
         })
         .toPromise()
