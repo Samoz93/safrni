@@ -256,7 +256,9 @@ $brdr: 1px grey solid;
             i {
               font-size: 2rem;
               color: $accent;
-              margin-right: 1rem;
+
+            
+              margin: 5px 1rem;
             }
             p {
               font-size: 2rem;
@@ -264,7 +266,12 @@ $brdr: 1px grey solid;
               text-transform: capitalize;
               text-align: start;
               padding: 0rem;
-              margin: 0rem;
+            }
+            .info {
+              margin: 5px 10px;
+
+              color: lightgrey;
+              font-size: 2rem;
             }
           }
         }

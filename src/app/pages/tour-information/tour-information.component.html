@@ -115,6 +115,7 @@
               [ngStyle]="{ color: feature.included ? '#20aed5' : 'red' }"
             ></i>
             <p>{{ feature.name }}</p>
+            <i class="fa fa-info-circle info" *ngIf="feature.info"></i>
           </div>
         </div>
       </section>
