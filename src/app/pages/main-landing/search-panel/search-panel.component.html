@@ -1,19 +1,21 @@
-<div
-  class="main page-padding"
-  [ngClass]="{ 'arabic-layout': isArabic$ | async }"
->
-  <img class="img-main" src="/assets/images/placeholder/istanbul.png" alt="" />
+<div class="main" [ngClass]="{ 'arabic-layout': isArabic$ | async }">
+  <app-banner-carousel
+    class="banner-slider"
+    [images]="['/assets/images/placeholder/istanbul.png']"
+    [screenHeightPercentage]="60"
+  >
+  </app-banner-carousel>
 
   <div class="info">
-    <div class="info-text">
-      <h2 (click)="test()">
+    <div class="info-text page-padding">
+      <p (click)="test()" class="info-text__top">
         {{ "searchPannel.title" | transloco }}
-      </h2>
-      <h1 class="title">{{ "searchPannel.desc" | transloco }}</h1>
-      <h2 class="desc">
+      </p>
+      <p class="info-text__middle">{{ "searchPannel.desc" | transloco }}</p>
+      <p class="info-text__bottom">
         {{ "searchPannel.extra1" | transloco }}<br />
         {{ "searchPannel.extra2" | transloco }}
-      </h2>
+      </p>
     </div>
 
     <section class="info-warpper">
