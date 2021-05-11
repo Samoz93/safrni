@@ -115,7 +115,12 @@
               [ngStyle]="{ color: feature.included ? '#20aed5' : 'red' }"
             ></i>
             <p>{{ feature.name }}</p>
-            <i class="fa fa-info-circle info" *ngIf="feature.info"></i>
+            <i
+              class="fa fa-info-circle info"
+              *ngIf="feature.info"
+              matTooltip="{{ feature.info }}"
+              matTooltipClass="feature-tooltip"
+            ></i>
           </div>
         </div>
       </section>

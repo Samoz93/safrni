@@ -8,6 +8,7 @@ import { LocalService } from 'src/app/data/services/local.service';
 import { Trips } from 'src/app/data/services/saferniGraphql.service';
 import { TripService } from 'src/app/data/services/trip.service';
 import { ICONS } from 'src/app/data/utils/enums';
+import {TooltipPosition} from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-tour-information',

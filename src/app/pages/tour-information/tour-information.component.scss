@@ -1,6 +1,14 @@
 @import "/src/assets/css/abstract/variables";
 @import "/src/assets/css/abstract/mixins";
-
+.feature-tooltip {
+  background: white;
+  font-size: 4.5rem !important;
+  .tooltip {
+    font-size: 4.5rem !important ;
+  }
+}
+::ng-deep .mat-tooltip {
+}
 $brdr: 1px grey solid;
 @mixin cellSettings {
   padding-bottom: 2.25rem;
@@ -257,7 +265,6 @@ $brdr: 1px grey solid;
               font-size: 2rem;
               color: $accent;
 
-            
               margin: 5px 1rem;
             }
             p {
