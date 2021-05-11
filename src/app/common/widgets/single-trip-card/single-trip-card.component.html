@@ -2,7 +2,7 @@
   <app-saferni-image [imageModel]="img!"></app-saferni-image>
   <app-trip-extra [features]="features" class="extra"> </app-trip-extra>
   <div *ngIf="isOffer" class="duration-price">
-    <h6 class="main_price">{{ price | price }}</h6>
+    <h6 class="main_price">{{ price+currency }}</h6>
     <h6 class="main_duration">{{ duration }} days</h6>
   </div>
   <h6 class="main_title">{{ name }}</h6>

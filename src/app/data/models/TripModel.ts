@@ -3,7 +3,6 @@ import { Adapter } from '../adapters/adapter';
 import { CityModel } from './CityModel';
 import { FeatureModel, FeatureModelAdapter } from './FeatureModel';
 import { ImageModel, ImageModelAdapter } from './ImageModel';
-import { PriceModel, PriceModelAdapter } from './PriceModel';
 import { TimelineModel, TimelineModelAdapter } from './timelineModel';
 
 export class TripModel {

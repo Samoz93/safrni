@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FeatureModel } from 'src/app/data/models/FeatureModel';
 import { ImageModel } from 'src/app/data/models/ImageModel';
-import { PriceModel } from 'src/app/data/models/PriceModel';
 import { StaticInfo } from 'src/app/data/static/main-info';
 
 @Component({
@@ -13,7 +12,8 @@ import { StaticInfo } from 'src/app/data/static/main-info';
 export class SingleTripCardComponent implements OnInit {
   @Input() name: string = '';
   @Input() duration: number = 0;
-  @Input() price: PriceModel;
+  @Input() price: number;
+  @Input() currency:string;
   @Input() img: ImageModel | undefined;
   @Input() features: FeatureModel[] = [];
   @Input() id: string = '';
