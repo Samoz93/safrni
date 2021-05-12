@@ -2,7 +2,7 @@
 @import "/src/assets/css/abstract/variables";
 .main {
   .date {
-    width: 100%;
+    max-width: 100%;
     height: 100%;
     @include myCustomCalendarStyle;
     text-align: start;
@@ -13,6 +13,7 @@
     font-family: $tajwal;
     color: grey;
   }
-  width: 100%;
+  min-width: 0px;
+  max-width: 100%;
   height: 100%;
 }
