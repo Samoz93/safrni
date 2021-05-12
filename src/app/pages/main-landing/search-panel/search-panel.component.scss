@@ -75,13 +75,14 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
         &::before {
           content: "";
           position: absolute;
-          background-color: red;
+          background-color: transparent;
           width: 100%;
           height: calc(100% - 20px);
           top: 50%;
           transform: translateY(-50%);
           box-shadow: $subtleShadow;
         }
+
         &__left {
           width: 81.5%;
 
@@ -101,6 +102,16 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
             );
           -webkit-mask-composite: destination-in;
           mask-composite: exclude;
+
+          display: flex;
+          justify-content: stretch;
+          align-items: center;
+          padding: 0rem 3.2rem;
+
+          & > * {
+            flex: 1;
+            height: 60%;
+          }
         }
         &__right {
           position: relative;
@@ -120,6 +131,20 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
             );
           -webkit-mask-composite: destination-in;
           mask-composite: exclude;
+
+          display: grid;
+          place-items: center;
+
+          border-left: dashed 2px $border-color;
+          button {
+            width: 70%;
+            height: 60%;
+            p {
+              font-size: 2.4rem;
+              margin: 0px;
+              font-weight: bold;
+            }
+          }
         }
       }
     }
