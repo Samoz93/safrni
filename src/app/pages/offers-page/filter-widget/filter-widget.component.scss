@@ -10,9 +10,7 @@ $font-size: 1.5rem;
   @include shadow;
   height: 50rem;
   width: 100%;
-  @include res(phone) {
-    height: 100vh;
-  }
+
   &-nav {
     height: 7rem;
     display: grid;
@@ -34,7 +32,7 @@ $font-size: 1.5rem;
   }
   &-guest-count {
     height: 15rem;
-
+    font-size: 1.5rem;
     padding: $padding;
     background: white;
     display: flex;
@@ -45,9 +43,10 @@ $font-size: 1.5rem;
     &-item {
       font-size: $font-size;
       display: grid;
-      grid-template-columns: 50% 15% 15% 15%;
+      grid-template-columns: 55% 15% 15% 15%;
       & > * {
         font-size: inherit;
+        margin-bottom: 0;
       }
       .val {
         justify-self: center;
@@ -59,33 +58,47 @@ $font-size: 1.5rem;
         justify-self: flex-start;
       }
       .icon {
+        align-self: center;
         background: $accent;
         color: white;
         display: grid;
         place-items: center;
         cursor: pointer;
+        height: 1.5rem;
+        width: 1.5rem;
+        font-size: 1.3rem;
       }
     }
     @include divider();
   }
   &-price {
     height: 10rem;
-    padding: $padding;
+    padding: 0 15% 0 2rem;
     position: relative;
     display: grid;
     align-items: center;
     justify-content: center;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1rem 1fr;
     gap: 1%;
     @include divider();
+
     .control {
       border: 1px grey solid;
+      height: 2.7rem;
+      @include res(phone) {
+        height: 3.7rem;
+      }
     }
     &-title {
-      grid-column: span 2;
+      grid-column: span 3;
       grid-row: 1;
       font-size: $font-size;
       align-self: flex-end;
+    }
+    .dash {
+      display: grid;
+      font-size: 1.6rem;
+      place-items: center;
     }
   }
   &-btn {

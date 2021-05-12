@@ -17,12 +17,11 @@ export class CityService extends BaseService<CityModel> {
   constructor(
     private adapter: CityModelAdapter,
     private citiesGql: CitiesGQL,
-    loc: LocalService
+    private loc: LocalService
   ) {
     super();
     loc.isArabic$.subscribe(async (f) => {
       await this.init();
-      console.log('refetching data');
     });
   }
   get landingObservable$(): Observable<CityModel[]> {
@@ -30,7 +29,9 @@ export class CityService extends BaseService<CityModel> {
   }
   async init(): Promise<CityModel[]> {
     this.setBusy(true);
-    let data = await this.citiesGql.fetch({ limit: 10 }).toPromise();
+    let data = await this.citiesGql
+      .fetch({ limit: 10, locale: this.loc.locale })
+      .toPromise();
     const models = data.data.cities?.map((city) => this.adapter.adapt(city))!;
     this.prepareData(models);
     return this.data;

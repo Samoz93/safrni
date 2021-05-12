@@ -2,7 +2,7 @@ import { BehaviorSubject } from 'rxjs';
 import { LoadingState } from '../static/main-info';
 
 export abstract class BaseService<T> {
-  abstract init(params?:any): Promise<T[]>;
+  abstract init(params?: any): Promise<T[]>;
 
   data: T[] = [];
   data$ = new BehaviorSubject<T[]>([]);
@@ -23,7 +23,6 @@ export abstract class BaseService<T> {
   prepareData(data: T[]) {
     this.data = [];
     this.data.push(...data);
-    console.log('will send data');
 
     this.data$.next(data);
     this.setBusy(false);

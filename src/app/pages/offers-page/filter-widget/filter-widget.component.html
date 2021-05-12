@@ -18,13 +18,13 @@
   <section class="flex_area_filter-guest-count">
     <div
       class="flex_area_filter-guest-count-item"
-      *ngFor="let set of filterOptions.count | keyvalue"
+      *ngFor="let key of ['child', 'adult']"
     >
-      <p>{{ "various." + set.key | transloco }}</p>
-      <mat-icon class="icon minus" (click)="decrease(set.key)">remove</mat-icon>
-      <p class="val">{{ set.value }}</p>
+      <p>{{ "various." + key | transloco }}</p>
+      <mat-icon class="icon minus" (click)="decrease(key)">remove</mat-icon>
+      <p class="val">{{ getValue(key) }}</p>
 
-      <mat-icon class="icon plus" (click)="increase(set.key)">add</mat-icon>
+      <mat-icon class="icon plus" (click)="increase(key)">add</mat-icon>
     </div>
   </section>
   <form class="flex_area_filter-price">
@@ -36,13 +36,16 @@
       class="control"
       [hideIcon]="true"
       [isNumber]="true"
+      [padding]="0.1"
       [formControl]="minPriceCtrl"
     ></app-custom-input>
+    <p class="dash">-</p>
     <app-custom-input
       class="control"
       placeholder="Maximum"
       [hideIcon]="true"
       [isNumber]="true"
+      [padding]="0.1"
       [formControl]="maxPriceCtrl"
     ></app-custom-input>
   </form>

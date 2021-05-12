@@ -1,8 +1,8 @@
-import { Component, OnInit, Optional, Output } from '@angular/core';
+import { Component, Input, OnInit, Optional, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
-import { Observable, Subject } from 'rxjs';
-import { LocalService } from 'src/app/data/services/local.service';
+import { Subject } from 'rxjs';
+import { FilterOptionsModel } from 'src/app/data/models/filterOptionModlel';
 import { TABS } from 'src/app/data/static/main-info';
 
 @Component({
@@ -11,13 +11,12 @@ import { TABS } from 'src/app/data/static/main-info';
   styleUrls: ['./filter-widget.component.scss'],
 })
 export class FilterWidgetComponent implements OnInit {
-  @Output() onFilterChange = new Subject<any>();
-  filterOptions = {
+  @Output() onFilterChange = new Subject<FilterOptionsModel>();
+  @Input() filterOptions: FilterOptionsModel = {
     type: TABS.tour,
-    count: {
-      adult: 0,
-      child: 0,
-    },
+    adult: 0,
+    cityId: '',
+    child: 0,
     minPrice: 0,
     maxPrice: 0,
   };
@@ -52,29 +51,25 @@ export class FilterWidgetComponent implements OnInit {
   }
 
   increase(key: string) {
-    let newCount = Object(this.filterOptions.count)[key] + 1;
+    let newCount = Object(this.filterOptions)[key] + 1;
     if (newCount <= 0) newCount = 0;
 
     this.filterOptions = {
       ...this.filterOptions,
-      count: {
-        ...this.filterOptions.count,
-        [key]: newCount,
-      },
+      [key]: newCount,
     };
   }
   decrease(key: any) {
-    let newCount = Object(this.filterOptions.count)[key] - 1;
+    let newCount = Object(this.filterOptions)[key] - 1;
     if (newCount <= 0) newCount = 0;
     this.filterOptions = {
       ...this.filterOptions,
-      count: {
-        ...this.filterOptions.count,
-        [key]: newCount,
-      },
+      [key]: newCount,
     };
   }
-
+  getValue(key: string) {
+    return Object(this.filterOptions)[key];
+  }
   changeType(type: any) {
     this.filterOptions = {
       ...this.filterOptions,

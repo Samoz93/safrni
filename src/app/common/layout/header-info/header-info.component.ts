@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalService } from 'src/app/data/services/local.service';
 import { StaticInfo } from 'src/app/data/static/main-info';
 
 @Component({
@@ -9,12 +10,13 @@ import { StaticInfo } from 'src/app/data/static/main-info';
 export class HeaderInfoComponent implements OnInit {
   isSigned = true;
   quickReach = [
-    { icon: 'email.svg', info: StaticInfo.projectName },
+    {
+      icon: 'email.svg',
+      info: StaticInfo.projectName,
+    },
     { icon: 'phone.svg', info: StaticInfo.phoneNumber },
     { icon: 'location.svg', info: 'Istanbul, Turkey' },
   ];
-
-  constructor() {}
 
   ngOnInit(): void {}
 }

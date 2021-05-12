@@ -2,7 +2,7 @@
   <div class="main_quickreach">
     <app-header-icon
       *ngFor="let q of quickReach"
-      [txt]="q.info"
+      [txt]="q.info | transloco"
       [icon]="q.icon"
     ></app-header-icon>
   </div>

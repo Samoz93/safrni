@@ -1,5 +1,5 @@
 export class StaticInfo {
-  static projectName = 'سفرني';
+  static projectName = 'prName';
   static phoneNumber = '90 537 695 8305';
   static email = 'Saferni@emali.com';
   static defaultImage = '/assets/images/placeholder/default.jpeg';

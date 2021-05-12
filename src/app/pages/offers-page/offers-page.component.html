@@ -4,7 +4,7 @@
       <p
         class="carousel-info-title"
         transloco="offer-page.with"
-        [translocoParams]="{ var: projectName }"
+        [translocoParams]="{ var: projectName | transloco }"
       ></p>
       <p class="carousel-info-desc">{{ "offer-page.desc" | transloco }}</p>
     </div>
@@ -18,23 +18,32 @@
       {{ "buttons.search" | transloco }}
     </button>
     <app-filter-widget
+      [filterOptions]="filterOptions"
       (onFilterChange)="onFilterChange($event)"
       class="flex_area-filter"
     ></app-filter-widget>
-    <section class="flex_area-content">
-      <app-trip-card
-        *ngFor="let item of data; let i = index"
-        [name]="item.name"
-        [duration]="item.duration"
-        [price]="item.basePrice"
-        [currency]="item.curreny"
-        [img]="item.previewImage"
-        [isOffer]="true"
-        [id]="item.id"
-        [features]="item.features"
-        [ngClass]="{ 'full-width': i == 0 }"
-      >
-      </app-trip-card>
-    </section>
+    <app-loader
+      [isLoading]="isLoading"
+      class="flex_area-content"
+      [viewRef]="content"
+      [hasData]="!!data && data.length > 0"
+    >
+    </app-loader>
   </div>
 </div>
+
+<ng-template #content>
+  <app-trip-card
+    *ngFor="let item of data; let i = index"
+    [name]="item.name"
+    [duration]="item.duration"
+    [price]="item.basePrice"
+    [currency]="item.curreny"
+    [img]="item.previewImage"
+    [isOffer]="true"
+    [id]="item.id"
+    [features]="item.features"
+    [ngClass]="{ 'full-width': i == 0 }"
+  >
+  </app-trip-card>
+</ng-template>
