@@ -6,36 +6,22 @@
   >
   </app-banner-carousel>
 
-  <div class="info">
-    <div class="info-text page-padding">
-      <p (click)="test()" class="info-text__top">
-        {{ "searchPannel.title" | transloco }}
-      </p>
-      <p class="info-text__middle">{{ "searchPannel.desc" | transloco }}</p>
-      <p class="info-text__bottom">
-        {{ "searchPannel.extra1" | transloco }}<br />
-        {{ "searchPannel.extra2" | transloco }}
-      </p>
-    </div>
-
-    <section class="info-warpper">
-      <ul class="info-options">
-        <li
-          [ngClass]="{ active: activeTab == 'tour' }"
-          (click)="changeTab('tour')"
-        >
-          {{ "buttons.tours" | transloco }}<br />
-        </li>
-        <li
-          [ngClass]="{ active: activeTab == 'medic' }"
-          (click)="changeTab('medic')"
-        >
-          {{ "buttons.medic" | transloco }}<br />
-        </li>
-      </ul>
-      <form [formGroup]="form" class="info_inputs">
-        <div class="info_inputs-controls">
-          <app-custom-input
+  <div class="info page-padding">
+    <p (click)="test()" class="info__top">
+      {{ "searchPannel.title" | transloco }}
+    </p>
+    <p class="info__middle">{{ "searchPannel.desc" | transloco }}</p>
+    <p class="info__bottom">
+      {{ "searchPannel.extra1" | transloco }}<br />
+      {{ "searchPannel.extra2" | transloco }}
+    </p>
+  </div>
+  <section class="filter">
+    <div class="filter-tabs"></div>
+    <div class="filter-body">
+      <form action="" class="filter-form">
+        <div class="filter-form__left">
+          <!-- <app-custom-input
             class="control"
             formControlName="whereTo"
             [icon]="icons.compass"
@@ -50,33 +36,23 @@
             formControlName="guest"
           >
           </app-guest-count-input>
-          <!-- <app-custom-select
-          [icon]="icons.work"
-          [values]="tripTypes"
-          formControlName="travelType"
-        ></app-custom-select> -->
+
           <app-custom-date-picker
             [icon]="icons.profile"
             [hasBorder]="hasBorder"
             [placeholder]="'inputs.traveldate' | transloco"
             formControlName="date"
             class="last-item control"
-          ></app-custom-date-picker>
+          ></app-custom-date-picker> -->
         </div>
-        <button class="main-btn info_inputs-btn">
-          {{ "buttons.search" | transloco }}
-        </button>
-        <img
-          src="assets/images/bk/ticket2.png"
-          class="horiz"
-          alt="Chris standing up holding his daughter Elva"
-        />
+        
+
+        <div class="filter-form__right">
+          <!-- <button class="main-btn info_inputs-btn">
+            {{ "buttons.search" | transloco }}
+          </button> -->
+        </div>
       </form>
-      <img
-        src="assets/images/bk/ticketv.png"
-        class="vert"
-        alt="Chris standing up holding his daughter Elva"
-      />
-    </section>
-  </div>
+    </div>
+  </section>
 </div>
