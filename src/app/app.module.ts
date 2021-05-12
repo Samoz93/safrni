@@ -73,6 +73,8 @@ import { CustomTextareaComponent } from './common/widgets/custom-textarea/custom
 import { HorizontalListviewComponent } from './common/widgets/horizontal-listview/horizontal-listview.component';
 import { TranslocoRootModule } from './transloco/transloco-root.module';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatButton, MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 export function playerFactory() {
   return player;
@@ -137,11 +139,13 @@ export function playerFactory() {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
+
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
     MatCheckboxModule,
+    MatButtonModule,
+    MatTooltipModule,
     BrowserAnimationsModule,
     NgbModule,
     MatIconModule,

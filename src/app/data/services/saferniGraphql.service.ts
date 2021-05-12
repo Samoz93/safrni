@@ -2832,7 +2832,7 @@ export type TripInfoFragment = (
     & Pick<ComponentFeatureFeature, 'included'>
     & { feature?: Maybe<(
       { __typename?: 'Feature' }
-      & Pick<Feature, 'name'>
+      & Pick<Feature, 'name' | 'info'>
     )> }
   )>>> }
 );
@@ -2913,6 +2913,7 @@ export const TripInfoFragmentDoc = gql`
     included
     feature {
       name
+      info
     }
   }
 }

@@ -39,6 +39,7 @@ fragment tripInfo on Trips {
     included
     feature {
       name
+      info
     }
   }
 }

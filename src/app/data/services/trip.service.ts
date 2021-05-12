@@ -70,7 +70,7 @@ export class TripService extends BaseService<TripModel> {
     }
     console.log(whereQuery);
 
-    let trips = (
+    return (
       await this.tripsGql
         .fetch({
           limit: query?.limit ?? 10,
@@ -78,9 +78,15 @@ export class TripService extends BaseService<TripModel> {
           where: whereQuery,
         })
         .toPromise()
-    ).data.trips?.map((trip) => this.tripAdapter.adapt(trip));
+    ).data.trips?.map((trip) => this.tripAdapter.adapt(trip))!;
+  }
+  async getRelatedTrips(to: TripModel): Promise<TripModel[]> {
+    let result = await this.queryTrips({ limit: 8, cityId: to.city.id });
 
-    return trips!;
+    return [
+      ...[...result, ...result, ...result],
+      ...[...result, ...result, ...result],
+    ];
   }
   async getTripById(id: string): Promise<TripModel> {
     let item = this.data$.value.find((x) => x.id === id);

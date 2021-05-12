@@ -115,6 +115,12 @@
               [ngStyle]="{ color: feature.included ? '#20aed5' : 'red' }"
             ></i>
             <p>{{ feature.name }}</p>
+            <i
+              class="fa fa-info-circle info"
+              *ngIf="feature.info"
+              matTooltip="{{ feature.info }}"
+              matTooltipClass="feature-tooltip"
+            ></i>
           </div>
         </div>
       </section>
@@ -227,16 +233,15 @@
       <p>{{ "tour-info.bookingNotShared" | transloco }}</p>
     </div>
     <div class="similar-tours__grid">
-      <app-trip-card></app-trip-card>
-      <app-trip-card></app-trip-card>
-      <app-trip-card></app-trip-card>
-      <app-trip-card></app-trip-card>
-      <app-trip-card></app-trip-card>
-      <app-trip-card></app-trip-card>
-      <app-trip-card></app-trip-card>
-      <app-trip-card></app-trip-card>
-      <app-trip-card></app-trip-card>
-      <app-trip-card></app-trip-card>
+      <app-trip-card
+        *ngFor="let item of relatedTrips; let i = index"
+        [id]="item.id"
+        [features]="item.features"
+        [img]="item.previewImage"
+        [name]="item.name"
+        [price]="item.basePrice"
+        [duration]="item.duration"
+      ></app-trip-card>
     </div>
   </section>
 </div>
