@@ -2,7 +2,7 @@
   <app-banner-carousel
     class="banner-slider"
     [images]="['/assets/images/placeholder/istanbul.png']"
-    [screenHeightPercentage]="60"
+    [screenHeightPercentage]="bannerHeight"
   >
   </app-banner-carousel>
 
@@ -19,7 +19,7 @@
   <section class="filter">
     <div class="filter-tabs"></div>
     <div class="filter-body">
-      <form action="" class="filter-form">
+      <form [formGroup]="form" class="filter-form">
         <div class="filter-form__left">
           <app-custom-input
             class="control"

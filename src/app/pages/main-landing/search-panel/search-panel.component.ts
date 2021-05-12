@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TABS } from 'src/app/data/static/main-info';
 import { ICONS } from 'src/app/data/utils/enums';
@@ -34,6 +34,14 @@ export class SearchPanelComponent implements OnInit {
       date: new Date(),
     });
     this.isArabic$ = locale.isArabic$;
+  }
+  bannerHeight = 60;
+  @HostListener('window:resize', []) onScreenChanged() {
+    if (window.innerWidth <= 930 && this.bannerHeight != 85) {
+      this.bannerHeight = 85;
+    } else if (window.innerWidth > 930 && this.bannerHeight != 60) {
+      this.bannerHeight = 60;
+    }
   }
   changeTab(tab: any) {
     this.activeTab = tab;

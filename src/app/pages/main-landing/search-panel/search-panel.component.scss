@@ -12,9 +12,7 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
   position: relative;
   height: 60vh;
   width: 100%;
-  @include res(tab) {
-    padding: 0;
-  }
+
   banner-slider {
     z-index: 0;
   }
@@ -72,20 +70,11 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
         height: 100%;
         display: flex;
 
-        &::before {
-          content: "";
-          position: absolute;
-          background-color: transparent;
-          width: 100%;
-          height: calc(100% - 20px);
-          top: 50%;
-          transform: translateY(-50%);
-          box-shadow: $subtleShadow;
-        }
+        filter: drop-shadow($subtleShadow);
 
         &__left {
           width: 81.5%;
-          overflow: hidden;
+
           position: relative;
           background-color: white;
           border-right: dashed 1px $border-color;
@@ -135,8 +124,9 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
           -webkit-mask-composite: destination-in;
           mask-composite: exclude;
 
-          display: grid;
-          place-items: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
 
           border-left: dashed 1px $border-color;
           button {
@@ -156,6 +146,84 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
     @include respondMax(1100px) {
       width: 85%;
       height: calc(85vw / 8);
+    }
+    @include respondMax(930px) {
+      width: 40rem;
+      height: unset;
+      .filter-body {
+        .filter-form {
+          flex-direction: column;
+
+          &__right {
+            width: 100%;
+            height: 24%;
+            border-left: none;
+            padding: 5rem 0rem 0rem 0rem;
+            border-top: dashed 1px $border-color;
+            mask-image: radial-gradient(
+                circle 10px at top right,
+                transparent 0,
+                transparent 10px,
+                black 10px
+              ),
+              radial-gradient(
+                circle 10px at top left,
+                transparent 0,
+                transparent 10px,
+                black 10px
+              );
+            -webkit-mask-composite: destination-in;
+            mask-composite: exclude;
+
+            align-items: flex-end;
+            button {
+              width: 100%;
+              height: 60%;
+            }
+          }
+
+          &__left {
+            width: 100%;
+            height: 76%;
+            padding: 0rem 0rem 5rem 0rem;
+            border-right: none;
+            flex-direction: column;
+            mask-image: radial-gradient(
+                circle 10px at bottom right,
+                transparent 0,
+                transparent 10px,
+                black 10px
+              ),
+              radial-gradient(
+                circle 10px at bottom left,
+                transparent 0,
+                transparent 10px,
+                black 10px
+              );
+            -webkit-mask-composite: destination-in;
+            mask-composite: exclude;
+
+            & > * {
+              flex: 1 1 auto;
+              height: 10rem;
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+  @include respondMax(930px) {
+    height: 85vh;
+    .info {
+      height: 50%;
+    }
+    .filter {
+      transform: translate(50%, 0%);
+      position: absolute;
+      right: 50%;
+      bottom: unset;
+      top: 50%;
     }
   }
 }
