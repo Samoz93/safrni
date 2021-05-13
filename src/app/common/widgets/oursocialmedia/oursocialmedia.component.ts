@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-oursocialmedia',
@@ -12,6 +12,6 @@ export class OursocialmediaComponent implements OnInit {
     { icon: 'twitter.svg', link: 'Istanbul, Turkey' },
   ];
   constructor() {}
-
+  @Input() isSmallIcons = true;
   ngOnInit(): void {}
 }
