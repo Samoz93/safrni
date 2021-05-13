@@ -2,7 +2,7 @@
 @import "/src/assets/css/abstract/mixins";
 
 .main {
-  height: 40rem;
+  height: 60rem;
   display: grid;
   place-items: end;
   background-color: $light-blue;
@@ -16,22 +16,140 @@
 
 .clipped {
   width: 100%;
-  height: 35rem;
+  margin-top: 10rem;
   background: $light-black;
   background-size: cover;
   -webkit-clip-path: url(#my-clip-path);
   clip-path: url(#my-clip-path);
-
+  display: grid;
+  grid-template-columns: 70% 30%;
+  @include res(phone) {
+    grid-template-columns: 100%;
+  }
+  align-items: flex-end;
   .data {
-    width: 30rem;
-    height: 25rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 1fr);
 
-    .sc {
-      align-self: stretch;
+    color: white;
+    justify-items: center;
+    align-items: flex-end;
+    margin: 10rem 0 0 0;
+    font-size: 1.5rem;
+
+    @include res(phone) {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      margin: 5rem;
+      font-size: 2rem;
+    }
+    &_title {
+      grid-column: 1;
+      grid-row: 2;
+      font-size: 4.5rem;
+    }
+    &_sc {
+      grid-column: 1;
+      grid-row: 2 / span 2;
+      width: 50%;
+    }
+    &_phone {
+      grid-column: 1;
+      grid-row: 4;
+      font-size: inherit;
+    }
+    &_email {
+      grid-column: 1;
+      grid-row: 5;
+      font-size: inherit;
+    }
+    &_home {
+      grid-column: 2;
+      grid-row: 6;
+      font-size: inherit;
+    }
+    //second col
+
+    &_home {
+      grid-column: 2;
+      grid-row: 1;
+    }
+    &_about {
+      grid-column: 2;
+      grid-row: 2;
+    }
+    &_privacy {
+      grid-column: 2;
+      grid-row: 3;
+    }
+    &_support {
+      grid-column: 2;
+      grid-row: 4;
+    }
+    &_contact {
+      grid-column: 2;
+      grid-row: 5;
+    }
+    .navlink {
+      font-size: 2rem;
+      font-weight: 800;
+      color: inherit;
+    }
+
+    @include res(phone) {
+      &_title {
+        grid-column: 1;
+        grid-row: 2;
+      }
+      &_sc {
+        grid-column: 3;
+        grid-row: 3;
+        width: 100%;
+      }
+      &_phone {
+        grid-column: 4;
+        grid-row: 2;
+      }
+      &_email {
+        grid-column: 4;
+        grid-row: 3;
+      }
+      &_home {
+        grid-column: 2;
+        grid-row: 1;
+      }
+      //second col
+
+      &_home {
+        grid-column: 2;
+        grid-row: 1;
+      }
+      &_about {
+        grid-column: 2;
+        grid-row: 2;
+      }
+      &_privacy {
+        grid-column: 3;
+        grid-row: 2;
+      }
+      &_support {
+        grid-column: 3;
+        grid-row: 1;
+      }
+      &_contact {
+        grid-column: 2;
+        grid-row: 3;
+      }
+    }
+    //image
+  }
+  .data_img {
+    object-fit: scale-down;
+    width: 100%;
+    align-self: flex-end;
+    @include res(phone) {
+      display: none;
     }
   }
 }

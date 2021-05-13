@@ -9,10 +9,19 @@
 
   <div class="clipped">
     <div class="data">
-      <h1>{{ projectName | transloco }}</h1>
-      <app-oursocialmedia class="sc"></app-oursocialmedia>
-      <h5>{{ phone }}</h5>
-      <h5>{{ email }}</h5>
+      <h1 class="data_title">{{ projectName | transloco }}</h1>
+      <app-oursocialmedia
+        [isSmallIcons]="false"
+        class="data_sc"
+      ></app-oursocialmedia>
+      <h5 class="data_phone">{{ phone }}</h5>
+      <h5 class="data_email">{{ email }}</h5>
+      <a href="#" class="data_home navlink">Home</a>
+      <a href="#" class="data_about navlink">About us</a>
+      <a href="#" class="data_privacy navlink">Privacy policy</a>
+      <a href="#" class="data_support navlink">Support</a>
+      <a href="#" class="data_contact navlink">Contact Us</a>
     </div>
+    <img class="data_img" src="/assets/images/bk/footer.png" alt="" />
   </div>
 </div>

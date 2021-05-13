@@ -1,11 +1,16 @@
 .main_social {
   display: flex;
-  justify-content: center;
+  width: 100%;
+  justify-content: space-evenly;
   filter: invert(85%) sepia(95%) saturate(0%) hue-rotate(109deg)
     brightness(105%) contrast(104%);
 
   img {
     padding: 0.5rem;
+    height: 4rem;
+    width: 4rem;
+  }
+  img.small {
     height: 3rem;
     width: 3rem;
   }
