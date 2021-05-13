@@ -92,7 +92,7 @@ export class TourMapComponent implements OnInit, OnDestroy {
       this.currentLat = location.geo.latitude;
       this.currentLong = location.geo.longitude;
       this.zoom += 10;
-
+      this.selectedImageIndex = 0;
       this.sidebarLocation = location;
     }
   }
@@ -100,6 +100,7 @@ export class TourMapComponent implements OnInit, OnDestroy {
     this.selectedImageIndex = imageIndex;
   }
   nextDestination(): void {
+    this.selectedImageIndex = 0;
     let indexOfCurrent = this.allLocationsSorted.indexOf(this.sidebarLocation);
     if (
       indexOfCurrent != null &&
@@ -109,6 +110,7 @@ export class TourMapComponent implements OnInit, OnDestroy {
     }
   }
   prevDestination(): void {
+    this.selectedImageIndex = 0;
     let indexOfCurrent = this.allLocationsSorted.indexOf(this.sidebarLocation);
     if (indexOfCurrent != null && indexOfCurrent > 0) {
       this.recenterMapToLocation(this.allLocationsSorted[--indexOfCurrent]);
@@ -130,17 +132,14 @@ export class TourMapComponent implements OnInit, OnDestroy {
     this.sideBarVisibility = !this.sideBarVisibility;
   }
   onLocationClicked(data: AccordionClickEventData) {
-    this.currentLat = this.timelines[data.parentIndex].locations[
-      data.childIndex
-    ].geo.latitude;
-    this.currentLong = this.timelines[data.parentIndex].locations[
-      data.childIndex
-    ].geo.longitude;
+    this.currentLat =
+      this.timelines[data.parentIndex].locations[data.childIndex].geo.latitude;
+    this.currentLong =
+      this.timelines[data.parentIndex].locations[data.childIndex].geo.longitude;
     this.zoom += 10;
-
-    this.sidebarLocation = this.timelines[data.parentIndex].locations[
-      data.childIndex
-    ];
+    this.selectedImageIndex = 0;
+    this.sidebarLocation =
+      this.timelines[data.parentIndex].locations[data.childIndex];
   }
   toggleMobileSheet() {
     this.mobileSheetExpanded = !this.mobileSheetExpanded;

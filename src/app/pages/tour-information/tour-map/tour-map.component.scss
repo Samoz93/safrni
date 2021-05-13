@@ -89,23 +89,34 @@
       .side-information-bar-content {
         display: flex;
         flex-direction: column;
+        height: 100%;
 
-        img {
+        &__header {
           width: 100%;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
         }
         &__body {
           padding: 2.5rem;
+          position: relative;
+
           h2 {
             font-size: 2.5rem;
             font-weight: bold;
             color: black;
             text-transform: capitalize;
+            padding-bottom: 0.5rem;
           }
           p {
             text-transform: capitalize;
             font-size: 1.9rem;
             font-weight: 300;
             color: #252629;
+            margin-bottom: 1.5rem;
           }
         }
       }
@@ -223,6 +234,7 @@
           font-weight: bold;
         }
         p {
+          padding-top: 1rem;
           text-transform: capitalize;
           font-size: 1.2rem;
           font-weight: 400;
