@@ -1,4 +1,5 @@
 export const environment = {
-  baseUrl: 'http://localhost:4200',
-  production: true
+  baseUrl: 'https://saferni.net',
+  production: true,
+  api: 'https://saferni.net/api',
 };

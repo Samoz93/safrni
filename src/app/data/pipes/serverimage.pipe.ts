@@ -12,7 +12,7 @@ export class ServerimagePipe implements PipeTransform {
   transform(pr: ImageModel | undefined): string {
     if (!pr) {
       return StaticInfo.defaultImage;
-    } else if (pr.isRemote) return `${StaticInfo.baseUrl}${pr.realtiveUrl}`;
+    } else if (pr.isRemote) return `${environment.api}${pr.realtiveUrl}`;
     else return pr.realtiveUrl;
     //if (DevData.isDev && !environment.production) return pr?.url!;
 

@@ -3,7 +3,7 @@ export class StaticInfo {
   static phoneNumber = '90 537 695 8305';
   static email = 'Saferni@emali.com';
   static defaultImage = '/assets/images/placeholder/default.jpeg';
-  static baseUrl = 'http://www.saferni.xyz';
+
   static location = '';
 
   //settings

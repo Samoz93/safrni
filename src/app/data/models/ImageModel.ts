@@ -1,9 +1,12 @@
+import { environment } from 'src/environments/environment.prod';
 import { Adapter } from '../adapters/adapter';
 import { StaticInfo } from '../static/main-info';
 
 export class ImageModel {
-  get url():string {
-    return this.isRemote? `${StaticInfo.baseUrl}${this.realtiveUrl}` : this.realtiveUrl;
+  get url(): string {
+    return this.isRemote
+      ? `${environment.api}${this.realtiveUrl}`
+      : this.realtiveUrl;
   }
   constructor(
     public id: string,

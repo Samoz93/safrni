@@ -1,19 +1,20 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment.prod';
 import { QueryStringParameters } from '../abstract/query.string.builder';
 import { EndPoints, StaticInfo } from '../static/main-info';
 
 @Injectable({ providedIn: 'root' })
 export class SaferniHttp {
   constructor(private http: HttpClient) {}
-  
+
   public get<T>(
     endpoint: EndPoints,
     query?: QueryStringParameters,
     options?: HttpHeaders
   ) {
     let urlBuilder = new UrlBuilder(
-      StaticInfo.baseUrl,
+      environment.api,
       endpoint.toString(),
       query
     );

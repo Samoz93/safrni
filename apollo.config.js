@@ -2,7 +2,7 @@ module.exports = {
   client: {
     service: {
       name: "saferni-graphql",
-      url: "http://saferni.xyz/graphql",
+      url: "https://saferni.net/api/graphql",
     },
   },
 };
