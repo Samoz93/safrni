@@ -4,17 +4,18 @@
     [slidesPerView]="3"
     [spaceBetween]="25"
     [(index)]="currentSwiperIndex"
+    [grabCursor]="true"
   >
     <ng-template
       swiperSlide
       class="slide"
       *ngFor="let image of imagesUrls(); let i = index"
-      style="width: 100%; height: 100%"
+      style="width: 100%; height: 100%; cursor: pointer"
     >
       <img
-        [src]="image[i]"
+        [src]="image"
         (click)="onImageClicked(i)"
-        style="width: 100%; height: 100%; object-fit: cover"
+        style="width: 100%; height: 100%; object-fit: cover; cursor: pointer"
       />
     </ng-template>
   </swiper>

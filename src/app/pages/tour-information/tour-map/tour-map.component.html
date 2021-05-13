@@ -73,16 +73,21 @@
         <p>{{ "map.tourplan" | transloco }}</p>
       </div>
       <div class="side-information-bar-content">
-        <img
-          src="{{ sidebarLocation.images[selectedImageIndex] | serverimage }}"
-        />
+        <div class="side-information-bar-content__header">
+          <img
+            src="{{ sidebarLocation.images[selectedImageIndex] | serverimage }}"
+          />
+        </div>
+
         <div class="side-information-bar-content__body">
           <h2>{{ sidebarLocation.name }}</h2>
           <p>{{ sidebarLocation.desc }}</p>
+
+          <app-horizontal-listview
+            [images]="sidebarLocation.images"
+            (itemClicked)="onImageSliderClicked($event)"
+          ></app-horizontal-listview>
         </div>
-        <app-horizontal-listview
-        [images]="sidebarLocation.images"
-        ></app-horizontal-listview>
       </div>
     </div>
   </div>
