@@ -48,6 +48,28 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
       font-size: 3rem;
       font-weight: 400;
     }
+    @include respondMax(800px) {
+      &__top {
+        font-size: 3rem;
+      }
+      &__middle {
+        font-size: 5rem;
+      }
+      &__bottom {
+        font-size: 3.25rem;
+      }
+    }
+    @include respondMax(500px) {
+      &__top {
+        font-size: 2rem;
+      }
+      &__middle {
+        font-size: 4rem;
+      }
+      &__bottom {
+        font-size: 1.8rem;
+      }
+    }
   }
 
   .filter {
@@ -156,7 +178,7 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
 
           &__right {
             width: 100%;
-            height: 24%;
+            height: 13.5rem;
             border-left: none;
             padding: 5rem 0rem 0rem 0rem;
             border-top: dashed 1px $border-color;
@@ -178,7 +200,7 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
             align-items: flex-end;
             button {
               width: 100%;
-              height: 60%;
+              height: 8rem;
             }
           }
 
