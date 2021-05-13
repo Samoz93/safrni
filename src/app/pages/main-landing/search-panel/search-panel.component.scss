@@ -8,26 +8,15 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
   * {
     z-index: 2;
   }
-  display: grid;
+
   position: relative;
-  height: 90rem;
+  height: 60vh;
   width: 100%;
-  @include res(tab) {
-    padding: 0;
-  }
-  img {
+
+  banner-slider {
     z-index: 0;
   }
-  img.img-main {
-    top: 0;
-    position: absolute;
-    width: 110%;
-    height: 75%;
-    object-fit: cover;
-    @include res(tab) {
-      height: 90%;
-    }
-  }
+
   .control {
     font-size: 1.5rem;
     @include res(tab) {
@@ -38,145 +27,225 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
   .info {
     color: white;
     text-align: center;
+    position: absolute;
+    top: 0;
     height: 100%;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 
-    &-text {
-      height: calc(75% - 8rem - 7.5rem);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
-      @include res(tab) {
-        height: calc(50% - 8rem - 7.5rem);
+    &__top {
+      font-size: 4rem;
+      font-weight: 400;
+    }
+    &__middle {
+      font-size: 5rem;
+      font-family: $secondary-font;
+    }
+    &__bottom {
+      font-size: 3rem;
+      font-weight: 400;
+    }
+    @include respondMax(800px) {
+      &__top {
+        font-size: 3rem;
+      }
+      &__middle {
+        font-size: 5rem;
+      }
+      &__bottom {
+        font-size: 3.25rem;
       }
     }
-    &-options {
-      height: 8rem;
-      padding: 0;
-      margin: 0 2rem;
-      width: 20rem;
-      display: grid;
-      grid-template-columns: repeat(2, 50%);
-      transform: translateY(10%);
-      li {
-        list-style-type: none;
-        display: grid;
-        place-items: center;
-        font-size: 1.7rem;
-        cursor: pointer;
-        background: $accent;
-        color: white;
-        transition: all 200ms;
+    @include respondMax(500px) {
+      &__top {
+        font-size: 2rem;
       }
-      li.active {
-        background: white;
-        color: $accent;
+      &__middle {
+        font-size: 4rem;
+      }
+      &__bottom {
+        font-size: 1.8rem;
       }
     }
-    &_inputs {
-      padding: 0;
-      margin: 0;
-      height: 15rem;
-      display: grid;
-      grid-template-columns: 80.5% 17.5%;
-      @include res(tab) {
-        width: $vert-image-width;
-        grid-template-columns: 100%;
-        grid-template-rows: calc(80% - 5rem) 20%;
-        row-gap: 6.5rem;
-        height: 100%;
-      }
-      align-content: center;
-      &-controls {
-        order: 0;
-        padding: 0 1rem 0 3rem;
-        * {
-          height: 8rem;
-        }
-        display: grid;
-        grid-template-columns: repeat(3, calc(100% / 3));
+  }
+
+  .filter {
+    position: absolute;
+    bottom: 0px;
+    width: 111rem;
+
+    height: 13.875rem;
+    right: 50%;
+    transform: translate(50%, 50%);
+
+    .filter-body {
+      width: 100%;
+      height: 100%;
+
+      .filter-form {
         position: relative;
-        align-items: center;
-        @include res(tab) {
-          grid-template-columns: 100%;
-          grid-template-rows: repeat(3, calc(100% / 3));
-        }
-        &::after {
-          content: "";
-          position: absolute;
-          top: 0;
-          right: -1rem;
-          height: 100%;
-          border: $brdr;
-          @include res(tab) {
-            height: 1%;
-            width: 70%;
-            bottom: -13%;
-            transform: translate(-21%, 0);
-            top: auto;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        display: flex;
+
+        filter: drop-shadow($subtleShadow);
+
+        &__left {
+          width: 81.5%;
+
+          position: relative;
+          background-color: white;
+          border-right: dashed 1px $border-color;
+          mask-image: radial-gradient(
+              circle 10px at bottom right,
+              transparent 0,
+              transparent 10px,
+              black 10px
+            ),
+            radial-gradient(
+              circle 10px at top right,
+              transparent 0,
+              transparent 10px,
+              black 10px
+            );
+          -webkit-mask-composite: destination-in;
+          mask-composite: exclude;
+
+          display: flex;
+          justify-content: stretch;
+          align-items: center;
+          padding: 0rem 3.2rem;
+
+          & > * {
+            flex: 1 1 33%;
+            height: 60%;
+            max-width: 100%;
+            min-width: 0px;
           }
         }
-        .guest {
-          z-index: 1000;
+        &__right {
+          position: relative;
+          width: 18.5%;
+          background-color: white;
+          mask-image: radial-gradient(
+              circle 10px at bottom left,
+              transparent 0,
+              transparent 10px,
+              black 10px
+            ),
+            radial-gradient(
+              circle 10px at top left,
+              transparent 0,
+              transparent 10px,
+              black 10px
+            );
+          -webkit-mask-composite: destination-in;
+          mask-composite: exclude;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          border-left: dashed 1px $border-color;
+          button {
+            width: 70%;
+            height: 60%;
+            pointer-events: auto;
+            p {
+              font-size: 2.4rem;
+              margin: 0px;
+              font-weight: bold;
+            }
+          }
         }
       }
-      &-btn {
-        margin: 0 1rem 0 3rem;
-        height: 8rem;
-        @include res(tab) {
-          margin: 0 2rem 0 3rem;
-        }
-      }
-      position: relative;
-      img.horiz {
-        position: absolute;
-        width: 100%;
-        height: 15rem;
-        background-origin: 0;
-        object-fit: fill;
-        @include res(tab) {
-          display: none;
+    }
+
+    @include respondMax(1100px) {
+      width: 85%;
+      height: calc(85vw / 8);
+    }
+    @include respondMax(930px) {
+      width: 40rem;
+      height: unset;
+      .filter-body {
+        .filter-form {
+          flex-direction: column;
+
+          &__right {
+            width: 100%;
+            height: 13.5rem;
+            border-left: none;
+            padding: 5rem 0rem 0rem 0rem;
+            border-top: dashed 1px $border-color;
+            mask-image: radial-gradient(
+                circle 10px at top right,
+                transparent 0,
+                transparent 10px,
+                black 10px
+              ),
+              radial-gradient(
+                circle 10px at top left,
+                transparent 0,
+                transparent 10px,
+                black 10px
+              );
+            -webkit-mask-composite: destination-in;
+            mask-composite: exclude;
+
+            align-items: flex-end;
+            button {
+              width: 100%;
+              height: 8rem;
+            }
+          }
+
+          &__left {
+            width: 100%;
+            height: 76%;
+            padding: 0rem 0rem 5rem 0rem;
+            border-right: none;
+            flex-direction: column;
+            mask-image: radial-gradient(
+                circle 10px at bottom right,
+                transparent 0,
+                transparent 10px,
+                black 10px
+              ),
+              radial-gradient(
+                circle 10px at bottom left,
+                transparent 0,
+                transparent 10px,
+                black 10px
+              );
+            -webkit-mask-composite: destination-in;
+            mask-composite: exclude;
+
+            & > * {
+              flex: 1 1 auto;
+              height: 10rem;
+              width: 100%;
+            }
+          }
         }
       }
     }
   }
-  h2 {
-    font-size: 3.1rem;
-    font-weight: 400;
-    @include res(med) {
-      font-size: 2rem;
+  @include respondMax(930px) {
+    height: 85vh;
+    .info {
+      height: 50%;
     }
-  }
-  h1 {
-    font-size: 7.1rem;
-    font-weight: 400;
-    @include res(med) {
-      font-size: 5.5rem;
-    }
-  }
-}
-section.info-warpper {
-  position: relative;
-  img.vert {
-    display: none;
-  }
-  @include res(tab) {
-    img.vert {
-      display: block;
+    .filter {
+      transform: translate(50%, 0%);
       position: absolute;
-      height: 50rem;
-      object-fit: fill;
-      width: 102%;
-    }
-    display: flex;
-    flex-direction: column;
-    width: $vert-image-width;
-    margin: 0 auto;
-    .info-options {
-      align-self: center;
-      width: 80%;
-      margin: 0 auto;
-      margin-bottom: 1rem;
+      right: 50%;
+      bottom: unset;
+      top: 50%;
     }
   }
 }

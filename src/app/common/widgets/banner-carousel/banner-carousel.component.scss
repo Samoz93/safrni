@@ -4,7 +4,11 @@
   width: 100%;
 
   position: relative;
+  ::ng-deep .swiper-slide {
+    width: 100px;
 
+    @include imageOverlay(0.1);
+  }
   .swiper-arrow {
     position: absolute;
     cursor: pointer;
