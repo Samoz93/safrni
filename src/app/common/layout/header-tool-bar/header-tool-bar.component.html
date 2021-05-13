@@ -1,46 +1,23 @@
-<nav
-  class="main page-padding"
-  [ngClass]="{ 'arabic-layout': isArabic$ | async }"
->
-  <button
-    class="nav-toggler"
-    [ngClass]="isNavOpen ? 'toggler-open' : ''"
-    (click)="toggleNav()"
-  >
-    <span></span>
-  </button>
-  <div class="main_logo" (click)="toggleLang()">
-    <h1>{{ projectName }}</h1>
-  </div>
-  <ul class="main_tool-bar">
-    <li>
-      <a class="navlink" [routerLink]="['/']">{{
-        "buttons.home" | transloco
-      }}</a>
-    </li>
-    <li>
-      <a class="navlink">{{ "buttons.aboutus" | transloco }}</a>
-    </li>
-    <li>
-      <a class="navlink" [routerLink]="['/tours/1']">{{
-        "buttons.trips" | transloco
-      }}</a>
-    </li>
-    <li>
-      <a class="navlink" [routerLink]="['/booking/11']">{{
-        "buttons.destination" | transloco
-      }}</a>
-    </li>
-    <li>
-      <a class="navlink">{{ "buttons.medic" | transloco }}</a>
-    </li>
-  </ul>
-  <div class="main_mobile-tool-bar" [ngClass]="isNavOpen ? 'open' : ''">
-    <ul class="navLinks">
+<div class="nav-wrapper">
+  <nav class="main" [ngClass]="{ 'arabic-layout': isArabic$ | async }">
+    <button
+      class="nav-toggler"
+      [ngClass]="isNavOpen ? 'toggler-open' : ''"
+      (click)="toggleNav()"
+    >
+      <span></span>
+    </button>
+    <div class="main_logo" (click)="toggleLang()">
+      <h1>{{ projectName }}</h1>
+    </div>
+    <ul class="main_tool-bar">
       <li>
         <a class="navlink" [routerLink]="['/']">{{
           "buttons.home" | transloco
         }}</a>
+      </li>
+      <li>
+        <a class="navlink">{{ "buttons.aboutus" | transloco }}</a>
       </li>
       <li>
         <a class="navlink" [routerLink]="['/tours/1']">{{
@@ -55,25 +32,47 @@
       <li>
         <a class="navlink">{{ "buttons.medic" | transloco }}</a>
       </li>
-      <li>
-        <a class="navlink">{{ "buttons.aboutus" | transloco }}</a>
-      </li>
     </ul>
+    <div class="main_mobile-tool-bar" [ngClass]="isNavOpen ? 'open' : ''">
+      <ul class="navLinks">
+        <li>
+          <a class="navlink" [routerLink]="['/']">{{
+            "buttons.home" | transloco
+          }}</a>
+        </li>
+        <li>
+          <a class="navlink" [routerLink]="['/tours/1']">{{
+            "buttons.trips" | transloco
+          }}</a>
+        </li>
+        <li>
+          <a class="navlink" [routerLink]="['/booking/11']">{{
+            "buttons.destination" | transloco
+          }}</a>
+        </li>
+        <li>
+          <a class="navlink">{{ "buttons.medic" | transloco }}</a>
+        </li>
+        <li>
+          <a class="navlink">{{ "buttons.aboutus" | transloco }}</a>
+        </li>
+      </ul>
 
-    <ul class="contactLinks">
-      <li>
-        <i class="fa fa-phone"></i><a href="">{{ contactInfo.phone }}</a>
-      </li>
-      <li>
-        <i class="fa fa-envelope"></i><a href="">{{ contactInfo.email }}</a>
-      </li>
-      <li>
-        <i class="fa fa-compass"></i><a href="">{{ contactInfo.location }}</a>
-      </li>
-    </ul>
-  </div>
+      <ul class="contactLinks">
+        <li>
+          <i class="fa fa-phone"></i><a href="">{{ contactInfo.phone }}</a>
+        </li>
+        <li>
+          <i class="fa fa-envelope"></i><a href="">{{ contactInfo.email }}</a>
+        </li>
+        <li>
+          <i class="fa fa-compass"></i><a href="">{{ contactInfo.location }}</a>
+        </li>
+      </ul>
+    </div>
 
-  <div class="profile-toggler" (click)="goToProfile()">
-    <i class="fa fa-user-circle"></i>
-  </div>
-</nav>
+    <div class="profile-toggler" (click)="goToProfile()">
+      <i class="fa fa-user-circle"></i>
+    </div>
+  </nav>
+</div>
