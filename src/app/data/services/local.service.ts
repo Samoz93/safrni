@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { DOCUMENT } from '@angular/common';
 
 const LOCALE_KEY = 'locale';
 @Injectable({
@@ -10,11 +11,16 @@ const LOCALE_KEY = 'locale';
 export class LocalService {
   isArabic$: Observable<boolean>;
 
-  constructor(private trans: TranslocoService) {
+  constructor(
+    private trans: TranslocoService,
+    @Inject(DOCUMENT) private document: Document
+  ) {
     trans.setActiveLang(this.lastSaveLocale);
     this.isArabic$ = trans.langChanges$.pipe(map((f) => f == 'ar'));
-    trans.langChanges$.subscribe((newLocale) => {
-      if (this.lastSaveLocale != newLocale) {
+    trans.langChanges$.subscribe((newLang) => {
+      this.document.documentElement.lang = newLang;
+      this.document.documentElement.dir = newLang === 'ar' ? 'rtl' : 'ltr';
+      if (this.lastSaveLocale != newLang) {
         location.reload();
       }
     });

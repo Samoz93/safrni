@@ -5,6 +5,20 @@
   padding: 0;
   box-sizing: inherit;
 }
+p,
+div,
+h1,
+h2,
+h3,
+li,
+input,
+textarea {
+  font-family: var(--primary-font);
+}
+:root {
+  --primary-font: "Source Sans Pro", sans-serif;
+  --secondary-font: "Righteous";
+}
 img {
   border: 0;
 }
@@ -13,6 +27,7 @@ html {
   scroll-behavior: smooth;
   height: 100%;
   padding: 0rem;
+  font-family: var(--primary-font);
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -38,6 +53,15 @@ html {
     font-size: 60.25%;
   }
   overflow-x: hidden;
+
+  &:lang(ar) {
+    --primary-font: "Tajawal", sans-serif;
+    --secondary-font: "janna";
+  }
+  &:lang(en) {
+    --primary-font: "Source Sans Pro", sans-serif;
+    --secondary-font: "Righteous";
+  }
 }
 section {
   min-height: min-content;
@@ -47,9 +71,11 @@ body {
   box-sizing: border-box;
   background-color: $white;
   height: 100vh;
+  font-family: var(--primary-font);
   p {
     margin-bottom: 0;
   }
+
   // padding: 0 10% 0 10%;
 }
 ::-webkit-scrollbar {

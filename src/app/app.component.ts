@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { LocalService } from './data/services/local.service';
 
 @Component({
@@ -7,9 +8,4 @@ import { LocalService } from './data/services/local.service';
 
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  isArabic$;
-  constructor(locale: LocalService) {
-    this.isArabic$ = locale.isArabic$;
-  }
-}
+export class AppComponent {}

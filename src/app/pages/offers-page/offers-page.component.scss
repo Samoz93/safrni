@@ -70,6 +70,10 @@ $font-size: 1.5rem;
     width: 29rem;
     height: 100%;
     margin-left: auto;
+    &:lang(ar) {
+      margin-right: auto;
+      margin-left: unset;
+    }
     @include res(phone) {
       display: none;
     }
@@ -79,27 +83,32 @@ $font-size: 1.5rem;
     width: 78rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+
     @include res(phone) {
       width: 100%;
       padding: 0 2rem;
     }
     grid-auto-rows: 25rem;
     gap: 0.1rem;
+    &:lang(ar) {
+      margin-right: unset;
+      margin-left: auto;
+    }
     .full-width {
       grid-column: 1/-1;
     }
   }
 }
 
-.arabic-layout {
-  .flex_area {
-    &-content {
-      margin-right: unset;
-      margin-left: auto;
-    }
-    &-filter {
-      margin-right: auto;
-      margin-left: unset;
-    }
-  }
-}
+// .arabic-layout {
+//   .flex_area {
+//     &-content {
+//       margin-right: unset;
+//       margin-left: auto;
+//     }
+//     &-filter {
+//       margin-right: auto;
+//       margin-left: unset;
+//     }
+//   }
+// }

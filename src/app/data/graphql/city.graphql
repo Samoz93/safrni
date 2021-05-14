@@ -15,6 +15,11 @@ fragment CityInfo on City {
   name
   description
   locale
+  localizations {
+      id,
+      locale
+      
+    },
   image {
     id
     width

@@ -34,6 +34,12 @@
     *:not(:last-child) {
       margin-right: 5rem;
     }
+    &:lang(ar) {
+      *:not(:last-child) {
+        margin-right: unset;
+        margin-left: 5rem;
+      }
+    }
   }
   &_mobile-tool-bar {
     display: none;
@@ -151,15 +157,6 @@
       overflow: visible;
       opacity: 1;
       padding: 4rem;
-    }
-  }
-}
-
-.arabic-layout {
-  .main_tool-bar {
-    *:not(:last-child) {
-      margin-right: unset;
-      margin-left: 5rem;
     }
   }
 }

@@ -3,7 +3,7 @@
 
 .main {
   text-align: center;
-  font-weight: 100;
+
   line-height: 1;
   .offer-title {
     font-size: 5.5rem;
@@ -11,11 +11,23 @@
   }
   .desc {
     font-size: 5.6rem;
-    font-family: $secondary-font;
+    font-family: var(--secondary-font);
   }
   .extra {
     font-size: 2.6rem;
     line-height: 1.5;
     font-weight: 400;
+  }
+
+  @include respondMax(1250px) {
+    .offer-title {
+      font-size: 4rem;
+    }
+    .desc {
+      font-size: 4rem;
+    }
+    .extra {
+      font-size: 1.8rem;
+    }
   }
 }

@@ -78,7 +78,7 @@ $titleFontSize: 5rem;
       color: $accent;
       font-weight: 800;
       font-size: 5rem;
-      font-family: $main-font;
+      font-family: var(--primary-font);
     }
     text-align: center;
   }
