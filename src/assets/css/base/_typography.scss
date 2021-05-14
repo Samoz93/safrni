@@ -1,5 +1,5 @@
 html {
-  font-family: $main-font;
+  font-family: var(--primary-font);
   font-weight: 400;
   line-height: 1.5;
   color: $font-color;
@@ -7,7 +7,7 @@ html {
 }
 
 .offer-title {
-  font-family: $main-font;
+  font-family: var(--primary-font);
   color: $accent;
 }
 
@@ -58,7 +58,7 @@ p {
 }
 
 .term-header {
-  font-family: $main-font;
+  font-family: var(--primary-font);
   font-size: 5rem;
   color: $accent;
   line-height: 1;

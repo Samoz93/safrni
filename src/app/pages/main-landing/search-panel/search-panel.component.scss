@@ -42,7 +42,7 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
     }
     &__middle {
       font-size: 5rem;
-      font-family: $secondary-font;
+      font-family: var(--secondary-font);
     }
     &__bottom {
       font-size: 3rem;

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { translate, TranslocoService } from '@ngneat/transloco';
+import { Component, Inject, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { LocalService } from './data/services/local.service';
 
 @Component({
@@ -10,7 +10,10 @@ import { LocalService } from './data/services/local.service';
 })
 export class AppComponent implements OnInit {
   isArabic$;
-  constructor(locale: LocalService) {
+  constructor(
+    locale: LocalService,
+    @Inject(DOCUMENT) private document: Document
+  ) {
     this.isArabic$ = locale.isArabic$;
   }
   ngOnInit(): void {}

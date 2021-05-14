@@ -10,7 +10,7 @@
   input::placeholder {
     font-size: 1.5rem;
     font-weight: 400;
-    font-family: $tajwal;
+    font-family: var(--primary-font);
     color: grey;
   }
   min-width: 0px;
