@@ -8,68 +8,31 @@
 
 .data {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 40rem);
-  @include res(phone) {
-    grid-template-columns: repeat(auto-fill, 20rem);
-  }
-  height: 100%;
-  gap: 1rem;
+
+  grid-template-columns: repeat(3, 37rem);
+  // grid-auto-rows: 37rem;
+
   justify-content: center;
+  gap: 1.5rem;
 
-  .longX {
-    grid-row: 1;
-    grid-column: 1/-1;
-    .title {
-      background-color: rgba($black, 0.6);
+  @include respondMax(1250px) {
+    grid-template-columns: repeat(3, 28.3%);
+  }
+  @include respondMax(800px) {
+    grid-template-columns: repeat(2, 45%);
+    & > * {
+      aspect-ratio: 0.68;
+    }
+    .longX {
+      aspect-ratio: 2.78;
+      grid-column: 1/-1;
     }
   }
-
-  .data_card {
-    height: 40rem;
-    position: relative;
-    cursor: pointer;
-    transition: all 0.3s ease-out;
-    overflow: hidden;
-    &:hover {
-      // transform: scale(0.975);
-      img {
-        transform: scale(1.1);
-      }
-    }
-    img {
-      transition: all 0.3s ease-out;
-      border-radius: $border-radius;
-      height: 100%;
-      display: block;
-      width: 100%;
-      object-fit: cover;
-      position: absolute;
-    }
-    .price-range {
-      position: absolute;
-      top: 10%;
-      right: 0;
-      background-color: rgba($black, 0.6);
-      color: $white;
-      height: 15%;
-      display: flex;
-      align-items: center;
-      text-align: start;
-      font-size: 2rem;
-    }
-    .title {
-      font-size: 3rem;
-      position: absolute;
-      bottom: -2%;
-      left: 0;
-      width: 100%;
-      color: $white;
-      height: 20%;
-      display: flex;
-      align-items: center;
-      text-align: start;
-      font-family: $secondary-font;
-      font-weight: 400;
-    }
+  & > * {
+    aspect-ratio: 1;
+  }
+  .longX {
+    aspect-ratio: 3;
+    grid-column: 1/-1;
   }
 }

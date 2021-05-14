@@ -2,18 +2,34 @@
 @import "/src/assets/css/abstract/variables";
 .data {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 40rem);
-  height: 100%;
-  gap: 1rem;
+  grid-template-columns: repeat(3, 37rem);
+  // grid-auto-rows: 37rem;
+  width: 100%;
   justify-content: center;
+  gap: 1.5rem;
 
-  .longX {
-    grid-column: 1/-1;
+  @include respondMax(1250px) {
+    grid-template-columns: repeat(3, 28.3%);
   }
-  app-trip-card {
-    height: 40rem;
+  @include respondMax(800px) {
+    grid-template-columns: repeat(2, 45%);
+    & > * {
+      aspect-ratio: 0.68;
+    }
+    .longX {
+      aspect-ratio: 2.78;
+      grid-column: 1/-1;
+    }
+  }
+  & > * {
+    aspect-ratio: 1;
+  }
+  .longX {
+    aspect-ratio: 3;
+    grid-column: 1/-1;
   }
 }
 .main {
   height: 100%;
+  width: 100%;
 }
