@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { translate, TranslocoService } from '@ngneat/transloco';
 import { LocalService } from './data/services/local.service';
 
 @Component({
@@ -7,9 +8,10 @@ import { LocalService } from './data/services/local.service';
 
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   isArabic$;
   constructor(locale: LocalService) {
     this.isArabic$ = locale.isArabic$;
   }
+  ngOnInit(): void {}
 }

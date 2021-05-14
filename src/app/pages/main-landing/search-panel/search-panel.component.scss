@@ -257,6 +257,10 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
 }
 
 .arabic-layout {
+  .filter {
+    direction: ltr;
+  }
+
   img.horiz {
     transform: rotateY(180deg);
   }
