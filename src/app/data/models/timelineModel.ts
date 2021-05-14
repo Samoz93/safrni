@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Adapter } from '../adapters/adapter';
-import {
-  LocalizationType,
-  StrapiLocalizationsAdapter,
-} from './localization.type';
+import { LocalizationType, StrapiLocalizationsAdapter } from './localization.type';
+
 import { LocationModel, LocationModelAdapter } from './LocationModel';
 
 export class TimelineModel {
@@ -12,7 +10,7 @@ export class TimelineModel {
     public day: number,
     public description: string,
     public locations: LocationModel[],
-    public localizations: LocalizationType[]
+    // public localizations: LocalizationType[]
   ) {}
 }
 @Injectable({ providedIn: 'root' })
@@ -27,7 +25,7 @@ export class TimelineModelAdapter implements Adapter<TimelineModel> {
       item.day,
       item.description,
       locations,
-      new StrapiLocalizationsAdapter().adapt(item.localizations)
+      // new StrapiLocalizationsAdapter().adapt(item.localizations)
     );
   }
 }

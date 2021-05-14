@@ -2870,6 +2870,10 @@ export type GetTimelineQuery = (
         )>>>, city?: Maybe<(
           { __typename?: 'City' }
           & Pick<City, 'id' | 'name'>
+          & { localizations?: Maybe<Array<Maybe<(
+            { __typename?: 'City' }
+            & Pick<City, 'id' | 'locale'>
+          )>>> }
         )> }
       )>>> }
     )>>> }
@@ -3035,6 +3039,10 @@ export const GetTimelineDocument = gql`
         city {
           id
           name
+          localizations {
+            id
+            locale
+          }
         }
       }
     }

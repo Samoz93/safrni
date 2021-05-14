@@ -75,6 +75,10 @@ query getTimeline($id: ID!) {
         city {
           id
           name
+          localizations {
+            id
+            locale
+          }
         }
       }
     }
