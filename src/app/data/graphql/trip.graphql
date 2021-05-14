@@ -30,6 +30,10 @@ fragment tripInfo on Trips {
     url
     formats
   }
+  localizations {
+    id
+    locale
+  }
   basePrice
   discount
   currency
@@ -45,9 +49,14 @@ fragment tripInfo on Trips {
 }
 query getTimeline($id: ID!) {
   timeline(id: $id) {
+    localizations {
+      id
+      locale
+    }
     timelines {
       day
       description
+
       locations {
         id
         name

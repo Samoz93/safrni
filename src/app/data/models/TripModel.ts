@@ -3,6 +3,7 @@ import { Adapter } from '../adapters/adapter';
 import { CityModel } from './CityModel';
 import { FeatureModel, FeatureModelAdapter } from './FeatureModel';
 import { ImageModel, ImageModelAdapter } from './ImageModel';
+import { LocalizationType, StrapiLocalizationsAdapter } from './localization.type';
 import { TimelineModel, TimelineModelAdapter } from './timelineModel';
 
 export class TripModel {
@@ -20,7 +21,8 @@ export class TripModel {
     public basePrice: number,
     public discount: number,
     public basePeopleCount: number,
-    public curreny: string
+    public curreny: string,
+    public localizations: LocalizationType[]
   ) {}
 }
 
@@ -30,7 +32,7 @@ export class TripModelAdapter implements Adapter<TripModel> {
     let features: FeatureModel[] = item.features.map((feature: any) =>
       new FeatureModelAdapter().adapt(feature)
     );
-
+    
     return new TripModel(
       item.id,
       item.name,
@@ -45,7 +47,8 @@ export class TripModelAdapter implements Adapter<TripModel> {
       item.basePrice,
       item.discount,
       item.basePeopleCount,
-      item.currency
+      item.currency,
+      new StrapiLocalizationsAdapter().adapt(item.localizations)
     );
   }
 }

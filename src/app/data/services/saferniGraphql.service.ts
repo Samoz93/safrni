@@ -2781,7 +2781,10 @@ export type GetCityQuery = (
 export type CityInfoFragment = (
   { __typename?: 'City' }
   & Pick<City, 'id' | 'name' | 'description' | 'locale'>
-  & { image?: Maybe<(
+  & { localizations?: Maybe<Array<Maybe<(
+    { __typename?: 'City' }
+    & Pick<City, 'id' | 'locale'>
+  )>>>, image?: Maybe<(
     { __typename?: 'UploadFile' }
     & Pick<UploadFile, 'id' | 'width' | 'height' | 'url' | 'formats'>
   )> }
@@ -2827,7 +2830,10 @@ export type TripInfoFragment = (
   )>, previewImage?: Maybe<(
     { __typename?: 'UploadFile' }
     & Pick<UploadFile, 'id' | 'width' | 'height' | 'url' | 'formats'>
-  )>, features?: Maybe<Array<Maybe<(
+  )>, localizations?: Maybe<Array<Maybe<(
+    { __typename?: 'Trips' }
+    & Pick<Trips, 'id' | 'locale'>
+  )>>>, features?: Maybe<Array<Maybe<(
     { __typename?: 'ComponentFeatureFeature' }
     & Pick<ComponentFeatureFeature, 'included'>
     & { feature?: Maybe<(
@@ -2846,7 +2852,10 @@ export type GetTimelineQuery = (
   { __typename?: 'Query' }
   & { timeline?: Maybe<(
     { __typename?: 'Timeline' }
-    & { timelines?: Maybe<Array<Maybe<(
+    & { localizations?: Maybe<Array<Maybe<(
+      { __typename?: 'Timeline' }
+      & Pick<Timeline, 'id' | 'locale'>
+    )>>>, timelines?: Maybe<Array<Maybe<(
       { __typename?: 'ComponentTimelineTimeline' }
       & Pick<ComponentTimelineTimeline, 'day' | 'description'>
       & { locations?: Maybe<Array<Maybe<(
@@ -2873,6 +2882,10 @@ export const CityInfoFragmentDoc = gql`
   name
   description
   locale
+  localizations {
+    id
+    locale
+  }
   image {
     id
     width
@@ -2904,6 +2917,10 @@ export const TripInfoFragmentDoc = gql`
     height
     url
     formats
+  }
+  localizations {
+    id
+    locale
   }
   basePrice
   discount
@@ -2993,6 +3010,10 @@ export const GetTripDocument = gql`
 export const GetTimelineDocument = gql`
     query getTimeline($id: ID!) {
   timeline(id: $id) {
+    localizations {
+      id
+      locale
+    }
     timelines {
       day
       description
