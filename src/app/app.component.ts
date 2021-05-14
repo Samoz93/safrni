@@ -9,12 +9,9 @@ import { LocalService } from './data/services/local.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  isArabic$;
-  constructor(
-    locale: LocalService,
-  
-  ) {
-    this.isArabic$ = locale.isArabic$;
+ 
+  constructor(locale: LocalService) {
+ 
   }
   ngOnInit(): void {}
 }

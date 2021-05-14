@@ -18,6 +18,7 @@ export class LocalService {
     this.isArabic$ = trans.langChanges$.pipe(map((f) => f == 'ar'));
     trans.langChanges$.subscribe((newLang) => {
       this.document.documentElement.lang = newLang;
+      this.document.documentElement.dir = newLang === 'ar' ? 'rtl' : 'ltr';
     });
   }
   get lastSaveLocale(): any {
