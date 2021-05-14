@@ -4,6 +4,15 @@
   margin: 0;
   padding: 0;
   box-sizing: inherit;
+}
+p,
+div,
+h1,
+h2,
+h3,
+li,
+input,
+textarea {
   font-family: var(--primary-font);
 }
 :root {
