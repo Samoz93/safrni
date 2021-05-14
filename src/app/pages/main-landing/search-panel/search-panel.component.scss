@@ -81,6 +81,11 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
     right: 50%;
     transform: translate(50%, 50%);
 
+    &.ripped {
+      .filter-body .filter-form .filter-form__left {
+        transform: rotateZ(-3deg);
+      }
+    }
     .filter-body {
       width: 100%;
       height: 100%;
@@ -96,7 +101,8 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
 
         &__left {
           width: 81.5%;
-
+          transform-origin: bottom right;
+          transition: transform 0.2s ease-out;
           position: relative;
           background-color: white;
           border-right: dashed 1px $border-color;

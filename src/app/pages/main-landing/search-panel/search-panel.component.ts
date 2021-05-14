@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./search-panel.component.scss'],
 })
 export class SearchPanelComponent implements OnInit {
+  ticketRipped = false;
   tripTypes = [
     { id: '1', name: 'Public', icon: 'group' },
     { id: '2', name: 'Private', icon: 'private' },
@@ -43,6 +44,7 @@ export class SearchPanelComponent implements OnInit {
       this.bannerHeight = 60;
     }
   }
+  
   changeTab(tab: any) {
     this.activeTab = tab;
   }

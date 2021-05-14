@@ -16,7 +16,7 @@
       {{ "searchPannel.extra2" | transloco }}
     </p>
   </div>
-  <section class="filter">
+  <section class="filter" [ngClass]="{ ripped: ticketRipped }">
     <div class="filter-tabs"></div>
     <div class="filter-body">
       <form [formGroup]="form" class="filter-form">
@@ -47,7 +47,11 @@
         </div>
 
         <div class="filter-form__right">
-          <button class="main-btn info_inputs-btn">
+          <button
+            class="main-btn info_inputs-btn"
+            (mouseenter)="ticketRipped = true"
+            (mouseleave)="ticketRipped = false"
+          >
             <p>{{ "buttons.search" | transloco }}</p>
           </button>
         </div>
