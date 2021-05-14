@@ -8,10 +8,4 @@ import { LocalService } from './data/services/local.service';
 
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
- 
-  constructor(locale: LocalService) {
- 
-  }
-  ngOnInit(): void {}
-}
+export class AppComponent {}
