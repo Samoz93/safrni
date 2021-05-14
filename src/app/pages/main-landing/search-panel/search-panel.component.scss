@@ -85,6 +85,9 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
       .filter-body .filter-form .filter-form__left {
         transform: rotateZ(-3deg);
       }
+      .filter-body .filter-form .filter-form__left:lang(ar) {
+        transform: rotateZ(3deg);
+      }
     }
     .filter-body {
       width: 100%;
@@ -132,6 +135,24 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
             max-width: 100%;
             min-width: 0px;
           }
+
+          &:lang(ar) {
+            transform-origin: bottom left;
+            border-right: unset;
+            border-left: dashed 1px $border-color;
+            mask-image: radial-gradient(
+                circle 10px at bottom left,
+                transparent 0,
+                transparent 10px,
+                black 10px
+              ),
+              radial-gradient(
+                circle 10px at top left,
+                transparent 0,
+                transparent 10px,
+                black 10px
+              );
+          }
         }
         &__right {
           position: relative;
@@ -166,6 +187,22 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
               margin: 0px;
               font-weight: bold;
             }
+          }
+          &:lang(ar) {
+            border-left: unset;
+            border-right: dashed 1px $border-color;
+            mask-image: radial-gradient(
+                circle 10px at bottom right,
+                transparent 0,
+                transparent 10px,
+                black 10px
+              ),
+              radial-gradient(
+                circle 10px at top right,
+                transparent 0,
+                transparent 10px,
+                black 10px
+              );
           }
         }
       }
@@ -256,28 +293,28 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
   }
 }
 
-.arabic-layout {
-  .filter {
-    direction: ltr;
-  }
+// .arabic-layout {
+//   .filter {
+//     direction: ltr;
+//   }
 
-  img.horiz {
-    transform: rotateY(180deg);
-  }
+//   img.horiz {
+//     transform: rotateY(180deg);
+//   }
 
-  .info_inputs-controls {
-    padding: 0 2.5rem 0 1.5rem;
-    &::after {
-      left: -0.7rem;
-      right: unset;
-      @include res(tab) {
-        left: unset;
-        transform: translate(-22%, 0);
-      }
-    }
-  }
-  .main-btn.info_inputs-btn {
-    margin: 0 2rem 0 1.3rem;
-  }
-  // 0 2rem 0 1rem
-}
+//   .info_inputs-controls {
+//     padding: 0 2.5rem 0 1.5rem;
+//     &::after {
+//       left: -0.7rem;
+//       right: unset;
+//       @include res(tab) {
+//         left: unset;
+//         transform: translate(-22%, 0);
+//       }
+//     }
+//   }
+//   .main-btn.info_inputs-btn {
+//     margin: 0 2rem 0 1.3rem;
+//   }
+//   // 0 2rem 0 1rem
+// }

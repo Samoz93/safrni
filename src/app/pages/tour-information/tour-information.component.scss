@@ -320,6 +320,10 @@ $brdr: 1px grey solid;
         }
       }
     }
+    .content-grid-col1:lang(ar) {
+      margin-left: 20rem;
+      margin-right: unset;
+    }
     .content-grid-col2 {
       width: 43rem;
       position: sticky;
@@ -418,14 +422,5 @@ $brdr: 1px grey solid;
         justify-content: center;
       }
     }
-  }
-}
-
-.arabic-layout {
-  ///////// change what you have to change here
-  ///// this class will be the main class just like 'tour-infomation'
-  .content-grid-col1 {
-    margin-left: 20rem;
-    margin-right: unset;
   }
 }
