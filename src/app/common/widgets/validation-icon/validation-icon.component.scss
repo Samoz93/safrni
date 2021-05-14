@@ -7,6 +7,9 @@
 mat-icon.focused {
   color: $accent;
 }
+mat-icon {
+  color: $icon-color;
+}
 mat-icon.error {
   color: $err;
 }
