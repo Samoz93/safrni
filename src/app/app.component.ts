@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   isArabic$;
   constructor(
     locale: LocalService,
-    @Inject(DOCUMENT) private document: Document
+  
   ) {
     this.isArabic$ = locale.isArabic$;
   }
