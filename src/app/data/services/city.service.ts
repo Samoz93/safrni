@@ -20,9 +20,6 @@ export class CityService extends BaseService<CityModel> {
     private loc: LocalService
   ) {
     super();
-    loc.isArabic$.subscribe(async (f) => {
-      await this.init();
-    });
   }
   get landingObservable$(): Observable<CityModel[]> {
     return this.data$.pipe(map((f) => f.slice(0, 7)));

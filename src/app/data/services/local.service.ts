@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 const LOCALE_KEY = 'locale';
@@ -9,9 +9,15 @@ const LOCALE_KEY = 'locale';
 })
 export class LocalService {
   isArabic$: Observable<boolean>;
+
   constructor(private trans: TranslocoService) {
     trans.setActiveLang(this.lastSaveLocale);
     this.isArabic$ = trans.langChanges$.pipe(map((f) => f == 'ar'));
+    trans.langChanges$.subscribe((newLocale) => {
+      if (this.lastSaveLocale != newLocale) {
+        location.reload();
+      }
+    });
   }
   get lastSaveLocale(): any {
     return (localStorage.getItem(LOCALE_KEY) as string) || 'en';

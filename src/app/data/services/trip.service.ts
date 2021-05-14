@@ -23,10 +23,10 @@ export class TripService extends BaseService<TripModel> {
     private loc: LocalService
   ) {
     super();
-    this.loc.isArabic$.subscribe(async (f) => {
-      await this.init();
-      console.log('refetching trips with arabic ?', f);
-    });
+    // this.loc.isArabic$.subscribe(async (f) => {
+    //   await this.init();
+    //   console.log('refetching trips with arabic ?', f);
+    // });
   }
 
   get landingObservable$(): Observable<TripModel[]> {
