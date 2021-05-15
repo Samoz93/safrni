@@ -62,7 +62,7 @@
         </div>
 
         <button class="main-btn" (click)="showOnMap()">
-          {{ "tour-info.showOnMap" | transloco }}
+          <p>{{ "tour-info.showOnMap" | transloco }}</p>
         </button>
       </section>
       <section class="brief-intro">
@@ -168,7 +168,11 @@
             [icon]="icons.profile"
           ></app-custom-textarea>
 
-          <button class="main-btn" type="submit">
+          <button
+            class="main-btn"
+            type="submit"
+            [ngClass]="{ 'button--loading': isSubmiting }"
+          >
             <p>{{ "tour-info.book" | transloco }}</p>
           </button>
         </form>

@@ -25,6 +25,9 @@ export class TourInformationComponent implements OnInit {
   relatedTrips: TripModel[];
   bookForm: FormGroup;
   icons = ICONS;
+
+  isSubmiting = false;
+
   isArabic$;
   constructor(
     private router: Router,
@@ -51,13 +54,15 @@ export class TourInformationComponent implements OnInit {
     });
   }
 
-  onFormSubmitted() {
+  async onFormSubmitted() {
     Object.keys(this.bookForm.controls).forEach((field) => {
       const control = this.bookForm.get(field);
       control?.markAsTouched({ onlySelf: true });
     });
     if (this.bookForm.valid) {
-      this.bookingService.createBooking(
+      this.isSubmiting = true;
+
+      await this.bookingService.createBooking(
         this.trip.id,
         this.bookForm.get('fullName')?.value,
         this.trip.basePrice,
@@ -68,6 +73,8 @@ export class TourInformationComponent implements OnInit {
         this.bookForm.get('arrivalDate')?.value,
         this.bookForm.get('message')?.value
       );
+
+      this.isSubmiting = false;
     }
   }
   showOnMap() {
