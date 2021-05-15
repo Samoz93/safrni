@@ -14,9 +14,11 @@
   <app-validation-icon
     [hidden]="hideIcon"
     [icon]="icon"
-    
     [isFocused]="isfocused"
     [errors]="errmsg"
     [placeholder]="placeholder"
   ></app-validation-icon>
+
+  <p *ngIf="isControlRequired" class="required-symbol">*</p>
 </div>
+<p class="validation-text" *ngIf="errmsg">*{{ errmsg }}</p>

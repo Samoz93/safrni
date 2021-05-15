@@ -24,4 +24,9 @@
   input:focus + mat-icon {
     color: $accent;
   }
+
+  .required-symbol {
+    margin-left: auto;
+    font-size: 2rem;
+  }
 }

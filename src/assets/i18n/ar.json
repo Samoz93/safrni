@@ -57,5 +57,8 @@
     "visitedPlaces": "الأماكن التي ستزورها",
     "visitedPlacesInfo": "الكثير من الجولات المختلفة حول تركيا"
   },
-  "prName": "سفرني"
+  "prName": "سفرني",
+  "validation": {
+    "required": "هرب هرب هرب"
+  }
 }

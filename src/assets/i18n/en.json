@@ -60,5 +60,8 @@
     "visitedPlaces": "Places You Will Visit",
     "visitedPlacesInfo": "A Lot Of Different Tours Around Turkey"
   },
-  "prName": "Saferni"
+  "prName": "Saferni",
+  "validation": {
+    "required": "this shit is required mann..."
+  }
 }
