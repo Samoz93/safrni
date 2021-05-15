@@ -23,6 +23,7 @@
         [placeholder]="placeholder"
       ></app-validation-icon>
     </mat-datepicker-toggle>
+
     <mat-datepicker
       startView="year"
       [startAt]="minDate"
@@ -30,3 +31,4 @@
     ></mat-datepicker>
   </mat-form-field>
 </div>
+<p class="validation-text" *ngIf="errmsg">*{{ errmsg }}</p>

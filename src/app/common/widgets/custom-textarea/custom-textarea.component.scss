@@ -49,4 +49,10 @@ $border: #c5c5c5 solid 1px;
   .all-border {
     border: $border;
   }
+  .required-symbol {
+    margin-left: auto;
+    font-size: 2rem;
+    margin: 0px;
+    text-align: center;
+  }
 }

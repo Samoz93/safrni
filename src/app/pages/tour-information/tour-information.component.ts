@@ -37,7 +37,7 @@ export class TourInformationComponent implements OnInit {
       phone: new FormControl(null, [Validators.required]),
       email: new FormControl(null, [Validators.required, Validators.email]),
       arrivalDate: new FormControl(null, [Validators.required]),
-      message: new FormControl(null, [Validators.required]),
+      message: new FormControl(null),
     });
     this.activatedRoute.data.subscribe(async (data) => {
       this.trip = data.dataMap.trip;

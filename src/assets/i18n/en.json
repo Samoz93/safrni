@@ -62,6 +62,6 @@
   },
   "prName": "Saferni",
   "validation": {
-    "required": "this shit is required mann..."
+    "required": "This field is required."
   }
 }
