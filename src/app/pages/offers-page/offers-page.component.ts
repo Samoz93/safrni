@@ -22,7 +22,6 @@ export class OffersPageComponent implements OnInit {
   ];
   projectName = StaticInfo.projectName;
   data: TripModel[];
-  isArabic$;
   isLoading = false;
   filterOptions: FilterOptionsModel;
 
@@ -32,23 +31,25 @@ export class OffersPageComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private loc: LocalService
-  ) {
-    this.isArabic$ = loc.isArabic$;
-  }
+  ) {}
   cityid: string;
   ngOnInit(): void {
-    const x = this.route.snapshot.queryParams;
-    this.route.queryParams.subscribe((f) => {
-      // if (x == f) return;
-      this.cityid = f.city;
+    this.data = this.route.snapshot.data.trips;
+
+    const initQuery = this.route.snapshot.queryParams;
+    this.route.queryParams.subscribe((newQuery) => {
+      this.cityid = newQuery.city;
       this.filterOptions = {
-        type: f.type ?? TABS.tour,
-        cityId: f.city,
-        maxPrice: f.maxPrice ? +f.maxPrice : 0,
-        minPrice: f.minPrice ? +f.minPrice : 0,
-        adult: f.adult ? +f.adult : 0,
-        child: f.child ? +f.child : 0,
+        type: newQuery.type ?? TABS.tour,
+        cityId: newQuery.city,
+        maxPrice: newQuery.maxPrice ? +newQuery.maxPrice : 0,
+        minPrice: newQuery.minPrice ? +newQuery.minPrice : 0,
+        adult: newQuery.adult ? +newQuery.adult : 0,
+        child: newQuery.child ? +newQuery.child : 0,
       };
+      if (newQuery == initQuery) {
+        return;
+      }
 
       this._initData();
     });

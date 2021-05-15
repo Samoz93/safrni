@@ -57,5 +57,9 @@
     "visitedPlaces": "الأماكن التي ستزورها",
     "visitedPlacesInfo": "الكثير من الجولات المختلفة حول تركيا"
   },
+  "currencies": {
+    "dollar": "{{ var }} $",
+    "lira": "{{ var }} ₺"
+  },
   "prName": "سفرني"
 }

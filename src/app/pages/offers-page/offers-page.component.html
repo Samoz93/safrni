@@ -22,9 +22,10 @@
       (onFilterChange)="onFilterChange($event)"
       class="flex_area-filter"
     ></app-filter-widget>
+
     <app-loader
+      class="loader"
       [isLoading]="isLoading"
-      class="flex_area-content"
       [viewRef]="content"
       [hasData]="!!data && data.length > 0"
     >
@@ -33,17 +34,19 @@
 </div>
 
 <ng-template #content>
-  <app-trip-card
-    *ngFor="let item of data; let i = index"
-    [name]="item.name"
-    [duration]="item.duration"
-    [price]="item.basePrice"
-    [currency]="item.curreny"
-    [img]="item.previewImage"
-    [isOffer]="true"
-    [id]="item.id"
-    [features]="item.features"
-    [ngClass]="{ 'full-width': i == 0 }"
-  >
-  </app-trip-card>
+  <div class="flex_area-content">
+    <app-trip-card
+      *ngFor="let item of data; let i = index"
+      [name]="item.name"
+      [duration]="item.duration"
+      [price]="item.basePrice"
+      [currency]="item.curreny"
+      [img]="item.previewImage"
+      [isOffer]="true"
+      [id]="item.id"
+      [features]="item.features"
+      [ngClass]="{ 'full-width': i == 0 }"
+    >
+    </app-trip-card>
+  </div>
 </ng-template>

@@ -11,6 +11,7 @@ import { TourMapComponent } from './pages/tour-information/tour-map/tour-map.com
 import { TourInformationResolver } from './data/resolvers/tour-information.resolver';
 import { MapResolver } from './data/resolvers/map.resolver';
 import { HomeLandingResolver } from './data/resolvers/home-landing.resolver';
+import { OffersPageResolver } from './data/resolvers/offers-page.resolver';
 
 const routes: Routes = [
   {
@@ -23,7 +24,11 @@ const routes: Routes = [
     path: 'profile',
     component: UserProfileLandingComponent,
   },
-  { path: `${StaticInfo.offersRoute}`, component: OffersPageComponent },
+  {
+    path: `${StaticInfo.offersRoute}`,
+    component: OffersPageComponent,
+    resolve: { trips: OffersPageResolver },
+  },
   { path: 'booking/:id', component: BookingPageComponent },
   {
     path: 'tours/:id',
