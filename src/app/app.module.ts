@@ -76,6 +76,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NocontentComponent } from './common/widgets/loader/nocontent/nocontent.component';
+import { BookingSubmitPopupComponent } from './common/widgets/booking-submit-popup/booking-submit-popup.component';
 
 export function playerFactory() {
   return player;
@@ -126,7 +127,7 @@ export function playerFactory() {
     ServerimagePipe,
     CustomSelectComponent,
     CustomDatePickerComponent,
-
+    BookingSubmitPopupComponent,
     AccordionListComponent,
     BannerCarouselComponent,
     PricePipe,

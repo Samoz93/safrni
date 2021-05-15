@@ -13,6 +13,8 @@ import { TripService } from 'src/app/data/services/trip.service';
 import { ICONS } from 'src/app/data/utils/enums';
 import { TooltipPosition } from '@angular/material/tooltip';
 import { BookingService } from 'src/app/data/services/booking.service';
+import { MatDialog } from '@angular/material/dialog';
+import { BookingSubmitPopupComponent } from 'src/app/common/widgets/booking-submit-popup/booking-submit-popup.component';
 
 @Component({
   selector: 'app-tour-information',
@@ -34,7 +36,8 @@ export class TourInformationComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private tripService: TripService,
     loc: LocalService,
-    private bookingService: BookingService
+    private bookingService: BookingService,
+    public dialog: MatDialog
   ) {
     this.isArabic$ = loc.isArabic$;
   }
@@ -75,6 +78,8 @@ export class TourInformationComponent implements OnInit {
       );
 
       this.isSubmiting = false;
+    } else {
+      this.openDialog();
     }
   }
   showOnMap() {
@@ -98,5 +103,16 @@ export class TourInformationComponent implements OnInit {
       allImages.push(...loc.images.map((image) => image.url))
     );
     return allImages;
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(BookingSubmitPopupComponent, {
+  
+      data: { success: true },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
   }
 }
