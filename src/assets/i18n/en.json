@@ -60,5 +60,9 @@
     "visitedPlaces": "Places You Will Visit",
     "visitedPlacesInfo": "A Lot Of Different Tours Around Turkey"
   },
+  "currencies": {
+    "dollar": "{{ var }} $",
+    "lira": "{{ var }} ₺"
+  },
   "prName": "Saferni"
 }

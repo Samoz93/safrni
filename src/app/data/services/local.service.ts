@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { TranslocoService } from '@ngneat/transloco';
+import { HashMap, TranslocoService } from '@ngneat/transloco';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DOCUMENT } from '@angular/common';
@@ -40,7 +40,10 @@ export class LocalService {
   get locale() {
     return this.trans.getActiveLang();
   }
-  getTranslation(key: string, args: any = undefined): string {
-    return this.trans.translate(key);
+  getTranslation(
+    key: string,
+    args: HashMap<any> | undefined = undefined
+  ): string {
+    return this.trans.translate(key, args);
   }
 }

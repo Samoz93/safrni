@@ -79,23 +79,27 @@ $font-size: 1.5rem;
     }
   }
   &-content {
-    margin-right: auto;
-    width: 78rem;
     display: grid;
+    width: 100%;
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
 
+    grid-auto-rows: 25rem;
+    gap: 0.1rem;
+
+    .full-width {
+      grid-column: 1/-1;
+    }
+  }
+  .loader {
+    margin-right: auto;
+    width: 78rem;
     @include res(phone) {
       width: 100%;
       padding: 0 2rem;
     }
-    grid-auto-rows: 25rem;
-    gap: 0.1rem;
     &:lang(ar) {
       margin-right: unset;
       margin-left: auto;
-    }
-    .full-width {
-      grid-column: 1/-1;
     }
   }
 }

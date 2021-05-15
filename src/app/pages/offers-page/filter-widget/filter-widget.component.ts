@@ -31,9 +31,9 @@ export class FilterWidgetComponent implements OnInit {
     this.maxPriceCtrl = new FormControl(this.filterOptions.maxPrice);
     this.minPriceCtrl.valueChanges.subscribe((f) => {
       let val = f;
-      if (isNaN(val)) val = 0;
+      if (isNaN(val) || !val) val = 0;
       else val = Number.parseFloat(val);
-
+      if (val < 0) this.minPriceCtrl.setValue(0);
       this.filterOptions = {
         ...this.filterOptions,
         minPrice: val,
@@ -41,8 +41,10 @@ export class FilterWidgetComponent implements OnInit {
     });
     this.maxPriceCtrl.valueChanges.subscribe((f) => {
       let val = f;
-      if (isNaN(val)) val = 0;
+
+      if (isNaN(val) || !val) val = 1000000;
       else val = Number.parseFloat(val);
+      if (val < 0) this.maxPriceCtrl.setValue(0);
       this.filterOptions = {
         ...this.filterOptions,
         maxPrice: val,
