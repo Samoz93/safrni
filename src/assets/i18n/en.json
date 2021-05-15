@@ -13,7 +13,10 @@
     "aboutus": "About Us",
     "trips": "Trips",
     "destination": "Destination",
-    "home": "Home"
+    "home": "Home",
+    "privacy": "Privacy Policy",
+    "support": "Support",
+    "contact": "Contact us"
   },
   "citysection": {
     "title": "Choose Your",

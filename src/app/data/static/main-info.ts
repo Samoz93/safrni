@@ -26,6 +26,7 @@ export interface LoadingState {
   msg: string;
   isLoading: boolean;
   hasError: boolean;
+  handler?: Function;
 }
 export enum EndPoints {
   trips = 'trips',

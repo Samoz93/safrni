@@ -40,10 +40,10 @@ export class TripService extends BaseService<TripModel> {
     return this.data$.pipe(map((f) => f.slice(0, 7)));
   }
   async init(): Promise<TripModel[]> {
-    this.setBusy(true);
-
-    this.prepareData(await this.queryTrips());
-    return this.data$.value;
+    const data = await this._doStuff<TripModel[]>(async () => {
+      return await this.queryTrips();
+    });
+    return data!;
   }
   async queryTrips(
     query: {
@@ -78,56 +78,54 @@ export class TripService extends BaseService<TripModel> {
         name_contains: query.text,
       };
     }
-    console.log(whereQuery);
+    const data = await this._doStuff<TripModel[]>(async () => {
+      let resultTrips = (
+        await this.tripsGql
+          .fetch({
+            limit: query?.limit ?? 10,
+            locale: query?.locale ?? this.loc.locale,
+            where: whereQuery,
+          })
+          .toPromise()
+      ).data.trips?.map((trip) => this.tripAdapter.adapt(trip))!;
 
-    let resultTrips = (
-      await this.tripsGql
-        .fetch({
-          limit: query?.limit ?? 10,
-          locale: query?.locale ?? this.loc.locale,
-          where: whereQuery,
-        })
-        .toPromise()
-    ).data.trips?.map((trip) => this.tripAdapter.adapt(trip))!;
-
-    return resultTrips;
+      return resultTrips;
+    });
+    return data!;
   }
   async getRelatedTrips(to: TripModel): Promise<TripModel[]> {
     let result = await this.queryTrips({ limit: 8, cityId: to.city.id });
 
-    return [
-      ...[...result, ...result, ...result],
-      ...[...result, ...result, ...result],
-    ];
+    return [...[...result!, ...result!, ...result!]];
   }
   async getTripById(id: string): Promise<TripModel> {
-    let item = this.data$.value.find((x) => x.id === id);
-    if (item) {
-      return item;
-    } else {
-      this.setBusy(true);
+    const data = await this._doStuff<TripModel>(async () => {
       let trip = this.tripAdapter.adapt(
         (await this.getTrip.fetch({ id: id }).toPromise()).data.trip
       );
-      this.setBusy(false);
       return trip;
-    }
+    });
+    return data!;
   }
 
-  async getTimeline(id: string): Promise<TimelineModel[] | undefined> {
-    this.setBusy(true);
-    let data = await this.timelineGql.fetch({ id: id }).toPromise();
-    this.setBusy(false);
-    return data.data.timeline?.timelines?.map((tl) =>
-      this.timelineAdapter.adapt(tl)
-    );
+  async getTimeline(id: string): Promise<TimelineModel[]> {
+    const x = await this._doStuff<TimelineModel[]>(async () => {
+      let data = await this.timelineGql.fetch({ id: id }).toPromise();
+      return data.data.timeline?.timelines?.map((tl) =>
+        this.timelineAdapter.adapt(tl)
+      );
+    });
+    return x!;
   }
 
   async getLocalizedTrip(id: string): Promise<TripModel> {
-    let data = await this.localizedTripService
-      .fetch({ id: id, locale: this.loc.locale })
-      .toPromise();
+    const x = await this._doStuff<TripModel>(async () => {
+      let data = await this.localizedTripService
+        .fetch({ id: id, locale: this.loc.locale })
+        .toPromise();
 
-    return this.tripAdapter.adapt(data.data.trips![0]);
+      return this.tripAdapter.adapt(data.data.trips![0]);
+    });
+    return x!;
   }
 }

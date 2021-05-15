@@ -11,7 +11,7 @@ $font-size: 1.5rem;
   &-info {
     position: absolute;
     padding: 0 $page-padding;
-
+    font-family: var(--secondary-font);
     top: 20%;
     width: 100%;
     text-align: center;
@@ -35,6 +35,7 @@ $font-size: 1.5rem;
     & > * {
       font-size: inherit;
       text-shadow: 2px 2px #00000081;
+      font-family: inherit;
     }
   }
 }

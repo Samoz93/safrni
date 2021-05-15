@@ -76,6 +76,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NocontentComponent } from './common/widgets/loader/nocontent/nocontent.component';
+import { ErrorDlgComponent } from './common/widgets/error-dlg/error-dlg.component';
 
 export function playerFactory() {
   return player;
@@ -136,6 +137,7 @@ export function playerFactory() {
     FilterWidgetComponent,
     TourMapComponent,
     NocontentComponent,
+    ErrorDlgComponent,
   ],
 
   imports: [
