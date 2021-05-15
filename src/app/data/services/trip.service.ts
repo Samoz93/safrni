@@ -1,14 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { locale } from 'core-js';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { TimelineModel, TimelineModelAdapter } from '../models/timelineModel';
 import { TripModel, TripModelAdapter } from '../models/TripModel';
 import { BaseService } from './base.service';
 import { LocalService } from './local.service';
 import { SaferniHttp } from './saferni.http.service';
-import { GetTimelineGQL, GetTripGQL, TripsGQL } from './saferniGraphql.service';
+import {
+  GetLocalizedCityGQL,
+  GetLocalizedTripGQL,
+  GetTimelineGQL,
+  GetTripGQL,
+  TripsGQL,
+} from './saferniGraphql.service';
 
 @Injectable({
   providedIn: 'root',
@@ -19,6 +25,7 @@ export class TripService extends BaseService<TripModel> {
     private timelineAdapter: TimelineModelAdapter,
     private tripsGql: TripsGQL,
     private timelineGql: GetTimelineGQL,
+    private localizedTripService: GetLocalizedTripGQL,
     private getTrip: GetTripGQL,
     private loc: LocalService
   ) {
@@ -111,5 +118,13 @@ export class TripService extends BaseService<TripModel> {
     return data.data.timeline?.timelines?.map((tl) =>
       this.timelineAdapter.adapt(tl)
     );
+  }
+
+  async getLocalizedTrip(id: string, locale: string): Promise<TripModel> {
+    let data = await this.localizedTripService
+      .fetch({ id: id, locale: locale })
+      .toPromise();
+
+    return this.tripAdapter.adapt(data.data.trips![0]);
   }
 }
