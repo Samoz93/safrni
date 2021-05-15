@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BaseService } from '../services/base.service';
 import { SaferniHttp } from './saferni.http.service';
-import { CitiesGQL, City } from './saferniGraphql.service';
+import { CitiesGQL, City, GetLocalizedCityGQL } from './saferniGraphql.service';
 import { LocalService } from './local.service';
 
 @Injectable({
@@ -17,7 +17,8 @@ export class CityService extends BaseService<CityModel> {
   constructor(
     private adapter: CityModelAdapter,
     private citiesGql: CitiesGQL,
-    private loc: LocalService
+    private loc: LocalService,
+    private localizedCityService: GetLocalizedCityGQL
   ) {
     super();
     console.log('city service intialiazed', loc.locale);
@@ -33,5 +34,13 @@ export class CityService extends BaseService<CityModel> {
     const models = data.data.cities?.map((city) => this.adapter.adapt(city))!;
     this.prepareData(models);
     return this.data;
+  }
+
+  async getLocalizedCity(id: string, locale: string): Promise<CityModel> {
+    let data = await this.localizedCityService
+      .fetch({ id: id, locale: locale })
+      .toPromise();
+
+    return this.adapter.adapt(data.data.cities![0]);
   }
 }

@@ -10,11 +10,13 @@ import { StaticInfo } from './data/static/main-info';
 import { TourMapComponent } from './pages/tour-information/tour-map/tour-map.component';
 import { TourInformationResolver } from './data/resolvers/tour-information.resolver';
 import { MapResolver } from './data/resolvers/map.resolver';
+import { HomeLandingResolver } from './data/resolvers/home-landing.resolver';
 
 const routes: Routes = [
   {
     path: '',
     component: MainLandingComponent,
+    resolve: { initData: HomeLandingResolver },
   },
   { path: 'login', component: LoginComponent },
   {

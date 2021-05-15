@@ -1,14 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { locale } from 'core-js';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { TimelineModel, TimelineModelAdapter } from '../models/timelineModel';
 import { TripModel, TripModelAdapter } from '../models/TripModel';
 import { BaseService } from './base.service';
 import { LocalService } from './local.service';
 import { SaferniHttp } from './saferni.http.service';
-import { GetTimelineGQL, GetTripGQL, TripsGQL } from './saferniGraphql.service';
+import {
+  GetLocalizedCityGQL,
+  GetLocalizedTripGQL,
+  GetTimelineGQL,
+  GetTripGQL,
+  TripsGQL,
+} from './saferniGraphql.service';
 
 @Injectable({
   providedIn: 'root',
@@ -19,6 +25,7 @@ export class TripService extends BaseService<TripModel> {
     private timelineAdapter: TimelineModelAdapter,
     private tripsGql: TripsGQL,
     private timelineGql: GetTimelineGQL,
+    private localizedTripService: GetLocalizedTripGQL,
     private getTrip: GetTripGQL,
     private loc: LocalService
   ) {
@@ -74,13 +81,13 @@ export class TripService extends BaseService<TripModel> {
       await this.tripsGql
         .fetch({
           limit: query?.limit ?? 10,
-          locale: query?.locale ?? 'en',
+          locale: query?.locale ?? this.loc.locale,
           where: whereQuery,
         })
         .toPromise()
     ).data.trips?.map((trip) => this.tripAdapter.adapt(trip))!;
 
-    return new Array(10).fill(resultTrips[0]);
+    return resultTrips;
   }
   async getRelatedTrips(to: TripModel): Promise<TripModel[]> {
     let result = await this.queryTrips({ limit: 8, cityId: to.city.id });
@@ -111,5 +118,13 @@ export class TripService extends BaseService<TripModel> {
     return data.data.timeline?.timelines?.map((tl) =>
       this.timelineAdapter.adapt(tl)
     );
+  }
+
+  async getLocalizedTrip(id: string): Promise<TripModel> {
+    let data = await this.localizedTripService
+      .fetch({ id: id, locale: this.loc.locale })
+      .toPromise();
+
+    return this.tripAdapter.adapt(data.data.trips![0]);
   }
 }

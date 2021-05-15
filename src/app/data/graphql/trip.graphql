@@ -8,6 +8,15 @@ query getTrip($id: ID!) {
     ...tripInfo
   }
 }
+query getLocalizedTrip($id: ID!, $locale: String!) {
+  trips(
+    locale: $locale
+    where: { _or: [{ localizations: { id: $id } }, { id: $id }] }
+  ) {
+    ...tripInfo
+  }
+}
+
 fragment tripInfo on Trips {
   id
   name

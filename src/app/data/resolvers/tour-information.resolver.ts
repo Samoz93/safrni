@@ -22,8 +22,12 @@ export class TourInformationResolver implements Resolve<any> {
     //return
     this.splashScreenStateService.start();
     let tripId = route.paramMap.get('id');
-    let trip = await this.tripService.getTripById(tripId!);
+
+    let trip = await this.tripService.getLocalizedTrip(tripId!);
     let timelines = await this.tripService.getTimeline(trip.timelineId);
+
+    console.log(tripId, trip.id);
+
     this.splashScreenStateService.stop();
     return {
       trip: trip,
