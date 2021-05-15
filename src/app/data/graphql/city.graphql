@@ -9,6 +9,14 @@ query getCity($id: ID!) {
     ...CityInfo
   }
 }
+query getLocalizedCity($id: ID!, $locale: String!) {
+  cities(
+    locale: $locale
+    where: { _or: [{ localizations: { id: $id } }, { id: $id }] }
+  ) {
+    ...CityInfo
+  }
+}
 
 fragment CityInfo on City {
   id
@@ -16,10 +24,9 @@ fragment CityInfo on City {
   description
   locale
   localizations {
-      id,
-      locale
-      
-    },
+    id
+    locale
+  }
   image {
     id
     width

@@ -2778,6 +2778,20 @@ export type GetCityQuery = (
   )> }
 );
 
+export type GetLocalizedCityQueryVariables = Exact<{
+  id: Scalars['ID'];
+  locale: Scalars['String'];
+}>;
+
+
+export type GetLocalizedCityQuery = (
+  { __typename?: 'Query' }
+  & { cities?: Maybe<Array<Maybe<(
+    { __typename?: 'City' }
+    & CityInfoFragment
+  )>>> }
+);
+
 export type CityInfoFragment = (
   { __typename?: 'City' }
   & Pick<City, 'id' | 'name' | 'description' | 'locale'>
@@ -2816,6 +2830,20 @@ export type GetTripQuery = (
     { __typename?: 'Trips' }
     & TripInfoFragment
   )> }
+);
+
+export type GetLocalizedTripQueryVariables = Exact<{
+  id: Scalars['ID'];
+  locale: Scalars['String'];
+}>;
+
+
+export type GetLocalizedTripQuery = (
+  { __typename?: 'Query' }
+  & { trips?: Maybe<Array<Maybe<(
+    { __typename?: 'Trips' }
+    & TripInfoFragment
+  )>>> }
 );
 
 export type TripInfoFragment = (
@@ -2975,6 +3003,24 @@ export const GetCityDocument = gql`
       super(apollo);
     }
   }
+export const GetLocalizedCityDocument = gql`
+    query getLocalizedCity($id: ID!, $locale: String!) {
+  cities(locale: $locale, where: {_or: [{localizations: {id: $id}}, {id: $id}]}) {
+    ...CityInfo
+  }
+}
+    ${CityInfoFragmentDoc}`;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class GetLocalizedCityGQL extends Apollo.Query<GetLocalizedCityQuery, GetLocalizedCityQueryVariables> {
+    document = GetLocalizedCityDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
 export const TripsDocument = gql`
     query trips($limit: Int = 10, $locale: String = "en", $where: JSON) {
   trips(limit: $limit, locale: $locale, where: $where) {
@@ -3006,6 +3052,24 @@ export const GetTripDocument = gql`
   })
   export class GetTripGQL extends Apollo.Query<GetTripQuery, GetTripQueryVariables> {
     document = GetTripDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const GetLocalizedTripDocument = gql`
+    query getLocalizedTrip($id: ID!, $locale: String!) {
+  trips(locale: $locale, where: {_or: [{localizations: {id: $id}}, {id: $id}]}) {
+    ...tripInfo
+  }
+}
+    ${TripInfoFragmentDoc}`;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class GetLocalizedTripGQL extends Apollo.Query<GetLocalizedTripQuery, GetLocalizedTripQueryVariables> {
+    document = GetLocalizedTripDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
