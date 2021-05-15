@@ -42,10 +42,16 @@ export type Booking = {
   _id: Scalars['ID'];
   createdAt: Scalars['DateTime'];
   updatedAt: Scalars['DateTime'];
-  user?: Maybe<UsersPermissionsUser>;
   trip?: Maybe<Trips>;
   approved?: Maybe<Scalars['Boolean']>;
-  price?: Maybe<ComponentPricePrice>;
+  basePrice: Scalars['Float'];
+  currency: Enum_Booking_Currency;
+  basePeopleCount: Scalars['Int'];
+  discount?: Maybe<Scalars['Float']>;
+  fullName: Scalars['String'];
+  phone: Scalars['String'];
+  message?: Maybe<Scalars['String']>;
+  arrivalDate: Scalars['Date'];
   published_at?: Maybe<Scalars['DateTime']>;
 };
 
@@ -53,6 +59,38 @@ export type BookingAggregator = {
   __typename?: 'BookingAggregator';
   count?: Maybe<Scalars['Int']>;
   totalCount?: Maybe<Scalars['Int']>;
+  sum?: Maybe<BookingAggregatorSum>;
+  avg?: Maybe<BookingAggregatorAvg>;
+  min?: Maybe<BookingAggregatorMin>;
+  max?: Maybe<BookingAggregatorMax>;
+};
+
+export type BookingAggregatorAvg = {
+  __typename?: 'BookingAggregatorAvg';
+  basePrice?: Maybe<Scalars['Float']>;
+  basePeopleCount?: Maybe<Scalars['Float']>;
+  discount?: Maybe<Scalars['Float']>;
+};
+
+export type BookingAggregatorMax = {
+  __typename?: 'BookingAggregatorMax';
+  basePrice?: Maybe<Scalars['Float']>;
+  basePeopleCount?: Maybe<Scalars['Float']>;
+  discount?: Maybe<Scalars['Float']>;
+};
+
+export type BookingAggregatorMin = {
+  __typename?: 'BookingAggregatorMin';
+  basePrice?: Maybe<Scalars['Float']>;
+  basePeopleCount?: Maybe<Scalars['Float']>;
+  discount?: Maybe<Scalars['Float']>;
+};
+
+export type BookingAggregatorSum = {
+  __typename?: 'BookingAggregatorSum';
+  basePrice?: Maybe<Scalars['Float']>;
+  basePeopleCount?: Maybe<Scalars['Float']>;
+  discount?: Maybe<Scalars['Float']>;
 };
 
 export type BookingConnection = {
@@ -68,9 +106,45 @@ export type BookingConnectionApproved = {
   connection?: Maybe<BookingConnection>;
 };
 
+export type BookingConnectionArrivalDate = {
+  __typename?: 'BookingConnectionArrivalDate';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<BookingConnection>;
+};
+
+export type BookingConnectionBasePeopleCount = {
+  __typename?: 'BookingConnectionBasePeopleCount';
+  key?: Maybe<Scalars['Int']>;
+  connection?: Maybe<BookingConnection>;
+};
+
+export type BookingConnectionBasePrice = {
+  __typename?: 'BookingConnectionBasePrice';
+  key?: Maybe<Scalars['Float']>;
+  connection?: Maybe<BookingConnection>;
+};
+
 export type BookingConnectionCreatedAt = {
   __typename?: 'BookingConnectionCreatedAt';
   key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<BookingConnection>;
+};
+
+export type BookingConnectionCurrency = {
+  __typename?: 'BookingConnectionCurrency';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<BookingConnection>;
+};
+
+export type BookingConnectionDiscount = {
+  __typename?: 'BookingConnectionDiscount';
+  key?: Maybe<Scalars['Float']>;
+  connection?: Maybe<BookingConnection>;
+};
+
+export type BookingConnectionFullName = {
+  __typename?: 'BookingConnectionFullName';
+  key?: Maybe<Scalars['String']>;
   connection?: Maybe<BookingConnection>;
 };
 
@@ -80,9 +154,15 @@ export type BookingConnectionId = {
   connection?: Maybe<BookingConnection>;
 };
 
-export type BookingConnectionPrice = {
-  __typename?: 'BookingConnectionPrice';
-  key?: Maybe<Scalars['ID']>;
+export type BookingConnectionMessage = {
+  __typename?: 'BookingConnectionMessage';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<BookingConnection>;
+};
+
+export type BookingConnectionPhone = {
+  __typename?: 'BookingConnectionPhone';
+  key?: Maybe<Scalars['String']>;
   connection?: Maybe<BookingConnection>;
 };
 
@@ -104,12 +184,6 @@ export type BookingConnectionUpdatedAt = {
   connection?: Maybe<BookingConnection>;
 };
 
-export type BookingConnectionUser = {
-  __typename?: 'BookingConnectionUser';
-  key?: Maybe<Scalars['ID']>;
-  connection?: Maybe<BookingConnection>;
-};
-
 export type BookingConnection_Id = {
   __typename?: 'BookingConnection_id';
   key?: Maybe<Scalars['ID']>;
@@ -122,18 +196,30 @@ export type BookingGroupBy = {
   _id?: Maybe<Array<Maybe<BookingConnection_Id>>>;
   createdAt?: Maybe<Array<Maybe<BookingConnectionCreatedAt>>>;
   updatedAt?: Maybe<Array<Maybe<BookingConnectionUpdatedAt>>>;
-  user?: Maybe<Array<Maybe<BookingConnectionUser>>>;
   trip?: Maybe<Array<Maybe<BookingConnectionTrip>>>;
   approved?: Maybe<Array<Maybe<BookingConnectionApproved>>>;
-  price?: Maybe<Array<Maybe<BookingConnectionPrice>>>;
+  basePrice?: Maybe<Array<Maybe<BookingConnectionBasePrice>>>;
+  currency?: Maybe<Array<Maybe<BookingConnectionCurrency>>>;
+  basePeopleCount?: Maybe<Array<Maybe<BookingConnectionBasePeopleCount>>>;
+  discount?: Maybe<Array<Maybe<BookingConnectionDiscount>>>;
+  fullName?: Maybe<Array<Maybe<BookingConnectionFullName>>>;
+  phone?: Maybe<Array<Maybe<BookingConnectionPhone>>>;
+  message?: Maybe<Array<Maybe<BookingConnectionMessage>>>;
+  arrivalDate?: Maybe<Array<Maybe<BookingConnectionArrivalDate>>>;
   published_at?: Maybe<Array<Maybe<BookingConnectionPublished_At>>>;
 };
 
 export type BookingInput = {
-  user?: Maybe<Scalars['ID']>;
   trip?: Maybe<Scalars['ID']>;
   approved?: Maybe<Scalars['Boolean']>;
-  price: ComponentPricePriceInput;
+  basePrice: Scalars['Float'];
+  currency: Enum_Booking_Currency;
+  basePeopleCount: Scalars['Int'];
+  discount?: Maybe<Scalars['Float']>;
+  fullName: Scalars['String'];
+  phone: Scalars['String'];
+  message?: Maybe<Scalars['String']>;
+  arrivalDate: Scalars['Date'];
   published_at?: Maybe<Scalars['DateTime']>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
@@ -331,6 +417,11 @@ export type ComponentTimelineTimelineInput = {
 };
 
 
+
+export enum Enum_Booking_Currency {
+  Dollar = 'dollar',
+  Lira = 'lira'
+}
 
 export enum Enum_Componentpriceprice_Currency {
   Dollar = 'dollar',
@@ -632,7 +723,7 @@ export type LocationInput = {
 };
 
 
-export type Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Booking | BookingConnection | BookingAggregator | BookingGroupBy | BookingConnectionId | BookingConnection_Id | BookingConnectionCreatedAt | BookingConnectionUpdatedAt | BookingConnectionUser | BookingConnectionTrip | BookingConnectionApproved | BookingConnectionPrice | BookingConnectionPublished_At | CreateBookingPayload | UpdateBookingPayload | DeleteBookingPayload | City | CityConnection | CityAggregator | CityGroupBy | CityConnectionId | CityConnection_Id | CityConnectionCreatedAt | CityConnectionUpdatedAt | CityConnectionName | CityConnectionDescription | CityConnectionImage | CityConnectionLocale | CityConnectionPublished_At | CreateCityPayload | UpdateCityPayload | DeleteCityPayload | Feature | FeatureConnection | FeatureAggregator | FeatureGroupBy | FeatureConnectionId | FeatureConnection_Id | FeatureConnectionCreatedAt | FeatureConnectionUpdatedAt | FeatureConnectionName | FeatureConnectionInfo | FeatureConnectionLocale | FeatureConnectionPublished_At | CreateFeaturePayload | UpdateFeaturePayload | DeleteFeaturePayload | Location | LocationConnection | LocationAggregator | LocationGroupBy | LocationConnectionId | LocationConnection_Id | LocationConnectionCreatedAt | LocationConnectionUpdatedAt | LocationConnectionName | LocationConnectionDescription | LocationConnectionCity | LocationConnectionCoordinate | LocationConnectionLocale | LocationConnectionPublished_At | CreateLocationPayload | UpdateLocationPayload | DeleteLocationPayload | Partner | PartnerConnection | PartnerAggregator | PartnerGroupBy | PartnerConnectionId | PartnerConnection_Id | PartnerConnectionCreatedAt | PartnerConnectionUpdatedAt | PartnerConnectionName | PartnerConnectionPhone | PartnerConnectionAddress | PartnerConnectionEmail | PartnerConnectionPublished_At | CreatePartnerPayload | UpdatePartnerPayload | DeletePartnerPayload | Review | ReviewConnection | ReviewAggregator | ReviewAggregatorSum | ReviewAggregatorAvg | ReviewAggregatorMin | ReviewAggregatorMax | ReviewGroupBy | ReviewConnectionId | ReviewConnection_Id | ReviewConnectionCreatedAt | ReviewConnectionUpdatedAt | ReviewConnectionText | ReviewConnectionRating | ReviewConnectionAuthor | ReviewConnectionActive | ReviewConnectionTrip | ReviewConnectionPublished_At | CreateReviewPayload | UpdateReviewPayload | DeleteReviewPayload | Timeline | TimelineConnection | TimelineAggregator | TimelineGroupBy | TimelineConnectionId | TimelineConnection_Id | TimelineConnectionCreatedAt | TimelineConnectionUpdatedAt | TimelineConnectionTrip | TimelineConnectionLocale | TimelineConnectionPublished_At | CreateTimelinePayload | UpdateTimelinePayload | DeleteTimelinePayload | Trips | TripsConnection | TripsAggregator | TripsAggregatorSum | TripsAggregatorAvg | TripsAggregatorMin | TripsAggregatorMax | TripsGroupBy | TripsConnectionId | TripsConnection_Id | TripsConnectionCreatedAt | TripsConnectionUpdatedAt | TripsConnectionName | TripsConnectionPreviewImage | TripsConnectionActive | TripsConnectionTrip_Type | TripsConnectionDescription | TripsConnectionDuration | TripsConnectionPartner | TripsConnectionCurrency | TripsConnectionCity | TripsConnectionTimeline | TripsConnectionBasePrice | TripsConnectionBasePeopleCount | TripsConnectionDiscount | TripsConnectionLocale | TripsConnectionPublished_At | CreateTripPayload | UpdateTripPayload | DeleteTripPayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnection_Id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_Metadata | DeleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnection_Id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | CreateRolePayload | UpdateRolePayload | DeleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnection_Id | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | CreateUserPayload | UpdateUserPayload | DeleteUserPayload | ComponentCoordinateCoordinate | ComponentFeatureFeature | ComponentPricePrice | ComponentTimelineTimeline;
+export type Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Booking | BookingConnection | BookingAggregator | BookingAggregatorSum | BookingAggregatorAvg | BookingAggregatorMin | BookingAggregatorMax | BookingGroupBy | BookingConnectionId | BookingConnection_Id | BookingConnectionCreatedAt | BookingConnectionUpdatedAt | BookingConnectionTrip | BookingConnectionApproved | BookingConnectionBasePrice | BookingConnectionCurrency | BookingConnectionBasePeopleCount | BookingConnectionDiscount | BookingConnectionFullName | BookingConnectionPhone | BookingConnectionMessage | BookingConnectionArrivalDate | BookingConnectionPublished_At | CreateBookingPayload | UpdateBookingPayload | DeleteBookingPayload | City | CityConnection | CityAggregator | CityGroupBy | CityConnectionId | CityConnection_Id | CityConnectionCreatedAt | CityConnectionUpdatedAt | CityConnectionName | CityConnectionDescription | CityConnectionImage | CityConnectionLocale | CityConnectionPublished_At | CreateCityPayload | UpdateCityPayload | DeleteCityPayload | Feature | FeatureConnection | FeatureAggregator | FeatureGroupBy | FeatureConnectionId | FeatureConnection_Id | FeatureConnectionCreatedAt | FeatureConnectionUpdatedAt | FeatureConnectionName | FeatureConnectionInfo | FeatureConnectionLocale | FeatureConnectionPublished_At | CreateFeaturePayload | UpdateFeaturePayload | DeleteFeaturePayload | Location | LocationConnection | LocationAggregator | LocationGroupBy | LocationConnectionId | LocationConnection_Id | LocationConnectionCreatedAt | LocationConnectionUpdatedAt | LocationConnectionName | LocationConnectionDescription | LocationConnectionCity | LocationConnectionCoordinate | LocationConnectionLocale | LocationConnectionPublished_At | CreateLocationPayload | UpdateLocationPayload | DeleteLocationPayload | Partner | PartnerConnection | PartnerAggregator | PartnerGroupBy | PartnerConnectionId | PartnerConnection_Id | PartnerConnectionCreatedAt | PartnerConnectionUpdatedAt | PartnerConnectionName | PartnerConnectionPhone | PartnerConnectionAddress | PartnerConnectionEmail | PartnerConnectionPublished_At | CreatePartnerPayload | UpdatePartnerPayload | DeletePartnerPayload | Review | ReviewConnection | ReviewAggregator | ReviewAggregatorSum | ReviewAggregatorAvg | ReviewAggregatorMin | ReviewAggregatorMax | ReviewGroupBy | ReviewConnectionId | ReviewConnection_Id | ReviewConnectionCreatedAt | ReviewConnectionUpdatedAt | ReviewConnectionText | ReviewConnectionRating | ReviewConnectionAuthor | ReviewConnectionActive | ReviewConnectionTrip | ReviewConnectionPublished_At | CreateReviewPayload | UpdateReviewPayload | DeleteReviewPayload | Timeline | TimelineConnection | TimelineAggregator | TimelineGroupBy | TimelineConnectionId | TimelineConnection_Id | TimelineConnectionCreatedAt | TimelineConnectionUpdatedAt | TimelineConnectionTrip | TimelineConnectionLocale | TimelineConnectionPublished_At | CreateTimelinePayload | UpdateTimelinePayload | DeleteTimelinePayload | Trips | TripsConnection | TripsAggregator | TripsAggregatorSum | TripsAggregatorAvg | TripsAggregatorMin | TripsAggregatorMax | TripsGroupBy | TripsConnectionId | TripsConnection_Id | TripsConnectionCreatedAt | TripsConnectionUpdatedAt | TripsConnectionName | TripsConnectionPreviewImage | TripsConnectionActive | TripsConnectionTrip_Type | TripsConnectionDescription | TripsConnectionDuration | TripsConnectionPartner | TripsConnectionCurrency | TripsConnectionCity | TripsConnectionTimeline | TripsConnectionBasePrice | TripsConnectionBasePeopleCount | TripsConnectionDiscount | TripsConnectionLocale | TripsConnectionPublished_At | CreateTripPayload | UpdateTripPayload | DeleteTripPayload | I18NLocale | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnection_Id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_Metadata | DeleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnection_Id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | CreateRolePayload | UpdateRolePayload | DeleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnection_Id | UsersPermissionsUserConnectionCreatedAt | UsersPermissionsUserConnectionUpdatedAt | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | CreateUserPayload | UpdateUserPayload | DeleteUserPayload | ComponentCoordinateCoordinate | ComponentFeatureFeature | ComponentPricePrice | ComponentTimelineTimeline;
 
 export type Mutation = {
   __typename?: 'Mutation';
@@ -2036,7 +2127,6 @@ export type UserInput = {
   confirmed?: Maybe<Scalars['Boolean']>;
   blocked?: Maybe<Scalars['Boolean']>;
   role?: Maybe<Scalars['ID']>;
-  bookings?: Maybe<Array<Maybe<Scalars['ID']>>>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
 };
@@ -2185,15 +2275,6 @@ export type UsersPermissionsUser = {
   confirmed?: Maybe<Scalars['Boolean']>;
   blocked?: Maybe<Scalars['Boolean']>;
   role?: Maybe<UsersPermissionsRole>;
-  bookings?: Maybe<Array<Maybe<Booking>>>;
-};
-
-
-export type UsersPermissionsUserBookingsArgs = {
-  sort?: Maybe<Scalars['String']>;
-  limit?: Maybe<Scalars['Int']>;
-  start?: Maybe<Scalars['Int']>;
-  where?: Maybe<Scalars['JSON']>;
 };
 
 export type UsersPermissionsUserAggregator = {
@@ -2473,10 +2554,16 @@ export type DeleteUserPayload = {
 };
 
 export type EditBookingInput = {
-  user?: Maybe<Scalars['ID']>;
   trip?: Maybe<Scalars['ID']>;
   approved?: Maybe<Scalars['Boolean']>;
-  price?: Maybe<EditComponentPricePriceInput>;
+  basePrice?: Maybe<Scalars['Float']>;
+  currency?: Maybe<Enum_Booking_Currency>;
+  basePeopleCount?: Maybe<Scalars['Int']>;
+  discount?: Maybe<Scalars['Float']>;
+  fullName?: Maybe<Scalars['String']>;
+  phone?: Maybe<Scalars['String']>;
+  message?: Maybe<Scalars['String']>;
+  arrivalDate?: Maybe<Scalars['Date']>;
   published_at?: Maybe<Scalars['DateTime']>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
@@ -2646,7 +2733,6 @@ export type EditUserInput = {
   confirmed?: Maybe<Scalars['Boolean']>;
   blocked?: Maybe<Scalars['Boolean']>;
   role?: Maybe<Scalars['ID']>;
-  bookings?: Maybe<Array<Maybe<Scalars['ID']>>>;
   created_by?: Maybe<Scalars['ID']>;
   updated_by?: Maybe<Scalars['ID']>;
 };
@@ -2750,6 +2836,30 @@ export type UpdateUserPayload = {
   __typename?: 'updateUserPayload';
   user?: Maybe<UsersPermissionsUser>;
 };
+
+export type CreateBookingQueryMutationVariables = Exact<{
+  tripId: Scalars['ID'];
+  fullName: Scalars['String'];
+  basePrice: Scalars['Float'];
+  discount?: Maybe<Scalars['Float']>;
+  basePeopleCount: Scalars['Int'];
+  phone: Scalars['String'];
+  arrivalDate: Scalars['Date'];
+  message?: Maybe<Scalars['String']>;
+  currency: Enum_Booking_Currency;
+}>;
+
+
+export type CreateBookingQueryMutation = (
+  { __typename?: 'Mutation' }
+  & { createBooking?: Maybe<(
+    { __typename?: 'createBookingPayload' }
+    & { booking?: Maybe<(
+      { __typename?: 'Booking' }
+      & Pick<Booking, 'message'>
+    )> }
+  )> }
+);
 
 export type CitiesQueryVariables = Exact<{
   limit?: Maybe<Scalars['Int']>;
@@ -2967,6 +3077,28 @@ export const TripInfoFragmentDoc = gql`
   }
 }
     `;
+export const CreateBookingQueryDocument = gql`
+    mutation createBookingQuery($tripId: ID!, $fullName: String!, $basePrice: Float!, $discount: Float = 0, $basePeopleCount: Int!, $phone: String!, $arrivalDate: Date!, $message: String, $currency: ENUM_BOOKING_CURRENCY!) {
+  createBooking(
+    input: {data: {trip: $tripId, basePrice: $basePrice, discount: $discount, message: $message, fullName: $fullName, currency: $currency, basePeopleCount: $basePeopleCount, phone: $phone, arrivalDate: $arrivalDate}}
+  ) {
+    booking {
+      message
+    }
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class CreateBookingQueryGQL extends Apollo.Mutation<CreateBookingQueryMutation, CreateBookingQueryMutationVariables> {
+    document = CreateBookingQueryDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
 export const CitiesDocument = gql`
     query cities($limit: Int, $locale: String) {
   cities(limit: $limit, locale: $locale) {

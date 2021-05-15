@@ -5,10 +5,14 @@ import { LocationModel } from 'src/app/data/models/LocationModel';
 import { TimelineModel } from 'src/app/data/models/timelineModel';
 import { TripModel } from 'src/app/data/models/TripModel';
 import { LocalService } from 'src/app/data/services/local.service';
-import { Trips } from 'src/app/data/services/saferniGraphql.service';
+import {
+  Enum_Booking_Currency,
+  Trips,
+} from 'src/app/data/services/saferniGraphql.service';
 import { TripService } from 'src/app/data/services/trip.service';
 import { ICONS } from 'src/app/data/utils/enums';
 import { TooltipPosition } from '@angular/material/tooltip';
+import { BookingService } from 'src/app/data/services/booking.service';
 
 @Component({
   selector: 'app-tour-information',
@@ -26,18 +30,22 @@ export class TourInformationComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private tripService: TripService,
-    loc: LocalService
+    loc: LocalService,
+    private bookingService: BookingService
   ) {
     this.isArabic$ = loc.isArabic$;
   }
 
   ngOnInit(): void {
     this.bookForm = new FormGroup({
-      fullName: new FormControl(null, [Validators.required]),
-      phone: new FormControl(null, [Validators.required]),
-      email: new FormControl(null, [Validators.required, Validators.email]),
-      arrivalDate: new FormControl(null, [Validators.required]),
-      message: new FormControl(null),
+      fullName: new FormControl('ibrabi', [Validators.required]),
+      phone: new FormControl('123123123', [Validators.required]),
+      email: new FormControl('3zawiiii@gmail.com', [
+        Validators.required,
+        Validators.email,
+      ]),
+      arrivalDate: new FormControl(new Date(), [Validators.required]),
+      message: new FormControl('hey'),
     });
     this.activatedRoute.data.subscribe(async (data) => {
       this.trip = data.dataMap.trip;
@@ -52,6 +60,17 @@ export class TourInformationComponent implements OnInit {
       control?.markAsTouched({ onlySelf: true });
     });
     if (this.bookForm.valid) {
+      this.bookingService.createBooking(
+        this.trip.id,
+        this.bookForm.get('fullName')?.value,
+        this.trip.basePrice,
+        this.trip.basePeopleCount,
+        this.trip.discount,
+        Enum_Booking_Currency.Dollar,
+        this.bookForm.get('phone')?.value,
+        this.bookForm.get('arrivalDate')?.value,
+        this.bookForm.get('message')?.value
+      );
     }
   }
   showOnMap() {
