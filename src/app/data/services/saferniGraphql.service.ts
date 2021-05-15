@@ -3080,7 +3080,7 @@ export const TripInfoFragmentDoc = gql`
 export const CreateBookingQueryDocument = gql`
     mutation createBookingQuery($tripId: ID!, $fullName: String!, $basePrice: Float!, $discount: Float = 0, $basePeopleCount: Int!, $phone: String!, $arrivalDate: Date!, $message: String, $currency: ENUM_BOOKING_CURRENCY!) {
   createBooking(
-    input: {data: {trip: $tripId, basePrice: $basePrice, discount: $discount, message: $message, fullName: $fullName, currency: $currency, basePeopleCount: $basePeopleCount, phone: $phone, arrivalDate: $arrivalDate}}
+    input: {data: {trip: $tripId, basePrice: $basePrice, discount: $discount, message: $message, fullName: $fullName, basePeopleCount: $basePeopleCount, phone: $phone, arrivalDate: $arrivalDate, currency: $currency}}
   ) {
     booking {
       message

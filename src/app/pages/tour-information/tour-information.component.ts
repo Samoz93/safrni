@@ -38,14 +38,11 @@ export class TourInformationComponent implements OnInit {
 
   ngOnInit(): void {
     this.bookForm = new FormGroup({
-      fullName: new FormControl('ibrabi', [Validators.required]),
-      phone: new FormControl('123123123', [Validators.required]),
-      email: new FormControl('3zawiiii@gmail.com', [
-        Validators.required,
-        Validators.email,
-      ]),
-      arrivalDate: new FormControl(new Date(), [Validators.required]),
-      message: new FormControl('hey'),
+      fullName: new FormControl(null, [Validators.required]),
+      phone: new FormControl(null, [Validators.required]),
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      arrivalDate: new FormControl(null, [Validators.required]),
+      message: new FormControl(null),
     });
     this.activatedRoute.data.subscribe(async (data) => {
       this.trip = data.dataMap.trip;

@@ -17,10 +17,10 @@ mutation createBookingQuery(
         discount: $discount
         message: $message
         fullName: $fullName
-        currency: $currency
         basePeopleCount: $basePeopleCount
         phone: $phone
         arrivalDate: $arrivalDate
+        currency: $currency
       }
     }
   ) {

@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Injectable } from '@angular/core';
 import {
   CreateBookingQueryGQL,
@@ -19,6 +20,8 @@ export class BookingService {
     arrivalDate: Date,
     message?: string
   ): Promise<boolean> {
+    console.log();
+
     let result = await this.bookingGql
       .mutate({
         tripId: tripId,
@@ -28,7 +31,7 @@ export class BookingService {
         discount: discount,
         currency: currency,
         phone: phone,
-        arrivalDate: arrivalDate,
+        arrivalDate: formatDate(arrivalDate, 'yyyy-MM-dd', 'en'),
         message: message,
       })
       .toPromise();
