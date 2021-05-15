@@ -51,7 +51,8 @@ export class TourInformationComponent implements OnInit {
       const control = this.bookForm.get(field);
       control?.markAsTouched({ onlySelf: true });
     });
-    console.log(this.bookForm.value);
+    if (this.bookForm.valid) {
+    }
   }
   showOnMap() {
     this.router.navigate([
