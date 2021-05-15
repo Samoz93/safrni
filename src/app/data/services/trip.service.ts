@@ -60,7 +60,10 @@ export class TripService extends BaseService<TripModel> {
   ): Promise<TripModel[]> {
     let whereQuery: any = {};
     if (query.cityId) {
-      whereQuery.city = { id: query.cityId };
+      whereQuery._or = [
+        { city: { id: query.cityId } },
+        { city: { localizations: { id: query.cityId } } },
+      ];
     }
     if (query.priceRange) {
       whereQuery = {
