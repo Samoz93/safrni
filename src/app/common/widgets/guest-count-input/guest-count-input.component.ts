@@ -58,7 +58,8 @@ const isInstanceOfGuesCount = (obj: any) => {
   ],
 })
 export class GuestCountInputComponent
-  implements OnInit, MatFormFieldControl<GuestCountModel> {
+  implements OnInit, MatFormFieldControl<GuestCountModel>
+{
   _data: GuestCountModel = {
     adult: 0,
     child: 0,
@@ -174,6 +175,10 @@ export class GuestCountInputComponent
       ...this.value,
       [key]: this.getValue(key) - 1,
     };
+  }
+
+  onLeave(event: any) {
+    // this.isShowen = false;
   }
 
   get str() {

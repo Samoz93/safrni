@@ -18,6 +18,8 @@ export class TourInformationResolver implements Resolve<any> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Promise<{ trip: TripModel; timelines: TimelineModel[] }> {
+    //redirect
+    //return
     this.splashScreenStateService.start();
     let tripId = route.paramMap.get('id');
     let trip = await this.tripService.getTripById(tripId!);

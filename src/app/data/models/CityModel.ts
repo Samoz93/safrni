@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Adapter } from '../adapters/adapter';
 import { ImageModel, ImageModelAdapter } from './ImageModel';
-import { LocalizationType, StrapiLocalizationsAdapter } from './localization.type';
+import {
+  LocalizationType,
+  StrapiLocalizationsAdapter,
+} from './localization.type';
 
 export class CityModel {
   constructor(
@@ -10,7 +13,7 @@ export class CityModel {
     public description?: string,
     public locale?: string,
     public image?: ImageModel,
-    public localizations?:LocalizationType[]
+    public localizations?: LocalizationType[]
   ) {}
 }
 

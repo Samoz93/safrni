@@ -20,6 +20,7 @@ export class CityService extends BaseService<CityModel> {
     private loc: LocalService
   ) {
     super();
+    console.log('city service intialiazed', loc.locale);
   }
   get landingObservable$(): Observable<CityModel[]> {
     return this.data$.pipe(map((f) => f.slice(0, 7)));

@@ -14,6 +14,8 @@ export abstract class BaseService<T> {
   });
 
   setBusy(isBusy = false, err: string | undefined = undefined) {
+    //Error overlay with reload or return to home page
+
     this.loadingState$.next({
       isLoading: isBusy,
       hasError: !!err,

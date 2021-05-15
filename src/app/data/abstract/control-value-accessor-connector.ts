@@ -27,7 +27,8 @@ import { DevData } from '../static/main-info';
 })
 export class ControlValueAccessorConnector
   extends MyControlAbstract
-  implements ControlValueAccessor {
+  implements ControlValueAccessor
+{
   @ViewChild(FormControlDirective, { static: true })
   formControlDirective: FormControlDirective;
   @Input() values: any[];
@@ -77,7 +78,11 @@ export class ControlValueAccessorConnector
 
   get errmsg(): any[] | undefined {
     let lst;
-    if (this.control?.errors && this.control?.dirty) {
+
+    if (
+      this.control?.errors &&
+      (this.control?.dirty || this.control?.touched)
+    ) {
       lst = [];
       Object.keys(this.control?.errors ?? []).forEach((f) =>
         lst.push(this._getMsg(f))

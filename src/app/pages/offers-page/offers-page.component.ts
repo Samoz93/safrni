@@ -37,9 +37,10 @@ export class OffersPageComponent implements OnInit {
   }
   cityid: string;
   ngOnInit(): void {
+    const x = this.route.snapshot.queryParams;
     this.route.queryParams.subscribe((f) => {
+      // if (x == f) return;
       this.cityid = f.city;
-
       this.filterOptions = {
         type: f.type ?? TABS.tour,
         cityId: f.city,

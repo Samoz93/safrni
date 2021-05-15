@@ -1,4 +1,5 @@
 <div
+  (mouseleave)="onLeave($event)"
   class="main"
   [ngClass]="{ 'all-border': hasBorder, 'err-border': !!errmsg }"
   [attr.aria-describedby]="userAriaDescribedBy"
