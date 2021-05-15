@@ -8,7 +8,7 @@ import { LocalService } from 'src/app/data/services/local.service';
 import { Trips } from 'src/app/data/services/saferniGraphql.service';
 import { TripService } from 'src/app/data/services/trip.service';
 import { ICONS } from 'src/app/data/utils/enums';
-import {TooltipPosition} from '@angular/material/tooltip';
+import { TooltipPosition } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-tour-information',
@@ -43,7 +43,6 @@ export class TourInformationComponent implements OnInit {
       this.trip = data.dataMap.trip;
       this.timelines = data.dataMap.timelines;
       this.relatedTrips = await this.tripService.getRelatedTrips(this.trip);
-
     });
   }
 

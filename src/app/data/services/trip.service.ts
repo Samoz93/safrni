@@ -81,13 +81,13 @@ export class TripService extends BaseService<TripModel> {
       await this.tripsGql
         .fetch({
           limit: query?.limit ?? 10,
-          locale: query?.locale ?? 'en',
+          locale: query?.locale ?? this.loc.locale,
           where: whereQuery,
         })
         .toPromise()
     ).data.trips?.map((trip) => this.tripAdapter.adapt(trip))!;
 
-    return new Array(10).fill(resultTrips[0]);
+    return resultTrips;
   }
   async getRelatedTrips(to: TripModel): Promise<TripModel[]> {
     let result = await this.queryTrips({ limit: 8, cityId: to.city.id });
@@ -120,9 +120,9 @@ export class TripService extends BaseService<TripModel> {
     );
   }
 
-  async getLocalizedTrip(id: string, locale: string): Promise<TripModel> {
+  async getLocalizedTrip(id: string): Promise<TripModel> {
     let data = await this.localizedTripService
-      .fetch({ id: id, locale: locale })
+      .fetch({ id: id, locale: this.loc.locale })
       .toPromise();
 
     return this.tripAdapter.adapt(data.data.trips![0]);
