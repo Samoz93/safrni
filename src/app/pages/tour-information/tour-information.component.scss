@@ -343,7 +343,7 @@ $brdr: 1px grey solid;
 
   .similar-tours {
     display: grid;
-    grid-template-columns: 1fr 111rem 1fr;
+    grid-template-columns: 1fr $main-content-width 1fr;
     grid-template-rows: 10rem auto;
     gap: 1rem;
 

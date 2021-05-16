@@ -8,16 +8,8 @@ import { BookingSubmitPopupComponent } from 'src/app/common/widgets/booking-subm
   styleUrls: ['./about-us.component.scss'],
 })
 export class AboutUsComponent implements OnInit {
-  constructor(public dialog: MatDialog) {}
+  
 
   ngOnInit(): void {}
-  openDialog(): void {
-    const dialogRef = this.dialog.open(BookingSubmitPopupComponent, {
-      data: { success: true },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-    });
-  }
+ 
 }

@@ -75,7 +75,7 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
   .filter {
     position: absolute;
     bottom: 0px;
-    width: 111rem;
+    width: $main-content-width;
 
     height: 13.875rem;
     right: 50%;

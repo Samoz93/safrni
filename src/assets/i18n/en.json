@@ -73,5 +73,18 @@
   "prName": "Saferni",
   "validation": {
     "required": "This field is required."
+  },
+  "aboutUsPage": {
+    "aboutUs": "About us",
+    "bannerMission1": "We help you",
+    "bannerMission2": "travel faster & cheaper",
+    "whoAreWe": "who are we?",
+    "whoAreWeAnswer": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos aperiam iste accusantium aut incidunt itaque eos nihil, perspiciatis provident? Eveniet totam sed aliquid voluptatibus commodi nemo fugit quae accusantium impedit.",
+    "whatWeOffer": "What do we offer?",
+    "services": {
+      "service1": "Competitive prices",
+      "service2": "A varity of tours",
+      "service3": "Create and customize your tour"
+    }
   }
 }
