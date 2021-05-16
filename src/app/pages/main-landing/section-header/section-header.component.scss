@@ -4,19 +4,19 @@
 .main {
   text-align: center;
 
-  line-height: 1;
   .offer-title {
     font-size: 5.5rem;
     font-weight: 400;
   }
   .desc {
     font-size: 5.6rem;
+    color: #252629;
     font-family: var(--secondary-font);
   }
   .extra {
     font-size: 2.6rem;
-    line-height: 1.5;
     font-weight: 400;
+    color: #252629;
   }
 
   @include respondMax(1250px) {
