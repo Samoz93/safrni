@@ -15,8 +15,6 @@ export class MetaService {
   ) {}
 
   addTags(metaModel: MetaModel) {
-    console.log(location.pathname);
-    console.log(location);
     const header =
       metaModel?.title ?? this.loc.getTranslation(StaticInfo.projectName);
     this.title.setTitle(header);
@@ -27,7 +25,7 @@ export class MetaService {
       { property: 'og:title', content: header },
       { property: 'og:type', content: metaModel?.type ?? 'page' },
       { property: 'og:image', content: metaModel?.image ?? '' },
-      { property: 'og:url', content: location.pathname },
+      { property: 'og:url', content: location.href },
       { property: 'og:description', content: metaModel?.description ?? '' },
       { property: 'og:locale', content: this.loc.locale },
       ...allLocales,

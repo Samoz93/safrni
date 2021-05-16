@@ -66,8 +66,10 @@
     "dollar": "{{ var }} $",
     "lira": "{{ var }} ₺"
   },
-
   "prName": "سفرني",
+  "seo": {
+    "offerTitle": "Offers in {{var}}"
+  },
   "validation": {
     "required": "الرجاء ادخال معلومات الحقل"
   },

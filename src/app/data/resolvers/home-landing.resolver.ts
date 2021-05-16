@@ -11,12 +11,14 @@ import { TripService } from '../services/trip.service';
 import { CityModel } from '../models/CityModel';
 import { TripModel } from '../models/TripModel';
 import { delay } from '../utils/helpers';
+import { MetaService } from '../services/meta.service';
 @Injectable({ providedIn: 'root' })
 export class HomeLandingResolver implements Resolve<any> {
   constructor(
     private splashScreenStateService: SplashScreenStateService,
     private cityService: CityService,
-    private tripService: TripService
+    private tripService: TripService,
+    private meta: MetaService
   ) {}
   async resolve(
     route: ActivatedRouteSnapshot,
@@ -29,6 +31,9 @@ export class HomeLandingResolver implements Resolve<any> {
     ];
 
     let data = await Promise.all(futureArray);
+    this.meta.addTags({
+      description: data[1][0].description,
+    });
     this.splashScreenStateService.stop();
     return {
       cities: data[0],

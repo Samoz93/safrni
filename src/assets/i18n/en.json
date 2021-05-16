@@ -69,8 +69,10 @@
     "dollar": "{{ var }} $",
     "lira": "{{ var }} ₺"
   },
-
   "prName": "Saferni",
+  "seo": {
+    "offerTitle": "Offers in {{var}}"
+  },
   "validation": {
     "required": "This field is required."
   },
