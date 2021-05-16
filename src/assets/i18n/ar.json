@@ -58,11 +58,17 @@
     "included": "السفرة تتضمن",
     "icludedInfo": "الكثير من الخدمات المميزة",
     "visitedPlaces": "الأماكن التي ستزورها",
-    "visitedPlacesInfo": "الكثير من الجولات المختلفة حول تركيا"
+    "visitedPlacesInfo": "الكثير من الجولات المختلفة حول تركيا",
+    "similarTours": "رحلات مشابهه",
+    "similarToursInfo": "تفقد العديد من الرحلات المشابهه"
   },
   "currencies": {
     "dollar": "{{ var }} $",
     "lira": "{{ var }} ₺"
   },
-  "prName": "سفرني"
+  
+  "prName": "سفرني",
+  "validation": {
+    "required": "الرجاء ادخال معلومات الحقل"
+  }
 }

@@ -8,8 +8,9 @@
     [isFocused]="isfocused"
     [errors]="errmsg"
     [placeholder]="placeholder"
-  ></app-validation-icon
-  ><textarea
+  ></app-validation-icon>
+
+  <textarea
     on-focus="onFocus($event)"
     on-focusout="onFocusOut()"
     [formControl]="control"
@@ -18,3 +19,4 @@
     #input
   ></textarea>
 </div>
+<p class="validation-text" *ngIf="errmsg">*{{ errmsg }}</p>

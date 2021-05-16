@@ -77,6 +77,8 @@ import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NocontentComponent } from './common/widgets/loader/nocontent/nocontent.component';
 import { ErrorDlgComponent } from './common/widgets/error-dlg/error-dlg.component';
+import { BookingSubmitPopupComponent } from './common/widgets/booking-submit-popup/booking-submit-popup.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
 
 export function playerFactory() {
   return player;
@@ -121,13 +123,13 @@ export function playerFactory() {
     BookingPageComponent,
     LoaderComponent,
     Onlynumbers,
-
+    AboutUsComponent,
     GuestCountInputComponent,
     UpperFirstCharPipe,
     ServerimagePipe,
     CustomSelectComponent,
     CustomDatePickerComponent,
-
+    BookingSubmitPopupComponent,
     AccordionListComponent,
     BannerCarouselComponent,
     PricePipe,

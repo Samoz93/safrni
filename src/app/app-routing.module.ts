@@ -12,6 +12,7 @@ import { TourInformationResolver } from './data/resolvers/tour-information.resol
 import { MapResolver } from './data/resolvers/map.resolver';
 import { HomeLandingResolver } from './data/resolvers/home-landing.resolver';
 import { OffersPageResolver } from './data/resolvers/offers-page.resolver';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
     component: MainLandingComponent,
     resolve: { initData: HomeLandingResolver },
   },
+  { path: 'about-us', component: AboutUsComponent },
   { path: 'login', component: LoginComponent },
   {
     path: 'profile',

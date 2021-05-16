@@ -1,4 +1,5 @@
 import {
+  AbstractControl,
   ControlContainer,
   ControlValueAccessor,
   FormControl,
@@ -14,6 +15,7 @@ import {
 } from '@angular/core';
 import { MyControlAbstract } from './my-controls-abstract';
 import { DevData } from '../static/main-info';
+import { LocalService } from '../services/local.service';
 
 @Component({
   template: '',
@@ -51,7 +53,7 @@ export class ControlValueAccessorConnector
     );
   }
 
-  constructor(private injector: Injector) {
+  constructor(private injector: Injector, private localeServcie: LocalService) {
     super();
   }
 
@@ -85,12 +87,24 @@ export class ControlValueAccessorConnector
     ) {
       lst = [];
       Object.keys(this.control?.errors ?? []).forEach((f) =>
-        lst.push(this._getMsg(f))
+        lst.push(this.localeServcie.getTranslation(`validation.${f}`))
       );
     }
+
     return lst;
   }
-  _getMsg(name: any) {
-    return DevData.errMsgs.filter((g) => g.name == name)[0]?.msg ?? name;
+  get isControlRequired(): boolean {
+    if (!this.control) {
+      return false;
+    }
+
+    if (this.control.validator) {
+      const validator = this.control.validator({} as AbstractControl);
+      if (validator && validator.required) {
+        return true;
+      }
+    }
+
+    return false;
   }
 }

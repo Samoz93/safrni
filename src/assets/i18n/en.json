@@ -61,11 +61,17 @@
     "included": "Included",
     "icludedInfo": "Alot of special features",
     "visitedPlaces": "Places You Will Visit",
-    "visitedPlacesInfo": "A Lot Of Different Tours Around Turkey"
+    "visitedPlacesInfo": "A Lot Of Different Tours Around Turkey",
+    "similarTours": "Similar tours",
+    "similarToursInfo": "Checkout more similar tours"
   },
   "currencies": {
     "dollar": "{{ var }} $",
     "lira": "{{ var }} ₺"
   },
-  "prName": "Saferni"
+
+  "prName": "Saferni",
+  "validation": {
+    "required": "This field is required."
+  }
 }

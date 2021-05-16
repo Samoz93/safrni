@@ -12,21 +12,29 @@ $brdr: 1px grey solid;
 @mixin cellSettings {
   padding-bottom: 2.25rem;
   border-bottom: 1px solid $dividerColor;
-  margin-bottom: 2.6rem;
+  margin-bottom: 4rem;
 }
 
 .tour-infomation {
   text-align: start;
   padding-bottom: 20rem;
+  position: relative;
   app-banner-carousel {
     position: relative;
   }
   .fab {
     position: fixed;
     right: 10rem;
-    z-index: 9999;
+    bottom: 20rem;
+
+    z-index: 9999999999999999;
 
     cursor: pointer;
+
+    &:lang(ar) {
+      right: unset;
+      left: 10rem;
+    }
   }
   .whatsapp-fab {
     width: 7rem;
@@ -361,8 +369,11 @@ $brdr: 1px grey solid;
       height: 100%;
       display: grid;
       gap: 1rem;
-      grid-template-columns: repeat(auto-fit, 25rem);
-      grid-auto-rows: 25rem;
+      grid-template-columns: repeat(5, 1fr);
+
+      & > * {
+        aspect-ratio: 1;
+      }
     }
   }
 
@@ -381,8 +392,17 @@ $brdr: 1px grey solid;
     }
   }
   @include respondMax(800px) {
+    .fab {
+      right: 5rem;
+      bottom: 20rem;
+
+      &:lang(ar) {
+        left: 5rem;
+        right: unset;
+      }
+    }
     &__content-grid {
-      z-index: 999999999;
+      z-index: 10;
 
       width: 75%;
       position: relative;
@@ -400,8 +420,10 @@ $brdr: 1px grey solid;
         width: 100%;
 
         .trip-info-card {
-          display: unset;
+          display: inline-block;
           width: 100%;
+          // box-shadow: $subtleShadow;
+          margin-bottom: 5rem;
         }
       }
     }
@@ -412,11 +434,13 @@ $brdr: 1px grey solid;
       padding-bottom: 20rem;
       display: flex;
       flex-direction: column;
+      transform: translateY(-3%);
 
       &__grid {
+        margin-top: 2rem;
         display: grid;
-        grid-template-columns: repeat(auto-fit, 25rem);
-        grid-auto-rows: 25rem;
+        grid-template-columns: repeat(2, 1fr);
+
         gap: 1rem;
 
         justify-content: center;
