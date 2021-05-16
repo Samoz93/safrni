@@ -48,8 +48,8 @@
     padding: 10rem 0rem;
     display: grid;
     grid-template-columns: 1fr repeat(3, 37rem) 1fr;
-    grid-template-rows: min-content 10rem 50rem;
-    gap: 10rem 0rem;
+    grid-template-rows: min-content 10rem 10rem 50rem;
+    // gap: 10rem 0rem;
     .who-are-we {
       grid-column: 2/4;
       grid-row: 1/2;
@@ -74,13 +74,13 @@
     }
     .what-we-offer {
       grid-column: 2/4;
-      grid-row: 2/3;
+      grid-row: 3/4;
     }
     .saferni-services {
-      margin-top: 6rem;
+      margin-top: 3rem;
 
       grid-column: 2/5;
-      grid-row: 3/4;
+      grid-row: 4/5;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
