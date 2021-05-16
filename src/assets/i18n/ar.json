@@ -55,7 +55,9 @@
     "included": "السفرة تتضمن",
     "icludedInfo": "الكثير من الخدمات المميزة",
     "visitedPlaces": "الأماكن التي ستزورها",
-    "visitedPlacesInfo": "الكثير من الجولات المختلفة حول تركيا"
+    "visitedPlacesInfo": "الكثير من الجولات المختلفة حول تركيا",
+    "similarTours": "رحلات مشابهه",
+    "similarToursInfo": "تفقد العديد من الرحلات المشابهه"
   },
   "prName": "سفرني",
   "validation": {
