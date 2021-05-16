@@ -102,7 +102,7 @@ export class TourInformationComponent implements OnInit {
 
   openDialog(success: boolean = true): void {
     const dialogRef = this.dialog.open(BookingSubmitPopupComponent, {
-      data: { success: true },
+      data: { success: success },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
