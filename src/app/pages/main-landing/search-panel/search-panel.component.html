@@ -21,30 +21,33 @@
     <div class="filter-body">
       <form [formGroup]="form" class="filter-form">
         <div class="filter-form__left">
-          <app-custom-select
-            class="control first-item"
-            formControlName="whereTo"
-            [icon]="icons.compass"
-            [values]="citiesData"
-            [placeholder]="'inputs.whereto' | transloco"
-            [hasBorder]="hasBorder"
-          >
-          </app-custom-select>
-          <app-guest-count-input
-            [hasBorder]="hasBorder"
-            class="guest control"
-            [placeholder]="'inputs.guest' | transloco"
-            formControlName="guest"
-          >
-          </app-guest-count-input>
+          <div class="filter-form__left__inputs">
+            <app-custom-select
+              class="control first-item"
+              formControlName="whereTo"
+              [icon]="icons.compass"
+              [values]="citiesData"
+              [placeholder]="'inputs.whereto' | transloco"
+              [hasBorder]="hasBorder"
+            >
+            </app-custom-select>
+            <app-guest-count-input
+              [hasBorder]="hasBorder"
+              class="guest control"
+              [placeholder]="'inputs.guest' | transloco"
+              formControlName="guest"
+            >
+            </app-guest-count-input>
 
-          <app-custom-date-picker
-            [icon]="icons.profile"
-            [hasBorder]="hasBorder"
-            [placeholder]="'inputs.traveldate' | transloco"
-            formControlName="date"
-            class="last-item control"
-          ></app-custom-date-picker>
+            <app-custom-date-picker
+              [icon]="icons.profile"
+              [hasBorder]="hasBorder"
+              [placeholder]="'inputs.traveldate' | transloco"
+              formControlName="date"
+              class="last-item control"
+            ></app-custom-date-picker>
+          </div>
+          <div class="filter-form__left__mask"></div>
         </div>
 
         <div class="filter-form__right">
