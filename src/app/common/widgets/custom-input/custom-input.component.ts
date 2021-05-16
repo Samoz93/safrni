@@ -16,5 +16,4 @@ import { ControlValueAccessorConnector } from 'src/app/data/abstract/control-val
 })
 export class CustomInputComponent extends ControlValueAccessorConnector {
   @Input() isNumber = false;
-  @Input() padding = 2;
 }

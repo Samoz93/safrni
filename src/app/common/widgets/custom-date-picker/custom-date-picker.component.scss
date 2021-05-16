@@ -1,7 +1,7 @@
 @import "/src/assets/css/abstract/mixins";
 @import "/src/assets/css/abstract/variables";
 .main {
-  padding: 0 1rem;
+  padding: $form-file-padding;
 
   .date {
     max-width: 100%;
