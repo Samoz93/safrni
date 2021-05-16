@@ -13,7 +13,7 @@ export class AboutUsComponent implements OnInit {
   ngOnInit(): void {}
   openDialog(): void {
     const dialogRef = this.dialog.open(BookingSubmitPopupComponent, {
-      data: { success: false },
+      data: { success: true },
     });
 
     dialogRef.afterClosed().subscribe((result) => {

@@ -65,7 +65,7 @@ export class TourInformationComponent implements OnInit {
     if (this.bookForm.valid) {
       this.isSubmiting = true;
 
-      await this.bookingService.createBooking(
+      let result = await this.bookingService.createBooking(
         this.trip.id,
         this.bookForm.get('fullName')?.value,
         this.trip.basePrice,
@@ -78,8 +78,7 @@ export class TourInformationComponent implements OnInit {
       );
 
       this.isSubmiting = false;
-    } else {
-      this.openDialog();
+      this.openDialog(result);
     }
   }
   showOnMap() {
@@ -105,9 +104,8 @@ export class TourInformationComponent implements OnInit {
     return allImages;
   }
 
-  openDialog(): void {
+  openDialog(success: boolean = true): void {
     const dialogRef = this.dialog.open(BookingSubmitPopupComponent, {
-  
       data: { success: true },
     });
 
