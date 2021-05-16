@@ -21,4 +21,5 @@ export enum ICONS {
   ticket = 'confirmation_number',
   compass = 'explore',
   work = 'work',
+  message = 'message',
 }
