@@ -1,0 +1,59 @@
+@import "/src/assets/css/abstract/variables";
+@import "/src/assets/css/abstract/mixins";
+
+.booking-popup {
+  width: 40rem;
+  height: 60vh;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  .dialog-animation {
+    width: 20rem;
+    height: 20rem;
+  }
+
+  .dismiss-button {
+    margin-top: auto;
+    align-self: flex-end;
+  }
+
+  .result-title {
+    margin-top: auto;
+    h2 {
+      font-size: 4rem;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+  .result-description {
+    margin-bottom: auto;
+    p {
+      font-size: 2rem;
+      font-weight: 400;
+      color: #717171;
+      text-align: center;
+    }
+    .contact-methods {
+      display: flex;
+
+      justify-content: center;
+      i {
+        font-size: 3rem;
+        color: grey;
+        margin: 0.75rem;
+        transition: transform 0.2s ease-out;
+        cursor: pointer;
+        &:hover {
+          color: black;
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}
+.mat-button,
+.mat-raised-button {
+  background-color: white;
+  color: $accent;
+}

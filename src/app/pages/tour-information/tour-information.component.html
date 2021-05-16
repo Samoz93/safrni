@@ -21,7 +21,7 @@
       <section class="trip-info-card">
         <div class="trip-card-header">
           <div class="trip-card-header__image">
-            <img src="https://wallpapercave.com/wp/wp1813727.jpg" />
+            <img [src]="trip.previewImage | serverimage" />
           </div>
           <p class="trip-card-header__price">{{ trip.basePrice }}</p>
           <app-read-only-stars
@@ -62,7 +62,7 @@
         </div>
 
         <button class="main-btn" (click)="showOnMap()">
-          {{ "tour-info.showOnMap" | transloco }}
+          <p>{{ "tour-info.showOnMap" | transloco }}</p>
         </button>
       </section>
       <section class="brief-intro">
@@ -146,13 +146,13 @@
           <app-custom-input
             formControlName="phone"
             [hasBorder]="true"
-            [icon]="icons.profile"
+            [icon]="icons.phone"
             [placeholder]="'inputs.phone' | transloco"
           ></app-custom-input>
           <app-custom-input
             [hasBorder]="true"
             formControlName="email"
-            [icon]="icons.profile"
+            [icon]="icons.mail"
             [placeholder]="'inputs.email' | transloco"
           ></app-custom-input>
           <app-custom-date-picker
@@ -165,10 +165,14 @@
             formControlName="message"
             [hasBorder]="true"
             [placeholder]="'inputs.message' | transloco"
-            [icon]="icons.profile"
+            [icon]="icons.message"
           ></app-custom-textarea>
 
-          <button class="main-btn" type="submit">
+          <button
+            class="main-btn"
+            type="submit"
+            [ngClass]="{ 'button--loading': isSubmiting }"
+          >
             <p>{{ "tour-info.book" | transloco }}</p>
           </button>
         </form>
@@ -178,7 +182,7 @@
       <section class="trip-info-card">
         <div class="trip-card-header">
           <div class="trip-card-header__image">
-            <img src="https://wallpapercave.com/wp/wp1813727.jpg" />
+            <img [src]="trip.previewImage | serverimage" />
           </div>
           <p class="trip-card-header__price">{{ trip.basePrice }}</p>
           <app-read-only-stars
@@ -228,9 +232,9 @@
   <section class="similar-tours">
     <div class="similar-tours__header">
       <h2>
-        <p>{{ "tour-info.bookingInfo" | transloco }}</p>
+        <p>{{ "tour-info.similarTours" | transloco }}</p>
       </h2>
-      <p>{{ "tour-info.bookingNotShared" | transloco }}</p>
+      <p>{{ "tour-info.similarToursInfo" | transloco }}</p>
     </div>
     <div class="similar-tours__grid">
       <app-trip-card

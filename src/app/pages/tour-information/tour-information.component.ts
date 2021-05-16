@@ -5,10 +5,16 @@ import { LocationModel } from 'src/app/data/models/LocationModel';
 import { TimelineModel } from 'src/app/data/models/timelineModel';
 import { TripModel } from 'src/app/data/models/TripModel';
 import { LocalService } from 'src/app/data/services/local.service';
-import { Trips } from 'src/app/data/services/saferniGraphql.service';
+import {
+  Enum_Booking_Currency,
+  Trips,
+} from 'src/app/data/services/saferniGraphql.service';
 import { TripService } from 'src/app/data/services/trip.service';
 import { ICONS } from 'src/app/data/utils/enums';
 import { TooltipPosition } from '@angular/material/tooltip';
+import { BookingService } from 'src/app/data/services/booking.service';
+import { MatDialog } from '@angular/material/dialog';
+import { BookingSubmitPopupComponent } from 'src/app/common/widgets/booking-submit-popup/booking-submit-popup.component';
 
 @Component({
   selector: 'app-tour-information',
@@ -21,12 +27,17 @@ export class TourInformationComponent implements OnInit {
   relatedTrips: TripModel[];
   bookForm: FormGroup;
   icons = ICONS;
+
+  isSubmiting = false;
+
   isArabic$;
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private tripService: TripService,
-    loc: LocalService
+    loc: LocalService,
+    private bookingService: BookingService,
+    public dialog: MatDialog
   ) {
     this.isArabic$ = loc.isArabic$;
   }
@@ -37,7 +48,7 @@ export class TourInformationComponent implements OnInit {
       phone: new FormControl(null, [Validators.required]),
       email: new FormControl(null, [Validators.required, Validators.email]),
       arrivalDate: new FormControl(null, [Validators.required]),
-      message: new FormControl(null, [Validators.required]),
+      message: new FormControl(null),
     });
     this.activatedRoute.data.subscribe(async (data) => {
       this.trip = data.dataMap.trip;
@@ -46,7 +57,30 @@ export class TourInformationComponent implements OnInit {
     });
   }
 
-  onFormSubmitted() {}
+  async onFormSubmitted() {
+    Object.keys(this.bookForm.controls).forEach((field) => {
+      const control = this.bookForm.get(field);
+      control?.markAsTouched({ onlySelf: true });
+    });
+    if (this.bookForm.valid) {
+      this.isSubmiting = true;
+
+      let result = await this.bookingService.createBooking(
+        this.trip.id,
+        this.bookForm.get('fullName')?.value,
+        this.trip.basePrice,
+        this.trip.basePeopleCount,
+        this.trip.discount,
+        Enum_Booking_Currency.Dollar,
+        this.bookForm.get('phone')?.value,
+        this.bookForm.get('arrivalDate')?.value,
+        this.bookForm.get('message')?.value
+      );
+
+      this.isSubmiting = false;
+      this.openDialog(result);
+    }
+  }
   showOnMap() {
     this.router.navigate([
       '/map',
@@ -63,10 +97,16 @@ export class TourInformationComponent implements OnInit {
     return allLocations;
   }
   getCarouselImages(): string[] {
-    let allImages: string[] = [];
-    this.getAllLocations().map((loc) =>
-      allImages.push(...loc.images.map((image) => image.url))
-    );
-    return allImages;
+    return this.getAllLocations().map((l) => l.images[0].url);
+  }
+
+  openDialog(success: boolean = true): void {
+    const dialogRef = this.dialog.open(BookingSubmitPopupComponent, {
+      data: { success: true },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
   }
 }

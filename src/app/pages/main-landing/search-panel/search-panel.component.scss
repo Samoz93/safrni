@@ -75,7 +75,7 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
   .filter {
     position: absolute;
     bottom: 0px;
-    width: 111rem;
+    width: $main-content-width;
 
     height: 13.875rem;
     right: 50%;
@@ -107,33 +107,42 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
           transform-origin: bottom right;
           transition: transform 0.2s ease-out;
           position: relative;
-          background-color: white;
-          border-right: dashed 1px $border-color;
-          mask-image: radial-gradient(
-              circle 10px at bottom right,
-              transparent 0,
-              transparent 10px,
-              black 10px
-            ),
-            radial-gradient(
-              circle 10px at top right,
-              transparent 0,
-              transparent 10px,
-              black 10px
-            );
-          -webkit-mask-composite: destination-in;
-          mask-composite: exclude;
 
           display: flex;
-          justify-content: stretch;
-          align-items: center;
-          padding: 0rem 3.2rem;
-
-          & > * {
-            flex: 1 1 33%;
-            height: 60%;
-            max-width: 100%;
-            min-width: 0px;
+          &__inputs {
+            padding: 0rem 0rem 0rem 3.2rem;
+            height: 100%;
+            width: 100%;
+            background-color: white;
+            display: flex;
+            justify-content: stretch;
+            align-items: center;
+            & > * {
+              flex: 1 1 33%;
+              height: 60%;
+              max-width: 100%;
+              min-width: 0px;
+            }
+          }
+          &__mask {
+            width: 3.2rem;
+            height: 100%;
+            background-color: white;
+            border-right: dashed 1px $border-color;
+            mask-image: radial-gradient(
+                circle 10px at bottom right,
+                transparent 0,
+                transparent 10px,
+                black 10px
+              ),
+              radial-gradient(
+                circle 10px at top right,
+                transparent 0,
+                transparent 10px,
+                black 10px
+              );
+            -webkit-mask-composite: destination-in;
+            mask-composite: exclude;
           }
 
           &:lang(ar) {
@@ -215,6 +224,16 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
     @include respondMax(930px) {
       width: 40rem;
       height: unset;
+
+      &.ripped {
+        .filter-body .filter-form .filter-form__left {
+          transform: rotateZ(0deg);
+        }
+        .filter-body .filter-form .filter-form__left:lang(ar) {
+          transform: rotateZ(0deg);
+        }
+      }
+
       .filter-body {
         .filter-form {
           flex-direction: column;
@@ -224,7 +243,7 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
             height: 13.5rem;
             border-left: none;
             padding: 5rem 0rem 0rem 0rem;
-            border-top: dashed 1px $border-color;
+            border-top: dashed 3px $border-color;
             mask-image: radial-gradient(
                 circle 10px at top right,
                 transparent 0,
@@ -250,28 +269,44 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
           &__left {
             width: 100%;
             height: 76%;
-            padding: 0rem 0rem 5rem 0rem;
+            padding: 0rem 0rem 0rem 0rem;
             border-right: none;
             flex-direction: column;
-            mask-image: radial-gradient(
-                circle 10px at bottom right,
-                transparent 0,
-                transparent 10px,
-                black 10px
-              ),
-              radial-gradient(
-                circle 10px at bottom left,
-                transparent 0,
-                transparent 10px,
-                black 10px
-              );
-            -webkit-mask-composite: destination-in;
-            mask-composite: exclude;
 
-            & > * {
-              flex: 1 1 auto;
-              height: 10rem;
+            &__inputs {
+              padding: 0rem;
+              flex-direction: column;
               width: 100%;
+              height: 100%;
+              & > * {
+                flex: 1 1 auto;
+                height: 10rem;
+                width: 100%;
+              }
+
+              app-guest-count-input {
+                z-index: 99999999999999;
+              }
+            }
+            &__mask {
+              border-right: unset;
+              height: 5.5rem;
+              width: 100%;
+              background-color: white;
+              mask-image: radial-gradient(
+                  circle 10px at bottom right,
+                  transparent 0,
+                  transparent 10px,
+                  black 10px
+                ),
+                radial-gradient(
+                  circle 10px at bottom left,
+                  transparent 0,
+                  transparent 10px,
+                  black 10px
+                );
+              -webkit-mask-composite: destination-in;
+              mask-composite: exclude;
             }
           }
         }

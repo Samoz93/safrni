@@ -8,7 +8,7 @@
     [popperShowOnStart]="false"
     [popperTrigger]="triggers.hover"
     [popperPlacement]="placement.TOP"
-    [ngClass]="{ focused: isFocused, error: !!errors }"
+    [ngClass]="{ focused: isFocused, error: !!errors && !isFocused }"
     >{{ icon }}</mat-icon
   >
 </div>

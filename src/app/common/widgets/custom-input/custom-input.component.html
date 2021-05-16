@@ -11,6 +11,7 @@
     [placeholder]="placeholder"
     #input
   />
+ 
   <app-validation-icon
     [hidden]="hideIcon"
     [icon]="icon"
@@ -19,3 +20,4 @@
     [placeholder]="placeholder"
   ></app-validation-icon>
 </div>
+<p class="validation-text" *ngIf="errmsg">*{{ errmsg }}</p>
