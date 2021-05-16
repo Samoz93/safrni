@@ -33,7 +33,9 @@ html {
     -webkit-appearance: none;
     margin: 0;
   }
-
+  .mat-select-panel {
+    width: 100% !important;
+  }
   /* Firefox */
   input[type="number"] {
     -moz-appearance: textfield;

@@ -15,7 +15,7 @@
     width: 100%;
     height: 101%;
     color: grey;
-    padding: 0 2rem;
+    padding: $form-file-padding;
     &-suffix {
       transition: all 0.5s ease;
       font-size: inherit;
@@ -38,9 +38,9 @@
       text-align: start;
       display: grid;
       align-items: center;
-      margin: 0 1rem;
+      margin: 0 2rem;
       @include res(phone) {
-        margin: 0 2rem;
+        align-items: flex-end;
       }
     }
     // &-data {

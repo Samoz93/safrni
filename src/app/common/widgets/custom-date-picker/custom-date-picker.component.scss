@@ -1,6 +1,8 @@
 @import "/src/assets/css/abstract/mixins";
 @import "/src/assets/css/abstract/variables";
 .main {
+  padding: 0 1rem;
+
   .date {
     max-width: 100%;
     height: 100%;
@@ -10,15 +12,18 @@
   input::placeholder {
     font-size: 1.5rem;
     font-weight: 400;
+
     font-family: var(--primary-font);
     color: grey;
   }
-  .required-symbol {
-    margin-left: auto;
-    font-size: 2rem;
-    margin: 0px;
-    text-align: center;
+
+  .icon {
+    font-size: 1.5rem;
+    @include res(tab) {
+      font-size: 2rem;
+    }
   }
+
   min-width: 0px;
   max-width: 100%;
   height: 100%;

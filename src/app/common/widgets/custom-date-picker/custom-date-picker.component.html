@@ -4,6 +4,7 @@
 >
   <mat-form-field color="accent" class="date" appearance="fill">
     <input
+      class="input"
       on-focus="onFocus($event)"
       on-focusout="onFocusOut()"
       [formControl]="control"
@@ -16,6 +17,7 @@
     />
     <mat-datepicker-toggle matPrefix [for]="picker">
       <app-validation-icon
+        class="icon"
         matDatepickerToggleIcon
         [icon]="iconsData.calendar"
         [isFocused]="isfocused"

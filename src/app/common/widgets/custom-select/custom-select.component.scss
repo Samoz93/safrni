@@ -13,15 +13,20 @@ $border: grey solid 1px;
   color: grey;
   align-items: center;
   // margin: 1px;
-  padding: 0 2rem;
+  padding: $form-file-padding;
   font-size: 1.5rem;
   @include angularMatInputStyle;
+  .input {
+    margin: 0 0 0 1rem;
+    &:lang(ar) {
+      margin: 0 1rem 0 0;
+    }
+  }
 }
-img.icon {
-  height: 5rem;
-  width: 5rem;
-  padding: 1.5rem;
-}
-img.hide {
-  opacity: 0;
-}
+// img.icon {
+//   height: 5rem;
+//   width: 5rem;
+// }
+// img.hide {
+//   opacity: 0;
+// }
