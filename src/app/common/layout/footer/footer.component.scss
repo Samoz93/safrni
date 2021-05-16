@@ -2,11 +2,12 @@
 @import "/src/assets/css/abstract/mixins";
 
 .main {
-  height: 60rem;
+  height: 100%;
   display: grid;
   place-items: end;
   background-color: $light-blue;
   color: white;
+  margin-top: 5rem;
 }
 .svg {
   position: absolute;
@@ -16,7 +17,7 @@
 
 .clipped {
   width: 100%;
-  margin-top: 10rem;
+  margin-top: 1rem;
   background: $light-black;
   background-size: cover;
   -webkit-clip-path: url(#my-clip-path);
@@ -31,7 +32,6 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(6, 1fr);
-
     color: white;
     justify-items: center;
     align-items: flex-end;
@@ -41,8 +41,8 @@
     @include res(phone) {
       grid-template-columns: repeat(4, 1fr);
       grid-template-rows: repeat(3, 1fr);
-      margin: 5rem;
-      font-size: 2rem;
+      margin: 5rem 1rem;
+      font-size: 1.5rem;
     }
     &_title {
       grid-column: 1;
@@ -74,25 +74,30 @@
     &_home {
       grid-column: 2;
       grid-row: 1;
+      font-size: inherit;
     }
     &_about {
       grid-column: 2;
       grid-row: 2;
+      font-size: inherit;
     }
     &_privacy {
       grid-column: 2;
       grid-row: 3;
+      font-size: inherit;
     }
     &_support {
       grid-column: 2;
       grid-row: 4;
+      font-size: inherit;
     }
     &_contact {
       grid-column: 2;
       grid-row: 5;
+      font-size: inherit;
     }
     .navlink {
-      font-size: 2rem;
+      font-size: inherit;
       font-weight: 800;
       color: inherit;
     }
@@ -109,11 +114,11 @@
       }
       &_phone {
         grid-column: 4;
-        grid-row: 2;
+        grid-row: 1;
       }
       &_email {
         grid-column: 4;
-        grid-row: 3;
+        grid-row: 2;
       }
       &_home {
         grid-column: 2;

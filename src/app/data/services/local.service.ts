@@ -46,4 +46,8 @@ export class LocalService {
   ): string {
     return this.trans.translate(key, args);
   }
+
+  get allLocales(): string[] {
+    return this.trans.getAvailableLangs().join(' ').split(' ');
+  }
 }
