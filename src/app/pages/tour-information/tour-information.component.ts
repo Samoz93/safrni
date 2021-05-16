@@ -97,11 +97,7 @@ export class TourInformationComponent implements OnInit {
     return allLocations;
   }
   getCarouselImages(): string[] {
-    let allImages: string[] = [];
-    this.getAllLocations().map((loc) =>
-      allImages.push(...loc.images.map((image) => image.url))
-    );
-    return allImages;
+    return this.getAllLocations().map((l) => l.images[0].url);
   }
 
   openDialog(success: boolean = true): void {

@@ -21,7 +21,7 @@
       <section class="trip-info-card">
         <div class="trip-card-header">
           <div class="trip-card-header__image">
-            <img src="https://wallpapercave.com/wp/wp1813727.jpg" />
+            <img [src]="trip.previewImage | serverimage" />
           </div>
           <p class="trip-card-header__price">{{ trip.basePrice }}</p>
           <app-read-only-stars
@@ -182,7 +182,7 @@
       <section class="trip-info-card">
         <div class="trip-card-header">
           <div class="trip-card-header__image">
-            <img src="https://wallpapercave.com/wp/wp1813727.jpg" />
+            <img [src]="trip.previewImage | serverimage" />
           </div>
           <p class="trip-card-header__price">{{ trip.basePrice }}</p>
           <app-read-only-stars
