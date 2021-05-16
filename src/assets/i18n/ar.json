@@ -64,5 +64,8 @@
     "dollar": "{{ var }} $",
     "lira": "{{ var }} ₺"
   },
-  "prName": "سفرني"
+  "prName": "سفرني",
+  "seo": {
+    "offerTitle": "Offers in {{var}}"
+  }
 }

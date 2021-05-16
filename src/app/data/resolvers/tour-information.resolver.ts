@@ -8,11 +8,14 @@ import { SplashScreenStateService } from '../services/splash-screen-state.servic
 import { TripService } from '../services/trip.service';
 import { TripModel } from '../models/TripModel';
 import { TimelineModel } from '../models/timelineModel';
+import { MetaService } from '../services/meta.service';
+import { LocalService } from '../services/local.service';
 @Injectable({ providedIn: 'root' })
 export class TourInformationResolver implements Resolve<any> {
   constructor(
     private splashScreenStateService: SplashScreenStateService,
-    private tripService: TripService
+    private tripService: TripService,
+    private meta: MetaService
   ) {}
   async resolve(
     route: ActivatedRouteSnapshot,
@@ -26,8 +29,11 @@ export class TourInformationResolver implements Resolve<any> {
     let trip = await this.tripService.getLocalizedTrip(tripId!);
     let timelines = await this.tripService.getTimeline(trip.timelineId);
 
-    console.log(tripId, trip.id);
-
+    this.meta.addTags({
+      title: trip.name,
+      description: trip.description,
+      image: trip.previewImage.url,
+    });
     this.splashScreenStateService.stop();
     return {
       trip: trip,
