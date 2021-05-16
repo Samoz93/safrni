@@ -177,8 +177,8 @@ export class GuestCountInputComponent
     };
   }
 
-  onLeave(event: any) {
-    // this.isShowen = false;
+  onLeave() {
+    this.isShowen = false;
   }
 
   get str() {

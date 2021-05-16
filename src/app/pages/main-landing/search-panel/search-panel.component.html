@@ -21,14 +21,15 @@
     <div class="filter-body">
       <form [formGroup]="form" class="filter-form">
         <div class="filter-form__left">
-          <app-custom-input
+          <app-custom-select
             class="control first-item"
             formControlName="whereTo"
             [icon]="icons.compass"
+            [values]="citiesData"
             [placeholder]="'inputs.whereto' | transloco"
             [hasBorder]="hasBorder"
           >
-          </app-custom-input>
+          </app-custom-select>
           <app-guest-count-input
             [hasBorder]="hasBorder"
             class="guest control"

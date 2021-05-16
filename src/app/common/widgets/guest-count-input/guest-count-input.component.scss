@@ -39,6 +39,9 @@
       display: grid;
       align-items: center;
       margin: 0 1rem;
+      @include res(phone) {
+        margin: 0 2rem;
+      }
     }
     // &-data {
     //   grid-column: 2 / span 2;

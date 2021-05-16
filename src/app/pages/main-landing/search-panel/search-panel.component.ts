@@ -5,6 +5,7 @@ import { ICONS } from 'src/app/data/utils/enums';
 import { TranslocoService } from '@ngneat/transloco';
 import { LocalService } from 'src/app/data/services/local.service';
 import { Observable } from 'rxjs';
+import { CityService } from 'src/app/data/services/city.service';
 
 @Component({
   selector: 'app-search-panel',
@@ -13,20 +14,30 @@ import { Observable } from 'rxjs';
 })
 export class SearchPanelComponent implements OnInit {
   ticketRipped = false;
-  tripTypes = [
-    { id: '1', name: 'Public', icon: 'group' },
-    { id: '2', name: 'Private', icon: 'private' },
-  ];
+  // tripTypes = [
+  //   { id: '1', name: 'Public', icon: 'group' },
+  //   { id: '2', name: 'Private', icon: 'private' },
+  // ];
   selctedTrip: string = '';
   form: FormGroup;
   icons = ICONS;
   selectedType: string;
   activeTab = TABS.tour;
-
+  citiesData: { id: string; name: string }[] = [];
   isArabic$: Observable<boolean>;
-  constructor(public fb: FormBuilder, private locale: LocalService) {
+  constructor(
+    public fb: FormBuilder,
+    private locale: LocalService,
+    _ser: CityService
+  ) {
+    this.citiesData = _ser.data.map((c) => {
+      return {
+        name: c.name,
+        id: c.id,
+      };
+    });
     this.form = fb.group({
-      whereTo: ['sasdasd', Validators.required],
+      whereTo: [this.citiesData[0].id, Validators.required],
       guest: {
         adult: 1,
         child: 0,
@@ -44,7 +55,7 @@ export class SearchPanelComponent implements OnInit {
       this.bannerHeight = 60;
     }
   }
-  
+
   changeTab(tab: any) {
     this.activeTab = tab;
   }
