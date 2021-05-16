@@ -30,7 +30,9 @@
     list-style: none;
     list-style-type: none;
     z-index: 9999;
-
+    & > * {
+      cursor: pointer;
+    }
     *:not(:last-child) {
       margin-right: 5rem;
     }

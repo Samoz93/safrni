@@ -1,3 +1,30 @@
 <div class="booking-popup">
-    <p>heeeey</p>
+  <div class="dialog-animation">
+    <ng-lottie [options]="options"></ng-lottie>
+  </div>
+  <div class="result-title" *ngIf="data.success; else errorTitle">
+    <h2>Your order has been submitted</h2>
+  </div>
+  <ng-template #errorTitle
+    ><div class="result-title"><h2>Ops!</h2></div></ng-template
+  >
+  <div class="result-description" *ngIf="data.success; else errorDescription">
+    <p>
+      Our team will review your order and get back to you as soon as possible.
+      In the meantime, prepare yourself for an amazing adventure.
+    </p>
+  </div>
+  <ng-template #errorDescription>
+    <div class="result-description">
+      <p>
+        Something went wrong. Please contact us using any of the below methods
+      </p>
+      <div class="contact-methods">
+        <i class="fa fa-envelope"></i>
+        <i class="fa fa-whatsapp"></i>
+        <i class="fa fa-phone"></i>
+      </div>
+    </div>
+  </ng-template>
+  <button mat-button class="dismiss-button" (click)="onNoClick()">OK</button>
 </div>

@@ -17,7 +17,9 @@
         }}</a>
       </li>
       <li>
-        <a class="navlink">{{ "buttons.aboutus" | transloco }}</a>
+        <a class="navlink" [routerLink]="['/about-us']">{{
+          "buttons.aboutus" | transloco
+        }}</a>
       </li>
       <li>
         <a class="navlink" [routerLink]="['/tours/1']">{{
