@@ -48,8 +48,8 @@
     padding: 10rem 0rem;
     display: grid;
     grid-template-columns: 1fr repeat(3, 37rem) 1fr;
-    grid-template-rows: 50rem 10rem 50rem;
-
+    grid-template-rows: min-content 10rem 50rem;
+    gap: 10rem 0rem;
     .who-are-we {
       grid-column: 2/4;
       grid-row: 1/2;
@@ -107,6 +107,29 @@
           font-weight: 500;
           color: #252629;
           text-align: center;
+        }
+      }
+    }
+  }
+
+  @include respondMax(1150px) {
+    &__banner {
+      .banner-text {
+        width: 85%;
+      }
+    }
+    &__body {
+      grid-template-columns: 7.5% repeat(3, 28.333%) 7.5%;
+    }
+  }
+  @include respondMax(800px) {
+    &__banner {
+      .banner-text {
+        h1 {
+          font-size: 3.5rem;
+        }
+        p {
+          font-size: 5rem;
         }
       }
     }
