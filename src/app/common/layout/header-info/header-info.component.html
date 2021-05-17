@@ -1,4 +1,4 @@
-<div class="main page-padding">
+<div class="main">
   <div class="main_quickreach">
     <app-header-icon
       *ngFor="let q of quickReach"
@@ -7,28 +7,18 @@
     ></app-header-icon>
   </div>
   <app-oursocialmedia class="main_social-icons"></app-oursocialmedia>
-  <div *ngIf="!isSigned" class="main_login log">
-    <div
-      class="main_social-login"
-      [routerLink]="['/login', { isLogin: false }]"
-      routerLinkActive="router-link-active"
+  <div class="language-selector" [matMenuTriggerFor]="menu">
+    <i class="fa fa-globe"></i>
+    <p class="language-name">{{ localService.locale | language }}</p>
+    <i class="fa fa-chevron-down"></i>
+  </div>
+  <mat-menu #menu="matMenu">
+    <button
+      mat-menu-item
+      *ngFor="let locale of localService.allLocales"
+      (click)="localService.changeLangTo(locale)"
     >
-      Login
-    </div>
-    <div class="main-btn" [routerLink]="['/login', { isLogin: true }]">
-      Sign Up
-    </div>
-  </div>
-  <div
-    *ngIf="isSigned"
-    [routerLink]="['/profile']"
-    routerLinkActive="router-link-active"
-    class="main_user log"
-  >
-    <app-header-icon
-      txt="Hey, Sameh"
-      icon="user.svg"
-      [nopadding]="true"
-    ></app-header-icon>
-  </div>
+      {{ locale | language }}
+    </button>
+  </mat-menu>
 </div>

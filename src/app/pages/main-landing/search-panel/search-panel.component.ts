@@ -65,7 +65,5 @@ export class SearchPanelComponent implements OnInit {
     return window.innerWidth > 900;
   }
 
-  test() {
-    this.locale.testToggle();
-  }
+  
 }

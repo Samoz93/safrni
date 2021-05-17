@@ -1,5 +1,5 @@
+@import "/src/assets/css/abstract/variables";
 @import "/src/assets/css/abstract/mixins";
-
 .main {
   display: flex;
   background-color: black;
@@ -7,6 +7,7 @@
   align-items: center;
   color: white;
 
+  padding: 0rem 7.5%;
   &_quickreach {
     flex: 8;
     display: flex;
@@ -15,17 +16,27 @@
 
   &_social-icons {
     margin-right: 5rem;
-  }
-  &_login {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 2;
-    * {
-      margin: 0 0.5rem;
+
+    &:lang(ar) {
+      margin-right: unset;
+      margin-left: 5rem;
     }
   }
-
+  .language-selector {
+    display: flex;
+    cursor: pointer;
+    i {
+      font-size: 2rem;
+      color: $accent;
+    }
+    p {
+      font-size: 1.5rem;
+      font-weight: bold;
+      font-family: var(--primary-font);
+      text-transform: capitalize;
+      margin: 0rem 1rem;
+    }
+  }
   @include res(tab) {
     display: none;
   }

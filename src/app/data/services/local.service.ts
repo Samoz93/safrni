@@ -28,18 +28,14 @@ export class LocalService {
   get lastSaveLocale(): any {
     return (localStorage.getItem(LOCALE_KEY) as string) || 'en';
   }
-  testToggle() {
-    if (this.trans.getActiveLang() == 'ar') {
-      this.trans.setActiveLang('en');
-      localStorage.setItem(LOCALE_KEY, 'en');
-    } else {
-      this.trans.setActiveLang('ar');
-      localStorage.setItem(LOCALE_KEY, 'ar');
-    }
+  changeLangTo(locale: string): void {
+    this.trans.setActiveLang(locale);
   }
+
   get locale() {
     return this.trans.getActiveLang();
   }
+
   getTranslation(
     key: string,
     args: HashMap<any> | undefined = undefined

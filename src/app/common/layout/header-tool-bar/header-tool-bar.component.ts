@@ -26,7 +26,5 @@ export class HeaderToolBarComponent implements OnInit {
     this.isNavOpen = !this.isNavOpen;
   }
   goToProfile() {}
-  toggleLang() {
-    this.loc.testToggle();
-  }
+  
 }

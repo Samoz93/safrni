@@ -8,8 +8,6 @@ import { Component, Input, OnInit } from '@angular/core';
 export class HeaderIconComponent implements OnInit {
   @Input() icon: string = '';
   @Input() txt: string = '';
-  @Input() nopadding = false;
-  constructor() {}
 
   ngOnInit(): void {}
 }
