@@ -1,6 +1,5 @@
 <div
   class="main"
-  [ngStyle]="{ padding: '0 ' + padding + 'rem' }"
   [ngClass]="{ 'all-border': hasBorder, 'err-border': !!errmsg }"
 >
   <input
@@ -11,7 +10,7 @@
     [placeholder]="placeholder"
     #input
   />
- 
+
   <app-validation-icon
     [hidden]="hideIcon"
     [icon]="icon"
