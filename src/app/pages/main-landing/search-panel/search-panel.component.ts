@@ -48,13 +48,13 @@ export class SearchPanelComponent implements OnInit {
     this.isArabic$ = locale.isArabic$;
   }
   bannerHeight = 60;
-  @HostListener('window:resize', []) onScreenChanged() {
-    if (window.innerWidth <= 930 && this.bannerHeight != 85) {
-      this.bannerHeight = 85;
-    } else if (window.innerWidth > 930 && this.bannerHeight != 60) {
-      this.bannerHeight = 60;
-    }
-  }
+  // @HostListener('window:resize', []) onScreenChanged() {
+  //   if (window.innerWidth <= 930 && this.bannerHeight != 85) {
+  //     this.bannerHeight = 85;
+  //   } else if (window.innerWidth > 930 && this.bannerHeight != 60) {
+  //     this.bannerHeight = 60;
+  //   }
+  // }
 
   changeTab(tab: any) {
     this.activeTab = tab;
@@ -64,6 +64,4 @@ export class SearchPanelComponent implements OnInit {
   get hasBorder(): boolean {
     return window.innerWidth > 900;
   }
-
-  
 }

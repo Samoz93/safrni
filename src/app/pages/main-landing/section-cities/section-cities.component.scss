@@ -4,6 +4,10 @@
 .trip-section {
   margin-top: 20rem;
   height: 100%;
+
+  @include respondMax(930px) {
+    margin-top: 10rem;
+  }
 }
 
 .data {
