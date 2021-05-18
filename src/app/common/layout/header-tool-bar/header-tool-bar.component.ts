@@ -15,10 +15,8 @@ export class HeaderToolBarComponent implements OnInit {
     location: StaticInfo.location,
     email: StaticInfo.email,
   };
-  isArabic$;
-  constructor(private loc: LocalService) {
-    this.isArabic$ = loc.isArabic$;
-  }
+
+  constructor(private loc: LocalService) {}
 
   ngOnInit(): void {}
 
@@ -26,5 +24,4 @@ export class HeaderToolBarComponent implements OnInit {
     this.isNavOpen = !this.isNavOpen;
   }
   goToProfile() {}
-  
 }

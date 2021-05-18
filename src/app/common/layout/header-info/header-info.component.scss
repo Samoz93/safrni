@@ -22,21 +22,7 @@
       margin-left: 5rem;
     }
   }
-  .language-selector {
-    display: flex;
-    cursor: pointer;
-    i {
-      font-size: 2rem;
-      color: $accent;
-    }
-    p {
-      font-size: 1.5rem;
-      font-weight: bold;
-      font-family: var(--primary-font);
-      text-transform: capitalize;
-      margin: 0rem 1rem;
-    }
-  }
+  
   @include res(tab) {
     display: none;
   }

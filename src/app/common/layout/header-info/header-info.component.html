@@ -7,18 +7,5 @@
     ></app-header-icon>
   </div>
   <app-oursocialmedia class="main_social-icons"></app-oursocialmedia>
-  <div class="language-selector" [matMenuTriggerFor]="menu">
-    <i class="fa fa-globe"></i>
-    <p class="language-name">{{ localService.locale | language }}</p>
-    <i class="fa fa-chevron-down"></i>
-  </div>
-  <mat-menu #menu="matMenu">
-    <button
-      mat-menu-item
-      *ngFor="let locale of localService.allLocales"
-      (click)="localService.changeLangTo(locale)"
-    >
-      {{ locale | language }}
-    </button>
-  </mat-menu>
+  <app-language-selector></app-language-selector>
 </div>

@@ -17,7 +17,7 @@ export class HeaderInfoComponent implements OnInit {
     { icon: 'phone.svg', info: StaticInfo.phoneNumber },
     { icon: 'location.svg', info: 'Istanbul, Turkey' },
   ];
-  constructor(public localService : LocalService){}
+  
 
  
   ngOnInit(): void {}

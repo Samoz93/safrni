@@ -1,10 +1,10 @@
 export class StaticInfo {
   static projectName = 'prName';
   static phoneNumber = '90 537 695 8305';
-  static email = 'Saferni@emali.com';
+  static email = 'saferni@emali.com';
   static defaultImage = '/assets/images/placeholder/default.jpeg';
 
-  static location = '';
+  static location = 'Istanbul - Turkey';
 
   //settings
   static LOADER_MINIMUM_INTERVAL = 0;

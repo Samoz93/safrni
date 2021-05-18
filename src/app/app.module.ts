@@ -81,6 +81,7 @@ import { ErrorDlgComponent } from './common/widgets/error-dlg/error-dlg.componen
 import { BookingSubmitPopupComponent } from './common/widgets/booking-submit-popup/booking-submit-popup.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { LanguagePipe } from './data/pipes/language.pipe';
+import { LanguageSelectorComponent } from './common/layout/language-selector/language-selector.component';
 
 export function playerFactory() {
   return player;
@@ -142,7 +143,8 @@ export function playerFactory() {
     TourMapComponent,
     NocontentComponent,
     ErrorDlgComponent,
-    LanguagePipe
+    LanguagePipe,
+    LanguageSelectorComponent
   ],
 
   imports: [
