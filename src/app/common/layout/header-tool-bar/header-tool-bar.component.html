@@ -63,14 +63,13 @@
         </li> -->
       </ul>
       <ul class="contactLinks">
-        <li>
-          <i class="fa fa-phone"></i><a href="">{{ contactInfo.phone }}</a>
+        <li socialLink [type]="'whatsapp'">
+          <i class="fa fa-phone"></i>
+          <p>{{ contactInfo.phone }}</p>
         </li>
-        <li>
-          <i class="fa fa-envelope"></i><a href="">{{ contactInfo.email }}</a>
-        </li>
-        <li>
-          <i class="fa fa-compass"></i><a href="">{{ contactInfo.location }}</a>
+        <li socialLink [type]="'email'">
+          <i class="fa fa-envelope"></i>
+          <p>{{ contactInfo.email }}</p>
         </li>
       </ul>
     </div>

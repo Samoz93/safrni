@@ -69,3 +69,28 @@ p {
   color: $accent;
   line-height: 1;
 }
+.social-link {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+
+  i {
+    font-size: 2rem;
+    color: $accent;
+    margin-right: 1rem;
+
+    &:lang(ar) {
+      margin-right: unset;
+      margin-left: 1rem;
+    }
+  }
+  p {
+    direction: ltr;
+    font-family: var(--primary-font);
+    font-weight: 400;
+    font-size: 1.5rem;
+    margin: 0rem;
+    text-align: center;
+  }
+}

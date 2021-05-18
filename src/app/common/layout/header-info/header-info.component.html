@@ -1,11 +1,15 @@
 <div class="main">
-  <div class="main_quickreach">
-    <app-header-icon
-      *ngFor="let q of quickReach"
-      [txt]="q.info | transloco"
-      [icon]="q.icon"
-    ></app-header-icon>
+  <div class="main_socials">
+    <div class="social-link" socialLink [type]="'email'">
+      <i class="fa fa-envelope"></i>
+      <p>{{ email }}</p>
+    </div>
+    <div class="social-link" socialLink [type]="'whatsapp'">
+      <i class="fa fa-whatsapp"></i>
+      <p>{{ phone }}</p>
+    </div>
   </div>
   <app-oursocialmedia class="main_social-icons"></app-oursocialmedia>
   <app-language-selector></app-language-selector>
 </div>
+

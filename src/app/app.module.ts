@@ -25,7 +25,7 @@ import { LoginComponent } from './pages/user/login/login.component';
 import { OfferBookingComponent } from './pages/Offer/offer-booking/offer-booking.component';
 import { SingleTripCardComponent } from './common/widgets/single-trip-card/single-trip-card.component';
 import { TripExtraComponent } from './common/widgets/trip-extra/trip-extra.component';
-import { HeaderIconComponent } from './common/widgets/header-icon/header-icon.component';
+
 import { OursocialmediaComponent } from './common/widgets/oursocialmedia/oursocialmedia.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { UserProfileLandingComponent } from './pages/user/user-profile-landing/user-profile-landing.component';
@@ -91,6 +91,7 @@ import {
 } from '@angular/fire/analytics';
 import { AngularFireMessagingModule } from '@angular/fire/messaging';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SocialLinkDirective } from './data/directives/social-link.directive';
 
 export function playerFactory() {
   return player;
@@ -120,7 +121,6 @@ export function playerFactory() {
     OfferBookingComponent,
     SingleTripCardComponent,
     TripExtraComponent,
-    HeaderIconComponent,
     OursocialmediaComponent,
     UserProfileLandingComponent,
     UserProfileComponent,
@@ -155,6 +155,7 @@ export function playerFactory() {
     LanguagePipe,
     LanguageSelectorComponent,
     LogoComponent,
+    SocialLinkDirective,
   ],
 
   imports: [

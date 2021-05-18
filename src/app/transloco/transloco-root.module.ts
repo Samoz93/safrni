@@ -28,7 +28,7 @@ export class TranslocoHttpLoader implements TranslocoLoader {
     {
       provide: TRANSLOCO_CONFIG,
       useValue: translocoConfig({
-        availableLangs: ['en', 'ar', 'ru'],
+        availableLangs: ['en', 'ar'],
         // defaultLang: navigator.language.slice(0, 2),
         fallbackLang: 'en',
         // Remove this option if your application doesn't support changing language in runtime.

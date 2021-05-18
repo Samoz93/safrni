@@ -8,17 +8,9 @@ import { StaticInfo } from 'src/app/data/static/main-info';
   styleUrls: ['./header-info.component.scss'],
 })
 export class HeaderInfoComponent implements OnInit {
-  isSigned = true;
-  quickReach = [
-    {
-      icon: 'email.svg',
-      info: StaticInfo.projectName,
-    },
-    { icon: 'phone.svg', info: StaticInfo.phoneNumber },
-    { icon: 'location.svg', info: 'Istanbul, Turkey' },
-  ];
-  
 
- 
   ngOnInit(): void {}
+
+  email = StaticInfo.email;
+  phone = StaticInfo.phoneNumber;
 }
