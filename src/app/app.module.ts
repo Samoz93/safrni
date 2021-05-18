@@ -73,12 +73,20 @@ import { CustomTextareaComponent } from './common/widgets/custom-textarea/custom
 import { HorizontalListviewComponent } from './common/widgets/horizontal-listview/horizontal-listview.component';
 import { TranslocoRootModule } from './transloco/transloco-root.module';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { MatButton, MatButtonModule } from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NocontentComponent } from './common/widgets/loader/nocontent/nocontent.component';
 import { ErrorDlgComponent } from './common/widgets/error-dlg/error-dlg.component';
 import { BookingSubmitPopupComponent } from './common/widgets/booking-submit-popup/booking-submit-popup.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import {
+  AngularFireAnalyticsModule,
+  ScreenTrackingService,
+} from '@angular/fire/analytics';
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 export function playerFactory() {
   return player;
@@ -172,8 +180,13 @@ export function playerFactory() {
     LottieModule.forRoot({ player: playerFactory }),
     TranslocoRootModule,
     MatExpansionModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAnalyticsModule,
+    AngularFireMessagingModule,
+    MatSnackBarModule,
   ],
   providers: [
+    ScreenTrackingService,
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { floatLabel: 'never' },

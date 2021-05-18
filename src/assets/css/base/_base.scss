@@ -33,8 +33,17 @@ html {
     -webkit-appearance: none;
     margin: 0;
   }
+  //select
   .mat-select-panel {
     width: 100% !important;
+  }
+  //date picker
+
+  .mat-datepicker-content.mat-accent .mat-calendar-body-selected {
+    box-shadow: inset 0 0 0 1px white !important;
+  }
+  .mat-datepicker-content.mat-accent .mat-calendar-body-selected {
+    color: white;
   }
   /* Firefox */
   input[type="number"] {

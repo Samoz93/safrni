@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CityService } from './data/services/city.service';
+import { MessagingService } from './data/services/messaging.service';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,5 @@ import { CityService } from './data/services/city.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(_ser: CityService) {}
+  constructor(_ser: CityService, msg: MessagingService) {}
 }

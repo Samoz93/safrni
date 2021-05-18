@@ -46,6 +46,7 @@ export class OffersPageComponent implements OnInit {
         minPrice: newQuery.minPrice ? +newQuery.minPrice : 0,
         adult: newQuery.adult ? +newQuery.adult : 0,
         child: newQuery.child ? +newQuery.child : 0,
+        date: newQuery.date ? +newQuery.date : new Date().getTime(),
       };
       if (newQuery == initQuery) {
         return;

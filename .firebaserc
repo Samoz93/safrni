@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "saferni-e66bf": {
+      "hosting": {
+        "safrni": [
+          "saferni-e66bf"
+        ]
+      }
+    }
+  }
+}
