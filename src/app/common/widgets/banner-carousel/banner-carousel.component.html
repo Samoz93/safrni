@@ -13,14 +13,17 @@
     [(index)]="currentSwiperIndex"
   >
     <ng-template swiperSlide class="slide" *ngFor="let image of images">
-      <img
+      <!-- <img
         src="{{ image }}"
         [ngStyle]="{
           minHeight: screenHeightPercentage + 'vh',
           height: screenHeightPercentage + 'vh'
         }"
         style="width: 100%; object-fit: cover"
-      />
+      /> -->
+      <div class="" [ngStyle]="{ height: screenHeightPercentage + 'vh' }">
+        <app-saferni-image [url]="image" [overlayOpacity]="overlayOpacity"> </app-saferni-image>
+      </div>
     </ng-template>
   </swiper>
   <div class="swiper-arrow left" (click)="swipe(false)">

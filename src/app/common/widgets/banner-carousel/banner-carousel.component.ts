@@ -10,7 +10,7 @@ export class BannerCarouselComponent implements OnInit {
 
   @Input() images: string[];
   @Input() screenHeightPercentage: number;
-  
+  @Input() overlayOpacity = 25;
   currentSwiperIndex = 0;
 
   ngOnInit(): void {}
