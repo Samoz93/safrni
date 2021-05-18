@@ -83,12 +83,17 @@ export class TourMapComponent implements OnInit, OnDestroy {
       this.initMapPosition();
     });
   }
+
+  zoomChange(event:any){
+    console.log(event);
+}
+
   onOverlayHover(id: any) {
     let container =
       this.overlayContainer.first.nativeElement.childNodes[0].childNodes[0].querySelectorAll(
         '.location-overlay'
       )[0].parentElement.parentElement;
-    console.log(container);
+   
 
     container.childNodes.forEach((child: any) => {
       let overlay = child.querySelector('.location-overlay');

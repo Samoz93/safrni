@@ -6,10 +6,11 @@
     [zoom]="zoom"
     [usePanning]="true"
     [restriction]="restriction"
-    [maxZoom]="15"
+    [maxZoom]="16"
     [styles]="styles"
+    (zoomChange)="zoomChange($event)"
   >
-    <agm-polyline
+    <!-- <agm-polyline
       *ngFor="
         let location of allLocationsSorted | slice: 0:timelines.length - 1;
         let i = index
@@ -37,28 +38,24 @@
         [path]="'FORWARD_CLOSED_ARROW'"
       >
       </agm-icon-sequence>
-    </agm-polyline>
+    </agm-polyline> -->
 
     <ng-container *ngFor="let timeline of timelines">
       <agm-overlay
         *ngFor="let location of timeline.locations; let i = index"
         [latitude]="location.geo.latitude"
         [longitude]="location.geo.longitude"
-        [bounds]="{
-          x: { latitude: -0.003, longitude: -0.0052 },
-          y: { latitude: 0.003, longitude: 0.0052 }
-        }"
         (markerClick)="recenterMapToLocation(location)"
       >
         <!-- blue html square -->
         <div
           class="location-overlay"
           [id]="location.id"
+          [ngClass]="{ big: location.id == sidebarLocation.id }"
           [ngStyle]="{ 'z-index': i == 0 ? 999 : 1 }"
           (mouseover)="onOverlayHover(location.id)"
         >
           <img [src]="location.images[0] | serverimage" />
-          <h2>{{ location.name }}</h2>
         </div>
       </agm-overlay>
     </ng-container>
