@@ -32,7 +32,7 @@ export class SingleTripCardComponent implements OnInit {
       });
     else
       this.router.navigate([StaticInfo.offersRoute], {
-        queryParams: { city: this.id },
+        queryParams: { cityId: this.id },
       });
   }
 

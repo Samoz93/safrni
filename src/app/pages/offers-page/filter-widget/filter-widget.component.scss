@@ -10,7 +10,7 @@ $font-size: 1.5rem;
   @include shadow;
   height: 50rem;
   width: 100%;
-
+  font-family: var(--secondary-font);
   &-nav {
     height: 7rem;
     display: grid;
@@ -24,6 +24,7 @@ $font-size: 1.5rem;
       cursor: pointer;
       transition: $trans;
       text-align: center;
+      font-weight: 800;
     }
     &-item.active {
       background: white;
@@ -31,6 +32,8 @@ $font-size: 1.5rem;
     }
   }
   &-guest-count {
+    font-weight: 800;
+
     height: 15rem;
     font-size: 1.5rem;
     padding: $padding;
@@ -72,10 +75,12 @@ $font-size: 1.5rem;
     @include divider();
   }
   &-price {
+    font-weight: 800;
+
     height: 10rem;
-    padding: 0 15% 0 2rem;
     position: relative;
     display: grid;
+    padding: $padding;
     align-items: center;
     justify-content: center;
     grid-template-columns: 1fr 1rem 1fr;
@@ -102,11 +107,18 @@ $font-size: 1.5rem;
     }
   }
   &-btn {
-    height: 7rem;
     padding: $padding;
+    margin-top: 5rem;
     z-index: 0;
     display: grid;
     justify-content: flex-start;
     align-items: center;
+    * {
+      font-family: inherit;
+      height: 3rem;
+      width: 8rem;
+      font-weight: 800;
+      font-size: 1.7rem;
+    }
   }
 }

@@ -31,15 +31,16 @@ export class OffersPageResolver implements Resolve<any> {
       cityId: cityId,
       limit: 30,
     });
-    const title = this.loc.getTranslation('seo.offerTitle', {
-      var: trip[0].city.name,
-    });
+    // const tr = trip[0]?;
+    // const title = this.loc.getTranslation('seo.offerTitle', {
+    //   var: trip[0]?.city?.name,
+    // });
 
-    this.meta.addTags({
-      title: title,
-      description: trip[0].description,
-      image: trip[0].previewImage.url,
-    });
+    // this.meta.addTags({
+    //   title: title,
+    //   description: trip[0].description,
+    //   image: trip[0].previewImage.url,
+    // });
     this.splashScreenStateService.stop();
     return trip;
   }

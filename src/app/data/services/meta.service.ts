@@ -15,8 +15,8 @@ export class MetaService {
   ) {}
 
   addTags(metaModel: MetaModel) {
-    const header =
-      metaModel?.title ?? this.loc.getTranslation(StaticInfo.projectName);
+    const prName = this.loc.getTranslation(StaticInfo.projectName);
+    const header = metaModel.title ? `${prName} - ${metaModel.title}` : prName;
     this.title.setTitle(header);
     const allLocales = this.loc.allLocales.map((f) => {
       return { property: 'og:locale:alternate', content: f };

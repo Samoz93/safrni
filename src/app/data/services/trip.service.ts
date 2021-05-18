@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { locale } from 'core-js';
 import { Observable, throwError } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+import { ErrorDlgComponent } from 'src/app/common/widgets/error-dlg/error-dlg.component';
 import { TimelineModel, TimelineModelAdapter } from '../models/timelineModel';
 import { TripModel, TripModelAdapter } from '../models/TripModel';
 import { BaseService } from './base.service';
@@ -27,13 +29,22 @@ export class TripService extends BaseService<TripModel> {
     private timelineGql: GetTimelineGQL,
     private localizedTripService: GetLocalizedTripGQL,
     private getTrip: GetTripGQL,
-    private loc: LocalService
+    private loc: LocalService,
+    dlg: MatDialog
   ) {
     super();
     // this.loc.isArabic$.subscribe(async (f) => {
     //   await this.init();
     //   console.log('refetching trips with arabic ?', f);
     // });
+    this.loadingState$.subscribe((state) => {
+      if (state.hasError) {
+        dlg.open(ErrorDlgComponent, {
+          data: state,
+          disableClose: true,
+        });
+      }
+    });
   }
 
   get landingObservable$(): Observable<TripModel[]> {

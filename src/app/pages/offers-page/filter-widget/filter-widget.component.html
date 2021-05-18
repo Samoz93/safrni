@@ -18,7 +18,7 @@
   <section class="flex_area_filter-guest-count">
     <div
       class="flex_area_filter-guest-count-item"
-      *ngFor="let key of ['child', 'adult']"
+      *ngFor="let key of ['adult', 'child']"
     >
       <p>{{ "various." + key | transloco }}</p>
       <mat-icon class="icon minus" (click)="decrease(key)">remove</mat-icon>
