@@ -41,7 +41,6 @@ export class TourInformationComponent implements OnInit {
   ) {
     this.isArabic$ = loc.isArabic$;
   }
-
   ngOnInit(): void {
     this.bookForm = new FormGroup({
       fullName: new FormControl(null, [Validators.required]),
@@ -55,6 +54,16 @@ export class TourInformationComponent implements OnInit {
       this.timelines = data.dataMap.timelines;
       this.relatedTrips = await this.tripService.getRelatedTrips(this.trip);
     });
+    // setTimeout(() => {
+    //   const date = +this.activatedRoute.snapshot.queryParams?.date;
+    //   const formatedDate = new Date(date);
+
+    //   if (date) {
+    //     this.bookForm.patchValue({
+    //       arrivalDate: formatedDate,
+    //     });
+    //   }
+    // }, 0);
   }
 
   async onFormSubmitted() {

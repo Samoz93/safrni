@@ -68,7 +68,7 @@
   },
   "prName": "سفرني",
   "seo": {
-    "offerTitle": "Offers in {{var}}"
+    "offerTitle": "رحلات في {{var}}"
   },
   "validation": {
     "required": "الرجاء ادخال معلومات الحقل"

@@ -26,7 +26,10 @@ export class SingleTripCardComponent implements OnInit {
 
   goToOffer() {
     if (!this.id) throw 'please provide a valid id';
-    if (this.isOffer) this.router.navigate([StaticInfo.tourInfoRoute, this.id]);
+    if (this.isOffer)
+      this.router.navigate([StaticInfo.tourInfoRoute, this.id], {
+        queryParamsHandling: 'preserve',
+      });
     else
       this.router.navigate([StaticInfo.offersRoute], {
         queryParams: { city: this.id },

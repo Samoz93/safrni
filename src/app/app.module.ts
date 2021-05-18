@@ -74,7 +74,7 @@ import { HorizontalListviewComponent } from './common/widgets/horizontal-listvie
 import { TranslocoRootModule } from './transloco/transloco-root.module';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButton, MatButtonModule } from '@angular/material/button';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NocontentComponent } from './common/widgets/loader/nocontent/nocontent.component';
 import { ErrorDlgComponent } from './common/widgets/error-dlg/error-dlg.component';
@@ -83,6 +83,14 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { LanguagePipe } from './data/pipes/language.pipe';
 import { LanguageSelectorComponent } from './common/layout/language-selector/language-selector.component';
 import { LogoComponent } from './common/widgets/logo/logo.component';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import {
+  AngularFireAnalyticsModule,
+  ScreenTrackingService,
+} from '@angular/fire/analytics';
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 export function playerFactory() {
   return player;
@@ -146,7 +154,7 @@ export function playerFactory() {
     ErrorDlgComponent,
     LanguagePipe,
     LanguageSelectorComponent,
-    LogoComponent
+    LogoComponent,
   ],
 
   imports: [
@@ -179,8 +187,13 @@ export function playerFactory() {
     LottieModule.forRoot({ player: playerFactory }),
     TranslocoRootModule,
     MatExpansionModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAnalyticsModule,
+    AngularFireMessagingModule,
+    MatSnackBarModule,
   ],
   providers: [
+    ScreenTrackingService,
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { floatLabel: 'never' },

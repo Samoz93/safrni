@@ -1,11 +1,14 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TABS } from 'src/app/data/static/main-info';
+import { StaticInfo, TABS } from 'src/app/data/static/main-info';
 import { ICONS } from 'src/app/data/utils/enums';
 import { TranslocoService } from '@ngneat/transloco';
 import { LocalService } from 'src/app/data/services/local.service';
 import { Observable } from 'rxjs';
 import { CityService } from 'src/app/data/services/city.service';
+import { Router } from '@angular/router';
+import { QueryStringParameters } from 'src/app/data/abstract/query.string.builder';
+import { FilterOptionsModel } from 'src/app/data/models/filterOptionModlel';
 
 @Component({
   selector: 'app-search-panel',
@@ -28,7 +31,8 @@ export class SearchPanelComponent implements OnInit {
   constructor(
     public fb: FormBuilder,
     private locale: LocalService,
-    _ser: CityService
+    _ser: CityService,
+    private router: Router
   ) {
     this.citiesData = _ser.data.map((c) => {
       return {
@@ -42,7 +46,6 @@ export class SearchPanelComponent implements OnInit {
         adult: 1,
         child: 0,
       },
-      travelType: '1',
       date: new Date(),
     });
     this.isArabic$ = locale.isArabic$;
@@ -63,5 +66,20 @@ export class SearchPanelComponent implements OnInit {
 
   get hasBorder(): boolean {
     return window.innerWidth > 900;
+  }
+  search() {
+    const data = this.form.value;
+    const params: FilterOptionsModel = {
+      cityId: data.whereTo,
+      date: data.date.getTime(),
+      type: this.activeTab,
+      maxPrice: 0,
+      minPrice: 0,
+      adult: data.guest.adult,
+      child: data.guest.child,
+    };
+    this.router.navigate([StaticInfo.offersRoute], {
+      queryParams: params,
+    });
   }
 }
