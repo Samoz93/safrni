@@ -27,8 +27,12 @@ export class FilterWidgetComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.minPriceCtrl = new FormControl(this.filterOptions.minPrice);
-    this.maxPriceCtrl = new FormControl(this.filterOptions.maxPrice);
+    this.minPriceCtrl = new FormControl(
+      this.filterOptions.minPrice == 0 ? null : this.filterOptions.minPrice
+    );
+    this.maxPriceCtrl = new FormControl(
+      this.filterOptions.maxPrice == 0 ? null : this.filterOptions.maxPrice
+    );
     this.minPriceCtrl.valueChanges.subscribe((f) => {
       let val = f;
       if (isNaN(val) || !val) val = 0;

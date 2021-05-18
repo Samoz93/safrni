@@ -46,7 +46,9 @@
   "various": {
     "adult": "Adult",
     "child": "Child",
-    "price": "Price"
+    "price": "Price",
+    "min": "Minimum",
+    "max": "Maximum"
   },
   "map": {
     "tourplan": "Tour plan",

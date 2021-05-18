@@ -15,7 +15,7 @@
       on-focusout="onFocusOut()"
       [formControl]="control"
     >
-      <mat-option *ngFor="let data of values" [value]="data.id">
+      <mat-option class="txt" *ngFor="let data of values" [value]="data.id">
         <!-- <img
           [ngClass]="{ hide: !data.icon }"
           class="icon"
