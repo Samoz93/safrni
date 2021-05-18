@@ -36,6 +36,7 @@
     "apollo-angular": "^2.4.0",
     "bootstrap": "^4.5.0",
     "date-fns": "^2.21.1",
+    "firebase": "^8.6.1",
     "graphql": "^15.0.0",
     "lottie-web": "^5.7.8",
     "ngx-lottie": "^6.4.0",
