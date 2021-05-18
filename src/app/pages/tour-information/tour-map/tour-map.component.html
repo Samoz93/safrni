@@ -1,4 +1,4 @@
-<div class="map-box">
+<div class="map-box" #overlayContainer>
   <agm-map
     #agmMap
     [latitude]="currentLat"
@@ -41,7 +41,7 @@
 
     <ng-container *ngFor="let timeline of timelines">
       <agm-overlay
-        *ngFor="let location of timeline.locations"
+        *ngFor="let location of timeline.locations; let i = index"
         [latitude]="location.geo.latitude"
         [longitude]="location.geo.longitude"
         [bounds]="{
@@ -51,7 +51,12 @@
         (markerClick)="recenterMapToLocation(location)"
       >
         <!-- blue html square -->
-        <div class="location-overlay">
+        <div
+          class="location-overlay"
+          [id]="location.id"
+          [ngStyle]="{ 'z-index': i == 0 ? 999 : 1 }"
+          (mouseover)="onOverlayHover(location.id)"
+        >
           <img [src]="location.images[0] | serverimage" />
           <h2>{{ location.name }}</h2>
         </div>
@@ -66,7 +71,9 @@
   </div>
   <div
     class="side-information-bar"
-    [ngStyle]="{ left: sideBarVisibility ? ' 0px' : '-25%' }"
+    [ngStyle]="{
+      transform: sideBarVisibility ? 'translateX(0)' : 'translateX(-90%)'
+    }"
   >
     <div class="side-information-bar__wrapper">
       <div class="side-information-bar-header">

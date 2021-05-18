@@ -1,5 +1,15 @@
 import { AgmMap, MapTypeStyle } from '@agm/core';
-import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Input,
+  OnDestroy,
+  OnInit,
+  QueryList,
+  Renderer2,
+  ViewChild,
+  ViewChildren,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import {
@@ -21,8 +31,11 @@ import { TripService } from 'src/app/data/services/trip.service';
 export class TourMapComponent implements OnInit, OnDestroy {
   constructor(
     private tripService: TripService,
-    private activeRoute: ActivatedRoute
+    private activeRoute: ActivatedRoute,
+    private ren: Renderer2
   ) {}
+
+  @ViewChildren('overlayContainer') overlayContainer: QueryList<ElementRef>;
 
   routeSub: Subscription;
   selectedImageIndex = 0;
@@ -70,6 +83,23 @@ export class TourMapComponent implements OnInit, OnDestroy {
       this.initMapPosition();
     });
   }
+  onOverlayHover(id: any) {
+    let container =
+      this.overlayContainer.first.nativeElement.childNodes[0].childNodes[0].querySelectorAll(
+        '.location-overlay'
+      )[0].parentElement.parentElement;
+    console.log(container);
+
+    container.childNodes.forEach((child: any) => {
+      let overlay = child.querySelector('.location-overlay');
+      if (overlay.getAttribute('id') === id) {
+        this.ren.setStyle(overlay.parentElement, 'z-index', 9);
+      } else {
+        this.ren.setStyle(overlay.parentElement, 'z-index', 1);
+      }
+    });
+    // .querySelector(`#${CSS.escape(id)}`)
+  }
   initMapPosition() {
     this.currentLat = this.timelines[0].locations[0].geo.latitude;
     this.currentLong = this.timelines[0].locations[0].geo.longitude;
@@ -94,6 +124,8 @@ export class TourMapComponent implements OnInit, OnDestroy {
       this.zoom += 10;
       this.selectedImageIndex = 0;
       this.sidebarLocation = location;
+
+      this.onOverlayHover(location.id);
     }
   }
   onImageSliderClicked(imageIndex: number) {
@@ -132,14 +164,9 @@ export class TourMapComponent implements OnInit, OnDestroy {
     this.sideBarVisibility = !this.sideBarVisibility;
   }
   onLocationClicked(data: AccordionClickEventData) {
-    this.currentLat =
-      this.timelines[data.parentIndex].locations[data.childIndex].geo.latitude;
-    this.currentLong =
-      this.timelines[data.parentIndex].locations[data.childIndex].geo.longitude;
-    this.zoom += 10;
-    this.selectedImageIndex = 0;
-    this.sidebarLocation =
-      this.timelines[data.parentIndex].locations[data.childIndex];
+    this.recenterMapToLocation(
+      this.timelines[data.parentIndex].locations[data.childIndex]
+    );
   }
   toggleMobileSheet() {
     this.mobileSheetExpanded = !this.mobileSheetExpanded;
