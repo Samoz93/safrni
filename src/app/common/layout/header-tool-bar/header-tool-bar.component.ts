@@ -11,6 +11,8 @@ export class HeaderToolBarComponent implements OnInit {
   projectName = StaticInfo.projectName;
   isNavOpen = false;
 
+  email = StaticInfo.email;
+  phone = StaticInfo.phoneNumber;
   contactInfo = {
     phone: StaticInfo.phoneNumber,
     location: StaticInfo.location,
