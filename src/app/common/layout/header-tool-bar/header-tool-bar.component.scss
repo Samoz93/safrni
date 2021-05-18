@@ -18,7 +18,8 @@
   position: relative;
   width: $main-content-width;
 
-  &_logo {
+  logo {
+    height: 6rem;
   }
   app-language-selector {
     display: none;

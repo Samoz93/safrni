@@ -82,6 +82,7 @@ import { BookingSubmitPopupComponent } from './common/widgets/booking-submit-pop
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { LanguagePipe } from './data/pipes/language.pipe';
 import { LanguageSelectorComponent } from './common/layout/language-selector/language-selector.component';
+import { LogoComponent } from './common/widgets/logo/logo.component';
 
 export function playerFactory() {
   return player;
@@ -144,7 +145,8 @@ export function playerFactory() {
     NocontentComponent,
     ErrorDlgComponent,
     LanguagePipe,
-    LanguageSelectorComponent
+    LanguageSelectorComponent,
+    LogoComponent
   ],
 
   imports: [

@@ -9,6 +9,7 @@
   width: 100%;
   position: relative;
   overflow: hidden;
+  box-shadow: $liteShadow;
   * {
     z-index: 1;
   }
@@ -46,7 +47,7 @@
     left: 0;
     width: 100%;
     font-weight: 800;
-   
+
     font-family: var(--secondary-font);
     font-size: 200%;
   }
