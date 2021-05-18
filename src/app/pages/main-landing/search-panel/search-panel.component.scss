@@ -160,19 +160,6 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
           &:lang(ar) {
             transform-origin: bottom left;
             border-right: unset;
-
-            mask-image: radial-gradient(
-                circle 10px at bottom left,
-                transparent 0,
-                transparent 10px,
-                black 10px
-              ),
-              radial-gradient(
-                circle 10px at top left,
-                transparent 0,
-                transparent 10px,
-                black 10px
-              );
           }
         }
         &__right {
