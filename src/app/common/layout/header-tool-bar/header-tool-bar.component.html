@@ -13,52 +13,54 @@
     <app-language-selector></app-language-selector>
     <ul class="main_tool-bar">
       <li>
-        <a class="navlink" [routerLink]="['/']">{{
+        <a class="navlink" (click)="navigateTo('/')">{{
           "buttons.home" | transloco
         }}</a>
       </li>
       <li>
-        <a class="navlink" [routerLink]="['/about-us']">{{
+        <a class="navlink" (click)="navigateTo('/about-us')">{{
           "buttons.aboutus" | transloco
         }}</a>
       </li>
       <li>
-        <a class="navlink" [routerLink]="['/tours/1']">{{
+        <a class="navlink" (click)="navigateTo('/offers')">{{
           "buttons.trips" | transloco
         }}</a>
       </li>
-      <li>
+      <!-- <li>
         <a class="navlink" [routerLink]="['/booking/11']">{{
           "buttons.destination" | transloco
         }}</a>
-      </li>
-      <li>
+      </li> -->
+      <!-- <li>
         <a class="navlink">{{ "buttons.medic" | transloco }}</a>
-      </li>
+      </li> -->
     </ul>
     <div class="main_mobile-tool-bar" [ngClass]="isNavOpen ? 'open' : ''">
       <ul class="navLinks">
         <li>
-          <a class="navlink" [routerLink]="['/']">{{
+          <a class="navlink" (click)="navigateTo('/')">{{
             "buttons.home" | transloco
           }}</a>
         </li>
         <li>
-          <a class="navlink">{{ "buttons.aboutus" | transloco }}</a>
-        </li>
-        <li>
-          <a class="navlink" [routerLink]="['/tours/1']">{{
-            "buttons.trips" | transloco
+          <a class="navlink" (click)="navigateTo('/about-us')">{{
+            "buttons.aboutus" | transloco
           }}</a>
         </li>
         <li>
+          <a class="navlink" (click)="navigateTo('/offers')">{{
+            "buttons.trips" | transloco
+          }}</a>
+        </li>
+        <!-- <li>
           <a class="navlink" [routerLink]="['/booking/11']">{{
             "buttons.destination" | transloco
           }}</a>
         </li>
         <li>
           <a class="navlink">{{ "buttons.medic" | transloco }}</a>
-        </li>
+        </li> -->
       </ul>
       <ul class="contactLinks">
         <li>

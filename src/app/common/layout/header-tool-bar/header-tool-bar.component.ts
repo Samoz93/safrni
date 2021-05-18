@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LocalService } from 'src/app/data/services/local.service';
 import { StaticInfo } from 'src/app/data/static/main-info';
 @Component({
@@ -16,7 +17,7 @@ export class HeaderToolBarComponent implements OnInit {
     email: StaticInfo.email,
   };
 
-  constructor(private loc: LocalService) {}
+  constructor(private loc: LocalService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -24,4 +25,9 @@ export class HeaderToolBarComponent implements OnInit {
     this.isNavOpen = !this.isNavOpen;
   }
   goToProfile() {}
+
+  navigateTo(location: string) {
+    this.isNavOpen = false;
+    this.router.navigate([location]);
+  }
 }
