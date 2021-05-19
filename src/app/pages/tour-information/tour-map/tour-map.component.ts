@@ -10,7 +10,7 @@ import {
   ViewChild,
   ViewChildren,
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import {
   AccordionListItem,
@@ -32,7 +32,9 @@ export class TourMapComponent implements OnInit, OnDestroy {
   constructor(
     private tripService: TripService,
     private activeRoute: ActivatedRoute,
-    private ren: Renderer2
+    private ren: Renderer2,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   @ViewChildren('overlayContainer') overlayContainer: QueryList<ElementRef>;
@@ -84,16 +86,15 @@ export class TourMapComponent implements OnInit, OnDestroy {
     });
   }
 
-  zoomChange(event:any){
+  zoomChange(event: any) {
     console.log(event);
-}
+  }
 
   onOverlayHover(id: any) {
     let container =
       this.overlayContainer.first.nativeElement.childNodes[0].childNodes[0].querySelectorAll(
         '.location-overlay'
       )[0].parentElement.parentElement;
-   
 
     container.childNodes.forEach((child: any) => {
       let overlay = child.querySelector('.location-overlay');
@@ -106,11 +107,6 @@ export class TourMapComponent implements OnInit, OnDestroy {
     // .querySelector(`#${CSS.escape(id)}`)
   }
   initMapPosition() {
-    this.currentLat = this.timelines[0].locations[0].geo.latitude;
-    this.currentLong = this.timelines[0].locations[0].geo.longitude;
-
-    this.sidebarLocation = this.timelines[0].locations[0];
-
     this.timelines.forEach((timeline) => {
       this.accordionItems.push(
         new AccordionListItem(
@@ -121,8 +117,27 @@ export class TourMapComponent implements OnInit, OnDestroy {
       );
       this.allLocationsSorted.push(...timeline.locations);
     });
+
+    let queryParamLocationId =
+      this.activatedRoute.snapshot.queryParams.location;
+    if (queryParamLocationId) {
+      let location = this.allLocationsSorted.find(
+        (l) => l.id === queryParamLocationId
+      );
+      if (location) {
+        this.recenterMapToLocation(location, false);
+      } else {
+        this.currentLat = this.timelines[0].locations[0].geo.latitude;
+        this.currentLong = this.timelines[0].locations[0].geo.longitude;
+        this.sidebarLocation = this.timelines[0].locations[0];
+      }
+    } else {
+      this.currentLat = this.timelines[0].locations[0].geo.latitude;
+      this.currentLong = this.timelines[0].locations[0].geo.longitude;
+      this.sidebarLocation = this.timelines[0].locations[0];
+    }
   }
-  recenterMapToLocation(location: LocationModel) {
+  recenterMapToLocation(location: LocationModel, bringToFront = true) {
     if (location) {
       this.currentLat = location.geo.latitude;
       this.currentLong = location.geo.longitude;
@@ -130,7 +145,14 @@ export class TourMapComponent implements OnInit, OnDestroy {
       this.selectedImageIndex = 0;
       this.sidebarLocation = location;
 
-      this.onOverlayHover(location.id);
+      this.router.navigate([], {
+        relativeTo: this.activatedRoute,
+        queryParams: { location: location.id },
+        queryParamsHandling: 'merge',
+        replaceUrl: true,
+      });
+
+      if (bringToFront) this.onOverlayHover(location.id);
     }
   }
   onImageSliderClicked(imageIndex: number) {
