@@ -181,6 +181,11 @@ $brdr: 1px grey solid;
     .content-grid-col1 {
       width: 51rem;
       margin-right: 17rem;
+
+      &:lang(ar) {
+        margin-right: unset;
+        margin-left: 17rem;
+      }
       .trip-info-card {
         display: none;
       }
@@ -231,6 +236,7 @@ $brdr: 1px grey solid;
               left: 10px;
               bottom: 10px;
               font-size: 2.1rem;
+              right: 10px;
               font-family: var(--secondary-font);
               margin: 0rem;
               color: white;
@@ -303,10 +309,7 @@ $brdr: 1px grey solid;
         }
       }
     }
-    .content-grid-col1:lang(ar) {
-      margin-left: 20rem;
-      margin-right: unset;
-    }
+
     .content-grid-col2 {
       width: 43rem;
       position: sticky;
@@ -346,6 +349,11 @@ $brdr: 1px grey solid;
       .content-grid-col1 {
         width: 40.8rem;
         margin-right: 13.6rem;
+
+        &:lang(ar) {
+          margin-right: unset;
+          margin-left: 13.6rem;
+        }
       }
       .content-grid-col2 {
         width: 34.4rem;
