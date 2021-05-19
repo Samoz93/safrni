@@ -10,14 +10,8 @@ export class MessagingService {
     private _ser: AngularFireMessaging,
     private _snackBar: MatSnackBar
   ) {
-    console.log('messaging service');
-
     _ser.requestPermission.subscribe((p) => {
       console.log('per', p);
-    });
-
-    _ser.getToken.subscribe((t) => {
-      console.log('token', t);
     });
 
     _ser.onMessage((f) => {
