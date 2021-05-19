@@ -139,6 +139,11 @@ $brdr: 1px grey solid;
           font-size: 1.9rem;
           text-transform: capitalize;
           color: #717171;
+
+          &:lang(ar) {
+            font-size: 2.2rem;
+            font-weight: 300;
+          }
         }
       }
 
@@ -151,11 +156,16 @@ $brdr: 1px grey solid;
             text-transform: capitalize;
             font-size: 2.5rem;
             font-weight: bold;
+            font-family: var(--primary-font);
           }
           p {
             text-transform: capitalize;
-            font-size: 1.9rem;
+            font-size: 2.2rem;
             font-weight: 300;
+            font-family: var(--primary-font);
+            &:lang(ar) {
+              font-family: var(--secondary-font);
+            }
           }
         }
       }
@@ -168,6 +178,12 @@ $brdr: 1px grey solid;
           font-weight: 600;
           color: white;
           margin: 0;
+
+          &:lang(ar) {
+            font-size: 2.3rem;
+
+            font-family: var(--secondary-font);
+          }
         }
       }
     }
@@ -200,17 +216,6 @@ $brdr: 1px grey solid;
         flex-direction: column;
         @include cellSettings;
 
-        &__title {
-          font-size: 3.1rem;
-          font-weight: bold;
-          text-transform: capitalize;
-        }
-        &__description {
-          font-size: 1.5rem;
-          font-weight: 400;
-          text-transform: capitalize;
-          color: #252629;
-        }
         &__grid {
           margin-top: 2rem;
 
@@ -246,17 +251,6 @@ $brdr: 1px grey solid;
       .features {
         @include cellSettings;
 
-        &__title {
-          font-size: 3.1rem;
-          font-weight: bold;
-          text-transform: capitalize;
-        }
-        &__description {
-          font-size: 1.5rem;
-          font-weight: 400;
-          text-transform: capitalize;
-          color: #252629;
-        }
         &__grid {
           margin-top: 2rem;
           gap: 1rem;
@@ -293,17 +287,7 @@ $brdr: 1px grey solid;
 
       .booking-section {
         @include cellSettings;
-        &__title {
-          font-size: 3.1rem;
-          font-weight: bold;
-          text-transform: capitalize;
-        }
-        &__description {
-          font-size: 1.5rem;
-          font-weight: 400;
-          text-transform: capitalize;
-          color: #252629;
-        }
+
         .booking-form {
           height: 100%;
           margin-top: 3rem;
@@ -350,17 +334,6 @@ $brdr: 1px grey solid;
     &__header {
       grid-column: 2/3;
       grid-row: 1/2;
-      h2 p {
-        font-size: 3.1rem;
-        font-weight: bold;
-        text-transform: capitalize;
-      }
-      p {
-        font-size: 1.5rem;
-        font-weight: 400;
-        text-transform: capitalize;
-        color: #252629;
-      }
     }
     &__grid {
       grid-column: 2 / 3;
@@ -452,3 +425,18 @@ $brdr: 1px grey solid;
 // .date ::ng-deep .main {
 //   padding: 0 1rem;
 // }
+.section-title {
+  font-size: 3.1rem;
+  font-weight: bold;
+  text-transform: capitalize;
+
+  &:lang(ar) {
+    font-family: var(--secondary-font);
+  }
+}
+.section-description {
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-transform: capitalize;
+  color: #252629;
+}
