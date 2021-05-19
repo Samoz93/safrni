@@ -9,12 +9,10 @@
   <ng-template #imageUrl
     ><img [alt]="alt" [src]="url" (load)="onImageLoaded()" />
   </ng-template>
-
   <div
     class="overlay"
     [ngStyle]="{
-      background:
-       getOverlayStyle()
+      background: getOverlayStyle()
     }"
   ></div>
 </div>
