@@ -14,6 +14,12 @@
     font-family: var(--primary-font);
     text-transform: capitalize;
     margin: 0rem 1rem;
-    
+  }
+}
+button {
+  font-family: "Source Sans Pro";
+  font-weight: 400;
+  &:lang(ar) {
+    font-family: "Tajawal";
   }
 }
