@@ -34,11 +34,12 @@ export class ErrorService {
     const st: LoadingState = {
       hasError: true,
       isLoading: false,
-      msg: err.name,
+      msg: err.message,
     };
     this.dlg.open(ErrorDlgComponent, {
       data: st,
       disableClose: true,
+      height: '35vh',
     });
   }
 }

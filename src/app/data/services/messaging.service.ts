@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireMessaging } from '@angular/fire/messaging';
+import { snackType } from '../utils/enums';
 import { SnackService } from './snack.service';
 
 @Injectable({
@@ -13,7 +14,7 @@ export class MessagingService {
 
     _ser.onMessage((f) => {
       const str = `${f?.notification?.title} ${f?.notification?.body}`;
-      _snackBar.showSnack(str, false, undefined);
+      _snackBar.showSnack(str, snackType.info);
     });
   }
 }

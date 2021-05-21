@@ -93,6 +93,7 @@ import { AngularFireMessagingModule } from '@angular/fire/messaging';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SocialLinkDirective } from './data/directives/social-link.directive';
 import { TicketCounterComponent } from './common/widgets/ticket-counter/ticket-counter.component';
+import { SnackCompComponent } from './common/widgets/snack-comp/snack-comp.component';
 
 export function playerFactory() {
   return player;
@@ -158,6 +159,7 @@ export function playerFactory() {
     LogoComponent,
     SocialLinkDirective,
     TicketCounterComponent,
+    SnackCompComponent,
   ],
 
   imports: [

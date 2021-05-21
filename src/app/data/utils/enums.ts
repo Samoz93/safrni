@@ -23,3 +23,10 @@ export enum ICONS {
   work = 'work',
   message = 'message',
 }
+
+export enum snackType {
+  error = 'error',
+  info = 'report',
+  warn = 'lightbulb',
+  succes = 'check_circle',
+}
