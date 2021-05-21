@@ -47,6 +47,8 @@ export class TourInformationComponent implements OnInit {
       phone: new FormControl(null, [Validators.required]),
       email: new FormControl(null, [Validators.required, Validators.email]),
       arrivalDate: new FormControl(null, [Validators.required]),
+      child: new FormControl(null),
+      adult: new FormControl(null),
       message: new FormControl(null),
     });
     this.activatedRoute.data.subscribe(async (data) => {
@@ -73,7 +75,7 @@ export class TourInformationComponent implements OnInit {
     });
     if (this.bookForm.valid) {
       this.isSubmiting = true;
-
+      //TODO
       let result = await this.bookingService.createBooking(
         this.trip.id,
         this.bookForm.get('fullName')?.value,

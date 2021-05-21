@@ -43,7 +43,11 @@
     "phone": "Phone",
     "email": "Email",
     "arriveDate": "Estimated Arrival Date",
-    "message": "Message"
+    "message": "Message",
+    "ticket": {
+      "child": "Child Count 'less than 6 years'",
+      "adult": "Adult Count 'more than 6 years'"
+    }
   },
 
   "various": {

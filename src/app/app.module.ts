@@ -92,6 +92,7 @@ import {
 import { AngularFireMessagingModule } from '@angular/fire/messaging';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SocialLinkDirective } from './data/directives/social-link.directive';
+import { TicketCounterComponent } from './common/widgets/ticket-counter/ticket-counter.component';
 
 export function playerFactory() {
   return player;
@@ -156,6 +157,7 @@ export function playerFactory() {
     LanguageSelectorComponent,
     LogoComponent,
     SocialLinkDirective,
+    TicketCounterComponent,
   ],
 
   imports: [
