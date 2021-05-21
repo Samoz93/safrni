@@ -13,5 +13,6 @@ export class OursocialmediaComponent implements OnInit {
   ];
   constructor() {}
   @Input() isSmallIcons = true;
+  @Input() isWhite = true;
   ngOnInit(): void {}
 }

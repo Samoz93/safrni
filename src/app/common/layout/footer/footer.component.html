@@ -1,37 +1,46 @@
-<div class="main">
-  <svg class="svg">
-    <clipPath id="my-clip-path" clipPathUnits="objectBoundingBox">
-      <path
-        d="M1,0.026 V1 H0 V0.019 L0.018,0,0.068,0.022,0.121,0.004,0.175,0.037,0.218,0.004,0.268,0.022,0.322,0.004,0.376,0.036,0.419,0.004,0.47,0.022,0.523,0.004,0.577,0.038,0.62,0 S0.669,0.022,0.67,0.022 S0.723,0.005,0.723,0.005 L0.777,0.036 L0.821,0.001 L0.871,0.02,0.924,0.004,0.978,0.036"
-      ></path>
-    </clipPath>
-  </svg>
-
-  <div class="clipped">
-    <div class="data">
-      <h1 class="data_title">{{ projectName | transloco }}</h1>
-      <app-oursocialmedia
-        [isSmallIcons]="false"
-        class="data_sc"
-      ></app-oursocialmedia>
-      <h5 class="data_phone">{{ phone }}</h5>
-      <h5 class="data_email">{{ email }}</h5>
-      <a routerLink="/" class="data_home navlink">{{
-        "buttons.home" | transloco
-      }}</a>
-      <a href="#" class="data_about navlink">{{
-        "buttons.aboutus" | transloco
-      }}</a>
-      <a href="#" class="data_privacy navlink">{{
-        "buttons.privacy" | transloco
-      }}</a>
-      <a href="#" class="data_support navlink">{{
-        "buttons.support" | transloco
-      }}</a>
-      <a href="#" class="data_contact navlink">{{
-        "buttons.contact" | transloco
-      }}</a>
+<div class="footer">
+  <div class="footer_col1">
+    <a [routerLink]="" class="navlink">{{ "buttons.home" | transloco }}</a>
+    <a [routerLink]="['about-us']" class="navlink">{{
+      "aboutUsPage.aboutUs" | transloco
+    }}</a>
+    <a [routerLink]="['about-us']" class="navlink">{{
+      "buttons.destination" | transloco
+    }}</a>
+  </div>
+  <div class="footer_col2">
+    <figure class="footer_col2_logo">
+      <img src="/assets/images/bk/footer.png" alt="" />
+    </figure>
+    <a href="" class="footer_col2_phone navlink">{{ phone }}</a>
+    <app-oursocialmedia
+      [isWhite]="false"
+      class="footer_col2_sc"
+    ></app-oursocialmedia>
+    <div class="footer_col2_sub">
+      <p class="footer_col2_sub-title">Subscribe To Newsletter</p>
+      <p class="footer_col2_sub-desc">
+        Subscribe to our email list and we'll keep you informed of our new tours
+        and updates .
+      </p>
     </div>
-    <img class="data_img" src="/assets/images/bk/footer.png" alt="" />
+    <app-custom-input
+      class="footer_col2_input"
+      [placeholder]="'inputs.email' | transloco"
+      [icon]="icons.mail"
+      [formControl]="ctrl"
+    ></app-custom-input>
+    <button (click)="submit()" class="footer_col2_btn main-btn">Submit</button>
+  </div>
+  <div class="footer_col3">
+    <a [routerLink]="['block']" class="navlink">{{
+      "buttons.blog" | transloco
+    }}</a>
+    <a [routerLink]="['offers']" class="navlink">{{
+      "buttons.trips" | transloco
+    }}</a>
+    <a [routerLink]="['medical']" class="navlink">{{
+      "buttons.medicTreat" | transloco
+    }}</a>
   </div>
 </div>

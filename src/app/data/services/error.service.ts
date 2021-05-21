@@ -34,7 +34,7 @@ export class ErrorService {
     const st: LoadingState = {
       hasError: true,
       isLoading: false,
-      msg: err.message,
+      msg: err.name,
     };
     this.dlg.open(ErrorDlgComponent, {
       data: st,

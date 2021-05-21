@@ -1,4 +1,4 @@
-<div class="main_social">
+<div class="main_social" [ngClass]="{ isWhite: isWhite }">
   <div *ngFor="let sm of socialMedia" class="main_social-info">
     <a [href]="sm.link">
       <img

@@ -31,7 +31,7 @@ export class OffersPageResolver implements Resolve<any> {
     try {
       this.splashScreenStateService.start();
       let cityId = route.queryParams['city'];
-
+      //TODO check for id , if doesnt exist choose istanubl
       let trip = await this.tripService.queryTrips({
         cityId: cityId,
         limit: 30,

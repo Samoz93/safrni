@@ -3,7 +3,8 @@
     "title": "All year long travel",
     "desc": "Let's explore all Wonderful Turkey Destination",
     "extra1": "Hi! would you explore nature paradise in the world,",
-    "extra2": "let's find the best destination in Turkey with us."
+    "extra2": "let's find the best destination in Turkey with us.",
+    "travelDate": "Arrival Date"
   },
   "buttons": {
     "tours": "Tours",
@@ -16,7 +17,9 @@
     "home": "Home",
     "privacy": "Privacy Policy",
     "support": "Support",
-    "contact": "Contact us"
+    "contact": "Contact us",
+    "blog": "Blog",
+    "medicTreat": "Medical Treatment"
   },
   "citysection": {
     "title": "Choose Your",
@@ -76,7 +79,8 @@
     "offerTitle": "Offers in {{var}}"
   },
   "validation": {
-    "required": "This field is required."
+    "required": "This field is required.",
+    "email": "Please provide a valid email"
   },
   "aboutUsPage": {
     "aboutUs": "About us",

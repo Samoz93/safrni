@@ -46,7 +46,7 @@ export class SearchPanelComponent implements OnInit {
         adult: 1,
         child: 0,
       },
-      date: new Date(),
+      date: null,
     });
     this.isArabic$ = locale.isArabic$;
   }
