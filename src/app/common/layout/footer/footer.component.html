@@ -12,16 +12,17 @@
     <figure class="footer_col2_logo">
       <img src="/assets/images/bk/footer.png" alt="" />
     </figure>
-    <a href="" class="footer_col2_phone navlink">{{ phone }}</a>
+    <a class="footer_col2_phone navlink" socialLink [type]="'whatsapp'">{{
+      phone
+    }}</a>
     <app-oursocialmedia
       [isWhite]="false"
       class="footer_col2_sc"
     ></app-oursocialmedia>
     <div class="footer_col2_sub">
-      <p class="footer_col2_sub-title">Subscribe To Newsletter</p>
+      <p class="footer_col2_sub-title">{{ "footer.sub-title" | transloco }}</p>
       <p class="footer_col2_sub-desc">
-        Subscribe to our email list and we'll keep you informed of our new tours
-        and updates .
+        {{ "footer.sub-desc" | transloco }}
       </p>
     </div>
     <app-custom-input

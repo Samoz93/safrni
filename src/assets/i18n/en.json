@@ -94,5 +94,9 @@
       "service2": "A varity of tours",
       "service3": "Create and customize your tour"
     }
+  },
+  "footer": {
+    "sub-title": "Subscribe To Newsletter",
+    "sub-desc": "Subscribe to our email list and we'll keep you informed of our new tours and updates ."
   }
 }
