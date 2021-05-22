@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="fab" style="bottom: 13rem">
-    <div class="whatsapp-fab">
+    <div class="whatsapp-fab" socialLink [type]="'whatsapp'">
       <img src="../../../assets/images/svgs/whatsapp.svg" />
     </div>
   </div>
@@ -21,7 +21,9 @@
       <section class="trip-info-card">
         <div class="trip-card-header">
           <div class="trip-card-header__image">
-            <img [src]="trip.previewImage | serverimage" />
+            <app-saferni-image
+              [imageModel]="trip.previewImage"
+            ></app-saferni-image>
           </div>
           <p class="trip-card-header__price">{{ trip.basePrice }}</p>
           <app-read-only-stars
@@ -80,16 +82,17 @@
       </section>
 
       <section class="places">
-        <h2 class="places__title">
+        <h2 class="section-title">
           {{ "tour-info.visitedPlaces" | transloco }}
         </h2>
-        <p class="places__description">
+        <p class="section-description">
           {{ "tour-info.visitedPlacesInfo" | transloco }}
         </p>
         <div class="places__grid">
           <div
             class="places__grid__item"
             *ngFor="let item of getAllLocations(); let i = index"
+            (click)="goToMapLocation(item.id)"
           >
             <app-saferni-image [imageModel]="item.images[0]">
             </app-saferni-image>
@@ -99,8 +102,8 @@
       </section>
 
       <section class="features">
-        <h2 class="features__title">{{ "tour-info.included" | transloco }}</h2>
-        <p class="features__description">
+        <h2 class="section-title">{{ "tour-info.included" | transloco }}</h2>
+        <p class="section-description">
           {{ "tour-info.icludedInfo" | transloco }}
         </p>
         <div class="features__grid">
@@ -114,22 +117,24 @@
               "
               [ngStyle]="{ color: feature.included ? '#20aed5' : 'red' }"
             ></i>
-            <p>{{ feature.name }}</p>
-            <i
-              class="fa fa-info-circle info"
-              *ngIf="feature.info"
-              matTooltip="{{ feature.info }}"
-              matTooltipClass="feature-tooltip"
-            ></i>
+            <div class="feature-details">
+              <p>{{ feature.name }}</p>
+              <i
+                class="fa fa-info-circle info"
+                *ngIf="feature.info"
+                matTooltip="{{ feature.info }}"
+                matTooltipClass="feature-tooltip"
+              ></i>
+            </div>
           </div>
         </div>
       </section>
 
       <section class="booking-section">
-        <h2 class="booking-section__title">
+        <h2 class="section-title">
           {{ "tour-info.bookingInfo" | transloco }}
         </h2>
-        <p class="booking-section__description">
+        <p class="section-description">
           {{ "tour-info.bookingNotShared" | transloco }}
         </p>
         <form
@@ -163,21 +168,40 @@
           ></app-custom-date-picker>
           <app-ticket-counter
             [hasBorder]="true"
-            formControlName="child"
-            [placeholder]="'inputs.ticket.child' | transloco"
+            formControlName="adult"
+            [prefix]="'inputs.ticket.adult' | transloco"
           ></app-ticket-counter>
           <app-ticket-counter
             [hasBorder]="true"
-            formControlName="adult"
-            [placeholder]="'inputs.ticket.adult' | transloco"
+            formControlName="child"
+            [prefix]="'inputs.ticket.child' | transloco"
           ></app-ticket-counter>
+
           <app-custom-textarea
             formControlName="message"
             [hasBorder]="true"
             [placeholder]="'inputs.message' | transloco"
             [icon]="icons.message"
           ></app-custom-textarea>
+          <div class="booking-form__summary">
+            <p class="booking-form__summary__header">booking summary</p>
+            <ul class="booking-form__summary__list">
+              <li>{{ trip.name }}</li>
+              <li
+                transloco="tour-info.summary.peopleCount"
+                [translocoParams]="{ children: '5', adults: '10' }"
+              ></li>
+              <li *ngIf="bookForm.get('arrivalDate')?.value">
+                {{ "tour-info.summary.arrivalDate" | transloco }}:
+                {{ bookForm.get("arrivalDate")?.value | date }}
+              </li>
+            </ul>
 
+            <div class="booking-form__summary__price">
+              <p>{{ "tour-info.summary.totalPrice" | transloco }}:</p>
+              <p>{{ calculatePrice() | async | price }}</p>
+            </div>
+          </div>
           <button
             class="main-btn"
             type="submit"
@@ -192,7 +216,9 @@
       <section class="trip-info-card">
         <div class="trip-card-header">
           <div class="trip-card-header__image">
-            <img [src]="trip.previewImage | serverimage" />
+            <app-saferni-image
+              [imageModel]="trip.previewImage"
+            ></app-saferni-image>
           </div>
           <p class="trip-card-header__price">{{ trip.basePrice }}</p>
           <app-read-only-stars
@@ -241,10 +267,12 @@
 
   <section class="similar-tours">
     <div class="similar-tours__header">
-      <h2>
-        <p>{{ "tour-info.similarTours" | transloco }}</p>
+      <h2 class="section-title">
+        {{ "tour-info.similarTours" | transloco }}
       </h2>
-      <p>{{ "tour-info.similarToursInfo" | transloco }}</p>
+      <p class="section-description">
+        {{ "tour-info.similarToursInfo" | transloco }}
+      </p>
     </div>
     <div class="similar-tours__grid">
       <app-trip-card
@@ -255,6 +283,7 @@
         [name]="item.name"
         [price]="item.basePrice"
         [duration]="item.duration"
+        (click)="goToTour(item.id)"
       ></app-trip-card>
     </div>
   </section>

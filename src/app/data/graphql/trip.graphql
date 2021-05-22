@@ -25,6 +25,7 @@ fragment tripInfo on Trips {
   locale
   trip_type
   duration
+  travelType
   city {
     id
     name

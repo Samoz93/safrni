@@ -3,6 +3,7 @@
   height: 100%;
 
   .slider {
+    width: 100%;
     &::after {
       content: "";
       position: absolute;
@@ -17,6 +18,17 @@
       );
       width: 25%;
       height: 100%;
+    }
+    &:lang(ar) {
+      &::after {
+        right: unset;
+        left: 0px;
+        background-image: linear-gradient(
+          to left,
+          rgba(255, 255, 255, 0),
+          rgba(255, 255, 255, 1) 90%
+        );
+      }
     }
     .slide {
       border-radius: 15px;

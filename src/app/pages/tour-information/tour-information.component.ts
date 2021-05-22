@@ -15,6 +15,8 @@ import { TooltipPosition } from '@angular/material/tooltip';
 import { BookingService } from 'src/app/data/services/booking.service';
 import { MatDialog } from '@angular/material/dialog';
 import { BookingSubmitPopupComponent } from 'src/app/common/widgets/booking-submit-popup/booking-submit-popup.component';
+import Observable from 'zen-observable';
+import { filter, mapTo, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tour-information',
@@ -56,16 +58,6 @@ export class TourInformationComponent implements OnInit {
       this.timelines = data.dataMap.timelines;
       this.relatedTrips = await this.tripService.getRelatedTrips(this.trip);
     });
-    // setTimeout(() => {
-    //   const date = +this.activatedRoute.snapshot.queryParams?.date;
-    //   const formatedDate = new Date(date);
-
-    //   if (date) {
-    //     this.bookForm.patchValue({
-    //       arrivalDate: formatedDate,
-    //     });
-    //   }
-    // }, 0);
   }
 
   async onFormSubmitted() {
@@ -98,7 +90,18 @@ export class TourInformationComponent implements OnInit {
       this.activatedRoute.snapshot.paramMap.get('id'),
     ]);
   }
-
+  calculatePrice() {
+    return this.bookForm.statusChanges.pipe(
+      filter((status) => status === 'VALID'),
+      mapTo(
+        (
+          this.trip.basePrice -
+          (this.bookForm.get('adult')?.value ?? 0) * 10
+        ).toString()
+      ),
+      tap((val) => console.log(val))
+    );
+  }
   getAllLocations(): LocationModel[] {
     let allLocations = new Array();
     this.timelines.forEach((element) => {
@@ -110,7 +113,9 @@ export class TourInformationComponent implements OnInit {
   getCarouselImages(): string[] {
     return this.getAllLocations().map((l) => l.images[0].url);
   }
-
+  goToTour(id:string){
+    this.router.navigate(['/tours',id])
+  }
   openDialog(success: boolean = true): void {
     const dialogRef = this.dialog.open(BookingSubmitPopupComponent, {
       data: { success: success },
@@ -118,6 +123,12 @@ export class TourInformationComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
+    });
+  }
+
+  goToMapLocation(id: string) {
+    this.router.navigate(['/map', this.trip.id], {
+      queryParams: { location: id },
     });
   }
 }

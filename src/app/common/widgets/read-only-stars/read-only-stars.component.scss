@@ -4,8 +4,12 @@
 
   i {
     font-size: 2rem;
+
+    &:lang(ar) {
+      transform: rotateY(180deg);
+    }
   }
- 
+
   i.isBig {
     font-size: 3rem;
   }

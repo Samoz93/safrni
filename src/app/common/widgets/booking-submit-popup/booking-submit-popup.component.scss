@@ -3,7 +3,7 @@
 
 .booking-popup {
   width: 40rem;
-  height: 60vh;
+  height: 50vh;
   display: flex;
   position: relative;
   flex-direction: column;
@@ -15,7 +15,7 @@
 
   .dismiss-button {
     margin-top: auto;
-    align-self: flex-end;
+    align-self: center;
   }
 
   .result-title {

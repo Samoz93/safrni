@@ -4,13 +4,13 @@
   on-mouseleave="onOut()"
   [ngClass]="{ 'all-border': hasBorder, 'err-border': !!errmsg }"
 >
+  <p class="prefix">{{prefix}}: </p>
   <input
     on-focus="onFocus($event)"
     on-focusout="onFocusOut()"
     [formControl]="control"
     type="number"
     readonly
-    [placeholder]="placeholder"
     #input
   />
 
@@ -19,7 +19,6 @@
     [icon]="icon"
     [isFocused]="isfocused || hover"
     [errors]="errmsg"
-    [placeholder]="placeholder"
   ></app-validation-icon>
 
   <div class="row">

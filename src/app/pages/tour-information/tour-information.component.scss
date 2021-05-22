@@ -94,16 +94,7 @@ $brdr: 1px grey solid;
         position: relative;
         width: 100%;
         height: 25%;
-        &__image {
-          width: 100%;
-          height: 100%;
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
-          @include imageOverlay(0.25);
-        }
+
         &__price {
           text-align: start;
           line-height: 1;
@@ -139,6 +130,11 @@ $brdr: 1px grey solid;
           font-size: 1.9rem;
           text-transform: capitalize;
           color: #717171;
+
+          &:lang(ar) {
+            font-size: 2.2rem;
+            font-weight: 300;
+          }
         }
       }
 
@@ -151,11 +147,16 @@ $brdr: 1px grey solid;
             text-transform: capitalize;
             font-size: 2.5rem;
             font-weight: bold;
+            font-family: var(--primary-font);
           }
           p {
             text-transform: capitalize;
-            font-size: 1.9rem;
+            font-size: 2.2rem;
             font-weight: 300;
+            font-family: var(--primary-font);
+            &:lang(ar) {
+              font-family: var(--secondary-font);
+            }
           }
         }
       }
@@ -168,12 +169,23 @@ $brdr: 1px grey solid;
           font-weight: 600;
           color: white;
           margin: 0;
+
+          &:lang(ar) {
+            font-size: 2.3rem;
+
+            font-family: var(--secondary-font);
+          }
         }
       }
     }
     .content-grid-col1 {
       width: 51rem;
       margin-right: 17rem;
+
+      &:lang(ar) {
+        margin-right: unset;
+        margin-left: 17rem;
+      }
       .trip-info-card {
         display: none;
       }
@@ -200,17 +212,6 @@ $brdr: 1px grey solid;
         flex-direction: column;
         @include cellSettings;
 
-        &__title {
-          font-size: 3.1rem;
-          font-weight: bold;
-          text-transform: capitalize;
-        }
-        &__description {
-          font-size: 1.5rem;
-          font-weight: 400;
-          text-transform: capitalize;
-          color: #252629;
-        }
         &__grid {
           margin-top: 2rem;
 
@@ -235,6 +236,7 @@ $brdr: 1px grey solid;
               left: 10px;
               bottom: 10px;
               font-size: 2.1rem;
+              right: 10px;
               font-family: var(--secondary-font);
               margin: 0rem;
               color: white;
@@ -246,17 +248,6 @@ $brdr: 1px grey solid;
       .features {
         @include cellSettings;
 
-        &__title {
-          font-size: 3.1rem;
-          font-weight: bold;
-          text-transform: capitalize;
-        }
-        &__description {
-          font-size: 1.5rem;
-          font-weight: 400;
-          text-transform: capitalize;
-          color: #252629;
-        }
         &__grid {
           margin-top: 2rem;
           gap: 1rem;
@@ -274,18 +265,23 @@ $brdr: 1px grey solid;
 
               margin: 5px 1rem;
             }
-            p {
-              font-size: 2rem;
-              font-weight: 300;
-              text-transform: capitalize;
-              text-align: start;
-              padding: 0rem;
-            }
-            .info {
-              margin: 5px 10px;
+            .feature-details {
+              display: inline;
+              p {
+                font-size: 2rem;
+                font-weight: 300;
+                text-transform: capitalize;
+                text-align: start;
+                padding: 0rem;
+                display: inline;
+              }
+              .info {
+                display: inline;
+                margin: 5px 10px;
 
-              color: lightgrey;
-              font-size: 2rem;
+                color: lightgrey;
+                font-size: 2rem;
+              }
             }
           }
         }
@@ -293,23 +289,66 @@ $brdr: 1px grey solid;
 
       .booking-section {
         @include cellSettings;
-        &__title {
-          font-size: 3.1rem;
-          font-weight: bold;
-          text-transform: capitalize;
-        }
-        &__description {
-          font-size: 1.5rem;
-          font-weight: 400;
-          text-transform: capitalize;
-          color: #252629;
-        }
+
         .booking-form {
           height: 100%;
           margin-top: 3rem;
           display: flex;
           flex-direction: column;
+          &__summary {
+            padding: 1rem;
+            width: 100%;
 
+            border: solid 1px $border-color;
+            border-top: solid 5px $accent;
+            &__header {
+              font-size: 2rem;
+              font-weight: 600;
+              text-transform: capitalize;
+            }
+            ul {
+              margin-top: 1rem;
+              display: flex;
+              flex-direction: column;
+              list-style: none;
+              padding-bottom: 1rem;
+              border-bottom: solid 1px $border-color;
+              li {
+                font-size: 1.9rem;
+                font-weight: 400;
+                text-transform: capitalize;
+                &::before {
+                  content: "\2022";
+                  color: $accent;
+                  font-weight: bold;
+                  display: inline-block;
+                  width: 2rem;
+                }
+              }
+            }
+            .hd {
+              height: 1px;
+              width: 100%;
+              color: $border-color;
+            }
+            &__price {
+              margin-top: 1rem;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+
+              p {
+                font-size: 2rem;
+                font-weight: 600;
+              }
+              p:nth-child(1) {
+                color: #252629;
+              }
+              p:nth-child(2) {
+                color: $accent;
+              }
+            }
+          }
           button p {
             font-size: 1.75rem;
             font-weight: 600;
@@ -328,10 +367,7 @@ $brdr: 1px grey solid;
         }
       }
     }
-    .content-grid-col1:lang(ar) {
-      margin-left: 20rem;
-      margin-right: unset;
-    }
+
     .content-grid-col2 {
       width: 43rem;
       position: sticky;
@@ -350,17 +386,6 @@ $brdr: 1px grey solid;
     &__header {
       grid-column: 2/3;
       grid-row: 1/2;
-      h2 p {
-        font-size: 3.1rem;
-        font-weight: bold;
-        text-transform: capitalize;
-      }
-      p {
-        font-size: 1.5rem;
-        font-weight: 400;
-        text-transform: capitalize;
-        color: #252629;
-      }
     }
     &__grid {
       grid-column: 2 / 3;
@@ -382,6 +407,11 @@ $brdr: 1px grey solid;
       .content-grid-col1 {
         width: 40.8rem;
         margin-right: 13.6rem;
+
+        &:lang(ar) {
+          margin-right: unset;
+          margin-left: 13.6rem;
+        }
       }
       .content-grid-col2 {
         width: 34.4rem;
@@ -452,3 +482,18 @@ $brdr: 1px grey solid;
 // .date ::ng-deep .main {
 //   padding: 0 1rem;
 // }
+.section-title {
+  font-size: 3.1rem;
+  font-weight: bold;
+  text-transform: capitalize;
+
+  &:lang(ar) {
+    font-family: var(--secondary-font);
+  }
+}
+.section-description {
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-transform: capitalize;
+  color: #252629;
+}

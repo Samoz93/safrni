@@ -1,6 +1,16 @@
 import { AgmMap, MapTypeStyle } from '@agm/core';
-import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {
+  Component,
+  ElementRef,
+  Input,
+  OnDestroy,
+  OnInit,
+  QueryList,
+  Renderer2,
+  ViewChild,
+  ViewChildren,
+} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import {
   AccordionListItem,
@@ -21,8 +31,13 @@ import { TripService } from 'src/app/data/services/trip.service';
 export class TourMapComponent implements OnInit, OnDestroy {
   constructor(
     private tripService: TripService,
-    private activeRoute: ActivatedRoute
+    private activeRoute: ActivatedRoute,
+    private ren: Renderer2,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {}
+
+  @ViewChildren('overlayContainer') overlayContainer: QueryList<ElementRef>;
 
   routeSub: Subscription;
   selectedImageIndex = 0;
@@ -70,12 +85,28 @@ export class TourMapComponent implements OnInit, OnDestroy {
       this.initMapPosition();
     });
   }
+
+  zoomChange(event: any) {
+    console.log(event);
+  }
+
+  onOverlayHover(id: any) {
+    let container =
+      this.overlayContainer.first.nativeElement.childNodes[0].childNodes[0].querySelectorAll(
+        '.location-overlay'
+      )[0].parentElement.parentElement;
+
+    container.childNodes.forEach((child: any) => {
+      let overlay = child.querySelector('.location-overlay');
+      if (overlay.getAttribute('id') === id) {
+        this.ren.setStyle(overlay.parentElement, 'z-index', 9);
+      } else {
+        this.ren.setStyle(overlay.parentElement, 'z-index', 1);
+      }
+    });
+    // .querySelector(`#${CSS.escape(id)}`)
+  }
   initMapPosition() {
-    this.currentLat = this.timelines[0].locations[0].geo.latitude;
-    this.currentLong = this.timelines[0].locations[0].geo.longitude;
-
-    this.sidebarLocation = this.timelines[0].locations[0];
-
     this.timelines.forEach((timeline) => {
       this.accordionItems.push(
         new AccordionListItem(
@@ -86,14 +117,42 @@ export class TourMapComponent implements OnInit, OnDestroy {
       );
       this.allLocationsSorted.push(...timeline.locations);
     });
+
+    let queryParamLocationId =
+      this.activatedRoute.snapshot.queryParams.location;
+    if (queryParamLocationId) {
+      let location = this.allLocationsSorted.find(
+        (l) => l.id === queryParamLocationId
+      );
+      if (location) {
+        this.recenterMapToLocation(location, false);
+      } else {
+        this.currentLat = this.timelines[0].locations[0].geo.latitude;
+        this.currentLong = this.timelines[0].locations[0].geo.longitude;
+        this.sidebarLocation = this.timelines[0].locations[0];
+      }
+    } else {
+      this.currentLat = this.timelines[0].locations[0].geo.latitude;
+      this.currentLong = this.timelines[0].locations[0].geo.longitude;
+      this.sidebarLocation = this.timelines[0].locations[0];
+    }
   }
-  recenterMapToLocation(location: LocationModel) {
+  recenterMapToLocation(location: LocationModel, bringToFront = true) {
     if (location) {
       this.currentLat = location.geo.latitude;
       this.currentLong = location.geo.longitude;
       this.zoom += 10;
       this.selectedImageIndex = 0;
       this.sidebarLocation = location;
+
+      this.router.navigate([], {
+        relativeTo: this.activatedRoute,
+        queryParams: { location: location.id },
+        queryParamsHandling: 'merge',
+        replaceUrl: true,
+      });
+
+      if (bringToFront) this.onOverlayHover(location.id);
     }
   }
   onImageSliderClicked(imageIndex: number) {
@@ -132,14 +191,9 @@ export class TourMapComponent implements OnInit, OnDestroy {
     this.sideBarVisibility = !this.sideBarVisibility;
   }
   onLocationClicked(data: AccordionClickEventData) {
-    this.currentLat =
-      this.timelines[data.parentIndex].locations[data.childIndex].geo.latitude;
-    this.currentLong =
-      this.timelines[data.parentIndex].locations[data.childIndex].geo.longitude;
-    this.zoom += 10;
-    this.selectedImageIndex = 0;
-    this.sidebarLocation =
-      this.timelines[data.parentIndex].locations[data.childIndex];
+    this.recenterMapToLocation(
+      this.timelines[data.parentIndex].locations[data.childIndex]
+    );
   }
   toggleMobileSheet() {
     this.mobileSheetExpanded = !this.mobileSheetExpanded;

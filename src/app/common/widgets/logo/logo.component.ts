@@ -13,8 +13,8 @@ export class LogoComponent implements OnInit {
   ngOnInit(): void {}
   logo(): string {
     if (this.localeService.locale == 'ar')
-      return '../../../../assets/images/svgs/arabic_logo.svg';
-    else return '../../../../assets/images/svgs/english_logo.svg';
+      return '../../../../assets/images/png/arabic-logo.png';
+    else return '../../../../assets/images/png/english-logo.png';
   }
   onLogoClick() {
     this.router.navigate(['/']);
