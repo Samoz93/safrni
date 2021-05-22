@@ -32,13 +32,14 @@
               [hasBorder]="hasBorder"
             >
             </app-custom-select>
-            <app-guest-count-input
+            <app-custom-select
               [hasBorder]="hasBorder"
               class="guest control"
-              [placeholder]="'inputs.guest' | transloco"
-              formControlName="guest"
+              [values]="trTypes"
+              [placeholder]="'travelType.placeholder' | transloco"
+              formControlName="travelType"
             >
-            </app-guest-count-input>
+            </app-custom-select>
 
             <app-custom-date-picker
               [icon]="icons.profile"

@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { TimelineModel, TimelineModelAdapter } from '../models/timelineModel';
 import { TripModel, TripModelAdapter } from '../models/TripModel';
 import { BaseService } from './base.service';
 import { ErrorService } from './error.service';
 import { LocalService } from './local.service';
 import {
-  GetLocalizedCityGQL,
   GetLocalizedTripGQL,
   GetTimelineGQL,
   GetTripGQL,

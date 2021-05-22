@@ -94,6 +94,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SocialLinkDirective } from './data/directives/social-link.directive';
 import { TicketCounterComponent } from './common/widgets/ticket-counter/ticket-counter.component';
 import { SnackCompComponent } from './common/widgets/snack-comp/snack-comp.component';
+import { MatRadioModule } from '@angular/material/radio';
 
 export function playerFactory() {
   return player;
@@ -196,6 +197,7 @@ export function playerFactory() {
     AngularFireAnalyticsModule,
     AngularFireMessagingModule,
     MatSnackBarModule,
+    MatRadioModule,
   ],
   providers: [
     ScreenTrackingService,

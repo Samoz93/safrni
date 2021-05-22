@@ -28,20 +28,3 @@ export interface LoadingState {
   hasError: boolean;
   handler?: Function;
 }
-export enum EndPoints {
-  trips = 'trips',
-  cities = 'cities',
-}
-export enum FeatureEnum {
-  Hotel = 'Hotel',
-  shuttle = 'shuttle',
-}
-export enum CitiesEnum {
-  Istanbul = 'Istanbul',
-  Bursa = 'Bursa',
-  Trabzon = 'Trabzon',
-}
-export enum TABS {
-  tour = 'tour',
-  medic = 'medic',
-}

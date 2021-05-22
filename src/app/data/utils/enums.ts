@@ -1,3 +1,5 @@
+import { LocalService } from '../services/local.service';
+
 export enum LoginEnum {
   login,
   signup,
@@ -30,3 +32,39 @@ export enum snackType {
   warn = 'lightbulb',
   succes = 'check_circle',
 }
+export enum TravelTypes {
+  public = 'public',
+  private = 'private',
+}
+export enum EndPoints {
+  trips = 'trips',
+  cities = 'cities',
+}
+export enum FeatureEnum {
+  Hotel = 'Hotel',
+  shuttle = 'shuttle',
+}
+export enum CitiesEnum {
+  Istanbul = 'Istanbul',
+  Bursa = 'Bursa',
+  Trabzon = 'Trabzon',
+}
+export enum TABS {
+  tour = 'tour',
+  medic = 'medic',
+}
+
+export const getTravelTypeData = (
+  locale: LocalService
+): { id: string; name: string }[] => {
+  return [
+    {
+      id: TravelTypes.private,
+      name: locale.getTranslation(`travelType.${TravelTypes.private}`),
+    },
+    {
+      id: TravelTypes.public,
+      name: locale.getTranslation(`travelType.${TravelTypes.public}`),
+    },
+  ];
+};

@@ -19,7 +19,9 @@
     "support": "Support",
     "contact": "Contact us",
     "blog": "Blog",
-    "medicTreat": "Medical Treatment"
+    "medicTreat": "Medical Treatment",
+    "city": "City",
+    "hotel": "Hotel"
   },
   "citysection": {
     "title": "Choose Your",
@@ -106,5 +108,15 @@
   "err": {
     "home": "Go Home",
     "retry": "Retry"
+  },
+  "travelType": {
+    "placeholder": "Travel Type",
+    "public": "Public Tour",
+    "private": "Private Tour"
+  },
+  "hotel": {
+    "placeholder": "Has Hotel ?",
+    "yes": "Yes",
+    "no": "No"
   }
 }

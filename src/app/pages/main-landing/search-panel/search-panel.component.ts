@@ -1,7 +1,12 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { StaticInfo, TABS } from 'src/app/data/static/main-info';
-import { ICONS } from 'src/app/data/utils/enums';
+import { StaticInfo } from 'src/app/data/static/main-info';
+import {
+  getTravelTypeData,
+  ICONS,
+  TABS,
+  TravelTypes,
+} from 'src/app/data/utils/enums';
 import { TranslocoService } from '@ngneat/transloco';
 import { LocalService } from 'src/app/data/services/local.service';
 import { Observable } from 'rxjs';
@@ -26,6 +31,7 @@ export class SearchPanelComponent implements OnInit {
   selectedType: string;
   activeTab = TABS.tour;
   citiesData: { id: string; name: string }[] = [];
+  trTypes: { id: string; name: string }[] = [];
   isArabic$: Observable<boolean>;
   constructor(
     public fb: FormBuilder,
@@ -40,12 +46,11 @@ export class SearchPanelComponent implements OnInit {
         id: c.id,
       };
     });
+    this.trTypes.push(...getTravelTypeData(locale));
+
     this.form = fb.group({
-      whereTo: [this.citiesData[0].id, Validators.required],
-      guest: {
-        adult: 1,
-        child: 0,
-      },
+      whereTo: [null, Validators.required],
+      travelType: null,
       date: null,
     });
     this.isArabic$ = locale.isArabic$;
@@ -73,12 +78,12 @@ export class SearchPanelComponent implements OnInit {
     const data = this.form.value;
     const params: FilterOptionsModel = {
       cityId: data.whereTo,
-      date: data.date.getTime(),
-      type: this.activeTab,
+      date: data.date?.getTime() ?? new Date().getTime(),
+      tab: this.activeTab,
       maxPrice: 0,
       minPrice: 0,
-      adult: data.guest.adult,
-      child: data.guest.child,
+      hasHotel: true,
+      travelType: data.travelType ?? TravelTypes.private,
     };
     this.router.navigate([StaticInfo.offersRoute], {
       queryParams: params,

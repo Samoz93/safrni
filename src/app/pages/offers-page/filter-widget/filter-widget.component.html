@@ -2,33 +2,61 @@
   <section class="flex_area_filter-nav">
     <div
       class="flex_area_filter-nav-item"
-      [ngClass]="{ active: filterOptions.type == 'tour' }"
+      [ngClass]="{ active: filterOptions.tab == 'tour' }"
       (click)="changeType('tour')"
     >
       {{ "buttons.tours" | transloco }}
     </div>
     <div
       class="flex_area_filter-nav-item"
-      [ngClass]="{ active: filterOptions.type == 'medic' }"
+      [ngClass]="{ active: filterOptions.tab == 'medic' }"
       (click)="changeType('medic')"
     >
       {{ "buttons.medic" | transloco }}
     </div>
   </section>
-  <section class="flex_area_filter-guest-count">
-    <div
-      class="flex_area_filter-guest-count-item"
-      *ngFor="let key of ['adult', 'child']"
-    >
-      <p>{{ "various." + key | transloco }}</p>
-      <mat-icon class="icon minus" (click)="decrease(key)">remove</mat-icon>
-      <p class="val">{{ getValue(key) }}</p>
-
-      <mat-icon class="icon plus" (click)="increase(key)">add</mat-icon>
-    </div>
+  <section class="flex_area_filter-city section filter">
+    <p class="flex_area_filter-city-title title">
+      {{ "buttons.city" | transloco }}
+    </p>
+    <mat-radio-group class="radio-group" [formControl]="cityCtrl">
+      <mat-radio-button
+        *ngFor="let city of cities"
+        class="radio"
+        [value]="city.id"
+        >{{ city.name }}</mat-radio-button
+      >
+    </mat-radio-group>
   </section>
-  <form class="flex_area_filter-price">
-    <p class="flex_area_filter-price-title">
+  <section class="flex_area_filter-hotel section filter">
+    <p class="flex_area_filter-hotel-title title">
+      {{ "hotel.placeholder" | transloco }}
+    </p>
+    <mat-radio-group class="radio-group" [formControl]="cityCtrl">
+      <mat-radio-button class="radio" [value]="true">{{
+        "hotel.yes" | transloco
+      }}</mat-radio-button>
+      <mat-radio-button class="radio" [value]="false">{{
+        "hotel.no" | transloco
+      }}</mat-radio-button>
+    </mat-radio-group>
+  </section>
+
+  <section class="flex_area_filter-travel-type section filter">
+    <p class="flex_area_filter-travel-type-title title">
+      {{ "travelType.placeholder" | transloco }}
+    </p>
+    <mat-radio-group class="radio-group" [formControl]="travelTypeCtrl">
+      <mat-radio-button class="radio" [value]="tr.private">{{
+        "travelType." + tr.private | transloco
+      }}</mat-radio-button>
+      <mat-radio-button class="radio" [value]="tr.public">{{
+        "travelType." + tr.public | transloco
+      }}</mat-radio-button>
+    </mat-radio-group>
+  </section>
+  <form class="flex_area_filter-price section filter">
+    <p class="flex_area_filter-price-title title">
       {{ "various.price" | transloco }}
     </p>
     <app-custom-input
@@ -36,6 +64,7 @@
       class="control"
       [hideIcon]="true"
       [isNumber]="true"
+      [hasBorder]="true"
       [formControl]="minPriceCtrl"
     ></app-custom-input>
     <p class="dash">-</p>
@@ -44,10 +73,11 @@
       [placeholder]="'various.max' | transloco"
       [hideIcon]="true"
       [isNumber]="true"
+      [hasBorder]="true"
       [formControl]="maxPriceCtrl"
     ></app-custom-input>
   </form>
-  <section class="flex_area_filter-btn">
+  <section class="flex_area_filter-btn section">
     <button (click)="applyChanges()" class="main-btn">
       {{ "buttons.apply" | transloco }}
     </button>

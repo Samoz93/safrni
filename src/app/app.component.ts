@@ -8,5 +8,7 @@ import { MessagingService } from './data/services/messaging.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(_ser: CityService, msg: MessagingService) {}
+  constructor(_ser: CityService, msg: MessagingService) {
+    _ser.init();
+  }
 }
