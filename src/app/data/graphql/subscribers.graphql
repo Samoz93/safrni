@@ -1,0 +1,7 @@
+mutation addToNewsLetter($email: String!) {
+  createSubscriber(input: { data: { email: $email } }) {
+    subscriber {
+      email
+    }
+  }
+}
