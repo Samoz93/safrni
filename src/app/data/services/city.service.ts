@@ -7,6 +7,7 @@ import { CitiesGQL, GetLocalizedCityGQL } from './saferniGraphql.service';
 import { LocalService } from './local.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDlgComponent } from 'src/app/common/widgets/error-dlg/error-dlg.component';
+import { ErrorService } from './error.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,17 +18,9 @@ export class CityService extends BaseService<CityModel> {
     private citiesGql: CitiesGQL,
     private loc: LocalService,
     private localizedCityService: GetLocalizedCityGQL,
-    dlg: MatDialog
+    errSer: ErrorService
   ) {
-    super();
-    this.loadingState$.subscribe((state) => {
-      if (state.hasError) {
-        dlg.open(ErrorDlgComponent, {
-          data: state,
-          disableClose: true,
-        });
-      }
-    });
+    super(errSer);
   }
   get landingObservable$(): Observable<CityModel[]> {
     return this.data$.pipe(map((f) => f.slice(0, 7)));

@@ -2,8 +2,6 @@
   display: flex;
   width: 100%;
   justify-content: space-evenly;
-  filter: invert(85%) sepia(95%) saturate(0%) hue-rotate(109deg)
-    brightness(105%) contrast(104%);
 
   &-info > a {
     display: flex;
@@ -18,4 +16,8 @@
     height: 3rem;
     width: 3rem;
   }
+}
+.isWhite {
+  filter: invert(85%) sepia(95%) saturate(0%) hue-rotate(109deg)
+    brightness(105%) contrast(104%);
 }

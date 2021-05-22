@@ -1,0 +1,16 @@
+.main {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  font-size: 2rem;
+
+  p {
+    font-size: inherit;
+  }
+  mat-icon {
+    margin: 0 1.1rem;
+    color: white;
+  }
+}

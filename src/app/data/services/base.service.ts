@@ -1,13 +1,16 @@
 import { MatDialog } from '@angular/material/dialog';
 import { BehaviorSubject } from 'rxjs';
+import { ErrorDlgComponent } from 'src/app/common/widgets/error-dlg/error-dlg.component';
 import { LoadingState } from '../static/main-info';
+import { ErrorService } from './error.service';
 
 export abstract class BaseService<T> {
   abstract init(params?: any): Promise<T[]>;
-
   data: T[] = [];
   data$ = new BehaviorSubject<T[]>([]);
-
+  constructor(ser: ErrorService) {
+    ser.observeError$(this.loadingState$);
+  }
   loadingState$ = new BehaviorSubject<LoadingState>({
     hasError: false,
     isLoading: false,

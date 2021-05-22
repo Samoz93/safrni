@@ -3,8 +3,10 @@ import {
   Resolve,
   RouterStateSnapshot,
   ActivatedRouteSnapshot,
+  Router,
 } from '@angular/router';
 import { TripModel } from '../models/TripModel';
+import { ErrorService } from '../services/error.service';
 import { LocalService } from '../services/local.service';
 import { MetaService } from '../services/meta.service';
 import { SplashScreenStateService } from '../services/splash-screen-state.service';
@@ -18,30 +20,31 @@ export class OffersPageResolver implements Resolve<any> {
     private splashScreenStateService: SplashScreenStateService,
     private tripService: TripService,
     private meta: MetaService,
-    private loc: LocalService
+    private loc: LocalService,
+    private router: Router,
+    private _errSer: ErrorService
   ) {}
   async resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Promise<TripModel[]> {
-    this.splashScreenStateService.start();
-    let cityId = route.queryParams['city'];
+  ): Promise<TripModel[] | null> {
+    try {
+      this.splashScreenStateService.start();
+      let cityId = route.queryParams['city'];
+      //TODO check for id , if doesnt exist choose istanubl
+      let trip = await this.tripService.queryTrips({
+        cityId: cityId,
+        limit: 30,
+      });
 
-    let trip = await this.tripService.queryTrips({
-      cityId: cityId,
-      limit: 30,
-    });
-    // const tr = trip[0]?;
-    // const title = this.loc.getTranslation('seo.offerTitle', {
-    //   var: trip[0]?.city?.name,
-    // });
-
-    // this.meta.addTags({
-    //   title: title,
-    //   description: trip[0].description,
-    //   image: trip[0].previewImage.url,
-    // });
-    this.splashScreenStateService.stop();
-    return trip;
+      this.splashScreenStateService.stop();
+      return trip;
+    } catch (error) {
+      this.router.navigate([...route.parent?.url!]);
+      this._errSer.showErrorByException(error);
+      return null;
+    } finally {
+      this.splashScreenStateService.stop();
+    }
   }
 }

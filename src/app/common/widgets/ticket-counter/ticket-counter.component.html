@@ -1,0 +1,30 @@
+<div
+  class="main"
+  on-mouseenter="onHover()"
+  on-mouseleave="onOut()"
+  [ngClass]="{ 'all-border': hasBorder, 'err-border': !!errmsg }"
+>
+  <input
+    on-focus="onFocus($event)"
+    on-focusout="onFocusOut()"
+    [formControl]="control"
+    type="number"
+    readonly
+    [placeholder]="placeholder"
+    #input
+  />
+
+  <app-validation-icon
+    [hidden]="hideIcon"
+    [icon]="icon"
+    [isFocused]="isfocused || hover"
+    [errors]="errmsg"
+    [placeholder]="placeholder"
+  ></app-validation-icon>
+
+  <div class="row">
+    <mat-icon (click)="sub()" class="up key">expand_more</mat-icon>
+    <mat-icon (click)="add()" class="down key">expand_less</mat-icon>
+  </div>
+</div>
+<p class="validation-text" *ngIf="errmsg">*{{ errmsg }}</p>

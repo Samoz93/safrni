@@ -9,6 +9,8 @@ import { CityService } from 'src/app/data/services/city.service';
 import { Router } from '@angular/router';
 import { QueryStringParameters } from 'src/app/data/abstract/query.string.builder';
 import { FilterOptionsModel } from 'src/app/data/models/filterOptionModlel';
+import { SnackService } from 'src/app/data/services/snack.service';
+import { ErrorService } from 'src/app/data/services/error.service';
 
 @Component({
   selector: 'app-search-panel',
@@ -17,10 +19,7 @@ import { FilterOptionsModel } from 'src/app/data/models/filterOptionModlel';
 })
 export class SearchPanelComponent implements OnInit {
   ticketRipped = false;
-  // tripTypes = [
-  //   { id: '1', name: 'Public', icon: 'group' },
-  //   { id: '2', name: 'Private', icon: 'private' },
-  // ];
+
   selctedTrip: string = '';
   form: FormGroup;
   icons = ICONS;
@@ -30,9 +29,10 @@ export class SearchPanelComponent implements OnInit {
   isArabic$: Observable<boolean>;
   constructor(
     public fb: FormBuilder,
-    private locale: LocalService,
+    locale: LocalService,
     _ser: CityService,
-    private router: Router
+    private router: Router,
+    private _snck: ErrorService
   ) {
     this.citiesData = _ser.data.map((c) => {
       return {
@@ -46,7 +46,7 @@ export class SearchPanelComponent implements OnInit {
         adult: 1,
         child: 0,
       },
-      date: new Date(),
+      date: null,
     });
     this.isArabic$ = locale.isArabic$;
   }
@@ -58,7 +58,9 @@ export class SearchPanelComponent implements OnInit {
   //     this.bannerHeight = 60;
   //   }
   // }
-
+  test() {
+    this._snck.showErrorByException(Error('test'));
+  }
   changeTab(tab: any) {
     this.activeTab = tab;
   }
