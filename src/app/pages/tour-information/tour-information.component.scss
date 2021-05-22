@@ -265,18 +265,23 @@ $brdr: 1px grey solid;
 
               margin: 5px 1rem;
             }
-            p {
-              font-size: 2rem;
-              font-weight: 300;
-              text-transform: capitalize;
-              text-align: start;
-              padding: 0rem;
-            }
-            .info {
-              margin: 5px 10px;
+            .feature-details {
+              display: inline;
+              p {
+                font-size: 2rem;
+                font-weight: 300;
+                text-transform: capitalize;
+                text-align: start;
+                padding: 0rem;
+                display: inline;
+              }
+              .info {
+                display: inline;
+                margin: 5px 10px;
 
-              color: lightgrey;
-              font-size: 2rem;
+                color: lightgrey;
+                font-size: 2rem;
+              }
             }
           }
         }

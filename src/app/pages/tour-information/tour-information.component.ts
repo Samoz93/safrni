@@ -15,6 +15,8 @@ import { TooltipPosition } from '@angular/material/tooltip';
 import { BookingService } from 'src/app/data/services/booking.service';
 import { MatDialog } from '@angular/material/dialog';
 import { BookingSubmitPopupComponent } from 'src/app/common/widgets/booking-submit-popup/booking-submit-popup.component';
+import Observable from 'zen-observable';
+import { filter, mapTo, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tour-information',
@@ -88,7 +90,18 @@ export class TourInformationComponent implements OnInit {
       this.activatedRoute.snapshot.paramMap.get('id'),
     ]);
   }
-
+  calculatePrice() {
+    return this.bookForm.statusChanges.pipe(
+      filter((status) => status === 'VALID'),
+      mapTo(
+        (
+          this.trip.basePrice -
+          (this.bookForm.get('adult')?.value ?? 0) * 10
+        ).toString()
+      ),
+      tap((val) => console.log(val))
+    );
+  }
   getAllLocations(): LocationModel[] {
     let allLocations = new Array();
     this.timelines.forEach((element) => {

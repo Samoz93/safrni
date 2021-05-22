@@ -117,13 +117,15 @@
               "
               [ngStyle]="{ color: feature.included ? '#20aed5' : 'red' }"
             ></i>
-            <p>{{ feature.name }}</p>
-            <i
-              class="fa fa-info-circle info"
-              *ngIf="feature.info"
-              matTooltip="{{ feature.info }}"
-              matTooltipClass="feature-tooltip"
-            ></i>
+            <div class="feature-details">
+              <p>{{ feature.name }}</p>
+              <i
+                class="fa fa-info-circle info"
+                *ngIf="feature.info"
+                matTooltip="{{ feature.info }}"
+                matTooltipClass="feature-tooltip"
+              ></i>
+            </div>
           </div>
         </div>
       </section>
@@ -184,14 +186,20 @@
           <div class="booking-form__summary">
             <p class="booking-form__summary__header">booking summary</p>
             <ul class="booking-form__summary__list">
-              <li>Istanbul tour</li>
-              <li>6 people 2 children</li>
-              <li>Istanbul tour</li>
+              <li>{{ trip.name }}</li>
+              <li
+                transloco="tour-info.summary.peopleCount"
+                [translocoParams]="{ children: '5', adults: '10' }"
+              ></li>
+              <li *ngIf="bookForm.get('arrivalDate')?.value">
+                {{ "tour-info.summary.arrivalDate" | transloco }}:
+                {{ bookForm.get("arrivalDate")?.value | date }}
+              </li>
             </ul>
-           
+
             <div class="booking-form__summary__price">
-              <p>Total price for 6 people</p>
-              <p>400$</p>
+              <p>{{ "tour-info.summary.totalPrice" | transloco }}:</p>
+              <p>{{ calculatePrice() | async | price }}</p>
             </div>
           </div>
           <button

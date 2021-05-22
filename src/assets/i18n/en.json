@@ -72,7 +72,12 @@
     "visitedPlaces": "Places You Will Visit",
     "visitedPlacesInfo": "A Lot Of Different Tours Around Turkey",
     "similarTours": "Similar tours",
-    "similarToursInfo": "Checkout more similar tours"
+    "similarToursInfo": "Checkout more similar tours",
+    "summary": {
+      "peopleCount": "{{children}} children and {{adults}} adults.",
+      "arrivalDate":"Arrival date",
+      "totalPrice":"Total price"
+    }
   },
   "currencies": {
     "dollar": "{{ var }} $",
