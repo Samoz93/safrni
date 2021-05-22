@@ -45,8 +45,8 @@
     "arriveDate": "Estimated Arrival Date",
     "message": "Message",
     "ticket": {
-      "child": "Child Count 'less than 6 years'",
-      "adult": "Adult Count 'more than 6 years'"
+      "child": "Children (younger than 6)",
+      "adult": "Adults"
     }
   },
 

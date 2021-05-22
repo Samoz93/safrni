@@ -290,7 +290,60 @@ $brdr: 1px grey solid;
           margin-top: 3rem;
           display: flex;
           flex-direction: column;
+          &__summary {
+            padding: 1rem;
+            width: 100%;
 
+            border: solid 1px $border-color;
+            border-top: solid 5px $accent;
+            &__header {
+              font-size: 2rem;
+              font-weight: 600;
+              text-transform: capitalize;
+            }
+            ul {
+              margin-top: 1rem;
+              display: flex;
+              flex-direction: column;
+              list-style: none;
+              padding-bottom: 1rem;
+              border-bottom: solid 1px $border-color;
+              li {
+                font-size: 1.9rem;
+                font-weight: 400;
+                text-transform: capitalize;
+                &::before {
+                  content: "\2022";
+                  color: $accent;
+                  font-weight: bold;
+                  display: inline-block;
+                  width: 2rem;
+                }
+              }
+            }
+            .hd {
+              height: 1px;
+              width: 100%;
+              color: $border-color;
+            }
+            &__price {
+              margin-top: 1rem;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+
+              p {
+                font-size: 2rem;
+                font-weight: 600;
+              }
+              p:nth-child(1) {
+                color: #252629;
+              }
+              p:nth-child(2) {
+                color: $accent;
+              }
+            }
+          }
           button p {
             font-size: 1.75rem;
             font-weight: 600;

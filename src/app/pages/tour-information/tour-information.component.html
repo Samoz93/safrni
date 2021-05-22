@@ -21,7 +21,9 @@
       <section class="trip-info-card">
         <div class="trip-card-header">
           <div class="trip-card-header__image">
-            <app-saferni-image [imageModel]="trip.previewImage"></app-saferni-image>
+            <app-saferni-image
+              [imageModel]="trip.previewImage"
+            ></app-saferni-image>
           </div>
           <p class="trip-card-header__price">{{ trip.basePrice }}</p>
           <app-read-only-stars
@@ -164,21 +166,34 @@
           ></app-custom-date-picker>
           <app-ticket-counter
             [hasBorder]="true"
-            formControlName="child"
-            [placeholder]="'inputs.ticket.child' | transloco"
+            formControlName="adult"
+            [prefix]="'inputs.ticket.adult' | transloco"
           ></app-ticket-counter>
           <app-ticket-counter
             [hasBorder]="true"
-            formControlName="adult"
-            [placeholder]="'inputs.ticket.adult' | transloco"
+            formControlName="child"
+            [prefix]="'inputs.ticket.child' | transloco"
           ></app-ticket-counter>
+
           <app-custom-textarea
             formControlName="message"
             [hasBorder]="true"
             [placeholder]="'inputs.message' | transloco"
             [icon]="icons.message"
           ></app-custom-textarea>
-
+          <div class="booking-form__summary">
+            <p class="booking-form__summary__header">booking summary</p>
+            <ul class="booking-form__summary__list">
+              <li>Istanbul tour</li>
+              <li>6 people 2 children</li>
+              <li>Istanbul tour</li>
+            </ul>
+           
+            <div class="booking-form__summary__price">
+              <p>Total price for 6 people</p>
+              <p>400$</p>
+            </div>
+          </div>
           <button
             class="main-btn"
             type="submit"
@@ -193,7 +208,9 @@
       <section class="trip-info-card">
         <div class="trip-card-header">
           <div class="trip-card-header__image">
-            <app-saferni-image [imageModel]="trip.previewImage"></app-saferni-image>
+            <app-saferni-image
+              [imageModel]="trip.previewImage"
+            ></app-saferni-image>
           </div>
           <p class="trip-card-header__price">{{ trip.basePrice }}</p>
           <app-read-only-stars

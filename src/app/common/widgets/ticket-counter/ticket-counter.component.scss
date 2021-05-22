@@ -16,6 +16,7 @@
   }
 
   .row {
+    margin-left: auto;
     width: 20%;
     order: 3;
     display: flex;
@@ -28,12 +29,23 @@
         transform: scale(1.1);
       }
     }
+    &:lang(ar) {
+      margin-left: unset;
+      margin-right: auto;
+    }
+  }
+  .prefix {
+    order: 1;
+    margin: 0rem 1rem;
+    font-size: 1.5rem;
+    color: grey;
+    text-transform: capitalize;
   }
   input {
     border: none;
-    width: 100%;
+
     height: 100%;
-    order: 1;
+    order: 2;
     margin: $form-file-padding;
     &:focus {
       outline: none;

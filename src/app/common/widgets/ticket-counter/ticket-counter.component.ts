@@ -1,4 +1,4 @@
-import { Component, forwardRef, OnInit } from '@angular/core';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ControlValueAccessorConnector } from 'src/app/data/abstract/control-value-accessor-connector';
 import { ICONS } from 'src/app/data/utils/enums';
@@ -19,6 +19,8 @@ export class TicketCounterComponent
   extends ControlValueAccessorConnector
   implements OnInit
 {
+  @Input() prefix:string;
+
   hover = false;
   ngOnInit(): void {
     this.icon = ICONS.ticket;
