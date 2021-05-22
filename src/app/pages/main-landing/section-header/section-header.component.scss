@@ -5,7 +5,7 @@
   text-align: center;
 
   .offer-title {
-    font-size: 5rem;
+    font-size: 3.7rem;
     font-weight: 500;
 
     &:lang(ar) {
@@ -13,20 +13,20 @@
     }
   }
   .desc {
-    font-size: 5.6rem;
+    font-size: 4.7rem;
     color: #252629;
-    font-weight: bold;
+    font-weight: 400;
     font-family: var(--secondary-font);
   }
   .extra {
-    font-size: 2.6rem;
-    font-weight: 300;
+    font-size: 2.3rem;
+    font-weight: 400;
     color: #252629;
   }
 
   @include respondMax(1250px) {
     .offer-title {
-      font-size: 4rem;
+      font-size: 3rem;
 
       &:lang(ar) {
         font-size: 2rem;

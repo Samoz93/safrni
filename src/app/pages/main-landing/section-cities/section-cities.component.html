@@ -9,9 +9,7 @@
     <app-trip-card
       *ngFor="let item of cities; let i = index"
       class="data_card"
-      [ngClass]="{
-        longX: i == 0
-      }"
+      
       [id]="item.id"
       [img]="item.image"
       [name]="item.name"
