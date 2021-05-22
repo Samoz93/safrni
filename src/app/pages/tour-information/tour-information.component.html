@@ -283,6 +283,7 @@
         [name]="item.name"
         [price]="item.basePrice"
         [duration]="item.duration"
+        (click)="goToTour(item.id)"
       ></app-trip-card>
     </div>
   </section>

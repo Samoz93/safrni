@@ -113,7 +113,9 @@ export class TourInformationComponent implements OnInit {
   getCarouselImages(): string[] {
     return this.getAllLocations().map((l) => l.images[0].url);
   }
-
+  goToTour(id:string){
+    this.router.navigate(['/tours',id])
+  }
   openDialog(success: boolean = true): void {
     const dialogRef = this.dialog.open(BookingSubmitPopupComponent, {
       data: { success: success },
