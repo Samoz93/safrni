@@ -48,6 +48,7 @@ export class TripService extends BaseService<TripModel> {
       priceRange?: { minPrice: number; maxPrice: number };
       text?: string;
       date?: number;
+      accomidation?: boolean;
     } = {
       limit: 10,
       locale: this.loc.locale,
@@ -71,6 +72,12 @@ export class TripService extends BaseService<TripModel> {
       whereQuery = {
         ...whereQuery,
         name_contains: query.text,
+      };
+    }
+    if (query.accomidation != null) {
+      whereQuery = {
+        ...whereQuery,
+        hotels: { id_null: !query.accomidation },
       };
     }
     const data = await this._doStuff<TripModel[]>(async () => {
