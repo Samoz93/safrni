@@ -56,16 +56,6 @@ export class TourInformationComponent implements OnInit {
       this.timelines = data.dataMap.timelines;
       this.relatedTrips = await this.tripService.getRelatedTrips(this.trip);
     });
-    // setTimeout(() => {
-    //   const date = +this.activatedRoute.snapshot.queryParams?.date;
-    //   const formatedDate = new Date(date);
-
-    //   if (date) {
-    //     this.bookForm.patchValue({
-    //       arrivalDate: formatedDate,
-    //     });
-    //   }
-    // }, 0);
   }
 
   async onFormSubmitted() {
@@ -118,6 +108,12 @@ export class TourInformationComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
+    });
+  }
+
+  goToMapLocation(id: string) {
+    this.router.navigate(['/map', this.trip.id], {
+      queryParams: { location: id },
     });
   }
 }
