@@ -3085,6 +3085,19 @@ export type CityInfoFragment = (
   )> }
 );
 
+export type FeaturesQueryVariables = Exact<{
+  locale: Scalars['String'];
+}>;
+
+
+export type FeaturesQuery = (
+  { __typename?: 'Query' }
+  & { features?: Maybe<Array<Maybe<(
+    { __typename?: 'Feature' }
+    & Pick<Feature, 'name'>
+  )>>> }
+);
+
 export type AddToNewsLetterMutationVariables = Exact<{
   email: Scalars['String'];
 }>;
@@ -3335,6 +3348,24 @@ export const GetLocalizedCityDocument = gql`
   })
   export class GetLocalizedCityGQL extends Apollo.Query<GetLocalizedCityQuery, GetLocalizedCityQueryVariables> {
     document = GetLocalizedCityDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const FeaturesDocument = gql`
+    query features($locale: String!) {
+  features(locale: $locale) {
+    name
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class FeaturesGQL extends Apollo.Query<FeaturesQuery, FeaturesQueryVariables> {
+    document = FeaturesDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);

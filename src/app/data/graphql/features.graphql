@@ -1,0 +1,5 @@
+query features($locale: String!) {
+  features(locale: $locale) {
+    name
+  }
+}
