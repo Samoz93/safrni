@@ -3158,7 +3158,7 @@ export type GetLocalizedTripQuery = (
 
 export type TripInfoFragment = (
   { __typename?: 'Trips' }
-  & Pick<Trips, 'id' | 'name' | 'active' | 'description' | 'locale' | 'trip_type' | 'duration' | 'basePrice' | 'discount' | 'currency' | 'basePeopleCount'>
+  & Pick<Trips, 'id' | 'name' | 'active' | 'description' | 'locale' | 'trip_type' | 'duration' | 'travelType' | 'basePrice' | 'discount' | 'currency' | 'basePeopleCount'>
   & { city?: Maybe<(
     { __typename?: 'City' }
     & Pick<City, 'id' | 'name'>
@@ -3246,6 +3246,7 @@ export const TripInfoFragmentDoc = gql`
   locale
   trip_type
   duration
+  travelType
   city {
     id
     name
