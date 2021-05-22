@@ -1,160 +1,136 @@
 @import "/src/assets/css/abstract/variables";
 @import "/src/assets/css/abstract/mixins";
+$mr-res: 15rem;
 
-.main {
-  height: 100%;
+.footer {
+  background: linear-gradient(
+    180deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(238, 238, 238, 0) 0%,
+    rgba(238, 238, 238, 1) 100%
+  );
+  height: 70rem;
   display: grid;
-  place-items: end;
-  background-color: $light-blue;
-  color: white;
-  margin-top: 5rem;
-}
-.svg {
-  position: absolute;
-  width: 0;
-  height: 0;
-}
+  grid-template-columns: 3fr 2fr 3fr;
+  gap: 10rem;
+  padding: 0 20rem;
 
-.clipped {
-  width: 100%;
-  margin-top: 1rem;
-  background: $light-black;
-  background-size: cover;
-  -webkit-clip-path: url(#my-clip-path);
-  clip-path: url(#my-clip-path);
-  display: grid;
-  grid-template-columns: 70% 30%;
-  @include res(phone) {
-    grid-template-columns: 100%;
+  font-size: 2.6rem;
+  font-family: var(--primary-font);
+  @include res(tab-land-extra-1600) {
+    padding: 0 10rem;
+    font-size: 2rem;
   }
-  align-items: flex-end;
-  .data {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-    color: white;
-    justify-items: center;
-    align-items: flex-end;
-    margin: 10rem 0 0 0;
-    font-size: 1.5rem;
+  @include res(tab-land-extra) {
+    padding: 0 1rem;
+    font-size: 1.8rem;
+  }
+  @include res(tab) {
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0;
+    column-gap: 5rem;
+  }
+  &_col1,
+  &_col3 {
+    flex: 3;
+    margin-top: 26rem;
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    @include res(tab) {
+      flex-direction: column;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      background: $dividerColor;
+      width: 100%;
+      height: 0.1rem;
+      top: -10%;
+      left: 0;
+      @include res(tab) {
+        width: 0.1rem;
+        height: calc(100% + $mr-res);
+        top: 0;
+      }
+    }
 
-    @include res(phone) {
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(3, 1fr);
-      margin: 5rem 1rem;
-      font-size: 1.5rem;
-    }
-    &_title {
-      grid-column: 1;
-      grid-row: 2;
-      font-size: 4.5rem;
-    }
-    &_sc {
-      grid-column: 1;
-      grid-row: 2 / span 2;
-      width: 50%;
-    }
-    &_phone {
-      grid-column: 1;
-      grid-row: 4;
-      font-size: inherit;
-    }
-    &_email {
-      grid-column: 1;
-      grid-row: 5;
-      font-size: inherit;
-    }
-    &_home {
-      grid-column: 2;
-      grid-row: 6;
-      font-size: inherit;
-    }
-    //second col
-
-    &_home {
-      grid-column: 2;
-      grid-row: 1;
-      font-size: inherit;
-    }
-    &_about {
-      grid-column: 2;
-      grid-row: 2;
-      font-size: inherit;
-    }
-    &_privacy {
-      grid-column: 2;
-      grid-row: 3;
-      font-size: inherit;
-    }
-    &_support {
-      grid-column: 2;
-      grid-row: 4;
-      font-size: inherit;
-    }
-    &_contact {
-      grid-column: 2;
-      grid-row: 5;
-      font-size: inherit;
-    }
     .navlink {
       font-size: inherit;
-      font-weight: 800;
-      color: inherit;
-    }
-
-    @include res(phone) {
-      &_title {
-        grid-column: 1;
-        grid-row: 2;
-      }
-      &_sc {
-        grid-column: 3;
-        grid-row: 3;
-        width: 100%;
-      }
-      &_phone {
-        grid-column: 4;
-        grid-row: 1;
-      }
-      &_email {
-        grid-column: 4;
-        grid-row: 2;
-      }
-      &_home {
-        grid-column: 2;
-        grid-row: 1;
-      }
-      //second col
-
-      &_home {
-        grid-column: 2;
-        grid-row: 1;
-      }
-      &_about {
-        grid-column: 2;
-        grid-row: 2;
-      }
-      &_privacy {
-        grid-column: 3;
-        grid-row: 2;
-      }
-      &_support {
-        grid-column: 3;
-        grid-row: 1;
-      }
-      &_contact {
-        grid-column: 2;
-        grid-row: 3;
+      height: 4rem;
+      @include res(tab) {
+        width: 50%;
+        align-self: center;
       }
     }
-    //image
   }
-  .data_img {
-    object-fit: scale-down;
-    width: 100%;
-    align-self: flex-end;
-    @include res(phone) {
-      display: none;
+  &_col1 {
+    @include res(tab) {
+      grid-column: 1;
+      grid-row: 1;
+      margin-top: $mr-res;
+      margin-bottom: 2.5rem;
+    }
+  }
+  &_col3 {
+    @include res(tab) {
+      grid-column: 1;
+      grid-row: 2;
+      margin-top: 2.5rem;
+      margin-bottom: $mr-res;
+    }
+  }
+  &_col2 {
+    margin-top: 15rem;
+    align-items: center;
+    justify-items: center;
+    flex-direction: column;
+    display: flex;
+    &_logo {
+      height: 11rem;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: scale-down;
+      }
+    }
+    &_phone {
+      font-size: inherit;
+      height: 4rem;
+      margin: 4rem 0;
+      text-align: center;
+    }
+    &_sc {
+      margin: 2rem;
+      height: 3rem;
+      width: 80%;
+    }
+    &_sub {
+      text-align: center;
+      * {
+        font-size: 1.5rem;
+      }
+      &-title {
+        color: $login-bk;
+        font-weight: 800;
+      }
+    }
+    &_input {
+      margin: 3rem;
+      border: 1px $dividerColor solid;
+      height: 4rem;
+    }
+    &_btn {
+      font-size: 1.5rem;
+      font-weight: 800;
+    }
+    @include res(tab) {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      margin-top: 10rem;
+      gap: 0;
     }
   }
 }

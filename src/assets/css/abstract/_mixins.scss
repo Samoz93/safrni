@@ -153,6 +153,13 @@
       @content;
     }
   }
+
+  @if $break == tab-land-extra-1600 {
+    @media (max-width: 133.25em) {
+      //1600px
+      @content;
+    }
+  }
   @if $break == desktop {
     @media (min-width: 112.5em) {
       @content;

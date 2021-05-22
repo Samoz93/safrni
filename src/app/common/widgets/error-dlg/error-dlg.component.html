@@ -1,10 +1,8 @@
 <div class="main">
-  <h1 class="title">
-    {{ data.msg }}
-  </h1>
-  <p class="desc">something worng happend try again later :(</p>
+  <mat-icon class="icon">error</mat-icon>
+  <h6 class="desc">{{ data.msg }}</h6>
   <div class="row">
-    <a (click)="tryAgain()" class="navlink">try again</a>
-    <a (click)="goHome()" class="navlink">go to home</a>
+    <a (click)="tryAgain()" class="navlink">{{ "err.retry" | transloco }}</a>
+    <a (click)="goHome()" class="navlink err">{{ "err.home" | transloco }}</a>
   </div>
 </div>

@@ -1,4 +1,12 @@
-.snack-bar {
-  background: $accent !important;
-  color: white !important;
+.snack.error {
+  background: $err !important;
+}
+.snack.report {
+  background: #ffb70a !important;
+}
+.snack.lightbulb {
+  background: #35c4fc !important;
+}
+.snack.check_circle {
+  background: $success !important;
 }

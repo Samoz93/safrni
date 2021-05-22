@@ -32,7 +32,7 @@
       {{ "various.price" | transloco }}
     </p>
     <app-custom-input
-      placeholder="Minimum"
+      [placeholder]="'various.min' | transloco"
       class="control"
       [hideIcon]="true"
       [isNumber]="true"
@@ -41,7 +41,7 @@
     <p class="dash">-</p>
     <app-custom-input
       class="control"
-      placeholder="Maximum"
+      [placeholder]="'various.max' | transloco"
       [hideIcon]="true"
       [isNumber]="true"
       [formControl]="maxPriceCtrl"

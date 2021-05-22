@@ -27,7 +27,7 @@ const routes: Routes = [
     component: UserProfileLandingComponent,
   },
   {
-    path: `${StaticInfo.offersRoute}`,
+    path: `offers`,
     component: OffersPageComponent,
     resolve: { trips: OffersPageResolver },
   },

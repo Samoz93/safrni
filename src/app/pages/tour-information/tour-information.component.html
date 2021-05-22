@@ -161,6 +161,16 @@
             formControlName="arrivalDate"
             [placeholder]="'inputs.arriveDate' | transloco"
           ></app-custom-date-picker>
+          <app-ticket-counter
+            [hasBorder]="true"
+            formControlName="child"
+            [placeholder]="'inputs.ticket.child' | transloco"
+          ></app-ticket-counter>
+          <app-ticket-counter
+            [hasBorder]="true"
+            formControlName="adult"
+            [placeholder]="'inputs.ticket.adult' | transloco"
+          ></app-ticket-counter>
           <app-custom-textarea
             formControlName="message"
             [hasBorder]="true"
