@@ -108,7 +108,57 @@
         <p class="section-description">
           {{ "tour-info.visitedPlacesInfo" | transloco }}
         </p>
-        <div class="places__grid">
+        <div class="places__swiper">
+          <swiper
+            class="slider"
+            [slidesPerView]="1"
+            [spaceBetween]="25"
+            [grabCursor]="true"
+            [(index)]="placesSwiperIndex"
+          >
+            <ng-template
+              swiperSlide
+              class="slide"
+              style="width: 100%; height: 100%; cursor: pointer"
+              *ngFor="
+                let group of [].constructor(
+                  math.ceil(planLocations.length / 4)
+                );
+                let i = index
+              "
+            >
+              <div class="places__grid" swiperSlide>
+                <div
+                  class="places__grid__item"
+                  *ngFor="
+                    let item of planLocations.slice(i * 4, i * 4 + 4);
+                    let j = index
+                  "
+                  (click)="goToMapLocation(item.id)"
+                >
+                  <app-saferni-image [imageModel]="item.images[0]">
+                  </app-saferni-image>
+                  <p>{{ item.name }}</p>
+                </div>
+              </div>
+            </ng-template>
+          </swiper>
+          <div
+            class="swiper-arrow left"
+            (click)="placesGirdOnSwipe(false)"
+            *ngIf="planLocations.length > 4"
+          >
+            <i class="fa fa-chevron-left"></i>
+          </div>
+          <div
+            class="swiper-arrow right"
+            (click)="placesGirdOnSwipe(true)"
+            *ngIf="planLocations.length > 4"
+          >
+            <i class="fa fa-chevron-right"></i>
+          </div>
+        </div>
+        <!-- <div class="places__grid">
           <div
             class="places__grid__item"
             *ngFor="let item of planLocations; let i = index"
@@ -118,7 +168,7 @@
             </app-saferni-image>
             <p>{{ item.name }}</p>
           </div>
-        </div>
+        </div> -->
       </section>
 
       <section class="features">

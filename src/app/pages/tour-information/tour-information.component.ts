@@ -29,18 +29,18 @@ export class TourInformationComponent implements OnInit {
   icons = ICONS;
   planLocations: LocationModel[];
   isSubmiting = false;
+  placesSwiperIndex = 0;
 
-  isArabic$;
+  math = Math;
+
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private tripService: TripService,
-    loc: LocalService,
+    public loc: LocalService,
     private bookingService: BookingService,
     public dialog: MatDialog
-  ) {
-    this.isArabic$ = loc.isArabic$;
-  }
+  ) {}
   ngOnInit(): void {
     this.bookForm = new FormGroup({
       fullName: new FormControl(null, [Validators.required]),
@@ -126,7 +126,16 @@ export class TourInformationComponent implements OnInit {
     let el = document.getElementById('booking');
     el!.scrollIntoView({ behavior: 'smooth' });
   }
-  // getBriefInfoText(): string {
-  //   return;
-  // }
+  placesGirdOnSwipe(right = true) {
+    let dir = this.loc.locale === 'ar' ? !right : right;
+
+    if (
+      dir &&
+      this.placesSwiperIndex + 1 < Math.ceil(this.planLocations.length / 4)
+    ) {
+      this.placesSwiperIndex++;
+    } else if (!dir && this.placesSwiperIndex > 0) {
+      this.placesSwiperIndex--;
+    }
+  }
 }
