@@ -78,7 +78,8 @@
       "peopleCount": "{{children}} بالغين و {{adults}}",
       "arrivalDate":"تاريخ القدوم",
       "totalPrice":"السعر الاجمالي"
-    }
+    },
+    "durationPill":"{{days}} days"
    
   },
   "currencies": {

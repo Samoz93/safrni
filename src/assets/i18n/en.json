@@ -75,14 +75,14 @@
     "similarToursInfo": "Checkout more similar tours",
     "summary": {
       "peopleCount": "{{children}} children and {{adults}} adults.",
-      "arrivalDate":"Arrival date",
-      "totalPrice":"Total price"
+      "arrivalDate": "Arrival date",
+      "totalPrice": "Total price"
     },
-    "destination":"Destination",
-    "departure":"Departure",
-    "departureTime":"Departure Time",
-    "accomidation":"Accomidation",
-    "breifPriceInfo":"{{days}} days {{nights}} nights / {{price}}"
+    "destination": "Destination",
+    "departure": "Departure",
+    "departureTime": "Departure Time",
+    "accomidation": "Accomidation",
+    "durationPill": "{{days}} days"
   },
   "currencies": {
     "dollar": "{{ var }} $",

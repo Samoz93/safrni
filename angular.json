@@ -39,6 +39,7 @@
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/assets/fonts/font-awesome.css",
+              "src/assets/fonts/line-awesome.css",
               "src/styles.scss",
               "src/assets/fonts/janna.css"
             ],

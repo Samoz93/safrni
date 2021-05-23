@@ -122,6 +122,10 @@ export class TourInformationComponent implements OnInit {
       queryParams: { location: id },
     });
   }
+  scrollToBooking() {
+    let el = document.getElementById('booking');
+    el!.scrollIntoView({ behavior: 'smooth' });
+  }
   // getBriefInfoText(): string {
   //   return;
   // }
