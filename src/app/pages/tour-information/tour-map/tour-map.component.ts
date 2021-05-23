@@ -17,9 +17,7 @@ import {
   AccordionListItemOption,
 } from 'src/app/common/widgets/accordion-list/accordion-list-item';
 import { AccordionClickEventData } from 'src/app/common/widgets/accordion-list/accordion-list.component';
-
 import { LocationModel } from 'src/app/data/models/LocationModel';
-import { TimelineModel } from 'src/app/data/models/timelineModel';
 import { TripModel } from 'src/app/data/models/TripModel';
 import { TripService } from 'src/app/data/services/trip.service';
 
@@ -60,10 +58,8 @@ export class TourMapComponent implements OnInit, OnDestroy {
   };
   map: AgmMap;
   zoom: number = 15;
-
+  planLocations: LocationModel[] = [];
   accordionItems: AccordionListItem[] = [];
-  allLocationsSorted: LocationModel[] = [];
-  timelines: TimelineModel[];
 
   ngAfterViewInit(): void {
     this.agmMap.mapReady.subscribe((map) => {
@@ -80,7 +76,7 @@ export class TourMapComponent implements OnInit, OnDestroy {
 
     this.routeSub = this.activeRoute.data.subscribe((data) => {
       this.trip = data.mapTripData.trip;
-      this.timelines = data.mapTripData.timelines;
+      this.planLocations = data.mapTripData.locations;
 
       this.initMapPosition();
     });
@@ -107,34 +103,36 @@ export class TourMapComponent implements OnInit, OnDestroy {
     // .querySelector(`#${CSS.escape(id)}`)
   }
   initMapPosition() {
-    this.timelines.forEach((timeline) => {
+    this.trip.plan.forEach((dayPlan) => {
       this.accordionItems.push(
         new AccordionListItem(
-          timeline.locations.map((location) => {
-            return new AccordionListItemOption(location.id, location.name);
+          dayPlan.dayLocations.map((location) => {
+            return new AccordionListItemOption(
+              location.locationId,
+              location.locationName
+            );
           })
         )
       );
-      this.allLocationsSorted.push(...timeline.locations);
     });
 
     let queryParamLocationId =
       this.activatedRoute.snapshot.queryParams.location;
     if (queryParamLocationId) {
-      let location = this.allLocationsSorted.find(
+      let location = this.planLocations.find(
         (l) => l.id === queryParamLocationId
       );
       if (location) {
         this.recenterMapToLocation(location, false);
       } else {
-        this.currentLat = this.timelines[0].locations[0].geo.latitude;
-        this.currentLong = this.timelines[0].locations[0].geo.longitude;
-        this.sidebarLocation = this.timelines[0].locations[0];
+        this.currentLat = this.planLocations[0].geo.latitude;
+        this.currentLong = this.planLocations[0].geo.longitude;
+        this.sidebarLocation = this.planLocations[0];
       }
     } else {
-      this.currentLat = this.timelines[0].locations[0].geo.latitude;
-      this.currentLong = this.timelines[0].locations[0].geo.longitude;
-      this.sidebarLocation = this.timelines[0].locations[0];
+      this.currentLat = this.planLocations[0].geo.latitude;
+      this.currentLong = this.planLocations[0].geo.longitude;
+      this.sidebarLocation = this.planLocations[0];
     }
   }
   recenterMapToLocation(location: LocationModel, bringToFront = true) {
@@ -160,39 +158,40 @@ export class TourMapComponent implements OnInit, OnDestroy {
   }
   nextDestination(): void {
     this.selectedImageIndex = 0;
-    let indexOfCurrent = this.allLocationsSorted.indexOf(this.sidebarLocation);
+    let indexOfCurrent = this.planLocations.indexOf(this.sidebarLocation);
     if (
       indexOfCurrent != null &&
-      indexOfCurrent + 1 < this.allLocationsSorted.length
+      indexOfCurrent + 1 < this.planLocations.length
     ) {
-      this.recenterMapToLocation(this.allLocationsSorted[++indexOfCurrent]);
+      this.recenterMapToLocation(this.planLocations[++indexOfCurrent]);
     }
   }
   prevDestination(): void {
     this.selectedImageIndex = 0;
-    let indexOfCurrent = this.allLocationsSorted.indexOf(this.sidebarLocation);
+    let indexOfCurrent = this.planLocations.indexOf(this.sidebarLocation);
     if (indexOfCurrent != null && indexOfCurrent > 0) {
-      this.recenterMapToLocation(this.allLocationsSorted[--indexOfCurrent]);
+      this.recenterMapToLocation(this.planLocations[--indexOfCurrent]);
     }
   }
   hasNextLocation(): boolean {
-    let indexOfCurrent = this.allLocationsSorted.indexOf(this.sidebarLocation);
+    let indexOfCurrent = this.planLocations.indexOf(this.sidebarLocation);
 
     return (
-      indexOfCurrent != null &&
-      indexOfCurrent + 1 < this.allLocationsSorted.length
+      indexOfCurrent != null && indexOfCurrent + 1 < this.planLocations.length
     );
   }
   hasPrevLocation(): boolean {
-    let indexOfCurrent = this.allLocationsSorted.indexOf(this.sidebarLocation);
+    let indexOfCurrent = this.planLocations.indexOf(this.sidebarLocation);
     return indexOfCurrent != null && indexOfCurrent > 0;
   }
   toggleSidebar() {
     this.sideBarVisibility = !this.sideBarVisibility;
   }
   onLocationClicked(data: AccordionClickEventData) {
+    let locationId =
+      this.trip.plan[data.parentIndex].dayLocations[data.childIndex].locationId;
     this.recenterMapToLocation(
-      this.timelines[data.parentIndex].locations[data.childIndex]
+      this.planLocations.find((loc) => loc.id === locationId)!
     );
   }
   toggleMobileSheet() {

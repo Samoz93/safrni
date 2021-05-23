@@ -91,7 +91,7 @@
         <div class="places__grid">
           <div
             class="places__grid__item"
-            *ngFor="let item of getAllLocations(); let i = index"
+            *ngFor="let item of planLocations; let i = index"
             (click)="goToMapLocation(item.id)"
           >
             <app-saferni-image [imageModel]="item.images[0]">

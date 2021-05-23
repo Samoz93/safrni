@@ -1,0 +1,36 @@
+query getLocations($locale: String!, $ids: [String!]!) {
+  locations(locale: $locale, where: { id_in: $ids }) {
+    id
+    name
+    description
+    coordinate {
+      latitude
+      longitude
+    }
+    locale
+    images {
+      id
+      width
+      height
+      url
+      formats
+    }
+    city {
+      id
+      name
+      description
+      locale
+      localizations {
+        id
+        locale
+      }
+      image {
+        id
+        width
+        height
+        url
+        formats
+      }
+    }
+  }
+}

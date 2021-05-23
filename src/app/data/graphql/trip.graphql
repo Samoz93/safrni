@@ -30,8 +30,15 @@ fragment tripInfo on Trips {
     id
     name
   }
-  timeline {
-    id
+  plan {
+    day
+    locations {
+      id
+      name
+      city {
+        id
+      }
+    }
   }
   previewImage {
     id

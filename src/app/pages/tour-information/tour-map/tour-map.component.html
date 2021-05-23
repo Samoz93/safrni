@@ -40,25 +40,23 @@
       </agm-icon-sequence>
     </agm-polyline> -->
 
-    <ng-container *ngFor="let timeline of timelines">
-      <agm-overlay
-        *ngFor="let location of timeline.locations; let i = index"
-        [latitude]="location.geo.latitude"
-        [longitude]="location.geo.longitude"
-        (markerClick)="recenterMapToLocation(location)"
-      >
-        <!-- blue html square -->
-        <div
-          class="location-overlay"
-          [id]="location.id"
-          [ngClass]="{ big: location.id == sidebarLocation.id }"
-          [ngStyle]="{ 'z-index': i == 0 ? 999 : 1 }"
-          (mouseover)="onOverlayHover(location.id)"
-        >
-          <img [src]="location.images[0] | serverimage" />
-        </div>
-      </agm-overlay>
-    </ng-container>
+    <agm-overlay
+    *ngFor="let location of planLocations; let i = index"
+    [latitude]="location.geo.latitude"
+    [longitude]="location.geo.longitude"
+    (markerClick)="recenterMapToLocation(location)"
+  >
+    <!-- blue html square -->
+    <div
+      class="location-overlay"
+      [id]="location.id"
+      [ngClass]="{ big: location.id == sidebarLocation.id }"
+      [ngStyle]="{ 'z-index': i == 0 ? 999 : 1 }"
+      (mouseover)="onOverlayHover(location.id)"
+    >
+      <img [src]="location.images[0] | serverimage" />
+    </div>
+  </agm-overlay>
   </agm-map>
   <div class="locations-list">
     <app-accordion-list

@@ -8,10 +8,10 @@ import { Injectable } from '@angular/core';
 import { SplashScreenStateService } from '../services/splash-screen-state.service';
 import { TripService } from '../services/trip.service';
 import { TripModel } from '../models/TripModel';
-import { TimelineModel } from '../models/timelineModel';
 import { MetaService } from '../services/meta.service';
 import { LocalService } from '../services/local.service';
 import { ErrorService } from '../services/error.service';
+import { LocationModel } from '../models/LocationModel';
 @Injectable({ providedIn: 'root' })
 export class TourInformationResolver implements Resolve<any> {
   constructor(
@@ -24,7 +24,7 @@ export class TourInformationResolver implements Resolve<any> {
   async resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Promise<{ trip: TripModel; timelines: TimelineModel[] } | null> {
+  ): Promise<{ trip: TripModel; locations: LocationModel[] } | null> {
     //redirect
     //return
     try {
@@ -32,7 +32,7 @@ export class TourInformationResolver implements Resolve<any> {
       let tripId = route.paramMap.get('id');
 
       let trip = await this.tripService.getLocalizedTrip(tripId!);
-      let timelines = await this.tripService.getTimeline(trip.timelineId);
+      let locations = await this.tripService.getLocations(trip.allLocationsIds);
 
       console.log(trip);
 
@@ -43,7 +43,7 @@ export class TourInformationResolver implements Resolve<any> {
       });
       return {
         trip: trip,
-        timelines: timelines!,
+        locations: locations!,
       };
     } catch (error) {
       this.router.navigate([...route.parent?.url!]);

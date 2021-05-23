@@ -12,9 +12,17 @@ import {
   LocalizationType,
   StrapiLocalizationsAdapter,
 } from './localization.type';
-import { TimelineModel, TimelineModelAdapter } from './timelineModel';
 
 export class TripModel {
+  public get allLocationsIds():string[] {
+    let ids: string[] = [];
+    this.plan.forEach((plan) => {
+      ids.push(...plan.dayLocations.map((loc) => loc.locationId));
+    });
+
+    return ids;
+  }
+
   constructor(
     public id: string,
     public name: string,
@@ -27,7 +35,7 @@ export class TripModel {
     public previewImage: ImageModel,
     public city: CityModel,
     public features: FeatureModel[],
-    public timelineId: string,
+    public plan: TripDayPlan[],
     public basePrice: number,
     public discount: number,
     public basePeopleCount: number,
@@ -42,6 +50,9 @@ export class TripModelAdapter implements Adapter<TripModel> {
     let features: FeatureModel[] = item.features.map((feature: any) =>
       new FeatureModelAdapter().adapt(feature)
     );
+    let plan: TripDayPlan[] = item.plan.map((planItem: any) =>
+      new TripDayPlanAdapter().adapt(planItem)
+    );
 
     return new TripModel(
       item.id,
@@ -55,7 +66,7 @@ export class TripModelAdapter implements Adapter<TripModel> {
       new ImageModelAdapter().adapt(item.previewImage),
       item.city,
       features,
-      item.timeline.id,
+      plan,
       item.basePrice,
       item.discount,
       item.basePeopleCount,
@@ -63,4 +74,23 @@ export class TripModelAdapter implements Adapter<TripModel> {
       new StrapiLocalizationsAdapter().adapt(item.localizations)
     );
   }
+}
+
+export class TripDayPlan {
+  constructor(public day: number, public dayLocations: PlanLocation[]) {}
+}
+export class TripDayPlanAdapter implements Adapter<TripDayPlan> {
+  adapt(item: any): TripDayPlan {
+    return new TripDayPlan(
+      item.day,
+      item.locations.map((l: any) => new PlanLocation(l.id, l.city.id, l.name))
+    );
+  }
+}
+export class PlanLocation {
+  constructor(
+    public locationId: string,
+    public cityId: string,
+    public locationName: string
+  ) {}
 }

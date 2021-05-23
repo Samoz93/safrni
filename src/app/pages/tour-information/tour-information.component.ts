@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocationModel } from 'src/app/data/models/LocationModel';
-import { TimelineModel } from 'src/app/data/models/timelineModel';
 import { TripModel } from 'src/app/data/models/TripModel';
 import { LocalService } from 'src/app/data/services/local.service';
 import {
@@ -25,11 +24,10 @@ import { filter, mapTo, tap } from 'rxjs/operators';
 })
 export class TourInformationComponent implements OnInit {
   trip: TripModel;
-  timelines: TimelineModel[] = [];
   relatedTrips: TripModel[];
   bookForm: FormGroup;
   icons = ICONS;
-
+  planLocations:LocationModel[];
   isSubmiting = false;
 
   isArabic$;
@@ -55,7 +53,7 @@ export class TourInformationComponent implements OnInit {
     });
     this.activatedRoute.data.subscribe(async (data) => {
       this.trip = data.dataMap.trip;
-      this.timelines = data.dataMap.timelines;
+      this.planLocations = data.dataMap.locations;
       this.relatedTrips = await this.tripService.getRelatedTrips(this.trip);
     });
   }
@@ -102,16 +100,9 @@ export class TourInformationComponent implements OnInit {
       tap((val) => console.log(val))
     );
   }
-  getAllLocations(): LocationModel[] {
-    let allLocations = new Array();
-    this.timelines.forEach((element) => {
-      allLocations.push(...element.locations);
-    });
 
-    return allLocations;
-  }
   getCarouselImages(): string[] {
-    return this.getAllLocations().map((l) => l.images[0].url);
+    return this.planLocations.map((l) => l.images[0].url);
   }
   goToTour(id:string){
     this.router.navigate(['/tours',id])
