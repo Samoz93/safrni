@@ -27,7 +27,7 @@ export class TourInformationComponent implements OnInit {
   relatedTrips: TripModel[];
   bookForm: FormGroup;
   icons = ICONS;
-  planLocations:LocationModel[];
+  planLocations: LocationModel[];
   isSubmiting = false;
 
   isArabic$;
@@ -104,8 +104,8 @@ export class TourInformationComponent implements OnInit {
   getCarouselImages(): string[] {
     return this.planLocations.map((l) => l.images[0].url);
   }
-  goToTour(id:string){
-    this.router.navigate(['/tours',id])
+  goToTour(id: string) {
+    this.router.navigate(['/tours', id]);
   }
   openDialog(success: boolean = true): void {
     const dialogRef = this.dialog.open(BookingSubmitPopupComponent, {
@@ -122,4 +122,7 @@ export class TourInformationComponent implements OnInit {
       queryParams: { location: id },
     });
   }
+  // getBriefInfoText(): string {
+  //   return;
+  // }
 }

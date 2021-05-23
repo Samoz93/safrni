@@ -73,7 +73,13 @@
     "destination": "الوجهة",
     "departure": "الانطلاق",
     "departureTime": "وقت الرحلة",
-    "accomidation": "الاقامة"
+    "accomidation": "الاقامة",
+    "summary": {
+      "peopleCount": "{{children}} بالغين و {{adults}}",
+      "arrivalDate":"تاريخ القدوم",
+      "totalPrice":"السعر الاجمالي"
+    }
+   
   },
   "currencies": {
     "dollar": "{{ var }} $",
