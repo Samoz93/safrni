@@ -30,6 +30,12 @@ fragment tripInfo on Trips {
     id
     name
   }
+  hotel {
+    id
+    name
+    url
+    stars
+  }
   plan {
     day
     locations {
@@ -61,43 +67,6 @@ fragment tripInfo on Trips {
     feature {
       name
       info
-    }
-  }
-}
-query getTimeline($id: ID!) {
-  timeline(id: $id) {
-    localizations {
-      id
-      locale
-    }
-    timelines {
-      day
-      description
-
-      locations {
-        id
-        name
-        description
-        coordinate {
-          latitude
-          longitude
-        }
-        images {
-          id
-          width
-          height
-          url
-          formats
-        }
-        city {
-          id
-          name
-          localizations {
-            id
-            locale
-          }
-        }
-      }
     }
   }
 }

@@ -14,7 +14,7 @@ import {
 } from './localization.type';
 
 export class TripModel {
-  public get allLocationsIds():string[] {
+  public get allLocationsIds(): string[] {
     let ids: string[] = [];
     this.plan.forEach((plan) => {
       ids.push(...plan.dayLocations.map((loc) => loc.locationId));
@@ -40,7 +40,8 @@ export class TripModel {
     public discount: number,
     public basePeopleCount: number,
     public curreny: Enum_Trips_Currency,
-    public localizations: LocalizationType[]
+    public localizations: LocalizationType[],
+    public hotel?: Hotel
   ) {}
 }
 
@@ -71,7 +72,8 @@ export class TripModelAdapter implements Adapter<TripModel> {
       item.discount,
       item.basePeopleCount,
       item.currency,
-      new StrapiLocalizationsAdapter().adapt(item.localizations)
+      new StrapiLocalizationsAdapter().adapt(item.localizations),
+      new HotelAdapter().adapt(item.hotel)
     );
   }
 }
@@ -93,4 +95,18 @@ export class PlanLocation {
     public cityId: string,
     public locationName: string
   ) {}
+}
+export class Hotel {
+  constructor(
+    public id: string,
+    public name: string,
+    public stars: number,
+    public url: string
+  ) {}
+}
+export class HotelAdapter implements Adapter<Hotel> {
+  adapt(item: any): Hotel | undefined {
+    if (!item) return undefined;
+    else return new Hotel(item.id, item.name, item.stars, item.url);
+  }
 }

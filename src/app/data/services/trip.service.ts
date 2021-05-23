@@ -10,7 +10,6 @@ import {
   GetLocalizedCityGQL,
   GetLocalizedTripGQL,
   GetLocationsGQL,
-  GetTimelineGQL,
   GetTripGQL,
   TripsGQL,
 } from './saferniGraphql.service';

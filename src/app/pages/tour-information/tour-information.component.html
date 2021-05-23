@@ -42,24 +42,20 @@
 
         <div class="trip-card-features">
           <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
+            <h2>{{ "tour-info.destination" | transloco }}</h2>
+            <p>{{ trip.city.name }}</p>
           </div>
           <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
+            <h2>{{ "tour-info.departure" | transloco }}</h2>
+            <p>{{ trip.city.name }}</p>
           </div>
           <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
+            <h2>{{ "tour-info.departureTime" | transloco }}</h2>
+            <p>10:30 AM</p>
           </div>
-          <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
-          </div>
-          <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
+          <div class="trip-card-features__row" *ngIf="trip.hotel">
+            <h2>{{ "tour-info.accomidation" | transloco }}</h2>
+            <p>{{ trip.hotel.name }}</p>
           </div>
         </div>
 
@@ -237,24 +233,20 @@
 
         <div class="trip-card-features">
           <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
+            <h2>{{ "tour-info.destination" | transloco }}</h2>
+            <p>{{ trip.city.name }}</p>
           </div>
           <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
+            <h2>{{ "tour-info.departure" | transloco }}</h2>
+            <p>{{ trip.city.name }}</p>
           </div>
           <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
+            <h2>{{ "tour-info.departureTime" | transloco }}</h2>
+            <p>10:30 AM</p>
           </div>
-          <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
-          </div>
-          <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
+          <div class="trip-card-features__row" *ngIf="trip.hotel">
+            <h2>{{ "tour-info.accomidation" | transloco }}</h2>
+            <p>{{ trip.hotel.name }}</p>
           </div>
         </div>
 

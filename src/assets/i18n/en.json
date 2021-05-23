@@ -77,7 +77,11 @@
       "peopleCount": "{{children}} children and {{adults}} adults.",
       "arrivalDate":"Arrival date",
       "totalPrice":"Total price"
-    }
+    },
+    "destination":"Destination",
+    "departure":"Departure",
+    "departureTime":"Departure Time",
+    "accomidation":"Accomidation"
   },
   "currencies": {
     "dollar": "{{ var }} $",

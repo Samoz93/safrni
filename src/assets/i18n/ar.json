@@ -69,7 +69,11 @@
     "visitedPlaces": "الأماكن التي ستزورها",
     "visitedPlacesInfo": "الكثير من الجولات المختلفة حول تركيا",
     "similarTours": "رحلات مشابهه",
-    "similarToursInfo": "تفقد العديد من الرحلات المشابهه"
+    "similarToursInfo": "تفقد العديد من الرحلات المشابهه",
+    "destination": "الوجهة",
+    "departure": "الانطلاق",
+    "departureTime": "وقت الرحلة",
+    "accomidation": "الاقامة"
   },
   "currencies": {
     "dollar": "{{ var }} $",
