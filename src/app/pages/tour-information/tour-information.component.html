@@ -199,7 +199,9 @@
 
             <div class="booking-form__summary__price">
               <p>{{ "tour-info.summary.totalPrice" | transloco }}:</p>
-              <p>{{ calculatePrice() | async | price }}</p>
+              <p>
+                {{ this.trip.basePrice | price: priceData }}
+              </p>
             </div>
           </div>
           <button

@@ -1,4 +1,4 @@
-<div class="flex_area_filter">
+<form class="flex_area_filter">
   <section class="flex_area_filter-nav">
     <div
       class="flex_area_filter-nav-item"
@@ -19,20 +19,21 @@
     <p class="flex_area_filter-city-title title">
       {{ "buttons.city" | transloco }}
     </p>
-    <mat-radio-group class="radio-group" [formControl]="cityCtrl">
-      <mat-radio-button
+    <mat-radio-group class="radio-group">
+      <mat-checkbox
+        (change)="setCity($event.checked, city.id)"
         *ngFor="let city of cities"
         class="radio"
         [value]="city.id"
-        >{{ city.name }}</mat-radio-button
-      >
+        >{{ city.name }}
+      </mat-checkbox>
     </mat-radio-group>
   </section>
   <section class="flex_area_filter-hotel section filter">
     <p class="flex_area_filter-hotel-title title">
       {{ "hotel.placeholder" | transloco }}
     </p>
-    <mat-radio-group class="radio-group" [formControl]="cityCtrl">
+    <mat-radio-group class="radio-group" [formControl]="hotelCtrl">
       <mat-radio-button class="radio" [value]="true">{{
         "hotel.yes" | transloco
       }}</mat-radio-button>
@@ -82,4 +83,4 @@
       {{ "buttons.apply" | transloco }}
     </button>
   </section>
-</div>
+</form>

@@ -19,11 +19,13 @@ export class TicketCounterComponent
   extends ControlValueAccessorConnector
   implements OnInit
 {
-  @Input() prefix:string;
+  @Input() prefix: string;
 
   hover = false;
   ngOnInit(): void {
     this.icon = ICONS.ticket;
+    if (!this.control.value || isNaN(this.control.value))
+      this.control.setValue(0);
   }
   onHover() {
     this.hover = true;

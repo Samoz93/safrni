@@ -7,5 +7,6 @@ export interface FilterOptionsModel {
   cityId: string;
   date?: number;
   travelType: TravelTypes;
-  hasHotel: boolean;
+  hasHotel?: boolean;
+  cities?: any[];
 }

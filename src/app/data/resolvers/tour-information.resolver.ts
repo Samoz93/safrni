@@ -34,7 +34,6 @@ export class TourInformationResolver implements Resolve<any> {
       let trip = await this.tripService.getLocalizedTrip(tripId!);
       let timelines = await this.tripService.getTimeline(trip.timelineId);
 
-      console.log(trip);
 
       this.meta.addTags({
         title: trip.name,

@@ -49,20 +49,14 @@ export class SearchPanelComponent implements OnInit {
     this.trTypes.push(...getTravelTypeData(locale));
 
     this.form = fb.group({
-      whereTo: [null, Validators.required],
+      whereTo: null,
       travelType: null,
       date: null,
     });
     this.isArabic$ = locale.isArabic$;
   }
   bannerHeight = 60;
-  // @HostListener('window:resize', []) onScreenChanged() {
-  //   if (window.innerWidth <= 930 && this.bannerHeight != 85) {
-  //     this.bannerHeight = 85;
-  //   } else if (window.innerWidth > 930 && this.bannerHeight != 60) {
-  //     this.bannerHeight = 60;
-  //   }
-  // }
+
   test() {
     this._snck.showErrorByException(Error('test'));
   }
@@ -82,7 +76,6 @@ export class SearchPanelComponent implements OnInit {
       tab: this.activeTab,
       maxPrice: 0,
       minPrice: 0,
-      hasHotel: true,
       travelType: data.travelType ?? TravelTypes.private,
     };
     this.router.navigate([StaticInfo.offersRoute], {

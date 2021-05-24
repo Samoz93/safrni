@@ -1,7 +1,5 @@
-import { LocalResolver } from '@angular/compiler/src/compiler_util/expression_converter';
-import { catchError, map } from 'rxjs/operators';
-import Observable from 'zen-observable';
-import { FeatureModel, FeatureModelAdapter } from '../models/FeatureModel';
+import { map } from 'rxjs/operators';
+import { FeatureModelAdapter } from '../models/FeatureModel';
 import { LocalService } from './local.service';
 import { FeaturesGQL } from './saferniGraphql.service';
 

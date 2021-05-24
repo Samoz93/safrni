@@ -1,5 +1,6 @@
+import { isDevMode } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, throwError } from 'rxjs';
 import { ErrorDlgComponent } from 'src/app/common/widgets/error-dlg/error-dlg.component';
 import { LoadingState } from '../static/main-info';
 import { ErrorService } from './error.service';
@@ -47,6 +48,8 @@ export abstract class BaseService<T> {
       return data;
     } catch (error) {
       this.setBusy(false, error, toDo);
+      if (isDevMode()) throwError(error);
+
       return undefined;
     }
   }

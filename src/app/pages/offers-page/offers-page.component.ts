@@ -48,6 +48,7 @@ export class OffersPageComponent implements OnInit {
         minPrice: newQuery.minPrice ? +newQuery.minPrice : 0,
         date: newQuery.date ? +newQuery.date : new Date().getTime(),
         travelType: newQuery.travelType ?? TravelTypes.private,
+        cities: newQuery.cities,
       };
       if (newQuery == initQuery) {
         return;
@@ -64,6 +65,8 @@ export class OffersPageComponent implements OnInit {
       limit: 30,
       locale: this.loc.locale,
       cityId: this.cityid,
+      accomidation: this.filterOptions.hasHotel,
+
       priceRange: {
         maxPrice:
           +this.filterOptions.maxPrice < 1
