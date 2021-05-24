@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewChecked,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocationModel } from 'src/app/data/models/LocationModel';
@@ -22,7 +27,7 @@ import { filter, mapTo, tap } from 'rxjs/operators';
   templateUrl: './tour-information.component.html',
   styleUrls: ['./tour-information.component.scss'],
 })
-export class TourInformationComponent implements OnInit {
+export class TourInformationComponent implements OnInit, AfterViewChecked {
   trip: TripModel;
   relatedTrips: TripModel[];
   bookForm: FormGroup;
@@ -39,7 +44,8 @@ export class TourInformationComponent implements OnInit {
     private tripService: TripService,
     public loc: LocalService,
     private bookingService: BookingService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private readonly changeDetectorRef: ChangeDetectorRef
   ) {}
   ngOnInit(): void {
     this.bookForm = new FormGroup({
@@ -57,7 +63,9 @@ export class TourInformationComponent implements OnInit {
       this.relatedTrips = await this.tripService.getRelatedTrips(this.trip);
     });
   }
-
+  ngAfterViewChecked(): void {
+    // this.changeDetectorRef.detectChanges();
+  }
   async onFormSubmitted() {
     Object.keys(this.bookForm.controls).forEach((field) => {
       const control = this.bookForm.get(field);

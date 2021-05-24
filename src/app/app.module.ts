@@ -96,6 +96,8 @@ import { TicketCounterComponent } from './common/widgets/ticket-counter/ticket-c
 import { SnackCompComponent } from './common/widgets/snack-comp/snack-comp.component';
 import { PillComponent } from './common/widgets/pill/pill.component';
 import { PlaygroundComponent } from './pages/playground/playground.component';
+import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
+import { PhoneInputComponent } from './common/widgets/phone-input/phone-input.component';
 
 export function playerFactory() {
   return player;
@@ -163,7 +165,8 @@ export function playerFactory() {
     TicketCounterComponent,
     SnackCompComponent,
     PillComponent,
-    PlaygroundComponent
+    PlaygroundComponent,
+    PhoneInputComponent
   ],
 
   imports: [
@@ -200,6 +203,7 @@ export function playerFactory() {
     AngularFireAnalyticsModule,
     AngularFireMessagingModule,
     MatSnackBarModule,
+    NgxIntlTelInputModule
   ],
   providers: [
     ScreenTrackingService,

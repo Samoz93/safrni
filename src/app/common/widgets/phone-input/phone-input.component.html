@@ -1,0 +1,30 @@
+<div
+  class="main"
+  [ngClass]="{ 'all-border': hasBorder, 'err-border': !!errmsg }"
+>
+  <ngx-intl-tel-input
+    [cssClass]="'custom'"
+    [preferredCountries]="[CountryISO.UnitedStates, CountryISO.UnitedKingdom]"
+    [enableAutoCountrySelect]="true"
+    [searchCountryFlag]="true"
+    on-focus="onFocus($event)"
+    on-focusout="onFocusOut()"
+    [formControl]="control"
+    [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+    [selectFirstCountry]="false"
+    [selectedCountryISO]="CountryISO.India"
+    [maxLength]="'15'"
+    [phoneValidation]="true"
+    [separateDialCode]="true"
+    [enablePlaceholder]="true"
+  ></ngx-intl-tel-input>
+
+  <app-validation-icon
+    [hidden]="hideIcon"
+    [icon]="icon"
+    [isFocused]="isfocused"
+    [errors]="errmsg"
+    [placeholder]="placeholder"
+  ></app-validation-icon>
+</div>
+<p class="validation-text" *ngIf="errmsg">*{{ errmsg }}</p>
