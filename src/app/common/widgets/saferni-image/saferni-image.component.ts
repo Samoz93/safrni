@@ -12,6 +12,7 @@ export class SaferniImageComponent implements OnInit {
   @Input() imageModel: ImageModel;
   @Input() alt: string;
   @Input() overlayOpacity = 25;
+  @Input() overlayType : OverlayType = 'normal'
   isLoading = true;
 
   constructor() {}
@@ -22,7 +23,5 @@ export class SaferniImageComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  getOverlayStyle(): string {
-    return `linear-gradient(to bottom,rgba(0, 0, 0, 0),rgba(0, 0, 0, ${this.overlayOpacity}));`;
-  }
 }
+export type OverlayType = 'gradient' | 'normal'

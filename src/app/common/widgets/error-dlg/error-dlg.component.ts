@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, isDevMode, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingState } from 'src/app/data/static/main-info';
@@ -18,7 +18,9 @@ export class ErrorDlgComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.data);
   }
-
+  get isDev() {
+    return isDevMode();
+  }
   async tryAgain() {
     if (this.data.handler) {
       await this.data.handler();

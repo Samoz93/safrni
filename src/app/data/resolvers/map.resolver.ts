@@ -13,13 +13,13 @@ import { TripService } from '../services/trip.service';
 import { CityModel } from '../models/CityModel';
 import { TripModel } from '../models/TripModel';
 import { delay } from '../utils/helpers';
-import { TimelineModel } from '../models/timelineModel';
 import { MetaService } from '../services/meta.service';
 import { LocalService } from '../services/local.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDlgComponent } from 'src/app/common/widgets/error-dlg/error-dlg.component';
 import { LoadingState } from '../static/main-info';
 import { ErrorService } from '../services/error.service';
+import { LocationModel } from '../models/LocationModel';
 @Injectable({ providedIn: 'root' })
 export class MapResolver implements Resolve<any> {
   constructor(
@@ -33,12 +33,12 @@ export class MapResolver implements Resolve<any> {
   async resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Promise<{ trip: TripModel; timelines: TimelineModel[] } | null> {
+  ): Promise<{ trip: TripModel; locations: LocationModel[] } | null> {
     try {
       this.splashScreenStateService.start();
       let tripId = route.paramMap.get('id');
       let trip = await this.tripService.getLocalizedTrip(tripId!);
-      let timelines = await this.tripService.getTimeline(trip.timelineId);
+      let locations = await this.tripService.getLocations(trip.allLocationsIds);
       this.meta.addTags({
         title: this.loc.getTranslation('map.tourplan'),
         description: trip.description,
@@ -46,7 +46,7 @@ export class MapResolver implements Resolve<any> {
       });
       return {
         trip: trip,
-        timelines: timelines!,
+        locations: locations!,
       };
     } catch (error) {
       this.router.navigate([...route.parent?.url!]);

@@ -4,7 +4,7 @@
     [screenHeightPercentage]="60"
   ></app-banner-carousel>
 
-  <div class="fab" style="bottom: 5rem">
+  <div class="fab" style="bottom: 5rem" (click)="scrollToBooking()">
     <div class="circle-fab">
       <div class="inner-circle-fab">
         <p>{{ "tour-info.book" | transloco }}</p>
@@ -26,40 +26,48 @@
             ></app-saferni-image>
           </div>
           <p class="trip-card-header__price">{{ trip.basePrice }}</p>
-          <app-read-only-stars
+          <!-- <app-read-only-stars
             [stars]="3.5"
             [color]="'#fff'"
-          ></app-read-only-stars>
+          ></app-read-only-stars> -->
         </div>
         <div class="trip-card-brief-info">
           <h2 class="trip-card-brief-info__city-name">
-            {{ trip.city.name }}
+            {{ trip.name }}
           </h2>
-          <p class="trip-card-brief-info__price-duration">
-            5 Days - 4 Nights / 400$ Per Person
-          </p>
+          <div class="trip-card-brief-info__pills">
+            <app-pill [text]="'5 days'" [iconClass]="'las la-clock'"></app-pill>
+            <app-pill
+              [text]="'1-7 people'"
+              [iconClass]="'las la-user-friends'"
+            ></app-pill>
+            <app-pill
+              [text]="trip.basePrice.toString()"
+              [iconClass]="'las la-tag'"
+            ></app-pill>
+            <app-pill
+              [text]="'adjustable'"
+              [iconClass]="'las la-sliders-h'"
+            ></app-pill>
+          </div>
         </div>
 
         <div class="trip-card-features">
           <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
+            <h2>{{ "tour-info.destination" | transloco }}</h2>
+            <p>{{ trip.city.name }}</p>
           </div>
           <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
+            <h2>{{ "tour-info.departure" | transloco }}</h2>
+            <p>{{ trip.city.name }}</p>
           </div>
           <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
+            <h2>{{ "tour-info.departureTime" | transloco }}</h2>
+            <p>10:30 AM</p>
           </div>
-          <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
-          </div>
-          <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
+          <div class="trip-card-features__row" *ngIf="trip.hotel">
+            <h2>{{ "tour-info.accomidation" | transloco }}</h2>
+            <p>{{ trip.hotel.name }}</p>
           </div>
         </div>
 
@@ -68,10 +76,22 @@
         </button>
       </section>
       <section class="brief-intro">
-        <h1 class="brief-intro__city-name">Istanbul</h1>
-        <p class="brief-intro__cost-duration">
-          5 Days - 4 Nights / 400$ Per Person
-        </p>
+        <h1 class="brief-intro__city-name">{{ trip.name }}</h1>
+        <div class="brief-intro__pills">
+          <app-pill [text]="'5 days'" [iconClass]="'las la-clock'"></app-pill>
+          <app-pill
+            [text]="'1-7 people'"
+            [iconClass]="'las la-user-friends'"
+          ></app-pill>
+          <app-pill
+            [text]="trip.basePrice.toString()"
+            [iconClass]="'las la-tag'"
+          ></app-pill>
+          <app-pill
+            [text]="'adjustable'"
+            [iconClass]="'las la-sliders-h'"
+          ></app-pill>
+        </div>
         <p class="brief-intro__description">
           The city embraces Asia on the one hand and Europe on the other.
           Istanbul is Turkey's most populous city and its cultural and financial
@@ -88,17 +108,67 @@
         <p class="section-description">
           {{ "tour-info.visitedPlacesInfo" | transloco }}
         </p>
-        <div class="places__grid">
+        <div class="places__swiper">
+          <swiper
+            class="slider"
+            [slidesPerView]="1"
+            [spaceBetween]="25"
+            [grabCursor]="true"
+            [(index)]="placesSwiperIndex"
+          >
+            <ng-template
+              swiperSlide
+              class="slide"
+              style="width: 100%; height: 100%; cursor: pointer"
+              *ngFor="
+                let group of [].constructor(
+                  math.ceil(planLocations.length / 4)
+                );
+                let i = index
+              "
+            >
+              <div class="places__grid" swiperSlide>
+                <div
+                  class="places__grid__item"
+                  *ngFor="
+                    let item of planLocations.slice(i * 4, i * 4 + 4);
+                    let j = index
+                  "
+                  (click)="goToMapLocation(item.id)"
+                >
+                  <app-saferni-image [imageModel]="item.images[0]">
+                  </app-saferni-image>
+                  <p>{{ item.name }}</p>
+                </div>
+              </div>
+            </ng-template>
+          </swiper>
+          <div
+            class="swiper-arrow left"
+            (click)="placesGirdOnSwipe(false)"
+            *ngIf="planLocations.length > 4"
+          >
+            <i class="fa fa-chevron-left"></i>
+          </div>
+          <div
+            class="swiper-arrow right"
+            (click)="placesGirdOnSwipe(true)"
+            *ngIf="planLocations.length > 4"
+          >
+            <i class="fa fa-chevron-right"></i>
+          </div>
+        </div>
+        <!-- <div class="places__grid">
           <div
             class="places__grid__item"
-            *ngFor="let item of getAllLocations(); let i = index"
+            *ngFor="let item of planLocations; let i = index"
             (click)="goToMapLocation(item.id)"
           >
             <app-saferni-image [imageModel]="item.images[0]">
             </app-saferni-image>
             <p>{{ item.name }}</p>
           </div>
-        </div>
+        </div> -->
       </section>
 
       <section class="features">
@@ -130,7 +200,7 @@
         </div>
       </section>
 
-      <section class="booking-section">
+      <section class="booking-section" id="booking">
         <h2 class="section-title">
           {{ "tour-info.bookingInfo" | transloco }}
         </h2>
@@ -148,12 +218,12 @@
             [placeholder]="'inputs.name' | transloco"
             [hasBorder]="true"
           ></app-custom-input>
-          <app-custom-input
-            formControlName="phone"
+
+          <app-phone-input
             [hasBorder]="true"
+            formControlName="phone"
             [icon]="icons.phone"
-            [placeholder]="'inputs.phone' | transloco"
-          ></app-custom-input>
+          ></app-phone-input>
           <app-custom-input
             [hasBorder]="true"
             formControlName="email"
@@ -230,33 +300,41 @@
         </div>
         <div class="trip-card-brief-info">
           <h2 class="trip-card-brief-info__city-name">
-            {{ trip.city.name }}
+            {{ trip.name }}
           </h2>
-          <p class="trip-card-brief-info__price-duration">
-            5 Days - 4 Nights / 400$ Per Person
-          </p>
+          <div class="trip-card-brief-info__pills">
+            <app-pill [text]="'5 days'" [iconClass]="'las la-clock'"></app-pill>
+            <app-pill
+              [text]="'1-7 people'"
+              [iconClass]="'las la-user-friends'"
+            ></app-pill>
+            <app-pill
+              [text]="trip.basePrice.toString()"
+              [iconClass]="'las la-tag'"
+            ></app-pill>
+            <app-pill
+              [text]="'adjustable'"
+              [iconClass]="'las la-sliders-h'"
+            ></app-pill>
+          </div>
         </div>
 
         <div class="trip-card-features">
           <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
+            <h2>{{ "tour-info.destination" | transloco }}</h2>
+            <p>{{ trip.city.name }}</p>
           </div>
           <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
+            <h2>{{ "tour-info.departure" | transloco }}</h2>
+            <p>{{ trip.city.name }}</p>
           </div>
           <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
+            <h2>{{ "tour-info.departureTime" | transloco }}</h2>
+            <p>10:30 AM</p>
           </div>
-          <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
-          </div>
-          <div class="trip-card-features__row">
-            <h2>hotel</h2>
-            <p>four season hotel</p>
+          <div class="trip-card-features__row" *ngIf="trip.hotel">
+            <h2>{{ "tour-info.accomidation" | transloco }}</h2>
+            <p>{{ trip.hotel.name }}</p>
           </div>
         </div>
 

@@ -36,10 +36,5 @@ export class SingleTripCardComponent implements OnInit {
       });
   }
 
-  get priceStr() {
-    if (!this.currency) return `${this.price} ${this.currency}`;
-    return this.loc.getTranslation('currencies.' + this.currency, {
-      var: this.price.toString(),
-    });
-  }
+
 }

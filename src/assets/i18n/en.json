@@ -79,7 +79,12 @@
       "peopleCount": "{{children}} children and {{adults}} adults.",
       "arrivalDate": "Arrival date",
       "totalPrice": "Total price"
-    }
+    },
+    "destination": "Destination",
+    "departure": "Departure",
+    "departureTime": "Departure Time",
+    "accomidation": "Accomidation",
+    "durationPill": "{{days}} days"
   },
   "currencies": {
     "dollar": "{{ var }} $",
@@ -108,7 +113,8 @@
   },
   "footer": {
     "sub-title": "Subscribe To Newsletter",
-    "sub-desc": "Subscribe to our email list and we'll keep you informed of our new tours and updates ."
+    "sub-desc": "Subscribe to our email list and we'll keep you informed of our new tours and updates .",
+    "thanks": "You have been added to our mailing list ,Thanks for Subscribing ,"
   },
   "err": {
     "home": "Go Home",
@@ -119,9 +125,18 @@
     "public": "Public Tour",
     "private": "Private Tour"
   },
-  "hotel": {
-    "placeholder": "Has Hotel ?",
+  "otherFilterOptions": {
+    "hotel": "Hotel",
+    "discount": "Discount",
+    "placeholder": "Other Options"
+  },
+
+  "options": {
     "yes": "Yes",
     "no": "No"
+  },
+  "generalMessages": {
+    "error": "Something went wrong please try again later",
+    "noContent": "No Content with those search options"
   }
 }

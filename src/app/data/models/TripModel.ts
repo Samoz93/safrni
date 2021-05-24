@@ -12,9 +12,17 @@ import {
   LocalizationType,
   StrapiLocalizationsAdapter,
 } from './localization.type';
-import { TimelineModel, TimelineModelAdapter } from './timelineModel';
 
 export class TripModel {
+  public get allLocationsIds(): string[] {
+    let ids: string[] = [];
+    this.plan.forEach((plan) => {
+      ids.push(...plan.dayLocations.map((loc) => loc.locationId));
+    });
+
+    return ids;
+  }
+
   constructor(
     public id: string,
     public name: string,
@@ -27,12 +35,13 @@ export class TripModel {
     public previewImage: ImageModel,
     public city: CityModel,
     public features: FeatureModel[],
-    public timelineId: string,
+    public plan: TripDayPlan[],
     public basePrice: number,
     public discount: number,
     public basePeopleCount: number,
     public curreny: Enum_Trips_Currency,
-    public localizations: LocalizationType[]
+    public localizations: LocalizationType[],
+    public hotel?: Hotel
   ) {}
 }
 
@@ -41,6 +50,9 @@ export class TripModelAdapter implements Adapter<TripModel> {
   adapt(item: any): TripModel {
     let features: FeatureModel[] = item.features.map((feature: any) =>
       new FeatureModelAdapter().adapt(feature)
+    );
+    let plan: TripDayPlan[] = item.plan.map((planItem: any) =>
+      new TripDayPlanAdapter().adapt(planItem)
     );
 
     return new TripModel(
@@ -55,12 +67,46 @@ export class TripModelAdapter implements Adapter<TripModel> {
       new ImageModelAdapter().adapt(item.previewImage),
       item.city,
       features,
-      item.timeline.id,
+      plan,
       item.basePrice,
       item.discount,
       item.basePeopleCount,
       item.currency,
-      new StrapiLocalizationsAdapter().adapt(item.localizations)
+      new StrapiLocalizationsAdapter().adapt(item.localizations),
+      new HotelAdapter().adapt(item.hotel)
     );
+  }
+}
+
+export class TripDayPlan {
+  constructor(public day: number, public dayLocations: PlanLocation[]) {}
+}
+export class TripDayPlanAdapter implements Adapter<TripDayPlan> {
+  adapt(item: any): TripDayPlan {
+    return new TripDayPlan(
+      item.day,
+      item.locations.map((l: any) => new PlanLocation(l.id, l.city.id, l.name))
+    );
+  }
+}
+export class PlanLocation {
+  constructor(
+    public locationId: string,
+    public cityId: string,
+    public locationName: string
+  ) {}
+}
+export class Hotel {
+  constructor(
+    public id: string,
+    public name: string,
+    public stars: number,
+    public url: string
+  ) {}
+}
+export class HotelAdapter implements Adapter<Hotel> {
+  adapt(item: any): Hotel | undefined {
+    if (!item) return undefined;
+    else return new Hotel(item.id, item.name, item.stars, item.url);
   }
 }

@@ -71,7 +71,17 @@
     "visitedPlaces": "الأماكن التي ستزورها",
     "visitedPlacesInfo": "الكثير من الجولات المختلفة حول تركيا",
     "similarTours": "رحلات مشابهه",
-    "similarToursInfo": "تفقد العديد من الرحلات المشابهه"
+    "similarToursInfo": "تفقد العديد من الرحلات المشابهه",
+    "destination": "الوجهة",
+    "departure": "الانطلاق",
+    "departureTime": "وقت الرحلة",
+    "accomidation": "الاقامة",
+    "summary": {
+      "peopleCount": "{{children}} بالغين و {{adults}}",
+      "arrivalDate": "تاريخ القدوم",
+      "totalPrice": "السعر الاجمالي"
+    },
+    "durationPill": "{{days}} days"
   },
   "currencies": {
     "dollar": "{{ var }} $",
@@ -110,9 +120,18 @@
     "public": "رحلة جماعية",
     "private": "رحلة خاصة"
   },
-  "hotel": {
-    "placeholder": "يتضمن فندق ؟",
+  "otherFilterOptions": {
+    "hotel": "فندق",
+    "discount": "فرصة",
+    "placeholder": "الخصائص"
+  },
+
+  "options": {
     "yes": "نعم",
     "no": "لا"
+  },
+  "generalMessages": {
+    "error": "لقد حدث خطأ غير متوقع , يرجى المحاولة لاحقاً",
+    "noContent": "لا محتوى ضمن خيارات البحث الحالية"
   }
 }

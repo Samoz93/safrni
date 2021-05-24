@@ -23,7 +23,7 @@ export class DevData {
 }
 
 export interface LoadingState {
-  msg: string;
+  msg: any;
   isLoading: boolean;
   hasError: boolean;
   handler?: Function;

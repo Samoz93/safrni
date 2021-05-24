@@ -36,8 +36,14 @@ $font-size: 1.5rem;
   &-travel-type {
     .radio-group {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      row-gap: 2rem;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1rem;
+    }
+  }
+  &-city {
+    .radio-group {
+      max-height: 20rem;
+      overflow-y: scroll;
     }
   }
   // &-travel-type {

@@ -95,6 +95,10 @@ import { SocialLinkDirective } from './data/directives/social-link.directive';
 import { TicketCounterComponent } from './common/widgets/ticket-counter/ticket-counter.component';
 import { SnackCompComponent } from './common/widgets/snack-comp/snack-comp.component';
 import { MatRadioModule } from '@angular/material/radio';
+import { PillComponent } from './common/widgets/pill/pill.component';
+import { PlaygroundComponent } from './pages/playground/playground.component';
+import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
+import { PhoneInputComponent } from './common/widgets/phone-input/phone-input.component';
 
 export function playerFactory() {
   return player;
@@ -161,6 +165,9 @@ export function playerFactory() {
     SocialLinkDirective,
     TicketCounterComponent,
     SnackCompComponent,
+    PillComponent,
+    PlaygroundComponent,
+    PhoneInputComponent,
   ],
 
   imports: [
@@ -198,6 +205,7 @@ export function playerFactory() {
     AngularFireMessagingModule,
     MatSnackBarModule,
     MatRadioModule,
+    NgxIntlTelInputModule,
   ],
   providers: [
     ScreenTrackingService,

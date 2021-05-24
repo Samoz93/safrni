@@ -8,5 +8,6 @@ export interface FilterOptionsModel {
   date?: number;
   travelType: TravelTypes;
   hasHotel?: boolean;
+  hasDiscount?: boolean;
   cities?: any[];
 }

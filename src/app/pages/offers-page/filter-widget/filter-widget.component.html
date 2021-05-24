@@ -1,4 +1,4 @@
-<form class="flex_area_filter">
+<form [formGroup]="form" class="flex_area_filter">
   <section class="flex_area_filter-nav">
     <div
       class="flex_area_filter-nav-item"
@@ -29,25 +29,12 @@
       </mat-checkbox>
     </mat-radio-group>
   </section>
-  <section class="flex_area_filter-hotel section filter">
-    <p class="flex_area_filter-hotel-title title">
-      {{ "hotel.placeholder" | transloco }}
-    </p>
-    <mat-radio-group class="radio-group" [formControl]="hotelCtrl">
-      <mat-radio-button class="radio" [value]="true">{{
-        "hotel.yes" | transloco
-      }}</mat-radio-button>
-      <mat-radio-button class="radio" [value]="false">{{
-        "hotel.no" | transloco
-      }}</mat-radio-button>
-    </mat-radio-group>
-  </section>
 
   <section class="flex_area_filter-travel-type section filter">
     <p class="flex_area_filter-travel-type-title title">
       {{ "travelType.placeholder" | transloco }}
     </p>
-    <mat-radio-group class="radio-group" [formControl]="travelTypeCtrl">
+    <mat-radio-group class="radio-group" formControlName="travelType">
       <mat-radio-button class="radio" [value]="tr.private">{{
         "travelType." + tr.private | transloco
       }}</mat-radio-button>
@@ -56,7 +43,21 @@
       }}</mat-radio-button>
     </mat-radio-group>
   </section>
-  <form class="flex_area_filter-price section filter">
+  <section class="flex_area_filter-hotel section filter">
+    <p class="flex_area_filter-hotel-title title">
+      {{ "otherFilterOptions.placeholder" | transloco }}
+    </p>
+    <mat-radio-group class="radio-group">
+      <mat-checkbox class="radio" formControlName="hasHotel"
+        >{{ "otherFilterOptions.hotel" | transloco }}
+      </mat-checkbox>
+      <mat-checkbox class="radio" formControlName="hasDiscount"
+        >{{ "otherFilterOptions.discount" | transloco }}
+      </mat-checkbox>
+    </mat-radio-group>
+  </section>
+
+  <div class="flex_area_filter-price section filter">
     <p class="flex_area_filter-price-title title">
       {{ "various.price" | transloco }}
     </p>
@@ -66,7 +67,7 @@
       [hideIcon]="true"
       [isNumber]="true"
       [hasBorder]="true"
-      [formControl]="minPriceCtrl"
+      formControlName="minPrice"
     ></app-custom-input>
     <p class="dash">-</p>
     <app-custom-input
@@ -75,9 +76,13 @@
       [hideIcon]="true"
       [isNumber]="true"
       [hasBorder]="true"
-      [formControl]="maxPriceCtrl"
+      formControlName="maxPrice"
     ></app-custom-input>
-  </form>
+    <app-phone-input
+      [hasBorder]="true"
+      formControlName="phone"
+    ></app-phone-input>
+  </div>
   <section class="flex_area_filter-btn section">
     <button (click)="applyChanges()" class="main-btn">
       {{ "buttons.apply" | transloco }}

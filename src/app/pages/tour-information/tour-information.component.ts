@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewChecked,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocationModel } from 'src/app/data/models/LocationModel';
-import { TimelineModel } from 'src/app/data/models/timelineModel';
 import { TripModel } from 'src/app/data/models/TripModel';
 import { LocalService } from 'src/app/data/services/local.service';
 import { Enum_Booking_Currency } from 'src/app/data/services/saferniGraphql.service';
@@ -11,34 +15,32 @@ import { ICONS } from 'src/app/data/utils/enums';
 import { BookingService } from 'src/app/data/services/booking.service';
 import { MatDialog } from '@angular/material/dialog';
 import { BookingSubmitPopupComponent } from 'src/app/common/widgets/booking-submit-popup/booking-submit-popup.component';
-import { catchError, filter, map, tap } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-tour-information',
   templateUrl: './tour-information.component.html',
   styleUrls: ['./tour-information.component.scss'],
 })
-export class TourInformationComponent implements OnInit {
+export class TourInformationComponent implements OnInit, AfterViewChecked {
   trip: TripModel;
-  timelines: TimelineModel[] = [];
   relatedTrips: TripModel[];
   bookForm: FormGroup;
   icons = ICONS;
-
+  planLocations: LocationModel[];
   isSubmiting = false;
+  placesSwiperIndex = 0;
 
-  isArabic$;
+  math = Math;
+
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private tripService: TripService,
-    loc: LocalService,
+    public loc: LocalService,
     private bookingService: BookingService,
-    public dialog: MatDialog
-  ) {
-    this.isArabic$ = loc.isArabic$;
-  }
+    public dialog: MatDialog,
+    private readonly changeDetectorRef: ChangeDetectorRef
+  ) {}
   ngOnInit(): void {
     this.bookForm = new FormGroup({
       fullName: new FormControl(null, [Validators.required]),
@@ -51,11 +53,13 @@ export class TourInformationComponent implements OnInit {
     });
     this.activatedRoute.data.subscribe(async (data) => {
       this.trip = data.dataMap.trip;
-      this.timelines = data.dataMap.timelines;
+      this.planLocations = data.dataMap.locations;
       this.relatedTrips = await this.tripService.getRelatedTrips(this.trip);
     });
   }
-
+  ngAfterViewChecked(): void {
+    // this.changeDetectorRef.detectChanges();
+  }
   async onFormSubmitted() {
     Object.keys(this.bookForm.controls).forEach((field) => {
       const control = this.bookForm.get(field);
@@ -87,16 +91,15 @@ export class TourInformationComponent implements OnInit {
     ]);
   }
 
-  getAllLocations(): LocationModel[] {
-    let allLocations = new Array();
-    this.timelines.forEach((element) => {
-      allLocations.push(...element.locations);
-    });
+  // getAllLocations(): LocationModel[] {
+  //   let allLocations = new Array();
+  //   this.timelines.forEach((element) => {
+  //     allLocations.push(...element.locations);
+  //   });
+  // }
 
-    return allLocations;
-  }
   getCarouselImages(): string[] {
-    return this.getAllLocations().map((l) => l.images[0].url);
+    return this.planLocations.map((l) => l.images[0].url);
   }
   goToTour(id: string) {
     this.router.navigate(['/tours', id]);
@@ -121,5 +124,21 @@ export class TourInformationComponent implements OnInit {
     this.router.navigate(['/map', this.trip.id], {
       queryParams: { location: id },
     });
+  }
+  scrollToBooking() {
+    let el = document.getElementById('booking');
+    el!.scrollIntoView({ behavior: 'smooth' });
+  }
+  placesGirdOnSwipe(right = true) {
+    let dir = this.loc.locale === 'ar' ? !right : right;
+
+    if (
+      dir &&
+      this.placesSwiperIndex + 1 < Math.ceil(this.planLocations.length / 4)
+    ) {
+      this.placesSwiperIndex++;
+    } else if (!dir && this.placesSwiperIndex > 0) {
+      this.placesSwiperIndex--;
+    }
   }
 }

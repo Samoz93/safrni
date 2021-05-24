@@ -20,7 +20,7 @@ export abstract class BaseService<T> {
   });
   setBusy(
     isBusy = false,
-    err: string | undefined = undefined,
+    err: any | undefined = undefined,
     handler: Function | undefined = undefined
   ) {
     this.loadingState$.next({
@@ -49,7 +49,6 @@ export abstract class BaseService<T> {
     } catch (error) {
       this.setBusy(false, error, toDo);
       if (isDevMode()) throwError(error);
-
       return undefined;
     }
   }

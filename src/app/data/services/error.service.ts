@@ -13,7 +13,6 @@ export class ErrorService {
 
   observeError$(st$: BehaviorSubject<LoadingState>) {
     st$.subscribe((state) => {
-      if (isDevMode()) return;
       if (state.hasError) {
         this.dlg.open(ErrorDlgComponent, {
           data: state,
@@ -35,7 +34,7 @@ export class ErrorService {
     const st: LoadingState = {
       hasError: true,
       isLoading: false,
-      msg: err.message,
+      msg: err,
     };
     this.dlg.open(ErrorDlgComponent, {
       data: st,

@@ -10,9 +10,9 @@
     ><img [alt]="alt" [src]="url" (load)="onImageLoaded()" />
   </ng-template>
   <div
-    class="overlay"
-    [ngStyle]="{
-      background: getOverlayStyle()
+    [ngClass]="{
+      overlay: overlayType === 'normal',
+      gradientOverlay: overlayType === 'gradient'
     }"
   ></div>
 </div>

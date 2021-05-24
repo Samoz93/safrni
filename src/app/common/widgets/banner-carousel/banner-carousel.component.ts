@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { LocalService } from 'src/app/data/services/local.service';
 
 @Component({
   selector: 'app-banner-carousel',
@@ -6,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./banner-carousel.component.scss'],
 })
 export class BannerCarouselComponent implements OnInit {
-  constructor() {}
+  constructor(private loc: LocalService) {}
 
   @Input() images: string[];
   @Input() screenHeightPercentage: number;
@@ -16,9 +17,10 @@ export class BannerCarouselComponent implements OnInit {
   ngOnInit(): void {}
 
   swipe(right: boolean) {
-    if (right && this.currentSwiperIndex + 1 < this.images.length) {
+    let dir = this.loc.locale === 'ar' ? !right : right;
+    if (dir && this.currentSwiperIndex + 1 < this.images.length) {
       this.currentSwiperIndex++;
-    } else if (!right && this.currentSwiperIndex > 0) {
+    } else if (!dir && this.currentSwiperIndex > 0) {
       this.currentSwiperIndex--;
     }
   }
