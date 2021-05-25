@@ -1,7 +1,7 @@
 <div class="main">
   <app-banner-carousel
     class="banner-slider"
-    [images]="['/assets/images/placeholder/istanbul.png']"
+    [images]="(homeCarouselImages.getCarouselImages(800) | async)!"
     [screenHeightPercentage]="bannerHeight"
     [overlayOpacity]="34"
   >

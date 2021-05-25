@@ -1,0 +1,11 @@
+query homeCarousell {
+  homeBanner {
+    images {
+      id
+      width
+      height
+      url
+      formats
+    }
+  }
+}

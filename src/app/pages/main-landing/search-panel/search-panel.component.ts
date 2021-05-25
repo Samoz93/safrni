@@ -11,6 +11,8 @@ import { QueryStringParameters } from 'src/app/data/abstract/query.string.builde
 import { FilterOptionsModel } from 'src/app/data/models/filterOptionModlel';
 import { SnackService } from 'src/app/data/services/snack.service';
 import { ErrorService } from 'src/app/data/services/error.service';
+import { HomeBanner } from 'src/app/data/services/saferniGraphql.service';
+import { HomeBannerService } from 'src/app/data/services/home.banner.service';
 
 @Component({
   selector: 'app-search-panel',
@@ -32,7 +34,8 @@ export class SearchPanelComponent implements OnInit {
     locale: LocalService,
     _ser: CityService,
     private router: Router,
-    private _snck: ErrorService
+    private _snck: ErrorService,
+    public homeCarouselImages : HomeBannerService
   ) {
     this.citiesData = _ser.data.map((c) => {
       return {
@@ -51,13 +54,7 @@ export class SearchPanelComponent implements OnInit {
     this.isArabic$ = locale.isArabic$;
   }
   bannerHeight = 60;
-  // @HostListener('window:resize', []) onScreenChanged() {
-  //   if (window.innerWidth <= 930 && this.bannerHeight != 85) {
-  //     this.bannerHeight = 85;
-  //   } else if (window.innerWidth > 930 && this.bannerHeight != 60) {
-  //     this.bannerHeight = 60;
-  //   }
-  // }
+ 
   test() {
     this._snck.showErrorByException(Error('test'));
   }
