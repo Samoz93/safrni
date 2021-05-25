@@ -46,7 +46,7 @@ export class OffersPageComponent implements OnInit {
         tripType: newQuery.tripType ?? Enum_Trips_Trip_Type.Touristic,
         hotel: newQuery.hotel,
         hasDiscount: newQuery.hasDiscount,
-        maxPrice: newQuery.maxPrice ? +newQuery.maxPrice : 10000,
+        maxPrice: newQuery.maxPrice ? +newQuery.maxPrice : 0,
         minPrice: newQuery.minPrice ? +newQuery.minPrice : 0,
         date: newQuery.date ? +newQuery.date : new Date().getTime(),
         travelType: newQuery.travelType ?? Enum_Trips_Traveltype.Private,

@@ -78,7 +78,7 @@ export class FilterWidgetComponent implements OnInit {
     };
   }
   _checkValue(val: any, isMin = true) {
-    if (isNaN(val) || !val) val = isMin ? 0 : 1000000;
+    if (isNaN(val) || !val) val = isMin ? 0 : 0;
     else val = Number.parseFloat(val);
     if (val < 0) {
       isMin
