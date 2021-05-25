@@ -139,6 +139,8 @@
     "peopleCount": "{{count}} اشخاص",
     "accomidation": "الأقامة",
     "adjustable": "قابل للتعديل",
-    "startHotel": "فندق {{stars}} نجوم"
+    "startHotel": "فندق {{stars}} نجوم",
+    "next":"التالي",
+    "previous":"السابق"
   }
 }

@@ -41,22 +41,22 @@
     </agm-polyline> -->
 
     <agm-overlay
-    *ngFor="let location of planLocations; let i = index"
-    [latitude]="location.geo.latitude"
-    [longitude]="location.geo.longitude"
-    (markerClick)="recenterMapToLocation(location)"
-  >
-    <!-- blue html square -->
-    <div
-      class="location-overlay"
-      [id]="location.id"
-      [ngClass]="{ big: location.id == sidebarLocation.id }"
-      [ngStyle]="{ 'z-index': i == 0 ? 999 : 1 }"
-      (mouseover)="onOverlayHover(location.id)"
+      *ngFor="let location of planLocations; let i = index"
+      [latitude]="location.geo.latitude"
+      [longitude]="location.geo.longitude"
+      (markerClick)="recenterMapToLocation(location)"
     >
-      <img [src]="location.images[0] | serverimage" />
-    </div>
-  </agm-overlay>
+      <!-- blue html square -->
+      <div
+        class="location-overlay"
+        [id]="location.id"
+        [ngClass]="{ big: location.id == sidebarLocation.id }"
+        [ngStyle]="{ 'z-index': i == 0 ? 999 : 1 }"
+        (mouseover)="onOverlayHover(location.id)"
+      >
+        <img [src]="location.images[0] | serverimage" />
+      </div>
+    </agm-overlay>
   </agm-map>
   <div class="locations-list">
     <app-accordion-list
@@ -104,7 +104,7 @@
         }"
       >
         <i class="fa fa-chevron-left"></i>
-        <p>prev dest.</p>
+        <p>{{ "general.previous" | transloco }}</p>
       </div>
       <div
         class="location-control right"
@@ -113,7 +113,7 @@
           backgroundColor: hasNextLocation() ? 'white' : 'lightgrey'
         }"
       >
-        <p>prev dest.</p>
+        <p>{{ "general.next" | transloco }}</p>
         <i class="fa fa-chevron-right"></i>
       </div>
     </div>
