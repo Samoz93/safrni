@@ -1,4 +1,5 @@
 @import "/src/assets/css/abstract/mixins";
+@import "/src/assets/css/abstract/variables";
 .banner-carousel {
   // grid-column: 0/-1;
   width: 100%;
@@ -47,6 +48,26 @@
     }
     &.right {
       right: 10%;
+    }
+  }
+
+  .cetnered-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    height: 30%;
+    width: 60%;
+
+    display: grid;
+    place-items: center;
+    p {
+      text-transform: uppercase;
+      font-size: 5rem;
+      font-family: var(--secondary-font);
+      color: white;
+      text-shadow: $text-shadow;
     }
   }
 }

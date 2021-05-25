@@ -14,6 +14,7 @@
     [autoplay]="true"
     [loop]="true"
     [navigation]="true"
+    (indexChange)="indexChanged($event)"
   >
     <ng-template swiperSlide class="slide" *ngFor="let image of images">
       <!-- <img
@@ -36,4 +37,8 @@
   <div class="swiper-arrow right" (click)="swipe(true)">
     <i class="fa fa-chevron-right"></i>
   </div>
+
+  <!-- <div class="cetnered-text" *ngIf="centeredTexts">
+    <p>{{ centeredTexts[index] }}</p>
+  </div> -->
 </div>
