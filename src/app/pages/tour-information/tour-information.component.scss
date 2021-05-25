@@ -154,19 +154,24 @@ $brdr: 1px grey solid;
         padding: 2rem;
         &__row {
           display: flex;
-          justify-content: space-between;
+
           margin-bottom: 2rem;
           h2 {
+            flex: 1 0 50%;
             text-transform: capitalize;
             font-size: 2rem;
             font-weight: bold;
             font-family: var(--primary-font);
+            text-align: start;
           }
           p {
+            flex: 1 0 50%;
             text-transform: capitalize;
             font-size: 1.75rem;
             font-weight: 300;
             font-family: var(--primary-font);
+
+            text-align: start;
             &:lang(ar) {
               font-family: var(--secondary-font);
             }
@@ -176,7 +181,7 @@ $brdr: 1px grey solid;
 
       .main-btn {
         align-self: flex-start;
-        margin: 5rem 2rem;
+        margin: 2rem 2rem;
         p {
           font-size: 1.75rem;
           font-weight: 600;

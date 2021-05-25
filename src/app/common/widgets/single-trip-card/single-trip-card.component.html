@@ -33,5 +33,13 @@
       </div>
     </div>
   </div>
-  <div class="single-card_title">{{ name }}</div>
+  <div
+    class="single-card_title"
+    [ngStyle]="{
+      fontSize: isOffer ? '180%' : '4rem',
+      lineHeight: isOffer ? 'unset' : 1
+    }"
+  >
+    {{ name }}
+  </div>
 </div>
