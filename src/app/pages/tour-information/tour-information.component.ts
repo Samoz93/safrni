@@ -9,18 +9,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LocationModel } from 'src/app/data/models/LocationModel';
 import { TripModel } from 'src/app/data/models/TripModel';
 import { LocalService } from 'src/app/data/services/local.service';
-import {
-  Enum_Booking_Currency,
-  Trips,
-} from 'src/app/data/services/saferniGraphql.service';
+import { Enum_Booking_Currency } from 'src/app/data/services/saferniGraphql.service';
 import { TripService } from 'src/app/data/services/trip.service';
 import { ICONS } from 'src/app/data/utils/enums';
-import { TooltipPosition } from '@angular/material/tooltip';
 import { BookingService } from 'src/app/data/services/booking.service';
 import { MatDialog } from '@angular/material/dialog';
 import { BookingSubmitPopupComponent } from 'src/app/common/widgets/booking-submit-popup/booking-submit-popup.component';
-import Observable from 'zen-observable';
-import { filter, mapTo, tap } from 'rxjs/operators';
+import { priceInterface } from 'src/app/data/pipes/price-caculator.pipe';
 
 @Component({
   selector: 'app-tour-information',
@@ -96,18 +91,13 @@ export class TourInformationComponent implements OnInit, AfterViewChecked {
       this.activatedRoute.snapshot.paramMap.get('id'),
     ]);
   }
-  calculatePrice() {
-    return this.bookForm.statusChanges.pipe(
-      filter((status) => status === 'VALID'),
-      mapTo(
-        (
-          this.trip.basePrice -
-          (this.bookForm.get('adult')?.value ?? 0) * 10
-        ).toString()
-      ),
-      tap((val) => console.log(val))
-    );
-  }
+
+  // getAllLocations(): LocationModel[] {
+  //   let allLocations = new Array();
+  //   this.timelines.forEach((element) => {
+  //     allLocations.push(...element.locations);
+  //   });
+  // }
 
   getCarouselImages(): string[] {
     return this.planLocations.map((l) => l.images[0].url);
@@ -124,7 +114,13 @@ export class TourInformationComponent implements OnInit, AfterViewChecked {
       console.log('The dialog was closed');
     });
   }
-
+  get priceData(): priceInterface {
+    return {
+      adult: +this.bookForm.value.adult ?? 0,
+      children: +this.bookForm.value.child ?? 0,
+      basePrice: this.trip.basePrice,
+    };
+  }
   goToMapLocation(id: string) {
     this.router.navigate(['/map', this.trip.id], {
       queryParams: { location: id },

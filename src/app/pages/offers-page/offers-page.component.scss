@@ -43,12 +43,9 @@ $font-size: 1.5rem;
 .flex_area {
   display: flex;
   flex-direction: row;
-  // justify-content: center;
   transform: translate(0, -15rem);
-  // grid-template-columns: 14rem 14rem 77rem;
-  // grid-template-rows: 7rem 20rem 15rem 7rem;
-  // grid-auto-rows: min-content;
   column-gap: 2.7rem;
+  position: relative;
   @include res(phone) {
     flex-direction: column;
     transform: none;
@@ -69,8 +66,11 @@ $font-size: 1.5rem;
   }
   &-filter {
     width: 29rem;
-    height: 100%;
+    height: 50rem;
+    top: 20rem;
+    left: 0;
     margin-left: auto;
+    position: sticky;
     &:lang(ar) {
       margin-right: auto;
       margin-left: unset;
@@ -82,7 +82,7 @@ $font-size: 1.5rem;
   &-content {
     display: grid;
     width: 100%;
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    grid-template-columns: repeat(auto-fit, 25rem);
 
     grid-auto-rows: 25rem;
     gap: 0.1rem;

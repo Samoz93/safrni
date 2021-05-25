@@ -6,7 +6,8 @@ import { FilterOptionsModel } from 'src/app/data/models/filterOptionModlel';
 import { TripModel } from 'src/app/data/models/TripModel';
 import { LocalService } from 'src/app/data/services/local.service';
 import { TripService } from 'src/app/data/services/trip.service';
-import { StaticInfo, TABS } from 'src/app/data/static/main-info';
+import { StaticInfo } from 'src/app/data/static/main-info';
+import { TABS, TravelTypes } from 'src/app/data/utils/enums';
 import { FilterWidgetComponent } from './filter-widget/filter-widget.component';
 
 @Component({
@@ -40,15 +41,17 @@ export class OffersPageComponent implements OnInit {
     this.route.queryParams.subscribe((newQuery) => {
       this.cityid = newQuery.city;
       this.filterOptions = {
-        type: newQuery.type ?? TABS.tour,
-        cityId: newQuery.city,
+        tab: newQuery.type ?? TABS.tour,
+        cityId: newQuery.cityId,
+        hasHotel: newQuery.hasHotel,
+        hasDiscount: newQuery.hasDiscount,
         maxPrice: newQuery.maxPrice ? +newQuery.maxPrice : 0,
         minPrice: newQuery.minPrice ? +newQuery.minPrice : 0,
-        adult: newQuery.adult ? +newQuery.adult : 0,
-        child: newQuery.child ? +newQuery.child : 0,
         date: newQuery.date ? +newQuery.date : new Date().getTime(),
+        travelType: newQuery.travelType ?? TravelTypes.private,
+        cities: newQuery.cities,
       };
-      if (newQuery == initQuery) {
+      if (newQuery.cities == initQuery.cities) {
         return;
       }
 
@@ -63,6 +66,8 @@ export class OffersPageComponent implements OnInit {
       limit: 30,
       locale: this.loc.locale,
       cityId: this.cityid,
+
+      accomidation: this.filterOptions.hasHotel ? true : undefined,
       priceRange: {
         maxPrice:
           +this.filterOptions.maxPrice < 1
@@ -75,6 +80,7 @@ export class OffersPageComponent implements OnInit {
   }
   async onFilterChange(filterData: FilterOptionsModel) {
     const queryParams: Params = { ...filterData };
+    console.log('newFilterData', queryParams);
 
     this.router.navigate([], {
       relativeTo: this.route,

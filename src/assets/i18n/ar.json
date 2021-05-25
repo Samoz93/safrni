@@ -19,7 +19,9 @@
     "support": "الدعم",
     "contact": "تواصل معنا",
     "blog": "المدونة",
-    "medicTreat": "الرحلات الطبية"
+    "medicTreat": "الرحلات الطبية",
+    "city": "المدينة",
+    "hotel": "فندق"
   },
   "citysection": {
     "title": "سفرات الى جميع الوجهات",
@@ -76,11 +78,10 @@
     "accomidation": "الاقامة",
     "summary": {
       "peopleCount": "{{children}} بالغين و {{adults}}",
-      "arrivalDate":"تاريخ القدوم",
-      "totalPrice":"السعر الاجمالي"
+      "arrivalDate": "تاريخ القدوم",
+      "totalPrice": "السعر الاجمالي"
     },
-    "durationPill":"{{days}} days"
-   
+    "durationPill": "{{days}} days"
   },
   "currencies": {
     "dollar": "{{ var }} $",
@@ -113,5 +114,24 @@
   "err": {
     "home": "عودة للصفحة الرئيسية ",
     "retry": "حاول مجدداً"
+  },
+  "travelType": {
+    "placeholder": "نوع الرحلة",
+    "public": "رحلة جماعية",
+    "private": "رحلة خاصة"
+  },
+  "otherFilterOptions": {
+    "hotel": "فندق",
+    "discount": "فرصة",
+    "placeholder": "الخصائص"
+  },
+
+  "options": {
+    "yes": "نعم",
+    "no": "لا"
+  },
+  "generalMessages": {
+    "error": "لقد حدث خطأ غير متوقع , يرجى المحاولة لاحقاً",
+    "noContent": "لا محتوى ضمن خيارات البحث الحالية"
   }
 }

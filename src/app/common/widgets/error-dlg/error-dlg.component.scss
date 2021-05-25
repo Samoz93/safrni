@@ -25,22 +25,26 @@
     align-self: flex-end;
     justify-content: space-evenly;
 
-    .navlink {
+    .main-btn {
       height: 100%;
       width: 45%;
       cursor: pointer;
       padding: 1rem auto;
-      background: $success;
+      // background: $success;
       display: grid;
       align-items: center;
-      border-radius: 0.4rem;
-      @include shadow;
-      color: white;
+      // @include shadow;
+      // color: white;
       font-weight: 800;
       font-size: 1.5rem;
+      border: 2px solid $accent;
     }
-    .navlink.err {
-      background: $err;
+    .home {
+      background: white;
+      color: $accent;
     }
+    // .navlink.err {
+    //   background: $err;
+    // }
   }
 }

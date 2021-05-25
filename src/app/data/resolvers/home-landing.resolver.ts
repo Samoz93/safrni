@@ -34,10 +34,10 @@ export class HomeLandingResolver implements Resolve<any> {
       ];
 
       let data = await Promise.all(futureArray);
-      this.meta.addTags({
-        description: data[1][0].description,
-      });
-      this.splashScreenStateService.stop();
+      // this.meta.addTags({
+      //   description: data[1][0].description,
+      // });
+      // this.splashScreenStateService.stop();
       return {
         cities: data[0],
         trips: data[1],

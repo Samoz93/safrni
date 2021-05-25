@@ -1,16 +1,16 @@
 @import "/src/assets/css/abstract/variables";
 @import "/src/assets/css/abstract/mixins";
 $trans: all 200ms;
-$padding: 0 2rem;
+$padding: 2rem 2rem;
 $font-size: 1.5rem;
 
 .flex_area_filter {
   text-align: start;
-
   @include shadow;
-  height: 50rem;
+  // height: 50rem;
   width: 100%;
-  font-family: var(--secondary-font);
+  font-family: var(--primary-font);
+  font-size: $font-size;
   &-nav {
     height: 7rem;
     display: grid;
@@ -31,64 +31,40 @@ $font-size: 1.5rem;
       color: black;
     }
   }
-  &-guest-count {
-    font-weight: 800;
-
-    height: 15rem;
-    font-size: 1.5rem;
-    padding: $padding;
-    background: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    position: relative;
-
-    &-item {
-      font-size: $font-size;
+  &-city,
+  &-hotel,
+  &-travel-type {
+    .radio-group {
       display: grid;
-      grid-template-columns: 55% 15% 15% 15%;
-      & > * {
-        font-size: inherit;
-        margin-bottom: 0;
-      }
-      .val {
-        justify-self: center;
-      }
-      .minus {
-        justify-self: flex-end;
-      }
-      .plus {
-        justify-self: flex-start;
-      }
-      .icon {
-        align-self: center;
-        background: $accent;
-        color: white;
-        display: grid;
-        place-items: center;
-        cursor: pointer;
-        height: 1.5rem;
-        width: 1.5rem;
-        font-size: 1.3rem;
-      }
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1rem;
     }
-    @include divider();
   }
+  &-city {
+    .radio-group {
+      max-height: 20rem;
+      overflow-y: scroll;
+    }
+  }
+  // &-travel-type {
+  //   .radio-group {
+  //     display: flex;
+  //     flex-direction: column;
+  //   }
+  //   .radio:not(:last-of-type) {
+  //     margin-bottom: 2rem;
+  //   }
+  //   @include divider();
+  // }
   &-price {
-    font-weight: 800;
-
-    height: 10rem;
-    position: relative;
+    // height: 10rem;
     display: grid;
-    padding: $padding;
     align-items: center;
     justify-content: center;
     grid-template-columns: 1fr 1rem 1fr;
     gap: 1%;
-    @include divider();
 
     .control {
-      border: 1px grey solid;
       height: 2.7rem;
       @include res(phone) {
         height: 3.7rem;
@@ -97,7 +73,6 @@ $font-size: 1.5rem;
     &-title {
       grid-column: span 3;
       grid-row: 1;
-      font-size: $font-size;
       align-self: flex-end;
     }
     .dash {
@@ -107,8 +82,6 @@ $font-size: 1.5rem;
     }
   }
   &-btn {
-    padding: $padding;
-    margin-top: 5rem;
     z-index: 0;
     display: grid;
     justify-content: flex-start;
@@ -121,4 +94,17 @@ $font-size: 1.5rem;
       font-size: 1.7rem;
     }
   }
+}
+.title {
+  font-size: $font-size;
+  font-weight: 800;
+  margin-bottom: 2rem;
+}
+.section {
+  padding: $padding;
+  background: white;
+  position: relative;
+}
+.section.filter {
+  @include divider();
 }

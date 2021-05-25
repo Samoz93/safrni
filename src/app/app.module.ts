@@ -94,10 +94,12 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SocialLinkDirective } from './data/directives/social-link.directive';
 import { TicketCounterComponent } from './common/widgets/ticket-counter/ticket-counter.component';
 import { SnackCompComponent } from './common/widgets/snack-comp/snack-comp.component';
+import { MatRadioModule } from '@angular/material/radio';
 import { PillComponent } from './common/widgets/pill/pill.component';
 import { PlaygroundComponent } from './pages/playground/playground.component';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { PhoneInputComponent } from './common/widgets/phone-input/phone-input.component';
+import { PriceCaculatorPipe } from './data/pipes/price-caculator.pipe';
 
 export function playerFactory() {
   return player;
@@ -166,7 +168,8 @@ export function playerFactory() {
     SnackCompComponent,
     PillComponent,
     PlaygroundComponent,
-    PhoneInputComponent
+    PhoneInputComponent,
+    PriceCaculatorPipe,
   ],
 
   imports: [
@@ -203,7 +206,8 @@ export function playerFactory() {
     AngularFireAnalyticsModule,
     AngularFireMessagingModule,
     MatSnackBarModule,
-    NgxIntlTelInputModule
+    MatRadioModule,
+    NgxIntlTelInputModule,
   ],
   providers: [
     ScreenTrackingService,

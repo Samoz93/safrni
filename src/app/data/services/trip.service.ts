@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { LocationModel, LocationModelAdapter } from '../models/LocationModel';
 import { TripModel, TripModelAdapter } from '../models/TripModel';
@@ -7,7 +7,6 @@ import { BaseService } from './base.service';
 import { ErrorService } from './error.service';
 import { LocalService } from './local.service';
 import {
-  GetLocalizedCityGQL,
   GetLocalizedTripGQL,
   GetLocationsGQL,
   GetTripGQL,

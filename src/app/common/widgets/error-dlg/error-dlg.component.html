@@ -1,8 +1,10 @@
 <div class="main">
   <mat-icon class="icon">error</mat-icon>
-  <h6 class="desc">{{ data.msg }}</h6>
+  <h6 class="desc">
+    {{ isDev ? data.msg : ("generalMessages.error" | transloco) }}
+  </h6>
   <div class="row">
-    <a (click)="tryAgain()" class="navlink">{{ "err.retry" | transloco }}</a>
-    <a (click)="goHome()" class="navlink err">{{ "err.home" | transloco }}</a>
+    <a (click)="goHome()" class="main-btn home">{{ "err.home" | transloco }}</a>
+    <a (click)="tryAgain()" class="main-btn">{{ "err.retry" | transloco }}</a>
   </div>
 </div>

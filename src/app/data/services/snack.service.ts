@@ -10,13 +10,18 @@ export class SnackService {
   constructor(private _snackBar: MatSnackBar) {}
 
   showSnack(msg: string, type: snackType = snackType.succes, handler?: string) {
-    this._snackBar.openFromComponent(SnackCompComponent, {
+    const ref = this._snackBar.openFromComponent(SnackCompComponent, {
       duration: 5000,
       data: {
         msg: msg,
         type: type,
+        preClose: () => {
+          console.log('clicked close');
+          ref.dismiss();
+        },
       },
       panelClass: ['snack', type],
+      politeness: 'polite',
     });
   }
 }

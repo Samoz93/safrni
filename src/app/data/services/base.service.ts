@@ -1,5 +1,6 @@
+import { isDevMode } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, throwError } from 'rxjs';
 import { ErrorDlgComponent } from 'src/app/common/widgets/error-dlg/error-dlg.component';
 import { LoadingState } from '../static/main-info';
 import { ErrorService } from './error.service';
@@ -19,7 +20,7 @@ export abstract class BaseService<T> {
   });
   setBusy(
     isBusy = false,
-    err: string | undefined = undefined,
+    err: any | undefined = undefined,
     handler: Function | undefined = undefined
   ) {
     this.loadingState$.next({
@@ -46,9 +47,8 @@ export abstract class BaseService<T> {
       this.setBusy(false);
       return data;
     } catch (error) {
-      console.log(error);
-
       this.setBusy(false, error, toDo);
+      if (isDevMode()) throwError(error);
       return undefined;
     }
   }
