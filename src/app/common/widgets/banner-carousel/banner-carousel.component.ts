@@ -20,6 +20,8 @@ export class BannerCarouselComponent implements OnInit {
   ngOnInit(): void {}
 
   swipe(right: boolean) {
-    Object(this.swiper.navigation)[!right ? 'prevEl' : 'nextEl'].click();
+    let isLeft = !right;
+    if (this.loc.locale == 'ar') isLeft = !isLeft;
+    Object(this.swiper.navigation)[isLeft ? 'prevEl' : 'nextEl'].click();
   }
 }
