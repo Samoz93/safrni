@@ -26,6 +26,10 @@ $border: grey solid 1px;
 .txt {
   font-family: var(--primary-font);
 }
+
+::ng-deep .mat-form-field-label-wrapper {
+  top: -9px !important;
+}
 // img.icon {
 //   height: 5rem;
 //   width: 5rem;
