@@ -81,17 +81,20 @@
       <section class="brief-intro">
         <h1 class="brief-intro__city-name">{{ trip.name }}</h1>
         <div class="brief-intro__pills">
-          <app-pill [text]="'5 days'" [iconClass]="'las la-clock'"></app-pill>
           <app-pill
-            [text]="'1-7 people'"
+            [text]="'general.duration' | transloco: { days: trip.duration }"
+            [iconClass]="'las la-clock'"
+          ></app-pill>
+          <app-pill
+            [text]="'general.peopleCount' | transloco: { count: '1-7' }"
             [iconClass]="'las la-user-friends'"
           ></app-pill>
-          <app-pill
-            [text]="trip.basePrice.toString()"
+          <!-- <app-pill
+            [text]="trip.basePrice.toString() | price"
             [iconClass]="'las la-tag'"
-          ></app-pill>
+          ></app-pill> -->
           <app-pill
-            [text]="'adjustable'"
+            [text]="'general.adjustable' | transloco"
             [iconClass]="'las la-sliders-h'"
           ></app-pill>
         </div>
@@ -299,7 +302,9 @@
               [imageModel]="trip.previewImage"
             ></app-saferni-image>
           </div>
-          <p class="trip-card-header__price">{{ trip.basePrice }}</p>
+          <p class="trip-card-header__price">
+            {{ trip.basePrice.toString() | price }}
+          </p>
           <app-read-only-stars
             [stars]="3.5"
             [color]="'#fff'"
