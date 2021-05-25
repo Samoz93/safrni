@@ -10,7 +10,7 @@ export abstract class BaseService<T> {
   data: T[] = [];
   data$ = new BehaviorSubject<T[]>([]);
   constructor(ser: ErrorService) {
-    ser.observeError$(this.loadingState$);
+    // ser.observeError$(this.loadingState$);
   }
   loadingState$ = new BehaviorSubject<LoadingState>({
     hasError: false,
@@ -40,16 +40,16 @@ export abstract class BaseService<T> {
     this.loadingState$.subscribe();
   }
 
-  async _doStuff<T>(toDo: Function): Promise<T | undefined> {
-    try {
-      this.setBusy(true);
-      const data: T = await toDo();
-      this.setBusy(false);
-      return data;
-    } catch (error) {
-      this.setBusy(false, error, toDo);
-      if (isDevMode()) throwError(error);
-      return undefined;
-    }
-  }
+  // async _doStuff<T>(toDo: Function): Promise<T | undefined> {
+  //   try {
+  //     this.setBusy(true);
+  //     const data: T = await toDo();
+  //     this.setBusy(false);
+  //     return data;
+  //   } catch (error) {
+  //     this.setBusy(false, error, toDo);
+  //     if (isDevMode()) throwError(error);
+  //     return undefined;
+  //   }
+  // }
 }

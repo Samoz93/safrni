@@ -9,37 +9,35 @@ import { isDevMode } from '@angular/core';
   providedIn: 'root',
 })
 export class ErrorService {
-  constructor(private dlg: MatDialog) {}
-
-  observeError$(st$: BehaviorSubject<LoadingState>) {
-    st$.subscribe((state) => {
-      if (state.hasError) {
-        this.dlg.open(ErrorDlgComponent, {
-          data: state,
-          disableClose: false,
-        });
-      }
-    });
-  }
-
-  showError(st: LoadingState) {
-    if (st.hasError) {
-      this.dlg.open(ErrorDlgComponent, {
-        data: st,
-        disableClose: true,
-      });
-    }
-  }
-  showErrorByException(err: Error) {
-    const st: LoadingState = {
-      hasError: true,
-      isLoading: false,
-      msg: err,
-    };
-    this.dlg.open(ErrorDlgComponent, {
-      data: st,
-      disableClose: true,
-      height: '35vh',
-    });
-  }
+  // constructor(private dlg: MatDialog) {}
+  // observeError$(st$: BehaviorSubject<LoadingState>) {
+  //   st$.subscribe((state) => {
+  //     if (state.hasError) {
+  //       this.dlg.open(ErrorDlgComponent, {
+  //         data: state,
+  //         disableClose: false,
+  //       });
+  //     }
+  //   });
+  // }
+  // showError(st: LoadingState) {
+  //   if (st.hasError) {
+  //     this.dlg.open(ErrorDlgComponent, {
+  //       data: st,
+  //       disableClose: true,
+  //     });
+  //   }
+  // }
+  // showErrorByException(err: Error) {
+  //   const st: LoadingState = {
+  //     hasError: true,
+  //     isLoading: false,
+  //     msg: err,
+  //   };
+  //   this.dlg.open(ErrorDlgComponent, {
+  //     data: st,
+  //     disableClose: true,
+  //     height: '35vh',
+  //   });
+  // }
 }

@@ -28,8 +28,7 @@ export class OffersPageResolver implements Resolve<any> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Promise<TripModel[] | null> {
-    try {
-      this.splashScreenStateService.start();
+    this.splashScreenStateService.start();
       let cityId = route.queryParams['city'];
       //TODO check for id , if doesnt exist choose istanubl
       let trip = await this.tripService.queryTrips({
@@ -39,12 +38,14 @@ export class OffersPageResolver implements Resolve<any> {
 
       this.splashScreenStateService.stop();
       return trip;
-    } catch (error) {
-      this.router.navigate([...route.parent?.url!]);
-      this._errSer.showErrorByException(error);
-      return null;
-    } finally {
-      this.splashScreenStateService.stop();
-    }
+    // try {
+      
+    // } catch (error) {
+    //   this.router.navigate([...route.parent?.url!]);
+    //   this._errSer.showErrorByException(error);
+    //   return null;
+    // } finally {
+    //   this.splashScreenStateService.stop();
+    // }
   }
 }

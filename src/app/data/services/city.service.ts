@@ -26,25 +26,19 @@ export class CityService extends BaseService<CityModel> {
     return this.data$.pipe(map((f) => f.slice(0, 7)));
   }
   async init(): Promise<CityModel[]> {
-    const data = await this._doStuff<CityModel[]>(async () => {
-      let data = await this.citiesGql
-        .fetch({ locale: this.loc.locale })
-        .toPromise();
-      const models = data.data.cities?.map((city) => this.adapter.adapt(city))!;
-      this.prepareData(models);
-      return this.data;
-    });
-    return data!;
+    let data = await this.citiesGql
+      .fetch({ locale: this.loc.locale })
+      .toPromise();
+    const models = data.data.cities?.map((city) => this.adapter.adapt(city))!;
+    this.prepareData(models);
+    return this.data;
   }
 
   async getLocalizedCity(id: string, locale: string): Promise<CityModel> {
-    const data = await this._doStuff<CityModel>(async () => {
-      let data = await this.localizedCityService
-        .fetch({ id: id, locale: locale })
-        .toPromise();
+    let data = await this.localizedCityService
+      .fetch({ id: id, locale: locale })
+      .toPromise();
 
-      return this.adapter.adapt(data.data.cities![0])!;
-    });
-    return data!;
+    return this.adapter.adapt(data.data.cities![0])!;
   }
 }

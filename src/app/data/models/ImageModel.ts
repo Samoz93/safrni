@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
 import { Adapter } from '../adapters/adapter';
 import { StaticInfo } from '../static/main-info';
@@ -21,15 +22,24 @@ export class ImageModel {
     return new ImageModel('', StaticInfo.defaultImage, false);
   }
 }
+@Injectable({ providedIn: 'root' })
 export class ImageModelAdapter implements Adapter<ImageModel> {
   adapt(item: any): ImageModel {
     if (!item) return new ImageModel('', StaticInfo.defaultImage, false);
     else
       return new ImageModel(item.id, item.url, true, item.width, item.height, {
-        thumbnail: new ImageFormatAdapter().adapt(item.formats.thumbnail),
-        large: new ImageFormatAdapter().adapt(item.formats.large),
-        medium: new ImageFormatAdapter().adapt(item.formats.medium),
-        small: new ImageFormatAdapter().adapt(item.formats.small),
+        thumbnail: item.formats.thumbnail
+          ? new ImageFormatAdapter().adapt(item.formats.thumbnail)
+          : ImageFormatModel.fromRelativeUrl(item.url),
+        large: item.formats.large
+          ? new ImageFormatAdapter().adapt(item.formats.large)
+          : ImageFormatModel.fromRelativeUrl(item.url),
+        medium: item.formats.medium
+          ? new ImageFormatAdapter().adapt(item.formats.medium)
+          : ImageFormatModel.fromRelativeUrl(item.url),
+        small: item.formats.small
+          ? new ImageFormatAdapter().adapt(item.formats.small)
+          : ImageFormatModel.fromRelativeUrl(item.url),
       });
   }
 }
@@ -52,6 +62,9 @@ export class ImageFormatModel {
 
   get url(): string {
     return `${environment.api}${this.relativeUrl}`;
+  }
+  static fromRelativeUrl(rUrl: string): ImageFormatModel {
+    return new ImageFormatModel(rUrl);
   }
 }
 class ImageFormatAdapter implements Adapter<ImageFormatModel> {

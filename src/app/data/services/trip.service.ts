@@ -34,10 +34,7 @@ export class TripService extends BaseService<TripModel> {
     return this.data$.pipe(map((f) => f.slice(0, 7)));
   }
   async init(): Promise<TripModel[]> {
-    const data = await this._doStuff<TripModel[]>(async () => {
-      return await this.queryTrips();
-    });
-    return data!;
+    return await this.queryTrips();
   }
   async queryTrips(
     query: {
@@ -79,20 +76,17 @@ export class TripService extends BaseService<TripModel> {
         hotels: { id_null: !query.accomidation },
       };
     }
-    const data = await this._doStuff<TripModel[]>(async () => {
-      let resultTrips = (
-        await this.tripsGql
-          .fetch({
-            limit: query?.limit ?? 10,
-            locale: query?.locale ?? this.loc.locale,
-            where: whereQuery,
-          })
-          .toPromise()
-      ).data.trips?.map((trip) => this.tripAdapter.adapt(trip))!;
+    let resultTrips = (
+      await this.tripsGql
+        .fetch({
+          limit: query?.limit ?? 10,
+          locale: query?.locale ?? this.loc.locale,
+          where: whereQuery,
+        })
+        .toPromise()
+    ).data.trips?.map((trip) => this.tripAdapter.adapt(trip))!;
 
-      return resultTrips;
-    });
-    return data!;
+    return resultTrips;
   }
   async getRelatedTrips(to: TripModel): Promise<TripModel[]> {
     let result = await this.queryTrips({ limit: 8, cityId: to.city.id });
@@ -100,24 +94,18 @@ export class TripService extends BaseService<TripModel> {
     return [...[...result!, ...result!, ...result!]];
   }
   async getTripById(id: string): Promise<TripModel> {
-    const data = await this._doStuff<TripModel>(async () => {
-      let trip = this.tripAdapter.adapt(
-        (await this.getTrip.fetch({ id: id }).toPromise()).data.trip
-      );
-      return trip;
-    });
-    return data!;
+    let trip = this.tripAdapter.adapt(
+      (await this.getTrip.fetch({ id: id }).toPromise()).data.trip
+    );
+    return trip;
   }
 
   async getLocalizedTrip(id: string): Promise<TripModel> {
-    const x = await this._doStuff<TripModel>(async () => {
-      let data = await this.localizedTripService
-        .fetch({ id: id, locale: this.loc.locale })
-        .toPromise();
+    let data = await this.localizedTripService
+      .fetch({ id: id, locale: this.loc.locale })
+      .toPromise();
 
-      return this.tripAdapter.adapt(data.data.trips![0]);
-    });
-    return x!;
+    return this.tripAdapter.adapt(data.data.trips![0]);
   }
   // async getTripLocations(tripId:string) : Promise<LocationModel[] | undefined>
   // {
