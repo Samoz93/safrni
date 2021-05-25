@@ -41,10 +41,7 @@ export class TripService extends BaseService<TripModel> {
     return this.data$.pipe(map((f) => f.slice(0, 7)));
   }
   async init(): Promise<TripModel[]> {
-    const data = await this._doStuff<TripModel[]>(async () => {
-      return await this.queryTrips();
-    });
-    return data!;
+    return await this.queryTrips();
   }
 
   //TODO
@@ -170,45 +167,33 @@ export class TripService extends BaseService<TripModel> {
     return [...[...result!, ...result!, ...result!]];
   }
   async getTripById(id: string): Promise<TripModel> {
-    const data = await this._doStuff<TripModel>(async () => {
-      let trip = this.tripAdapter.adapt(
-        (await this.getTrip.fetch({ id: id }).toPromise()).data.trip
-      );
-      return trip;
-    });
-    return data!;
+    let trip = this.tripAdapter.adapt(
+      (await this.getTrip.fetch({ id: id }).toPromise()).data.trip
+    );
+    return trip;
   }
 
   async getLocalizedTrip(id: string): Promise<TripModel> {
-    const x = await this._doStuff<TripModel>(async () => {
-      let data = await this.localizedTripService
-        .fetch({ id: id, locale: this.loc.locale })
-        .toPromise();
+    let data = await this.localizedTripService
+      .fetch({ id: id, locale: this.loc.locale })
+      .toPromise();
 
-      return this.tripAdapter.adapt(data.data.trips![0]);
-    });
-    return x!;
+    return this.tripAdapter.adapt(data.data.trips![0]);
   }
   // async getTripLocations(tripId:string) : Promise<LocationModel[] | undefined>
   // {
   //   return this.getLocations()
   // }
   async getLocations(ids: string[]): Promise<LocationModel[] | undefined> {
-    // const result = await this._doStuff<LocationModel[]>(async () => {
-    //   let apolloResponse = await this.locationsGql
-    //     .fetch({ locale: this.loc.locale, ids: ids })
-    //     .toPromise();
-    //   return apolloResponse.data.locations?.map((l: any) =>
-    //     this.locationAdapter.adapt(l)
-    //   );
-    // });
-    // return result;
-    let apolloResponse = await this.locationsGql
-      .fetch({ locale: this.loc.locale, ids: ids })
-      .toPromise();
-    console.log(apolloResponse);
-    return apolloResponse.data.locations?.map((l: any) =>
-      this.locationAdapter.adapt(l)
-    );
+    const result = await this._doStuff<LocationModel[]>(async () => {
+      let apolloResponse = await this.locationsGql
+        .fetch({ locale: this.loc.locale, ids: ids })
+        .toPromise();
+      console.log(apolloResponse);
+      return apolloResponse.data.locations?.map((l: any) =>
+        this.locationAdapter.adapt(l)
+      );
+    });
+    return result;
   }
 }

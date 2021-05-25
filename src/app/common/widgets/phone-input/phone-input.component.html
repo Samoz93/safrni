@@ -1,4 +1,5 @@
-<div
+<div class="wrapper">
+  <div
   class="main"
   [ngClass]="{ 'all-border': hasBorder, 'err-border': !!errmsg }"
 >
@@ -28,3 +29,5 @@
   ></app-validation-icon>
 </div>
 <p class="validation-text" *ngIf="errmsg">*{{ errmsg }}</p>
+
+</div>

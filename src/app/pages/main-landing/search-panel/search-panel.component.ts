@@ -5,13 +5,17 @@ import { getTravelTypeData, ICONS } from 'src/app/data/utils/enums';
 import { LocalService } from 'src/app/data/services/local.service';
 import { Observable } from 'rxjs';
 import { CityService } from 'src/app/data/services/city.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { QueryStringParameters } from 'src/app/data/abstract/query.string.builder';
 import { FilterOptionsModel } from 'src/app/data/models/filterOptionModlel';
 import { ErrorService } from 'src/app/data/services/error.service';
 import {
   Enum_Trips_Traveltype,
   Enum_Trips_Trip_Type,
 } from 'src/app/data/services/saferniGraphql.service';
+import { HomeBanner } from 'src/app/data/services/saferniGraphql.service';
+import { HomeBannerService } from 'src/app/data/services/home.banner.service';
+
 
 @Component({
   selector: 'app-search-panel',
@@ -28,14 +32,20 @@ export class SearchPanelComponent implements OnInit {
   activeTab = Enum_Trips_Trip_Type.Touristic;
   citiesData: { id: string; name: string }[] = [];
   trTypes: { id: string; name: string }[] = [];
-  isArabic$: Observable<boolean>;
+
+  carouselImages: string[];
+
   constructor(
     public fb: FormBuilder,
     locale: LocalService,
     _ser: CityService,
     private router: Router,
-    private _snck: ErrorService
+    private _snck: ErrorService,
+    private activatedRoute : ActivatedRoute,
+    public homeCarouselImages: HomeBannerService
   ) {
+
+    
     this.citiesData = _ser.data.map((c) => {
       return {
         name: c.name,
@@ -49,17 +59,15 @@ export class SearchPanelComponent implements OnInit {
       travelType: null,
       date: null,
     });
-    this.isArabic$ = locale.isArabic$;
   }
   bannerHeight = 60;
 
-  test() {
-    this._snck.showErrorByException(Error('test'));
-  }
   changeTab(tab: any) {
     this.activeTab = tab;
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.carouselImages = this.activatedRoute.snapshot.data.initData.carousel;
+  }
 
   get hasBorder(): boolean {
     return window.innerWidth > 900;

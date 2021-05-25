@@ -16,6 +16,7 @@ import { BookingService } from 'src/app/data/services/booking.service';
 import { MatDialog } from '@angular/material/dialog';
 import { BookingSubmitPopupComponent } from 'src/app/common/widgets/booking-submit-popup/booking-submit-popup.component';
 import { priceInterface } from 'src/app/data/pipes/price-caculator.pipe';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tour-information',
@@ -32,6 +33,7 @@ export class TourInformationComponent implements OnInit, AfterViewChecked {
   placesSwiperIndex = 0;
 
   math = Math;
+  phoneInitiated = false;
 
   constructor(
     private router: Router,
@@ -45,7 +47,7 @@ export class TourInformationComponent implements OnInit, AfterViewChecked {
   ngOnInit(): void {
     this.bookForm = new FormGroup({
       fullName: new FormControl(null, [Validators.required]),
-      phone: new FormControl(null, [Validators.required]),
+      phone: new FormControl('', [Validators.required]),
       email: new FormControl(null, [Validators.required, Validators.email]),
       arrivalDate: new FormControl(null, [Validators.required]),
       child: new FormControl(null),
@@ -59,7 +61,7 @@ export class TourInformationComponent implements OnInit, AfterViewChecked {
     });
   }
   ngAfterViewChecked(): void {
-    // this.changeDetectorRef.detectChanges();
+    this.changeDetectorRef.detectChanges();
   }
   async onFormSubmitted() {
     Object.keys(this.bookForm.controls).forEach((field) => {

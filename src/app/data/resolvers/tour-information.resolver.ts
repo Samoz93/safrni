@@ -27,29 +27,30 @@ export class TourInformationResolver implements Resolve<any> {
   ): Promise<{ trip: TripModel; locations: LocationModel[] } | null> {
     //redirect
     //return
-    try {
-      this.splashScreenStateService.start();
-      let tripId = route.paramMap.get('id');
+    this.splashScreenStateService.start();
+    let tripId = route.paramMap.get('id');
 
-      let trip = await this.tripService.getLocalizedTrip(tripId!);
-      let locations = await this.tripService.getLocations(trip.allLocationsIds);
+    let trip = await this.tripService.getLocalizedTrip(tripId!);
+    let locations = await this.tripService.getLocations(trip.allLocationsIds);
 
+    this.meta.addTags({
+      title: trip.name,
+      description: trip.description,
+      image: trip.previewImage.url,
+    });
+    this.splashScreenStateService.stop();
+    return {
+      trip: trip,
+      locations: locations!,
+    };
+    // try {
 
-      this.meta.addTags({
-        title: trip.name,
-        description: trip.description,
-        image: trip.previewImage.url,
-      });
-      return {
-        trip: trip,
-        locations: locations!,
-      };
-    } catch (error) {
-      this.router.navigate([...route.parent?.url!]);
-      this._errSer.showErrorByException(error);
-      return null;
-    } finally {
-      this.splashScreenStateService.stop();
-    }
+    // } catch (error) {
+    //   this.router.navigate([...route.parent?.url!]);
+    //   this._errSer.showErrorByException(error);
+    //   return null;
+    // } finally {
+    //   this.splashScreenStateService.stop();
+    // }
   }
 }

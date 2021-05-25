@@ -10,7 +10,7 @@ export abstract class BaseService<T> {
   data: T[] = [];
   data$ = new BehaviorSubject<T[]>([]);
   constructor(ser: ErrorService) {
-    ser.observeError$(this.loadingState$);
+    // ser.observeError$(this.loadingState$);
   }
   loadingState$ = new BehaviorSubject<LoadingState>({
     hasError: false,

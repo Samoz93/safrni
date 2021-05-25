@@ -1,13 +1,13 @@
 <div class="main">
   <app-banner-carousel
     class="banner-slider"
-    [images]="['/assets/images/placeholder/istanbul.png']"
+    [images]="carouselImages"
     [screenHeightPercentage]="bannerHeight"
     [overlayOpacity]="34"
   >
   </app-banner-carousel>
 
-  <div (click)="test()" class="info">
+  <div class="info">
     <p class="info__top">
       {{ "searchPannel.title" | transloco }}
     </p>

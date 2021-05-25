@@ -36,14 +36,6 @@ export class OffersPageResolver implements Resolve<any> {
       let tripType = route.queryParams['tripType'];
       let travelType = route.queryParams['travelType'];
 
-      // cities: data.whereTo ? [data.whereTo] : [],
-      // date: data.date?.getTime() ?? new Date().getTime(),
-      // tripType: this.activeTab,
-      // maxPrice: 0,
-      // minPrice: 0,
-      // travelType: data.travelType ?? TravelTypes.private,
-
-      //TODO check for id , if doesnt exist choose istanubl
       let trip = await this.tripService.queryTrips({
         cities,
         maxPrice,
