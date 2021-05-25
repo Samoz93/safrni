@@ -1,18 +1,14 @@
 import { ElementRef, Pipe, PipeTransform } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import urljoin from 'url-join';
 import { ImageModel } from '../models/ImageModel';
 import { WindowService } from '../services/window.service';
-import { DevData, StaticInfo } from '../static/main-info';
+import { StaticInfo } from '../static/main-info';
 import { WINDOW_SIZE } from '../utils/enums';
 
 @Pipe({
   name: 'serverimage',
 })
 export class ServerimagePipe implements PipeTransform {
-  constructor(private windowService: WindowService, private el: ElementRef) {
-    console.dir(el.nativeElement);
-  }
+  constructor(private windowService: WindowService, private el: ElementRef) {}
   //TODO resposive image here
   transform(pr: ImageModel | undefined, isThumb: boolean = false): string {
     if (!pr) {
