@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { StaticInfo } from 'src/app/data/static/main-info';
-import {
-  getTravelTypeData,
-  ICONS,
-  TravelTypes,
-} from 'src/app/data/utils/enums';
+import { getTravelTypeData, ICONS } from 'src/app/data/utils/enums';
 import { LocalService } from 'src/app/data/services/local.service';
 import { Observable } from 'rxjs';
 import { CityService } from 'src/app/data/services/city.service';
 import { Router } from '@angular/router';
 import { FilterOptionsModel } from 'src/app/data/models/filterOptionModlel';
 import { ErrorService } from 'src/app/data/services/error.service';
-import { Enum_Trips_Trip_Type } from 'src/app/data/services/saferniGraphql.service';
+import {
+  Enum_Trips_Traveltype,
+  Enum_Trips_Trip_Type,
+} from 'src/app/data/services/saferniGraphql.service';
 
 @Component({
   selector: 'app-search-panel',
@@ -73,7 +72,7 @@ export class SearchPanelComponent implements OnInit {
       tripType: this.activeTab,
       maxPrice: 0,
       minPrice: 0,
-      travelType: data.travelType ?? TravelTypes.private,
+      travelType: data.travelType ?? Enum_Trips_Traveltype.Private,
     };
     this.router.navigate([StaticInfo.offersRoute], {
       queryParams: params,

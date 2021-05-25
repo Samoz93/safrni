@@ -8,7 +8,6 @@ import urljoin from 'url-join';
 import { FilterOptionsModel } from '../models/filterOptionModlel';
 import { LocationModel, LocationModelAdapter } from '../models/LocationModel';
 import { TripModel, TripModelAdapter } from '../models/TripModel';
-import { TravelTypes } from '../utils/enums';
 import { BaseService } from './base.service';
 import { ErrorService } from './error.service';
 import { LocalService } from './local.service';

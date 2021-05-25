@@ -1,26 +1,38 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { ElementRef, Pipe, PipeTransform } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import urljoin from 'url-join';
 import { ImageModel } from '../models/ImageModel';
+import { WindowService } from '../services/window.service';
 import { DevData, StaticInfo } from '../static/main-info';
+import { WINDOW_SIZE } from '../utils/enums';
 
 @Pipe({
   name: 'serverimage',
 })
 export class ServerimagePipe implements PipeTransform {
+  constructor(private windowService: WindowService, private el: ElementRef) {
+    console.dir(el.nativeElement);
+  }
   //TODO resposive image here
-  transform(pr: ImageModel | undefined): string {
+  transform(pr: ImageModel | undefined, isThumb: boolean = false): string {
     if (!pr) {
       return StaticInfo.defaultImage;
-    } else if (pr.isRemote) return `${environment.api}${pr.realtiveUrl}`;
-    else return pr.realtiveUrl;
-    //if (DevData.isDev && !environment.production) return pr?.url!;
-
-    // if (pr) {
-    //   const url = urljoin(DevData.baseUrl, pr.url!);
-
-    //   return url;
-    // }
-    // return '';
+    } else {
+      if (isThumb) return pr.formats?.thumbnail?.url ?? pr.url;
+      switch (
+        this.windowService.getWidthByElementWidth(
+          this.el.nativeElement.offsetWidth
+        )
+      ) {
+        case WINDOW_SIZE.medium:
+          return pr.formats?.medium?.url ?? pr.url;
+        case WINDOW_SIZE.small:
+          return pr.formats?.small?.url ?? pr.url;
+        case WINDOW_SIZE.thumb:
+          return pr.formats?.small?.url ?? pr.url;
+        default:
+          return pr.url;
+      }
+    }
   }
 }

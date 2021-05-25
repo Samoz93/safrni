@@ -10,7 +10,7 @@ import {
   Enum_Trips_Traveltype,
   Enum_Trips_Trip_Type,
 } from 'src/app/data/services/saferniGraphql.service';
-import { getTravelTypeData, TABS, TravelTypes } from 'src/app/data/utils/enums';
+import { getTravelTypeData } from 'src/app/data/utils/enums';
 
 @Component({
   selector: 'app-filter-widget',
@@ -45,14 +45,14 @@ export class FilterWidgetComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      tab: TABS.tour,
+      tripType: Enum_Trips_Trip_Type.Touristic,
       minPrice:
         this.filterOptions.minPrice == 0 ? null : this.filterOptions.minPrice,
       hotel: false,
       hasDiscount: false,
       maxPrice:
         this.filterOptions.maxPrice == 0 ? null : this.filterOptions.maxPrice,
-      travelType: TravelTypes.private,
+      travelType: Enum_Trips_Traveltype.Private,
       phone: null,
     });
     if (this.filterOptions.cities) {

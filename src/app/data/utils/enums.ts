@@ -1,4 +1,5 @@
 import { LocalService } from '../services/local.service';
+import { Enum_Trips_Traveltype } from '../services/saferniGraphql.service';
 
 export enum LoginEnum {
   login,
@@ -32,10 +33,7 @@ export enum snackType {
   warn = 'lightbulb',
   succes = 'check_circle',
 }
-export enum TravelTypes {
-  public = 'public',
-  private = 'private',
-}
+
 export enum EndPoints {
   trips = 'trips',
   cities = 'cities',
@@ -49,22 +47,27 @@ export enum CitiesEnum {
   Bursa = 'Bursa',
   Trabzon = 'Trabzon',
 }
-export enum TABS {
-  tour = 'tour',
-  medic = 'medic',
-}
 
 export const getTravelTypeData = (
   locale: LocalService
 ): { id: string; name: string }[] => {
   return [
     {
-      id: TravelTypes.private,
-      name: locale.getTranslation(`travelType.${TravelTypes.private}`),
+      id: Enum_Trips_Traveltype.Private,
+      name: locale.getTranslation(
+        `travelType.${Enum_Trips_Traveltype.Private}`
+      ),
     },
     {
-      id: TravelTypes.public,
-      name: locale.getTranslation(`travelType.${TravelTypes.public}`),
+      id: Enum_Trips_Traveltype.Public,
+      name: locale.getTranslation(`travelType.${Enum_Trips_Traveltype.Public}`),
     },
   ];
 };
+
+export enum WINDOW_SIZE {
+  small = 500,
+  medium = 750,
+  large = 1000,
+  thumb = 499,
+}

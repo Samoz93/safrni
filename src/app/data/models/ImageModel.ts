@@ -13,14 +13,20 @@ export class ImageModel {
     public realtiveUrl: string,
     public isRemote = true,
     public width?: number,
-    public height?: number // public formats: ImageFormatsObject
+    public height?: number,
+    public formats?: ImageFormatsObject
   ) {}
 }
 export class ImageModelAdapter implements Adapter<ImageModel> {
   adapt(item: any): ImageModel {
     if (!item) return new ImageModel('', StaticInfo.defaultImage, false);
     else
-      return new ImageModel(item.id, item.url, true, item.width, item.height);
+      return new ImageModel(item.id, item.url, true, item.width, item.height, {
+        large: new ImageFormatAdapter().adapt(item.formats.large),
+        thumbnail: new ImageFormatAdapter().adapt(item.formats.thumbnail),
+        medium: new ImageFormatAdapter().adapt(item.formats.medium),
+        small: new ImageFormatAdapter().adapt(item.formats.small),
+      });
   }
 }
 
@@ -31,10 +37,10 @@ export class ImageModelAdapter implements Adapter<ImageModel> {
 //   small: new ImageFormatAdapter().adapt(item.formats.small),
 // }
 export type ImageFormatsObject = {
-  thumbnail: ImageFormatModel;
-  large: ImageFormatModel;
-  medium: ImageFormatModel;
-  small: ImageFormatModel;
+  thumbnail?: ImageFormatModel;
+  large?: ImageFormatModel;
+  medium?: ImageFormatModel;
+  small?: ImageFormatModel;
 };
 
 export class ImageFormatModel {
@@ -45,15 +51,19 @@ export class ImageFormatModel {
     public height?: number,
     public size?: number
   ) {}
+
+  get url(): string {
+    return `${environment.api}${this.relativeUrl}`;
+  }
 }
 class ImageFormatAdapter implements Adapter<ImageFormatModel> {
   adapt(item: any): ImageFormatModel {
     return new ImageFormatModel(
-      item.url,
-      item.name,
-      item.width,
-      item.height,
-      item.size
+      item?.url,
+      item?.name,
+      item?.width,
+      item?.height,
+      item?.size
     );
   }
 }

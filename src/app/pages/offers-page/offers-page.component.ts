@@ -5,10 +5,12 @@ import { BehaviorSubject } from 'rxjs';
 import { FilterOptionsModel } from 'src/app/data/models/filterOptionModlel';
 import { TripModel } from 'src/app/data/models/TripModel';
 import { LocalService } from 'src/app/data/services/local.service';
-import { Enum_Trips_Trip_Type } from 'src/app/data/services/saferniGraphql.service';
+import {
+  Enum_Trips_Traveltype,
+  Enum_Trips_Trip_Type,
+} from 'src/app/data/services/saferniGraphql.service';
 import { TripService } from 'src/app/data/services/trip.service';
 import { StaticInfo } from 'src/app/data/static/main-info';
-import { TABS, TravelTypes } from 'src/app/data/utils/enums';
 import { FilterWidgetComponent } from './filter-widget/filter-widget.component';
 
 @Component({
@@ -48,7 +50,7 @@ export class OffersPageComponent implements OnInit {
         maxPrice: newQuery.maxPrice ? +newQuery.maxPrice : 0,
         minPrice: newQuery.minPrice ? +newQuery.minPrice : 0,
         date: newQuery.date ? +newQuery.date : new Date().getTime(),
-        travelType: newQuery.travelType ?? TravelTypes.private,
+        travelType: newQuery.travelType ?? Enum_Trips_Traveltype.Private,
         cities: newQuery.cities,
       };
       if (newQuery.cities == initQuery.cities) {

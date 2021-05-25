@@ -2,7 +2,6 @@ import {
   Enum_Trips_Traveltype,
   Enum_Trips_Trip_Type,
 } from '../services/saferniGraphql.service';
-import { TABS, TravelTypes } from '../utils/enums';
 
 export interface FilterOptionsModel {
   tripType: Enum_Trips_Trip_Type;
