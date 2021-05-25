@@ -112,21 +112,15 @@ export class TripService extends BaseService<TripModel> {
   //   return this.getLocations()
   // }
   async getLocations(ids: string[]): Promise<LocationModel[] | undefined> {
-    // const result = await this._doStuff<LocationModel[]>(async () => {
-    //   let apolloResponse = await this.locationsGql
-    //     .fetch({ locale: this.loc.locale, ids: ids })
-    //     .toPromise();
-    //   return apolloResponse.data.locations?.map((l: any) =>
-    //     this.locationAdapter.adapt(l)
-    //   );
-    // });
-    // return result;
-    let apolloResponse = await this.locationsGql
-      .fetch({ locale: this.loc.locale, ids: ids })
-      .toPromise();
-    console.log(apolloResponse);
-    return apolloResponse.data.locations?.map((l: any) =>
-      this.locationAdapter.adapt(l)
-    );
+    const result = await this._doStuff<LocationModel[]>(async () => {
+      let apolloResponse = await this.locationsGql
+        .fetch({ locale: this.loc.locale, ids: ids })
+        .toPromise();
+      console.log(apolloResponse);
+      return apolloResponse.data.locations?.map((l: any) =>
+        this.locationAdapter.adapt(l)
+      );
+    });
+    return result;
   }
 }
