@@ -13,6 +13,7 @@ export class ErrorService {
 
   observeError$(st$: BehaviorSubject<LoadingState>) {
     st$.subscribe((state) => {
+      if (isDevMode()) return;
       if (state.hasError) {
         this.dlg.open(ErrorDlgComponent, {
           data: state,

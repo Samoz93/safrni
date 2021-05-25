@@ -2,15 +2,15 @@
   <section class="flex_area_filter-nav">
     <div
       class="flex_area_filter-nav-item"
-      [ngClass]="{ active: filterOptions.tab == 'tour' }"
-      (click)="changeType('tour')"
+      [ngClass]="{ active: filterOptions.tripType == trType.Touristic }"
+      (click)="changeType(trType.Touristic)"
     >
       {{ "buttons.tours" | transloco }}
     </div>
     <div
       class="flex_area_filter-nav-item"
-      [ngClass]="{ active: filterOptions.tab == 'medic' }"
-      (click)="changeType('medic')"
+      [ngClass]="{ active: filterOptions.tripType == trType.Medical }"
+      (click)="changeType(trType.Medical)"
     >
       {{ "buttons.medic" | transloco }}
     </div>
@@ -24,7 +24,7 @@
         (change)="setCity($event.checked, city.id)"
         *ngFor="let city of cities"
         class="radio"
-        [value]="city.id"
+        [checked]="isCityChecked(city.id)"
         >{{ city.name }}
       </mat-checkbox>
     </mat-radio-group>
@@ -35,11 +35,11 @@
       {{ "travelType.placeholder" | transloco }}
     </p>
     <mat-radio-group class="radio-group" formControlName="travelType">
-      <mat-radio-button class="radio" [value]="tr.private">{{
-        "travelType." + tr.private | transloco
+      <mat-radio-button class="radio" [value]="tr.Private">{{
+        "travelType." + tr.Private | transloco
       }}</mat-radio-button>
-      <mat-radio-button class="radio" [value]="tr.public">{{
-        "travelType." + tr.public | transloco
+      <mat-radio-button class="radio" [value]="tr.Public">{{
+        "travelType." + tr.Public | transloco
       }}</mat-radio-button>
     </mat-radio-group>
   </section>
@@ -48,7 +48,7 @@
       {{ "otherFilterOptions.placeholder" | transloco }}
     </p>
     <mat-radio-group class="radio-group">
-      <mat-checkbox class="radio" formControlName="hasHotel"
+      <mat-checkbox class="radio" formControlName="hotel"
         >{{ "otherFilterOptions.hotel" | transloco }}
       </mat-checkbox>
       <mat-checkbox class="radio" formControlName="hasDiscount"

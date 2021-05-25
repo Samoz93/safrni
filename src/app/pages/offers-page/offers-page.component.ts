@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { FilterOptionsModel } from 'src/app/data/models/filterOptionModlel';
 import { TripModel } from 'src/app/data/models/TripModel';
 import { LocalService } from 'src/app/data/services/local.service';
+import { Enum_Trips_Trip_Type } from 'src/app/data/services/saferniGraphql.service';
 import { TripService } from 'src/app/data/services/trip.service';
 import { StaticInfo } from 'src/app/data/static/main-info';
 import { TABS, TravelTypes } from 'src/app/data/utils/enums';
@@ -41,9 +42,8 @@ export class OffersPageComponent implements OnInit {
     this.route.queryParams.subscribe((newQuery) => {
       this.cityid = newQuery.city;
       this.filterOptions = {
-        tab: newQuery.type ?? TABS.tour,
-        cityId: newQuery.cityId,
-        hasHotel: newQuery.hasHotel,
+        tripType: newQuery.tripType ?? Enum_Trips_Trip_Type.Touristic,
+        hotel: newQuery.hotel,
         hasDiscount: newQuery.hasDiscount,
         maxPrice: newQuery.maxPrice ? +newQuery.maxPrice : 0,
         minPrice: newQuery.minPrice ? +newQuery.minPrice : 0,
@@ -62,25 +62,11 @@ export class OffersPageComponent implements OnInit {
     this.isLoading = true;
     //absolute
 
-    this.data = await this._ser.queryTrips({
-      limit: 30,
-      locale: this.loc.locale,
-      cityId: this.cityid,
-
-      accomidation: this.filterOptions.hasHotel ? true : undefined,
-      priceRange: {
-        maxPrice:
-          +this.filterOptions.maxPrice < 1
-            ? 100000
-            : +this.filterOptions.maxPrice,
-        minPrice: +this.filterOptions?.minPrice ?? 0,
-      },
-    });
+    this.data = await this._ser.queryTrips(this.filterOptions);
     this.isLoading = false;
   }
   async onFilterChange(filterData: FilterOptionsModel) {
     const queryParams: Params = { ...filterData };
-    console.log('newFilterData', queryParams);
 
     this.router.navigate([], {
       relativeTo: this.route,
