@@ -80,8 +80,7 @@
       "peopleCount": "{{children}} بالغين و {{adults}}",
       "arrivalDate": "تاريخ القدوم",
       "totalPrice": "السعر الاجمالي"
-    },
-    "durationPill": "{{days}} days"
+    }
   },
   "currencies": {
     "dollar": "{{ var }} $",
@@ -133,5 +132,12 @@
   "generalMessages": {
     "error": "لقد حدث خطأ غير متوقع , يرجى المحاولة لاحقاً",
     "noContent": "لا محتوى ضمن خيارات البحث الحالية"
+  },
+  "general": {
+    "duration": "ايام {{days}}",
+    "peopleCount": "اشخاص {{count}}",
+    "accomidation": "الأقامة",
+    "adjustable": "قابل للتعديل",
+    "startHotel": "فندق {{stars}} نجوم"
   }
 }
