@@ -80,7 +80,8 @@
       "peopleCount": "{{adults}} بالغين و {{children}} اطفال",
       "arrivalDate": "تاريخ القدوم",
       "totalPrice": "السعر الاجمالي"
-    }
+    },
+    "bookingSummary":"ملخص الحجز"
   },
   "currencies": {
     "dollar": "{{ var }} $",

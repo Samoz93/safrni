@@ -83,7 +83,8 @@
     "destination": "Destination",
     "departure": "Departure",
     "departureTime": "Departure Time",
-    "accomidation": "Accomidation"
+    "accomidation": "Accomidation",
+    "bookingSummary":"Booking Summary"
   },
   "currencies": {
     "dollar": "{{ var }} $",

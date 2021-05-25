@@ -260,7 +260,9 @@
             [icon]="icons.message"
           ></app-custom-textarea>
           <div class="booking-form__summary">
-            <p class="booking-form__summary__header">booking summary</p>
+            <p class="booking-form__summary__header">
+              {{ "tour-info.bookingSummary" | transloco }}
+            </p>
             <ul class="booking-form__summary__list">
               <li>{{ trip.name }}</li>
               <li
