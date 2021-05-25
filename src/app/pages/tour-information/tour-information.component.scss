@@ -402,7 +402,7 @@ $brdr: 1px grey solid;
             &__price {
               margin-top: 1rem;
               display: flex;
-              justify-content: space-between;
+              justify-content: flex-start;
               align-items: center;
 
               p {
@@ -411,6 +411,11 @@ $brdr: 1px grey solid;
               }
               p:nth-child(1) {
                 color: #252629;
+                margin-right: 1rem;
+                &:lang(ar) {
+                  margin-right: unset;
+                  margin-left: 1rem;
+                }
               }
               p:nth-child(2) {
                 color: $accent;

@@ -38,17 +38,14 @@
           </h2>
           <div class="trip-card-brief-info__pills">
             <app-pill
-              [text]="'currencies.lira' | transloco: { var: 'ss' }"
+              [text]="'general.duration' | transloco: { days: trip.duration }"
               [iconClass]="'las la-clock'"
             ></app-pill>
             <app-pill
               [text]="'1-7 people'"
               [iconClass]="'las la-user-friends'"
             ></app-pill>
-            <app-pill
-              [text]="trip.basePrice.toString()"
-              [iconClass]="'las la-tag'"
-            ></app-pill>
+
             <app-pill
               [text]="'adjustable'"
               [iconClass]="'las la-sliders-h'"
@@ -72,6 +69,10 @@
           <div class="trip-card-features__row" *ngIf="trip.hotel">
             <h2>{{ "tour-info.accomidation" | transloco }}</h2>
             <p>{{ trip.hotel.name }}</p>
+          </div>
+          <div class="trip-card-features__row">
+            <h2>{{ "various.price" | transloco }}</h2>
+            <p>{{ trip.basePrice.toString() | price }}</p>
           </div>
         </div>
 
@@ -349,7 +350,7 @@
             <h2>{{ "tour-info.accomidation" | transloco }}</h2>
             <p>{{ trip.hotel.name }}</p>
           </div>
-          <div class="trip-card-features__row" *ngIf="trip.hotel">
+          <div class="trip-card-features__row">
             <h2>{{ "various.price" | transloco }}</h2>
             <p>{{ trip.basePrice.toString() | price }}</p>
           </div>
