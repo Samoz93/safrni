@@ -1,23 +1,21 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { StaticInfo } from 'src/app/data/static/main-info';
 import {
   getTravelTypeData,
   ICONS,
-  TABS,
   TravelTypes,
 } from 'src/app/data/utils/enums';
-import { TranslocoService } from '@ngneat/transloco';
 import { LocalService } from 'src/app/data/services/local.service';
 import { Observable } from 'rxjs';
 import { CityService } from 'src/app/data/services/city.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QueryStringParameters } from 'src/app/data/abstract/query.string.builder';
 import { FilterOptionsModel } from 'src/app/data/models/filterOptionModlel';
-import { SnackService } from 'src/app/data/services/snack.service';
 import { ErrorService } from 'src/app/data/services/error.service';
 import { HomeBanner } from 'src/app/data/services/saferniGraphql.service';
 import { HomeBannerService } from 'src/app/data/services/home.banner.service';
+import { Enum_Trips_Trip_Type } from 'src/app/data/services/saferniGraphql.service';
 
 @Component({
   selector: 'app-search-panel',
@@ -31,7 +29,7 @@ export class SearchPanelComponent implements OnInit {
   form: FormGroup;
   icons = ICONS;
   selectedType: string;
-  activeTab = TABS.tour;
+  activeTab = Enum_Trips_Trip_Type.Touristic;
   citiesData: { id: string; name: string }[] = [];
   trTypes: { id: string; name: string }[] = [];
 
@@ -77,9 +75,9 @@ export class SearchPanelComponent implements OnInit {
   search() {
     const data = this.form.value;
     const params: FilterOptionsModel = {
-      cityId: data.whereTo,
+      cities: data.whereTo ? [data.whereTo] : [],
       date: data.date?.getTime() ?? new Date().getTime(),
-      tab: this.activeTab,
+      tripType: this.activeTab,
       maxPrice: 0,
       minPrice: 0,
       travelType: data.travelType ?? TravelTypes.private,

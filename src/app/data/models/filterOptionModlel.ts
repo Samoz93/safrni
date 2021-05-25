@@ -1,13 +1,19 @@
+import {
+  Enum_Trips_Traveltype,
+  Enum_Trips_Trip_Type,
+} from '../services/saferniGraphql.service';
 import { TABS, TravelTypes } from '../utils/enums';
 
 export interface FilterOptionsModel {
-  tab: TABS;
+  tripType: Enum_Trips_Trip_Type;
   minPrice: number;
   maxPrice: number;
-  cityId: string;
   date?: number;
-  travelType: TravelTypes;
-  hasHotel?: boolean;
+  travelType: Enum_Trips_Traveltype;
+  hotel?: boolean;
   hasDiscount?: boolean;
-  cities?: any[];
+  cities?: string[];
+  limit?: number;
+  locale?: string;
+  search?: string;
 }

@@ -1,12 +1,20 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Params } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map, mapTo, tap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment.prod';
+import urljoin from 'url-join';
+import { FilterOptionsModel } from '../models/filterOptionModlel';
 import { LocationModel, LocationModelAdapter } from '../models/LocationModel';
 import { TripModel, TripModelAdapter } from '../models/TripModel';
+import { TravelTypes } from '../utils/enums';
 import { BaseService } from './base.service';
 import { ErrorService } from './error.service';
 import { LocalService } from './local.service';
 import {
+  Enum_Trips_Traveltype,
+  Enum_Trips_Trip_Type,
   GetLocalizedTripGQL,
   GetLocationsGQL,
   GetTripGQL,
@@ -20,12 +28,12 @@ export class TripService extends BaseService<TripModel> {
   constructor(
     private tripAdapter: TripModelAdapter,
     private locationAdapter: LocationModelAdapter,
-    private tripsGql: TripsGQL,
     private locationsGql: GetLocationsGQL,
     private localizedTripService: GetLocalizedTripGQL,
     private getTrip: GetTripGQL,
     private loc: LocalService,
-    errSer: ErrorService
+    errSer: ErrorService,
+    private http: HttpClient
   ) {
     super(errSer);
   }
@@ -36,60 +44,126 @@ export class TripService extends BaseService<TripModel> {
   async init(): Promise<TripModel[]> {
     return await this.queryTrips();
   }
-  async queryTrips(
-    query: {
-      limit?: number;
-      cityId?: String;
-      locale?: string;
-      priceRange?: { minPrice: number; maxPrice: number };
-      text?: string;
-      date?: number;
-      accomidation?: boolean;
-    } = {
-      limit: 10,
-      locale: this.loc.locale,
-    }
-  ): Promise<TripModel[]> {
-    let whereQuery: any = {};
-    if (query.cityId) {
-      whereQuery._or = [
-        { city: { id: query.cityId } },
-        { city: { localizations: { id: query.cityId } } },
-      ];
-    }
-    if (query.priceRange) {
-      whereQuery = {
-        ...whereQuery,
-        basePrice_gt: query.priceRange.minPrice,
-        basePrice_lt: query.priceRange.maxPrice,
-      };
-    }
-    if (query.text) {
-      whereQuery = {
-        ...whereQuery,
-        name_contains: query.text,
-      };
-    }
-    if (query.accomidation != null) {
-      whereQuery = {
-        ...whereQuery,
-        hotels: { id_null: !query.accomidation },
-      };
-    }
-    let resultTrips = (
-      await this.tripsGql
-        .fetch({
-          limit: query?.limit ?? 10,
-          locale: query?.locale ?? this.loc.locale,
-          where: whereQuery,
-        })
-        .toPromise()
-    ).data.trips?.map((trip) => this.tripAdapter.adapt(trip))!;
 
-    return resultTrips;
+  //TODO
+  // async queryTrips(
+  //   query: {
+  //     limit?: number;
+  //     cityId?: String;
+  //     locale?: string;
+  //     priceRange?: { minPrice: number; maxPrice: number };
+  //     text?: string;
+  //     date?: number;
+  //     accomidation?: boolean;
+  //   } = {
+  //     limit: 10,
+  //     locale: this.loc.locale,
+  //   }
+  // ): Promise<TripModel[]> {
+  //   let whereQuery: any = {};
+  //   if (query.cityId) {
+  //     whereQuery._or = [
+  //       { city: { id: query.cityId } },
+  //       { city: { localizations: { id: query.cityId } } },
+  //     ];
+  //   }
+  //   if (query.priceRange) {
+  //     whereQuery = {
+  //       ...whereQuery,
+  //       basePrice_gt: query.priceRange.minPrice,
+  //       basePrice_lt: query.priceRange.maxPrice,
+  //     };
+  //   }
+  //   if (query.text) {
+  //     whereQuery = {
+  //       ...whereQuery,
+  //       name_contains: query.text,
+  //     };
+  //   }
+  //   if (query.accomidation != null) {
+  //     whereQuery = {
+  //       ...whereQuery,
+  //       hotels: { id_null: !query.accomidation },
+  //     };
+  //   }
+  //   const data = await this._doStuff<TripModel[]>(async () => {
+  //     let resultTrips = (
+  //       await this.tripsGql
+  //         .fetch({
+  //           limit: query?.limit ?? 10,
+  //           locale: query?.locale ?? this.loc.locale,
+  //           where: whereQuery,
+  //         })
+  //         .toPromise()
+  //     ).data.trips?.map((trip) => this.tripAdapter.adapt(trip))!;
+
+  //     return resultTrips;
+  //   });
+  //   return data!;
+  // }
+  async queryTrips(
+    query: FilterOptionsModel = {
+      maxPrice: 0,
+      minPrice: 0,
+      travelType: Enum_Trips_Traveltype.Private,
+      tripType: Enum_Trips_Trip_Type.Touristic,
+      locale: this.loc.locale,
+      limit: 20,
+    },
+    offset: number = 0
+  ): Promise<TripModel[]> {
+    let queryParams: Params = { ...query, offset };
+    delete queryParams['date'];
+    if (!query.cities || query.cities.length < 1) {
+      delete queryParams['cities'];
+    }
+
+    if (query.maxPrice <= query.minPrice) {
+      queryParams = {
+        ...queryParams,
+        maxPrice: 100000,
+      };
+    }
+    if (!query.search) {
+      delete queryParams['search'];
+    }
+    if (!query.locale) {
+      queryParams = {
+        ...queryParams,
+        locale: this.loc.locale,
+      };
+    }
+    if (!query.limit) {
+      queryParams = {
+        ...queryParams,
+        limit: 20,
+      };
+    }
+
+    const data = await this._doStuff<TripModel[]>(async () => {
+      const baseUrl = urljoin(environment.api, 'queryTrips');
+
+      return await this.http
+        .get<any>(baseUrl, {
+          params: queryParams,
+        })
+        .pipe(
+          map((f) => {
+            return f.map((g: any) => this.tripAdapter.adapt(g));
+          })
+        )
+        .toPromise();
+    });
+    return data!;
   }
   async getRelatedTrips(to: TripModel): Promise<TripModel[]> {
-    let result = await this.queryTrips({ limit: 8, cityId: to.city.id });
+    let result = await this.queryTrips({
+      limit: 8,
+      maxPrice: 0,
+      minPrice: 0,
+      travelType: to.travelType,
+      tripType: to.tripType,
+    });
 
     return [...[...result!, ...result!, ...result!]];
   }

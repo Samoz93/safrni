@@ -28,24 +28,30 @@ export class OffersPageResolver implements Resolve<any> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Promise<TripModel[] | null> {
-    this.splashScreenStateService.start();
-      let cityId = route.queryParams['city'];
-      //TODO check for id , if doesnt exist choose istanubl
+    try {
+      this.splashScreenStateService.start();
+      let cities = route.queryParams['cities'] ?? [];
+      let maxPrice = route.queryParams['maxPrice'] ?? 0;
+      let minPrice = route.queryParams['minPrice'] ?? 0;
+      let tripType = route.queryParams['tripType'];
+      let travelType = route.queryParams['travelType'];
+
       let trip = await this.tripService.queryTrips({
-        cityId: cityId,
-        limit: 30,
+        cities,
+        maxPrice,
+        minPrice,
+        tripType,
+        travelType,
       });
 
       this.splashScreenStateService.stop();
       return trip;
-    // try {
-      
-    // } catch (error) {
-    //   this.router.navigate([...route.parent?.url!]);
-    //   this._errSer.showErrorByException(error);
-    //   return null;
-    // } finally {
-    //   this.splashScreenStateService.stop();
-    // }
+    } catch (error) {
+      this.router.navigate([...route.parent?.url!]);
+      this._errSer.showErrorByException(error);
+      return null;
+    } finally {
+      this.splashScreenStateService.stop();
+    }
   }
 }

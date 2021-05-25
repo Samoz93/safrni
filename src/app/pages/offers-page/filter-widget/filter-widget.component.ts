@@ -1,16 +1,15 @@
 import { Component, Input, OnInit, Optional, Output } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
-import {
-  CountryISO,
-  PhoneNumberFormat,
-  SearchCountryField,
-} from 'ngx-intl-tel-input';
 import { Subject, Subscription } from 'rxjs';
 import { CityModel } from 'src/app/data/models/CityModel';
 import { FilterOptionsModel } from 'src/app/data/models/filterOptionModlel';
 import { CityService } from 'src/app/data/services/city.service';
 import { LocalService } from 'src/app/data/services/local.service';
+import {
+  Enum_Trips_Traveltype,
+  Enum_Trips_Trip_Type,
+} from 'src/app/data/services/saferniGraphql.service';
 import { getTravelTypeData, TABS, TravelTypes } from 'src/app/data/utils/enums';
 
 @Component({
@@ -19,25 +18,18 @@ import { getTravelTypeData, TABS, TravelTypes } from 'src/app/data/utils/enums';
   styleUrls: ['./filter-widget.component.scss'],
 })
 export class FilterWidgetComponent implements OnInit {
-  SearchCountryField = SearchCountryField;
-  CountryISO = CountryISO;
-  PhoneNumberFormat = PhoneNumberFormat;
-  preferredCountries: CountryISO[] = [
-    CountryISO.UnitedStates,
-    CountryISO.UnitedKingdom,
-  ];
-
   @Output() onFilterChange = new Subject<FilterOptionsModel>();
   @Input() filterOptions: FilterOptionsModel = {
-    tab: TABS.tour,
-    cityId: '',
+    tripType: Enum_Trips_Trip_Type.Touristic,
     minPrice: 0,
-    hasHotel: true,
+    cities: [],
+    hotel: true,
     maxPrice: 0,
-    travelType: TravelTypes.private,
+    travelType: Enum_Trips_Traveltype.Private,
   };
   trTypes: any[] = [];
-  tr = TravelTypes;
+  tr = Enum_Trips_Traveltype;
+  trType = Enum_Trips_Trip_Type;
   cities: CityModel[] = [];
   sub: Subscription;
   includedCities: string[] = [];
@@ -54,17 +46,20 @@ export class FilterWidgetComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.fb.group({
       tab: TABS.tour,
-      cityId: '',
       minPrice:
         this.filterOptions.minPrice == 0 ? null : this.filterOptions.minPrice,
-      hasHotel: false,
+      hotel: false,
       hasDiscount: false,
       maxPrice:
         this.filterOptions.maxPrice == 0 ? null : this.filterOptions.maxPrice,
       travelType: TravelTypes.private,
       phone: null,
     });
+    if (this.filterOptions.cities) {
+      console.log(this.filterOptions.cities);
 
+      this.includedCities.push(...this.filterOptions.cities);
+    }
     this.trTypes = getTravelTypeData(this.loc);
     this._sub();
   }
@@ -108,56 +103,21 @@ export class FilterWidgetComponent implements OnInit {
   }
   _sub() {
     this.sub = this.form.valueChanges.subscribe((data) => {
-      //min
-      console.log('data', data);
-
       this._checkValue(data.minPrice, true);
       this._checkValue(data.maxPrice, false);
-
-      // console.log(this.filterOptions);
     });
-    // this.subs.push(
-    //   ...[
-    //     this.hotelCtrl.valueChanges.subscribe((f) => {
-    //       this.filterOptions = {
-    //         ...this.filterOptions,
-    //         hasHotel: f,
-    //       };
-    //     }),
-
-    //   ]
-    // );
   }
-  // increase(key: string) {
-  //   let newCount = Object(this.filterOptions)[key] + 1;
-  //   if (newCount <= 0) newCount = 0;
-
-  //   this.filterOptions = {
-  //     ...this.filterOptions,
-  //     [key]: newCount,
-  //   };
-  // }
-  // decrease(key: any) {
-  //   let newCount = Object(this.filterOptions)[key] - 1;
-  //   if (newCount <= 0) newCount = 0;
-  //   this.filterOptions = {
-  //     ...this.filterOptions,
-  //     [key]: newCount,
-  //   };
-  // }
-  // getValue(key: string) {
-  //   return Object(this.filterOptions)[key];
-  // }
-  changeType(tab: any) {
+  isCityChecked(cityId: string): boolean {
+    return this.includedCities.indexOf(cityId) > -1;
+  }
+  changeType(tab: Enum_Trips_Trip_Type) {
     this.filterOptions = {
       ...this.filterOptions,
-      tab: tab,
+      tripType: tab,
     };
   }
 
   applyChanges() {
-    console.log('CLICKED');
-
     this.filterOptions = {
       ...this.form.value,
       minPrice: this.filterOptions.minPrice,
