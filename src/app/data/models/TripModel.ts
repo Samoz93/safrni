@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Adapter } from '../adapters/adapter';
+import { priceData } from '../pipes/price-caculator.pipe';
 import {
   Enum_Trips_Currency,
   Enum_Trips_Traveltype,
@@ -22,7 +23,12 @@ export class TripModel {
 
     return ids;
   }
-
+  get priceData(): priceData {
+    return {
+      basePrice: this.basePrice,
+      currency: this.curreny,
+    };
+  }
   constructor(
     public id: string,
     public name: string,

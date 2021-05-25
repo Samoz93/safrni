@@ -1,157 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap");
-* {
-  padding: 0;
-  margin: 0;
-  font-family: "Quicksand", sans-serif;
-}
-body {
-  background: #e91e63;
-}
-ul {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 550px;
-  height: 200px;
-  text-align: center;
-  line-height: 200px;
-  color: #fff;
-  font-size: 100px;
-  text-transform: uppercase;
-  overflow: hidden;
-}
-ul li {
-  list-style: none;
-  position: absolute;
-  background: #fff;
-}
-ul li:nth-of-type(1) {
-  height: 10px;
-  width: 550px;
-  animation: animateLI1 2s infinite linear;
-}
-ul li:nth-of-type(2) {
-  height: 200px;
-  width: 10px;
-  animation: animateLI2 2s infinite linear;
-}
-ul li:nth-of-type(3) {
-  height: 10px;
-  width: 550px;
-  animation: animateLI3 2s infinite linear;
-}
-ul li:nth-of-type(4) {
-  height: 200px;
-  width: 10px;
-  animation: animateLI4 2s infinite linear;
-}
-
-@keyframes animateLI1 {
-  0% {
-    top: 0;
-    left: -550px;
-  }
-  20% {
-    top: 0;
-    left: 0;
-  }
-  40% {
-    top: 0;
-    left: 550px;
-  }
-  60% {
-    top: 0;
-    left: 550px;
-  }
-  80% {
-    top: 0;
-    left: 550px;
-  }
-  100% {
-    top: 0;
-    left: 550px;
+@import "/src/assets/css/abstract/variables";
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  width: 100%;
+  .splash-screen__content {
+    background-color: rgba($color: $accent, $alpha: 1);
+    clip-path: circle();
+    z-index: 99999;
+    height: 40rem;
+    width: 40rem;
   }
 }
-@keyframes animateLI2 {
-  0% {
-    top: -200px;
-    left: calc(550px - 10px);
-  }
-  20% {
-    top: -200px;
-    left: calc(550px - 10px);
-  }
-  40% {
-    top: 0;
-    left: calc(550px - 10px);
-  }
-  60% {
-    top: 200px;
-    left: calc(550px - 10px);
-  }
-  80% {
-    top: 200px;
-    left: calc(550px - 10px);
-  }
-  100% {
-    top: 200px;
-    left: calc(550px - 10px);
-  }
-}
-@keyframes animateLI3 {
-  0% {
-    top: calc(100% - 10px);
-    left: 550px;
-  }
-  20% {
-    top: calc(100% - 10px);
-    left: 550px;
-  }
-  40% {
-    top: calc(100% - 10px);
-    left: 550px;
-  }
-  60% {
-    top: calc(100% - 10px);
-    left: 0;
-  }
-  80% {
-    top: calc(100% - 10px);
-    left: -550px;
-  }
-  100% {
-    top: calc(100% - 10px);
-    left: -550px;
-  }
-}
-@keyframes animateLI4 {
-  0% {
-    top: 100%;
-    left: 0;
-  }
-  20% {
-    top: 100%;
-    left: 0;
-  }
-  40% {
-    top: 100%;
-    left: 0;
-  }
-  60% {
-    top: 100%;
-    left: 0;
-  }
-  80% {
-    top: 0;
-    left: 0;
-  }
-  100% {
-    top: -100%;
-    left: 0;
-  }
-}
-
 .noData {
   height: 100%;
   width: 100%;

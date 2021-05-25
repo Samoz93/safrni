@@ -104,7 +104,7 @@ export class TripService extends BaseService<TripModel> {
     query: FilterOptionsModel = {
       maxPrice: 0,
       minPrice: 0,
-      travelType: Enum_Trips_Traveltype.Private,
+      travelType: Enum_Trips_Traveltype.Public,
       tripType: Enum_Trips_Trip_Type.Touristic,
       locale: this.loc.locale,
       limit: 20,
@@ -112,17 +112,18 @@ export class TripService extends BaseService<TripModel> {
     offset: number = 0
   ): Promise<TripModel[]> {
     let queryParams: Params = { ...query, offset };
+    //TODO add it later
     delete queryParams['date'];
     if (!query.cities || query.cities.length < 1) {
       delete queryParams['cities'];
     }
-
-    if (query.maxPrice <= query.minPrice) {
-      queryParams = {
-        ...queryParams,
-        maxPrice: 100000,
-      };
+    if (!query.minPrice || query.minPrice <= 0) {
+      delete queryParams['minPrice'];
     }
+    if (!query.maxPrice || query.maxPrice <= 0) {
+      delete queryParams['maxPrice'];
+    }
+
     if (!query.search) {
       delete queryParams['search'];
     }
@@ -148,7 +149,18 @@ export class TripService extends BaseService<TripModel> {
         })
         .pipe(
           map((f) => {
-            return f.map((g: any) => this.tripAdapter.adapt(g));
+            const data = f.map((g: any) => this.tripAdapter.adapt(g));
+            return [
+              ...data,
+              ...data,
+              ...data,
+              ...data,
+              ...data,
+              ...data,
+              ...data,
+              ...data,
+              ...data,
+            ];
           })
         )
         .toPromise();

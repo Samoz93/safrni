@@ -1,19 +1,64 @@
 @import "/src/assets/css/abstract/variables";
-.main {
+@import "/src/assets/css/abstract/mixins";
+
+$padding: 1.8rem 1rem;
+
+.single-card {
   cursor: pointer;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(10, 1fr);
-  color: $white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   height: 100%;
   width: 100%;
   position: relative;
-  overflow: hidden;
-  box-shadow: $liteShadow;
+  color: white;
+
   * {
     z-index: 1;
   }
-  app-saferni-image {
+  &_title {
+    padding: $padding;
+    font-size: 180%;
+    font-family: var(--secondary-font);
+    text-transform: uppercase;
+    text-shadow: $text-shadow;
+  }
+  &_data {
+    padding: $padding;
+    font-family: var(--primary-font);
+    display: flex;
+    font-size: 120%;
+    color: black;
+
+    &_item {
+      background-color: white;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+      @include shadow();
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 0.5rem 0 0;
+      &:lang(ar) {
+        margin: 0 0 0 0.5rem;
+      }
+      .icon {
+        display: flex;
+        align-items: center;
+        font-size: inherit;
+        width: 1.5rem;
+        color: $accent;
+        height: 100%;
+      }
+
+      .text {
+        font-size: inherit;
+        color: inherit;
+      }
+    }
+  }
+  &_img {
+    padding: 0;
     margin: 0;
     border-radius: $border-radius;
     height: 100%;
@@ -21,41 +66,9 @@
     object-fit: cover;
     object-position: center;
     transition: all 0.3s ease-out;
-    margin: 0;
     border-radius: $border-radius;
     top: 0;
     position: absolute;
     z-index: 0;
-  }
-
-  .duration-price {
-    position: absolute;
-    right: 0;
-    top: 5%;
-    padding: 2%;
-    background: rgba(0, 0, 0, 0.178);
-    h6 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      text-align: end;
-    }
-  }
-  &_title {
-    position: absolute;
-    padding: 2%;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    font-weight: 800;
-
-    font-family: var(--secondary-font);
-    font-size: 200%;
-  }
-
-  .extra {
-    position: absolute;
-    padding: 2%;
-    bottom: 0;
-    right: 0;
   }
 }

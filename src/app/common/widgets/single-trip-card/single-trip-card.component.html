@@ -1,14 +1,23 @@
-<div class="main" (click)="goToOffer()">
+<div class="single-card" (click)="goToOffer()">
   <app-saferni-image
+    class="single-card_img"
     [imageModel]="img!"
     [overlayType]="'gradient'"
   ></app-saferni-image>
-  <app-trip-extra [features]="features" class="extra"> </app-trip-extra>
-  <div *ngIf="isOffer" class="duration-price">
-    <h6 class="main_price">
-      {{ price | price }}
-    </h6>
-    <h6 class="main_duration">{{ duration }} days</h6>
+  <div *ngIf="!isOffer" class="empty"></div>
+  <div *ngIf="isOffer" class="single-card_data">
+    <div class="single-card_data_item">
+      <mat-icon class="icon price">{{ icons.price }}</mat-icon>
+      <p class="text">{{ price | price }}</p>
+    </div>
+    <div class="single-card_data_item">
+      <mat-icon class="icon">{{ icons.calendar }}</mat-icon>
+      <p class="text">{{ duration }} Days</p>
+    </div>
+    <div class="single-card_data_item">
+      <mat-icon class="icon">{{ icons.profile }}</mat-icon>
+      <p class="text">7 People</p>
+    </div>
   </div>
-  <h6 class="main_title">{{ name }}</h6>
+  <div class="single-card_title">{{ name }}</div>
 </div>

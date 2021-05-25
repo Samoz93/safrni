@@ -39,12 +39,10 @@
       *ngFor="let item of data; let i = index"
       [name]="item.name"
       [duration]="item.duration"
-      [price]="item.basePrice"
-      [currency]="item.curreny"
+      [price]="item.priceData"
       [img]="item.previewImage"
       [isOffer]="true"
       [id]="item.id"
-      [features]="item.features"
     >
     </app-trip-card>
   </div>

@@ -273,7 +273,11 @@
             <div class="booking-form__summary__price">
               <p>{{ "tour-info.summary.totalPrice" | transloco }}:</p>
               <p>
-                {{ priceData | priceCaculator | price }}
+                {{
+                  trip.priceData
+                    | priceCaculator: guestData
+                    | price: trip.priceData.currency
+                }}
               </p>
             </div>
           </div>
@@ -361,10 +365,9 @@
       <app-trip-card
         *ngFor="let item of relatedTrips; let i = index"
         [id]="item.id"
-        [features]="item.features"
         [img]="item.previewImage"
         [name]="item.name"
-        [price]="item.basePrice"
+        [price]="item.priceData"
         [duration]="item.duration"
         (click)="goToTour(item.id)"
       ></app-trip-card>

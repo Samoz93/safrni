@@ -6,11 +6,14 @@
   }"
 >
   <swiper
+    #swiper
     class="swiper-container"
     [slidesPerView]="1"
     class="slide"
     [spaceBetween]="0"
-    [(index)]="currentSwiperIndex"
+    [autoplay]="true"
+    [loop]="true"
+    [navigation]="true"
   >
     <ng-template swiperSlide class="slide" *ngFor="let image of images">
       <!-- <img
@@ -22,7 +25,8 @@
         style="width: 100%; object-fit: cover"
       /> -->
       <div class="" [ngStyle]="{ height: screenHeightPercentage + 'vh' }">
-        <app-saferni-image [url]="image" [overlayOpacity]="overlayOpacity"> </app-saferni-image>
+        <app-saferni-image [url]="image" [overlayOpacity]="overlayOpacity">
+        </app-saferni-image>
       </div>
     </ng-template>
   </swiper>

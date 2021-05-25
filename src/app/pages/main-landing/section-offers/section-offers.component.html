@@ -9,14 +9,10 @@
   <div class="data">
     <app-trip-card
       *ngFor="let item of trips; let i = index"
-      [ngClass]="{
-        longX: i == 6
-      }"
       [id]="item.id"
-      [features]="item.features"
       [img]="item.previewImage"
       [name]="item.name"
-      [price]="item.basePrice"
+      [price]="item.priceData"
       [duration]="item.duration"
     ></app-trip-card>
   </div>

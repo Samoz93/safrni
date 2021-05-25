@@ -41,9 +41,9 @@ export class SplashComponent implements OnInit, AfterViewInit {
   currentAnimationIndex = 0;
 
   animationFiles: string[] = [
-    '../../../../assets/animation/airplane.json',
-    '../../../../assets/animation/luggage.json',
-    '../../../../assets/animation/car.json',
+    'assets/animation/airplane.json',
+    'assets/animation/luggage.json',
+    'assets/animation/car.json',
   ];
 
   options = new BehaviorSubject<AnimationOptions>({

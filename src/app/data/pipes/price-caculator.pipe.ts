@@ -1,16 +1,16 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { GuestCountModel } from '../models/guestCountModel';
 
 @Pipe({
   name: 'priceCaculator',
 })
 export class PriceCaculatorPipe implements PipeTransform {
-  transform(pr: priceInterface, ...args: any[]): string {
-    return `${pr.basePrice + pr.adult * 10}`;
+  transform(pr: priceData, count: GuestCountModel): string {
+    return `${pr.basePrice + count.adult * 10}`;
   }
 }
 
-export interface priceInterface {
-  adult: number;
-  children: number;
+export interface priceData {
   basePrice: number;
+  currency: string;
 }

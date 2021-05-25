@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-import { ImageModel, ImageModelAdapter } from '../models/ImageModel';
+import { ImageModelAdapter } from '../models/ImageModel';
 import { HomeCarousellGQL } from './saferniGraphql.service';
 
 @Injectable({ providedIn: 'root' })

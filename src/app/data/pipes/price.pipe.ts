@@ -1,4 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { LocalService } from '../services/local.service';
+import { priceData } from './price-caculator.pipe';
 
 @Pipe({
   name: 'price',
@@ -11,12 +13,18 @@ export class PricePipe implements PipeTransform {
   //   const cur = countObj.currency;
   //   return `${pr + adultCount * 10}$ ${cur}`;
   // }
-  transform(pr: string | number | null, ...args: unknown[]): string {
-    return `${pr?.toString()}$`;
+  constructor(private loc: LocalService) {}
+  transform(pr: priceData | string, ...args: any[]): string {
+    let basePrice;
+    let cur;
+    if (typeof pr == 'string') {
+      basePrice = pr;
+      cur = args[0];
+    } else {
+      basePrice = pr?.basePrice;
+      cur = pr?.currency;
+    }
+
+    return `${basePrice}${this.loc.getTranslation(`currencies.${cur}`)}`;
   }
 }
-
-const signs = [
-  { id: 'dollar', sign: '$' },
-  { id: 'lira', sign: '₺' },
-];

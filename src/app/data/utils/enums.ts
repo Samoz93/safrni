@@ -25,6 +25,7 @@ export enum ICONS {
   compass = 'explore',
   work = 'work',
   message = 'message',
+  price = 'local_offer',
 }
 
 export enum snackType {

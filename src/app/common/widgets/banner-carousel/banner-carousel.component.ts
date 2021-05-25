@@ -1,5 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { LocalService } from 'src/app/data/services/local.service';
+import { SwiperComponent } from 'swiper/angular';
+import SwiperCore, { Autoplay, Navigation } from 'swiper/core';
+
+SwiperCore.use([Autoplay, Navigation]);
 
 @Component({
   selector: 'app-banner-carousel',
@@ -12,16 +16,10 @@ export class BannerCarouselComponent implements OnInit {
   @Input() images: string[];
   @Input() screenHeightPercentage: number;
   @Input() overlayOpacity = 25;
-  currentSwiperIndex = 0;
-
+  @ViewChild('swiper') swiper: SwiperComponent;
   ngOnInit(): void {}
 
   swipe(right: boolean) {
-    let dir = this.loc.locale === 'ar' ? !right : right;
-    if (dir && this.currentSwiperIndex + 1 < this.images.length) {
-      this.currentSwiperIndex++;
-    } else if (!dir && this.currentSwiperIndex > 0) {
-      this.currentSwiperIndex--;
-    }
+    Object(this.swiper.navigation)[!right ? 'prevEl' : 'nextEl'].click();
   }
 }

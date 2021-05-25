@@ -12,13 +12,14 @@ $font-size: 1.5rem;
     position: absolute;
     padding: 0 $page-padding;
     font-family: var(--secondary-font);
-    top: 20%;
+    top: 50%;
+    transform: translate(0, -50%);
     width: 100%;
+    pointer-events: none;
     text-align: center;
     font-size: 5rem;
     @include res(phone) {
       font-size: 2rem;
-      top: 40%;
     }
     &-title {
       height: 100%;
@@ -34,7 +35,7 @@ $font-size: 1.5rem;
     color: white;
     & > * {
       font-size: inherit;
-      text-shadow: 2px 2px #00000081;
+      text-shadow: $text-shadow;
       font-family: inherit;
     }
   }
@@ -82,10 +83,10 @@ $font-size: 1.5rem;
   &-content {
     display: grid;
     width: 100%;
-    grid-template-columns: repeat(auto-fit, 25rem);
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
 
-    grid-auto-rows: 25rem;
-    gap: 0.1rem;
+    grid-auto-rows: 30rem;
+    gap: 1rem;
 
     .full-width {
       grid-column: 1/-1;

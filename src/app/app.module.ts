@@ -24,7 +24,6 @@ import { OfferLocationComponent } from './pages/Offer/offer-info-landing/offer-l
 import { LoginComponent } from './pages/user/login/login.component';
 import { OfferBookingComponent } from './pages/Offer/offer-booking/offer-booking.component';
 import { SingleTripCardComponent } from './common/widgets/single-trip-card/single-trip-card.component';
-import { TripExtraComponent } from './common/widgets/trip-extra/trip-extra.component';
 
 import { OursocialmediaComponent } from './common/widgets/oursocialmedia/oursocialmedia.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -57,8 +56,6 @@ import { LottieModule } from 'ngx-lottie';
 import { AccordionListComponent } from './common/widgets/accordion-list/accordion-list.component';
 import { BannerCarouselComponent } from './common/widgets/banner-carousel/banner-carousel.component';
 import { PricePipe } from './data/pipes/price.pipe';
-import { NgxPopperjsModule } from 'ngx-popperjs';
-import { HoverableItemComponent } from './common/widgets/hoverable-item/hoverable-item.component';
 import { ValidationIconComponent } from './common/widgets/validation-icon/validation-icon.component';
 import { CustomInputComponent } from './common/widgets/custom-input/custom-input.component';
 import { FilterWidgetComponent } from './pages/offers-page/filter-widget/filter-widget.component';
@@ -128,7 +125,6 @@ export function playerFactory() {
     LoginComponent,
     OfferBookingComponent,
     SingleTripCardComponent,
-    TripExtraComponent,
     OursocialmediaComponent,
     UserProfileLandingComponent,
     UserProfileComponent,
@@ -153,7 +149,6 @@ export function playerFactory() {
     AccordionListComponent,
     BannerCarouselComponent,
     PricePipe,
-    HoverableItemComponent,
     ValidationIconComponent,
     CustomInputComponent,
     FilterWidgetComponent,
@@ -196,7 +191,6 @@ export function playerFactory() {
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB33Yp_MzVXNyeTWkiip0mfGThC5xMSp-I',
     }),
-    NgxPopperjsModule,
     MatBottomSheetModule,
     GraphQLModule,
     LottieModule.forRoot({ player: playerFactory }),

@@ -1,9 +1,4 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import {
-  NgxPopperjsContentComponent,
-  NgxPopperjsPlacements,
-  NgxPopperjsTriggers,
-} from 'ngx-popperjs';
 import { ICONS } from 'src/app/data/utils/enums';
 
 @Component({
@@ -16,9 +11,6 @@ export class ValidationIconComponent implements OnInit {
   @Input() errors: any[] | undefined = [];
   @Input() isFocused: any;
   @Input() placeholder: string = '';
-  @ViewChild('content', { static: true }) popper: NgxPopperjsContentComponent;
-  placement = NgxPopperjsPlacements;
-  triggers = NgxPopperjsTriggers;
 
   constructor() {}
 
