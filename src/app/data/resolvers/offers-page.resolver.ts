@@ -30,11 +30,26 @@ export class OffersPageResolver implements Resolve<any> {
   ): Promise<TripModel[] | null> {
     try {
       this.splashScreenStateService.start();
-      let cityId = route.queryParams['city'];
+      let cities = route.queryParams['cities'] ?? [];
+      let maxPrice = route.queryParams['maxPrice'] ?? 0;
+      let minPrice = route.queryParams['minPrice'] ?? 0;
+      let tripType = route.queryParams['tripType'];
+      let travelType = route.queryParams['travelType'];
+
+      // cities: data.whereTo ? [data.whereTo] : [],
+      // date: data.date?.getTime() ?? new Date().getTime(),
+      // tripType: this.activeTab,
+      // maxPrice: 0,
+      // minPrice: 0,
+      // travelType: data.travelType ?? TravelTypes.private,
+
       //TODO check for id , if doesnt exist choose istanubl
       let trip = await this.tripService.queryTrips({
-        cityId: cityId,
-        limit: 30,
+        cities,
+        maxPrice,
+        minPrice,
+        tripType,
+        travelType,
       });
 
       this.splashScreenStateService.stop();
