@@ -81,10 +81,7 @@ export class ControlValueAccessorConnector
   get errmsg(): any[] | undefined {
     let lst;
 
-    if (
-      this.control?.errors &&
-      (this.control?.dirty || this.control?.touched)
-    ) {
+    if (this.control?.errors && this.control?.touched) {
       lst = [];
       Object.keys(this.control?.errors ?? []).forEach((f) =>
         lst.push(this.localeServcie.getTranslation(`validation.${f}`))
