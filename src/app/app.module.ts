@@ -98,6 +98,7 @@ import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { PhoneInputComponent } from './common/widgets/phone-input/phone-input.component';
 import { PriceCaculatorPipe } from './data/pipes/price-caculator.pipe';
 
+
 export function playerFactory() {
   return player;
 }
@@ -201,7 +202,8 @@ export function playerFactory() {
     AngularFireMessagingModule,
     MatSnackBarModule,
     MatRadioModule,
-    NgxIntlTelInputModule,
+    NgxIntlTelInputModule
+ 
   ],
   providers: [
     ScreenTrackingService,

@@ -7,16 +7,30 @@
   <div *ngIf="!isOffer" class="empty"></div>
   <div *ngIf="isOffer" class="single-card_data">
     <div class="single-card_data_item">
-      <mat-icon class="icon price">{{ icons.price }}</mat-icon>
-      <p class="text">{{ price | price }}</p>
+      <div class="pill">
+        <mat-icon class="icon price">{{ icons.price }}</mat-icon>
+        <p class="text">{{ price | price }}</p>
+      </div>
     </div>
     <div class="single-card_data_item">
-      <mat-icon class="icon">{{ icons.calendar }}</mat-icon>
-      <p class="text">{{ duration }} Days</p>
+      <div class="pill">
+        <mat-icon class="icon">{{ icons.calendar }}</mat-icon>
+        <p
+          class="text"
+          transloco="general.duration"
+          [translocoParams]="{ days: duration }"
+        ></p>
+      </div>
     </div>
     <div class="single-card_data_item">
-      <mat-icon class="icon">{{ icons.profile }}</mat-icon>
-      <p class="text">7 People</p>
+      <div class="pill">
+        <mat-icon class="icon">{{ icons.profile }}</mat-icon>
+        <p
+          class="text"
+          transloco="general.peopleCount"
+          [translocoParams]="{ count: '1-7' }"
+        ></p>
+      </div>
     </div>
   </div>
   <div class="single-card_title">{{ name }}</div>

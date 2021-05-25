@@ -134,8 +134,8 @@
     "noContent": "لا محتوى ضمن خيارات البحث الحالية"
   },
   "general": {
-    "duration": "ايام {{days}}",
-    "peopleCount": "اشخاص {{count}}",
+    "duration": "{{days}} ايام",
+    "peopleCount": "{{count}} اشخاص" ,
     "accomidation": "الأقامة",
     "adjustable": "قابل للتعديل",
     "startHotel": "فندق {{stars}} نجوم"
