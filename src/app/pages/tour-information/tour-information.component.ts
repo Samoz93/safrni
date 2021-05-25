@@ -15,6 +15,7 @@ import { ICONS } from 'src/app/data/utils/enums';
 import { BookingService } from 'src/app/data/services/booking.service';
 import { MatDialog } from '@angular/material/dialog';
 import { BookingSubmitPopupComponent } from 'src/app/common/widgets/booking-submit-popup/booking-submit-popup.component';
+import { priceInterface } from 'src/app/data/pipes/price-caculator.pipe';
 
 @Component({
   selector: 'app-tour-information',
@@ -113,11 +114,11 @@ export class TourInformationComponent implements OnInit, AfterViewChecked {
       console.log('The dialog was closed');
     });
   }
-  get priceData() {
+  get priceData(): priceInterface {
     return {
       adult: +this.bookForm.value.adult ?? 0,
       children: +this.bookForm.value.child ?? 0,
-      currency: this.trip.curreny,
+      basePrice: this.trip.basePrice,
     };
   }
   goToMapLocation(id: string) {

@@ -99,6 +99,7 @@ import { PillComponent } from './common/widgets/pill/pill.component';
 import { PlaygroundComponent } from './pages/playground/playground.component';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { PhoneInputComponent } from './common/widgets/phone-input/phone-input.component';
+import { PriceCaculatorPipe } from './data/pipes/price-caculator.pipe';
 
 export function playerFactory() {
   return player;
@@ -168,6 +169,7 @@ export function playerFactory() {
     PillComponent,
     PlaygroundComponent,
     PhoneInputComponent,
+    PriceCaculatorPipe,
   ],
 
   imports: [

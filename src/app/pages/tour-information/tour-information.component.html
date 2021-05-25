@@ -36,7 +36,10 @@
             {{ trip.name }}
           </h2>
           <div class="trip-card-brief-info__pills">
-            <app-pill [text]="'5 days'" [iconClass]="'las la-clock'"></app-pill>
+            <app-pill
+              [text]="'currencies.lira' | transloco: { var: 'ss' }"
+              [iconClass]="'las la-clock'"
+            ></app-pill>
             <app-pill
               [text]="'1-7 people'"
               [iconClass]="'las la-user-friends'"
@@ -270,7 +273,7 @@
             <div class="booking-form__summary__price">
               <p>{{ "tour-info.summary.totalPrice" | transloco }}:</p>
               <p>
-                {{ this.trip.basePrice | price: priceData }}
+                {{ priceData | priceCaculator | price }}
               </p>
             </div>
           </div>

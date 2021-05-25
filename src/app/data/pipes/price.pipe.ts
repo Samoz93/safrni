@@ -11,7 +11,7 @@ export class PricePipe implements PipeTransform {
   //   const cur = countObj.currency;
   //   return `${pr + adultCount * 10}$ ${cur}`;
   // }
-  transform(pr: string | number | null, ...args: unknown[]): unknown {
+  transform(pr: string | number | null, ...args: unknown[]): string {
     return `${pr?.toString()}$`;
   }
 }
