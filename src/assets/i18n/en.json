@@ -83,8 +83,7 @@
     "destination": "Destination",
     "departure": "Departure",
     "departureTime": "Departure Time",
-    "accomidation": "Accomidation",
-    "durationPill": "{{days}} days"
+    "accomidation": "Accomidation"
   },
   "currencies": {
     "dollar": "{{ var }} $",
@@ -138,5 +137,12 @@
   "generalMessages": {
     "error": "Something went wrong please try again later",
     "noContent": "No Content with those search options"
+  },
+  "general": {
+    "duration": "{{days}} days",
+    "peopleCount": "{{count}} people",
+    "accomidation": "Accomidation",
+    "adjustable": "Adjustable",
+    "startHotel": "{{stars}} star hotel"
   }
 }
