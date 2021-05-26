@@ -16,7 +16,6 @@ import {
 import { HomeBanner } from 'src/app/data/services/saferniGraphql.service';
 import { HomeBannerService } from 'src/app/data/services/home.banner.service';
 
-
 @Component({
   selector: 'app-search-panel',
   templateUrl: './search-panel.component.html',
@@ -41,11 +40,9 @@ export class SearchPanelComponent implements OnInit {
     _ser: CityService,
     private router: Router,
     private _snck: ErrorService,
-    private activatedRoute : ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     public homeCarouselImages: HomeBannerService
   ) {
-
-    
     this.citiesData = _ser.data.map((c) => {
       return {
         name: c.name,
@@ -80,7 +77,7 @@ export class SearchPanelComponent implements OnInit {
       tripType: this.activeTab,
       maxPrice: 0,
       minPrice: 0,
-      travelType: data.travelType ?? Enum_Trips_Traveltype.Private,
+      travelType: data.travelType,
     };
     this.router.navigate([StaticInfo.offersRoute], {
       queryParams: params,

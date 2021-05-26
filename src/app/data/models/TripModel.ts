@@ -62,7 +62,7 @@ export class TripModelAdapter implements Adapter<TripModel> {
     );
 
     return new TripModel(
-      item.id,
+      item?.id,
       item.name,
       item.description,
       item.locale,
@@ -91,7 +91,10 @@ export class TripDayPlanAdapter implements Adapter<TripDayPlan> {
   adapt(item: any): TripDayPlan {
     return new TripDayPlan(
       item.day,
-      item.locations.map((l: any) => new PlanLocation(l.id, l.city.id, l.name))
+      item.locations.map((l: any) => {
+        //TODO some of the locations has no cities
+        return new PlanLocation(l.id, l?.city?.id, l.name);
+      })
     );
   }
 }

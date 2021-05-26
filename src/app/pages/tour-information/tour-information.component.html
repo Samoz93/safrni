@@ -303,7 +303,7 @@
             ></app-saferni-image>
           </div>
           <p class="trip-card-header__price">
-            {{ trip.basePrice.toString() | price }}
+            {{ trip.priceData | price }}
           </p>
           <app-read-only-stars
             [stars]="3.5"

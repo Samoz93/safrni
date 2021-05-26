@@ -8,7 +8,7 @@ export interface FilterOptionsModel {
   minPrice: number;
   maxPrice: number;
   date?: number;
-  travelType: Enum_Trips_Traveltype;
+  travelType?: Enum_Trips_Traveltype;
   hotel?: boolean;
   hasDiscount?: boolean;
   cities?: string[];
