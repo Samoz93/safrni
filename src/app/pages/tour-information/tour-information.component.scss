@@ -468,10 +468,7 @@ $brdr: 1px grey solid;
       display: grid;
       gap: 1rem;
       grid-template-columns: repeat(5, 1fr);
-
-      & > * {
-        aspect-ratio: 1;
-      }
+      grid-auto-rows: calc(111rem / 5);
     }
   }
 
@@ -492,6 +489,11 @@ $brdr: 1px grey solid;
     }
     .similar-tours {
       grid-template-columns: 1fr 88.8rem 1fr;
+
+      &__grid {
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: calc(88.8rem / 4);
+      }
     }
   }
   @include respondMax(800px) {
@@ -543,7 +545,7 @@ $brdr: 1px grey solid;
         margin-top: 2rem;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-
+        grid-auto-rows: 37.5vw;
         gap: 1rem;
 
         justify-content: center;

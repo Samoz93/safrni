@@ -3,31 +3,33 @@
 .data {
   display: grid;
   grid-template-columns: repeat(3, 37rem);
-  // grid-auto-rows: 37rem;
+  grid-auto-rows: 37rem;
   width: 100%;
   justify-content: center;
   gap: 1.5rem;
 
   @include respondMax(1250px) {
     grid-template-columns: repeat(3, 28.3%);
+    grid-auto-rows: 28.3vw;
   }
   @include respondMax(800px) {
     grid-template-columns: repeat(2, 45%);
-    & > * {
-      aspect-ratio: 0.68;
-    }
-    .longX {
-      aspect-ratio: 2.78;
-      grid-column: 1/-1;
-    }
+    grid-auto-rows: 45vw;
+    // & > * {
+    //   aspect-ratio: 0.68;
+    // }
+    // .longX {
+    //   aspect-ratio: 2.78;
+    //   grid-column: 1/-1;
+    // }
   }
-  & > * {
-    aspect-ratio: 1;
-  }
-  .longX {
-    aspect-ratio: 3;
-    grid-column: 1/-1;
-  }
+  // & > * {
+  //   aspect-ratio: 1;
+  // }
+  // .longX {
+  //   aspect-ratio: 3;
+  //   grid-column: 1/-1;
+  // }
 }
 .main {
   height: 100%;
