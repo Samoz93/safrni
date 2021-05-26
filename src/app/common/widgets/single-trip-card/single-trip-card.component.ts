@@ -1,9 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FeatureModel } from 'src/app/data/models/FeatureModel';
+import { FilterOptionsModel } from 'src/app/data/models/filterOptionModlel';
 import { ImageModel } from 'src/app/data/models/ImageModel';
 import { priceData } from 'src/app/data/pipes/price-caculator.pipe';
 import { LocalService } from 'src/app/data/services/local.service';
+import { Enum_Trips_Traveltype, Enum_Trips_Trip_Type } from 'src/app/data/services/saferniGraphql.service';
 import { StaticInfo } from 'src/app/data/static/main-info';
 import { ICONS } from 'src/app/data/utils/enums';
 
@@ -31,9 +33,17 @@ export class SingleTripCardComponent implements OnInit {
       this.router.navigate([StaticInfo.tourInfoRoute, this.id], {
         queryParamsHandling: 'preserve',
       });
-    else
+    else {
+      const params: FilterOptionsModel = {
+        cities: [this.id],
+        tripType: Enum_Trips_Trip_Type.Touristic,
+        maxPrice: 0,
+        minPrice: 0,
+        travelType: Enum_Trips_Traveltype.Public
+      };
       this.router.navigate([StaticInfo.offersRoute], {
-        queryParams: { cityId: this.id },
+        queryParams: params,
       });
+    }
   }
 }

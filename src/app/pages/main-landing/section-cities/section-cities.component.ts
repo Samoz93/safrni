@@ -14,9 +14,6 @@ export class SectionCitiesComponent implements OnInit {
   cities: CityModel[];
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
   ngOnInit(): void {
-    this.cities = this.activatedRoute.snapshot.data.initData.cities;
-  }
-  goToOffer(cityId: any) {
-    this.router.navigate([StaticInfo.offersRoute, cityId]);
+    this.cities = this.activatedRoute.snapshot.data.initData.cities.slice(0, 6);
   }
 }
