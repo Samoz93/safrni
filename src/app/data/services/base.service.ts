@@ -47,6 +47,8 @@ export abstract class BaseService<T> {
       this.setBusy(false);
       return data;
     } catch (error) {
+      console.error(error);
+
       this.setBusy(false, error, toDo);
       if (isDevMode()) throwError(error);
       return undefined;

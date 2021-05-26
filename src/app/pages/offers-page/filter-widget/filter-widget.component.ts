@@ -52,7 +52,7 @@ export class FilterWidgetComponent implements OnInit {
       hasDiscount: false,
       maxPrice:
         this.filterOptions.maxPrice == 0 ? null : this.filterOptions.maxPrice,
-      travelType: Enum_Trips_Traveltype.Private,
+      travelType: null,
       phone: null,
     });
     if (this.filterOptions.cities) {

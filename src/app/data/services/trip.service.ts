@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Params } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map, mapTo, tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment.prod';
 import urljoin from 'url-join';
 import { FilterOptionsModel } from '../models/filterOptionModlel';
@@ -17,7 +17,6 @@ import {
   GetLocalizedTripGQL,
   GetLocationsGQL,
   GetTripGQL,
-  TripsGQL,
 } from './saferniGraphql.service';
 
 @Injectable({
@@ -61,6 +60,16 @@ export class TripService extends BaseService<TripModel> {
     if (!query.cities || query.cities.length < 1) {
       delete queryParams['cities'];
     }
+    if (!query.hotel) {
+      delete queryParams['hotel'];
+    }
+
+    if (!query.travelType) {
+      delete queryParams['travelType'];
+    }
+    if (!query.tripType) {
+      delete queryParams['tripType'];
+    }
     if (!query.minPrice || query.minPrice <= 0) {
       delete queryParams['minPrice'];
     }
@@ -86,9 +95,10 @@ export class TripService extends BaseService<TripModel> {
 
     const data = await this._doStuff<TripModel[]>(async () => {
       const baseUrl = urljoin(environment.api, 'queryTrips');
+      console.log('query', baseUrl, queryParams);
 
       return await this.http
-        .get<any>(baseUrl, {
+        .get<any[]>(baseUrl, {
           params: queryParams,
         })
         .pipe(
