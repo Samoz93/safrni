@@ -42,12 +42,12 @@
               [iconClass]="'las la-clock'"
             ></app-pill>
             <app-pill
-              [text]="'1-7 people'"
+              [text]="'general.peopleCount' | transloco: { count: '1-7' }"
               [iconClass]="'las la-user-friends'"
             ></app-pill>
 
             <app-pill
-              [text]="'adjustable'"
+              [text]="'general.adjustable' | transloco"
               [iconClass]="'las la-sliders-h'"
             ></app-pill>
           </div>
@@ -306,13 +306,6 @@
               [imageModel]="trip.previewImage"
             ></app-saferni-image>
           </div>
-<<<<<<< HEAD
-          <p class="trip-card-header__price">
-            {{ trip.priceData | price }}
-          </p>
-=======
-
->>>>>>> c58e257455a01a6b3997c081bed5d090758961f2
           <app-read-only-stars
             [stars]="4.5"
             [color]="'#fff'"
@@ -369,7 +362,10 @@
     </div>
   </div>
 
-  <section class="similar-tours">
+  <section
+    class="similar-tours"
+    *ngIf="relatedTrips && relatedTrips.length > 0"
+  >
     <div class="similar-tours__header">
       <h2 class="section-title">
         {{ "tour-info.similarTours" | transloco }}

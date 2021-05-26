@@ -59,6 +59,9 @@ export class TourInformationComponent implements OnInit, AfterViewChecked {
       this.trip = data.dataMap.trip;
       this.planLocations = data.dataMap.locations;
       this.relatedTrips = await this.tripService.getRelatedTrips(this.trip);
+      this.relatedTrips = this.relatedTrips.filter(
+        (t) => t.id !== this.trip.id
+      );
     });
   }
   ngAfterViewChecked(): void {
