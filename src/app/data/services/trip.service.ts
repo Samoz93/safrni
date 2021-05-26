@@ -95,7 +95,6 @@ export class TripService extends BaseService<TripModel> {
 
     const data = await this._doStuff<TripModel[]>(async () => {
       const baseUrl = urljoin(environment.api, 'queryTrips');
-      console.log('query', baseUrl, queryParams);
 
       return await this.http
         .get<any[]>(baseUrl, {

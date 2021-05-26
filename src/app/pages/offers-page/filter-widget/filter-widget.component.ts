@@ -1,6 +1,16 @@
-import { Component, Input, OnInit, Optional, Output } from '@angular/core';
+import {
+  Component,
+  Inject,
+  Input,
+  OnInit,
+  Optional,
+  Output,
+} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import {
+  MatBottomSheetRef,
+  MAT_BOTTOM_SHEET_DATA,
+} from '@angular/material/bottom-sheet';
 import { Subject, Subscription } from 'rxjs';
 import { CityModel } from 'src/app/data/models/CityModel';
 import { FilterOptionsModel } from 'src/app/data/models/filterOptionModlel';
@@ -23,7 +33,6 @@ export class FilterWidgetComponent implements OnInit {
     tripType: Enum_Trips_Trip_Type.Touristic,
     minPrice: 0,
     cities: [],
-    hotel: true,
     maxPrice: 0,
     travelType: Enum_Trips_Traveltype.Private,
   };
@@ -36,6 +45,7 @@ export class FilterWidgetComponent implements OnInit {
   form: FormGroup;
   constructor(
     @Optional() private dialogRef: MatBottomSheetRef<FilterWidgetComponent>,
+    @Optional() @Inject(MAT_BOTTOM_SHEET_DATA) private dlgData: any,
     private loc: LocalService,
     _cityser: CityService,
     private fb: FormBuilder
@@ -44,20 +54,20 @@ export class FilterWidgetComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.dlgData) {
+      this.filterOptions = { ...this.dlgData };
+    }
     this.form = this.fb.group({
-      tripType: Enum_Trips_Trip_Type.Touristic,
+      tripType: this.filterOptions.tripType ?? Enum_Trips_Trip_Type.Touristic,
       minPrice:
         this.filterOptions.minPrice == 0 ? null : this.filterOptions.minPrice,
-      hotel: false,
-      hasDiscount: false,
+      hotel: this.filterOptions.hotel,
+      hasDiscount: this.filterOptions.hasDiscount,
       maxPrice:
         this.filterOptions.maxPrice == 0 ? null : this.filterOptions.maxPrice,
-      travelType: null,
-      phone: null,
+      travelType: this.filterOptions.travelType,
     });
     if (this.filterOptions.cities) {
-      console.log(this.filterOptions.cities);
-
       this.includedCities.push(...this.filterOptions.cities);
     }
     this.trTypes = getTravelTypeData(this.loc);
