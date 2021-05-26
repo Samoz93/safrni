@@ -67,6 +67,9 @@ export class TripService extends BaseService<TripModel> {
     if (!query.travelType) {
       delete queryParams['travelType'];
     }
+    if (!query.tripType) {
+      delete queryParams['tripType'];
+    }
     if (!query.minPrice || query.minPrice <= 0) {
       delete queryParams['minPrice'];
     }
@@ -101,10 +104,6 @@ export class TripService extends BaseService<TripModel> {
         .pipe(
           map((f) => {
             const data = f.map((g: any) => this.tripAdapter.adapt(g));
-<<<<<<< HEAD
-
-=======
->>>>>>> c58e257455a01a6b3997c081bed5d090758961f2
             return data;
           })
         )
