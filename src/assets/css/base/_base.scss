@@ -58,18 +58,18 @@ html {
     -moz-appearance: textfield;
   }
   @include res(tab-land) {
-    font-size: 57.25%;
+    font-size: 9.16px;
   }
   @include res(tab) {
-    font-size: 50%;
+    font-size: 8px;
   }
 
   @include res(phone) {
-    font-size: 40%;
+    font-size: 6.4px;
   }
 
   @include res(desktop) {
-    font-size: 60.25%;
+    font-size: 9.64px;
   }
   overflow-x: hidden;
 

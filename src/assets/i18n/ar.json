@@ -44,7 +44,7 @@
     "message": "إرسال رسالة",
     "ticket": {
       "child": "عدد الاطفال (اقل من ٦ سنوات)",
-      "adult": "عدد البالفين'"
+      "adult": "عدد البالفين"
     }
   },
   "offer-page": {
@@ -77,10 +77,11 @@
     "departureTime": "وقت الرحلة",
     "accomidation": "الاقامة",
     "summary": {
-      "peopleCount": "{{children}} بالغين و {{adults}}",
+      "peopleCount": "{{adults}} بالغين و {{children}} اطفال",
       "arrivalDate": "تاريخ القدوم",
       "totalPrice": "السعر الاجمالي"
-    }
+    },
+    "bookingSummary":"ملخص الحجز"
   },
   "currencies": {
     "dollar": "{{ var }} $",
@@ -134,10 +135,12 @@
     "noContent": "لا محتوى ضمن خيارات البحث الحالية"
   },
   "general": {
-    "duration": "ايام {{days}}",
-    "peopleCount": "اشخاص {{count}}",
+    "duration": "{{days}} ايام",
+    "peopleCount": "{{count}} اشخاص",
     "accomidation": "الأقامة",
     "adjustable": "قابل للتعديل",
-    "startHotel": "فندق {{stars}} نجوم"
+    "startHotel": "فندق {{stars}} نجوم",
+    "next":"التالي",
+    "previous":"السابق"
   }
 }

@@ -34,12 +34,14 @@ export class OffersPageResolver implements Resolve<any> {
       let maxPrice = route.queryParams['maxPrice'] ?? 0;
       let minPrice = route.queryParams['minPrice'] ?? 0;
       let tripType = route.queryParams['tripType'];
+      let travelType = route.queryParams['travelType'];
 
       let trip = await this.tripService.queryTrips({
         cities,
         maxPrice,
         minPrice,
         tripType,
+        travelType,
       });
 
       this.splashScreenStateService.stop();

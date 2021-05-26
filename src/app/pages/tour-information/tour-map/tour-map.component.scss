@@ -174,15 +174,26 @@
           }
           i {
             font-size: 1.3rem;
+            &:lang(ar) {
+              transform: rotateY(180deg);
+            }
           }
           &.left {
             i {
               margin-right: 1rem;
+              &:lang(ar) {
+                margin-right: unset;
+                margin-left: 1rem;
+              }
             }
           }
           &.right {
             i {
               margin-left: 1rem;
+              &:lang(ar) {
+                margin-left: unset;
+                margin-right: 1rem;
+              }
             }
           }
         }

@@ -154,19 +154,24 @@ $brdr: 1px grey solid;
         padding: 2rem;
         &__row {
           display: flex;
-          justify-content: space-between;
+
           margin-bottom: 2rem;
           h2 {
+            flex: 1 0 50%;
             text-transform: capitalize;
             font-size: 2rem;
             font-weight: bold;
             font-family: var(--primary-font);
+            text-align: start;
           }
           p {
+            flex: 1 0 50%;
             text-transform: capitalize;
             font-size: 1.75rem;
             font-weight: 300;
             font-family: var(--primary-font);
+
+            text-align: start;
             &:lang(ar) {
               font-family: var(--secondary-font);
             }
@@ -176,7 +181,7 @@ $brdr: 1px grey solid;
 
       .main-btn {
         align-self: flex-start;
-        margin: 5rem 2rem;
+        margin: 2rem 2rem;
         p {
           font-size: 1.75rem;
           font-weight: 600;
@@ -397,7 +402,7 @@ $brdr: 1px grey solid;
             &__price {
               margin-top: 1rem;
               display: flex;
-              justify-content: space-between;
+              justify-content: flex-start;
               align-items: center;
 
               p {
@@ -406,6 +411,11 @@ $brdr: 1px grey solid;
               }
               p:nth-child(1) {
                 color: #252629;
+                margin-right: 1rem;
+                &:lang(ar) {
+                  margin-right: unset;
+                  margin-left: 1rem;
+                }
               }
               p:nth-child(2) {
                 color: $accent;
@@ -458,10 +468,7 @@ $brdr: 1px grey solid;
       display: grid;
       gap: 1rem;
       grid-template-columns: repeat(5, 1fr);
-
-      & > * {
-        aspect-ratio: 1;
-      }
+      grid-auto-rows: calc(111rem / 5);
     }
   }
 
@@ -482,6 +489,11 @@ $brdr: 1px grey solid;
     }
     .similar-tours {
       grid-template-columns: 1fr 88.8rem 1fr;
+
+      &__grid {
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: calc(88.8rem / 4);
+      }
     }
   }
   @include respondMax(800px) {
@@ -495,7 +507,7 @@ $brdr: 1px grey solid;
       }
     }
     &__content-grid {
-      z-index: 10;
+      z-index: 1;
 
       width: 75%;
       position: relative;
@@ -533,7 +545,7 @@ $brdr: 1px grey solid;
         margin-top: 2rem;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-
+        grid-auto-rows: 37.5vw;
         gap: 1rem;
 
         justify-content: center;

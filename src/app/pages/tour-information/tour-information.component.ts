@@ -95,15 +95,11 @@ export class TourInformationComponent implements OnInit, AfterViewChecked {
     ]);
   }
 
-  // getAllLocations(): LocationModel[] {
-  //   let allLocations = new Array();
-  //   this.timelines.forEach((element) => {
-  //     allLocations.push(...element.locations);
-  //   });
-  // }
-
   getCarouselImages(): string[] {
     return this.planLocations.map((l) => l.images[0].url);
+  }
+  getCarouselTexts(): string[] {
+    return this.planLocations.map((l) => l.name);
   }
   goToTour(id: string) {
     this.router.navigate(['/tours', id]);

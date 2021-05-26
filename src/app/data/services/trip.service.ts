@@ -43,62 +43,6 @@ export class TripService extends BaseService<TripModel> {
     return await this.queryTrips();
   }
 
-  //TODO
-  // async queryTrips(
-  //   query: {
-  //     limit?: number;
-  //     cityId?: String;
-  //     locale?: string;
-  //     priceRange?: { minPrice: number; maxPrice: number };
-  //     text?: string;
-  //     date?: number;
-  //     accomidation?: boolean;
-  //   } = {
-  //     limit: 10,
-  //     locale: this.loc.locale,
-  //   }
-  // ): Promise<TripModel[]> {
-  //   let whereQuery: any = {};
-  //   if (query.cityId) {
-  //     whereQuery._or = [
-  //       { city: { id: query.cityId } },
-  //       { city: { localizations: { id: query.cityId } } },
-  //     ];
-  //   }
-  //   if (query.priceRange) {
-  //     whereQuery = {
-  //       ...whereQuery,
-  //       basePrice_gt: query.priceRange.minPrice,
-  //       basePrice_lt: query.priceRange.maxPrice,
-  //     };
-  //   }
-  //   if (query.text) {
-  //     whereQuery = {
-  //       ...whereQuery,
-  //       name_contains: query.text,
-  //     };
-  //   }
-  //   if (query.accomidation != null) {
-  //     whereQuery = {
-  //       ...whereQuery,
-  //       hotels: { id_null: !query.accomidation },
-  //     };
-  //   }
-  //   const data = await this._doStuff<TripModel[]>(async () => {
-  //     let resultTrips = (
-  //       await this.tripsGql
-  //         .fetch({
-  //           limit: query?.limit ?? 10,
-  //           locale: query?.locale ?? this.loc.locale,
-  //           where: whereQuery,
-  //         })
-  //         .toPromise()
-  //     ).data.trips?.map((trip) => this.tripAdapter.adapt(trip))!;
-
-  //     return resultTrips;
-  //   });
-  //   return data!;
-  // }
   async queryTrips(
     query: FilterOptionsModel = {
       maxPrice: 0,
@@ -157,7 +101,10 @@ export class TripService extends BaseService<TripModel> {
         .pipe(
           map((f) => {
             const data = f.map((g: any) => this.tripAdapter.adapt(g));
+<<<<<<< HEAD
 
+=======
+>>>>>>> c58e257455a01a6b3997c081bed5d090758961f2
             return data;
           })
         )
@@ -166,15 +113,22 @@ export class TripService extends BaseService<TripModel> {
     return data!;
   }
   async getRelatedTrips(to: TripModel): Promise<TripModel[]> {
+    let cityIds: string[] = [];
+    to.plan.forEach((p) => {
+      p.dayLocations.forEach((l) => {
+        cityIds.push(l.cityId);
+      });
+    });
     let result = await this.queryTrips({
       limit: 8,
       maxPrice: 0,
       minPrice: 0,
       travelType: to.travelType,
       tripType: to.tripType,
+      cities: cityIds,
     });
 
-    return [...[...result!, ...result!, ...result!]];
+    return result!;
   }
   async getTripById(id: string): Promise<TripModel> {
     let trip = this.tripAdapter.adapt(
@@ -190,10 +144,7 @@ export class TripService extends BaseService<TripModel> {
 
     return this.tripAdapter.adapt(data.data.trips![0]);
   }
-  // async getTripLocations(tripId:string) : Promise<LocationModel[] | undefined>
-  // {
-  //   return this.getLocations()
-  // }
+
   async getLocations(ids: string[]): Promise<LocationModel[] | undefined> {
     const result = await this._doStuff<LocationModel[]>(async () => {
       let apolloResponse = await this.locationsGql

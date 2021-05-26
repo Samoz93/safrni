@@ -30,7 +30,8 @@ $field-border-error: red solid 1px;
 $black: black;
 $font-color: $primary;
 $field-border-var: #c5c5c5 solid 1px;
-$text-shadow: 2px 2px #00000081;
+$text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.4), 0px 4px 7px rgba(0, 0, 0, 0.1),
+  0px 9px 12px rgba(0, 0, 0, 0.1);
 $border-radius: 0;
 $page-padding: 20rem;
 $form-file-padding: 0 1rem;

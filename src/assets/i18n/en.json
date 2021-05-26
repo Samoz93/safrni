@@ -83,7 +83,8 @@
     "destination": "Destination",
     "departure": "Departure",
     "departureTime": "Departure Time",
-    "accomidation": "Accomidation"
+    "accomidation": "Accomidation",
+    "bookingSummary":"Booking Summary"
   },
   "currencies": {
     "dollar": "{{ var }} $",
@@ -143,6 +144,8 @@
     "peopleCount": "{{count}} people",
     "accomidation": "Accomidation",
     "adjustable": "Adjustable",
-    "startHotel": "{{stars}} star hotel"
+    "startHotel": "{{stars}} star hotel",
+    "next":"next",
+    "previous":"previous"
   }
 }

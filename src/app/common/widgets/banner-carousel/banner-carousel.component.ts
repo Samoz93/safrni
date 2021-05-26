@@ -14,14 +14,20 @@ export class BannerCarouselComponent implements OnInit {
   constructor(private loc: LocalService) {}
 
   @Input() images: string[];
+  @Input() centeredTexts:string[] | undefined;
   @Input() screenHeightPercentage: number;
   @Input() overlayOpacity = 25;
   @ViewChild('swiper') swiper: SwiperComponent;
+
+  index = 0;
   ngOnInit(): void {}
 
   swipe(right: boolean) {
     let isLeft = !right;
     if (this.loc.locale == 'ar') isLeft = !isLeft;
     Object(this.swiper.navigation)[isLeft ? 'prevEl' : 'nextEl'].click();
+  }
+  indexChanged(newIndex:number){
+    this.index = newIndex;
   }
 }

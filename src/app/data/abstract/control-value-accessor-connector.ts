@@ -83,8 +83,10 @@ export class ControlValueAccessorConnector
 
     if (this.control?.errors && this.control?.touched) {
       lst = [];
-      Object.keys(this.control?.errors ?? []).forEach((f) =>
-        lst.push(this.localeServcie.getTranslation(`validation.${f}`))
+      Object.keys(this.control?.errors ?? []).forEach(
+        (f) =>
+          lst.push(this.localeServcie.getTranslation(`validation.required`))
+        //TODO: check this later.
       );
     }
 

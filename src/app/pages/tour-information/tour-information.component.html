@@ -1,6 +1,7 @@
 <div class="tour-infomation">
   <app-banner-carousel
     [images]="getCarouselImages()"
+    [centeredTexts]="getCarouselTexts()"
     [screenHeightPercentage]="60"
   ></app-banner-carousel>
 
@@ -25,7 +26,7 @@
               [imageModel]="trip.previewImage"
             ></app-saferni-image>
           </div>
-          <p class="trip-card-header__price">{{ trip.basePrice }}</p>
+
           <!-- <app-read-only-stars
             [stars]="3.5"
             [color]="'#fff'"
@@ -37,17 +38,14 @@
           </h2>
           <div class="trip-card-brief-info__pills">
             <app-pill
-              [text]="'currencies.lira' | transloco: { var: 'ss' }"
+              [text]="'general.duration' | transloco: { days: trip.duration }"
               [iconClass]="'las la-clock'"
             ></app-pill>
             <app-pill
               [text]="'1-7 people'"
               [iconClass]="'las la-user-friends'"
             ></app-pill>
-            <app-pill
-              [text]="trip.basePrice.toString()"
-              [iconClass]="'las la-tag'"
-            ></app-pill>
+
             <app-pill
               [text]="'adjustable'"
               [iconClass]="'las la-sliders-h'"
@@ -71,6 +69,10 @@
           <div class="trip-card-features__row" *ngIf="trip.hotel">
             <h2>{{ "tour-info.accomidation" | transloco }}</h2>
             <p>{{ trip.hotel.name }}</p>
+          </div>
+          <div class="trip-card-features__row">
+            <h2>{{ "various.price" | transloco }}</h2>
+            <p>{{ trip.basePrice.toString() | price }}</p>
           </div>
         </div>
 
@@ -260,7 +262,9 @@
             [icon]="icons.message"
           ></app-custom-textarea>
           <div class="booking-form__summary">
-            <p class="booking-form__summary__header">booking summary</p>
+            <p class="booking-form__summary__header">
+              {{ "tour-info.bookingSummary" | transloco }}
+            </p>
             <ul class="booking-form__summary__list">
               <li>{{ trip.name }}</li>
               <li
@@ -302,11 +306,15 @@
               [imageModel]="trip.previewImage"
             ></app-saferni-image>
           </div>
+<<<<<<< HEAD
           <p class="trip-card-header__price">
             {{ trip.priceData | price }}
           </p>
+=======
+
+>>>>>>> c58e257455a01a6b3997c081bed5d090758961f2
           <app-read-only-stars
-            [stars]="3.5"
+            [stars]="4.5"
             [color]="'#fff'"
           ></app-read-only-stars>
         </div>
@@ -315,17 +323,17 @@
             {{ trip.name }}
           </h2>
           <div class="trip-card-brief-info__pills">
-            <app-pill [text]="'5 days'" [iconClass]="'las la-clock'"></app-pill>
             <app-pill
-              [text]="'1-7 people'"
+              [text]="'general.duration' | transloco: { days: trip.duration }"
+              [iconClass]="'las la-clock'"
+            ></app-pill>
+            <app-pill
+              [text]="'general.peopleCount' | transloco: { count: '1-7' }"
               [iconClass]="'las la-user-friends'"
             ></app-pill>
+
             <app-pill
-              [text]="trip.basePrice.toString()"
-              [iconClass]="'las la-tag'"
-            ></app-pill>
-            <app-pill
-              [text]="'adjustable'"
+              [text]="'general.adjustable' | transloco"
               [iconClass]="'las la-sliders-h'"
             ></app-pill>
           </div>
@@ -347,6 +355,10 @@
           <div class="trip-card-features__row" *ngIf="trip.hotel">
             <h2>{{ "tour-info.accomidation" | transloco }}</h2>
             <p>{{ trip.hotel.name }}</p>
+          </div>
+          <div class="trip-card-features__row">
+            <h2>{{ "various.price" | transloco }}</h2>
+            <p>{{ trip.basePrice.toString() | price }}</p>
           </div>
         </div>
 

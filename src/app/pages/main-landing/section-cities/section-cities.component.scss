@@ -14,21 +14,24 @@
   display: grid;
 
   grid-template-columns: repeat(3, 37rem);
-  // grid-auto-rows: 37rem;
+  grid-auto-rows: 37rem;
 
   justify-content: center;
   gap: 1.5rem;
 
   @include respondMax(1250px) {
     grid-template-columns: repeat(3, 28.3%);
+    grid-auto-rows: 28.3vw;
   }
   @include respondMax(800px) {
     grid-template-columns: repeat(2, 45%);
-    & > * {
-      aspect-ratio: 0.68;
-    }
+    grid-auto-rows: 45vw;
+
+    // & > * {
+    //   aspect-ratio: 0.68;
+    // }
   }
-  & > * {
-    aspect-ratio: 1;
-  }
+  // & > * {
+  //   aspect-ratio: 1;
+  // }
 }
