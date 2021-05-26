@@ -125,38 +125,43 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
             height: 100%;
             background-color: white;
             border-right: dashed 1px $border-color;
-            mask-image: radial-gradient(
-                circle 10px at bottom right,
-                transparent 0,
-                transparent 10px,
-                black 10px
-              ),
-              radial-gradient(
-                circle 10px at top right,
-                transparent 0,
-                transparent 10px,
-                black 10px
-              );
-            -webkit-mask-composite: destination-in;
-            mask-composite: exclude;
 
-            &:lang(ar) {
-              border-right: unset;
-              border-left: dashed 1px $border-color;
+            @supports (aspect-ratio: 1) {
               mask-image: radial-gradient(
-                  circle 10px at bottom left,
+                  circle 10px at bottom right,
                   transparent 0,
                   transparent 10px,
                   black 10px
                 ),
                 radial-gradient(
-                  circle 10px at top left,
+                  circle 10px at top right,
                   transparent 0,
                   transparent 10px,
                   black 10px
                 );
               -webkit-mask-composite: destination-in;
               mask-composite: exclude;
+            }
+
+            &:lang(ar) {
+              border-right: unset;
+              border-left: dashed 1px $border-color;
+              @supports (aspect-ratio: 1) {
+                mask-image: radial-gradient(
+                    circle 10px at bottom left,
+                    transparent 0,
+                    transparent 10px,
+                    black 10px
+                  ),
+                  radial-gradient(
+                    circle 10px at top left,
+                    transparent 0,
+                    transparent 10px,
+                    black 10px
+                  );
+                -webkit-mask-composite: destination-in;
+                mask-composite: exclude;
+              }
             }
           }
 
@@ -166,23 +171,26 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
           }
         }
         &__right {
+          background-color: white;
           position: relative;
           width: 18.5%;
-          background-color: white;
-          mask-image: radial-gradient(
-              circle 10px at bottom left,
-              transparent 0,
-              transparent 10px,
-              black 10px
-            ),
-            radial-gradient(
-              circle 10px at top left,
-              transparent 0,
-              transparent 10px,
-              black 10px
-            );
-          -webkit-mask-composite: destination-in;
-          mask-composite: exclude;
+
+          @supports (aspect-ratio: 1) {
+            mask-image: radial-gradient(
+                circle 10px at bottom left,
+                transparent 0,
+                transparent 10px,
+                black 10px
+              ),
+              radial-gradient(
+                circle 10px at top left,
+                transparent 0,
+                transparent 10px,
+                black 10px
+              );
+            -webkit-mask-composite: destination-in;
+            mask-composite: exclude;
+          }
 
           display: flex;
           justify-content: center;
@@ -202,18 +210,21 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
           &:lang(ar) {
             border-left: unset;
             border-right: dashed 1px $border-color;
-            mask-image: radial-gradient(
-                circle 10px at bottom right,
-                transparent 0,
-                transparent 10px,
-                black 10px
-              ),
-              radial-gradient(
-                circle 10px at top right,
-                transparent 0,
-                transparent 10px,
-                black 10px
-              );
+
+            @supports (aspect-ratio: 1) {
+              mask-image: radial-gradient(
+                  circle 10px at bottom right,
+                  transparent 0,
+                  transparent 10px,
+                  black 10px
+                ),
+                radial-gradient(
+                  circle 10px at top right,
+                  transparent 0,
+                  transparent 10px,
+                  black 10px
+                );
+            }
           }
         }
       }
@@ -247,31 +258,7 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
             padding: 0rem;
             border-top: dashed 3px $border-color;
             border-right: unset;
-            mask-image: radial-gradient(
-                circle 10px at top right,
-                transparent 0,
-                transparent 10px,
-                black 10px
-              ),
-              radial-gradient(
-                circle 10px at top left,
-                transparent 0,
-                transparent 10px,
-                black 10px
-              );
-            -webkit-mask-composite: destination-in;
-            mask-composite: exclude;
-
-            align-items: flex-end;
-            button {
-              width: 100%;
-              height: 8rem;
-            }
-            &:lang(ar) {
-              padding: 0rem;
-              border-right: none;
-              border-left: none;
-              border-top: dashed 3px $border-color;
+            @supports (aspect-ratio: 1) {
               mask-image: radial-gradient(
                   circle 10px at top right,
                   transparent 0,
@@ -284,6 +271,35 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
                   transparent 10px,
                   black 10px
                 );
+              -webkit-mask-composite: destination-in;
+              mask-composite: exclude;
+            }
+
+            align-items: flex-end;
+            button {
+              width: 100%;
+              height: 8rem;
+            }
+            &:lang(ar) {
+              padding: 0rem;
+              border-right: none;
+              border-left: none;
+              border-top: dashed 3px $border-color;
+
+              @supports (aspect-ratio: 1) {
+                mask-image: radial-gradient(
+                    circle 10px at top right,
+                    transparent 0,
+                    transparent 10px,
+                    black 10px
+                  ),
+                  radial-gradient(
+                    circle 10px at top left,
+                    transparent 0,
+                    transparent 10px,
+                    black 10px
+                  );
+              }
             }
           }
 
@@ -318,24 +334,8 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
               height: 5.5rem;
               width: 100%;
               background-color: white;
-              mask-image: radial-gradient(
-                  circle 10px at bottom right,
-                  transparent 0,
-                  transparent 10px,
-                  black 10px
-                ),
-                radial-gradient(
-                  circle 10px at bottom left,
-                  transparent 0,
-                  transparent 10px,
-                  black 10px
-                );
-              -webkit-mask-composite: destination-in;
-              mask-composite: exclude;
 
-              &:lang(ar) {
-                border-right: none;
-                border-left: none;
+              @supports (aspect-ratio: 1) {
                 mask-image: radial-gradient(
                     circle 10px at bottom right,
                     transparent 0,
@@ -348,6 +348,27 @@ $brdr: 1px rgba(128, 128, 128, 0.288) solid;
                     transparent 10px,
                     black 10px
                   );
+                -webkit-mask-composite: destination-in;
+                mask-composite: exclude;
+              }
+
+              &:lang(ar) {
+                border-right: none;
+                border-left: none;
+                @supports (aspect-ratio: 1) {
+                  mask-image: radial-gradient(
+                      circle 10px at bottom right,
+                      transparent 0,
+                      transparent 10px,
+                      black 10px
+                    ),
+                    radial-gradient(
+                      circle 10px at bottom left,
+                      transparent 0,
+                      transparent 10px,
+                      black 10px
+                    );
+                }
               }
             }
           }
