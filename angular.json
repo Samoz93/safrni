@@ -6,7 +6,10 @@
     "safrni": {
       "projectType": "application",
       "i18n": {
-        "sourceLocale": "en-US"
+        "sourceLocale": {
+          "code": "en",
+          "baseHref": ""
+        }
       },
       "schematics": {
         "@schematics/angular:component": {
