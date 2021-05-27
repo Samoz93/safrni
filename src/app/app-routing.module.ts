@@ -6,7 +6,6 @@ import { UserProfileLandingComponent } from './pages/user/user-profile-landing/u
 import { OffersPageComponent } from './pages/offers-page/offers-page.component';
 import { BookingPageComponent } from './pages/booking/booking-page.component';
 import { TourInformationComponent } from './pages/tour-information/tour-information.component';
-import { StaticInfo } from './data/static/main-info';
 import { TourMapComponent } from './pages/tour-information/tour-map/tour-map.component';
 import { TourInformationResolver } from './data/resolvers/tour-information.resolver';
 import { MapResolver } from './data/resolvers/map.resolver';
@@ -14,7 +13,6 @@ import { HomeLandingResolver } from './data/resolvers/home-landing.resolver';
 import { OffersPageResolver } from './data/resolvers/offers-page.resolver';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { PlaygroundComponent } from './pages/playground/playground.component';
-import { environment } from 'src/environments/environment.prod';
 
 const routes: Routes = [
   {

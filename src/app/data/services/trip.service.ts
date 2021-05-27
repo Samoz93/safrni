@@ -148,7 +148,6 @@ export class TripService extends BaseService<TripModel> {
       let apolloResponse = await this.locationsGql
         .fetch({ locale: this.loc.locale, ids: ids })
         .toPromise();
-      console.log(apolloResponse);
       return apolloResponse.data.locations?.map((l: any) =>
         this.locationAdapter.adapt(l)
       );

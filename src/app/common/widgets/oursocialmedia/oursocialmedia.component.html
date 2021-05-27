@@ -1,6 +1,12 @@
 <div class="main_social" [ngClass]="{ isWhite: isWhite }">
-  <div *ngFor="let sm of socialMedia" class="main_social-info">
-    <a [href]="sm.link">
+  <div
+    socialLink
+    [type]="getType(sm.icon)"
+    [account]="sm.link"
+    *ngFor="let sm of socialMedia"
+    class="main_social-info"
+  >
+    <a>
       <img
         [ngClass]="{ small: isSmallIcons }"
         [src]="'assets/images/svgs/' + sm.icon"

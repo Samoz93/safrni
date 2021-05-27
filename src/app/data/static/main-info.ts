@@ -3,6 +3,9 @@ export class StaticInfo {
   static phoneNumber = '+90 534 661 0531';
   static email = 'saferni@emali.com';
   static defaultImage = '/assets/images/placeholder/default.jpeg';
+  static insta = 'samozsenior';
+  static facebook = 'saferni@emali.com';
+  static twitter = 'saferni@emali.com';
 
   static location = 'Istanbul - Turkey';
 
