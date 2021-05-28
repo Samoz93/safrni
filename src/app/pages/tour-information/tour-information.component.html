@@ -351,7 +351,13 @@
           </div>
           <div class="trip-card-features__row">
             <h2>{{ "various.price" | transloco }}</h2>
-            <p>{{ trip.basePrice.toString() | price }}</p>
+            <p>
+              {{
+                trip.priceData
+                  | priceCaculator: guestData
+                  | price: trip.priceData.currency
+              }}
+            </p>
           </div>
         </div>
 
