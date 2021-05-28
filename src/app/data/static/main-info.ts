@@ -4,7 +4,7 @@ export class StaticInfo {
   static email = 'saferni@emali.com';
   static defaultImage = '/assets/images/placeholder/default.jpeg';
   static insta = 'samozsenior';
-  static facebook = 'saferni@emali.com';
+  static facebook = 'Saferni-104348928523570';
   static twitter = 'saferni@emali.com';
 
   static location = 'Istanbul - Turkey';
