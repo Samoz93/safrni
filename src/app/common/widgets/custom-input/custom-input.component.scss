@@ -20,6 +20,15 @@
     &:focus {
       outline: none;
     }
+    &::placeholder {
+      font-size: 1.5rem;
+    }
+  }
+  .icon {
+    font-size: 1.5rem;
+    @include res(tab) {
+      font-size: 2rem;
+    }
   }
   input:focus + mat-icon {
     color: $accent;
