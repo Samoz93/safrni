@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { StaticInfo } from 'src/app/data/static/main-info';
 
 @Component({
   selector: 'app-oursocialmedia',
@@ -7,12 +8,16 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class OursocialmediaComponent implements OnInit {
   socialMedia = [
-    { icon: 'instagram.svg', link: 'Saferni@emali.com' },
-    { icon: 'facebook.svg', link: '90 537 695 8305' },
-    { icon: 'twitter.svg', link: 'Istanbul, Turkey' },
+    { icon: 'instagram.svg', link: StaticInfo.insta },
+    { icon: 'facebook.svg', link: StaticInfo.facebook },
+    { icon: 'twitter.svg', link: StaticInfo.twitter },
   ];
   constructor() {}
   @Input() isSmallIcons = true;
   @Input() isWhite = true;
   ngOnInit(): void {}
+
+  getType(icon: string) {
+    return icon.replace('.svg', '');
+  }
 }

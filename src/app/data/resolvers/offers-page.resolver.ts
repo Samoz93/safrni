@@ -43,7 +43,16 @@ export class OffersPageResolver implements Resolve<any> {
         tripType,
         travelType,
       });
-
+      let meta = {};
+      if (trip) {
+        const d = trip[0];
+        meta = {
+          description: d.description,
+          image: d.previewImage.url,
+          type: d.travelType,
+        };
+      }
+      this.meta.addTags(meta);
       this.splashScreenStateService.stop();
       return trip;
     } catch (error) {

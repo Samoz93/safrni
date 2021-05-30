@@ -15,17 +15,16 @@ export class PricePipe implements PipeTransform {
   // }
   constructor(private loc: LocalService) {}
   transform(pr: priceData | string, ...args: any[]): string {
-    // let basePrice;
-    // let cur;
-    // if (typeof pr == 'string') {
-    //   basePrice = pr;
-    //   cur = args[0];
-    // } else {
-    //   basePrice = pr?.basePrice;
-    //   cur = pr?.currency;
-    // }
+    let basePrice;
+    let cur;
+    if (typeof pr == 'string') {
+      basePrice = pr;
+      cur = args[0];
+    } else {
+      basePrice = pr?.basePrice;
+      cur = pr?.currency;
+    }
 
-    // return `${basePrice}${this.loc.getTranslation(`currencies.${cur}`)}`;
-    return `${pr}$`;
+    return `${basePrice}${this.loc.getTranslation(`currencies.${cur}`)}`;
   }
 }

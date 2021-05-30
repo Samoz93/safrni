@@ -78,7 +78,11 @@ export class OffersPageComponent implements OnInit {
   }
 
   openFilter() {
-    const data = this._bottomSheet.open(FilterWidgetComponent);
+    console.log('filterOptioms', this.filterOptions);
+
+    const data = this._bottomSheet.open(FilterWidgetComponent, {
+      data: this.filterOptions,
+    });
     data.afterDismissed().subscribe((d) => {
       this.onFilterChange(d);
     });

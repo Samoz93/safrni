@@ -95,7 +95,6 @@ export class TripService extends BaseService<TripModel> {
 
     const data = await this._doStuff<TripModel[]>(async () => {
       const baseUrl = urljoin(environment.api, 'queryTrips');
-      console.log('query', baseUrl, queryParams);
 
       return await this.http
         .get<any[]>(baseUrl, {
@@ -149,7 +148,6 @@ export class TripService extends BaseService<TripModel> {
       let apolloResponse = await this.locationsGql
         .fetch({ locale: this.loc.locale, ids: ids })
         .toPromise();
-      console.log(apolloResponse);
       return apolloResponse.data.locations?.map((l: any) =>
         this.locationAdapter.adapt(l)
       );

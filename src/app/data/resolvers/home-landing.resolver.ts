@@ -13,6 +13,7 @@ import { TripModel } from '../models/TripModel';
 import { MetaService } from '../services/meta.service';
 import { ErrorService } from '../services/error.service';
 import { HomeBannerService } from '../services/home.banner.service';
+import { MetaModel } from '../models/MetaModel';
 @Injectable({ providedIn: 'root' })
 export class HomeLandingResolver implements Resolve<any> {
   constructor(
@@ -44,9 +45,17 @@ export class HomeLandingResolver implements Resolve<any> {
     ];
 
     let data = await Promise.all(futureArray);
-    // this.meta.addTags({
-    //   description: data[1][0].description,
-    // });
+    let meta: MetaModel = {};
+
+    if (data && data[1] && data[1][0]) {
+      const d = data[1][0];
+      meta = {
+        description: d.description,
+        image: d.previewImage.url,
+        type: d.travelType,
+      };
+    }
+    this.meta.addTags(meta);
     this.splashScreenStateService.stop();
     return {
       cities: data[0],
