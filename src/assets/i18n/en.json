@@ -146,6 +146,8 @@
     "adjustable": "Adjustable",
     "startHotel": "{{stars}} star hotel",
     "next":"next",
-    "previous":"previous"
+    "previous":"previous",
+    "privateTour":"Private Tour",
+    "publicTour":"Public Tour"
   }
 }

@@ -97,6 +97,7 @@ import { PlaygroundComponent } from './pages/playground/playground.component';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { PhoneInputComponent } from './common/widgets/phone-input/phone-input.component';
 import { PriceCaculatorPipe } from './data/pipes/price-caculator.pipe';
+import { TravelTypePipe } from './data/pipes/travel-type.pipe';
 
 
 export function playerFactory() {
@@ -166,6 +167,7 @@ export function playerFactory() {
     PlaygroundComponent,
     PhoneInputComponent,
     PriceCaculatorPipe,
+    TravelTypePipe,
   ],
 
   imports: [

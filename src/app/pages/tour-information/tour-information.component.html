@@ -43,8 +43,8 @@
             ></app-pill>
 
             <app-pill
-              [text]="trip.travelType"
-              [iconClass]="'las la-clock'"
+              [text]="trip | travelType | transloco"
+              [iconClass]="'las la-car-side'"
             ></app-pill>
             <!-- <app-pill
               [text]="'general.peopleCount' | transloco: { count: '1-7' }"
@@ -91,6 +91,10 @@
           <app-pill
             [text]="'general.duration' | transloco: { days: trip.duration }"
             [iconClass]="'las la-clock'"
+          ></app-pill>
+          <app-pill
+            [text]="trip | travelType | transloco"
+            [iconClass]="'las la-car-side'"
           ></app-pill>
           <!-- <app-pill
             [text]="'general.peopleCount' | transloco: { count: '1-7' }"
@@ -328,6 +332,10 @@
               [text]="'general.duration' | transloco: { days: trip.duration }"
               [iconClass]="'las la-clock'"
             ></app-pill>
+            <app-pill
+              [text]="trip | travelType | transloco"
+              [iconClass]="'las la-car-side'"
+            ></app-pill>
             <!-- <app-pill
               [text]="'general.peopleCount' | transloco: { count: '1-7' }"
               [iconClass]="'las la-user-friends'"
@@ -397,6 +405,7 @@
         [price]="item.priceData"
         [duration]="item.duration"
         (click)="goToTour(item.id)"
+        [travelType]="item.travelType"
       ></app-trip-card>
     </div>
   </section>

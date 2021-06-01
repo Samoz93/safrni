@@ -141,6 +141,8 @@
     "adjustable": "قابل للتعديل",
     "startHotel": "فندق {{stars}} نجوم",
     "next":"التالي",
-    "previous":"السابق"
+    "previous":"السابق",
+    "privateTour":"رحلة خاصة",
+    "publicTour":"رحلة عامة"
   }
 }
