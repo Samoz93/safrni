@@ -76,7 +76,7 @@
     "similarTours": "Similar tours",
     "similarToursInfo": "Checkout more similar tours",
     "summary": {
-      "peopleCount": "{{children}} children and {{adults}} adults.",
+      "peopleCount": "{{adults}} adults and {{children}} children.",
       "arrivalDate": "Arrival date",
       "totalPrice": "Total price"
     },
