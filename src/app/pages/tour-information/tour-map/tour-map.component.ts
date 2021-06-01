@@ -19,6 +19,7 @@ import {
 import { AccordionClickEventData } from 'src/app/common/widgets/accordion-list/accordion-list.component';
 import { LocationModel } from 'src/app/data/models/LocationModel';
 import { TripModel } from 'src/app/data/models/TripModel';
+import { Enum_Componenttimelinetimeline_Transportationtype } from 'src/app/data/services/saferniGraphql.service';
 import { TripService } from 'src/app/data/services/trip.service';
 
 @Component({
@@ -104,16 +105,29 @@ export class TourMapComponent implements OnInit, OnDestroy {
   }
   initMapPosition() {
     this.trip.plan.forEach((dayPlan) => {
-      this.accordionItems.push(
-        new AccordionListItem(
-          dayPlan.dayLocations.map((location) => {
-            return new AccordionListItemOption(
-              location.locationId,
-              location.locationName
-            );
-          })
-        )
-      );
+      if (
+        dayPlan.transportationType ==
+          Enum_Componenttimelinetimeline_Transportationtype.Arrival ||
+        dayPlan.transportationType ==
+          Enum_Componenttimelinetimeline_Transportationtype.Departure
+      ) {
+        this.accordionItems.push(
+          new AccordionListItem([
+            new AccordionListItemOption('none', dayPlan.description ?? ''),
+          ])
+        );
+      } else {
+        this.accordionItems.push(
+          new AccordionListItem(
+            (dayPlan.dayLocations ?? []).map((location) => {
+              return new AccordionListItemOption(
+                location.locationId,
+                location.locationName
+              );
+            })
+          )
+        );
+      }
     });
 
     let queryParamLocationId =
@@ -188,11 +202,14 @@ export class TourMapComponent implements OnInit, OnDestroy {
     this.sideBarVisibility = !this.sideBarVisibility;
   }
   onLocationClicked(data: AccordionClickEventData) {
-    let locationId =
-      this.trip.plan[data.parentIndex].dayLocations[data.childIndex].locationId;
-    this.recenterMapToLocation(
-      this.planLocations.find((loc) => loc.id === locationId)!
-    );
+    let location =
+      this.trip.plan[data.parentIndex].dayLocations![data.childIndex];
+
+    if (location) {
+      this.recenterMapToLocation(
+        this.planLocations.find((loc) => loc.id === location.locationId)!
+      );
+    }
   }
   toggleMobileSheet() {
     this.mobileSheetExpanded = !this.mobileSheetExpanded;
