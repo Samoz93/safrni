@@ -10,9 +10,9 @@ export class FeatureModel {
 export class FeatureModelAdapter implements Adapter<FeatureModel> {
   adapt(item: any): FeatureModel {
     return new FeatureModel(
-      item.feature.name,
-      item.feature.info,
-      item.included
+      item.feature?.name,
+      item.feature?.info,
+      item?.included
     );
   }
 }

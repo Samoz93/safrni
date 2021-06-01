@@ -47,7 +47,6 @@ export class TripService extends BaseService<TripModel> {
     query: FilterOptionsModel = {
       maxPrice: 0,
       minPrice: 0,
-      travelType: Enum_Trips_Traveltype.Public,
       tripType: Enum_Trips_Trip_Type.Touristic,
       locale: this.loc.locale,
       limit: 20,
@@ -95,6 +94,7 @@ export class TripService extends BaseService<TripModel> {
 
     const data = await this._doStuff<TripModel[]>(async () => {
       const baseUrl = urljoin(environment.api, 'queryTrips');
+      console.log(baseUrl, queryParams);
 
       return await this.http
         .get<any[]>(baseUrl, {
