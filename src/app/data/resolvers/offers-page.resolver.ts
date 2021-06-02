@@ -35,6 +35,7 @@ export class OffersPageResolver implements Resolve<any> {
       let minPrice = route.queryParams['minPrice'] ?? 0;
       let tripType = route.queryParams['tripType'];
       let travelType = route.queryParams['travelType'];
+      console.log(travelType);
 
       let trip = await this.tripService.queryTrips({
         cities,
@@ -47,9 +48,9 @@ export class OffersPageResolver implements Resolve<any> {
       if (trip) {
         const d = trip[0];
         meta = {
-          description: d.description,
-          image: d.previewImage.url,
-          type: d.travelType,
+          description: d?.description,
+          image: d?.previewImage?.url,
+          type: d?.travelType,
         };
       }
       this.meta.addTags(meta);

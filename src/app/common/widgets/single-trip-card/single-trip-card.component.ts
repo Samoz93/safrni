@@ -43,7 +43,6 @@ export class SingleTripCardComponent implements OnInit {
         tripType: Enum_Trips_Trip_Type.Touristic,
         maxPrice: 0,
         minPrice: 0,
-        travelType: Enum_Trips_Traveltype.Public,
       };
       this.router.navigate([StaticInfo.offersRoute], {
         queryParams: params,
