@@ -33,7 +33,9 @@
     .slide {
       border-radius: 15px;
       overflow: hidden;
-      img {
+      .image {
+        height: 100%;
+        object-fit: cover;
       }
     }
   }

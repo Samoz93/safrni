@@ -514,4 +514,19 @@ export class TourMapComponent implements OnInit, OnDestroy {
       ],
     },
   ];
+
+  //full screen
+  get imageListObject() {
+    return this.sidebarLocation.images.map((f) => {
+      return {
+        image: f.url,
+        thumbImage: f.formats?.thumbnail?.url,
+        title: this.sidebarLocation.name,
+        alt: this.sidebarLocation.desc,
+      };
+    });
+  }
+
+  //ExpandedSection
+  showFlag: boolean = false;
 }

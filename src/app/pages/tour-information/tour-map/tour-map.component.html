@@ -1,3 +1,11 @@
+<ng-image-fullscreen-view
+  class="image"
+  [images]="imageListObject"
+  [imageIndex]="selectedImageIndex"
+  [show]="showFlag"
+  (close)="showFlag = false"
+></ng-image-fullscreen-view>
+
 <div class="map-box" #overlayContainer>
   <agm-map
     #agmMap
@@ -77,6 +85,7 @@
       <div class="side-information-bar-content">
         <div class="side-information-bar-content__header">
           <img
+            (click)="showFlag = true"
             src="{{ sidebarLocation.images[selectedImageIndex] | serverimage }}"
           />
         </div>

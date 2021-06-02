@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ImageModel } from 'src/app/data/models/ImageModel';
+import { MetaService } from 'src/app/data/services/meta.service';
 
 @Component({
   selector: 'app-horizontal-listview',
@@ -9,9 +10,10 @@ import { ImageModel } from 'src/app/data/models/ImageModel';
 export class HorizontalListviewComponent implements OnInit {
   currentSwiperIndex: number = 0;
   @Input() images: string[] | ImageModel[];
+
   @Output() itemClicked = new EventEmitter<number>();
 
-  constructor() {}
+  constructor(private meta: MetaService) {}
 
   ngOnInit(): void {}
 
