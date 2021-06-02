@@ -76,7 +76,7 @@
     "similarTours": "Similar tours",
     "similarToursInfo": "Checkout more similar tours",
     "summary": {
-      "peopleCount": "{{children}} children and {{adults}} adults.",
+      "peopleCount": "{{adults}} adults and {{children}} children.",
       "arrivalDate": "Arrival date",
       "totalPrice": "Total price"
     },
@@ -146,6 +146,8 @@
     "adjustable": "Adjustable",
     "startHotel": "{{stars}} star hotel",
     "next":"next",
-    "previous":"previous"
+    "previous":"previous",
+    "privateTour":"Private Tour",
+    "publicTour":"Public Tour"
   }
 }

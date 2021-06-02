@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Adapter } from '../adapters/adapter';
 import { priceData } from '../pipes/price-caculator.pipe';
 import {
+  Enum_Componenttimelinetimeline_Transportationtype,
   Enum_Trips_Currency,
   Enum_Trips_Traveltype,
   Enum_Trips_Trip_Type,
@@ -18,7 +19,7 @@ export class TripModel {
   public get allLocationsIds(): string[] {
     let ids: string[] = [];
     this.plan.forEach((plan) => {
-      ids.push(...plan.dayLocations.map((loc) => loc.locationId));
+      ids.push(...(plan.dayLocations ?? []).map((loc) => loc.locationId));
     });
 
     return ids;
@@ -85,16 +86,25 @@ export class TripModelAdapter implements Adapter<TripModel> {
 }
 
 export class TripDayPlan {
-  constructor(public day: number, public dayLocations: PlanLocation[]) {}
+  constructor(
+    public day: number,
+    public transportationType: Enum_Componenttimelinetimeline_Transportationtype,
+    public description?: string,
+    public dayLocations?: PlanLocation[],
+    public travelTo?: CityModel
+  ) {}
 }
 export class TripDayPlanAdapter implements Adapter<TripDayPlan> {
   adapt(item: any): TripDayPlan {
     return new TripDayPlan(
       item.day,
+      item.transportationType,
+      item.description,
       item.locations.map((l: any) => {
         //TODO some of the locations has no cities
         return new PlanLocation(l.id, l?.city?.id, l.name);
-      })
+      }),
+      item.travelTo
     );
   }
 }

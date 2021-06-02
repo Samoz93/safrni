@@ -366,12 +366,12 @@ export type ComponentFeatureFeature = {
   id: Scalars['ID'];
   _id: Scalars['ID'];
   feature?: Maybe<Feature>;
-  included: Scalars['Boolean'];
+  included?: Maybe<Scalars['Boolean']>;
 };
 
 export type ComponentFeatureFeatureInput = {
   feature?: Maybe<Scalars['ID']>;
-  included: Scalars['Boolean'];
+  included?: Maybe<Scalars['Boolean']>;
 };
 
 export type ComponentPricePrice = {
@@ -399,6 +399,8 @@ export type ComponentTimelineTimeline = {
   _id: Scalars['ID'];
   day: Scalars['Int'];
   description?: Maybe<Scalars['String']>;
+  travelTo?: Maybe<City>;
+  transportationType?: Maybe<Enum_Componenttimelinetimeline_Transportationtype>;
   locations?: Maybe<Array<Maybe<Location>>>;
 };
 
@@ -414,6 +416,8 @@ export type ComponentTimelineTimelineInput = {
   day: Scalars['Int'];
   description?: Maybe<Scalars['String']>;
   locations?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  travelTo?: Maybe<Scalars['ID']>;
+  transportationType?: Maybe<Enum_Componenttimelinetimeline_Transportationtype>;
 };
 
 
@@ -426,6 +430,13 @@ export enum Enum_Booking_Currency {
 export enum Enum_Componentpriceprice_Currency {
   Dollar = 'dollar',
   Lira = 'lira'
+}
+
+export enum Enum_Componenttimelinetimeline_Transportationtype {
+  Arrival = 'arrival',
+  Departure = 'departure',
+  BetweenCities = 'betweenCities',
+  WithinCity = 'withinCity'
 }
 
 export enum Enum_Trips_Currency {
@@ -1866,13 +1877,13 @@ export type TripInput = {
   partner?: Maybe<Scalars['ID']>;
   currency?: Maybe<Enum_Trips_Currency>;
   city?: Maybe<Scalars['ID']>;
-  features?: Maybe<Array<Maybe<ComponentFeatureFeatureInput>>>;
+  features?: Maybe<Array<ComponentFeatureFeatureInput>>;
   basePrice: Scalars['Int'];
   basePeopleCount: Scalars['Int'];
   discount?: Maybe<Scalars['Float']>;
   travelType: Enum_Trips_Traveltype;
   hotel?: Maybe<Scalars['ID']>;
-  plan?: Maybe<Array<Maybe<ComponentTimelineTimelineInput>>>;
+  plan?: Maybe<Array<ComponentTimelineTimelineInput>>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   locale?: Maybe<Scalars['String']>;
   published_at?: Maybe<Scalars['DateTime']>;
@@ -2828,6 +2839,8 @@ export type EditComponentTimelineTimelineInput = {
   day?: Maybe<Scalars['Int']>;
   description?: Maybe<Scalars['String']>;
   locations?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  travelTo?: Maybe<Scalars['ID']>;
+  transportationType?: Maybe<Enum_Componenttimelinetimeline_Transportationtype>;
 };
 
 export type EditFeatureInput = {
@@ -3297,7 +3310,7 @@ export type TripInfoFragment = (
     & Pick<Hotels, 'id' | 'name' | 'url' | 'stars'>
   )>, plan?: Maybe<Array<Maybe<(
     { __typename?: 'ComponentTimelineTimeline' }
-    & Pick<ComponentTimelineTimeline, 'day'>
+    & Pick<ComponentTimelineTimeline, 'day' | 'transportationType' | 'description'>
     & { locations?: Maybe<Array<Maybe<(
       { __typename?: 'Location' }
       & Pick<Location, 'id' | 'name'>
@@ -3305,7 +3318,10 @@ export type TripInfoFragment = (
         { __typename?: 'City' }
         & Pick<City, 'id'>
       )> }
-    )>>> }
+    )>>>, travelTo?: Maybe<(
+      { __typename?: 'City' }
+      & Pick<City, 'id' | 'name'>
+    )> }
   )>>>, previewImage?: Maybe<(
     { __typename?: 'UploadFile' }
     & Pick<UploadFile, 'id' | 'width' | 'height' | 'url' | 'formats'>
@@ -3370,6 +3386,12 @@ export const TripInfoFragmentDoc = gql`
         id
       }
     }
+    transportationType
+    travelTo {
+      id
+      name
+    }
+    description
   }
   previewImage {
     id

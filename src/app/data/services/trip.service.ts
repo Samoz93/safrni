@@ -113,9 +113,11 @@ export class TripService extends BaseService<TripModel> {
   async getRelatedTrips(to: TripModel): Promise<TripModel[]> {
     let cityIds: string[] = [];
     to.plan.forEach((p) => {
-      p.dayLocations.forEach((l) => {
-        cityIds.push(l.cityId);
-      });
+      if (p.dayLocations) {
+        p.dayLocations.forEach((l) => {
+          cityIds.push(l.cityId);
+        });
+      }
     });
     let result = await this.queryTrips({
       limit: 8,

@@ -45,6 +45,12 @@ fragment tripInfo on Trips {
         id
       }
     }
+    transportationType
+    travelTo {
+      id
+      name
+    }
+    description
   }
   previewImage {
     id

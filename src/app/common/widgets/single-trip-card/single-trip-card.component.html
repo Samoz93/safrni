@@ -8,13 +8,13 @@
   <div *ngIf="isOffer" class="single-card_data">
     <div class="single-card_data_item">
       <div class="pill">
-        <mat-icon class="icon price">{{ icons.price }}</mat-icon>
+        <i class="las la-tags"></i>
         <p class="text">{{ price | price }}</p>
       </div>
     </div>
     <div class="single-card_data_item">
       <div class="pill">
-        <mat-icon class="icon">{{ icons.calendar }}</mat-icon>
+        <i class="las la-clock"></i>
         <p
           class="text"
           transloco="general.duration"
@@ -24,12 +24,10 @@
     </div>
     <div class="single-card_data_item">
       <div class="pill">
-        <mat-icon class="icon">{{ icons.profile }}</mat-icon>
-        <p
-          class="text"
-          transloco="general.peopleCount"
-          [translocoParams]="{ count: '1-7' }"
-        ></p>
+        <i class="las la-car-side"></i>
+        <p class="text">
+          {{ getTravelType() }}
+        </p>
       </div>
     </div>
   </div>

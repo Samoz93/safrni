@@ -51,8 +51,8 @@ export class TourInformationComponent implements OnInit, AfterViewChecked {
       phone: new FormControl('', [Validators.required]),
       email: new FormControl(null, [Validators.required, Validators.email]),
       arrivalDate: new FormControl(null, [Validators.required]),
-      child: new FormControl(null),
-      adult: new FormControl(null),
+      child: new FormControl(0),
+      adult: new FormControl(1),
       message: new FormControl(null),
     });
     this.activatedRoute.data.subscribe(async (data) => {

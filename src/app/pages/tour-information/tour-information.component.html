@@ -41,10 +41,15 @@
               [text]="'general.duration' | transloco: { days: trip.duration }"
               [iconClass]="'las la-clock'"
             ></app-pill>
+
             <app-pill
+              [text]="trip | travelType | transloco"
+              [iconClass]="'las la-car-side'"
+            ></app-pill>
+            <!-- <app-pill
               [text]="'general.peopleCount' | transloco: { count: '1-7' }"
               [iconClass]="'las la-user-friends'"
-            ></app-pill>
+            ></app-pill> -->
 
             <app-pill
               [text]="'general.adjustable' | transloco"
@@ -88,9 +93,13 @@
             [iconClass]="'las la-clock'"
           ></app-pill>
           <app-pill
+            [text]="trip | travelType | transloco"
+            [iconClass]="'las la-car-side'"
+          ></app-pill>
+          <!-- <app-pill
             [text]="'general.peopleCount' | transloco: { count: '1-7' }"
             [iconClass]="'las la-user-friends'"
-          ></app-pill>
+          ></app-pill> -->
           <!-- <app-pill
             [text]="trip.basePrice.toString() | price"
             [iconClass]="'las la-tag'"
@@ -269,7 +278,10 @@
               <li>{{ trip.name }}</li>
               <li
                 transloco="tour-info.summary.peopleCount"
-                [translocoParams]="{ children: '5', adults: '10' }"
+                [translocoParams]="{
+                  children: bookForm.get('child')?.value,
+                  adults: bookForm.get('adult')?.value
+                }"
               ></li>
               <li *ngIf="bookForm.get('arrivalDate')?.value">
                 {{ "tour-info.summary.arrivalDate" | transloco }}:
@@ -321,9 +333,13 @@
               [iconClass]="'las la-clock'"
             ></app-pill>
             <app-pill
+              [text]="trip | travelType | transloco"
+              [iconClass]="'las la-car-side'"
+            ></app-pill>
+            <!-- <app-pill
               [text]="'general.peopleCount' | transloco: { count: '1-7' }"
               [iconClass]="'las la-user-friends'"
-            ></app-pill>
+            ></app-pill> -->
 
             <app-pill
               [text]="'general.adjustable' | transloco"
@@ -389,6 +405,7 @@
         [price]="item.priceData"
         [duration]="item.duration"
         (click)="goToTour(item.id)"
+        [travelType]="item.travelType"
       ></app-trip-card>
     </div>
   </section>
