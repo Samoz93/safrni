@@ -20,7 +20,6 @@ export class OffersPageResolver implements Resolve<any> {
     private splashScreenStateService: SplashScreenStateService,
     private tripService: TripService,
     private meta: MetaService,
-    private loc: LocalService,
     private router: Router,
     private _errSer: ErrorService
   ) {}
