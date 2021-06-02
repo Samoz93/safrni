@@ -21,12 +21,12 @@ export class CityModel {
 export class CityModelAdapter implements Adapter<CityModel> {
   adapt(item: any): CityModel {
     return new CityModel(
-      item.id,
-      item.name,
-      item.description,
-      item.locale,
+      item?.id,
+      item?.name,
+      item?.description,
+      item?.locale,
       new ImageModelAdapter().adapt(item?.image),
-      new StrapiLocalizationsAdapter().adapt(item.localizations)
+      new StrapiLocalizationsAdapter().adapt(item?.localizations)
     );
   }
 }

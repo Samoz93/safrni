@@ -19,6 +19,7 @@ import {
 import { AccordionClickEventData } from 'src/app/common/widgets/accordion-list/accordion-list.component';
 import { LocationModel } from 'src/app/data/models/LocationModel';
 import { TripModel } from 'src/app/data/models/TripModel';
+import { LocalService } from 'src/app/data/services/local.service';
 import { Enum_Componenttimelinetimeline_Transportationtype } from 'src/app/data/services/saferniGraphql.service';
 import { TripService } from 'src/app/data/services/trip.service';
 
@@ -33,7 +34,8 @@ export class TourMapComponent implements OnInit, OnDestroy {
     private activeRoute: ActivatedRoute,
     private ren: Renderer2,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private loc: LocalService
   ) {}
 
   @ViewChildren('overlayContainer') overlayContainer: QueryList<ElementRef>;
@@ -105,16 +107,37 @@ export class TourMapComponent implements OnInit, OnDestroy {
   }
   initMapPosition() {
     this.trip.plan.forEach((dayPlan) => {
-      if (
+      if (dayPlan.restDay) {
+        this.accordionItems.push(
+          new AccordionListItem([
+            new AccordionListItemOption(
+              'none',
+              this.loc.getTranslation(`Transportationtype.restDay`)
+            ),
+          ])
+        );
+      } else if (
         dayPlan.transportationType ==
           Enum_Componenttimelinetimeline_Transportationtype.Arrival ||
         dayPlan.transportationType ==
-          Enum_Componenttimelinetimeline_Transportationtype.Departure
+          Enum_Componenttimelinetimeline_Transportationtype.Departure ||
+        dayPlan.transportationType ==
+          Enum_Componenttimelinetimeline_Transportationtype.BetweenCities
       ) {
+        let str = this.loc.getTranslation(
+          `Transportationtype.${dayPlan.transportationType}`
+        );
+        if (
+          dayPlan.transportationType ==
+          Enum_Componenttimelinetimeline_Transportationtype.BetweenCities
+        ) {
+          str = this.loc.getTranslation(
+            `Transportationtype.${dayPlan.transportationType}`,
+            { var: dayPlan.travelTo?.name ?? '' }
+          );
+        }
         this.accordionItems.push(
-          new AccordionListItem([
-            new AccordionListItemOption('none', dayPlan.description ?? ''),
-          ])
+          new AccordionListItem([new AccordionListItemOption('none', str)])
         );
       } else {
         this.accordionItems.push(

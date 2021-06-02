@@ -91,7 +91,9 @@ export class TripDayPlan {
     public transportationType: Enum_Componenttimelinetimeline_Transportationtype,
     public description?: string,
     public dayLocations?: PlanLocation[],
-    public travelTo?: CityModel
+    //TODO something fishy going here
+    public travelTo?: CityModel,
+    public restDay?: boolean
   ) {}
 }
 export class TripDayPlanAdapter implements Adapter<TripDayPlan> {
@@ -104,7 +106,8 @@ export class TripDayPlanAdapter implements Adapter<TripDayPlan> {
         //TODO some of the locations has no cities
         return new PlanLocation(l.id, l?.city?.id, l.name);
       }),
-      item.travelTo
+      item.travelTo,
+      item.restDay
     );
   }
 }
