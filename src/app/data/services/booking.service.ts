@@ -18,6 +18,7 @@ export class BookingService {
     currency: Enum_Booking_Currency,
     phone: string,
     arrivalDate: Date,
+    email:string,
     message?: string
   ): Promise<boolean> {
     console.log();
@@ -33,6 +34,7 @@ export class BookingService {
         phone: phone,
         arrivalDate: formatDate(arrivalDate, 'yyyy-MM-dd', 'en'),
         message: message,
+        email: email
       })
       .toPromise();
 

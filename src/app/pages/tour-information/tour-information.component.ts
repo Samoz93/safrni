@@ -84,6 +84,7 @@ export class TourInformationComponent implements OnInit, AfterViewChecked {
         Enum_Booking_Currency.Dollar,
         this.bookForm.get('phone')?.value,
         this.bookForm.get('arrivalDate')?.value,
+        this.bookForm.get('email')?.value,
         this.bookForm.get('message')?.value
       );
 
