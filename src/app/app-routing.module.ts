@@ -13,6 +13,7 @@ import { HomeLandingResolver } from './data/resolvers/home-landing.resolver';
 import { OffersPageResolver } from './data/resolvers/offers-page.resolver';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { PlaygroundComponent } from './pages/playground/playground.component';
+import { ManageBookingComponent } from './pages/manage-booking/manage-booking.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,10 @@ const routes: Routes = [
   {
     path: 'playground',
     component: PlaygroundComponent,
+  },
+  {
+    path: 'manage-booking',
+    component: ManageBookingComponent,
   },
 ];
 
