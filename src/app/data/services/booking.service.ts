@@ -25,6 +25,8 @@ export class BookingService {
     email: string,
     message?: string
   ): Promise<boolean> {
+   
+
     let result = await this.bookingGql
       .mutate({
         tripId: tripId,
@@ -34,7 +36,7 @@ export class BookingService {
         discount: discount,
         currency: currency,
         phone: phone,
-        arrivalDate: '2020-02-02',
+        arrivalDate: formatDate(arrivalDate, 'yyyy-MM-dd', 'en'),
         message: message,
         email: email,
         language: this.loc.locale,

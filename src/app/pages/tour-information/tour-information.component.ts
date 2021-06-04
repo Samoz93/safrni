@@ -82,7 +82,7 @@ export class TourInformationComponent implements OnInit, AfterViewChecked {
         this.trip.basePeopleCount,
         this.trip.discount,
         Enum_Booking_Currency.Dollar,
-        this.bookForm.get('phone')?.value,
+        this.bookForm.get('phone')?.value.internationalNumber,
         this.bookForm.get('arrivalDate')?.value,
         this.bookForm.get('email')?.value,
         this.bookForm.get('message')?.value
