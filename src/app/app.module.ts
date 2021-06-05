@@ -100,6 +100,7 @@ import { PriceCaculatorPipe } from './data/pipes/price-caculator.pipe';
 import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
 import { TravelTypePipe } from './data/pipes/travel-type.pipe';
 import { ManageBookingComponent } from './pages/manage-booking/manage-booking.component';
+import { E404Component } from './pages/e404/e404.component';
 
 
 export function playerFactory() {
@@ -172,6 +173,8 @@ export function playerFactory() {
     TravelTypePipe,
    
     ManageBookingComponent,
+   
+    E404Component,
   ],
 
   imports: [

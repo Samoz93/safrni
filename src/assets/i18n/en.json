@@ -148,7 +148,8 @@
     "next": "next",
     "previous": "previous",
     "privateTour": "Private Tour",
-    "publicTour": "Public Tour"
+    "publicTour": "Public Tour",
+    "pageDoesNotExists":"This page does not exists"
   },
   "Transportationtype": {
     "arrival": "Arrival",
