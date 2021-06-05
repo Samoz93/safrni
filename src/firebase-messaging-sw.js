@@ -1,4 +1,3 @@
-console.log("hi");
 try {
 importScripts('https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js');
 importScripts('https://www.gstatic.com/firebasejs/8.6.1/firebase-messaging.js');
@@ -19,7 +18,6 @@ const firebaseApp = firebase.initializeApp({
 // Retrieve an instance of Firebase Messaging so that it can handle background
 // messages.
 const messaging = firebase.messaging();
-console.log("evverything is done");
 
 
 } catch (error) {

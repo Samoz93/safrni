@@ -61,7 +61,6 @@ export class LoginComponent implements OnInit {
   // }
   submitForm() {
     if (!this.form.valid) return;
-    //TODO submit form based on the type of the page
     console.log(this.form.value);
   }
   getError(ctrlName: string) {

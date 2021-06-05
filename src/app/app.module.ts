@@ -70,7 +70,7 @@ import { CustomTextareaComponent } from './common/widgets/custom-textarea/custom
 import { HorizontalListviewComponent } from './common/widgets/horizontal-listview/horizontal-listview.component';
 import { TranslocoRootModule } from './transloco/transloco-root.module';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { MatButton, MatButtonModule } from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NocontentComponent } from './common/widgets/loader/nocontent/nocontent.component';

@@ -9,13 +9,16 @@ export class HomeBannerService {
     private imageAdapter: ImageModelAdapter
   ) {}
 
+  images: string[] = [];
   async getCarouselImages() {
+    if (this.images.length > 0) return this.images;
     let apolloData = await this.homeBannerGql.fetch().toPromise();
 
-    return apolloData.data.homeBanner?.images?.map(
+    const data = apolloData.data.homeBanner?.images?.map(
       (image) => this.imageAdapter.adapt(image).url
     );
-
+    if (data) this.images.push(...data);
+    return this.images;
     // return apolloData;
     // return this.homeBannerGql.fetch().pipe(
     //   map((apolloRes) => {
