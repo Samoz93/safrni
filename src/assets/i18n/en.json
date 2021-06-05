@@ -84,7 +84,7 @@
     "departure": "Departure",
     "departureTime": "Departure Time",
     "accomidation": "Accomidation",
-    "bookingSummary":"Booking Summary"
+    "bookingSummary": "Booking Summary"
   },
   "currencies": {
     "dollar": "{{ var }} $",
@@ -145,9 +145,15 @@
     "accomidation": "Accomidation",
     "adjustable": "Adjustable",
     "startHotel": "{{stars}} star hotel",
-    "next":"next",
-    "previous":"previous",
-    "privateTour":"Private Tour",
-    "publicTour":"Public Tour"
+    "next": "next",
+    "previous": "previous",
+    "privateTour": "Private Tour",
+    "publicTour": "Public Tour"
+  },
+  "Transportationtype": {
+    "arrival": "Arrival",
+    "departure": "Departure",
+    "betweenCities": "Traveling to {{var}}",
+    "restDay": "Rest Day"
   }
 }

@@ -31,4 +31,8 @@ export class MetaService {
       ...allLocales,
     ]);
   }
+
+  get metaTitle() {
+    return this.meta.getTags('og:title');
+  }
 }

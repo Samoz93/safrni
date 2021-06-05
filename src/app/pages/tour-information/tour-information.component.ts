@@ -57,7 +57,7 @@ export class TourInformationComponent implements OnInit, AfterViewChecked {
     });
     this.activatedRoute.data.subscribe(async (data) => {
       this.trip = data.dataMap.trip;
-      this.planLocations = data.dataMap.locations;
+      this.planLocations = data.dataMap.locations ?? [];
       this.relatedTrips = await this.tripService.getRelatedTrips(this.trip);
       this.relatedTrips = this.relatedTrips.filter(
         (t) => t.id !== this.trip.id
@@ -82,8 +82,9 @@ export class TourInformationComponent implements OnInit, AfterViewChecked {
         this.trip.basePeopleCount,
         this.trip.discount,
         Enum_Booking_Currency.Dollar,
-        this.bookForm.get('phone')?.value,
+        this.bookForm.get('phone')?.value.internationalNumber,
         this.bookForm.get('arrivalDate')?.value,
+        this.bookForm.get('email')?.value,
         this.bookForm.get('message')?.value
       );
 
@@ -99,10 +100,10 @@ export class TourInformationComponent implements OnInit, AfterViewChecked {
   }
 
   getCarouselImages(): string[] {
-    return this.planLocations.map((l) => l.images[0].url);
+    return this.planLocations?.map((l) => l.images[0].url) ?? [];
   }
   getCarouselTexts(): string[] {
-    return this.planLocations.map((l) => l.name);
+    return this.planLocations?.map((l) => l.name) ?? [];
   }
   goToTour(id: string) {
     this.router.navigate(['/tours', id]);
@@ -136,7 +137,8 @@ export class TourInformationComponent implements OnInit, AfterViewChecked {
 
     if (
       dir &&
-      this.placesSwiperIndex + 1 < Math.ceil(this.planLocations.length / 4)
+      this.placesSwiperIndex + 1 <
+        Math.ceil((this.planLocations?.length ?? 0) / 4)
     ) {
       this.placesSwiperIndex++;
     } else if (!dir && this.placesSwiperIndex > 0) {

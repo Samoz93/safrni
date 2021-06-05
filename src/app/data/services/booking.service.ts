@@ -1,5 +1,6 @@
 import { formatDate } from '@angular/common';
 import { Injectable } from '@angular/core';
+import { LocalService } from './local.service';
 import {
   CreateBookingQueryGQL,
   Enum_Booking_Currency,
@@ -7,7 +8,10 @@ import {
 
 @Injectable({ providedIn: 'root' })
 export class BookingService {
-  constructor(private bookingGql: CreateBookingQueryGQL) {}
+  constructor(
+    private bookingGql: CreateBookingQueryGQL,
+    private loc: LocalService
+  ) {}
 
   async createBooking(
     tripId: string,
@@ -18,9 +22,10 @@ export class BookingService {
     currency: Enum_Booking_Currency,
     phone: string,
     arrivalDate: Date,
+    email: string,
     message?: string
   ): Promise<boolean> {
-    console.log();
+   
 
     let result = await this.bookingGql
       .mutate({
@@ -33,6 +38,8 @@ export class BookingService {
         phone: phone,
         arrivalDate: formatDate(arrivalDate, 'yyyy-MM-dd', 'en'),
         message: message,
+        email: email,
+        language: this.loc.locale,
       })
       .toPromise();
 

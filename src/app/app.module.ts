@@ -97,9 +97,9 @@ import { PlaygroundComponent } from './pages/playground/playground.component';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { PhoneInputComponent } from './common/widgets/phone-input/phone-input.component';
 import { PriceCaculatorPipe } from './data/pipes/price-caculator.pipe';
+import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
 import { TravelTypePipe } from './data/pipes/travel-type.pipe';
 import { ManageBookingComponent } from './pages/manage-booking/manage-booking.component';
-
 
 export function playerFactory() {
   return player;
@@ -206,8 +206,8 @@ export function playerFactory() {
     AngularFireMessagingModule,
     MatSnackBarModule,
     MatRadioModule,
-    NgxIntlTelInputModule
- 
+    NgxIntlTelInputModule,
+    NgImageFullscreenViewModule,
   ],
   providers: [
     ScreenTrackingService,

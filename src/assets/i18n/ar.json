@@ -81,7 +81,7 @@
       "arrivalDate": "تاريخ القدوم",
       "totalPrice": "السعر الاجمالي"
     },
-    "bookingSummary":"ملخص الحجز"
+    "bookingSummary": "ملخص الحجز"
   },
   "currencies": {
     "dollar": "{{ var }} $",
@@ -140,9 +140,16 @@
     "accomidation": "الأقامة",
     "adjustable": "قابل للتعديل",
     "startHotel": "فندق {{stars}} نجوم",
-    "next":"التالي",
-    "previous":"السابق",
-    "privateTour":"رحلة خاصة",
-    "publicTour":"رحلة عامة"
+    "next": "التالي",
+    "previous": "السابق",
+    "privateTour": "رحلة خاصة",
+    "publicTour": "رحلة عامة"
+  },
+
+  "Transportationtype": {
+    "arrival": "الوصول",
+    "departure": "الرحيل",
+    "betweenCities": "السفر إلى  {{var}}",
+    "restDay": "يوم راحة"
   }
 }
