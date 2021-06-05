@@ -16,14 +16,12 @@ export class ManageBookingComponent implements OnInit {
   bookingId: string;
   operation: 'cancel' | 'confirm';
   loading = false;
-  
-  ngOnInit(): void {
-    this.operation = this.activatedRoute.snapshot.data.manageBookingData.type;
-  }
-
   options = {
     autoplay: true,
     loop: 0,
     path: '../../../../assets/animation/booking_submit_animation2.json',
   };
+  ngOnInit(): void {
+    this.operation = this.activatedRoute.snapshot.data.manageBookingData.type;
+  }
 }

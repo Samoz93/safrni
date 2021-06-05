@@ -5,7 +5,6 @@
   min-height: 100vh;
   &__content {
     width: 100rem;
-    background-color: lightgrey;
 
     display: flex;
     flex-direction: column;
@@ -17,6 +16,27 @@
     .animation {
       width: 20rem;
       height: 20rem;
+    }
+
+    .operation-title {
+      h2 {
+        font-size: 3rem;
+      }
+    }
+    .operation-description {
+      margin-top: 2rem;
+      p {
+        font-size: 1.5rem;
+        color: #757575;
+        text-align: center;
+      }
+    }
+    button {
+      margin-top: 3rem;
+      p {
+        font-size: 1.5rem;
+        text-align: center;
+      }
     }
   }
 }
