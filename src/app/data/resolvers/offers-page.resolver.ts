@@ -34,15 +34,18 @@ export class OffersPageResolver implements Resolve<any> {
       let minPrice = route.queryParams['minPrice'] ?? 0;
       let tripType = route.queryParams['tripType'];
       let travelType = route.queryParams['travelType'];
-      console.log(travelType);
+      const isDefault =
+        !travelType && !tripType && this.tripService.data.length > 0;
 
-      let trip = await this.tripService.queryTrips({
-        cities,
-        maxPrice,
-        minPrice,
-        tripType,
-        travelType,
-      });
+      let trip = isDefault
+        ? this.tripService.data
+        : await this.tripService.queryTrips({
+            cities,
+            maxPrice,
+            minPrice,
+            tripType,
+            travelType,
+          });
       let meta = {};
       if (trip) {
         const d = trip[0];

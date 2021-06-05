@@ -7,7 +7,10 @@ import { SnackService } from './snack.service';
   providedIn: 'root',
 })
 export class MessagingService {
-  constructor(private _ser: AngularFireMessaging, _snackBar: SnackService) {
+  constructor(
+    private _ser: AngularFireMessaging,
+    private _snackBar: SnackService
+  ) {
     _ser.onMessage((f) => {
       const str = `${f?.notification?.title} ${f?.notification?.body}`;
       _snackBar.showSnack(str, snackType.info);
@@ -17,7 +20,7 @@ export class MessagingService {
   askForPermission() {
     this._ser.requestPermission.subscribe(
       (p) => {
-        console.log('per', p);
+        // this._snackBar.showSnack("Thanks for giving the permissions")
       },
       (err) => {
         //nothing to do

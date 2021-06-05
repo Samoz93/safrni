@@ -5,8 +5,6 @@ import { map } from 'rxjs/operators';
 import { BaseService } from '../services/base.service';
 import { CitiesGQL, GetLocalizedCityGQL } from './saferniGraphql.service';
 import { LocalService } from './local.service';
-import { MatDialog } from '@angular/material/dialog';
-import { ErrorDlgComponent } from 'src/app/common/widgets/error-dlg/error-dlg.component';
 import { ErrorService } from './error.service';
 
 @Injectable({
@@ -22,10 +20,10 @@ export class CityService extends BaseService<CityModel> {
   ) {
     super(errSer);
   }
-  get landingObservable$(): Observable<CityModel[]> {
-    return this.data$.pipe(map((f) => f.slice(0, 7)));
-  }
   async init(): Promise<CityModel[]> {
+    if (this.data.length > 0) {
+      return this.data;
+    }
     let data = await this.citiesGql
       .fetch({ locale: this.loc.locale })
       .toPromise();

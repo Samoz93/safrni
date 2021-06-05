@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Params } from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment.prod';
 import urljoin from 'url-join';
 import { FilterOptionsModel } from '../models/filterOptionModlel';
@@ -12,7 +11,6 @@ import { BaseService } from './base.service';
 import { ErrorService } from './error.service';
 import { LocalService } from './local.service';
 import {
-  Enum_Trips_Traveltype,
   Enum_Trips_Trip_Type,
   GetLocalizedTripGQL,
   GetLocationsGQL,
@@ -36,11 +34,11 @@ export class TripService extends BaseService<TripModel> {
     super(errSer);
   }
 
-  get landingObservable$(): Observable<TripModel[]> {
-    return this.data$.pipe(map((f) => f.slice(0, 7)));
-  }
   async init(): Promise<TripModel[]> {
-    return await this.queryTrips();
+    if (this.data.length > 0) return this.data;
+    const data = await this.queryTrips();
+    this.prepareData(data);
+    return data;
   }
 
   async queryTrips(
@@ -94,7 +92,6 @@ export class TripService extends BaseService<TripModel> {
 
     const data = await this._doStuff<TripModel[]>(async () => {
       const baseUrl = urljoin(environment.api, 'queryTrips');
-      console.log(baseUrl, queryParams);
 
       return await this.http
         .get<any[]>(baseUrl, {
@@ -136,15 +133,30 @@ export class TripService extends BaseService<TripModel> {
     );
     return trip;
   }
-
+  _getSavedTrip(id: string) {
+    const saved = this.data.filter((x) => x.id == id);
+    if (saved && saved.length > 0) {
+      return saved[0];
+    }
+    return null;
+  }
   async getLocalizedTrip(id: string): Promise<TripModel> {
+    const saved = this._getSavedTrip(id);
+    if (saved) return saved;
     let data = await this.localizedTripService
       .fetch({ id: id, locale: this.loc.locale })
       .toPromise();
-
-    return this.tripAdapter.adapt(data.data.trips![0]);
+    const models = this.tripAdapter.adapt(data.data.trips![0]);
+    this._cachtrip([models]);
+    return models;
   }
-
+  _cachtrip(tripModels?: TripModel[]) {
+    if (!tripModels) return;
+    const newTrips = tripModels.filter(
+      (f) => !this.data.some((x) => x.id == f.id)
+    );
+    this.data.push(...newTrips);
+  }
   async getLocations(ids: string[]): Promise<LocationModel[] | undefined> {
     const result = await this._doStuff<LocationModel[]>(async () => {
       let apolloResponse = await this.locationsGql

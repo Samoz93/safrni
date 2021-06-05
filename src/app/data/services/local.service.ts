@@ -29,8 +29,6 @@ export class LocalService {
     return (localStorage.getItem(LOCALE_KEY) as string) || 'en';
   }
   changeLangTo(locale: string): void {
-    console.log(`chaning lang to ${locale}`);
-
     this.trans.setActiveLang(locale);
     localStorage.setItem(LOCALE_KEY, locale);
   }

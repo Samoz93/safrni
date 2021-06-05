@@ -46,7 +46,6 @@ export class HomeLandingResolver implements Resolve<any> {
 
     let data = await Promise.all(futureArray);
     let meta: MetaModel = {};
-    console.log(data);
 
     if (data && data[1] && data[1][0]) {
       const d = data[1][0];

@@ -114,7 +114,7 @@ export class TourInformationComponent implements OnInit, AfterViewChecked {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
+      console.log('Hi There for you who is watching ');
     });
   }
   get guestData(): GuestCountModel {

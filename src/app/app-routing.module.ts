@@ -29,12 +29,14 @@ const routes: Routes = [
   {
     path: `offers`,
     component: OffersPageComponent,
+
     resolve: { trips: OffersPageResolver },
   },
   { path: 'booking/:id', component: BookingPageComponent },
   {
     path: 'tours/:id',
     component: TourInformationComponent,
+
     resolve: { dataMap: TourInformationResolver },
   },
   {
