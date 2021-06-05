@@ -155,5 +155,11 @@
     "departure": "Departure",
     "betweenCities": "Traveling to {{var}}",
     "restDay": "Rest Day"
+  },
+  "booking": {
+    "confirmed": "You booking has been confirmed",
+    "confirmationMessage": "Thank you for confirming your booking. Have a nice journey",
+    "canceled":"You booking has been canceled",
+    "cancelationMessage":""
   }
 }

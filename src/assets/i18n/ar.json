@@ -151,5 +151,11 @@
     "departure": "الرحيل",
     "betweenCities": "السفر إلى  {{var}}",
     "restDay": "يوم راحة"
+  },
+  "booking": {
+    "confirmed": "تم تأكيد الحجز",
+    "confirmationMessage": "شكرا لتأكيد الحجز. مغامرة جديدة بانتضارك!",
+    "canceled": "تم الغاء الحجز",
+    "cancelationMessage": ""
   }
 }

@@ -13,8 +13,8 @@ import { HomeLandingResolver } from './data/resolvers/home-landing.resolver';
 import { OffersPageResolver } from './data/resolvers/offers-page.resolver';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { PlaygroundComponent } from './pages/playground/playground.component';
-import { CancelBookingComponent } from './pages/cancel-booking/cancel-booking.component';
-import { ConfirmBookingComponent } from './pages/confirm-booking/confirm-booking.component';
+import { ManageBookingComponent } from './pages/manage-booking/manage-booking.component';
+import { ManageBookingResolver } from './data/resolvers/manage-booking.resolver';
 
 const routes: Routes = [
   {
@@ -51,12 +51,11 @@ const routes: Routes = [
     component: PlaygroundComponent,
   },
   {
-    path: 'cancel-booking',
-    component: CancelBookingComponent,
-  },
-  {
-    path: 'confirm-booking',
-    component: ConfirmBookingComponent,
+    path: 'manage-booking',
+    component: ManageBookingComponent,
+    resolve: {
+      manageBookingData: ManageBookingResolver
+    }
   },
 ];
 

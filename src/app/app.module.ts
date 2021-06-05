@@ -99,8 +99,7 @@ import { PhoneInputComponent } from './common/widgets/phone-input/phone-input.co
 import { PriceCaculatorPipe } from './data/pipes/price-caculator.pipe';
 import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
 import { TravelTypePipe } from './data/pipes/travel-type.pipe';
-import { CancelBookingComponent } from './pages/cancel-booking/cancel-booking.component';
-import { ConfirmBookingComponent } from './pages/confirm-booking/confirm-booking.component';
+import { ManageBookingComponent } from './pages/manage-booking/manage-booking.component';
 
 
 export function playerFactory() {
@@ -171,8 +170,8 @@ export function playerFactory() {
     PhoneInputComponent,
     PriceCaculatorPipe,
     TravelTypePipe,
-    CancelBookingComponent,
-    ConfirmBookingComponent,
+   
+    ManageBookingComponent,
   ],
 
   imports: [
