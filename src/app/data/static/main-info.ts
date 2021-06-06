@@ -1,11 +1,11 @@
 export class StaticInfo {
   static projectName = 'prName';
   static phoneNumber = '+90 539 961 0531';
-  static email = 'saferni@emali.com';
+  static email = 'safernit@emali.com';
   static defaultImage = '/assets/images/placeholder/default.jpeg';
   static insta = 'safernit';
   static facebook = 'Saferni-104348928523570';
-  static twitter = 'saferni@emali.com';
+  static twitter = 'safernit@emali.com';
 
   static location = 'Istanbul - Turkey';
 

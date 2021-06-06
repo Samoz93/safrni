@@ -37,6 +37,8 @@ export class BookingService {
     phone: string,
     arrivalDate: Date,
     email: string,
+    adults: number,
+    children: number,
     message?: string
   ): Promise<boolean> {
     let result = await this.bookingGql
@@ -52,6 +54,8 @@ export class BookingService {
         message: message,
         email: email,
         language: this.loc.locale,
+        adults,
+        children,
       })
       .toPromise();
 

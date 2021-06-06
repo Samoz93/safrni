@@ -10,6 +10,8 @@ mutation createBookingQuery(
   $currency: ENUM_BOOKING_CURRENCY!
   $email: String!
   $language: String!
+  $adults: Int!
+  $children: Int!
 ) {
   createBooking(
     input: {
@@ -25,6 +27,8 @@ mutation createBookingQuery(
         currency: $currency
         email: $email
         language: $language
+        adults: $adults
+        children: $children
       }
     }
   ) {

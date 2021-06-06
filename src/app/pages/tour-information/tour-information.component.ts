@@ -85,6 +85,9 @@ export class TourInformationComponent implements OnInit, AfterViewChecked {
         this.bookForm.get('phone')?.value.internationalNumber,
         this.bookForm.get('arrivalDate')?.value,
         this.bookForm.get('email')?.value,
+        this.bookForm.get('adult')?.value,
+        this.bookForm.get('child')?.value,
+        
         this.bookForm.get('message')?.value
       );
 
