@@ -9,7 +9,6 @@ import { WINDOW_SIZE } from '../utils/enums';
 })
 export class ServerimagePipe implements PipeTransform {
   constructor(private windowService: WindowService, private el: ElementRef) {}
-  //TODO resposive image here
   transform(pr: ImageModel | undefined, isThumb: boolean = false): string {
     if (!pr) {
       return StaticInfo.defaultImage;

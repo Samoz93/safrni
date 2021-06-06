@@ -1,10 +1,15 @@
-<ng-image-fullscreen-view
+<!-- <ng-image-fullscreen-view
   class="image"
   [images]="imageListObject"
   [imageIndex]="selectedImageIndex"
   [show]="showFlag"
   (close)="showFlag = false"
-></ng-image-fullscreen-view>
+></ng-image-fullscreen-view> -->
+<!-- <app-horizontal-listview
+  class="full-banner"
+  *ngIf="showFlag"
+  [images]="imagesUrl"
+></app-horizontal-listview> -->
 
 <div class="map-box" #overlayContainer>
   <agm-map
@@ -83,21 +88,28 @@
         <p>{{ "map.tourplan" | transloco }}</p>
       </div>
       <div class="side-information-bar-content">
-        <div class="side-information-bar-content__header">
-          <img
-            (click)="showFlag = true"
-            src="{{ sidebarLocation.images[selectedImageIndex] | serverimage }}"
-          />
+        <div
+          imageViewer="{{ allImages[selectedImageIndex]?.url }}"
+          class="side-information-bar-content__header cursor"
+        >
+          <img src="{{ allImages[selectedImageIndex]?.url }}" />
         </div>
 
         <div class="side-information-bar-content__body">
           <h2>{{ sidebarLocation.name }}</h2>
           <p>{{ sidebarLocation.desc }}</p>
-
-          <app-horizontal-listview
-            [images]="sidebarLocation.images"
+          <div class="side-information-bar-content__body_grid">
+            <img
+              *ngFor="let img of allImages; let i = index"
+              [src]="img.thumb"
+              alt=""
+              (click)="onImageSliderClicked(i)"
+            />
+          </div>
+          <!-- <app-horizontal-listview
+            [images]="allImages"
             (itemClicked)="onImageSliderClicked($event)"
-          ></app-horizontal-listview>
+          ></app-horizontal-listview> -->
         </div>
       </div>
     </div>
@@ -135,18 +147,31 @@
         (click)="toggleMobileSheet()"
         [ngClass]="mobileSheetExpanded ? 'open' : ''"
       ></i>
-      <div class="side-information-mobile__main-image">
-        <img
-          src="{{ sidebarLocation.images[selectedImageIndex] | serverimage }}"
-        />
+      <div
+        imageViewer="{{ allImages[selectedImageIndex]?.url }}"
+        class="side-information-mobile__main-image cursor"
+      >
+        <img src="{{ allImages[selectedImageIndex]?.url }}" />
       </div>
-      <h2>{{ sidebarLocation.name }}</h2>
-      <p (click)="toggleMobileSheet()">{{ sidebarLocation.desc }}</p>
-      <div class="side-information-mobile__images">
-        <app-horizontal-listview
-          [images]="sidebarLocation.images"
+
+      <div class="side-information-mobile__main">
+        <h2>{{ sidebarLocation.name }}</h2>
+        <p (click)="toggleMobileSheet()">{{ sidebarLocation.desc }}</p>
+        <div class="side-information-mobile__images">
+          <div class="side-information-mobile__images_grid">
+            <img
+              *ngFor="let img of allImages; let i = index"
+              [src]="img.thumb"
+              alt=""
+              (click)="onImageSliderClicked(i)"
+            />
+          </div>
+        </div>
+
+        <!-- <app-horizontal-listview
+          [images]="allImages"
           (itemClicked)="onImageSliderClicked($event)"
-        ></app-horizontal-listview>
+        ></app-horizontal-listview> -->
       </div>
     </div>
   </div>

@@ -97,11 +97,11 @@ import { PlaygroundComponent } from './pages/playground/playground.component';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { PhoneInputComponent } from './common/widgets/phone-input/phone-input.component';
 import { PriceCaculatorPipe } from './data/pipes/price-caculator.pipe';
-import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
 import { TravelTypePipe } from './data/pipes/travel-type.pipe';
 import { ManageBookingComponent } from './pages/manage-booking/manage-booking.component';
 import { E404Component } from './pages/e404/e404.component';
 
+import { ImageViewerModule } from '@nghacks/image-viewer';
 
 export function playerFactory() {
   return player;
@@ -171,9 +171,9 @@ export function playerFactory() {
     PhoneInputComponent,
     PriceCaculatorPipe,
     TravelTypePipe,
-   
+
     ManageBookingComponent,
-   
+
     E404Component,
   ],
 
@@ -212,7 +212,7 @@ export function playerFactory() {
     MatSnackBarModule,
     MatRadioModule,
     NgxIntlTelInputModule,
-    NgImageFullscreenViewModule,
+    ImageViewerModule,
   ],
   providers: [
     ScreenTrackingService,

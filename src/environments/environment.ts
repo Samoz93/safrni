@@ -5,6 +5,7 @@
 export const environment = {
   baseUrl: 'http://localhost:4200',
   production: false,
+  azureKey: '72e0577dbe0c49c097eb22a3c47c8e32',
 
   api: 'https://saferni.net/api',
   firebase: {
