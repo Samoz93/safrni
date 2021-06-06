@@ -13,7 +13,7 @@ export class HorizontalListviewComponent implements OnInit {
 
   @Output() itemClicked = new EventEmitter<number>();
 
-  constructor(private meta: MetaService) {}
+  constructor() {}
 
   ngOnInit(): void {}
 
@@ -25,6 +25,10 @@ export class HorizontalListviewComponent implements OnInit {
     this.itemClicked.emit(index);
   }
   isStringList(images: string[] | ImageModel[]): images is string[] {
-    return (images as ImageModel[])[0].url === undefined;
+    return (
+      images === undefined ||
+      (images as ImageModel[])[0] === undefined ||
+      (images as ImageModel[])[0].url === undefined
+    );
   }
 }

@@ -17,8 +17,10 @@ import {
   AccordionListItemOption,
 } from 'src/app/common/widgets/accordion-list/accordion-list-item';
 import { AccordionClickEventData } from 'src/app/common/widgets/accordion-list/accordion-list.component';
+import { BingImageModel } from 'src/app/data/models/bingImageModel';
 import { LocationModel } from 'src/app/data/models/LocationModel';
 import { TripModel } from 'src/app/data/models/TripModel';
+import { BingImageService } from 'src/app/data/services/bing-image.service';
 import { LocalService } from 'src/app/data/services/local.service';
 import { Enum_Componenttimelinetimeline_Transportationtype } from 'src/app/data/services/saferniGraphql.service';
 import { TripService } from 'src/app/data/services/trip.service';
@@ -30,12 +32,12 @@ import { TripService } from 'src/app/data/services/trip.service';
 })
 export class TourMapComponent implements OnInit, OnDestroy {
   constructor(
-    private tripService: TripService,
     private activeRoute: ActivatedRoute,
     private ren: Renderer2,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private loc: LocalService
+    private loc: LocalService,
+    private bing: BingImageService
   ) {}
 
   @ViewChildren('overlayContainer') overlayContainer: QueryList<ElementRef>;
@@ -63,6 +65,7 @@ export class TourMapComponent implements OnInit, OnDestroy {
   zoom: number = 15;
   planLocations: LocationModel[] = [];
   accordionItems: AccordionListItem[] = [];
+  allImages: BingImageModel[] = [];
 
   ngAfterViewInit(): void {
     this.agmMap.mapReady.subscribe((map) => {
@@ -82,9 +85,13 @@ export class TourMapComponent implements OnInit, OnDestroy {
       this.planLocations = data.mapTripData.locations;
 
       this.initMapPosition();
+      if (this.sidebarLocation) this._setImages(this.sidebarLocation);
     });
   }
 
+  async _initBingImages(locationName: string) {
+    this.allImages.push(...(await this.bing.getImage(locationName)));
+  }
   zoomChange(event: any) {
     console.log(event);
   }
@@ -200,14 +207,18 @@ export class TourMapComponent implements OnInit, OnDestroy {
       indexOfCurrent != null &&
       indexOfCurrent + 1 < this.planLocations.length
     ) {
-      this.recenterMapToLocation(this.planLocations[++indexOfCurrent]);
+      const loc = this.planLocations[++indexOfCurrent];
+      this.recenterMapToLocation(loc);
+      this._setImages(loc);
     }
   }
   prevDestination(): void {
     this.selectedImageIndex = 0;
     let indexOfCurrent = this.planLocations.indexOf(this.sidebarLocation);
     if (indexOfCurrent != null && indexOfCurrent > 0) {
-      this.recenterMapToLocation(this.planLocations[--indexOfCurrent]);
+      const loc = this.planLocations[--indexOfCurrent];
+      this.recenterMapToLocation(loc);
+      this._setImages(loc);
     }
   }
   hasNextLocation(): boolean {
@@ -232,7 +243,23 @@ export class TourMapComponent implements OnInit, OnDestroy {
       this.recenterMapToLocation(
         this.planLocations.find((loc) => loc.id === location.locationId)!
       );
+      this._setImages(
+        this.planLocations.find((loc) => loc.id === location.locationId)!
+      );
     }
+  }
+
+  _setImages(location: LocationModel) {
+    const ourImages: BingImageModel[] = location.images.map((f) => {
+      const model: BingImageModel = {
+        url: f.url,
+        thumb: f.formats?.thumbnail?.url!,
+      };
+      return model;
+    });
+    this.allImages = [];
+    this.allImages.push(...ourImages);
+    this._initBingImages(location.name);
   }
   toggleMobileSheet() {
     this.mobileSheetExpanded = !this.mobileSheetExpanded;
@@ -557,16 +584,23 @@ export class TourMapComponent implements OnInit, OnDestroy {
 
   //full screen
   get imageListObject() {
-    return this.sidebarLocation.images.map((f) => {
+    const data = this.allImages.map((f) => {
       return {
         image: f.url,
-        thumbImage: f.formats?.thumbnail?.url,
+        thumbImage: f.thumb,
         title: this.sidebarLocation.name,
         alt: this.sidebarLocation.desc,
       };
     });
-  }
 
+    return data;
+  }
+  // get imagesUrl() {
+  //   const data = this.allImages.map((f) => f.url);
+
+  //   return data;
+  // }
+  showFullImage() {}
   //ExpandedSection
   showFlag: boolean = false;
 }
