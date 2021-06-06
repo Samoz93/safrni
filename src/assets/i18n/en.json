@@ -149,7 +149,8 @@
     "previous": "previous",
     "privateTour": "Private Tour",
     "publicTour": "Public Tour",
-    "pageDoesNotExists":"This page does not exists"
+    "pageDoesNotExists": "This page does not exists",
+    "oops":"Oops!"
   },
   "Transportationtype": {
     "arrival": "Arrival",
@@ -161,6 +162,9 @@
     "confirmed": "You booking has been confirmed",
     "confirmationMessage": "Thank you for confirming your booking. Have a nice journey",
     "canceled": "You booking has been canceled",
-    "cancelationMessage": "Thank you for submitting your cancelation. If you have faced any problem with your booking we would appreciate any feedback you can give."
+    "cancelationMessage": "Thank you for submitting your cancelation. If you have faced any problem with your booking we would appreciate any feedback you can give.",
+    "formSubmittedTitle": "Your order has been submitted",
+    "formSubmittedDescription": "We have sent you a confirmation email. Please check your inbox and confirm your booking. We wish you a nice journey.",
+    "error":"Something went wrong. Please contact us using any of the below methods"
   }
 }

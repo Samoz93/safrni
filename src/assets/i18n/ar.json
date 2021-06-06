@@ -144,7 +144,8 @@
     "previous": "السابق",
     "privateTour": "رحلة خاصة",
     "publicTour": "رحلة عامة",
-    "pageDoesNotExists":"هذة الصفحة غير متوفرة"
+    "pageDoesNotExists": "هذة الصفحة غير متوفرة",
+    "oops": "حدث خطأ"
   },
 
   "Transportationtype": {
@@ -157,6 +158,9 @@
     "confirmed": "تم تأكيد الحجز",
     "confirmationMessage": "شكرا لتأكيد الحجز. مغامرة جديدة بانتضارك!",
     "canceled": "تم الغاء الحجز",
-    "cancelationMessage": ""
+    "cancelationMessage": "",
+    "formSubmittedTitle": "تم ارسال طلب الحجز",
+    "formSubmittedDescription": "تم ارسال رسالة التاكيد الى بريدكم الالكتروني. الرجاء زيارة الرسالة والقيام بتأكيد الحجز. نتمنى لكم سفرة ممتعة.",
+    "error": "حدث خطأ اثناء تاكيد معلومات الحجز. الرجاء التوصال معنا عن طريق احد الخيارات التالية"
   }
 }
