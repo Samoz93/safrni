@@ -1,5 +1,7 @@
 import { formatDate } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment.prod';
 import { LocalService } from './local.service';
 import {
   CreateBookingQueryGQL,
@@ -10,8 +12,20 @@ import {
 export class BookingService {
   constructor(
     private bookingGql: CreateBookingQueryGQL,
-    private loc: LocalService
+    private loc: LocalService,
+    private http: HttpClient
   ) {}
+
+  async cancelBooking(id: string) {
+    await this.http
+      .get(`${environment.api}/cancelBooking?id=${id}`)
+      .toPromise();
+  }
+  async confirmBooking(id: string) {
+    await this.http
+      .get(`${environment.api}/confirmBooking?id=${id}`)
+      .toPromise();
+  }
 
   async createBooking(
     tripId: string,
@@ -23,10 +37,10 @@ export class BookingService {
     phone: string,
     arrivalDate: Date,
     email: string,
+    adults: number,
+    children: number,
     message?: string
   ): Promise<boolean> {
-   
-
     let result = await this.bookingGql
       .mutate({
         tripId: tripId,
@@ -40,6 +54,8 @@ export class BookingService {
         message: message,
         email: email,
         language: this.loc.locale,
+        adults,
+        children,
       })
       .toPromise();
 
