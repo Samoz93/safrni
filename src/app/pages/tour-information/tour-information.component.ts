@@ -74,7 +74,7 @@ export class TourInformationComponent implements OnInit, AfterViewChecked {
     });
     if (this.bookForm.valid) {
       this.isSubmiting = true;
-      //TODO
+
       let result = await this.bookingService.createBooking(
         this.trip.id,
         this.bookForm.get('fullName')?.value,
@@ -87,7 +87,7 @@ export class TourInformationComponent implements OnInit, AfterViewChecked {
         this.bookForm.get('email')?.value,
         this.bookForm.get('adult')?.value,
         this.bookForm.get('child')?.value,
-        
+
         this.bookForm.get('message')?.value
       );
 
