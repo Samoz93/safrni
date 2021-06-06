@@ -89,7 +89,10 @@ export class TripService extends BaseService<TripModel> {
         limit: 20,
       };
     }
-
+    queryParams = {
+      ...queryParams,
+      active: true,
+    };
     const data = await this._doStuff<TripModel[]>(async () => {
       const baseUrl = urljoin(environment.api, 'queryTrips');
 
