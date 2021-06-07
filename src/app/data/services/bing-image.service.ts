@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
 import { BingImageModel } from '../models/bingImageModel';
 import { BaseService } from './base.service';
+import { LocalService } from './local.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BingImageService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private loc: LocalService) {}
   data: { [key: string]: BingImageModel[] } = {};
   async getImage(key: string): Promise<BingImageModel[]> {
     if (this.data[key]) {
@@ -16,12 +17,15 @@ export class BingImageService {
 
       return this.data[key];
     }
-    const params = new HttpParams();
-    params.append('q', key);
+    // const params = new HttpParams();
+    // params.append('q', key);
+
+    const keyword = this.loc.locale === 'ar' ? key + ' تركيا' : key + ' Turkey';
+
     const data = await this.http
       .get<any>('https://api.bing.microsoft.com/v7.0/images/search', {
         params: {
-          q: key,
+          q: keyword,
         },
         headers: { 'Ocp-Apim-Subscription-Key': environment.azureKey },
       })
