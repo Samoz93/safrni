@@ -1,5 +1,5 @@
-@import "/src/assets/css/abstract/variables";
-@import "/src/assets/css/abstract/mixins";
+@import "/src/app/css/abstract/variables";
+@import "/src/app/css/abstract/mixins";
 
 $trans: all 200ms;
 $padding: 0 2rem;
@@ -50,6 +50,45 @@ $font-size: 1.5rem;
   @include res(phone) {
     flex-direction: column;
     transform: none;
+  }
+  &_sort {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    &_option {
+      padding: 0.5rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      height: 4rem;
+      font-size: 1.3rem;
+      border: $dividerColor 1px solid;
+      box-shadow: 1px 1px 1px rgb(0 0 0 / 20%);
+      background-color: white;
+      &.active {
+        background-color: $dividerColor;
+      }
+      &.title {
+        margin-right: 1rem;
+        &:lang(ar) {
+          margin-left: 1rem;
+        }
+      }
+      p {
+        font-size: inherit;
+        margin-right: 0.5rem;
+        &:lang(ar) {
+          margin-left: 0.5rem;
+        }
+      }
+      .col {
+        margin: 0 0.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+    }
   }
   &-filter-btn {
     display: none;
@@ -103,6 +142,19 @@ $font-size: 1.5rem;
     }
   }
   .loader {
+    // margin-right: auto;
+    // width: 78rem;
+    // @include res(phone) {
+    //   width: 100%;
+    //   padding: 0 2rem;
+    // }
+    // &:lang(ar) {
+    //   margin-right: unset;
+    //   margin-left: auto;
+    // }
+  }
+
+  .content-class {
     margin-right: auto;
     width: 78rem;
     @include res(phone) {

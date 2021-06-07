@@ -150,7 +150,7 @@
     "privateTour": "Private Tour",
     "publicTour": "Public Tour",
     "pageDoesNotExists": "This page does not exists",
-    "oops":"Oops!"
+    "oops": "Oops!"
   },
   "Transportationtype": {
     "arrival": "Arrival",
@@ -165,6 +165,12 @@
     "cancelationMessage": "Thank you for submitting your cancelation. If you have faced any problem with your booking we would appreciate any feedback you can give.",
     "formSubmittedTitle": "Your order has been submitted",
     "formSubmittedDescription": "We have sent you a confirmation email. Please check your inbox and confirm your booking. We wish you a nice journey.",
-    "error":"Something went wrong. Please contact us using any of the below methods"
+    "error": "Something went wrong. Please contact us using any of the below methods"
+  },
+  "sorting": {
+    "title": "Sort By: ",
+    "newest": "Newest to Oldest",
+    "price": "Price",
+    "duration": "Duration"
   }
 }

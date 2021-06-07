@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment.prod';
 import urljoin from 'url-join';
 import { FilterOptionsModel } from '../models/filterOptionModlel';
 import { LocationModel, LocationModelAdapter } from '../models/LocationModel';
+import { SortingModel } from '../models/sortingModel';
 import { TripModel, TripModelAdapter } from '../models/TripModel';
 import { BaseService } from './base.service';
 import { ErrorService } from './error.service';
@@ -49,9 +50,13 @@ export class TripService extends BaseService<TripModel> {
       locale: this.loc.locale,
       limit: 20,
     },
+    sortingOptions: SortingModel = {
+      sortingKey: 'createdAt',
+      sortinDir: 'ascend',
+    },
     offset: number = 0
   ): Promise<TripModel[]> {
-    let queryParams: Params = { ...query, offset };
+    let queryParams: Params = { ...query, offset, ...sortingOptions };
     //TODO add it later
     delete queryParams['date'];
     if (!query.cities || query.cities.length < 1) {

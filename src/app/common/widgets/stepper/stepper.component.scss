@@ -1,4 +1,4 @@
-@import "/src/assets/css/abstract/variables";
+@import "/src/app/css/abstract/variables";
 .stepper {
   width: 100%;
   min-height: 100%;
@@ -42,7 +42,7 @@
         /*   height: 120px; */
         height: 120%;
         width: 0.1rem;
-        background-color: rgba($color: #000000, $alpha: 1.0);
+        background-color: rgba($color: #000000, $alpha: 1);
         color: black;
         position: absolute;
       }

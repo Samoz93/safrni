@@ -22,14 +22,64 @@
       (onFilterChange)="onFilterChange($event)"
       class="flex_area-filter"
     ></app-filter-widget>
+    <div class="content-class">
+      <div class="flex_area_sort">
+        <div class="flex_area_sort_option title">
+          {{ "sorting.title" | transloco }}
+        </div>
+        <div
+          (click)="setSorting('createdAt')"
+          [ngClass]="{ active: isSortingActive('createdAt') }"
+          class="flex_area_sort_option active"
+        >
+          {{ "sorting.newest" | transloco }}
+        </div>
+        <div
+          [ngClass]="{ active: isSortingActive('duration') }"
+          (click)="setSorting('duration', true)"
+          class="flex_area_sort_option"
+        >
+          <p>{{ "sorting.duration" | transloco }}</p>
+          <i
+            class="las"
+            [ngClass]="{
+              'la-chevron-up': isUp('duration'),
+              'la-chevron-down': !isUp('duration')
+            }"
+          ></i>
+          <!-- <i class="fas fa-chevron-down"></i> -->
+        </div>
+        <div
+          [ngClass]="{ active: isSortingActive('basePrice') }"
+          (click)="setSorting('basePrice', true)"
+          class="flex_area_sort_option sort"
+        >
+          <p>{{ "sorting.price" | transloco }}</p>
+          <i
+            class="las"
+            [ngClass]="{
+              'la-chevron-up': isUp('basePrice'),
+              'la-chevron-down': !isUp('basePrice')
+            }"
+          ></i>
+        </div>
+        <!-- <button
+          (click)="setSorting('rating')"
+          [ngClass]="{ active: isSortingActive('rating') }"
+          class="flex_area_sort_option"
+        >
+          Rating
+        </button> -->
+      </div>
 
-    <app-loader
-      class="loader"
-      [isLoading]="isLoading"
-      [viewRef]="content"
-      [hasData]="!!data && data.length > 0"
-    >
-    </app-loader>
+      <app-loader
+        class="loader"
+        [isLoading]="isLoading"
+        [viewRef]="content"
+        [hasData]="!!data && data.length > 0"
+      >
+      </app-loader>
+    </div>
   </div>
 </div>
 
