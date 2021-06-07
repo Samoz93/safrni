@@ -195,6 +195,7 @@ export class TourMapComponent implements OnInit, OnDestroy {
       });
 
       if (bringToFront) this.onOverlayHover(location.id);
+      this._setImages(location);
     }
   }
   onImageSliderClicked(imageIndex: number) {
@@ -209,7 +210,6 @@ export class TourMapComponent implements OnInit, OnDestroy {
     ) {
       const loc = this.planLocations[++indexOfCurrent];
       this.recenterMapToLocation(loc);
-      this._setImages(loc);
     }
   }
   prevDestination(): void {
@@ -218,7 +218,6 @@ export class TourMapComponent implements OnInit, OnDestroy {
     if (indexOfCurrent != null && indexOfCurrent > 0) {
       const loc = this.planLocations[--indexOfCurrent];
       this.recenterMapToLocation(loc);
-      this._setImages(loc);
     }
   }
   hasNextLocation(): boolean {
@@ -241,9 +240,6 @@ export class TourMapComponent implements OnInit, OnDestroy {
 
     if (location) {
       this.recenterMapToLocation(
-        this.planLocations.find((loc) => loc.id === location.locationId)!
-      );
-      this._setImages(
         this.planLocations.find((loc) => loc.id === location.locationId)!
       );
     }

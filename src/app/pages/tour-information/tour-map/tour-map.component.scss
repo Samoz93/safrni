@@ -2,7 +2,7 @@
 @import "/src/assets/css/abstract/mixins";
 
 .map-box {
-  height: 93vh;
+  height: calc(100vh - 11rem);
   width: 100%;
   position: relative;
   overflow: hidden;

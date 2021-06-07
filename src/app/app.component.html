@@ -11,6 +11,6 @@
   <app-header-info></app-header-info>
   <app-header-tool-bar></app-header-tool-bar>
   <router-outlet class="outlet"></router-outlet>
-  <app-footer></app-footer>
+  <app-footer *ngIf="!hideFooter"></app-footer>
   <app-splash></app-splash>
 </div>
