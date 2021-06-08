@@ -13,7 +13,7 @@
         {{ "aboutUsPage.whoAreWe" | transloco }}
       </h1>
       <p>
-        {{ "aboutUsPage.whoAreWeAnswer" | transloco }}
+        {{ aboutUsText }}
       </p>
     </div>
     <div class="plane-image">
@@ -25,23 +25,11 @@
       </h1>
     </div>
     <div class="saferni-services">
-      <div class="saferni-service">
+      <div class="saferni-service" *ngFor="let service of services">
         <div class="saferni-service__image">
-          <img src="../../../assets/images/svgs/about-us-thumbs.svg" />
+          <img src="{{ service.image }}" />
         </div>
-        <p>{{ "aboutUsPage.services.service1" | transloco }}</p>
-      </div>
-      <div class="saferni-service">
-        <div class="saferni-service__image">
-          <img src="../../../assets/images/svgs/about-us-map.svg" />
-        </div>
-        <p>{{ "aboutUsPage.services.service2" | transloco }}</p>
-      </div>
-      <div class="saferni-service">
-        <div class="saferni-service__image">
-          <img src="../../../assets/images/svgs/about-us-globe.svg" />
-        </div>
-        <p>{{ "aboutUsPage.services.service3" | transloco }}</p>
+        <p>{{ service.service }}</p>
       </div>
     </div>
   </section>

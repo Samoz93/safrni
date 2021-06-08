@@ -1,6 +1,7 @@
 export const environment = {
   baseUrl: 'https://saferni.net',
   production: true,
+
   api: 'https://saferni.net/api',
   azureKey: '72e0577dbe0c49c097eb22a3c47c8e32',
   firebase: {

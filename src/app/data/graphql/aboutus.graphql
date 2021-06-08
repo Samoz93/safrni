@@ -1,0 +1,11 @@
+query aboutus($locale: String = "ar") {
+  aboutUsText(locale: $locale) {
+    aboutUsText
+    Service {
+      ServiceName
+      image {
+        url
+      }
+    }
+  }
+}
