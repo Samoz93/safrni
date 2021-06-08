@@ -26,7 +26,7 @@ export class AboutUsComponent implements OnInit {
         this.aboutUsText = data.data.aboutUsText?.aboutUsText ?? '';
         this.services =
           data.data.aboutUsText?.Service?.map((service) => {
-            return {
+          return {
               service: service?.ServiceName ?? '',
               image: environment.api + service?.image?.url ?? '',
             };
