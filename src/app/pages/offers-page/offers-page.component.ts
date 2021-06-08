@@ -66,17 +66,17 @@ export class OffersPageComponent implements OnInit {
   }
   isUp(key: string): boolean {
     return (
-      this.sortOption.sortingKey == key && this.sortOption.sortinDir == 'ascend'
+      this.sortOption.sortingKey == key && this.sortOption.sortinDir == 'asc'
     );
   }
   setSorting(key: string, toggle?: boolean) {
-    let sortDirection: 'ascend' | 'descend' = 'ascend';
+    let sortDirection: 'asc' | 'desc' = 'asc';
     if (!!toggle && toggle) {
       if (
         this.sortOption.sortingKey == key &&
-        this.sortOption.sortinDir == 'ascend'
+        this.sortOption.sortinDir == 'asc'
       ) {
-        sortDirection = 'descend';
+        sortDirection = 'desc';
       }
     }
     this.sortOption = { sortingKey: key, sortinDir: sortDirection };

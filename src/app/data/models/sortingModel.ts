@@ -1,4 +1,4 @@
 export interface SortingModel {
   sortingKey?: string;
-  sortinDir?: 'ascend' | 'descend';
+  sortinDir?: 'asc' | 'desc';
 }

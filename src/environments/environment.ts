@@ -8,6 +8,7 @@ export const environment = {
   azureKey: '72e0577dbe0c49c097eb22a3c47c8e32',
 
   api: 'https://saferni.net/api',
+  // api: 'http://localhost:1337',
   firebase: {
     apiKey: 'AIzaSyCFFDVIBbxgrXGYTGwnBT00Zr7kL4FF6BU',
     authDomain: 'saferni-e66bf.firebaseapp.com',

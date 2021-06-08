@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Params } from '@angular/router';
 import { map } from 'rxjs/operators';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import urljoin from 'url-join';
 import { FilterOptionsModel } from '../models/filterOptionModlel';
 import { LocationModel, LocationModelAdapter } from '../models/LocationModel';
@@ -52,7 +52,7 @@ export class TripService extends BaseService<TripModel> {
     },
     sortingOptions: SortingModel = {
       sortingKey: 'createdAt',
-      sortinDir: 'ascend',
+      sortinDir: 'asc',
     },
     offset: number = 0
   ): Promise<TripModel[]> {
@@ -100,6 +100,7 @@ export class TripService extends BaseService<TripModel> {
     };
     const data = await this._doStuff<TripModel[]>(async () => {
       const baseUrl = urljoin(environment.api, 'queryTrips');
+      console.log(environment.production);
 
       return await this.http
         .get<any[]>(baseUrl, {

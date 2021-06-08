@@ -23,7 +23,7 @@
       class="flex_area-filter"
     ></app-filter-widget>
     <div class="content-class">
-      <!-- <div class="flex_area_sort">
+      <div class="flex_area_sort">
         <div class="flex_area_sort_option title">
           {{ "sorting.title" | transloco }}
         </div>
@@ -47,7 +47,6 @@
               'la-chevron-down': !isUp('duration')
             }"
           ></i>
-       
         </div>
         <div
           [ngClass]="{ active: isSortingActive('basePrice') }"
@@ -63,8 +62,7 @@
             }"
           ></i>
         </div>
-      
-      </div> -->
+      </div>
 
       <app-loader
         class="loader"
