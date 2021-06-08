@@ -1,24 +1,26 @@
 @import "~swiper/swiper-bundle";
+@import "assets/fonts/font-awesome.css";
+@import "assets/fonts/janna.css";
 
-@import "assets/css/abstract/variables";
-@import "assets/css/abstract/function";
-@import "assets/css/abstract/mixins";
-@import "assets/css/abstract/control-mixins";
-@import "assets/css/component/ng-select";
+@import "/src/app/css/abstract/variables";
+@import "/src/app/css/abstract/function";
+@import "/src/app/css/abstract/mixins";
+@import "/src/app/css/abstract/control-mixins";
+@import "/src/app/css/component/ng-select";
 
-@import "assets/css/layout/layout";
-@import "assets/css/component/card";
-@import "assets/css/component/buttons";
-@import "assets/css/component/selects";
-@import "assets/css/component/text";
-@import "assets/css/component/input";
-@import "assets/css/component/matstyle";
-@import "assets/css/component/snackbar";
+@import "/src/app/css/layout/layout";
+@import "/src/app/css/component/card";
+@import "/src/app/css/component/buttons";
+@import "/src/app/css/component/selects";
+@import "/src/app/css/component/text";
+@import "/src/app/css/component/input";
+@import "/src/app/css/component/matstyle";
+@import "/src/app/css/component/snackbar";
 
-@import "assets/css/base/base";
-@import "assets/css/base/animation";
-@import "assets/css/base/typography";
-@import "assets/css/base/utilites";
+@import "/src/app/css/base/base";
+@import "/src/app/css/base/animation";
+@import "/src/app/css/base/typography";
+@import "/src/app/css/base/utilites";
 
 /* Importing Bootstrap SCSS file. */
-@import "assets/css/abstract/material";
+@import "/src/app/css/abstract/material";

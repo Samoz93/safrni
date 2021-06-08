@@ -3,6 +3,7 @@ import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { FilterOptionsModel } from 'src/app/data/models/filterOptionModlel';
+import { SortingModel } from 'src/app/data/models/sortingModel';
 import { TripModel } from 'src/app/data/models/TripModel';
 import { LocalService } from 'src/app/data/services/local.service';
 import {
@@ -28,7 +29,7 @@ export class OffersPageComponent implements OnInit {
   data: TripModel[];
   isLoading = false;
   filterOptions: FilterOptionsModel;
-
+  sortOption: SortingModel = {};
   constructor(
     public _ser: TripService,
     private _bottomSheet: MatBottomSheet,
@@ -60,11 +61,32 @@ export class OffersPageComponent implements OnInit {
       this._initData();
     });
   }
+  isSortingActive(key: string): boolean {
+    return this.sortOption.sortingKey == key;
+  }
+  isUp(key: string): boolean {
+    return (
+      this.sortOption.sortingKey == key && this.sortOption.sortinDir == 'ascend'
+    );
+  }
+  setSorting(key: string, toggle?: boolean) {
+    let sortDirection: 'ascend' | 'descend' = 'ascend';
+    if (!!toggle && toggle) {
+      if (
+        this.sortOption.sortingKey == key &&
+        this.sortOption.sortinDir == 'ascend'
+      ) {
+        sortDirection = 'descend';
+      }
+    }
+    this.sortOption = { sortingKey: key, sortinDir: sortDirection };
+    this._initData();
+  }
   async _initData() {
     this.isLoading = true;
     //absolute
 
-    this.data = await this._ser.queryTrips(this.filterOptions);
+    this.data = await this._ser.queryTrips(this.filterOptions, this.sortOption);
     this.isLoading = false;
   }
   async onFilterChange(filterData: FilterOptionsModel) {
