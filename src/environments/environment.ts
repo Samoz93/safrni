@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  baseUrl: 'http://localhost:4200',
+  baseUrl: 'https://saferni.net/',
   production: false,
   azureKey: '72e0577dbe0c49c097eb22a3c47c8e32',
 
